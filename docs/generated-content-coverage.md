@@ -9,10 +9,10 @@ This report is generated from the application's source data by `npm run coverage
 | Classes | 46 |
 | Archetypes | 1195 |
 | Ancestries | 10 |
-| Option groups | 155 |
+| Option groups | 156 |
 | Feats | 3447 |
 | Traits | 40 |
-| Spells | 2761 |
+| Spells | 2763 |
 | Equipment | 80 |
 
 ## Feat prerequisites
@@ -29,19 +29,19 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 
 | Coverage | Count |
 |---|---:|
-| Fully automated | 216 |
-| Partially automated | 979 |
+| Fully automated | 217 |
+| Partially automated | 978 |
 | Rules reference only | 0 |
 
 ### Structured automation
 
 | Reusable subsystem | Archetypes |
 |---|---:|
-| Resources and limited uses | 93 |
+| Resources and limited uses | 94 |
 | Companions and effective levels | 40 |
 | Spell lists, slots, and casting | 55 |
 | Class skills and skill-rank progressions | 58 |
-| Combat statistics and proficiencies | 64 |
+| Combat statistics and proficiencies | 65 |
 | Deterministic Take 10 and Take 20 skill checks | 17 |
 
 Partial archetypes apply their replacement progression, restrictions, stacking rules, and persistence. Bespoke effects without a shared builder subsystem remain visibly identified for manual handling.
@@ -53,11 +53,11 @@ These rule-text signals are multi-label: one archetype can contribute to several
 | Candidate subsystem | Partial archetypes |
 |---|---:|
 | Resources and limited uses | 562 |
-| Companions, mounts, familiars, and eidolons | 197 |
-| Spell lists, slots, and casting | 545 |
-| Selectable progressions and dependent choices | 674 |
-| Combat statistics and proficiencies | 768 |
-| Skills | 568 |
+| Companions, mounts, familiars, and eidolons | 196 |
+| Spell lists, slots, and casting | 544 |
+| Selectable progressions and dependent choices | 673 |
+| Combat statistics and proficiencies | 767 |
+| Skills | 567 |
 | Feats | 436 |
 | Narrative or uncategorized effects | 2 |
 
@@ -65,9 +65,9 @@ These rule-text signals are multi-label: one archetype can contribute to several
 
 | Coverage | Count |
 |---|---:|
-| Full rules descriptions | 2760 |
-| Rules source links | 2760 |
-| Core casting statistics | 2760 |
+| Full rules descriptions | 2762 |
+| Rules source links | 2762 |
+| Core casting statistics | 2762 |
 
 ## Class progression
 

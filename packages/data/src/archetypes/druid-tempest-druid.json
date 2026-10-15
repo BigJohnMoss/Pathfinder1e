@@ -18,8 +18,14 @@
           "id": "druid-tempest-druid-alignment-1",
           "name": "Alignment",
           "level": 1,
-          "type": "archetype",
-          "summary": "The beliefs held by tempest druids are inherently more chaotic than those held by most druids, and as a result, tempest druids must be chaotic neutral. This alters the druid’s alignment."
+          "type": "selectable",
+          "summary": "The beliefs held by tempest druids are inherently more chaotic than those held by most druids, and as a result, tempest druids must be chaotic neutral. This alters the druid’s alignment.",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-alignments",
+          "optionChoiceIds": [
+            "alignment-chaotic-neutral"
+          ],
+          "progressionKey": "tempest-druid-alignment"
         },
         {
           "id": "druid-tempest-druid-armor-and-weapon-proficiencies-1",
@@ -33,42 +39,351 @@
           "name": "Spontaneous Domain Casting",
           "level": 1,
           "type": "archetype",
-          "summary": "A tempest druid can channel stored spell energy into domain spells that he has not prepared ahead of time. He can “lose” a prepared spell to cast any domain spell of the same level or lower. This replaces the druid’s normal ability to spontaneously cast summon spells."
+          "summary": "A tempest druid can channel stored spell energy into domain spells that he has not prepared ahead of time. He can “lose” a prepared spell to cast any domain spell of the same level or lower. This replaces the druid’s normal ability to spontaneously cast summon spells.",
+          "spellAutomation": {
+            "preparedOptionSpellConversion": {
+              "label": "Spontaneous Domain Casting",
+              "spellIdsByOption": {
+                "domain-air": [
+                  "obscuring-mist",
+                  "wind-wall",
+                  "gaseous-form",
+                  "air-walk",
+                  "control-winds",
+                  "chain-lightning",
+                  "elemental-body-iv",
+                  "whirlwind",
+                  "elemental-swarm"
+                ],
+                "domain-aquatic": [
+                  "hydraulic-push",
+                  "slipstream",
+                  "water-breathing",
+                  "freedom-of-movement",
+                  "black-tentacles",
+                  "freezing-sphere",
+                  "animal-shapes",
+                  "seamantle",
+                  "tsunami"
+                ],
+                "subdomain-cloud": [
+                  "obscuring-mist",
+                  "wind-wall",
+                  "gaseous-form",
+                  "solid-fog",
+                  "control-winds",
+                  "chain-lightning",
+                  "elemental-body-iv",
+                  "whirlwind",
+                  "storm-of-vengeance"
+                ],
+                "subdomain-storms": [
+                  "obscuring-mist",
+                  "fog-cloud",
+                  "call-lightning",
+                  "sleet-storm",
+                  "call-lightning-storm",
+                  "sirocco",
+                  "control-weather",
+                  "whirlwind",
+                  "storm-of-vengeance"
+                ],
+                "domain-swamp": [
+                  "hydraulic-push",
+                  "later-spell-burst-of-nettles",
+                  "later-spell-lily-pad-stride",
+                  "cape-of-wasps",
+                  "insect-plague",
+                  "fester-mass",
+                  "animate-plants",
+                  "later-spell-blood-mist",
+                  "shambler"
+                ],
+                "domain-weather": [
+                  "obscuring-mist",
+                  "fog-cloud",
+                  "call-lightning",
+                  "sleet-storm",
+                  "ice-storm",
+                  "control-winds",
+                  "control-weather",
+                  "whirlwind",
+                  "storm-of-vengeance"
+                ],
+                "subdomain-wind": [
+                  "whispering-wind",
+                  "wind-wall",
+                  "gaseous-form",
+                  "air-walk",
+                  "control-winds",
+                  "wind-walk",
+                  "elemental-body-iv",
+                  "whirlwind",
+                  "winds-of-vengeance"
+                ]
+              }
+            }
+          },
+          "progressionProfiles": [
+            {
+              "id": "tempest-druid-spontaneous-domain-casting",
+              "label": "Spontaneous Domain Casting",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "rule",
+                  "label": "Conversion rule"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "rule": "Lose a prepared spell to cast a selected-domain spell of the same or a lower level"
+                  }
+                }
+              ],
+              "summary": "The selected domain's exact spell list receives prepared-slot conversion controls."
+            }
+          ]
         },
         {
           "id": "druid-tempest-druid-nature-bond-ex-1",
           "name": "Nature Bond (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "As a result of his beliefs, a tempest druid has little connection to the spirituality of animals or plants. He can’t choose an animal companion, and must instead select a domain or subdomain from the following list when he gains the nature bond ability: Air, Aquatic UM , Cloud APG , Storm APG , Swamp UM , Weather, or Wind APG . This alters nature bond."
+          "type": "selectable",
+          "summary": "As a result of his beliefs, a tempest druid has little connection to the spirituality of animals or plants. He can’t choose an animal companion, and must instead select a domain or subdomain from the following list when he gains the nature bond ability: Air, Aquatic UM , Cloud APG , Storm APG , Swamp UM , Weather, or Wind APG . This alters nature bond.",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-domains",
+          "optionChoiceIds": [
+            "domain-air",
+            "domain-aquatic",
+            "subdomain-cloud",
+            "subdomain-storms",
+            "domain-swamp",
+            "domain-weather",
+            "subdomain-wind"
+          ],
+          "progressionKey": "tempest-druid-domain"
         },
         {
           "id": "druid-tempest-druid-sodden-shore-sense-ex-1",
           "name": "Sodden Shore Sense (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A tempest druid gains a +4 bonus on Knowledge (nature) and Survival checks in coastal or marshy lands. This ability replaces nature sense."
+          "summary": "A tempest druid gains a +4 bonus on Knowledge (nature) and Survival checks in coastal or marshy lands. This ability replaces nature sense.",
+          "progressionProfiles": [
+            {
+              "id": "tempest-druid-sodden-shore",
+              "label": "Sodden Shore Sense",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "bonus",
+                  "label": "Knowledge (nature) and Survival"
+                },
+                {
+                  "id": "terrain",
+                  "label": "Terrain"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "bonus": "+4",
+                    "terrain": "Coastal or marshy lands"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-tempest-druid-electrical-resistance-ex-3",
           "name": "Electrical Resistance (Ex)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, a tempest druid gains electricity resistance 5. As a standard action, he can transfer this resistance to another creature for 1 hour, after which time it reverts to him. This ability replaces trackless step."
+          "summary": "At 3rd level, a tempest druid gains electricity resistance 5. As a standard action, he can transfer this resistance to another creature for 1 hour, after which time it reverts to him. This ability replaces trackless step.",
+          "progressionProfiles": [
+            {
+              "id": "tempest-druid-electrical-resistance",
+              "label": "Electrical Resistance",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "resistance",
+                  "label": "Electricity resistance"
+                },
+                {
+                  "id": "transfer",
+                  "label": "Transfer"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 3,
+                  "values": {
+                    "resistance": 5,
+                    "transfer": "Standard action; another creature for 1 hour"
+                  }
+                }
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "tempest-druid-electrical-resistance",
+              "label": "Set Electrical Resistance Holder",
+              "classId": "druid",
+              "minimumLevel": 3,
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Resistance holder",
+              "modes": [
+                {
+                  "id": "self",
+                  "label": "Tempest Druid",
+                  "summary": "Electricity resistance 5 is on the Druid.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Electrical Resistance",
+                      "description": "The Tempest Druid has electricity resistance 5."
+                    }
+                  ]
+                },
+                {
+                  "id": "ally",
+                  "label": "Touched creature",
+                  "defaultRounds": 600,
+                  "summary": "Transfer electricity resistance 5 for 1 hour; the Druid loses it during this time.",
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Electrical Resistance",
+                      "description": "The touched creature has electricity resistance 5; the Tempest Druid does not."
+                    }
+                  ]
+                }
+              ],
+              "summary": "Move the single resistance-5 effect between the Druid and a touched creature."
+            }
+          ]
         },
         {
           "id": "druid-tempest-druid-eyes-of-the-storm-ex-4",
           "name": "Eyes of the Storm (Ex)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a tempest druid can see through 10 feet of magical fog, mist, rain, wind, or similar inclement weather conditions, ignoring any concealment such conditions might grant. This distance increases by 5 feet for every 4 levels beyond 4th. This ability replaces resist nature’s lure."
+          "summary": "At 4th level, a tempest druid can see through 10 feet of magical fog, mist, rain, wind, or similar inclement weather conditions, ignoring any concealment such conditions might grant. This distance increases by 5 feet for every 4 levels beyond 4th. This ability replaces resist nature’s lure.",
+          "progressionProfiles": [
+            {
+              "id": "tempest-druid-eyes-of-storm",
+              "label": "Eyes of the Storm",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "distance",
+                  "label": "Inclement-weather sight"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "distance": "10 feet"
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "distance": "15 feet"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "distance": "20 feet"
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "distance": "25 feet"
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "distance": "30 feet"
+                  }
+                }
+              ],
+              "summary": "Ignore concealment from magical fog, mist, rain, wind, and similar conditions within this distance."
+            }
+          ]
         },
         {
           "id": "druid-tempest-druid-bend-bolt-su-9",
           "name": "Bend Bolt (Su)",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, a tempest druid can redirect nearby electrical attacks. As an immediate action, the druid can shift the area or target of an electricity attack by 5 feet in any direction. If the electricity affects an area, the druid selects one square to be unaffected and an adjacent square to be affected. If the adjacent square is already in the area, this has no additional effect in that square. If the electricity affects a target, the druid selects an adjacent target. For example, if he were in the line of a wizard’s lightning bolt , he could have the spell skip his square and instead affect an adjacent square, even if this meant the spell did not form a continuous line. If another druid attacked him with call lightning , he could shift the called bolt to an adjacent square, affecting a creature in that square (if any). He can’t redirect electricity damage conducted to him by physical contact with an object or creature (such as a shocking grasp or a shock weapon). He can use this ability a number of times per day equal to his Wisdom bonus. This ability replaces venom immunity."
+          "summary": "At 9th level, a tempest druid can redirect nearby electrical attacks. As an immediate action, the druid can shift the area or target of an electricity attack by 5 feet in any direction. If the electricity affects an area, the druid selects one square to be unaffected and an adjacent square to be affected. If the adjacent square is already in the area, this has no additional effect in that square. If the electricity affects a target, the druid selects an adjacent target. For example, if he were in the line of a wizard’s lightning bolt , he could have the spell skip his square and instead affect an adjacent square, even if this meant the spell did not form a continuous line. If another druid attacked him with call lightning , he could shift the called bolt to an adjacent square, affecting a creature in that square (if any). He can’t redirect electricity damage conducted to him by physical contact with an object or creature (such as a shocking grasp or a shock weapon). He can use this ability a number of times per day equal to his Wisdom bonus. This ability replaces venom immunity.",
+          "resourceActions": [
+            {
+              "id": "tempest-druid-bend-bolt",
+              "label": "Bend Bolt",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "resourceId": "tempestDruidBendBolt",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "immediate"
+                }
+              ],
+              "modeLabel": "Electricity effect",
+              "modes": [
+                {
+                  "id": "area",
+                  "label": "Area attack",
+                  "summary": "Make one square unaffected and affect one adjacent square not already in the area."
+                },
+                {
+                  "id": "target",
+                  "label": "Targeted attack",
+                  "summary": "Shift the attack to a target adjacent to the original target."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "nearby-electricity",
+                  "label": "The electricity attack is nearby and is not conducted by physical contact",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Bend Bolt Resolution",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "The selected electricity attack's area or target shifts 5 feet in the chosen direction.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend one Wisdom-based daily use and redirect a qualifying electrical attack by 5 feet."
+            }
+          ]
         }
       ]
     }
@@ -78,8 +393,67 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Tempest%20Druid"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Chaotic neutral alignment, trident proficiency, seven-domain selection (including imported Aquatic domain), selected-domain spell conversion, coastal skill bonuses, transferable electricity resistance, scaling storm sight, and Wisdom-based Bend Bolt uses and targeting are automated."
+  ],
+  "proficiencyAdjustments": [
+    {
+      "sourceFeatureId": "druid-tempest-druid-armor-and-weapon-proficiencies-1",
+      "category": "weapon",
+      "operation": "add",
+      "proficiencies": [
+        "Trident"
+      ]
+    }
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-domain"
+  ],
+  "druidDomainIds": [
+    "domain-air",
+    "domain-aquatic",
+    "subdomain-cloud",
+    "subdomain-storms",
+    "domain-swamp",
+    "domain-weather",
+    "subdomain-wind"
+  ],
+  "optionGroupAugmentations": [
+    {
+      "targetGroupId": "cleric-domains",
+      "sourceGroupId": "tempest-druid-domains"
+    }
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "druid-tempest-druid-sodden-shore-sense-ex-1",
+      "skill": "Knowledge (nature)",
+      "minimumLevel": 1,
+      "base": 4,
+      "condition": "checks in coastal or marshy lands"
+    },
+    {
+      "sourceFeatureId": "druid-tempest-druid-sodden-shore-sense-ex-1",
+      "skill": "Survival",
+      "minimumLevel": 1,
+      "base": 4,
+      "condition": "checks in coastal or marshy lands"
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "sourceFeatureId": "druid-tempest-druid-bend-bolt-su-9",
+      "resourceId": "tempestDruidBendBolt",
+      "label": "Bend Bolt",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 9,
+      "base": 0,
+      "abilityModifier": "wisdom",
+      "minimum": 0,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
   ]
 }

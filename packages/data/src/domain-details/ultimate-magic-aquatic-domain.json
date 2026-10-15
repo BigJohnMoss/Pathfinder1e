@@ -1,0 +1,19 @@
+{
+  "source": { "title": "Ultimate Magic", "page": 33, "url": "https://www.aonprd.com/DruidDomains.aspx" },
+  "domains": [
+    {
+      "id": "domain-aquatic",
+      "powers": [
+        { "name": "Sealord", "level": 1, "summary": "Channel energy as a cleric of your Druid level 3 + Charisma modifier times per day, only to heal or command creatures with the aquatic or water subtype." },
+        { "name": "Seastrike", "level": 6, "summary": "Use natural and manufactured weapons underwater as with continuous freedom of movement; throw a weapon underwater as a standard action without normal penalties, and it returns when the target is in or under water." }
+      ],
+      "domainSpells": [
+        { "level": 1, "name": "hydraulic push" }, { "level": 2, "name": "slipstream" },
+        { "level": 3, "name": "water breathing" }, { "level": 4, "name": "freedom of movement" },
+        { "level": 5, "name": "black tentacles" }, { "level": 6, "name": "freezing sphere" },
+        { "level": 7, "name": "animal shapes (aquatic creatures only)" }, { "level": 8, "name": "seamantle" },
+        { "level": 9, "name": "tsunami" }
+      ]
+    }
+  ]
+}
