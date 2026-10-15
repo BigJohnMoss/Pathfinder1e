@@ -1,0 +1,27 @@
+{
+  "id": "rot-warden-domains",
+  "name": "Rot Warden Domains",
+  "classIds": ["druid"],
+  "options": [
+    {
+      "id": "domain-erosion",
+      "groupId": "rot-warden-domains",
+      "name": "Erosion Domain",
+      "classIds": ["druid"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Gain Rusting Touch, Erosion Aura, and the Erosion domain spell list.",
+      "source": { "title": "Ultimate Wilderness", "page": 46, "url": "https://www.aonprd.com/DruidDomains.aspx" }
+    },
+    {
+      "id": "domain-vermin",
+      "groupId": "rot-warden-domains",
+      "name": "Vermin Domain",
+      "classIds": ["druid"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Gain Vermin Whisperer, Sudden Sting, and the Vermin domain spell list.",
+      "source": { "title": "Ultimate Wilderness", "page": 46, "url": "https://www.aonprd.com/DruidDomains.aspx" }
+    }
+  ]
+}
