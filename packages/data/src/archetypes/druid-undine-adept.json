@@ -36,43 +36,475 @@
           "id": "druid-undine-adept-domains-1",
           "name": "Domains",
           "level": 1,
-          "type": "archetype",
-          "summary": "An undine adept who chooses a domain must choose the Community or Water domain, or any subdomain of those domains."
+          "type": "selectable",
+          "summary": "An undine adept who chooses a domain must choose the Community or Water domain, or any subdomain of those domains.",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-domains",
+          "optionChoiceIds": [
+            "domain-community",
+            "subdomain-family",
+            "subdomain-home",
+            "domain-water",
+            "subdomain-ice",
+            "subdomain-oceans"
+          ],
+          "requiredOptionId": "druid-nature-bond-domain",
+          "requiredOptionMessage": "Choose the Domain nature bond first",
+          "progressionKey": "undine-adept-domain"
         },
         {
           "id": "druid-undine-adept-amphibious-su-2",
           "name": "Amphibious (Su)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, the undine adept gains the aquatic subtype and the amphibious universal monster ability, allowing her to breathe water or air. This ability replaces woodland stride."
+          "summary": "At 2nd level, the undine adept gains the aquatic subtype and the amphibious universal monster ability, allowing her to breathe water or air. This ability replaces woodland stride.",
+          "progressionProfiles": [
+            {
+              "id": "undine-adept-amphibious",
+              "label": "Amphibious",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "type",
+                  "label": "Subtype"
+                },
+                {
+                  "id": "breathing",
+                  "label": "Breathing"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 2,
+                  "values": {
+                    "type": "Aquatic",
+                    "breathing": "Air and water"
+                  }
+                }
+              ],
+              "summary": "The aquatic subtype and amphibious universal monster ability are continuously active."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "undine-adept-track-amphibious",
+              "label": "Track Amphibious",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "activeEffect": {
+                "name": "Undine Adept — Amphibious",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Gain the aquatic subtype and breathe both water and air.",
+                "defaultRounds": 999999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Record the permanent aquatic subtype and amphibious breathing benefit."
+            }
+          ]
         },
         {
           "id": "druid-undine-adept-augment-summoning-su-3",
           "name": "Augment Summoning (Su)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, any creature with the water subtype the undine adept summons with either summon monster or summon nature’s ally gains the benefits of the Augment Summoning feat. This replaces trackless step."
+          "summary": "At 3rd level, any creature with the water subtype the undine adept summons with either summon monster or summon nature’s ally gains the benefits of the Augment Summoning feat. This replaces trackless step.",
+          "resourceActions": [
+            {
+              "id": "undine-adept-augment-water-summon",
+              "label": "Track Augmented Water Summon",
+              "classId": "druid",
+              "minimumLevel": 3,
+              "confirmations": [
+                {
+                  "id": "summoning-spell",
+                  "label": "Creature was summoned with summon monster or summon nature's ally",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "water-subtype",
+                  "label": "Summoned creature has the water subtype",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Undine Adept — Augment Summoning",
+                "targets": [
+                  "strength",
+                  "constitution"
+                ],
+                "bonus": 4,
+                "description": "The summoned water-subtype creature gains +4 Strength and +4 Constitution for the summon spell's duration.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 3,
+                    "rounds": 3
+                  },
+                  {
+                    "level": 4,
+                    "rounds": 4
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 5
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 6
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 7
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 8
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 9
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 10
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 11
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 12
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 13
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 14
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 15
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 16
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 17
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 18
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 19
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 20
+                  }
+                ],
+                "replaceExisting": true
+              },
+              "summary": "Apply both Augment Summoning ability bonuses for the normal 1-round-per-level summon duration."
+            }
+          ]
         },
         {
           "id": "druid-undine-adept-resist-water-s-call-su-4",
           "name": "Resist Water’s Call (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, an undine adept gains a +4 bonus on saving throws against the spell-like and supernatural abilities of outsiders with the aquatic or water subtype, fey with the aquatic or water subtype, and spells and effects with the water descriptor. This ability replaces resist nature’s lure."
+          "summary": "At 4th level, an undine adept gains a +4 bonus on saving throws against the spell-like and supernatural abilities of outsiders with the aquatic or water subtype, fey with the aquatic or water subtype, and spells and effects with the water descriptor. This ability replaces resist nature’s lure.",
+          "progressionProfiles": [
+            {
+              "id": "undine-adept-resist-water-call",
+              "label": "Resist Water’s Call",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "bonus",
+                  "label": "Save bonus"
+                },
+                {
+                  "id": "against",
+                  "label": "Against"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "bonus": "+4",
+                    "against": "Aquatic/water outsiders and fey; water-descriptor spells and effects"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-undine-adept-wild-shape-su-6",
           "name": "Wild Shape (Su)",
           "level": 6,
           "type": "archetype",
-          "summary": "At 6th level, an undine adept gains the ability to use wild shape. When an undine takes the form of a creature with the aquatic or water subtype, this ability functions at her class level + 1. For all other forms, her effective druid level for the ability is equal to her actual undine adept level. This ability otherwise functions as and replaces wild shape."
+          "summary": "At 6th level, an undine adept gains the ability to use wild shape. When an undine takes the form of a creature with the aquatic or water subtype, this ability functions at her class level + 1. For all other forms, her effective druid level for the ability is equal to her actual undine adept level. This ability otherwise functions as and replaces wild shape.",
+          "progressionProfiles": [
+            {
+              "id": "undine-adept-wild-shape-level",
+              "label": "Undine Adept Wild Shape",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "aquatic",
+                  "label": "Aquatic/water form"
+                },
+                {
+                  "id": "other",
+                  "label": "Other legal form"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 6,
+                  "values": {
+                    "aquatic": "Druid level + 1",
+                    "other": "Druid level"
+                  }
+                }
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "undine-adept-aquatic-wild-shape",
+              "label": "Use Aquatic Wild Shape",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "aquatic-form",
+                  "label": "Selected form has the aquatic or water subtype",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Undine Adept Aquatic Wild Shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Assume the selected aquatic or water-subtype form using Druid level + 1 for Wild Shape effects.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": true
+              },
+              "summary": "Spend one Wild Shape use and apply the +1 effective-level benefit."
+            },
+            {
+              "id": "undine-adept-other-wild-shape",
+              "label": "Use Other Wild Shape",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "legal-form",
+                  "label": "Selected form is legal for normal Wild Shape at the Undine Adept's Druid level",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Undine Adept Wild Shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Assume the selected non-aquatic form using the Undine Adept's actual Druid level.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": true
+              },
+              "summary": "Spend one Wild Shape use at normal effective level."
+            }
+          ]
         },
         {
           "id": "druid-undine-adept-commune-with-water-spirits-9",
           "name": "Commune with Water Spirits",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, an undine adept adds commune to her druid spell list. She may use this spell whether she worships a deity or elemental forces. This ability replaces venom immunity."
+          "summary": "At 9th level, an undine adept adds commune to her druid spell list. She may use this spell whether she worships a deity or elemental forces. This ability replaces venom immunity.",
+          "progressionProfiles": [
+            {
+              "id": "undine-adept-commune",
+              "label": "Commune with Water Spirits",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "spell",
+                  "label": "Added spell"
+                },
+                {
+                  "id": "level",
+                  "label": "Druid spell level"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 9,
+                  "values": {
+                    "spell": "Commune",
+                    "level": "5th"
+                  }
+                }
+              ],
+              "summary": "Commune is available whether the Undine Adept worships a deity or elemental forces."
+            }
+          ]
         }
       ]
     }
@@ -82,11 +514,31 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Undine%20Adept"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Legal domain and subdomain choices, permanent amphibious benefits, Augment Summoning for water creatures, the exact resistance condition, both normal and +1-effective-level aquatic Wild Shape paths, and the Commune spell-list addition are automated."
   ],
   "manualRequirements": [
     "Restricted to Undine characters; that ancestry is not yet available in this builder."
+  ],
+  "druidDomainIds": [
+    "domain-community",
+    "subdomain-family",
+    "subdomain-home",
+    "domain-water",
+    "subdomain-ice",
+    "subdomain-oceans"
+  ],
+  "spellListAdditions": {
+    "commune": 5
+  },
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-undine-adept-resist-water-s-call-su-4",
+      "label": "Resist Water’s Call",
+      "condition": "Saving throws against spell-like or supernatural abilities of aquatic/water outsiders or fey, or against water-descriptor spells and effects",
+      "minimumLevel": 4,
+      "base": 4
+    }
   ]
 }

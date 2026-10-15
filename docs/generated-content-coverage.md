@@ -12,7 +12,7 @@ This report is generated from the application's source data by `npm run coverage
 | Option groups | 153 |
 | Feats | 3447 |
 | Traits | 40 |
-| Spells | 2760 |
+| Spells | 2761 |
 | Equipment | 80 |
 
 ## Feat prerequisites
@@ -29,8 +29,8 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 
 | Coverage | Count |
 |---|---:|
-| Fully automated | 209 |
-| Partially automated | 986 |
+| Fully automated | 210 |
+| Partially automated | 985 |
 | Rules reference only | 0 |
 
 ### Structured automation
@@ -39,7 +39,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 |---|---:|
 | Resources and limited uses | 91 |
 | Companions and effective levels | 40 |
-| Spell lists, slots, and casting | 52 |
+| Spell lists, slots, and casting | 53 |
 | Class skills and skill-rank progressions | 58 |
 | Combat statistics and proficiencies | 63 |
 | Deterministic Take 10 and Take 20 skill checks | 17 |
@@ -54,11 +54,11 @@ These rule-text signals are multi-label: one archetype can contribute to several
 |---|---:|
 | Resources and limited uses | 563 |
 | Companions, mounts, familiars, and eidolons | 202 |
-| Spell lists, slots, and casting | 551 |
-| Selectable progressions and dependent choices | 681 |
+| Spell lists, slots, and casting | 550 |
+| Selectable progressions and dependent choices | 680 |
 | Combat statistics and proficiencies | 772 |
-| Skills | 574 |
-| Feats | 437 |
+| Skills | 573 |
+| Feats | 436 |
 | Narrative or uncategorized effects | 2 |
 
 ## Spell details
