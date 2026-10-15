@@ -150,6 +150,8 @@ export function Spellbook({
   const [spellstrikeResult, setSpellstrikeResult] = useState("");
   const [bondedObjectCastResult, setBondedObjectCastResult] = useState("");
   const [signatureTechniqueResults, setSignatureTechniqueResults] = useState<Record<string, string>>({});
+  const [armamentEnhancementBonuses, setArmamentEnhancementBonuses] = useState<Record<string, number>>({});
+  const [armamentPropertyIds, setArmamentPropertyIds] = useState<Record<string, string[]>>({});
   const [spellwarpModes, setSpellwarpModes] = useState<Record<string, "reduce" | "line">>({});
   const [spellwarpSizes, setSpellwarpSizes] = useState<Record<string, number>>({});
   const [arcaneSpellFailureResult, setArcaneSpellFailureResult] = useState("");
@@ -834,6 +836,28 @@ export function Spellbook({
                         .filter((sourceLevel) => sourceLevel > 0 && sourceLevel >= level && preparedCount(sourceLevel) > 0 && remainingSlots(sourceLevel) > 0)
                         .sort((left, right) => left - right)[0]
                     : undefined;
+                  const armamentConversion = spellAutomation?.preparedArmamentConversion;
+                  const armamentRules = armamentConversion?.spells.find((entry) => entry.spellId === spell.id);
+                  const baseEnhancementBonus = armamentRules?.baseEnhancementBonus ?? 0;
+                  const maximumEnhancementBonus = armamentRules?.maximumEnhancementBonus ?? baseEnhancementBonus;
+                  const armamentEnhancementBonus = Math.max(baseEnhancementBonus, Math.min(maximumEnhancementBonus, armamentEnhancementBonuses[spell.id] ?? baseEnhancementBonus));
+                  const selectedArmamentPropertyIds = armamentPropertyIds[spell.id] ?? [];
+                  const selectedArmamentProperties = armamentRules?.properties.filter((property) => selectedArmamentPropertyIds.includes(property.id)) ?? [];
+                  const armamentEnhancementIncrease = Math.max(0, armamentEnhancementBonus - baseEnhancementBonus);
+                  const armamentPropertyCost = selectedArmamentProperties.reduce((total, property) => total + property.priceModifier, 0);
+                  const armamentUpgradeCost = armamentEnhancementIncrease + armamentPropertyCost;
+                  const armamentLevelIncrease = armamentUpgradeCost > 0 ? Math.max(1, armamentEnhancementIncrease) + armamentPropertyCost : 0;
+                  const armamentRequiredLevel = armamentRules ? Math.min(9, armamentRules.baseSpellLevel + armamentLevelIncrease) : undefined;
+                  const armamentConfigurationLegal = Boolean(armamentRules) && selectedArmamentProperties.every((property) =>
+                    !(property.incompatibleWith ?? []).some((id) => selectedArmamentPropertyIds.includes(id)) &&
+                    (property.requires ?? []).every((id) => selectedArmamentPropertyIds.includes(id)),
+                  );
+                  const armamentSourceLevel = armamentRequiredLevel !== undefined && armamentConfigurationLegal && armamentRules!.baseSpellLevel + armamentLevelIncrease <= 9
+                    ? preparedLimits
+                        .map((entry) => entry.level)
+                        .filter((sourceLevel) => sourceLevel >= armamentRequiredLevel && preparedCount(sourceLevel) > 0 && remainingSlots(sourceLevel) > 0)
+                        .sort((left, right) => left - right)[0]
+                    : undefined;
                   const canShare = Boolean(
                     shareable &&
                       prepared > 0 &&
@@ -893,6 +917,36 @@ export function Spellbook({
                       [spell.id]: `${preparedConversion.label}: cast ${spell.name} by losing a prepared ${levelLabel(conversionSourceLevel)} spell.`,
                     }));
                   };
+                  const castArmamentConversion = () => {
+                    if (!armamentConversion || !armamentRules || armamentSourceLevel === undefined) return;
+                    onSlotUsesChange({
+                      ...slotUses,
+                      [armamentSourceLevel]: (slotUses[armamentSourceLevel] ?? 0) + 1,
+                    });
+                    const enhancements = [
+                      armamentEnhancementBonus > 0 ? `+${armamentEnhancementBonus}` : "",
+                      ...selectedArmamentProperties.map((property) => property.label),
+                    ].filter(Boolean).join(", ");
+                    setSignatureTechniqueResults((current) => ({
+                      ...current,
+                      [spell.id]: `${armamentConversion.label}: cast ${spell.name}${enhancements ? ` with ${enhancements}` : ""} by losing a ${levelLabel(armamentSourceLevel)} prepared spell.`,
+                    }));
+                  };
+                  const toggleArmamentProperty = (propertyId: string, checked: boolean) => {
+                    if (!armamentRules) return;
+                    const property = armamentRules.properties.find((entry) => entry.id === propertyId);
+                    if (!property) return;
+                    setArmamentPropertyIds((current) => {
+                      let next = (current[spell.id] ?? []).filter((id) => id !== propertyId);
+                      if (checked) {
+                        next = next.filter((id) => !(property.incompatibleWith ?? []).includes(id));
+                        next = [...new Set([...next, ...(property.requires ?? []), propertyId])];
+                      } else {
+                        next = next.filter((id) => !(armamentRules.properties.find((entry) => entry.id === id)?.requires ?? []).includes(propertyId));
+                      }
+                      return { ...current, [spell.id]: next };
+                    });
+                  };
                   return (
                     <article key={spell.id}>
                       <div>
@@ -950,6 +1004,12 @@ export function Spellbook({
                             {criticalStrikeEligible(spell) && <button type="button" aria-label={`Cast ${spell.name} with Critical Strike`} disabled={!canCast || !criticalStrikeResource || (criticalStrikeResource.maximum !== null && criticalStrikeResource.used >= criticalStrikeResource.maximum)} onClick={() => useCriticalStrike(spell, level)}>Critical Strike</button>}
                             {bondedObjectCastResource && <button type="button" aria-label={`Cast ${spell.name} with ${bondedObjectCastResource.label}`} disabled={bondedObjectCastResource.maximum !== null && bondedObjectCastResource.used >= bondedObjectCastResource.maximum} onClick={() => useBondedObjectCast(spell)}>{bondedObjectCastResource.label}</button>}
                             {conversionEligible && <button type="button" aria-label={`Cast ${spell.name} with ${preparedConversion!.label}`} disabled={conversionSourceLevel === undefined} onClick={castPreparedConversion}>{preparedConversion!.label}</button>}
+                            {armamentRules && <div className="signature-techniques">
+                              {maximumEnhancementBonus > baseEnhancementBonus && <label>Enhancement<select aria-label={`${spell.name} enhancement bonus`} value={armamentEnhancementBonus} onChange={(event) => setArmamentEnhancementBonuses((current) => ({ ...current, [spell.id]: Number(event.target.value) }))}>{Array.from({ length: maximumEnhancementBonus - baseEnhancementBonus + 1 }, (_, index) => baseEnhancementBonus + index).map((bonus) => <option key={bonus} value={bonus}>+{bonus}</option>)}</select></label>}
+                              <fieldset><legend>Weapon properties</legend>{armamentRules.properties.map((property) => <label key={property.id} title={property.description}><input type="checkbox" checked={selectedArmamentPropertyIds.includes(property.id)} onChange={(event) => toggleArmamentProperty(property.id, event.target.checked)} />{property.label} (+{property.priceModifier})</label>)}</fieldset>
+                              <small>{armamentConfigurationLegal ? `Requires a prepared ${levelLabel(armamentRequiredLevel!)} or higher spell.` : "Selected properties do not form a legal combination."}</small>
+                              <button type="button" aria-label={`Cast ${spell.name} with ${armamentConversion!.label}`} disabled={armamentSourceLevel === undefined} onClick={castArmamentConversion}>{armamentConversion!.label}</button>
+                            </div>}
                         {shareable && (
                           <button
                             type="button"
