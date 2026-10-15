@@ -23,6 +23,23 @@ export type PreparedSpellAutomation = {
     keyword: string;
     requiresTargetPrepared: boolean;
   };
+  preparedArmamentConversion?: {
+    label: string;
+    spells: Array<{
+      spellId: string;
+      baseSpellLevel: number;
+      baseEnhancementBonus?: number;
+      maximumEnhancementBonus?: number;
+      properties: Array<{
+        id: string;
+        label: string;
+        priceModifier: number;
+        description: string;
+        incompatibleWith?: string[];
+        requires?: string[];
+      }>;
+    }>;
+  };
   fastHealingAura?: {
     label: string;
     resourceId: string;
@@ -74,6 +91,10 @@ export function classSpellAutomation(
     (feature) => feature.spellAutomation?.preparedKeywordConversion,
   );
   const conversion = conversionFeature?.spellAutomation?.preparedKeywordConversion;
+  const armamentFeature = availableFeatures.find(
+    (feature) => feature.spellAutomation?.preparedArmamentConversion,
+  );
+  const armament = armamentFeature?.spellAutomation?.preparedArmamentConversion;
   const fastHealingFeature = availableFeatures.find(
     (feature) => feature.spellAutomation?.fastHealingAura,
   );
@@ -84,7 +105,7 @@ export function classSpellAutomation(
   const descriptorBoost = descriptorBoostFeature?.spellAutomation?.descriptorReservoirBoost;
   const spellstrike = selectedOptionIds.includes("blade-adept-spell-strike");
   const criticalStrike = selectedOptionIds.includes("blade-adept-magus-arcana-critical-strike");
-  if (!share && !extend && !conversion && !fastHealing && !descriptorBoost && !spellstrike && !criticalStrike) return undefined;
+  if (!share && !extend && !conversion && !armament && !fastHealing && !descriptorBoost && !spellstrike && !criticalStrike) return undefined;
 
   return {
     ...(spellstrike ? { spellstrike: { label: "Spellstrike", closeRange: selectedOptionIds.includes("blade-adept-magus-arcana-close-range") } } : {}),
@@ -117,6 +138,7 @@ export function classSpellAutomation(
           requiresTargetPrepared: Boolean(conversion.requiresTargetPrepared),
         } }
       : {}),
+    ...(armament ? { preparedArmamentConversion: armament } : {}),
     ...(fastHealing
       ? { fastHealingAura: {
           label: fastHealing.label,
