@@ -20,7 +20,8 @@ export type PreparedSpellAutomation = {
   };
   preparedKeywordConversion?: {
     label: string;
-    keyword: string;
+    keyword?: string;
+    spellIds?: string[];
     requiresTargetPrepared: boolean;
   };
   preparedArmamentConversion?: {
@@ -135,6 +136,7 @@ export function classSpellAutomation(
       ? { preparedKeywordConversion: {
           label: conversion.label,
           keyword: conversion.keyword,
+          spellIds: conversion.spellIds,
           requiresTargetPrepared: Boolean(conversion.requiresTargetPrepared),
         } }
       : {}),

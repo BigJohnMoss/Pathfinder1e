@@ -1,0 +1,33 @@
+{
+  "source": { "title": "Ultimate Wilderness", "page": 46, "url": "https://www.aonprd.com/DruidDomains.aspx" },
+  "domains": [
+    {
+      "id": "domain-erosion",
+      "powers": [
+        { "name": "Rusting Touch", "level": 1, "summary": "Make a melee touch attack against a carried or worn metal item. It takes 1d6 + half Druid level damage, bypassing hardness when nonmagical or when your caster level exceeds the item's caster level. Uses per day equal 3 + Wisdom modifier." },
+        { "name": "Erosion Aura", "level": 8, "summary": "As a standard action, reduce metal and stone hardness by 10 in an aura; magic items retain at least twice their enhancement bonus and may save. Metal or stone constructs save or lose DR and hardness for 1 round. Uses per day equal 3 + Wisdom modifier." }
+      ],
+      "domainSpells": [
+        { "level": 1, "name": "expeditious excavation" }, { "level": 2, "name": "soften earth and stone" },
+        { "level": 3, "name": "disable construct" }, { "level": 4, "name": "rusting grasp" },
+        { "level": 5, "name": "transmute rock to mud" }, { "level": 6, "name": "sympathetic vibration" },
+        { "level": 7, "name": "disintegrate" }, { "level": 8, "name": "earthquake" },
+        { "level": 9, "name": "implosion" }
+      ]
+    },
+    {
+      "id": "domain-vermin",
+      "powers": [
+        { "name": "Vermin Whisperer", "level": 1, "summary": "Use wild empathy on mindless vermin or vermin with Intelligence 2 or lower, interacting with them as though they were animals." },
+        { "name": "Sudden Sting", "level": 8, "summary": "As a swift action, make a melee touch attack for 1d4 piercing damage + 1 per 2 Druid levels; Fortitude negates staggered for 1 round. Uses per day equal 3 + Wisdom modifier." }
+      ],
+      "domainSpells": [
+        { "level": 1, "name": "ant haul" }, { "level": 2, "name": "summon swarm" },
+        { "level": 3, "name": "vermin shape I" }, { "level": 4, "name": "vermin shape II" },
+        { "level": 5, "name": "insect plague" }, { "level": 6, "name": "swarm skin" },
+        { "level": 7, "name": "creeping doom" }, { "level": 8, "name": "verminous transformation" },
+        { "level": 9, "name": "summon nature's ally IX (1d3 purple worms only)" }
+      ]
+    }
+  ]
+}
