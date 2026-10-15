@@ -360,6 +360,11 @@ for (const [index, url] of archetypeUrls.entries()) {
         const invalidSpell = spell => !spell || !spellIds.has(spell.spellId) || !Number.isInteger(spell.baseSpellLevel) || spell.baseSpellLevel < 1 || spell.baseSpellLevel > 9 || (spell.baseEnhancementBonus !== undefined && (!Number.isInteger(spell.baseEnhancementBonus) || spell.baseEnhancementBonus < 0 || spell.baseEnhancementBonus > 5)) || (spell.maximumEnhancementBonus !== undefined && (!Number.isInteger(spell.maximumEnhancementBonus) || spell.maximumEnhancementBonus < 1 || spell.maximumEnhancementBonus > 5)) || !Array.isArray(spell.properties) || spell.properties.length === 0 || new Set(spell.properties.map(property => property?.id)).size !== spell.properties.length || spell.properties.some(invalidProperty);
         if (!conversion || typeof conversion.label !== "string" || !conversion.label.trim() || !Array.isArray(conversion.spells) || conversion.spells.length === 0 || new Set(conversion.spells.map(spell => spell?.spellId)).size !== conversion.spells.length || conversion.spells.some(invalidSpell)) errors.push(`${file}: ${feature.id} has invalid preparedArmamentConversion`);
       }
+      if (feature.spellAutomation?.preparedOptionSpellConversion !== undefined) {
+        const conversion = feature.spellAutomation.preparedOptionSpellConversion;
+        const entries = conversion?.spellIdsByOption && typeof conversion.spellIdsByOption === "object" && !Array.isArray(conversion.spellIdsByOption) ? Object.entries(conversion.spellIdsByOption) : [];
+        if (!conversion || typeof conversion.label !== "string" || !conversion.label.trim() || entries.length === 0 || entries.some(([optionId, ids]) => typeof optionId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(optionId) || !Array.isArray(ids) || ids.length === 0 || new Set(ids).size !== ids.length || ids.some(spellId => !spellIds.has(spellId)))) errors.push(`${file}: ${feature.id} has invalid preparedOptionSpellConversion`);
+      }
     }
   }
   if (archetype.optionGroupAugmentations !== undefined && (!Array.isArray(archetype.optionGroupAugmentations) || archetype.optionGroupAugmentations.length === 0)) errors.push(`${file}: optionGroupAugmentations must be a non-empty array`);
