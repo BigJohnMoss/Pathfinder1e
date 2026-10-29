@@ -12,7 +12,7 @@ This report distinguishes selectable replacement integration from bespoke rules 
 | Brawler | 0 | 19 | 0 | 19 |
 | Cavalier | 2 | 35 | 0 | 37 |
 | Cleric | 0 | 35 | 0 | 35 |
-| Druid | 69 | 6 | 0 | 75 |
+| Druid | 70 | 5 | 0 | 75 |
 | Fighter | 12 | 55 | 0 | 67 |
 | Gunslinger | 0 | 23 | 0 | 23 |
 | Hunter | 0 | 21 | 0 | 21 |

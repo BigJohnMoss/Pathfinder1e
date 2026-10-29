@@ -1,0 +1,324 @@
+{
+  "id": "druid-nature-fang-talents",
+  "name": "Nature Fang Slayer Talents",
+  "classIds": [
+    "druid"
+  ],
+  "uniqueAcrossSelections": false,
+  "options": [
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-combat-trick",
+      "name": "Combat Trick",
+      "benefit": "Gain a combat feat; may be selected more than once.",
+      "repeatable": true,
+      "selectionLimit": 9,
+      "choice": {
+        "key": "combat-feat",
+        "label": "Combat feat selected",
+        "allowCustom": true,
+        "uniqueAcrossSelections": true
+      }
+    },
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-fast-stealth",
+      "name": "Fast Stealth",
+      "benefit": "Move at full speed while using Stealth without the normal penalty."
+    },
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-finesse-rogue",
+      "name": "Finesse Rogue",
+      "benefit": "Gain Weapon Finesse as a bonus feat.",
+      "featId": "weapon-finesse"
+    },
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-firearm-training",
+      "name": "Firearm Training",
+      "benefit": "Gain Exotic Weapon Proficiency with one firearm.",
+      "choice": {
+        "key": "firearm",
+        "label": "Firearm selected",
+        "allowCustom": true,
+        "uniqueAcrossSelections": true
+      }
+    },
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-ranger-combat-style",
+      "name": "Ranger Combat Style",
+      "benefit": "Gain a ranger combat-style feat without meeting its normal prerequisites.",
+      "repeatable": true,
+      "selectionLimit": 9,
+      "choice": {
+        "key": "combat-style-feat",
+        "label": "Ranger combat-style feat selected",
+        "allowCustom": true,
+        "uniqueAcrossSelections": true
+      }
+    },
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-rogue-talent",
+      "name": "Rogue Talent",
+      "benefit": "Choose an eligible rogue talent.",
+      "repeatable": true,
+      "selectionLimit": 9,
+      "choice": {
+        "key": "rogue-talent",
+        "label": "Rogue talent selected",
+        "allowCustom": true,
+        "uniqueAcrossSelections": true
+      }
+    },
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-slowing-strike",
+      "name": "Slowing Strike",
+      "benefit": "A studied target damaged by sneak attack has its speed reduced."
+    },
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-terrain-mastery",
+      "name": "Terrain Mastery",
+      "benefit": "Gain one ranger favored-terrain choice.",
+      "repeatable": true,
+      "selectionLimit": 9,
+      "choice": {
+        "key": "favored-terrain",
+        "label": "Favored terrain selected",
+        "allowCustom": true,
+        "uniqueAcrossSelections": true
+      }
+    },
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-trapfinding",
+      "name": "Trapfinding",
+      "benefit": "Add half Slayer level to Perception checks to find traps and Disable Device checks."
+    },
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-weapon-training",
+      "name": "Weapon Training",
+      "benefit": "Gain Weapon Focus as a bonus feat.",
+      "choice": {
+        "key": "weapon",
+        "label": "Weapon selected for Weapon Focus",
+        "allowCustom": true,
+        "uniqueAcrossSelections": true
+      }
+    },
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 12,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-assassinate",
+      "name": "Assassinate",
+      "benefit": "Attempt to kill a studied target after studying it for 1 round. Available to a Nature Fang from level 12."
+    },
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 12,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-evasion",
+      "name": "Evasion",
+      "benefit": "Take no damage on a successful Reflex save against qualifying effects. Available to a Nature Fang from level 12."
+    },
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 12,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-hunter-surprise",
+      "name": "Hunter's Surprise",
+      "benefit": "Treat one creature as a studied target temporarily. Available to a Nature Fang from level 12."
+    },
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 12,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-improved-evasion",
+      "name": "Improved Evasion",
+      "benefit": "Retain half damage even on a failed qualifying Reflex save. Available to a Nature Fang from level 12."
+    },
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 12,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-master-tricks",
+      "name": "Master Tricks",
+      "benefit": "Choose an eligible advanced rogue talent. Available to a Nature Fang from level 12.",
+      "repeatable": true,
+      "selectionLimit": 9,
+      "choice": {
+        "key": "advanced-rogue-talent",
+        "label": "Advanced rogue talent selected",
+        "allowCustom": true,
+        "uniqueAcrossSelections": true
+      }
+    },
+    {
+      "groupId": "druid-nature-fang-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 12,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 54,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html#slayer-talents"
+      },
+      "id": "nature-fang-opportunist",
+      "name": "Opportunist",
+      "benefit": "Make an attack of opportunity against a creature damaged in melee by an ally. Available to a Nature Fang from level 12."
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Nature%20Fang"
+  }
+}
