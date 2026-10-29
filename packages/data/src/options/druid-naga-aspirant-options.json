@@ -1,0 +1,750 @@
+{
+  "id": "druid-naga-aspirant-options",
+  "name": "Naga Aspirant Choices",
+  "classIds": [
+    "druid"
+  ],
+  "uniqueAcrossSelections": false,
+  "options": [
+    {
+      "id": "naga-aspirant-spell-acid-splash",
+      "name": "Acid Splash",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Acid Splash to the Naga Aspirant's Druid spell list as a cantrip. This grants spell-list access but does not prepare the spell automatically. Orb deals 1d3 acid damage.",
+      "spellId": "acid-splash",
+      "spellLevel": 0,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 239,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Acid%20Splash"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-bleed",
+      "name": "Bleed",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Bleed to the Naga Aspirant's Druid spell list as a cantrip. This grants spell-list access but does not prepare the spell automatically. Cause a stabilized creature to resume dying.",
+      "spellId": "bleed",
+      "spellLevel": 0,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 249,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bleed"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-daze",
+      "name": "Daze",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Daze to the Naga Aspirant's Druid spell list as a cantrip. This grants spell-list access but does not prepare the spell automatically. Humanoid creature of 4 HD or less loses next action.",
+      "spellId": "daze",
+      "spellLevel": 0,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 264,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Daze"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-mage-hand",
+      "name": "Mage Hand",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Mage Hand to the Naga Aspirant's Druid spell list as a cantrip. This grants spell-list access but does not prepare the spell automatically. Telekinetically move a small unattended object.",
+      "spellId": "mage-hand",
+      "spellLevel": 0,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 306,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mage%20Hand"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-open-close",
+      "name": "Open/Close",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Open/Close to the Naga Aspirant's Druid spell list as a cantrip. This grants spell-list access but does not prepare the spell automatically. Opens or closes small or light things.",
+      "spellId": "open-close",
+      "spellLevel": 0,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 317,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Open%2FClose"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-ray-of-frost",
+      "name": "Ray of Frost",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Ray of Frost to the Naga Aspirant's Druid spell list as a cantrip. This grants spell-list access but does not prepare the spell automatically. Fire a ray that deals cold damage.",
+      "spellId": "ray-of-frost",
+      "spellLevel": 0,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 330,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ray%20of%20Frost"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-charm-person",
+      "name": "Charm Person",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Charm Person to the Naga Aspirant's Druid spell list as a 1st-level spell. This grants spell-list access but does not prepare the spell automatically. Make one humanoid regard you as a trusted friend and ally.",
+      "spellId": "charm-person",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 254,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Charm%20Person"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-divine-favor",
+      "name": "Divine Favor",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Divine Favor to the Naga Aspirant's Druid spell list as a 1st-level spell. This grants spell-list access but does not prepare the spell automatically. Gain a luck bonus on attack and weapon damage rolls.",
+      "spellId": "divine-favor",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 273,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Divine%20Favor"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-expeditious-retreat",
+      "name": "Expeditious Retreat",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Expeditious Retreat to the Naga Aspirant's Druid spell list as a 1st-level spell. This grants spell-list access but does not prepare the spell automatically. Your base land speed increases by 30 ft.",
+      "spellId": "expeditious-retreat",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 279,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Expeditious%20Retreat"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-mage-armor",
+      "name": "Mage Armor",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Mage Armor to the Naga Aspirant's Druid spell list as a 1st-level spell. This grants spell-list access but does not prepare the spell automatically. Grant an armor bonus without physical armor.",
+      "spellId": "mage-armor",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 306,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mage%20Armor"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-magic-missile",
+      "name": "Magic Missile",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Magic Missile to the Naga Aspirant's Druid spell list as a 1st-level spell. This grants spell-list access but does not prepare the spell automatically. Create force missiles that strike targets automatically.",
+      "spellId": "magic-missile",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 309,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Magic%20Missile"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-ray-of-enfeeblement",
+      "name": "Ray of Enfeeblement",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Ray of Enfeeblement to the Naga Aspirant's Druid spell list as a 1st-level spell. This grants spell-list access but does not prepare the spell automatically. Ray causes 1d6 Str penalty + 1 per 2 levels.",
+      "spellId": "ray-of-enfeeblement",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 329,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ray%20of%20Enfeeblement"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-shield",
+      "name": "Shield",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Shield to the Naga Aspirant's Druid spell list as a 1st-level spell. This grants spell-list access but does not prepare the spell automatically. Create an invisible force barrier that grants a shield bonus to AC.",
+      "spellId": "shield",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 342,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shield"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-shield-of-faith",
+      "name": "Shield of Faith",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Shield of Faith to the Naga Aspirant's Druid spell list as a 1st-level spell. This grants spell-list access but does not prepare the spell automatically. Surround the target with a deflection ward that grants a scaling bonus to Armor Class.",
+      "spellId": "shield-of-faith",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 342,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shield%20of%20Faith"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-silent-image",
+      "name": "Silent Image",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Silent Image to the Naga Aspirant's Druid spell list as a 1st-level spell. This grants spell-list access but does not prepare the spell automatically. Creates minor illusion of your design.",
+      "spellId": "silent-image",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 343,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Silent%20Image"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-true-strike",
+      "name": "True Strike",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add True Strike to the Naga Aspirant's Druid spell list as a 1st-level spell. This grants spell-list access but does not prepare the spell automatically. +20 on your next attack roll.",
+      "spellId": "true-strike",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 363,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=True%20Strike"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-acid-arrow",
+      "name": "Acid Arrow",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Acid Arrow to the Naga Aspirant's Druid spell list as a 2nd-level spell. This grants spell-list access but does not prepare the spell automatically. Ranged touch attack; 2d4 damage for 1 round + 1 round/three levels.",
+      "spellId": "acid-arrow",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 239,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Acid%20Arrow"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-detect-thoughts",
+      "name": "Detect Thoughts",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Detect Thoughts to the Naga Aspirant's Druid spell list as a 2nd-level spell. This grants spell-list access but does not prepare the spell automatically. Allows “listening” to surface thoughts.",
+      "spellId": "detect-thoughts",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 268,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Detect%20Thoughts"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-invisibility",
+      "name": "Invisibility",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Invisibility to the Naga Aspirant's Druid spell list as a 2nd-level spell. This grants spell-list access but does not prepare the spell automatically. Subject is invisible for 1 min./level or until it attacks.",
+      "spellId": "invisibility",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 301,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Invisibility"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-mirror-image",
+      "name": "Mirror Image",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Mirror Image to the Naga Aspirant's Druid spell list as a 2nd-level spell. This grants spell-list access but does not prepare the spell automatically. Creates decoy duplicates of you (1d4 + 1 per three levels, max 8).",
+      "spellId": "mirror-image",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 314,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mirror%20Image"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-scorching-ray",
+      "name": "Scorching Ray",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Scorching Ray to the Naga Aspirant's Druid spell list as a 2nd-level spell. This grants spell-list access but does not prepare the spell automatically. Ranged touch attack deals 4d6 fire damage, + 1 ray/four levels (max 3).",
+      "spellId": "scorching-ray",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 337,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Scorching%20Ray"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-see-invisibility",
+      "name": "See Invisibility",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add See Invisibility to the Naga Aspirant's Druid spell list as a 2nd-level spell. This grants spell-list access but does not prepare the spell automatically. Reveals invisible creatures or objects.",
+      "spellId": "see-invisibility",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 339,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=See%20Invisibility"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-dispel-magic",
+      "name": "Dispel Magic",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Dispel Magic to the Naga Aspirant's Druid spell list as a 3rd-level spell. This grants spell-list access but does not prepare the spell automatically. Cancels one magical spell or effect.",
+      "spellId": "dispel-magic",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 272,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Dispel%20Magic"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-displacement",
+      "name": "Displacement",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Displacement to the Naga Aspirant's Druid spell list as a 3rd-level spell. This grants spell-list access but does not prepare the spell automatically. Attacks miss subject 50% of the time.",
+      "spellId": "displacement",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 273,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Displacement"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-fireball",
+      "name": "Fireball",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Fireball to the Naga Aspirant's Druid spell list as a 3rd-level spell. This grants spell-list access but does not prepare the spell automatically. 1d6 damage per level, 20-ft. radius.",
+      "spellId": "fireball",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 283,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Fireball"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-lightning-bolt",
+      "name": "Lightning Bolt",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Lightning Bolt to the Naga Aspirant's Druid spell list as a 3rd-level spell. This grants spell-list access but does not prepare the spell automatically. Electricity deals 1d6/level damage.",
+      "spellId": "lightning-bolt",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 304,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Lightning%20Bolt"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-suggestion",
+      "name": "Suggestion",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Suggestion to the Naga Aspirant's Druid spell list as a 3rd-level spell. This grants spell-list access but does not prepare the spell automatically. Compels subject to follow stated course of action.",
+      "spellId": "suggestion",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 350,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Suggestion"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-divine-power",
+      "name": "Divine Power",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Divine Power to the Naga Aspirant's Druid spell list as a 4th-level spell. This grants spell-list access but does not prepare the spell automatically. Gain a luck bonus on attacks, weapon damage, and Strength checks plus temporary hit points and an extra attack.",
+      "spellId": "divine-power",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 273,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Divine%20Power"
+      }
+    },
+    {
+      "id": "naga-aspirant-spell-invisibility-greater",
+      "name": "Invisibility, Greater",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Invisibility, Greater to the Naga Aspirant's Druid spell list as a 4th-level spell. This grants spell-list access but does not prepare the spell automatically. As invisibility, but subject can attack and stay invisible.",
+      "spellId": "invisibility-greater",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 302,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Invisibility%2C%20Greater"
+      }
+    },
+    {
+      "id": "naga-aspirant-charming-gaze",
+      "name": "Charming Gaze",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 9,
+      "prerequisites": [],
+      "benefit": "Gain a 30-foot gaze attack that functions as charm person.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Naga%20Aspirant"
+      }
+    },
+    {
+      "id": "naga-aspirant-darkvision",
+      "name": "Darkvision",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 9,
+      "prerequisites": [],
+      "benefit": "Gain darkvision 60 feet in naga form.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Naga%20Aspirant"
+      }
+    },
+    {
+      "id": "naga-aspirant-detect-thoughts",
+      "name": "Detect Thoughts",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 9,
+      "prerequisites": [],
+      "benefit": "Use detect thoughts at will in naga form.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Naga%20Aspirant"
+      }
+    },
+    {
+      "id": "naga-aspirant-guarded-thoughts",
+      "name": "Guarded Thoughts",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 9,
+      "prerequisites": [],
+      "benefit": "Gain +2 racial saves against charm and immunity to mind reading in naga form.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Naga%20Aspirant"
+      }
+    },
+    {
+      "id": "naga-aspirant-poison-immunity",
+      "name": "Poison Immunity",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 9,
+      "prerequisites": [],
+      "benefit": "Gain immunity to poison; requires a poison-based natural attack.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Naga%20Aspirant"
+      }
+    },
+    {
+      "id": "naga-aspirant-poisonous-sting",
+      "name": "Poisonous Sting",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 9,
+      "prerequisites": [],
+      "requiredOptionIds": [
+        "naga-aspirant-sting"
+      ],
+      "benefit": "Make an existing sting venomous; requires the Sting augmentation.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Naga%20Aspirant"
+      }
+    },
+    {
+      "id": "naga-aspirant-spit-venom",
+      "name": "Spit Venom",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 9,
+      "prerequisites": [],
+      "requiredOptionIds": [
+        "naga-aspirant-venomous-bite"
+      ],
+      "benefit": "Spit bite venom as a ranged touch attack to 30 feet; requires Venomous Bite.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Naga%20Aspirant"
+      }
+    },
+    {
+      "id": "naga-aspirant-sting",
+      "name": "Sting",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 9,
+      "prerequisites": [],
+      "benefit": "Grow a tail stinger that deals 1d6 piercing damage.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Naga%20Aspirant"
+      }
+    },
+    {
+      "id": "naga-aspirant-swim",
+      "name": "Swim",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 9,
+      "prerequisites": [],
+      "benefit": "Gain a swim speed equal to base land speed in naga form.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Naga%20Aspirant"
+      }
+    },
+    {
+      "id": "naga-aspirant-tough-scales",
+      "name": "Tough Scales",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 9,
+      "prerequisites": [],
+      "repeatable": true,
+      "selectionLimit": 3,
+      "benefit": "Increase naga-form natural armor by +2; this choice can be selected repeatedly and stacks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Naga%20Aspirant"
+      }
+    },
+    {
+      "id": "naga-aspirant-venomous-bite",
+      "name": "Venomous Bite",
+      "groupId": "druid-naga-aspirant-options",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 9,
+      "prerequisites": [],
+      "benefit": "The naga-form bite delivers Constitution-damaging venom.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Naga%20Aspirant"
+      }
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Naga%20Aspirant"
+  }
+}
