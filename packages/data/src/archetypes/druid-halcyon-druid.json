@@ -29,7 +29,47 @@
           "name": "Bonded Mask (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "A halcyon druid forms a powerful bond with a mask, which functions identically to a wizard’s bonded object except that it can be used to cast druid spells (including those gained from class abilities) instead of wizard spells. A bonded mask must be worn to have an effect, and it occupies the head slot. A halcyon druid can enhance her mask with abilities appropriate for a head slot item, and can designate an existing head slot item as her bonded mask (but only if it covers her face). This ability replaces nature bond."
+          "summary": "A halcyon druid forms a powerful bond with a mask, which functions identically to a wizard’s bonded object except that it can be used to cast druid spells (including those gained from class abilities) instead of wizard spells. A bonded mask must be worn to have an effect, and it occupies the head slot. A halcyon druid can enhance her mask with abilities appropriate for a head slot item, and can designate an existing head slot item as her bonded mask (but only if it covers her face). This ability replaces nature bond.",
+          "resourceActions": [
+            {
+              "id": "halcyon-bonded-mask-spell",
+              "label": "Cast through Bonded Mask",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "resourceId": "halcyonBondedMask",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "mask-worn",
+                  "label": "The bonded mask is worn in the head slot",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "legal-spell",
+                  "label": "The selected Druid spell is a level you can cast",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Bonded Mask Spell",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The bonded mask supplied the selected unprepared Druid spell; the daily use is spent.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Track the bonded object's once-per-day unprepared Druid spell while enforcing that the mask is worn."
+            }
+          ]
         },
         {
           "id": "druid-halcyon-druid-magaambya-trained-ex-1",
@@ -43,47 +83,889 @@
           "name": "Peacekeeper (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A halcyon druid adds half her class level (minimum 1) to Diplomacy and Knowledge (local) checks. This ability replaces wild empathy."
+          "summary": "A halcyon druid adds half her class level (minimum 1) to Diplomacy and Knowledge (local) checks. This ability replaces wild empathy.",
+          "progressionProfiles": [
+            {
+              "id": "halcyon-peacekeeper",
+              "label": "Peacekeeper",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "bonus",
+                  "label": "Diplomacy and Knowledge (local)"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "bonus": "+1"
+                  }
+                },
+                {
+                  "level": 3,
+                  "values": {
+                    "bonus": "+1"
+                  }
+                },
+                {
+                  "level": 5,
+                  "values": {
+                    "bonus": "+2"
+                  }
+                },
+                {
+                  "level": 7,
+                  "values": {
+                    "bonus": "+3"
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "bonus": "+4"
+                  }
+                },
+                {
+                  "level": 11,
+                  "values": {
+                    "bonus": "+5"
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "bonus": "+6"
+                  }
+                },
+                {
+                  "level": 15,
+                  "values": {
+                    "bonus": "+7"
+                  }
+                },
+                {
+                  "level": 17,
+                  "values": {
+                    "bonus": "+8"
+                  }
+                },
+                {
+                  "level": 19,
+                  "values": {
+                    "bonus": "+9"
+                  }
+                }
+              ],
+              "summary": "The bonus is also included directly in both skill totals."
+            }
+          ]
         },
         {
           "id": "druid-halcyon-druid-spontaneous-casting-1",
           "name": "Spontaneous Casting",
           "level": 1,
-          "type": "archetype",
-          "summary": "A halcyon druid adds all spells from the Good cleric domain to her druid spell list, and she can focus stored spell energy into spells from the Good domain that she hasn’t prepared ahead of time. She can lose a prepared spell to cast any spell of the same level or lower from the Good domain. This ability replaces spontaneous casting."
+          "type": "selectable",
+          "summary": "A halcyon druid adds all spells from the Good cleric domain to her druid spell list, and she can focus stored spell energy into spells from the Good domain that she hasn’t prepared ahead of time. She can lose a prepared spell to cast any spell of the same level or lower from the Good domain. This ability replaces spontaneous casting.",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-domains",
+          "optionChoiceIds": [
+            "domain-good"
+          ],
+          "progressionKey": "halcyon-good-domain-casting",
+          "spellAutomation": {
+            "preparedOptionSpellConversion": {
+              "label": "Spontaneous Good Domain Casting",
+              "spellIdsByOption": {
+                "domain-good": [
+                  "protection-from-evil",
+                  "later-spell-align-weapon",
+                  "magic-circle-against-evil",
+                  "holy-smite",
+                  "dispel-evil",
+                  "blade-barrier",
+                  "holy-word",
+                  "holy-aura",
+                  "summon-monster-ix"
+                ]
+              }
+            }
+          },
+          "progressionProfiles": [
+            {
+              "id": "halcyon-good-domain-casting",
+              "label": "Good Domain Spontaneous Casting",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "rule",
+                  "label": "Conversion rule"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "rule": "Lose a prepared spell to cast a Good domain spell of the same or a lower level"
+                  }
+                }
+              ],
+              "summary": "The spellbook exposes the exact Good domain conversion list and spends the lowest available legal prepared slot."
+            }
+          ]
         },
         {
-          "id": "druid-halcyon-druid-natural-arcana-su-4",
-          "name": "Natural Arcana (Su)",
+          "id": "druid-halcyon-natural-arcana-4-1",
+          "name": "Natural Arcana 1",
           "level": 4,
-          "type": "archetype",
-          "summary": "At 4th level and every 2 levels thereafter, a halcyon druid chooses two spells from the wizard/sorcerer spell list and adds them to her druid spell list. The chosen spells must be at least 1 level lower than the highest level spell she can currently cast. At 20th level, the halcyon druid can choose wizard/sorcerer spells of any level. This ability replaces wild shape."
+          "type": "selectable",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 1 or lower and add it to the Druid spell list.",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "optionChoiceIds": [
+            "halcyon-natural-arcana-acid-splash",
+            "halcyon-natural-arcana-arcane-mark",
+            "halcyon-natural-arcana-bleed",
+            "halcyon-natural-arcana-breeze",
+            "halcyon-natural-arcana-chameleon-scales",
+            "halcyon-natural-arcana-dancing-lights",
+            "halcyon-natural-arcana-daze",
+            "halcyon-natural-arcana-detect-fiendish-presence",
+            "halcyon-natural-arcana-detect-magic",
+            "halcyon-natural-arcana-detect-poison",
+            "halcyon-natural-arcana-disrupt-undead",
+            "halcyon-natural-arcana-drench",
+            "halcyon-natural-arcana-flare",
+            "halcyon-natural-arcana-ghost-sound",
+            "halcyon-natural-arcana-grasp",
+            "halcyon-natural-arcana-haunted-fey-aspect",
+            "halcyon-natural-arcana-jolt",
+            "halcyon-natural-arcana-light",
+            "halcyon-natural-arcana-mage-hand",
+            "halcyon-natural-arcana-mending",
+            "halcyon-natural-arcana-message",
+            "halcyon-natural-arcana-oath-of-anonymity",
+            "halcyon-natural-arcana-open-close",
+            "halcyon-natural-arcana-penumbra",
+            "halcyon-natural-arcana-prestidigitation",
+            "halcyon-natural-arcana-ray-of-frost",
+            "halcyon-natural-arcana-read-magic",
+            "halcyon-natural-arcana-resistance",
+            "halcyon-natural-arcana-root",
+            "halcyon-natural-arcana-scoop",
+            "halcyon-natural-arcana-scriveners-chant",
+            "halcyon-natural-arcana-sotto-voce",
+            "halcyon-natural-arcana-spark",
+            "halcyon-natural-arcana-touch-of-fatigue",
+            "halcyon-natural-arcana-vacuous-vessel",
+            "halcyon-natural-arcana-abjuring-step",
+            "halcyon-natural-arcana-abundant-ammunition",
+            "halcyon-natural-arcana-adhesive-spittle",
+            "halcyon-natural-arcana-air-bubble",
+            "halcyon-natural-arcana-alarm",
+            "halcyon-natural-arcana-alchemical-tinkering",
+            "halcyon-natural-arcana-alter-musical-instrument",
+            "halcyon-natural-arcana-alter-winds",
+            "halcyon-natural-arcana-animate-rope",
+            "halcyon-natural-arcana-ant-haul",
+            "halcyon-natural-arcana-anticipate-peril",
+            "halcyon-natural-arcana-aphasia",
+            "halcyon-natural-arcana-arcane-pocket",
+            "halcyon-natural-arcana-auditory-hallucination",
+            "halcyon-natural-arcana-authenticating-gaze",
+            "halcyon-natural-arcana-bed-of-iron",
+            "halcyon-natural-arcana-bestow-planar-infusion-i",
+            "halcyon-natural-arcana-blend",
+            "halcyon-natural-arcana-blend-with-surroundings",
+            "halcyon-natural-arcana-blood-money",
+            "halcyon-natural-arcana-blurred-movement",
+            "halcyon-natural-arcana-body-capacitance",
+            "halcyon-natural-arcana-bouncy-body",
+            "halcyon-natural-arcana-break",
+            "halcyon-natural-arcana-brightest-night",
+            "halcyon-natural-arcana-bungle",
+            "halcyon-natural-arcana-burning-disarm",
+            "halcyon-natural-arcana-burning-hands",
+            "halcyon-natural-arcana-burning-sands",
+            "halcyon-natural-arcana-cause-fear",
+            "halcyon-natural-arcana-celestial-healing",
+            "halcyon-natural-arcana-charm-fey",
+            "halcyon-natural-arcana-charm-person",
+            "halcyon-natural-arcana-chastise",
+            "halcyon-natural-arcana-chill-touch",
+            "halcyon-natural-arcana-clarion-call",
+            "halcyon-natural-arcana-cloak-of-secrets",
+            "halcyon-natural-arcana-coin-shot",
+            "halcyon-natural-arcana-color-spray",
+            "halcyon-natural-arcana-comprehend-languages",
+            "halcyon-natural-arcana-corrosive-touch",
+            "halcyon-natural-arcana-cowards-cowl",
+            "halcyon-natural-arcana-crafters-curse",
+            "halcyon-natural-arcana-crafters-fortune",
+            "halcyon-natural-arcana-cultural-adaptation",
+            "halcyon-natural-arcana-cultural-adaptation-taldan",
+            "halcyon-natural-arcana-damp-powder",
+            "halcyon-natural-arcana-dancing-darkness",
+            "halcyon-natural-arcana-dancing-lantern",
+            "halcyon-natural-arcana-darting-duplicate",
+            "halcyon-natural-arcana-dazzling-blade",
+            "halcyon-natural-arcana-decompose-corpse",
+            "halcyon-natural-arcana-decrepit-disguise",
+            "halcyon-natural-arcana-deja-vu",
+            "halcyon-natural-arcana-delusional-pride",
+            "halcyon-natural-arcana-depilate",
+            "halcyon-natural-arcana-desperate-weapon",
+            "halcyon-natural-arcana-detect-charm",
+            "halcyon-natural-arcana-detect-metal",
+            "halcyon-natural-arcana-detect-radiation",
+            "halcyon-natural-arcana-detect-secret-doors",
+            "halcyon-natural-arcana-detect-undead",
+            "halcyon-natural-arcana-discern-next-of-kin",
+            "halcyon-natural-arcana-disguise-self",
+            "halcyon-natural-arcana-disguise-weapon",
+            "halcyon-natural-arcana-ear-piercing-scream",
+            "halcyon-natural-arcana-ears-of-the-city",
+            "halcyon-natural-arcana-emblazon-crest",
+            "halcyon-natural-arcana-endothermic-touch",
+            "halcyon-natural-arcana-endure-elements",
+            "halcyon-natural-arcana-enlarge-person",
+            "halcyon-natural-arcana-enlarge-tail",
+            "halcyon-natural-arcana-erase",
+            "halcyon-natural-arcana-expeditious-construction",
+            "halcyon-natural-arcana-expeditious-excavation",
+            "halcyon-natural-arcana-expeditious-retreat",
+            "halcyon-natural-arcana-fabricate-bullets",
+            "halcyon-natural-arcana-fabricate-disguise",
+            "halcyon-natural-arcana-face-of-the-devourer",
+            "halcyon-natural-arcana-false-face",
+            "halcyon-natural-arcana-fastidiousness",
+            "halcyon-natural-arcana-feather-fall",
+            "halcyon-natural-arcana-ferment",
+            "halcyon-natural-arcana-flare-burst",
+            "halcyon-natural-arcana-floating-disk",
+            "halcyon-natural-arcana-fools-gold-vc",
+            "halcyon-natural-arcana-forced-quiet",
+            "halcyon-natural-arcana-fumblestep",
+            "halcyon-natural-arcana-gentle-breeze",
+            "halcyon-natural-arcana-glue-seal",
+            "halcyon-natural-arcana-grappling-scarf",
+            "halcyon-natural-arcana-grasping-corpse",
+            "halcyon-natural-arcana-gravity-bow",
+            "halcyon-natural-arcana-grease",
+            "halcyon-natural-arcana-guardian-armor",
+            "halcyon-natural-arcana-handy-grapnel",
+            "halcyon-natural-arcana-heightened-awareness",
+            "halcyon-natural-arcana-hide-bruises",
+            "halcyon-natural-arcana-hide-weapon",
+            "halcyon-natural-arcana-hobble",
+            "halcyon-natural-arcana-hold-portal",
+            "halcyon-natural-arcana-hydraulic-push",
+            "halcyon-natural-arcana-hypnotism",
+            "halcyon-natural-arcana-icicle-dagger",
+            "halcyon-natural-arcana-identify",
+            "halcyon-natural-arcana-illusion-of-calm",
+            "halcyon-natural-arcana-implant-urge",
+            "halcyon-natural-arcana-incendiary-runes",
+            "halcyon-natural-arcana-incessant-buzzing",
+            "halcyon-natural-arcana-infernal-healing",
+            "halcyon-natural-arcana-instant-portrait",
+            "halcyon-natural-arcana-interrogation",
+            "halcyon-natural-arcana-invisibility-alarm",
+            "halcyon-natural-arcana-itching-curse",
+            "halcyon-natural-arcana-jump",
+            "halcyon-natural-arcana-jury-rig",
+            "halcyon-natural-arcana-keep-watch",
+            "halcyon-natural-arcana-keyhole",
+            "halcyon-natural-arcana-ki-arrow",
+            "halcyon-natural-arcana-kreightons-perusal",
+            "halcyon-natural-arcana-liberating-command",
+            "halcyon-natural-arcana-lighten-object",
+            "halcyon-natural-arcana-line-in-the-sand",
+            "halcyon-natural-arcana-linked-legacy",
+            "halcyon-natural-arcana-lock-gaze",
+            "halcyon-natural-arcana-locksight",
+            "halcyon-natural-arcana-long-arm",
+            "halcyon-natural-arcana-longshot",
+            "halcyon-natural-arcana-lose-the-trail",
+            "halcyon-natural-arcana-lucky-number",
+            "halcyon-natural-arcana-mage-armor",
+            "halcyon-natural-arcana-magic-aura",
+            "halcyon-natural-arcana-magic-missile",
+            "halcyon-natural-arcana-magic-weapon",
+            "halcyon-natural-arcana-marids-mastery",
+            "halcyon-natural-arcana-memorize-page",
+            "halcyon-natural-arcana-memory-lapse",
+            "halcyon-natural-arcana-mindlink",
+            "halcyon-natural-arcana-mirror-mantis",
+            "halcyon-natural-arcana-mirror-polish",
+            "halcyon-natural-arcana-mirror-strike",
+            "halcyon-natural-arcana-moment-of-greatness",
+            "halcyon-natural-arcana-monkey-fish",
+            "halcyon-natural-arcana-mount",
+            "halcyon-natural-arcana-mudball",
+            "halcyon-natural-arcana-murderous-crow",
+            "halcyon-natural-arcana-negative-reaction",
+            "halcyon-natural-arcana-night-blindness",
+            "halcyon-natural-arcana-obscure-poison",
+            "halcyon-natural-arcana-obscuring-mist",
+            "halcyon-natural-arcana-open-and-shut",
+            "halcyon-natural-arcana-pattern-recognition",
+            "halcyon-natural-arcana-peace-bond",
+            "halcyon-natural-arcana-peacebond",
+            "halcyon-natural-arcana-peasant-armaments",
+            "halcyon-natural-arcana-pesh-vigor",
+            "halcyon-natural-arcana-phantom-blood",
+            "halcyon-natural-arcana-pierce-facade",
+            "halcyon-natural-arcana-planar-orientation",
+            "halcyon-natural-arcana-poisoned-egg",
+            "halcyon-natural-arcana-polypurpose-panacea",
+            "halcyon-natural-arcana-positive-pulse",
+            "halcyon-natural-arcana-preserve",
+            "halcyon-natural-arcana-protection-from-chaos",
+            "halcyon-natural-arcana-protection-from-evil",
+            "halcyon-natural-arcana-protection-from-good",
+            "halcyon-natural-arcana-protection-from-law",
+            "halcyon-natural-arcana-punishing-armor",
+            "halcyon-natural-arcana-quintessence",
+            "halcyon-natural-arcana-ray-of-enfeeblement",
+            "halcyon-natural-arcana-ray-of-sickening",
+            "halcyon-natural-arcana-recharge-innate-magic",
+            "halcyon-natural-arcana-reduce-person",
+            "halcyon-natural-arcana-refine-improvised-weapon",
+            "halcyon-natural-arcana-reinforce-armaments",
+            "halcyon-natural-arcana-repair-undead",
+            "halcyon-natural-arcana-restore-corpse",
+            "halcyon-natural-arcana-reveal-secrets",
+            "halcyon-natural-arcana-rite-of-centered-mind",
+            "halcyon-natural-arcana-rune-trace",
+            "halcyon-natural-arcana-sculpt-corpse",
+            "halcyon-natural-arcana-sculpted-cape",
+            "halcyon-natural-arcana-secluded-grimoire",
+            "halcyon-natural-arcana-see-alignment",
+            "halcyon-natural-arcana-serrens-swift-girding",
+            "halcyon-natural-arcana-shadow-trap",
+            "halcyon-natural-arcana-shadow-weapon",
+            "halcyon-natural-arcana-shadowfade",
+            "halcyon-natural-arcana-shield",
+            "halcyon-natural-arcana-shield-companion-aa",
+            "halcyon-natural-arcana-shield-speech",
+            "halcyon-natural-arcana-shock-shield",
+            "halcyon-natural-arcana-shocking-grasp",
+            "halcyon-natural-arcana-silent-image",
+            "halcyon-natural-arcana-skim",
+            "halcyon-natural-arcana-skin-tag",
+            "halcyon-natural-arcana-sleep",
+            "halcyon-natural-arcana-snapdragon-fireworks",
+            "halcyon-natural-arcana-snowball",
+            "halcyon-natural-arcana-songbird",
+            "halcyon-natural-arcana-sow-thought",
+            "halcyon-natural-arcana-speak-local-language",
+            "halcyon-natural-arcana-speechreaders-sight",
+            "halcyon-natural-arcana-spirit-share",
+            "halcyon-natural-arcana-starsight",
+            "halcyon-natural-arcana-stone-fist",
+            "halcyon-natural-arcana-stone-shield",
+            "halcyon-natural-arcana-strong-wings",
+            "halcyon-natural-arcana-stumble-gap",
+            "halcyon-natural-arcana-stunning-barrier",
+            "halcyon-natural-arcana-summon-minor-monster",
+            "halcyon-natural-arcana-summon-monster-1",
+            "halcyon-natural-arcana-sunder-breaker",
+            "halcyon-natural-arcana-sundering-shards",
+            "halcyon-natural-arcana-sure-casting",
+            "halcyon-natural-arcana-technomancy",
+            "halcyon-natural-arcana-theft-ward",
+            "halcyon-natural-arcana-thunderstomp",
+            "halcyon-natural-arcana-touch-of-blindness",
+            "halcyon-natural-arcana-touch-of-combustion",
+            "halcyon-natural-arcana-touch-of-gracelessness",
+            "halcyon-natural-arcana-touch-of-the-sea",
+            "halcyon-natural-arcana-transfer-tattoo",
+            "halcyon-natural-arcana-tripvine",
+            "halcyon-natural-arcana-true-skill",
+            "halcyon-natural-arcana-true-strike",
+            "halcyon-natural-arcana-undines-curse",
+            "halcyon-natural-arcana-unerring-weapon",
+            "halcyon-natural-arcana-unhallowed-blows",
+            "halcyon-natural-arcana-unlock-flesh",
+            "halcyon-natural-arcana-unprepared-combatant",
+            "halcyon-natural-arcana-unseen-servant",
+            "halcyon-natural-arcana-unwelcome-halo",
+            "halcyon-natural-arcana-urban-grace",
+            "halcyon-natural-arcana-vanish",
+            "halcyon-natural-arcana-ventriloquism",
+            "halcyon-natural-arcana-vocal-alteration",
+            "halcyon-natural-arcana-waterproof",
+            "halcyon-natural-arcana-wave-shield",
+            "halcyon-natural-arcana-weaken-powder",
+            "halcyon-natural-arcana-web-bolt",
+            "halcyon-natural-arcana-windy-escape",
+            "halcyon-natural-arcana-winter-feathers",
+            "halcyon-natural-arcana-wizened-appearance",
+            "halcyon-natural-arcana-youthful-appearance"
+          ],
+          "progressionKey": "halcyon-natural-arcana",
+          "maximumSpellLevel": 1
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-4-2",
+          "name": "Natural Arcana 2",
+          "level": 4,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 1,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 1 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-6-1",
+          "name": "Natural Arcana 3",
+          "level": 6,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 2,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 2 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-6-2",
+          "name": "Natural Arcana 4",
+          "level": 6,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 2,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 2 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-8-1",
+          "name": "Natural Arcana 5",
+          "level": 8,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 3,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 3 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-8-2",
+          "name": "Natural Arcana 6",
+          "level": 8,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 3,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 3 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-10-1",
+          "name": "Natural Arcana 7",
+          "level": 10,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 4,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 4 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-10-2",
+          "name": "Natural Arcana 8",
+          "level": 10,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 4,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 4 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-12-1",
+          "name": "Natural Arcana 9",
+          "level": 12,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 5,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 5 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-12-2",
+          "name": "Natural Arcana 10",
+          "level": 12,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 5,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 5 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-14-1",
+          "name": "Natural Arcana 11",
+          "level": 14,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 6,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 6 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-14-2",
+          "name": "Natural Arcana 12",
+          "level": 14,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 6,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 6 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-16-1",
+          "name": "Natural Arcana 13",
+          "level": 16,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 7,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 7 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-16-2",
+          "name": "Natural Arcana 14",
+          "level": 16,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 7,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 7 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-18-1",
+          "name": "Natural Arcana 15",
+          "level": 18,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 8,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 8 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-18-2",
+          "name": "Natural Arcana 16",
+          "level": 18,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 8,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 8 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-20-1",
+          "name": "Natural Arcana 17",
+          "level": 20,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 9,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 9 or lower and add it to the Druid spell list."
+        },
+        {
+          "id": "druid-halcyon-natural-arcana-20-2",
+          "name": "Natural Arcana 18",
+          "level": 20,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-halcyon-natural-arcana",
+          "maximumSpellLevel": 9,
+          "progressionKey": "halcyon-natural-arcana",
+          "summary": "Choose a unique Wizard/Sorcerer spell of level 9 or lower and add it to the Druid spell list."
         },
         {
           "id": "druid-halcyon-druid-resist-fiendish-influence-ex-4",
           "name": "Resist Fiendish Influence (Ex)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a halcyon druid gains a +4 bonus on saving throws against the spell-like and supernatural abilities of outsiders with the evil subtype and spells with the evil descriptor. This ability replaces resist nature’s lure."
+          "summary": "At 4th level, a halcyon druid gains a +4 bonus on saving throws against the spell-like and supernatural abilities of outsiders with the evil subtype and spells with the evil descriptor. This ability replaces resist nature’s lure.",
+          "resourceActions": [
+            {
+              "id": "halcyon-resist-fiendish-influence",
+              "label": "Apply Resist Fiendish Influence",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "confirmations": [
+                {
+                  "id": "evil-source",
+                  "label": "The save is against an evil outsider's spell-like/supernatural ability or an evil spell",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Resist Fiendish Influence",
+                "targets": [
+                  "savingThrows"
+                ],
+                "bonus": 4,
+                "description": "+4 on this qualifying saving throw.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Apply the exact +4 bonus to the qualifying save."
+            }
+          ]
         },
         {
           "id": "druid-halcyon-druid-embody-mask-sp-13",
           "name": "Embody Mask (Sp)",
           "level": 13,
           "type": "archetype",
-          "summary": "At 13th level, a halcyon druid wearing her bonded mask can embody the spirit it represents, which can be any Tiny to Large agathion, angel, archon, or azata. This ability requires a standard action to activate and functions as per beast shape IV (using the adjustments for magical beasts), but adds the following abilities if the assumed form has them: aura of menace, protective aura, speak with animals, telepathy, and truespeech. If the assumed form has immunity to a condition, the druid gains a +4 bonus on saving throws against effects that cause that condition. A halcyon druid can use this ability for a number of minutes per day equal to her druid level. The duration does not need to be consecutive, but must be used in 1-minute increments. This ability replaces a thousand faces."
+          "summary": "At 13th level, a halcyon druid wearing her bonded mask can embody the spirit it represents, which can be any Tiny to Large agathion, angel, archon, or azata. This ability requires a standard action to activate and functions as per beast shape IV (using the adjustments for magical beasts), but adds the following abilities if the assumed form has them: aura of menace, protective aura, speak with animals, telepathy, and truespeech. If the assumed form has immunity to a condition, the druid gains a +4 bonus on saving throws against effects that cause that condition. A halcyon druid can use this ability for a number of minutes per day equal to her druid level. The duration does not need to be consecutive, but must be used in 1-minute increments. This ability replaces a thousand faces.",
+          "resourceActions": [
+            {
+              "id": "halcyon-embody-mask",
+              "label": "Embody Mask",
+              "classId": "druid",
+              "minimumLevel": 13,
+              "resourceId": "halcyonEmbodyMaskMinutes",
+              "variableCost": {
+                "label": "Minutes to use",
+                "minimum": 1,
+                "maximum": 20
+              },
+              "actionTypeByLevel": [
+                {
+                  "level": 13,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Celestial form size",
+              "modes": [
+                {
+                  "id": "tiny",
+                  "label": "Tiny celestial",
+                  "summary": "Tiny celestial under beast shape IV magical-beast adjustments.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": -2,
+                      "label": "Embody Mask — Tiny celestial strength",
+                      "description": "-2 size adjustment to strength."
+                    },
+                    {
+                      "target": "dexterity",
+                      "bonus": 8,
+                      "label": "Embody Mask — Tiny celestial dexterity",
+                      "description": "+8 size adjustment to dexterity."
+                    },
+                    {
+                      "target": "armorClass",
+                      "bonus": 3,
+                      "label": "Embody Mask — Tiny celestial armorClass",
+                      "description": "+3 size adjustment to natural armor."
+                    }
+                  ]
+                },
+                {
+                  "id": "small",
+                  "label": "Small celestial",
+                  "summary": "Small celestial under beast shape IV magical-beast adjustments.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": -2,
+                      "label": "Embody Mask — Small celestial strength",
+                      "description": "-2 size adjustment to strength."
+                    },
+                    {
+                      "target": "dexterity",
+                      "bonus": 4,
+                      "label": "Embody Mask — Small celestial dexterity",
+                      "description": "+4 size adjustment to dexterity."
+                    },
+                    {
+                      "target": "armorClass",
+                      "bonus": 2,
+                      "label": "Embody Mask — Small celestial armorClass",
+                      "description": "+2 size adjustment to natural armor."
+                    }
+                  ]
+                },
+                {
+                  "id": "medium",
+                  "label": "Medium celestial",
+                  "summary": "Medium celestial under beast shape IV magical-beast adjustments.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 4,
+                      "label": "Embody Mask — Medium celestial strength",
+                      "description": "+4 size adjustment to strength."
+                    },
+                    {
+                      "target": "armorClass",
+                      "bonus": 4,
+                      "label": "Embody Mask — Medium celestial armorClass",
+                      "description": "+4 size adjustment to natural armor."
+                    }
+                  ]
+                },
+                {
+                  "id": "large",
+                  "label": "Large celestial",
+                  "summary": "Large celestial under beast shape IV magical-beast adjustments.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 6,
+                      "label": "Embody Mask — Large celestial strength",
+                      "description": "+6 size adjustment to strength."
+                    },
+                    {
+                      "target": "dexterity",
+                      "bonus": -4,
+                      "label": "Embody Mask — Large celestial dexterity",
+                      "description": "-4 size adjustment to dexterity."
+                    },
+                    {
+                      "target": "armorClass",
+                      "bonus": 6,
+                      "label": "Embody Mask — Large celestial armorClass",
+                      "description": "+6 size adjustment to natural armor."
+                    }
+                  ]
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "mask-worn",
+                  "label": "The bonded mask is worn",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "legal-celestial",
+                  "label": "Selected form is a Tiny–Large agathion, angel, archon, or azata",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Embody Mask",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Assume the selected celestial form. Gain its legal beast shape IV movement, senses, and attacks plus aura of menace, protective aura, speak with animals, telepathy, and truespeech when present; gain +4 saves against conditions to which it is immune.",
+                "defaultRounds": 10,
+                "durationFromVariableCost": true,
+                "durationFromVariableCostMultiplier": 10,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend the selected number of one-minute increments and apply the exact size modifiers and duration."
+            }
+          ]
         }
       ]
     }
   ],
-  "classSkillAdditions": ["Diplomacy","Knowledge (arcana)","Knowledge (dungeoneering)","Knowledge (engineering)","Knowledge (geography)","Knowledge (history)","Knowledge (local)","Knowledge (nature)","Knowledge (nobility)","Knowledge (planes)","Knowledge (religion)"],
+  "classSkillAdditions": [
+    "Diplomacy",
+    "Knowledge (arcana)",
+    "Knowledge (dungeoneering)",
+    "Knowledge (engineering)",
+    "Knowledge (geography)",
+    "Knowledge (history)",
+    "Knowledge (local)",
+    "Knowledge (nature)",
+    "Knowledge (nobility)",
+    "Knowledge (planes)",
+    "Knowledge (religion)"
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Halcyon%20Druid"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Bonded Mask daily casting, all class skills, exact Peacekeeper bonuses, Good domain spell-list access and prepared-slot conversion, eighteen unique level-legal Natural Arcana selections, Fiendish Influence saves, and level-sized Embody Mask minutes with celestial legality, size modifiers, and duration are automated."
+  ],
+  "spellListAdditions": {
+    "protection-from-evil": 1,
+    "magic-circle-against-evil": 3,
+    "holy-smite": 4,
+    "dispel-evil": 5,
+    "blade-barrier": 6,
+    "holy-word": 7,
+    "holy-aura": 8,
+    "summon-monster-ix": 9,
+    "later-spell-align-weapon": 2
+  },
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "druid-halcyon-druid-peacekeeper-ex-1",
+      "skill": "Diplomacy",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "druid-halcyon-druid-peacekeeper-ex-1",
+      "skill": "Knowledge (local)",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "halcyonBondedMask",
+      "label": "Bonded Mask",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 1,
+      "base": 1,
+      "maximum": 1,
+      "minimum": 0,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "halcyonEmbodyMaskMinutes",
+      "label": "Embody Mask",
+      "unit": "minute",
+      "operation": "replace",
+      "minimumLevel": 13,
+      "base": 0,
+      "levelMultiplier": 1,
+      "minimum": 13,
+      "maximum": 20,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-halcyon-druid-resist-fiendish-influence-ex-4",
+      "label": "Resist Fiendish Influence",
+      "condition": "Saves against evil outsiders' spell-like or supernatural abilities and spells with the evil descriptor",
+      "minimumLevel": 4,
+      "base": 4
+    }
   ]
 }
