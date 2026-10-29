@@ -1,0 +1,175 @@
+{
+  "id": "druid-survivor-traps",
+  "name": "Survivor Ranger Traps",
+  "classIds": [
+    "druid"
+  ],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "survivor-trap-alarm",
+      "groupId": "druid-survivor-traps",
+      "name": "Alarm Trap",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Modifier: add a momentary loud noise equivalent to audible alarm when the underlying trap triggers.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Survivor"
+      }
+    },
+    {
+      "id": "survivor-trap-burning",
+      "groupId": "druid-survivor-traps",
+      "name": "Burning Trap",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Modifier for a fire trap: a failed Reflex save catches the target on fire for 1d4 rounds, dealing 1d6 fire damage at the start of each turn.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Survivor"
+      }
+    },
+    {
+      "id": "survivor-trap-exploding",
+      "groupId": "druid-survivor-traps",
+      "name": "Exploding Trap",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Modifier for a fire trap: adjacent squares take 1d6 + half Druid level fire damage; Reflex negates.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Survivor"
+      }
+    },
+    {
+      "id": "survivor-trap-fire",
+      "groupId": "druid-survivor-traps",
+      "name": "Fire Trap",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Deal 1d6 + half Druid level fire damage to the triggering creature; Reflex negates.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Survivor"
+      }
+    },
+    {
+      "id": "survivor-trap-freezing",
+      "groupId": "druid-survivor-traps",
+      "name": "Freezing Trap",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Deal 1d3 + one-quarter Druid level cold damage and entangle the target; Reflex halves damage and prevents it being stuck to the ground.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Survivor"
+      }
+    },
+    {
+      "id": "survivor-trap-marking",
+      "groupId": "druid-survivor-traps",
+      "name": "Marking Trap",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Modifier: mark a creature that fails its save with dye or scent; a scent mark reduces scent-tracking DC by 4.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Survivor"
+      }
+    },
+    {
+      "id": "survivor-trap-poison",
+      "groupId": "druid-survivor-traps",
+      "name": "Poison Trap",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Supernatural poison deals 1d2 Constitution damage each round for 6 rounds; an extraordinary version delivers a supplied poison.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Survivor"
+      }
+    },
+    {
+      "id": "survivor-trap-sleet",
+      "groupId": "druid-survivor-traps",
+      "name": "Sleet Trap",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Create a 20-foot-radius sleet storm for 1 round; icy ground persists for 1 round per Druid level.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Survivor"
+      }
+    },
+    {
+      "id": "survivor-trap-snare",
+      "groupId": "druid-survivor-traps",
+      "name": "Snare Trap",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Immobilize a creature that fails Reflex; Escape Artist uses the trap DC, the leash has half Druid level hit points, and Strength DC 25 bursts it.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Survivor"
+      }
+    },
+    {
+      "id": "survivor-trap-swarm",
+      "groupId": "druid-survivor-traps",
+      "name": "Swarm Trap",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Release a bat, rat, or spider swarm for up to 1 round per Druid level.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Survivor"
+      }
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Survivor"
+  }
+}
