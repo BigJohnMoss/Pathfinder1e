@@ -294,6 +294,7 @@ export interface ClassFeatureOccurrence {
     };
     advancementOptionId?: string;
     requiredOptionId?: string;
+    blockedByOptionIds?: string[];
     requiredActiveEffectName?: string;
     blockedByActiveEffectName?: string;
     blockedByActiveEffectNames?: string[];
@@ -337,6 +338,7 @@ export interface ClassFeatureOccurrence {
       label: string;
       diceCountByLevel: Array<{ level: number; count: number }>;
       dieSidesByLevel: Array<{ level: number; sides: number }>;
+      takeHighest?: boolean;
       diceCountBonusOptionIds?: string[];
       abilityModifier?: AbilityName;
       modifierInputLabel?: string;

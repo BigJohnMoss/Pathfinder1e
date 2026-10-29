@@ -26,28 +26,1182 @@
           "name": "Inspiration (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a wild whisperer gains an inspiration pool as the investigator class ability (see page 31). A wild whisperer uses her druid level as her investigator level when determining the effects of this ability. Instead of free uses of inspiration on Knowledge, Linguistics, or Spellcraft skill checks, the wild whisperer can use inspiration on Handle Animal, Heal, Knowledge (geography), Knowledge (nature), Ride, Sense Motive, and Survival skill checks without expending a use of inspiration, provided she’s trained in the relevant skill. She can also use inspiration on any wild empathy check without expending a use of inspiration. A wild whisperer’s inspiration pool refreshes each day when she prepares spells. This ability replaces woodland stride, trackless step, and resist nature’s lure."
+          "summary": "At 2nd level, a wild whisperer gains an inspiration pool as the investigator class ability (see page 31). A wild whisperer uses her druid level as her investigator level when determining the effects of this ability. Instead of free uses of inspiration on Knowledge, Linguistics, or Spellcraft skill checks, the wild whisperer can use inspiration on Handle Animal, Heal, Knowledge (geography), Knowledge (nature), Ride, Sense Motive, and Survival skill checks without expending a use of inspiration, provided she’s trained in the relevant skill. She can also use inspiration on any wild empathy check without expending a use of inspiration. A wild whisperer’s inspiration pool refreshes each day when she prepares spells. This ability replaces woodland stride, trackless step, and resist nature’s lure.",
+          "resourceActions": [
+            {
+              "id": "wild-whisperer-free-inspiration-base",
+              "label": "Roll free Inspiration",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 6
+                  }
+                ]
+              },
+              "blockedByOptionIds": [
+                "wild-whisperer-amazing-inspiration-talent",
+                "wild-whisperer-tenacious-inspiration"
+              ],
+              "modeLabel": "Qualifying check",
+              "modes": [
+                {
+                  "id": "handle-animal",
+                  "label": "Handle Animal",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "heal",
+                  "label": "Heal",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "knowledge-geography",
+                  "label": "Knowledge (geography)",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "knowledge-nature",
+                  "label": "Knowledge (nature)",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "ride",
+                  "label": "Ride",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "sense-motive",
+                  "label": "Sense Motive",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "survival",
+                  "label": "Survival",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "wild-empathy",
+                  "label": "Wild Empathy",
+                  "summary": "Any Wild Empathy check is free."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "free-use-legal",
+                  "label": "The selected skill is trained, or this is a Wild Empathy check",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Roll the inspiration die without spending a point on the Wild Whisperer's trained nature skills or any Wild Empathy check."
+            },
+            {
+              "id": "wild-whisperer-free-inspiration-amazing",
+              "label": "Roll free Inspiration (Amazing Inspiration)",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Amazing Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 8
+                  },
+                  {
+                    "level": 20,
+                    "sides": 10
+                  }
+                ]
+              },
+              "requiredOptionId": "wild-whisperer-amazing-inspiration-talent",
+              "modeLabel": "Qualifying check",
+              "modes": [
+                {
+                  "id": "handle-animal",
+                  "label": "Handle Animal",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "heal",
+                  "label": "Heal",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "knowledge-geography",
+                  "label": "Knowledge (geography)",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "knowledge-nature",
+                  "label": "Knowledge (nature)",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "ride",
+                  "label": "Ride",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "sense-motive",
+                  "label": "Sense Motive",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "survival",
+                  "label": "Survival",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "wild-empathy",
+                  "label": "Wild Empathy",
+                  "summary": "Any Wild Empathy check is free."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "free-use-legal",
+                  "label": "The selected skill is trained, or this is a Wild Empathy check",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Roll the inspiration die without spending a point on the Wild Whisperer's trained nature skills or any Wild Empathy check."
+            },
+            {
+              "id": "wild-whisperer-free-inspiration-tenacious",
+              "label": "Roll free Inspiration (Tenacious Inspiration)",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Tenacious Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 2
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 6
+                  }
+                ],
+                "takeHighest": true
+              },
+              "requiredOptionId": "wild-whisperer-tenacious-inspiration",
+              "modeLabel": "Qualifying check",
+              "modes": [
+                {
+                  "id": "handle-animal",
+                  "label": "Handle Animal",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "heal",
+                  "label": "Heal",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "knowledge-geography",
+                  "label": "Knowledge (geography)",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "knowledge-nature",
+                  "label": "Knowledge (nature)",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "ride",
+                  "label": "Ride",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "sense-motive",
+                  "label": "Sense Motive",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "survival",
+                  "label": "Survival",
+                  "summary": "Free when trained in this skill."
+                },
+                {
+                  "id": "wild-empathy",
+                  "label": "Wild Empathy",
+                  "summary": "Any Wild Empathy check is free."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "free-use-legal",
+                  "label": "The selected skill is trained, or this is a Wild Empathy check",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Roll the inspiration die without spending a point on the Wild Whisperer's trained nature skills or any Wild Empathy check."
+            },
+            {
+              "id": "wild-whisperer-skill-inspiration-base",
+              "label": "Spend Inspiration on skill or ability check",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "resourceId": "inspiration",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 6
+                  }
+                ]
+              },
+              "blockedByOptionIds": [
+                "wild-whisperer-amazing-inspiration-talent",
+                "wild-whisperer-tenacious-inspiration"
+              ],
+              "modeLabel": "Check",
+              "modes": [
+                {
+                  "id": "skill",
+                  "label": "Skill check",
+                  "summary": "Add the Inspiration die to a qualifying skill check."
+                },
+                {
+                  "id": "ability",
+                  "label": "Ability check",
+                  "summary": "Add the Inspiration die to a qualifying ability check."
+                }
+              ],
+              "summary": "Spend one point and roll the inspiration die for a non-free skill or ability check."
+            },
+            {
+              "id": "wild-whisperer-skill-inspiration-amazing",
+              "label": "Spend Inspiration on skill or ability check (Amazing Inspiration)",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "resourceId": "inspiration",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Amazing Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 8
+                  },
+                  {
+                    "level": 20,
+                    "sides": 10
+                  }
+                ]
+              },
+              "requiredOptionId": "wild-whisperer-amazing-inspiration-talent",
+              "modeLabel": "Check",
+              "modes": [
+                {
+                  "id": "skill",
+                  "label": "Skill check",
+                  "summary": "Add the Inspiration die to a qualifying skill check."
+                },
+                {
+                  "id": "ability",
+                  "label": "Ability check",
+                  "summary": "Add the Inspiration die to a qualifying ability check."
+                }
+              ],
+              "summary": "Spend one point and roll the inspiration die for a non-free skill or ability check."
+            },
+            {
+              "id": "wild-whisperer-skill-inspiration-tenacious",
+              "label": "Spend Inspiration on skill or ability check (Tenacious Inspiration)",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "resourceId": "inspiration",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Tenacious Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 2
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 6
+                  }
+                ],
+                "takeHighest": true
+              },
+              "requiredOptionId": "wild-whisperer-tenacious-inspiration",
+              "modeLabel": "Check",
+              "modes": [
+                {
+                  "id": "skill",
+                  "label": "Skill check",
+                  "summary": "Add the Inspiration die to a qualifying skill check."
+                },
+                {
+                  "id": "ability",
+                  "label": "Ability check",
+                  "summary": "Add the Inspiration die to a qualifying ability check."
+                }
+              ],
+              "summary": "Spend one point and roll the inspiration die for a non-free skill or ability check."
+            },
+            {
+              "id": "wild-whisperer-combat-inspiration-base",
+              "label": "Spend Inspiration on attack or saving throw",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "resourceId": "inspiration",
+              "cost": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 6
+                  }
+                ]
+              },
+              "blockedByOptionIds": [
+                "wild-whisperer-amazing-inspiration-talent",
+                "wild-whisperer-combat-inspiration",
+                "wild-whisperer-tenacious-inspiration"
+              ],
+              "modeLabel": "Roll",
+              "modes": [
+                {
+                  "id": "attack",
+                  "label": "Attack roll",
+                  "summary": "Add the Inspiration die to an attack roll."
+                },
+                {
+                  "id": "save",
+                  "label": "Saving throw",
+                  "summary": "Add the Inspiration die to a saving throw."
+                }
+              ],
+              "summary": "Spend the displayed cost and roll the inspiration die. Combat Inspiration reduces the cost to one point."
+            },
+            {
+              "id": "wild-whisperer-combat-inspiration-amazing",
+              "label": "Spend Inspiration on attack or saving throw (Amazing Inspiration)",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "resourceId": "inspiration",
+              "cost": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Amazing Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 8
+                  },
+                  {
+                    "level": 20,
+                    "sides": 10
+                  }
+                ]
+              },
+              "requiredOptionId": "wild-whisperer-amazing-inspiration-talent",
+              "modeLabel": "Roll",
+              "modes": [
+                {
+                  "id": "attack",
+                  "label": "Attack roll",
+                  "summary": "Add the Inspiration die to an attack roll."
+                },
+                {
+                  "id": "save",
+                  "label": "Saving throw",
+                  "summary": "Add the Inspiration die to a saving throw."
+                }
+              ],
+              "summary": "Spend the displayed cost and roll the inspiration die. Combat Inspiration reduces the cost to one point."
+            },
+            {
+              "id": "wild-whisperer-combat-inspiration-combat",
+              "label": "Spend Inspiration on attack or saving throw (Combat Inspiration)",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "resourceId": "inspiration",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Combat Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 6
+                  }
+                ]
+              },
+              "requiredOptionId": "wild-whisperer-combat-inspiration",
+              "modeLabel": "Roll",
+              "modes": [
+                {
+                  "id": "attack",
+                  "label": "Attack roll",
+                  "summary": "Add the Inspiration die to an attack roll."
+                },
+                {
+                  "id": "save",
+                  "label": "Saving throw",
+                  "summary": "Add the Inspiration die to a saving throw."
+                }
+              ],
+              "summary": "Spend the displayed cost and roll the inspiration die. Combat Inspiration reduces the cost to one point."
+            },
+            {
+              "id": "wild-whisperer-combat-inspiration-tenacious",
+              "label": "Spend Inspiration on attack or saving throw (Tenacious Inspiration)",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "resourceId": "inspiration",
+              "cost": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Tenacious Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 2
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 6
+                  }
+                ],
+                "takeHighest": true
+              },
+              "requiredOptionId": "wild-whisperer-tenacious-inspiration",
+              "modeLabel": "Roll",
+              "modes": [
+                {
+                  "id": "attack",
+                  "label": "Attack roll",
+                  "summary": "Add the Inspiration die to an attack roll."
+                },
+                {
+                  "id": "save",
+                  "label": "Saving throw",
+                  "summary": "Add the Inspiration die to a saving throw."
+                }
+              ],
+              "summary": "Spend the displayed cost and roll the inspiration die. Combat Inspiration reduces the cost to one point."
+            },
+            {
+              "id": "wild-whisperer-investigator-device-talent-free",
+              "label": "Roll free Inspiration: Use Magic Device",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 6
+                  }
+                ]
+              },
+              "requiredOptionId": "wild-whisperer-device-talent",
+              "confirmations": [
+                {
+                  "id": "talent-free-use-legal",
+                  "label": "The selected check qualifies for this talent and the skill is trained",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "The selected Investigator Talent makes Inspiration free on Use Magic Device checks."
+            },
+            {
+              "id": "wild-whisperer-investigator-expanded-inspiration-free",
+              "label": "Roll free Inspiration: Diplomacy, Perception, or Profession",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 6
+                  }
+                ]
+              },
+              "requiredOptionId": "wild-whisperer-expanded-inspiration",
+              "confirmations": [
+                {
+                  "id": "talent-free-use-legal",
+                  "label": "The selected check qualifies for this talent and the skill is trained",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "The selected Investigator Talent makes Inspiration free on Diplomacy, Perception, or Profession checks."
+            },
+            {
+              "id": "wild-whisperer-investigator-item-lore-free",
+              "label": "Roll free Inspiration: Appraise or Use Magic Device",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 6
+                  }
+                ]
+              },
+              "requiredOptionId": "wild-whisperer-item-lore",
+              "confirmations": [
+                {
+                  "id": "talent-free-use-legal",
+                  "label": "The selected check qualifies for this talent and the skill is trained",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "The selected Investigator Talent makes Inspiration free on Appraise or Use Magic Device checks."
+            },
+            {
+              "id": "wild-whisperer-investigator-underworld-inspiration-free",
+              "label": "Roll free Inspiration: Bluff, Disable Device, Disguise, Intimidate, or Sleight of Hand",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 6
+                  }
+                ]
+              },
+              "requiredOptionId": "wild-whisperer-underworld-inspiration",
+              "confirmations": [
+                {
+                  "id": "talent-free-use-legal",
+                  "label": "The selected check qualifies for this talent and the skill is trained",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "The selected Investigator Talent makes Inspiration free on Bluff, Disable Device, Disguise, Intimidate, or Sleight of Hand checks."
+            },
+            {
+              "id": "wild-whisperer-effortless-aid-move",
+              "label": "Effortless Aid (move action)",
+              "classId": "druid",
+              "minimumLevel": 8,
+              "requiredOptionId": "wild-whisperer-effortless-aid",
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "move"
+                }
+              ],
+              "activeEffect": {
+                "name": "Effortless Aid",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 2,
+                "description": "Apply the Aid Another bonus to the chosen ally's qualifying check or defense.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Aid Another as a move action without spending Inspiration."
+            },
+            {
+              "id": "wild-whisperer-effortless-aid-swift",
+              "label": "Effortless Aid (swift action)",
+              "classId": "druid",
+              "minimumLevel": 8,
+              "requiredOptionId": "wild-whisperer-effortless-aid",
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "swift"
+                }
+              ],
+              "resourceId": "inspiration",
+              "cost": 1,
+              "activeEffect": {
+                "name": "Effortless Aid",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 2,
+                "description": "Apply the Aid Another bonus to the chosen ally's qualifying check or defense.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend one Inspiration to Aid Another as a swift action."
+            },
+            {
+              "id": "wild-whisperer-inspired-alertness",
+              "label": "Inspired Alertness",
+              "classId": "druid",
+              "minimumLevel": 8,
+              "requiredOptionId": "wild-whisperer-inspired-alertness",
+              "resourceId": "inspiration",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "immediate"
+                }
+              ],
+              "activeEffect": {
+                "name": "Inspired Alertness",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "You are not treated as flat-footed for this triggering attack or effect.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend one Inspiration as an immediate action to avoid being caught flat-footed."
+            }
+          ]
         },
         {
           "id": "druid-wild-whisperer-wild-shape-ex-4",
           "name": "Wild Shape (Ex)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a wild whisperer gains the wild shape ability, but she never gains access to any forms beyond Small and Medium animal forms, as beast shape I . This ability alters wild shape."
+          "summary": "At 4th level, a wild whisperer gains the wild shape ability, but she never gains access to any forms beyond Small and Medium animal forms, as beast shape I . This ability alters wild shape.",
+          "progressionKey": "wild-shape",
+          "progressionProfiles": [
+            {
+              "id": "wild-whisperer-wild-shape",
+              "label": "Restricted Wild Shape",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "forms",
+                  "label": "Legal forms"
+                },
+                {
+                  "id": "spell",
+                  "label": "Polymorph rules"
+                },
+                {
+                  "id": "uses",
+                  "label": "Use progression"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "forms": "Small or Medium animals",
+                    "spell": "Beast shape I",
+                    "uses": "Normal Druid uses, except no increases at levels 6 and 8"
+                  }
+                }
+              ],
+              "summary": "No elemental, plant, Tiny, Large, Huge, or greater beast-shape forms ever unlock."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "wild-whisperer-wild-shape",
+              "label": "Wild Shape",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Beast shape I form size",
+              "modes": [
+                {
+                  "id": "small-animal",
+                  "label": "Small animal",
+                  "summary": "+2 size Dexterity, +1 natural armor; gain the chosen legal movement and senses.",
+                  "activeEffects": [
+                    {
+                      "target": "dexterity",
+                      "bonus": 2,
+                      "label": "Wild Whisperer Small Shape — Dexterity",
+                      "description": "+2 size bonus to Dexterity."
+                    },
+                    {
+                      "target": "armorClass",
+                      "bonus": 1,
+                      "label": "Wild Whisperer Small Shape — natural armor",
+                      "description": "+1 natural armor bonus."
+                    }
+                  ]
+                },
+                {
+                  "id": "medium-animal",
+                  "label": "Medium animal",
+                  "summary": "+2 size Strength, +2 natural armor; gain the chosen legal movement and senses.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 2,
+                      "label": "Wild Whisperer Medium Shape — Strength",
+                      "description": "+2 size bonus to Strength."
+                    },
+                    {
+                      "target": "armorClass",
+                      "bonus": 2,
+                      "label": "Wild Whisperer Medium Shape — natural armor",
+                      "description": "+2 natural armor bonus."
+                    }
+                  ]
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "legal-animal-form",
+                  "label": "Selected creature is a legal Small or Medium animal under beast shape I",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Wild Whisperer Wild Shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Assume the selected Small or Medium animal form under beast shape I for 1 hour per Druid level.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": true
+              },
+              "summary": "Spend one Wild Shape use and apply the exact Beast Shape I size bonuses and duration."
+            }
+          ]
         },
         {
           "id": "druid-wild-whisperer-natural-expertise-ex-6",
           "name": "Natural Expertise (Ex)",
           "level": 6,
           "type": "archetype",
-          "summary": "At 6th level, a wild whisperer’s powers of observation give her an advantage when she’s fighting natural creatures. When using inspiration on an attack roll against an animal or a vermin or on a saving throw against an effect from an animal or a vermin, a wild whisperer has to expend only one use of inspiration instead of two. This ability replaces the additional use of wild shape at 6th level."
+          "summary": "At 6th level, a wild whisperer’s powers of observation give her an advantage when she’s fighting natural creatures. When using inspiration on an attack roll against an animal or a vermin or on a saving throw against an effect from an animal or a vermin, a wild whisperer has to expend only one use of inspiration instead of two. This ability replaces the additional use of wild shape at 6th level.",
+          "resourceActions": [
+            {
+              "id": "wild-whisperer-natural-expertise-base",
+              "label": "Natural Expertise Inspiration",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "inspiration",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 6
+                  }
+                ]
+              },
+              "blockedByOptionIds": [
+                "wild-whisperer-amazing-inspiration-talent",
+                "wild-whisperer-tenacious-inspiration"
+              ],
+              "modeLabel": "Qualifying roll",
+              "modes": [
+                {
+                  "id": "attack",
+                  "label": "Attack against animal or vermin",
+                  "summary": "Add Inspiration to an attack roll against an animal or vermin."
+                },
+                {
+                  "id": "save",
+                  "label": "Save against animal or vermin effect",
+                  "summary": "Add Inspiration to a saving throw against an animal or vermin effect."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "natural-target",
+                  "label": "The target or effect comes from an animal or vermin",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Natural Expertise reduces the Inspiration cost for these attack rolls and saving throws to one point."
+            },
+            {
+              "id": "wild-whisperer-natural-expertise-amazing",
+              "label": "Natural Expertise Inspiration (Amazing Inspiration)",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "inspiration",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Amazing Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 8
+                  },
+                  {
+                    "level": 20,
+                    "sides": 10
+                  }
+                ]
+              },
+              "requiredOptionId": "wild-whisperer-amazing-inspiration-talent",
+              "modeLabel": "Qualifying roll",
+              "modes": [
+                {
+                  "id": "attack",
+                  "label": "Attack against animal or vermin",
+                  "summary": "Add Inspiration to an attack roll against an animal or vermin."
+                },
+                {
+                  "id": "save",
+                  "label": "Save against animal or vermin effect",
+                  "summary": "Add Inspiration to a saving throw against an animal or vermin effect."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "natural-target",
+                  "label": "The target or effect comes from an animal or vermin",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Natural Expertise reduces the Inspiration cost for these attack rolls and saving throws to one point."
+            },
+            {
+              "id": "wild-whisperer-natural-expertise-tenacious",
+              "label": "Natural Expertise Inspiration (Tenacious Inspiration)",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "inspiration",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "diceRoll": {
+                "label": "Tenacious Inspiration",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 2
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 6
+                  }
+                ],
+                "takeHighest": true
+              },
+              "requiredOptionId": "wild-whisperer-tenacious-inspiration",
+              "modeLabel": "Qualifying roll",
+              "modes": [
+                {
+                  "id": "attack",
+                  "label": "Attack against animal or vermin",
+                  "summary": "Add Inspiration to an attack roll against an animal or vermin."
+                },
+                {
+                  "id": "save",
+                  "label": "Save against animal or vermin effect",
+                  "summary": "Add Inspiration to a saving throw against an animal or vermin effect."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "natural-target",
+                  "label": "The target or effect comes from an animal or vermin",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Natural Expertise reduces the Inspiration cost for these attack rolls and saving throws to one point."
+            }
+          ]
         },
         {
           "id": "druid-wild-whisperer-investigator-talent-8",
           "name": "Investigator Talent",
           "level": 8,
-          "type": "archetype",
-          "summary": "At 8th level, wild whisperer selects an investigator talent (see page 32). This ability replaces the additional use of wild shape at 8th level."
+          "type": "selectable",
+          "summary": "Choose one Investigator Talent using Druid level as effective Investigator level. The selected talent updates the Inspiration controls when it changes the die, cost, free skills, or available actions.",
+          "choiceRequired": true,
+          "optionGroupId": "druid-wild-whisperer-talents",
+          "optionChoiceIds": [
+            "wild-whisperer-amazing-inspiration-talent",
+            "wild-whisperer-combat-inspiration",
+            "wild-whisperer-device-talent",
+            "wild-whisperer-effortless-aid",
+            "wild-whisperer-empathy",
+            "wild-whisperer-expanded-inspiration",
+            "wild-whisperer-inspired-alertness",
+            "wild-whisperer-item-lore",
+            "wild-whisperer-quick-study",
+            "wild-whisperer-sickening-offensive",
+            "wild-whisperer-underworld-inspiration",
+            "wild-whisperer-evasion",
+            "wild-whisperer-tenacious-inspiration",
+            "wild-whisperer-rogue-talent"
+          ],
+          "progressionKey": "wild-whisperer-investigator-talent"
         },
         {
           "id": "druid-wild-whisperer-investigator-talents-1",
@@ -64,8 +1218,33 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Wild%20Whisperer"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Daily Inspiration scaling and refresh, free and paid check actions, Combat/Amazing/Tenacious Inspiration changes, Natural Expertise's reduced cost, legal Investigator Talent selection, restricted Beast Shape I forms with exact size modifiers and duration, and the lost level-6 and level-8 Wild Shape uses are automated."
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "inspiration",
+      "label": "Inspiration",
+      "unit": "point",
+      "operation": "replace",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelDivisor": 2,
+      "abilityModifier": "intelligence",
+      "minimum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
+  ],
+  "wildShapeUseAdjustments": [
+    {
+      "level": 6,
+      "delta": -1
+    },
+    {
+      "level": 8,
+      "delta": -1
+    }
   ]
 }
