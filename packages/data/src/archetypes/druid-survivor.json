@@ -56,33 +56,2528 @@
           "name": "Element of Surprise (Ex)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, if a survivor makes a successful attack during a surprise round against a target that is unaware of her, her victim takes a penalty on its initiative check during the following round equal to half the damage dealt by the survivor’s attack (minimum 0, maximum equal to the survivor’s class level). This cannot reduce an initiative result below 1. This ability replaces resist nature’s lure."
+          "summary": "At 4th level, if a survivor makes a successful attack during a surprise round against a target that is unaware of her, her victim takes a penalty on its initiative check during the following round equal to half the damage dealt by the survivor’s attack (minimum 0, maximum equal to the survivor’s class level). This cannot reduce an initiative result below 1. This ability replaces resist nature’s lure.",
+          "resourceActions": [
+            {
+              "id": "survivor-element-of-surprise",
+              "label": "Apply Element of Surprise",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "free"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "surprise-attack",
+                  "label": "The attack hit an unaware target during the surprise round",
+                  "requiredForActivation": true
+                }
+              ],
+              "numericInputEffect": {
+                "label": "Damage dealt",
+                "minimum": 1,
+                "maximum": 999,
+                "divisor": 2,
+                "maximumClassLevel": true,
+                "name": "Element of Surprise",
+                "target": "enemy",
+                "operation": "penalty",
+                "description": "The target takes a -{amount} penalty on its initiative check next round after taking {input} damage; its initiative result cannot fall below 1.",
+                "rounds": 1
+              },
+              "summary": "Enter damage from the qualifying attack; the tracker halves it, caps it at Druid level, and applies the exact one-round initiative penalty."
+            }
+          ]
         },
         {
-          "id": "druid-survivor-trap-4",
-          "name": "Trap",
+          "id": "druid-survivor-ranger-trap-4",
+          "name": "Ranger Trap 1",
           "level": 4,
-          "type": "archetype",
-          "summary": "At 4th level, a survivor learns how to create a snare trap ( Pathfinder RPG Ultimate Magic 65) and one other ranger trap of her choice (see page 25 or Ultimate Magic 64). At 6th level and every 2 levels thereafter, she learns another trap. The survivor can use these traps a total number of times per day equal to 1/2 her druid level + her Wisdom modifier. Once a trap is learned, it can’t be unlearned and replaced with a different type of trap. The survivor cannot select an individual trap more than once. This ability replaces wild shape."
+          "type": "selectable",
+          "summary": "You automatically know Snare Trap. Choose one additional unique ranger trap; all trap controls share the Survivor's daily pool.",
+          "choiceRequired": true,
+          "optionGroupId": "druid-survivor-traps",
+          "optionChoiceIds": [
+            "survivor-trap-alarm",
+            "survivor-trap-burning",
+            "survivor-trap-exploding",
+            "survivor-trap-fire",
+            "survivor-trap-freezing",
+            "survivor-trap-marking",
+            "survivor-trap-poison",
+            "survivor-trap-sleet",
+            "survivor-trap-swarm"
+          ],
+          "progressionKey": "survivor-ranger-traps",
+          "resourceActions": [
+            {
+              "id": "survivor-set-alarm-extraordinary",
+              "label": "Set extraordinary Alarm Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 2,
+              "requiredOptionId": "survivor-trap-alarm",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "base-trap",
+                  "label": "A legal base trap is included and spends the second trap use",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Survivor Alarm Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Modifier: add a momentary loud noise equivalent to audible alarm when the underlying trap triggers. Extraordinary duration is 1 day per Druid level and its DC is 2 lower.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 57600
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 72000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 86400
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 100800
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 115200
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 129600
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 144000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 158400
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 172800
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 187200
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 201600
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 216000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 230400
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 244800
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 259200
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 273600
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 288000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend two uses (one for the base trap and one for the modifier); the control calculates the -2 extraordinary trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-alarm-magical",
+              "label": "Set magical Alarm Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 2,
+              "requiredOptionId": "survivor-trap-alarm",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "base-trap",
+                  "label": "A legal base trap is included and spends the second trap use",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Survivor Alarm Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Modifier: add a momentary loud noise equivalent to audible alarm when the underlying trap triggers. Magical duration is 1 hour per Druid level.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend two uses (one for the base trap and one for the modifier); the control calculates the normal trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-burning-extraordinary",
+              "label": "Set extraordinary Burning Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 2,
+              "requiredOptionId": "survivor-trap-burning",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "base-trap",
+                  "label": "A legal base trap (Fire Trap) is included and spends the second trap use",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Extraordinary trap save",
+                "ability": "wisdom",
+                "base": 8,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Burning Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Modifier for a fire trap: a failed Reflex save catches the target on fire for 1d4 rounds, dealing 1d6 fire damage at the start of each turn. Extraordinary duration is 1 day per Druid level and its DC is 2 lower.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 57600
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 72000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 86400
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 100800
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 115200
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 129600
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 144000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 158400
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 172800
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 187200
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 201600
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 216000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 230400
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 244800
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 259200
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 273600
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 288000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend two uses (one for the base trap and one for the modifier); the control calculates the -2 extraordinary trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-burning-magical",
+              "label": "Set magical Burning Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 2,
+              "requiredOptionId": "survivor-trap-burning",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "base-trap",
+                  "label": "A legal base trap (Fire Trap) is included and spends the second trap use",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Trap save",
+                "ability": "wisdom",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Burning Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Modifier for a fire trap: a failed Reflex save catches the target on fire for 1d4 rounds, dealing 1d6 fire damage at the start of each turn. Magical duration is 1 hour per Druid level.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend two uses (one for the base trap and one for the modifier); the control calculates the normal trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-exploding-extraordinary",
+              "label": "Set extraordinary Exploding Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 2,
+              "requiredOptionId": "survivor-trap-exploding",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "base-trap",
+                  "label": "A legal base trap (Fire Trap) is included and spends the second trap use",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Extraordinary trap save",
+                "ability": "wisdom",
+                "base": 8,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Exploding Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Modifier for a fire trap: adjacent squares take 1d6 + half Druid level fire damage; Reflex negates. Extraordinary duration is 1 day per Druid level and its DC is 2 lower.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 57600
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 72000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 86400
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 100800
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 115200
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 129600
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 144000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 158400
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 172800
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 187200
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 201600
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 216000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 230400
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 244800
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 259200
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 273600
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 288000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend two uses (one for the base trap and one for the modifier); the control calculates the -2 extraordinary trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-exploding-magical",
+              "label": "Set magical Exploding Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 2,
+              "requiredOptionId": "survivor-trap-exploding",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "base-trap",
+                  "label": "A legal base trap (Fire Trap) is included and spends the second trap use",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Trap save",
+                "ability": "wisdom",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Exploding Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Modifier for a fire trap: adjacent squares take 1d6 + half Druid level fire damage; Reflex negates. Magical duration is 1 hour per Druid level.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend two uses (one for the base trap and one for the modifier); the control calculates the normal trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-fire-extraordinary",
+              "label": "Set extraordinary Fire Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 1,
+              "requiredOptionId": "survivor-trap-fire",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "savingThrow": {
+                "label": "Extraordinary trap save",
+                "ability": "wisdom",
+                "base": 8,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Fire Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Deal 1d6 + half Druid level fire damage to the triggering creature; Reflex negates. Extraordinary duration is 1 day per Druid level and its DC is 2 lower.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 57600
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 72000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 86400
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 100800
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 115200
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 129600
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 144000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 158400
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 172800
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 187200
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 201600
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 216000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 230400
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 244800
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 259200
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 273600
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 288000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend one use; the control calculates the -2 extraordinary trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-fire-magical",
+              "label": "Set magical Fire Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 1,
+              "requiredOptionId": "survivor-trap-fire",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "savingThrow": {
+                "label": "Trap save",
+                "ability": "wisdom",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Fire Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Deal 1d6 + half Druid level fire damage to the triggering creature; Reflex negates. Magical duration is 1 hour per Druid level.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend one use; the control calculates the normal trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-freezing-magical",
+              "label": "Set magical Freezing Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 1,
+              "requiredOptionId": "survivor-trap-freezing",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "savingThrow": {
+                "label": "Trap save",
+                "ability": "wisdom",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Freezing Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Deal 1d3 + one-quarter Druid level cold damage and entangle the target; Reflex halves damage and prevents it being stuck to the ground. Magical duration is 1 hour per Druid level.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend one use; the control calculates the normal trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-marking-extraordinary",
+              "label": "Set extraordinary Marking Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 2,
+              "requiredOptionId": "survivor-trap-marking",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "base-trap",
+                  "label": "A legal base trap is included and spends the second trap use",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Extraordinary trap save",
+                "ability": "wisdom",
+                "base": 8,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Marking Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Modifier: mark a creature that fails its save with dye or scent; a scent mark reduces scent-tracking DC by 4. Extraordinary duration is 1 day per Druid level and its DC is 2 lower.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 57600
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 72000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 86400
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 100800
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 115200
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 129600
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 144000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 158400
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 172800
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 187200
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 201600
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 216000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 230400
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 244800
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 259200
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 273600
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 288000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend two uses (one for the base trap and one for the modifier); the control calculates the -2 extraordinary trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-marking-magical",
+              "label": "Set magical Marking Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 2,
+              "requiredOptionId": "survivor-trap-marking",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "base-trap",
+                  "label": "A legal base trap is included and spends the second trap use",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Trap save",
+                "ability": "wisdom",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Marking Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Modifier: mark a creature that fails its save with dye or scent; a scent mark reduces scent-tracking DC by 4. Magical duration is 1 hour per Druid level.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend two uses (one for the base trap and one for the modifier); the control calculates the normal trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-poison-extraordinary",
+              "label": "Set extraordinary Poison Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 1,
+              "requiredOptionId": "survivor-trap-poison",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "savingThrow": {
+                "label": "Extraordinary trap save",
+                "ability": "wisdom",
+                "base": 8,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Poison Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Supernatural poison deals 1d2 Constitution damage each round for 6 rounds; an extraordinary version delivers a supplied poison. Extraordinary duration is 1 day per Druid level and its DC is 2 lower.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 57600
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 72000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 86400
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 100800
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 115200
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 129600
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 144000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 158400
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 172800
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 187200
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 201600
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 216000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 230400
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 244800
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 259200
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 273600
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 288000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend one use; the control calculates the -2 extraordinary trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-poison-magical",
+              "label": "Set magical Poison Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 1,
+              "requiredOptionId": "survivor-trap-poison",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "savingThrow": {
+                "label": "Trap save",
+                "ability": "wisdom",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Poison Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Supernatural poison deals 1d2 Constitution damage each round for 6 rounds; an extraordinary version delivers a supplied poison. Magical duration is 1 hour per Druid level.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend one use; the control calculates the normal trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-sleet-magical",
+              "label": "Set magical Sleet Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 1,
+              "requiredOptionId": "survivor-trap-sleet",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "savingThrow": {
+                "label": "Trap save",
+                "ability": "wisdom",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Sleet Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Create a 20-foot-radius sleet storm for 1 round; icy ground persists for 1 round per Druid level. Magical duration is 1 hour per Druid level.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend one use; the control calculates the normal trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-snare-extraordinary",
+              "label": "Set extraordinary Snare Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "savingThrow": {
+                "label": "Extraordinary trap save",
+                "ability": "wisdom",
+                "base": 8,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Snare Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Immobilize a creature that fails Reflex; Escape Artist uses the trap DC, the leash has half Druid level hit points, and Strength DC 25 bursts it. Extraordinary duration is 1 day per Druid level and its DC is 2 lower.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 57600
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 72000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 86400
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 100800
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 115200
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 129600
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 144000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 158400
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 172800
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 187200
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 201600
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 216000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 230400
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 244800
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 259200
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 273600
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 288000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend one use; the control calculates the -2 extraordinary trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-snare-magical",
+              "label": "Set magical Snare Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "savingThrow": {
+                "label": "Trap save",
+                "ability": "wisdom",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Snare Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Immobilize a creature that fails Reflex; Escape Artist uses the trap DC, the leash has half Druid level hit points, and Strength DC 25 bursts it. Magical duration is 1 hour per Druid level.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend one use; the control calculates the normal trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-swarm-extraordinary",
+              "label": "Set extraordinary Swarm Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 1,
+              "requiredOptionId": "survivor-trap-swarm",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "savingThrow": {
+                "label": "Extraordinary trap save",
+                "ability": "wisdom",
+                "base": 8,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Swarm Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Release a bat, rat, or spider swarm for up to 1 round per Druid level. Extraordinary duration is 1 day per Druid level and its DC is 2 lower.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 57600
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 72000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 86400
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 100800
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 115200
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 129600
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 144000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 158400
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 172800
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 187200
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 201600
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 216000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 230400
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 244800
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 259200
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 273600
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 288000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend one use; the control calculates the -2 extraordinary trap DC and tracks its duration."
+            },
+            {
+              "id": "survivor-set-swarm-magical",
+              "label": "Set magical Swarm Trap",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "survivorTraps",
+              "cost": 1,
+              "requiredOptionId": "survivor-trap-swarm",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "savingThrow": {
+                "label": "Trap save",
+                "ability": "wisdom",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "activeEffect": {
+                "name": "Survivor Swarm Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Release a bat, rat, or spider swarm for up to 1 round per Druid level. Magical duration is 1 hour per Druid level.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend one use; the control calculates the normal trap DC and tracks its duration."
+            }
+          ],
+          "progressionProfiles": [
+            {
+              "id": "survivor-trap-progression",
+              "label": "Ranger Traps Known",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "known",
+                  "label": "Total traps known"
+                },
+                {
+                  "id": "dc",
+                  "label": "Magical trap DC"
+                },
+                {
+                  "id": "uses",
+                  "label": "Daily pool"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "known": 2,
+                    "dc": "10 + 2 + Wisdom modifier",
+                    "uses": "floor(4 / 2) + Wisdom modifier"
+                  }
+                },
+                {
+                  "level": 6,
+                  "values": {
+                    "known": 3,
+                    "dc": "10 + 3 + Wisdom modifier",
+                    "uses": "floor(6 / 2) + Wisdom modifier"
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "known": 4,
+                    "dc": "10 + 4 + Wisdom modifier",
+                    "uses": "floor(8 / 2) + Wisdom modifier"
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "known": 5,
+                    "dc": "10 + 5 + Wisdom modifier",
+                    "uses": "floor(10 / 2) + Wisdom modifier"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "known": 6,
+                    "dc": "10 + 6 + Wisdom modifier",
+                    "uses": "floor(12 / 2) + Wisdom modifier"
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "known": 7,
+                    "dc": "10 + 7 + Wisdom modifier",
+                    "uses": "floor(14 / 2) + Wisdom modifier"
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "known": 8,
+                    "dc": "10 + 8 + Wisdom modifier",
+                    "uses": "floor(16 / 2) + Wisdom modifier"
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "known": 9,
+                    "dc": "10 + 9 + Wisdom modifier",
+                    "uses": "floor(18 / 2) + Wisdom modifier"
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "known": 10,
+                    "dc": "10 + 10 + Wisdom modifier",
+                    "uses": "floor(20 / 2) + Wisdom modifier"
+                  }
+                }
+              ],
+              "summary": "Snare Trap is automatic; each selector adds one different trap. Extraordinary traps use DC 2 lower."
+            }
+          ]
+        },
+        {
+          "id": "druid-survivor-ranger-trap-6",
+          "name": "Ranger Trap 2",
+          "level": 6,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-survivor-traps",
+          "optionChoiceIds": [
+            "survivor-trap-alarm",
+            "survivor-trap-burning",
+            "survivor-trap-exploding",
+            "survivor-trap-fire",
+            "survivor-trap-freezing",
+            "survivor-trap-marking",
+            "survivor-trap-poison",
+            "survivor-trap-sleet",
+            "survivor-trap-swarm"
+          ],
+          "progressionKey": "survivor-ranger-traps",
+          "summary": "Choose another unique ranger trap. A learned trap cannot be exchanged or selected more than once."
+        },
+        {
+          "id": "druid-survivor-ranger-trap-8",
+          "name": "Ranger Trap 3",
+          "level": 8,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-survivor-traps",
+          "optionChoiceIds": [
+            "survivor-trap-alarm",
+            "survivor-trap-burning",
+            "survivor-trap-exploding",
+            "survivor-trap-fire",
+            "survivor-trap-freezing",
+            "survivor-trap-marking",
+            "survivor-trap-poison",
+            "survivor-trap-sleet",
+            "survivor-trap-swarm"
+          ],
+          "progressionKey": "survivor-ranger-traps",
+          "summary": "Choose another unique ranger trap. A learned trap cannot be exchanged or selected more than once."
+        },
+        {
+          "id": "druid-survivor-ranger-trap-10",
+          "name": "Ranger Trap 4",
+          "level": 10,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-survivor-traps",
+          "optionChoiceIds": [
+            "survivor-trap-alarm",
+            "survivor-trap-burning",
+            "survivor-trap-exploding",
+            "survivor-trap-fire",
+            "survivor-trap-freezing",
+            "survivor-trap-marking",
+            "survivor-trap-poison",
+            "survivor-trap-sleet",
+            "survivor-trap-swarm"
+          ],
+          "progressionKey": "survivor-ranger-traps",
+          "summary": "Choose another unique ranger trap. A learned trap cannot be exchanged or selected more than once."
+        },
+        {
+          "id": "druid-survivor-ranger-trap-12",
+          "name": "Ranger Trap 5",
+          "level": 12,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-survivor-traps",
+          "optionChoiceIds": [
+            "survivor-trap-alarm",
+            "survivor-trap-burning",
+            "survivor-trap-exploding",
+            "survivor-trap-fire",
+            "survivor-trap-freezing",
+            "survivor-trap-marking",
+            "survivor-trap-poison",
+            "survivor-trap-sleet",
+            "survivor-trap-swarm"
+          ],
+          "progressionKey": "survivor-ranger-traps",
+          "summary": "Choose another unique ranger trap. A learned trap cannot be exchanged or selected more than once."
+        },
+        {
+          "id": "druid-survivor-ranger-trap-14",
+          "name": "Ranger Trap 6",
+          "level": 14,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-survivor-traps",
+          "optionChoiceIds": [
+            "survivor-trap-alarm",
+            "survivor-trap-burning",
+            "survivor-trap-exploding",
+            "survivor-trap-fire",
+            "survivor-trap-freezing",
+            "survivor-trap-marking",
+            "survivor-trap-poison",
+            "survivor-trap-sleet",
+            "survivor-trap-swarm"
+          ],
+          "progressionKey": "survivor-ranger-traps",
+          "summary": "Choose another unique ranger trap. A learned trap cannot be exchanged or selected more than once."
+        },
+        {
+          "id": "druid-survivor-ranger-trap-16",
+          "name": "Ranger Trap 7",
+          "level": 16,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-survivor-traps",
+          "optionChoiceIds": [
+            "survivor-trap-alarm",
+            "survivor-trap-burning",
+            "survivor-trap-exploding",
+            "survivor-trap-fire",
+            "survivor-trap-freezing",
+            "survivor-trap-marking",
+            "survivor-trap-poison",
+            "survivor-trap-sleet",
+            "survivor-trap-swarm"
+          ],
+          "progressionKey": "survivor-ranger-traps",
+          "summary": "Choose another unique ranger trap. A learned trap cannot be exchanged or selected more than once."
+        },
+        {
+          "id": "druid-survivor-ranger-trap-18",
+          "name": "Ranger Trap 8",
+          "level": 18,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-survivor-traps",
+          "optionChoiceIds": [
+            "survivor-trap-alarm",
+            "survivor-trap-burning",
+            "survivor-trap-exploding",
+            "survivor-trap-fire",
+            "survivor-trap-freezing",
+            "survivor-trap-marking",
+            "survivor-trap-poison",
+            "survivor-trap-sleet",
+            "survivor-trap-swarm"
+          ],
+          "progressionKey": "survivor-ranger-traps",
+          "summary": "Choose another unique ranger trap. A learned trap cannot be exchanged or selected more than once."
+        },
+        {
+          "id": "druid-survivor-ranger-trap-20",
+          "name": "Ranger Trap 9",
+          "level": 20,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "druid-survivor-traps",
+          "optionChoiceIds": [
+            "survivor-trap-alarm",
+            "survivor-trap-burning",
+            "survivor-trap-exploding",
+            "survivor-trap-fire",
+            "survivor-trap-freezing",
+            "survivor-trap-marking",
+            "survivor-trap-poison",
+            "survivor-trap-sleet",
+            "survivor-trap-swarm"
+          ],
+          "progressionKey": "survivor-ranger-traps",
+          "summary": "Choose another unique ranger trap. A learned trap cannot be exchanged or selected more than once."
         },
         {
           "id": "druid-survivor-launch-trap-9",
           "name": "Launch Trap",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, a survivor can affix a magical ranger trap to an arrow or thrown weapon, allowing her to set the trap remotely or use it as a direct attack. Attaching the trap to the projectile is part of the full-round action of creating a new trap. The trapped projectile is fired or thrown in the normal manner. If the projectile is fired at a square, the trap is treated as if the survivor had set the trap in that square, except the DC is 5 lower than normal. If the projectile is fired at a creature, the target takes damage from the ranged weapon and is treated as if it had triggered the trap (saving throw applies, if any). The attack has a maximum range of 60 feet, and range increments apply to the attack roll. The duration of the trapped projectile starts from when it is created, not from when it is used. This ability replaces venom immunity."
+          "summary": "At 9th level, a survivor can affix a magical ranger trap to an arrow or thrown weapon, allowing her to set the trap remotely or use it as a direct attack. Attaching the trap to the projectile is part of the full-round action of creating a new trap. The trapped projectile is fired or thrown in the normal manner. If the projectile is fired at a square, the trap is treated as if the survivor had set the trap in that square, except the DC is 5 lower than normal. If the projectile is fired at a creature, the target takes damage from the ranged weapon and is treated as if it had triggered the trap (saving throw applies, if any). The attack has a maximum range of 60 feet, and range increments apply to the attack roll. The duration of the trapped projectile starts from when it is created, not from when it is used. This ability replaces venom immunity.",
+          "resourceActions": [
+            {
+              "id": "survivor-launch-standard-trap",
+              "label": "Create launched magical trap",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "resourceId": "survivorTraps",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "full-round"
+                }
+              ],
+              "modeLabel": "Learned standard trap",
+              "modes": [
+                {
+                  "id": "launch-fire",
+                  "label": "Fire Trap",
+                  "summary": "Launch this learned magical trap for one use.",
+                  "requiredOptionId": "survivor-trap-fire"
+                },
+                {
+                  "id": "launch-freezing",
+                  "label": "Freezing Trap",
+                  "summary": "Launch this learned magical trap for one use.",
+                  "requiredOptionId": "survivor-trap-freezing"
+                },
+                {
+                  "id": "launch-poison",
+                  "label": "Poison Trap",
+                  "summary": "Launch this learned magical trap for one use.",
+                  "requiredOptionId": "survivor-trap-poison"
+                },
+                {
+                  "id": "launch-sleet",
+                  "label": "Sleet Trap",
+                  "summary": "Launch this learned magical trap for one use.",
+                  "requiredOptionId": "survivor-trap-sleet"
+                },
+                {
+                  "id": "launch-snare",
+                  "label": "Snare Trap",
+                  "summary": "Launch this learned magical trap for one use."
+                },
+                {
+                  "id": "launch-swarm",
+                  "label": "Swarm Trap",
+                  "summary": "Launch this learned magical trap for one use.",
+                  "requiredOptionId": "survivor-trap-swarm"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "projectile",
+                  "label": "Trap is attached to an arrow or thrown weapon and used within 60 feet",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Launched Survivor Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "The selected magical trap is loaded on the projectile. Against a square its DC is 5 lower; against a creature the weapon deals damage and the target triggers the trap normally.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend one trap use, choose a learned standard trap, and track its one-hour-per-level loaded duration."
+            },
+            {
+              "id": "survivor-launch-modified-trap",
+              "label": "Create launched modified magical trap",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "resourceId": "survivorTraps",
+              "cost": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "full-round"
+                }
+              ],
+              "modeLabel": "Learned modifier",
+              "modes": [
+                {
+                  "id": "launch-alarm",
+                  "label": "Alarm Trap",
+                  "summary": "Launch this modifier with a legal underlying magical trap; the combined trap costs two uses.",
+                  "requiredOptionId": "survivor-trap-alarm"
+                },
+                {
+                  "id": "launch-burning",
+                  "label": "Burning Trap",
+                  "summary": "Launch this modifier with a legal underlying magical trap; the combined trap costs two uses.",
+                  "requiredOptionId": "survivor-trap-burning"
+                },
+                {
+                  "id": "launch-exploding",
+                  "label": "Exploding Trap",
+                  "summary": "Launch this modifier with a legal underlying magical trap; the combined trap costs two uses.",
+                  "requiredOptionId": "survivor-trap-exploding"
+                },
+                {
+                  "id": "launch-marking",
+                  "label": "Marking Trap",
+                  "summary": "Launch this modifier with a legal underlying magical trap; the combined trap costs two uses.",
+                  "requiredOptionId": "survivor-trap-marking"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "base-trap",
+                  "label": "A legal learned base trap is included",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "projectile",
+                  "label": "Trap is attached to an arrow or thrown weapon and used within 60 feet",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Launched Modified Survivor Trap",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "The selected modifier and its base magical trap are loaded on the projectile. Against a square its DC is 5 lower; against a creature the weapon deals damage and triggers the trap.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Spend two trap uses for the learned modifier plus its legal underlying magical trap."
+            }
+          ]
         }
       ]
     }
   ],
-  "classSkillAdditions": ["Stealth"],
+  "classSkillAdditions": [
+    "Stealth"
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Survivor"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Diminished spell slots, Stealth and bow proficiencies, mandatory animal companion, exact Element of Surprise initiative penalty, ten sourced ranger traps with nine permanent unique selections, daily trap scaling, extraordinary and magical DCs/durations/costs, and level-9 launched traps are automated."
+  ],
+  "proficiencyAdjustments": [
+    {
+      "sourceFeatureId": "druid-survivor-weapon-proficiencies-1",
+      "category": "weapon",
+      "operation": "add",
+      "proficiencies": [
+        "Shortbow",
+        "Longbow"
+      ]
+    }
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-animal"
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "survivorTraps",
+      "label": "Ranger Traps",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 4,
+      "base": 0,
+      "levelDivisor": 2,
+      "abilityModifier": "wisdom",
+      "minimum": 0,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
   ]
 }

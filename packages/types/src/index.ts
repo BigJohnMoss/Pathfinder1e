@@ -281,6 +281,18 @@ export interface ClassFeatureOccurrence {
     recipients?: Array<{ id: string; label: string }>;
     companionRosterFeatureId?: string;
     confirmations?: Array<{ id: string; label: string; requiredForActivation?: boolean }>;
+    numericInputEffect?: {
+      label: string;
+      minimum: number;
+      maximum: number;
+      divisor?: number;
+      maximumClassLevel?: boolean;
+      name: string;
+      target: ActiveEffectTarget;
+      operation: "bonus" | "penalty";
+      description: string;
+      rounds: number;
+    };
     classId?: string;
     minimumLevel?: number;
     maximumLevel?: number;
