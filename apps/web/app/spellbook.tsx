@@ -834,6 +834,10 @@ export function Spellbook({
                     (preparedConversion.keyword && spell.name.toLowerCase().includes(preparedConversion.keyword.toLowerCase()))
                   ));
                   const conversionEligible = conversionMatches && (!preparedConversion!.requiresTargetPrepared || prepared > 0);
+                  const conversionBlocked = Boolean(
+                    preparedConversion?.blockedByActiveEffectName &&
+                    activeEffects.some((effect) => effect.name === preparedConversion.blockedByActiveEffectName),
+                  );
                   const conversionSourceLevel = conversionEligible
                     ? preparedLimits
                         .map((entry) => entry.level)
@@ -1007,7 +1011,7 @@ export function Spellbook({
                             {spellstrikeEligible(spell) && <button type="button" aria-label={`Cast ${spell.name} with Spellstrike`} disabled={!canCast} onClick={() => useSpellstrike(spell, level)}>Spellstrike</button>}
                             {criticalStrikeEligible(spell) && <button type="button" aria-label={`Cast ${spell.name} with Critical Strike`} disabled={!canCast || !criticalStrikeResource || (criticalStrikeResource.maximum !== null && criticalStrikeResource.used >= criticalStrikeResource.maximum)} onClick={() => useCriticalStrike(spell, level)}>Critical Strike</button>}
                             {bondedObjectCastResource && <button type="button" aria-label={`Cast ${spell.name} with ${bondedObjectCastResource.label}`} disabled={bondedObjectCastResource.maximum !== null && bondedObjectCastResource.used >= bondedObjectCastResource.maximum} onClick={() => useBondedObjectCast(spell)}>{bondedObjectCastResource.label}</button>}
-                            {conversionEligible && <button type="button" aria-label={`Cast ${spell.name} with ${preparedConversion!.label}`} disabled={conversionSourceLevel === undefined} onClick={castPreparedConversion}>{preparedConversion!.label}</button>}
+                            {conversionEligible && <button type="button" aria-label={`Cast ${spell.name} with ${preparedConversion!.label}`} title={conversionBlocked ? `Blocked while ${preparedConversion!.blockedByActiveEffectName} is active.` : preparedConversion!.restriction} disabled={conversionSourceLevel === undefined || conversionBlocked} onClick={castPreparedConversion}>{preparedConversion!.label}</button>}
                             {armamentRules && <div className="signature-techniques">
                               {maximumEnhancementBonus > baseEnhancementBonus && <label>Enhancement<select aria-label={`${spell.name} enhancement bonus`} value={armamentEnhancementBonus} onChange={(event) => setArmamentEnhancementBonuses((current) => ({ ...current, [spell.id]: Number(event.target.value) }))}>{Array.from({ length: maximumEnhancementBonus - baseEnhancementBonus + 1 }, (_, index) => baseEnhancementBonus + index).map((bonus) => <option key={bonus} value={bonus}>+{bonus}</option>)}</select></label>}
                               <fieldset><legend>Weapon properties</legend>{armamentRules.properties.map((property) => <label key={property.id} title={property.description}><input type="checkbox" checked={selectedArmamentPropertyIds.includes(property.id)} onChange={(event) => toggleArmamentProperty(property.id, event.target.checked)} />{property.label} (+{property.priceModifier})</label>)}</fieldset>
