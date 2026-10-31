@@ -118,10 +118,63 @@
         },
         {
           "id": "bard-averaka-arbiter-versatile-teamwork-ex-2",
-          "name": "Versatile Teamwork (Ex)",
+          "name": "Versatile Teamwork 1",
           "level": 2,
-          "type": "archetype",
-          "summary": "At 2nd level, an Averaka arbiter gains a bonus teamwork feat . He gains an additional bonus teamwork feat at 6th level and every 4 levels thereafter. This ability replaces versatile performance and well-versed."
+          "type": "selectable",
+          "summary": "Choose the first of five bonus teamwork feats. Normal feat prerequisites apply.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": [
+            "teamwork"
+          ]
+        },
+        {
+          "id": "bard-averaka-arbiter-versatile-teamwork-ex-6",
+          "name": "Versatile Teamwork 2",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Choose the second of five bonus teamwork feats. Normal feat prerequisites apply.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": [
+            "teamwork"
+          ]
+        },
+        {
+          "id": "bard-averaka-arbiter-versatile-teamwork-ex-10",
+          "name": "Versatile Teamwork 3",
+          "level": 10,
+          "type": "selectable",
+          "summary": "Choose the third of five bonus teamwork feats. Normal feat prerequisites apply.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": [
+            "teamwork"
+          ]
+        },
+        {
+          "id": "bard-averaka-arbiter-versatile-teamwork-ex-14",
+          "name": "Versatile Teamwork 4",
+          "level": 14,
+          "type": "selectable",
+          "summary": "Choose the fourth of five bonus teamwork feats. Normal feat prerequisites apply.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": [
+            "teamwork"
+          ]
+        },
+        {
+          "id": "bard-averaka-arbiter-versatile-teamwork-ex-18",
+          "name": "Versatile Teamwork 5",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Choose the fifth of five bonus teamwork feats. Normal feat prerequisites apply.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": [
+            "teamwork"
+          ]
         }
       ]
     }
@@ -131,8 +184,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Averaka%20Arbiter"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Five unique, prerequisite-aware teamwork feat slots unlock at levels 2, 6, 10, 14, and 18. Inspire Teamwork tracks the ally-qualification state, and Ritual of Reconciliation resolves its scaling Will save and attitude effect."
   ]
 }
