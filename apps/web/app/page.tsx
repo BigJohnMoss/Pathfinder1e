@@ -1689,8 +1689,10 @@ export default function Home() {
     const alignmentRestrictedGroup = unrestrictedBaseGroup && feature.optionGroupId === "hex-channeler-polarities"
       ? { ...unrestrictedBaseGroup, options: unrestrictedBaseGroup.options.filter((option) => channelEnergyPolarityOptionIdsForAlignment(alignment).includes(option.id)) }
       : unrestrictedBaseGroup;
-    const rawBaseGroup = alignmentRestrictedGroup && feature.optionChoiceIds?.length
-      ? { ...alignmentRestrictedGroup, options: alignmentRestrictedGroup.options.filter((option) => feature.optionChoiceIds?.includes(option.id)) }
+    const alignmentChoiceIds = feature.optionChoiceIdsByAlignment?.[alignment];
+    const permittedChoiceIds = alignmentChoiceIds?.length ? alignmentChoiceIds : feature.optionChoiceIds;
+    const rawBaseGroup = alignmentRestrictedGroup && permittedChoiceIds?.length
+      ? { ...alignmentRestrictedGroup, options: alignmentRestrictedGroup.options.filter((option) => permittedChoiceIds.includes(option.id)) }
       : alignmentRestrictedGroup;
     const augmentationOptions = (featureCharacterClass?.optionGroupAugmentations ?? [])
       .filter((augmentation) =>
@@ -1915,10 +1917,8 @@ export default function Home() {
       setSaveNotice(`Exchanged one signature spell. ${signatureSpellExchangeCredits - 1} exchange${signatureSpellExchangeCredits - 1 === 1 ? "" : "s"} remain from Arcanist levels gained.`);
     }
     setSelectedOptions((current) => ({ ...current, [featureId]: optionId }));
-    if (featureId === "cleric-alignment-1" || featureId === "faith-singer-alignment-1") {
-      const nextAlignment = optionGroups.flatMap((group) => group.options).find((option) => option.id === optionId)?.alignment;
-      if (nextAlignment) setAlignment(nextAlignment as Alignment);
-    }
+    const nextAlignment = optionGroups.flatMap((group) => group.options).find((option) => option.id === optionId)?.alignment;
+    if (nextAlignment) setAlignment(nextAlignment as Alignment);
   };
   const signatureSpellChoiceChangeRules = Object.fromEntries(
     classOptionChoices
