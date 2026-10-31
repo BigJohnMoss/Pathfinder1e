@@ -74,6 +74,22 @@
               "minimumLevel": 1,
               "resourceId": "bardicPerformance",
               "cost": 1,
+              "diceRoll": {
+                "label": "Perform check",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Perform (dance or sing) modifier"
+              },
               "activeEffect": {
                 "name": "Begin Fire Dance",
                 "targets": [
@@ -152,8 +168,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Flame%20Dancer"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Fire Dance rolls and records the live Perform result, Song of the Fiery Gaze and Fire Break track maintained ally effects, fire resistance scales from 20 to 30, and all three Fan the Flames bonus spells are added automatically."
   ]
 }
