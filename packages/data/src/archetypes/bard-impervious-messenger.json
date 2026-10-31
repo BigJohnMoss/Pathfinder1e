@@ -87,6 +87,23 @@
               "minimumLevel": 6,
               "resourceId": "bardicPerformance",
               "cost": 1,
+              "diceRoll": {
+                "label": "Perform check",
+                "diceCountByLevel": [
+                  {
+                    "level": 6,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 6,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Perform modifier",
+                "targetDcInputLabel": "Mind-reading save DC"
+              },
               "activeEffect": {
                 "name": "Begin Song of Subterfuge",
                 "targets": [
@@ -136,9 +153,9 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Impervious%20Messenger"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Page-memory cost and cap, Song of Subterfuge's live Perform roll, Unbroken Stride's four skill bonuses and scaling speed, and every Cryptic Whisper skill and saving-throw bonus are automated."
   ],
   "skillBonusAdjustments": [
     {
@@ -172,6 +189,37 @@
       "base": 0,
       "levelDivisor": 2,
       "condition": "While using Unbroken Stride"
+    },
+    {
+      "sourceFeatureId": "bard-impervious-messenger-cryptic-whisper-ex-2",
+      "skill": "Linguistics",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-impervious-messenger-cryptic-whisper-ex-2",
+      "skill": "Bluff",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1,
+      "condition": "Checks to deliver secret messages"
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "bard-impervious-messenger-cryptic-whisper-ex-2",
+      "label": "Cryptic Whisper",
+      "condition": "Saving throws against glyph spells, symbol spells, and language-dependent effects",
+      "minimumLevel": 2,
+      "base": 4,
+      "appliesTo": [
+        "fortitude",
+        "reflex",
+        "will"
+      ]
     }
   ],
   "landSpeedAdjustments": [
