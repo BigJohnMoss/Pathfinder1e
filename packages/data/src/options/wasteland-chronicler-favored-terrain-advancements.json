@@ -1,0 +1,21 @@
+{
+  "id": "wasteland-chronicler-favored-terrain-advancements",
+  "name": "Wasteland Chronicler Favored Terrain Advancements",
+  "classIds": ["bard"],
+  "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Wasteland%20Chronicler"},
+  "optionDefaults": {
+    "groupId": "wasteland-chronicler-favored-terrain-advancements",
+    "classIds": ["bard"],
+    "minimumLevel": 3,
+    "prerequisites": [],
+    "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Wasteland%20Chronicler"},
+    "favoredTerrainAdvancement": {"newTerrainBonus": 2, "increaseBonus": 2},
+    "choice": {"key": "favoredTerrainIncrease", "label": "Increase favored terrain bonus", "optionSource": "selected-favored-terrains"}
+  },
+  "options": [
+    {"id": "wasteland-chronicler-terrain-cold", "name": "Cold favored terrain", "favoredTerrainId": "ranger-terrain-cold", "benefit": "Add cold as a new favored terrain at +2, then increase one favored-terrain bonus by +2."},
+    {"id": "wasteland-chronicler-terrain-desert", "name": "Desert favored terrain", "favoredTerrainId": "ranger-terrain-desert", "benefit": "Add desert as a new favored terrain at +2, then increase one favored-terrain bonus by +2."},
+    {"id": "wasteland-chronicler-terrain-mountain", "name": "Mountain favored terrain", "favoredTerrainId": "ranger-terrain-mountain", "benefit": "Add mountain as a new favored terrain at +2, then increase one favored-terrain bonus by +2."},
+    {"id": "wasteland-chronicler-terrain-swamp", "name": "Swamp favored terrain", "favoredTerrainId": "ranger-terrain-swamp", "benefit": "Add swamp as a new favored terrain at +2, then increase one favored-terrain bonus by +2."}
+  ]
+}
