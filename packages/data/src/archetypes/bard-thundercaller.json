@@ -236,13 +236,36 @@
       ]
     }
   ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "bard-thundercaller-bound-to-the-land-ex-1",
+      "skill": "Handle Animal",
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-thundercaller-bound-to-the-land-ex-1",
+      "skill": "Knowledge (nature)",
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-thundercaller-bound-to-the-land-ex-1",
+      "skill": "Survival",
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Thundercaller"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Bound to the Land applies all three half-level skill bonuses. Thunder Call rolls scaling sonic damage and its Fortitude rider, Incite Rage resolves Will saves and immunity, and both lightning performances use their spell-equivalent actions and performance resource."
   ]
 }
