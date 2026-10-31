@@ -7,7 +7,7 @@ This report distinguishes selectable replacement integration from bespoke rules 
 | Alchemist | 0 | 63 | 0 | 63 |
 | Arcanist | 15 | 0 | 0 | 15 |
 | Barbarian | 11 | 30 | 0 | 41 |
-| Bard | 72 | 1 | 0 | 73 |
+| Bard | 73 | 0 | 0 | 73 |
 | Bloodrager | 0 | 18 | 0 | 18 |
 | Brawler | 0 | 19 | 0 | 19 |
 | Cavalier | 2 | 35 | 0 | 37 |
