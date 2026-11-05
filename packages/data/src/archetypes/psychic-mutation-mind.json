@@ -4,9 +4,9 @@
   "classId": "psychic",
   "summary": "Exposure to unintended spell effects, curses, or sources of radiation cause some to manifest psychic powers. When a mutation mind uses her psychic abilities, her physical body changes under the stress, and she risks losing control if she pushes too far.",
   "replacesText": "1st-level Phrenic Amplification; Phrenic Amplifications; Major Amplifications",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Physical Mutation tracks its level-scaled Strength bonus, Intelligence penalty, daily minute pool, phrenic extension, dismissal, and fatigue. Basic and improved mutations are selectable and expose only owned controls while transformed. Phrenic Empowerment tracks spell-level duration and its escalating control-save penalty workflow."
   ],
   "replacements": [
     {
@@ -18,32 +18,571 @@
         {
           "id": "psychic-mutation-mind-physical-mutation-su-12",
           "name": "Physical Mutation (Su)",
-          "level": 12,
+          "level": 1,
           "type": "archetype",
-          "summary": "A mutation mind’s psychic powers warp her body, allowing her to physically mutate herself as a swift action, which grants her a +4 enhancement bonus to Strength and a –2 penalty to Intelligence. At 12th level, the bonus to Strength increases to +6. A mutation mind can assume her physically mutated form for a number of minutes per day equal to her psychic level. The minutes don’t have to be used consecutively, but must be used in 1-minute increments. When the duration runs out, the mutation mind can spend 1 point from her phrenic pool to extend the duration by 1 round. She can continue extending it in this way until she runs out of points. After the mutation ends, the mutation mind is fatigued and can’t activate a physical mutation again for 1 round. Turning back to normal before the end of a 1-minute increment takes a standard action. This ability replaces the 1st-level phrenic amplification."
+          "summary": "Assume a physical mutation as a swift action for level minutes per day, gaining +4 Strength (+6 at level 12) and -2 Intelligence; extend it with phrenic points or dismiss it and become fatigued.",
+          "resourceActions": [
+            {
+              "id": "mutation-mind-assume-form",
+              "label": "Assume Physical Mutation",
+              "classId": "psychic",
+              "minimumLevel": 1,
+              "resourceId": "physicalMutationMinutes",
+              "cost": 1,
+              "blockedByActiveEffectName": "Physical Mutation",
+              "blockedByActiveEffectNames": [
+                "Physical Mutation fatigue"
+              ],
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Physical Mutation",
+                "targets": [
+                  "strength"
+                ],
+                "bonus": 4,
+                "bonusByLevel": [
+                  {
+                    "level": 1,
+                    "bonus": 4
+                  },
+                  {
+                    "level": 12,
+                    "bonus": 6
+                  }
+                ],
+                "description": "Enhancement bonus to Strength while physically mutated.",
+                "defaultRounds": 10,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "additionalEffectsByLevel": [
+                  {
+                    "minimumLevel": 1,
+                    "name": "Physical Mutation",
+                    "target": "intelligence",
+                    "bonus": -2,
+                    "description": "Physical Mutation imposes a -2 Intelligence penalty."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "mutation-mind-extend-form",
+              "label": "Extend Physical Mutation",
+              "classId": "psychic",
+              "minimumLevel": 1,
+              "resourceId": "phrenicPool",
+              "cost": 1,
+              "requiredActiveEffectName": "Physical Mutation",
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "free"
+                }
+              ],
+              "activeEffect": {
+                "name": "Physical Mutation",
+                "targets": [
+                  "strength"
+                ],
+                "bonus": 4,
+                "bonusByLevel": [
+                  {
+                    "level": 1,
+                    "bonus": 4
+                  },
+                  {
+                    "level": 12,
+                    "bonus": 6
+                  }
+                ],
+                "description": "One-round phrenic extension of Physical Mutation.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "additionalEffectsByLevel": [
+                  {
+                    "minimumLevel": 1,
+                    "name": "Physical Mutation",
+                    "target": "intelligence",
+                    "bonus": -2,
+                    "description": "Physical Mutation imposes a -2 Intelligence penalty."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "mutation-mind-dismiss-form",
+              "label": "Dismiss Physical Mutation",
+              "classId": "psychic",
+              "minimumLevel": 1,
+              "requiredActiveEffectName": "Physical Mutation",
+              "removeActiveEffectName": "Physical Mutation",
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                }
+              ],
+              "activeEffect": {
+                "name": "Physical Mutation fatigue",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Fatigued and unable to activate Physical Mutation for 1 round.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            }
+          ]
         },
         {
           "id": "psychic-mutation-mind-bodily-mutations-3",
           "name": "Bodily Mutations",
           "level": 3,
           "type": "archetype",
-          "summary": "Starting at 3rd level, whenever a mutation mind gains a phrenic amplification, she can select either a phrenic amplification or a bodily mutation. A bodily mutation grants its benefit only when the mutation mind is affected by her physical mutation. Each time she activates her physical mutation, she can activate any number of bodily mutations she possesses. Adhesive (Ex) : The mutation mind’s skin becomes sticky, granting her a +4 bonus on disarm and grapple combat maneuver checks. Bite Attack (Ex) : The mutation mind’s mouth fills with sharp teeth, allowing her to make a bite attack as part of a full-attack action at her highest base attack bonus. This attack deals 1d4 points of damage (1d3 if Small) and counts as a primary attack unless combined with manufactured weapon attacks, as normal. Bulging Eyes (Ex) : The mutation mind’s eyes grow large and round, granting her darkvision with a range of 60 feet. Claws (Ex) : The mutation mind’s hands turn into claws, allowing her to make two claw attacks as a full-attack action at her highest base attack bonus. Each of these attacks deals 1d4 points of damage (1d3 if Small) and counts as a primary attack unless combined with manufactured weapon attacks, as normal. Elongated Fingers (Ex) : The mutation mind’s fingers grow long and supple, increasing her reach by 5 feet when she’s making melee touch attacks. Elongated Legs (Ex) : The mutation mind’s legs become long and spindly, increasing her base movement by 10 feet. Energy Resistance (Ex) : The mutation mind’s body changes in color and texture, and gains energy resistance 5 to one energy type (acid, cold, electricity, fire, or sonic), chosen when this mutation is selected. This mutation can be selected multiple times. Each time it is selected, the mutation mind either chooses an additional energy type to gain energy resistance 5 against or increases the resistance granted to one existing type by 5. Enlarged Torso (Ex) : The mutation mind’s torso enlarges disproportionately with the rest of her body, granting her a +2 natural armor bonus to AC. Rubbery (Ex) : The mutation mind’s body becomes soft and rubbery, granting her DR 2/—. Slimy (Ex) : The mutation mind exudes a thin layer of oily slime over her body, granting her a +4 bonus to CMD. This ability alters phrenic amplifications."
+          "summary": "Choose a bodily mutation in place of a phrenic amplification; its dedicated control becomes available while Physical Mutation is active.",
+          "choiceRequired": true,
+          "optionGroupId": "mutation-mind-bodily-mutations",
+          "progressionKey": "psychic-amplification",
+          "resourceActions": [
+            {
+              "id": "mutation-mind-activate-bodily-mutation",
+              "label": "Activate Bodily Mutation",
+              "classId": "psychic",
+              "minimumLevel": 3,
+              "requiredActiveEffectName": "Physical Mutation",
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "free"
+                }
+              ],
+              "modeLabel": "Owned mutation",
+              "modes": [
+                {
+                  "id": "adhesive",
+                  "label": "Adhesive",
+                  "summary": "+4 on disarm and grapple checks.",
+                  "requiredOptionId": "mutation-mind-adhesive",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "label": "Adhesive",
+                      "description": "+4 on disarm and grapple combat maneuver checks."
+                    }
+                  ]
+                },
+                {
+                  "id": "bite",
+                  "label": "Bite Attack",
+                  "summary": "Gain a primary bite attack.",
+                  "requiredOptionId": "mutation-mind-bite",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Bite Attack",
+                      "description": "Gain a primary bite attack dealing 1d4 damage (1d3 Small)."
+                    }
+                  ]
+                },
+                {
+                  "id": "bulging-eyes",
+                  "label": "Bulging Eyes",
+                  "summary": "Gain darkvision 60 feet.",
+                  "requiredOptionId": "mutation-mind-bulging-eyes",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Bulging Eyes",
+                      "description": "Gain darkvision 60 feet."
+                    }
+                  ]
+                },
+                {
+                  "id": "claws",
+                  "label": "Claws",
+                  "summary": "Gain two primary claw attacks.",
+                  "requiredOptionId": "mutation-mind-claws",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Claws",
+                      "description": "Gain two primary claw attacks dealing 1d4 damage each (1d3 Small)."
+                    }
+                  ]
+                },
+                {
+                  "id": "elongated-fingers",
+                  "label": "Elongated Fingers",
+                  "summary": "Increase melee-touch reach by 5 feet.",
+                  "requiredOptionId": "mutation-mind-elongated-fingers",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Elongated Fingers",
+                      "description": "Increase melee-touch reach by 5 feet."
+                    }
+                  ]
+                },
+                {
+                  "id": "elongated-legs",
+                  "label": "Elongated Legs",
+                  "summary": "Increase land speed by 10 feet.",
+                  "requiredOptionId": "mutation-mind-elongated-legs",
+                  "activeEffects": [
+                    {
+                      "target": "landSpeed",
+                      "bonus": 10,
+                      "label": "Elongated Legs",
+                      "description": "+10-foot base movement speed."
+                    }
+                  ]
+                },
+                {
+                  "id": "energy-resistance",
+                  "label": "Energy Resistance",
+                  "summary": "Apply the selected energy resistance.",
+                  "requiredOptionId": "mutation-mind-energy-resistance",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Energy Resistance",
+                      "description": "Apply the selected energy resistance 5; repeated selections can add or increase a type."
+                    }
+                  ]
+                },
+                {
+                  "id": "enlarged-torso",
+                  "label": "Enlarged Torso",
+                  "summary": "Gain +2 natural armor.",
+                  "requiredOptionId": "mutation-mind-enlarged-torso",
+                  "activeEffects": [
+                    {
+                      "target": "armorClass",
+                      "bonus": 2,
+                      "label": "Enlarged Torso",
+                      "description": "+2 natural armor bonus to AC."
+                    }
+                  ]
+                },
+                {
+                  "id": "rubbery",
+                  "label": "Rubbery",
+                  "summary": "Gain DR 2/-.",
+                  "requiredOptionId": "mutation-mind-rubbery",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Rubbery",
+                      "description": "Gain DR 2/-."
+                    }
+                  ]
+                },
+                {
+                  "id": "slimy",
+                  "label": "Slimy",
+                  "summary": "Gain +4 CMD.",
+                  "requiredOptionId": "mutation-mind-slimy",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Slimy",
+                      "description": "+4 bonus to CMD."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "psychic-mutation-mind-phrenic-empowerment-su-7",
           "name": "Phrenic Empowerment (Su)",
           "level": 7,
           "type": "archetype",
-          "summary": "At 7th level, a mutation mind’s phrenic amplifications empower her physical mutation. Whenever a mutation mind modifies a spell with a phrenic amplification while affected by her physical mutation, she can increase the bonus to her Strength score from her physical mutation by 2 for a number of rounds equal to the level of the spell she cast. This bonus doesn’t stack; if the mutation mind activates it again, she uses the longer duration but doesn’t increase the bonus. While under the effect of phrenic empowerment, whenever the mutation mind takes damage, she risks losing control of her powers. At the end of each turn that she takes hit point damage, the mutation mind must succeed at a Will save (DC = 15 + 1/2 her character level) or take a –2 penalty on Will saving throws and to Intelligence. These penalties last for 1 hour after the physical mutation ends and stack with themselves. If the penalty lowers her Intelligence score to 0, the mutation mind is comatose until 1 hour after physical mutation ends."
+          "summary": "After amplifying a spell while mutated, gain +2 Strength for rounds equal to its level; damage triggers the scaling Will save and stacks -2 Will and Intelligence penalties on failure.",
+          "resourceActions": [
+            {
+              "id": "mutation-mind-phrenic-empowerment",
+              "label": "Apply Phrenic Empowerment",
+              "classId": "psychic",
+              "minimumLevel": 7,
+              "requiredActiveEffectName": "Physical Mutation",
+              "actionTypeByLevel": [
+                {
+                  "level": 7,
+                  "actionType": "free"
+                }
+              ],
+              "modeLabel": "Linked spell level",
+              "modes": [
+                {
+                  "id": "spell-1",
+                  "label": "1st",
+                  "summary": "1-round duration.",
+                  "defaultRounds": 1
+                },
+                {
+                  "id": "spell-2",
+                  "label": "2nd",
+                  "summary": "2-round duration.",
+                  "defaultRounds": 2
+                },
+                {
+                  "id": "spell-3",
+                  "label": "3rd",
+                  "summary": "3-round duration.",
+                  "defaultRounds": 3
+                },
+                {
+                  "id": "spell-4",
+                  "label": "4th",
+                  "summary": "4-round duration.",
+                  "defaultRounds": 4
+                },
+                {
+                  "id": "spell-5",
+                  "label": "5th",
+                  "summary": "5-round duration.",
+                  "defaultRounds": 5
+                },
+                {
+                  "id": "spell-6",
+                  "label": "6th",
+                  "summary": "6-round duration.",
+                  "defaultRounds": 6
+                },
+                {
+                  "id": "spell-7",
+                  "label": "7th",
+                  "summary": "7-round duration.",
+                  "defaultRounds": 7
+                },
+                {
+                  "id": "spell-8",
+                  "label": "8th",
+                  "summary": "8-round duration.",
+                  "defaultRounds": 8
+                },
+                {
+                  "id": "spell-9",
+                  "label": "9th",
+                  "summary": "9-round duration.",
+                  "defaultRounds": 9
+                }
+              ],
+              "activeEffect": {
+                "name": "Phrenic Empowerment",
+                "targets": [
+                  "strength"
+                ],
+                "bonus": 2,
+                "description": "+2 Strength; damage taken requires a control save at the end of the turn.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "mutation-mind-control-save",
+              "label": "Resolve Phrenic Empowerment control save",
+              "classId": "psychic",
+              "minimumLevel": 7,
+              "requiredActiveEffectName": "Phrenic Empowerment",
+              "actionTypeByLevel": [
+                {
+                  "level": 7,
+                  "actionType": "free"
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "classId": "psychic",
+                "fixedDcByLevel": [
+                  {
+                    "level": 7,
+                    "dc": 18
+                  },
+                  {
+                    "level": 8,
+                    "dc": 19
+                  },
+                  {
+                    "level": 10,
+                    "dc": 20
+                  },
+                  {
+                    "level": 12,
+                    "dc": 21
+                  },
+                  {
+                    "level": 14,
+                    "dc": 22
+                  },
+                  {
+                    "level": 16,
+                    "dc": 23
+                  },
+                  {
+                    "level": 18,
+                    "dc": 24
+                  },
+                  {
+                    "level": 20,
+                    "dc": 25
+                  }
+                ]
+              },
+              "actorSavingThrow": {
+                "modifier": "will",
+                "failureName": "Mutation Mind control penalty",
+                "failureDescription": "Take a stacking -2 penalty to Will saves and Intelligence until 1 hour after Physical Mutation ends."
+              }
+            }
+          ]
         },
         {
           "id": "psychic-mutation-mind-improved-bodily-mutations-11",
           "name": "Improved Bodily Mutations",
           "level": 11,
           "type": "archetype",
-          "summary": "At 11th level, a mutation mind can select one of the following improved bodily mutations instead of a phrenic amplification. Aquatic Form (Ex) : The mutation mind’s legs fuse into a tail and fins to sprout from her back and side, granting her a swim speed of 30 feet, tremorsense with a range of 30 feet (affecting other creatures in contact with the same body of water), and the aquatic subtype. Her base land speed is reduced to 10 feet. Enlarged Body (Ex) : The mutation mind’s body swells and stretches, enlarging her as the enlarge person spell but up to two size categories larger (maximum Huge). Multiple Eyes (Ex) : Multiple eyes erupt all over the mutation mind’s body. She can’t be flanked and gains a +4 bonus on Perception checks. Recuperation (Ex) : The mutation mind heals quickly from physical wounds, gaining fast healing 5. Toppling Fists (Ex) : The mutation mind’s fists become large masses of flesh, allowing her to attempt a bull rush combat maneuver check against one creature within 10 feet of her as a standard action. Wings (Ex) : The mutation mind sprouts a pair of fleshy, batlike wings, giving her a fly speed of 60 feet with average maneuverability. This ability alters major amplifications."
+          "summary": "Choose an improved bodily mutation in place of a major amplification; its dedicated control becomes available while Physical Mutation is active.",
+          "choiceRequired": true,
+          "optionGroupId": "mutation-mind-improved-mutations",
+          "resourceActions": [
+            {
+              "id": "mutation-mind-activate-improved-mutation",
+              "label": "Activate Improved Bodily Mutation",
+              "classId": "psychic",
+              "minimumLevel": 11,
+              "requiredActiveEffectName": "Physical Mutation",
+              "actionTypeByLevel": [
+                {
+                  "level": 11,
+                  "actionType": "free"
+                }
+              ],
+              "modeLabel": "Owned mutation",
+              "modes": [
+                {
+                  "id": "aquatic",
+                  "label": "Aquatic Form",
+                  "summary": "Gain the aquatic movement and senses package.",
+                  "requiredOptionId": "mutation-mind-aquatic-form",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Aquatic Form",
+                      "description": "Swim 30 feet, aquatic subtype, aquatic tremorsense 30 feet, land speed 10 feet."
+                    }
+                  ]
+                },
+                {
+                  "id": "enlarged",
+                  "label": "Enlarged Body",
+                  "summary": "Increase size by up to two categories.",
+                  "requiredOptionId": "mutation-mind-enlarged-body",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Enlarged Body",
+                      "description": "Enlarge person by up to two size categories, maximum Huge."
+                    }
+                  ]
+                },
+                {
+                  "id": "eyes",
+                  "label": "Multiple Eyes",
+                  "summary": "Cannot be flanked and gain +4 Perception.",
+                  "requiredOptionId": "mutation-mind-multiple-eyes",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "label": "Multiple Eyes",
+                      "description": "Cannot be flanked and gains +4 Perception."
+                    }
+                  ]
+                },
+                {
+                  "id": "recuperation",
+                  "label": "Recuperation",
+                  "summary": "Gain fast healing 5.",
+                  "requiredOptionId": "mutation-mind-recuperation",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "fastHealing": 5,
+                      "label": "Recuperation",
+                      "description": "Fast healing 5."
+                    }
+                  ]
+                },
+                {
+                  "id": "toppling",
+                  "label": "Toppling Fists",
+                  "summary": "Bull rush a creature within 10 feet.",
+                  "requiredOptionId": "mutation-mind-toppling-fists",
+                  "actionType": "standard",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Toppling Fists",
+                      "description": "Attempt a bull rush against a creature within 10 feet."
+                    }
+                  ]
+                },
+                {
+                  "id": "wings",
+                  "label": "Wings",
+                  "summary": "Gain a 60-foot fly speed.",
+                  "requiredOptionId": "mutation-mind-wings",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Wings",
+                      "description": "Fly speed 60 feet with average maneuverability."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "physicalMutationMinutes",
+      "label": "Physical Mutation",
+      "unit": "minute",
+      "operation": "add",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelMultiplier": 1,
+      "minimum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
     }
   ],
   "source": {

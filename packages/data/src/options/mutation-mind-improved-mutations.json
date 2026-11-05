@@ -1,0 +1,14 @@
+{
+  "id": "mutation-mind-improved-mutations",
+  "name": "Improved Bodily Mutations",
+  "classIds": ["psychic"],
+  "optionDefaults": {"groupId": "mutation-mind-improved-mutations", "classIds": ["psychic"], "minimumLevel": 11, "prerequisites": [], "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Psychic%20Mutation%20Mind"}},
+  "options": [
+    {"id": "mutation-mind-aquatic-form", "name": "Aquatic Form", "benefit": "Gain swim 30 feet, aquatic tremorsense 30 feet, and the aquatic subtype; land speed becomes 10 feet."},
+    {"id": "mutation-mind-enlarged-body", "name": "Enlarged Body", "benefit": "Increase size as enlarge person by up to two categories, maximum Huge."},
+    {"id": "mutation-mind-multiple-eyes", "name": "Multiple Eyes", "benefit": "Cannot be flanked and gain +4 Perception."},
+    {"id": "mutation-mind-recuperation", "name": "Recuperation", "benefit": "Gain fast healing 5."},
+    {"id": "mutation-mind-toppling-fists", "name": "Toppling Fists", "benefit": "Attempt a bull rush against a creature within 10 feet as a standard action."},
+    {"id": "mutation-mind-wings", "name": "Wings", "benefit": "Gain fly speed 60 feet with average maneuverability."}
+  ]
+}
