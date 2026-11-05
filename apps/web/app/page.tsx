@@ -193,6 +193,23 @@ const signatureSpellOption = (spell: CharacterSpell): CharacterOption => ({
   signatureSpellTechniques: true,
   source: { title: "Advanced Class Guide", page: 78, url: "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Spell%20Specialist" },
 });
+const archetypeSpellChoiceOption = (
+  spell: CharacterSpell,
+  targetClassId: string,
+  sourceClassId: string,
+  spellLevel: number,
+): CharacterOption => ({
+  id: `archetype-spell-choice-${spell.id}`,
+  name: spell.name,
+  groupId: "archetype-spell-choices",
+  classIds: [targetClassId],
+  minimumLevel: 1,
+  prerequisites: [],
+  benefit: `Add ${spell.name} from the ${sourceClassId} list as a level-${spellLevel} ${targetClassId} spell known. ${spell.summary}`,
+  spellId: spell.id,
+  spellLevel,
+  source: spell.source ?? { title: "Druid spell list", url: "https://aonprd.com/Spells.aspx?Class=Druid" },
+});
 const prerequisiteIncludesFeat = (prerequisites: Prerequisite[], featIds: string[]): boolean =>
   prerequisites.some((prerequisite) =>
     prerequisite.type === "feat"
@@ -1683,6 +1700,16 @@ export default function Home() {
             })),
         }
       : undefined;
+    const archetypeSpellChoiceGroup = feature.optionGroupId === "archetype-spell-choices" && feature.spellChoiceClassId && feature.requiredSpellLevel !== undefined
+      ? {
+          id: "archetype-spell-choices",
+          name: `${feature.spellChoiceClassId} spell choices`,
+          classIds: [featureClassId],
+          options: spells
+            .filter((spell) => spell.levelByClass[feature.spellChoiceClassId!] === feature.requiredSpellLevel)
+            .map((spell) => archetypeSpellChoiceOption(spell, featureClassId, feature.spellChoiceClassId!, feature.requiredSpellLevel!)),
+        }
+      : undefined;
     const signatureGroup = feature.optionGroupId === "spell-specialist-signature-spells"
       ? {
           ...(optionGroups.find((item) => item.id === feature.optionGroupId)!),
@@ -1691,7 +1718,7 @@ export default function Home() {
             .map(signatureSpellOption),
         }
       : undefined;
-    const unrestrictedBaseGroup = generatedFeatGroup ?? signatureGroup ?? optionGroups.find(
+    const unrestrictedBaseGroup = generatedFeatGroup ?? archetypeSpellChoiceGroup ?? signatureGroup ?? optionGroups.find(
       (item) => item.id === feature.optionGroupId,
     );
     const alignmentRestrictedGroup = unrestrictedBaseGroup && feature.optionGroupId === "hex-channeler-polarities"
@@ -2143,6 +2170,12 @@ export default function Home() {
           .flatMap((group) => group.options)
           .find((candidate) => candidate.id === optionId);
         if (option?.spellId) return [option];
+        if (optionId.startsWith("archetype-spell-choice-")) {
+          const feature = selectableProgressionFeatures.find((candidate) => candidate.id === featureId);
+          const spell = spells.find((candidate) => `archetype-spell-choice-${candidate.id}` === optionId);
+          if (feature?.spellChoiceClassId && feature.requiredSpellLevel !== undefined && spell)
+            return [archetypeSpellChoiceOption(spell, characterClass.id, feature.spellChoiceClassId, feature.requiredSpellLevel)];
+        }
         if (featureId.startsWith("arcanist-spell-specialist-signature-spells-") && optionId.startsWith("spell-specialist-signature-spells-")) {
           const spell = spells.find((candidate) => `spell-specialist-signature-spells-${candidate.id}` === optionId);
           return spell ? [signatureSpellOption(spell)] : [];
@@ -2152,7 +2185,7 @@ export default function Home() {
         .filter((feature) => feature.level <= primaryClassLevel && feature.grantsAllOptions && feature.optionGroupId)
         .flatMap((feature) => optionGroups.find((group) => group.id === feature.optionGroupId)?.options ?? [])
         .filter((option) => option.minimumLevel <= primaryClassLevel)],
-    [characterClass.features, primaryClassLevel, selectedOptions, spells],
+    [characterClass.features, characterClass.id, primaryClassLevel, selectableProgressionFeatures, selectedOptions, spells],
   );
   const selectedOptionSpells = useMemo(
     () =>

@@ -4,9 +4,9 @@
   "classId": "psychic",
   "summary": "Followers of Old-Mage Jatembe’s more esoteric wisdom instead focus on the occult connection between all living creatures and the resonance between the natural and supernatural world.",
   "replacesText": "Discipline Spells; 1st, 11th-level Phrenic Amplifications; Telepathic Bond; Telepathy",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Nine permanent Druid-list spell choices become Psychic spells known at the correct unlock levels. Nature's Command spends phrenic points with level-gated targets, Know the Land tracks its daily use and normal spell-slot casting, and Wild Mind records animal-and-plant telepathy."
   ],
   "replacements": [
     {
@@ -21,31 +21,231 @@
           "id": "psychic-magaambyan-telepath-primal-spells-1",
           "name": "Primal Spells",
           "level": 1,
-          "type": "archetype",
-          "summary": "A Magaambyan telepath adds one 1st-level spell from the druid spell list to the psychic spell list and her spells known. Each time a Magaambyan telepath gains the ability to cast a new level of spell, she can add one spell of that level from the druid spell list to both the psychic spell list and her spells known. She casts these spells as psychic spells, and once the spells are selected these choices cannot be changed. This replaces discipline spells."
+          "type": "selectable",
+          "summary": "Permanently choose one 1st-level Druid spell as a Psychic spell known.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "requiredSpellLevel": 1,
+          "spellChoiceClassId": "druid"
+        },
+        {
+          "id": "psychic-magaambyan-telepath-primal-spells-4",
+          "name": "Primal Spell 2",
+          "level": 4,
+          "type": "selectable",
+          "summary": "Permanently choose one 2nd-level Druid spell as a Psychic spell known.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "requiredSpellLevel": 2,
+          "spellChoiceClassId": "druid"
+        },
+        {
+          "id": "psychic-magaambyan-telepath-primal-spells-6",
+          "name": "Primal Spell 3",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Permanently choose one 3rd-level Druid spell as a Psychic spell known.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "requiredSpellLevel": 3,
+          "spellChoiceClassId": "druid"
+        },
+        {
+          "id": "psychic-magaambyan-telepath-primal-spells-8",
+          "name": "Primal Spell 4",
+          "level": 8,
+          "type": "selectable",
+          "summary": "Permanently choose one 4th-level Druid spell as a Psychic spell known.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "requiredSpellLevel": 4,
+          "spellChoiceClassId": "druid"
+        },
+        {
+          "id": "psychic-magaambyan-telepath-primal-spells-10",
+          "name": "Primal Spell 5",
+          "level": 10,
+          "type": "selectable",
+          "summary": "Permanently choose one 5th-level Druid spell as a Psychic spell known.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "requiredSpellLevel": 5,
+          "spellChoiceClassId": "druid"
+        },
+        {
+          "id": "psychic-magaambyan-telepath-primal-spells-12",
+          "name": "Primal Spell 6",
+          "level": 12,
+          "type": "selectable",
+          "summary": "Permanently choose one 6th-level Druid spell as a Psychic spell known.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "requiredSpellLevel": 6,
+          "spellChoiceClassId": "druid"
+        },
+        {
+          "id": "psychic-magaambyan-telepath-primal-spells-14",
+          "name": "Primal Spell 7",
+          "level": 14,
+          "type": "selectable",
+          "summary": "Permanently choose one 7th-level Druid spell as a Psychic spell known.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "requiredSpellLevel": 7,
+          "spellChoiceClassId": "druid"
+        },
+        {
+          "id": "psychic-magaambyan-telepath-primal-spells-16",
+          "name": "Primal Spell 8",
+          "level": 16,
+          "type": "selectable",
+          "summary": "Permanently choose one 8th-level Druid spell as a Psychic spell known.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "requiredSpellLevel": 8,
+          "spellChoiceClassId": "druid"
+        },
+        {
+          "id": "psychic-magaambyan-telepath-primal-spells-18",
+          "name": "Primal Spell 9",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Permanently choose one 9th-level Druid spell as a Psychic spell known.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "requiredSpellLevel": 9,
+          "spellChoiceClassId": "druid"
         },
         {
           "id": "psychic-magaambyan-telepath-nature-s-command-ex-11",
           "name": "Nature’s Command (Ex)",
-          "level": 11,
+          "level": 1,
           "type": "archetype",
-          "summary": "The Magaambyan telepath’s mind-affecting spells can affect even plant creatures. When she casts a mind-affecting spell, the Magaambyan telepath can spend 2 points from her phrenic pool to overcome a plant creature’s immunity to mind-affecting effects for the purposes of that spell. This ability functions even on mindless plant creatures, but it has no effect on creatures that aren’t plants. At 11th level, when the Magaambyan telepath casts a mind-affecting or language-dependent spell, the psychic can spend 2 points from her phrenic pool to cause the spell to affect creatures of the plant and animal types as if they were humanoids that understood her language. This replaces the phrenic amplifications gained at 1st and 11th levels."
+          "summary": "Spend 2 phrenic points to bypass plant mind-affecting immunity; at level 11, affect plants and animals as language-understanding humanoids.",
+          "resourceActions": [
+            {
+              "id": "magaambyan-natures-command",
+              "label": "Apply Nature's Command",
+              "classId": "psychic",
+              "minimumLevel": 1,
+              "resourceId": "phrenicPool",
+              "cost": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "free"
+                }
+              ],
+              "modeLabel": "Target permission",
+              "modes": [
+                {
+                  "id": "plant-immunity",
+                  "label": "Bypass plant immunity",
+                  "summary": "The next mind-affecting spell can affect a plant, including a mindless plant.",
+                  "minimumLevel": 1
+                },
+                {
+                  "id": "wild-language",
+                  "label": "Plants and animals understand",
+                  "summary": "The next mind-affecting or language-dependent spell affects plants and animals as language-understanding humanoids.",
+                  "minimumLevel": 11
+                }
+              ],
+              "activeEffect": {
+                "name": "Nature's Command",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The selected Nature's Command permission applies to the next qualifying spell.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "consumeOnUse": true
+              }
+            }
+          ]
         },
         {
           "id": "psychic-magaambyan-telepath-know-the-land-sp-9",
           "name": "Know the Land (Sp)",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, the Magaambyan telepath can cast commune with nature as a spell-like ability once per day, using her psychic level as her caster level. She can also expend any unused spell slot of 5th level or higher to cast commune with nature. This replaces telepathic bond."
+          "summary": "Cast commune with nature once per day as a spell-like ability or normally from a Psychic spell slot of 5th level or higher.",
+          "resourceActions": [
+            {
+              "id": "magaambyan-know-the-land",
+              "label": "Use daily Commune with Nature",
+              "classId": "psychic",
+              "minimumLevel": 9,
+              "resourceId": "magaambyanCommune",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "10-minute"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "commune-with-nature",
+                "spellName": "Commune with Nature",
+                "cadence": "day",
+                "kind": "spell-like"
+              }
+            }
+          ]
         },
         {
           "id": "psychic-magaambyan-telepath-wild-mind-su-17",
           "name": "Wild Mind (Su)",
           "level": 17,
           "type": "archetype",
-          "summary": "At 17th level, when the Magaambyan telepath gains the telepathy ability, she can also mentally communicate with any animal or plant creature as if it had a language. This alters telepathy."
+          "summary": "At 17th level, telepathy communicates with animals and plants as though they had a language.",
+          "progressionProfiles": [
+            {
+              "id": "magaambyan-wild-mind",
+              "label": "Wild Mind telepathy",
+              "classId": "psychic",
+              "columns": [
+                {
+                  "id": "targets",
+                  "label": "Additional targets"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 17,
+                  "values": {
+                    "targets": "All animals and plants, including normally nonlinguistic creatures"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
+    }
+  ],
+  "spellGrants": [
+    {
+      "spellId": "commune-with-nature",
+      "spellLevel": 5,
+      "minimumClassLevel": 9,
+      "mode": "known",
+      "sourceFeatureId": "psychic-magaambyan-telepath-know-the-land-sp-9"
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "magaambyanCommune",
+      "label": "Know the Land",
+      "unit": "use",
+      "operation": "add",
+      "minimumLevel": 9,
+      "base": 1,
+      "maximum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
     }
   ],
   "source": {
