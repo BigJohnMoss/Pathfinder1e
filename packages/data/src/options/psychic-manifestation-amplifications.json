@@ -1,0 +1,18 @@
+{
+  "id": "psychic-manifestation-amplifications",
+  "name": "Manifestation Amplifications",
+  "classIds": ["psychic"],
+  "optionDefaults": {
+    "groupId": "psychic-manifestation-amplifications",
+    "classIds": ["psychic"],
+    "minimumLevel": 7,
+    "prerequisites": [],
+    "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Psychic%20Psychic%20Duelist"}
+  },
+  "options": [
+    {"id": "psychic-manifestation-extended-effect", "name": "Extended Effect", "benefit": "Spend up to 1 phrenic point, increasing to 2 at 11th, 3 at 15th, and 4 at 19th level, to extend a condition imposed by an offensive manifestation by 1 round per point."},
+    {"id": "psychic-manifestation-faithful-creature", "name": "Faithful Creature", "benefit": "Spend 1 phrenic point so a thoughtform creature can persist without attacking, can be maintained with swift-action concentration, and deals half psychic backlash damage."},
+    {"id": "psychic-manifestation-punishing-thoughtform", "name": "Punishing Thought-form", "benefit": "Spend 1 phrenic point to increase an offensive manifestation's damage die by one step."},
+    {"id": "psychic-manifestation-reciprocal-defense", "name": "Reciprocal Defense", "benefit": "Spend 1 phrenic point with a defensive manifestation to gain a +2 insight bonus to physical AC, increasing to +3 at 11th level and +4 at 15th level."}
+  ]
+}
