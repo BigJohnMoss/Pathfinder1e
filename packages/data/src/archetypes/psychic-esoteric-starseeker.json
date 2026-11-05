@@ -4,9 +4,9 @@
   "classId": "psychic",
   "summary": "An esoteric starseeker is a psychic who focuses her studies on uncovering the secrets of the sky and the constellations of the Cosmic Caravan.",
   "replacesText": "Discipline Spells; 1st, 11th-level Phrenic Amplifications; Major Amplifications",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Both level-gated constellation selections, all 117 constellation spell grants, one bonus slot for each castable non-cantrip spell level, the daily weakened-school selection, and delayed major amplification are automated."
   ],
   "replacements": [
     {
@@ -19,9 +19,29 @@
         {
           "id": "psychic-esoteric-starseeker-written-in-the-stars-11",
           "name": "Written in the Stars",
+          "level": 1,
+          "type": "archetype",
+          "choiceRequired": true,
+          "optionGroupId": "esoteric-starseeker-constellations",
+          "summary": "An esoteric starseeker can spend 1 hour each night in quiet contemplation of the stars to attune herself to a constellation of the Cosmic Caravan, gaining knowledge of new spells from it. She gains one bonus constellation spell slot for each spell level she can cast, and she can prepare a spell associated with her attuned constellation into that slot. At 11th level, she can attune herself to two constellations, choosing between the spells offered by both constellations when she prepares her constellation spells. Whenever she attunes herself to a constellation, the esoteric starseeker must also weaken her connection to one school of magic of her choice, increasing the casting time for all spells of that school to a full-round action or an additional full-round action, as though she were using a metamagic feat. She can change her attuned constellations and her weakened school each day when she prepares her constellation spells. The Cosmic Caravan and their associated spells are as follows. The Thrush: comprehend languages (1st), magic mouth (2nd), tiny hut (3rd), dream (4th), remote viewing (5th), battlemind link (6th), phase door (7th), discern location (8th), wish (9th). The Lantern Bearer: liberating command (1st), glitterdust (2nd), guiding star (3rd), wandering star motes (4th), true seeing (5th), sonic form (6th), prismatic spray (7th), sunburst (8th), meteor swarm (9th). The Newlyweds: charm person (1st), enthrall (2nd), synesthesia (3rd), break enchantment (4th), reincarnate (5th), joyful rapture (6th), mass synesthesia (7th), bilocation (8th), overwhelming presence (9th). The Bridge: endure elements (1st), resist energy (2nd), daylight (3rd), fire shield (4th), wall of force (5th), contagious flame (6th), reverse gravity (7th), create demiplane (8th), world wave (9th). The Daughter: bless (1st), hypnotic pattern (2nd), heroism (3rd), freedom of movement (4th), hostile juxtaposition (5th), cloak of dreams (6th), greater hostile juxtaposition (7th), irresistible dance (8th), freedom (9th). The Rider: anticipate peril (1st), acute senses (2nd), ablative barrier (3rd), dimensional anchor (4th), echolocation (5th), blade barrier (6th), grasping hand (7th), frightful aspect (8th), ride the lightning (9th). The Patriarch: command (1st), spiritual weapon (2nd), dispel magic (3rd), telekinetic charge (4th), contact other plane (5th), find the path (6th), mage’s sword (7th), brilliant inspiration (8th), gate (9th). The Wagon: expeditious retreat (1st), twisted space (2nd), haste (3rd), mirror transport (4th), teleport (5th), fluid form (6th), walk through space (7th), etherealness (8th), time stop (9th). The Pack: calm animals (1st), animal aspect (2nd), rage (3rd), greater animal aspect (4th), summon monster V (5th), mass bear’s endurance (6th), summon monster VII (7th), animal shapes (8th), shapechange (9th). The Mother: identify (1st), aid (2nd), invisibility purge (3rd), stoneskin (4th), spell resistance (5th), contingency (6th), mind blank (7th), refuge (8th), wall of suppression (9th). The Stargazer: know the enemy (1st), augury (2nd), arcane sight (3rd), locate creature (4th), feeblemind (5th), geas/quest (6th), arcane sight (greater) (7th), moment of prescience (8th), dream voyage (9th). The Stranger: disguise self (1st), invisibility (2nd), displacement (3rd), riding possession (4th), prying eyes (5th), veil (6th), project image (7th), maze (8th), divide mind (9th). The Follower: forced quiet (1st), darkness (2nd), vision of hell (3rd), enervation (4th), waves of fatigue (5th), shadow walk (6th), simulacrum (7th), destruction (8th), energy drain (9th). This replaces the bonus spells normally granted by the psychic’s discipline and the phrenic amplifications gained at 1st and 11th levels."
+        },
+        {
+          "id": "psychic-esoteric-starseeker-weakened-school-1",
+          "name": "Weakened School",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Choose the school weakened by tonight's constellation attunement. Its spells require a full-round action, or one additional full-round action, to cast; this selection can be changed with the daily attunement.",
+          "choiceRequired": true,
+          "optionGroupId": "esoteric-starseeker-weakened-schools"
+        },
+        {
+          "id": "psychic-esoteric-starseeker-second-constellation-11",
+          "name": "Second Constellation",
           "level": 11,
           "type": "archetype",
-          "summary": "An esoteric starseeker can spend 1 hour each night in quiet contemplation of the stars to attune herself to a constellation of the Cosmic Caravan, gaining knowledge of new spells from it. She gains one bonus constellation spell slot for each spell level she can cast, and she can prepare a spell associated with her attuned constellation into that slot. At 11th level, she can attune herself to two constellations, choosing between the spells offered by both constellations when she prepares her constellation spells. Whenever she attunes herself to a constellation, the esoteric starseeker must also weaken her connection to one school of magic of her choice, increasing the casting time for all spells of that school to a full-round action or an additional full-round action, as though she were using a metamagic feat. She can change her attuned constellations and her weakened school each day when she prepares her constellation spells. The Cosmic Caravan and their associated spells are as follows. The Thrush: comprehend languages (1st), magic mouth (2nd), tiny hut (3rd), dream (4th), remote viewing (5th), battlemind link (6th), phase door (7th), discern location (8th), wish (9th). The Lantern Bearer: liberating command (1st), glitterdust (2nd), guiding star (3rd), wandering star motes (4th), true seeing (5th), sonic form (6th), prismatic spray (7th), sunburst (8th), meteor swarm (9th). The Newlyweds: charm person (1st), enthrall (2nd), synesthesia (3rd), break enchantment (4th), reincarnate (5th), joyful rapture (6th), mass synesthesia (7th), bilocation (8th), overwhelming presence (9th). The Bridge: endure elements (1st), resist energy (2nd), daylight (3rd), fire shield (4th), wall of force (5th), contagious flame (6th), reverse gravity (7th), create demiplane (8th), world wave (9th). The Daughter: bless (1st), hypnotic pattern (2nd), heroism (3rd), freedom of movement (4th), hostile juxtaposition (5th), cloak of dreams (6th), greater hostile juxtaposition (7th), irresistible dance (8th), freedom (9th). The Rider: anticipate peril (1st), acute senses (2nd), ablative barrier (3rd), dimensional anchor (4th), echolocation (5th), blade barrier (6th), grasping hand (7th), frightful aspect (8th), ride the lightning (9th). The Patriarch: command (1st), spiritual weapon (2nd), dispel magic (3rd), telekinetic charge (4th), contact other plane (5th), find the path (6th), mage’s sword (7th), brilliant inspiration (8th), gate (9th). The Wagon: expeditious retreat (1st), twisted space (2nd), haste (3rd), mirror transport (4th), teleport (5th), fluid form (6th), walk through space (7th), etherealness (8th), time stop (9th). The Pack: calm animals (1st), animal aspect (2nd), rage (3rd), greater animal aspect (4th), summon monster V (5th), mass bear’s endurance (6th), summon monster VII (7th), animal shapes (8th), shapechange (9th). The Mother: identify (1st), aid (2nd), invisibility purge (3rd), stoneskin (4th), spell resistance (5th), contingency (6th), mind blank (7th), refuge (8th), wall of suppression (9th). The Stargazer: know the enemy (1st), augury (2nd), arcane sight (3rd), locate creature (4th), feeblemind (5th), geas/quest (6th), arcane sight (greater) (7th), moment of prescience (8th), dream voyage (9th). The Stranger: disguise self (1st), invisibility (2nd), displacement (3rd), riding possession (4th), prying eyes (5th), veil (6th), project image (7th), maze (8th), divide mind (9th). The Follower: forced quiet (1st), darkness (2nd), vision of hell (3rd), enervation (4th), waves of fatigue (5th), shadow walk (6th), simulacrum (7th), destruction (8th), energy drain (9th). This replaces the bonus spells normally granted by the psychic’s discipline and the phrenic amplifications gained at 1st and 11th levels."
+          "summary": "Attune to a second Cosmic Caravan constellation and prepare constellation-slot spells from either selected spell set.",
+          "choiceRequired": true,
+          "optionGroupId": "esoteric-starseeker-constellations"
         },
         {
           "id": "psychic-esoteric-starseeker-major-amplifications-15",
@@ -31,6 +51,829 @@
           "summary": "An esoteric starseeker gains this ability at 15th level."
         }
       ]
+    }
+  ],
+  "spellSlotAdjustmentPerLevel": 1,
+  "spellSlotAdjustmentMinimumSpellLevel": 1,
+  "spellGrants": [
+    {
+      "spellId": "comprehend-languages",
+      "spellLevel": 1,
+      "minimumClassLevel": 1,
+      "mode": "known",
+      "requiredOptionId": "starseeker-thrush"
+    },
+    {
+      "spellId": "magic-mouth",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known",
+      "requiredOptionId": "starseeker-thrush"
+    },
+    {
+      "spellId": "tiny-hut",
+      "spellLevel": 3,
+      "minimumClassLevel": 6,
+      "mode": "known",
+      "requiredOptionId": "starseeker-thrush"
+    },
+    {
+      "spellId": "dream",
+      "spellLevel": 4,
+      "minimumClassLevel": 8,
+      "mode": "known",
+      "requiredOptionId": "starseeker-thrush"
+    },
+    {
+      "spellId": "later-spell-remote-viewing",
+      "spellLevel": 5,
+      "minimumClassLevel": 10,
+      "mode": "known",
+      "requiredOptionId": "starseeker-thrush"
+    },
+    {
+      "spellId": "battlemind-link",
+      "spellLevel": 6,
+      "minimumClassLevel": 12,
+      "mode": "known",
+      "requiredOptionId": "starseeker-thrush"
+    },
+    {
+      "spellId": "phase-door",
+      "spellLevel": 7,
+      "minimumClassLevel": 14,
+      "mode": "known",
+      "requiredOptionId": "starseeker-thrush"
+    },
+    {
+      "spellId": "discern-location",
+      "spellLevel": 8,
+      "minimumClassLevel": 16,
+      "mode": "known",
+      "requiredOptionId": "starseeker-thrush"
+    },
+    {
+      "spellId": "wish",
+      "spellLevel": 9,
+      "minimumClassLevel": 18,
+      "mode": "known",
+      "requiredOptionId": "starseeker-thrush"
+    },
+    {
+      "spellId": "liberating-command",
+      "spellLevel": 1,
+      "minimumClassLevel": 1,
+      "mode": "known",
+      "requiredOptionId": "starseeker-lantern-bearer"
+    },
+    {
+      "spellId": "glitterdust",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known",
+      "requiredOptionId": "starseeker-lantern-bearer"
+    },
+    {
+      "spellId": "later-spell-guiding-star",
+      "spellLevel": 3,
+      "minimumClassLevel": 6,
+      "mode": "known",
+      "requiredOptionId": "starseeker-lantern-bearer"
+    },
+    {
+      "spellId": "wandering-star-motes",
+      "spellLevel": 4,
+      "minimumClassLevel": 8,
+      "mode": "known",
+      "requiredOptionId": "starseeker-lantern-bearer"
+    },
+    {
+      "spellId": "true-seeing",
+      "spellLevel": 5,
+      "minimumClassLevel": 10,
+      "mode": "known",
+      "requiredOptionId": "starseeker-lantern-bearer"
+    },
+    {
+      "spellId": "sonic-form",
+      "spellLevel": 6,
+      "minimumClassLevel": 12,
+      "mode": "known",
+      "requiredOptionId": "starseeker-lantern-bearer"
+    },
+    {
+      "spellId": "prismatic-spray",
+      "spellLevel": 7,
+      "minimumClassLevel": 14,
+      "mode": "known",
+      "requiredOptionId": "starseeker-lantern-bearer"
+    },
+    {
+      "spellId": "sunburst",
+      "spellLevel": 8,
+      "minimumClassLevel": 16,
+      "mode": "known",
+      "requiredOptionId": "starseeker-lantern-bearer"
+    },
+    {
+      "spellId": "meteor-swarm",
+      "spellLevel": 9,
+      "minimumClassLevel": 18,
+      "mode": "known",
+      "requiredOptionId": "starseeker-lantern-bearer"
+    },
+    {
+      "spellId": "charm-person",
+      "spellLevel": 1,
+      "minimumClassLevel": 1,
+      "mode": "known",
+      "requiredOptionId": "starseeker-newlyweds"
+    },
+    {
+      "spellId": "enthrall",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known",
+      "requiredOptionId": "starseeker-newlyweds"
+    },
+    {
+      "spellId": "later-spell-synesthesia",
+      "spellLevel": 3,
+      "minimumClassLevel": 6,
+      "mode": "known",
+      "requiredOptionId": "starseeker-newlyweds"
+    },
+    {
+      "spellId": "break-enchantment",
+      "spellLevel": 4,
+      "minimumClassLevel": 8,
+      "mode": "known",
+      "requiredOptionId": "starseeker-newlyweds"
+    },
+    {
+      "spellId": "reincarnate",
+      "spellLevel": 5,
+      "minimumClassLevel": 10,
+      "mode": "known",
+      "requiredOptionId": "starseeker-newlyweds"
+    },
+    {
+      "spellId": "joyful-rapture",
+      "spellLevel": 6,
+      "minimumClassLevel": 12,
+      "mode": "known",
+      "requiredOptionId": "starseeker-newlyweds"
+    },
+    {
+      "spellId": "later-spell-synesthesia-mass",
+      "spellLevel": 7,
+      "minimumClassLevel": 14,
+      "mode": "known",
+      "requiredOptionId": "starseeker-newlyweds"
+    },
+    {
+      "spellId": "bilocation",
+      "spellLevel": 8,
+      "minimumClassLevel": 16,
+      "mode": "known",
+      "requiredOptionId": "starseeker-newlyweds"
+    },
+    {
+      "spellId": "overwhelming-presence",
+      "spellLevel": 9,
+      "minimumClassLevel": 18,
+      "mode": "known",
+      "requiredOptionId": "starseeker-newlyweds"
+    },
+    {
+      "spellId": "endure-elements",
+      "spellLevel": 1,
+      "minimumClassLevel": 1,
+      "mode": "known",
+      "requiredOptionId": "starseeker-bridge"
+    },
+    {
+      "spellId": "resist-energy",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known",
+      "requiredOptionId": "starseeker-bridge"
+    },
+    {
+      "spellId": "daylight",
+      "spellLevel": 3,
+      "minimumClassLevel": 6,
+      "mode": "known",
+      "requiredOptionId": "starseeker-bridge"
+    },
+    {
+      "spellId": "fire-shield",
+      "spellLevel": 4,
+      "minimumClassLevel": 8,
+      "mode": "known",
+      "requiredOptionId": "starseeker-bridge"
+    },
+    {
+      "spellId": "wall-of-force",
+      "spellLevel": 5,
+      "minimumClassLevel": 10,
+      "mode": "known",
+      "requiredOptionId": "starseeker-bridge"
+    },
+    {
+      "spellId": "contagious-flame",
+      "spellLevel": 6,
+      "minimumClassLevel": 12,
+      "mode": "known",
+      "requiredOptionId": "starseeker-bridge"
+    },
+    {
+      "spellId": "reverse-gravity",
+      "spellLevel": 7,
+      "minimumClassLevel": 14,
+      "mode": "known",
+      "requiredOptionId": "starseeker-bridge"
+    },
+    {
+      "spellId": "create-demiplane",
+      "spellLevel": 8,
+      "minimumClassLevel": 16,
+      "mode": "known",
+      "requiredOptionId": "starseeker-bridge"
+    },
+    {
+      "spellId": "world-wave",
+      "spellLevel": 9,
+      "minimumClassLevel": 18,
+      "mode": "known",
+      "requiredOptionId": "starseeker-bridge"
+    },
+    {
+      "spellId": "bless",
+      "spellLevel": 1,
+      "minimumClassLevel": 1,
+      "mode": "known",
+      "requiredOptionId": "starseeker-daughter"
+    },
+    {
+      "spellId": "hypnotic-pattern",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known",
+      "requiredOptionId": "starseeker-daughter"
+    },
+    {
+      "spellId": "heroism",
+      "spellLevel": 3,
+      "minimumClassLevel": 6,
+      "mode": "known",
+      "requiredOptionId": "starseeker-daughter"
+    },
+    {
+      "spellId": "freedom-of-movement",
+      "spellLevel": 4,
+      "minimumClassLevel": 8,
+      "mode": "known",
+      "requiredOptionId": "starseeker-daughter"
+    },
+    {
+      "spellId": "hostile-juxtaposition",
+      "spellLevel": 5,
+      "minimumClassLevel": 10,
+      "mode": "known",
+      "requiredOptionId": "starseeker-daughter"
+    },
+    {
+      "spellId": "cloak-of-dreams",
+      "spellLevel": 6,
+      "minimumClassLevel": 12,
+      "mode": "known",
+      "requiredOptionId": "starseeker-daughter"
+    },
+    {
+      "spellId": "hostile-juxtaposition-greater",
+      "spellLevel": 7,
+      "minimumClassLevel": 14,
+      "mode": "known",
+      "requiredOptionId": "starseeker-daughter"
+    },
+    {
+      "spellId": "irresistible-dance",
+      "spellLevel": 8,
+      "minimumClassLevel": 16,
+      "mode": "known",
+      "requiredOptionId": "starseeker-daughter"
+    },
+    {
+      "spellId": "freedom",
+      "spellLevel": 9,
+      "minimumClassLevel": 18,
+      "mode": "known",
+      "requiredOptionId": "starseeker-daughter"
+    },
+    {
+      "spellId": "anticipate-peril",
+      "spellLevel": 1,
+      "minimumClassLevel": 1,
+      "mode": "known",
+      "requiredOptionId": "starseeker-rider"
+    },
+    {
+      "spellId": "later-spell-acute-senses",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known",
+      "requiredOptionId": "starseeker-rider"
+    },
+    {
+      "spellId": "ablative-barrier",
+      "spellLevel": 3,
+      "minimumClassLevel": 6,
+      "mode": "known",
+      "requiredOptionId": "starseeker-rider"
+    },
+    {
+      "spellId": "dimensional-anchor",
+      "spellLevel": 4,
+      "minimumClassLevel": 8,
+      "mode": "known",
+      "requiredOptionId": "starseeker-rider"
+    },
+    {
+      "spellId": "echolocation",
+      "spellLevel": 5,
+      "minimumClassLevel": 10,
+      "mode": "known",
+      "requiredOptionId": "starseeker-rider"
+    },
+    {
+      "spellId": "blade-barrier",
+      "spellLevel": 6,
+      "minimumClassLevel": 12,
+      "mode": "known",
+      "requiredOptionId": "starseeker-rider"
+    },
+    {
+      "spellId": "grasping-hand",
+      "spellLevel": 7,
+      "minimumClassLevel": 14,
+      "mode": "known",
+      "requiredOptionId": "starseeker-rider"
+    },
+    {
+      "spellId": "frightful-aspect",
+      "spellLevel": 8,
+      "minimumClassLevel": 16,
+      "mode": "known",
+      "requiredOptionId": "starseeker-rider"
+    },
+    {
+      "spellId": "ride-the-lightning",
+      "spellLevel": 9,
+      "minimumClassLevel": 18,
+      "mode": "known",
+      "requiredOptionId": "starseeker-rider"
+    },
+    {
+      "spellId": "command",
+      "spellLevel": 1,
+      "minimumClassLevel": 1,
+      "mode": "known",
+      "requiredOptionId": "starseeker-patriarch"
+    },
+    {
+      "spellId": "spiritual-weapon",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known",
+      "requiredOptionId": "starseeker-patriarch"
+    },
+    {
+      "spellId": "dispel-magic",
+      "spellLevel": 3,
+      "minimumClassLevel": 6,
+      "mode": "known",
+      "requiredOptionId": "starseeker-patriarch"
+    },
+    {
+      "spellId": "telekinetic-charge",
+      "spellLevel": 4,
+      "minimumClassLevel": 8,
+      "mode": "known",
+      "requiredOptionId": "starseeker-patriarch"
+    },
+    {
+      "spellId": "contact-other-plane",
+      "spellLevel": 5,
+      "minimumClassLevel": 10,
+      "mode": "known",
+      "requiredOptionId": "starseeker-patriarch"
+    },
+    {
+      "spellId": "find-the-path",
+      "spellLevel": 6,
+      "minimumClassLevel": 12,
+      "mode": "known",
+      "requiredOptionId": "starseeker-patriarch"
+    },
+    {
+      "spellId": "mages-sword",
+      "spellLevel": 7,
+      "minimumClassLevel": 14,
+      "mode": "known",
+      "requiredOptionId": "starseeker-patriarch"
+    },
+    {
+      "spellId": "later-spell-brilliant-inspiration",
+      "spellLevel": 8,
+      "minimumClassLevel": 16,
+      "mode": "known",
+      "requiredOptionId": "starseeker-patriarch"
+    },
+    {
+      "spellId": "gate",
+      "spellLevel": 9,
+      "minimumClassLevel": 18,
+      "mode": "known",
+      "requiredOptionId": "starseeker-patriarch"
+    },
+    {
+      "spellId": "expeditious-retreat",
+      "spellLevel": 1,
+      "minimumClassLevel": 1,
+      "mode": "known",
+      "requiredOptionId": "starseeker-wagon"
+    },
+    {
+      "spellId": "twisted-space",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known",
+      "requiredOptionId": "starseeker-wagon"
+    },
+    {
+      "spellId": "haste",
+      "spellLevel": 3,
+      "minimumClassLevel": 6,
+      "mode": "known",
+      "requiredOptionId": "starseeker-wagon"
+    },
+    {
+      "spellId": "mirror-transport",
+      "spellLevel": 4,
+      "minimumClassLevel": 8,
+      "mode": "known",
+      "requiredOptionId": "starseeker-wagon"
+    },
+    {
+      "spellId": "teleport",
+      "spellLevel": 5,
+      "minimumClassLevel": 10,
+      "mode": "known",
+      "requiredOptionId": "starseeker-wagon"
+    },
+    {
+      "spellId": "fluid-form",
+      "spellLevel": 6,
+      "minimumClassLevel": 12,
+      "mode": "known",
+      "requiredOptionId": "starseeker-wagon"
+    },
+    {
+      "spellId": "walk-through-space",
+      "spellLevel": 7,
+      "minimumClassLevel": 14,
+      "mode": "known",
+      "requiredOptionId": "starseeker-wagon"
+    },
+    {
+      "spellId": "etherealness",
+      "spellLevel": 8,
+      "minimumClassLevel": 16,
+      "mode": "known",
+      "requiredOptionId": "starseeker-wagon"
+    },
+    {
+      "spellId": "time-stop",
+      "spellLevel": 9,
+      "minimumClassLevel": 18,
+      "mode": "known",
+      "requiredOptionId": "starseeker-wagon"
+    },
+    {
+      "spellId": "calm-animals",
+      "spellLevel": 1,
+      "minimumClassLevel": 1,
+      "mode": "known",
+      "requiredOptionId": "starseeker-pack"
+    },
+    {
+      "spellId": "animal-aspect",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known",
+      "requiredOptionId": "starseeker-pack"
+    },
+    {
+      "spellId": "rage",
+      "spellLevel": 3,
+      "minimumClassLevel": 6,
+      "mode": "known",
+      "requiredOptionId": "starseeker-pack"
+    },
+    {
+      "spellId": "animal-aspect-greater",
+      "spellLevel": 4,
+      "minimumClassLevel": 8,
+      "mode": "known",
+      "requiredOptionId": "starseeker-pack"
+    },
+    {
+      "spellId": "summon-monster-v",
+      "spellLevel": 5,
+      "minimumClassLevel": 10,
+      "mode": "known",
+      "requiredOptionId": "starseeker-pack"
+    },
+    {
+      "spellId": "bears-endurance-mass",
+      "spellLevel": 6,
+      "minimumClassLevel": 12,
+      "mode": "known",
+      "requiredOptionId": "starseeker-pack"
+    },
+    {
+      "spellId": "summon-monster-7",
+      "spellLevel": 7,
+      "minimumClassLevel": 14,
+      "mode": "known",
+      "requiredOptionId": "starseeker-pack"
+    },
+    {
+      "spellId": "animal-shapes",
+      "spellLevel": 8,
+      "minimumClassLevel": 16,
+      "mode": "known",
+      "requiredOptionId": "starseeker-pack"
+    },
+    {
+      "spellId": "shapechange",
+      "spellLevel": 9,
+      "minimumClassLevel": 18,
+      "mode": "known",
+      "requiredOptionId": "starseeker-pack"
+    },
+    {
+      "spellId": "identify",
+      "spellLevel": 1,
+      "minimumClassLevel": 1,
+      "mode": "known",
+      "requiredOptionId": "starseeker-mother"
+    },
+    {
+      "spellId": "later-spell-aid",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known",
+      "requiredOptionId": "starseeker-mother"
+    },
+    {
+      "spellId": "later-spell-invisibility-purge",
+      "spellLevel": 3,
+      "minimumClassLevel": 6,
+      "mode": "known",
+      "requiredOptionId": "starseeker-mother"
+    },
+    {
+      "spellId": "stoneskin",
+      "spellLevel": 4,
+      "minimumClassLevel": 8,
+      "mode": "known",
+      "requiredOptionId": "starseeker-mother"
+    },
+    {
+      "spellId": "spell-resistance",
+      "spellLevel": 5,
+      "minimumClassLevel": 10,
+      "mode": "known",
+      "requiredOptionId": "starseeker-mother"
+    },
+    {
+      "spellId": "contingency",
+      "spellLevel": 6,
+      "minimumClassLevel": 12,
+      "mode": "known",
+      "requiredOptionId": "starseeker-mother"
+    },
+    {
+      "spellId": "mind-blank",
+      "spellLevel": 7,
+      "minimumClassLevel": 14,
+      "mode": "known",
+      "requiredOptionId": "starseeker-mother"
+    },
+    {
+      "spellId": "refuge",
+      "spellLevel": 8,
+      "minimumClassLevel": 16,
+      "mode": "known",
+      "requiredOptionId": "starseeker-mother"
+    },
+    {
+      "spellId": "wall-of-suppression",
+      "spellLevel": 9,
+      "minimumClassLevel": 18,
+      "mode": "known",
+      "requiredOptionId": "starseeker-mother"
+    },
+    {
+      "spellId": "know-the-enemy",
+      "spellLevel": 1,
+      "minimumClassLevel": 1,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stargazer"
+    },
+    {
+      "spellId": "augury",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stargazer"
+    },
+    {
+      "spellId": "arcane-sight",
+      "spellLevel": 3,
+      "minimumClassLevel": 6,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stargazer"
+    },
+    {
+      "spellId": "locate-creature",
+      "spellLevel": 4,
+      "minimumClassLevel": 8,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stargazer"
+    },
+    {
+      "spellId": "feeblemind",
+      "spellLevel": 5,
+      "minimumClassLevel": 10,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stargazer"
+    },
+    {
+      "spellId": "geas-quest",
+      "spellLevel": 6,
+      "minimumClassLevel": 12,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stargazer"
+    },
+    {
+      "spellId": "arcane-sight-greater",
+      "spellLevel": 7,
+      "minimumClassLevel": 14,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stargazer"
+    },
+    {
+      "spellId": "moment-of-prescience",
+      "spellLevel": 8,
+      "minimumClassLevel": 16,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stargazer"
+    },
+    {
+      "spellId": "later-spell-dream-voyage",
+      "spellLevel": 9,
+      "minimumClassLevel": 18,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stargazer"
+    },
+    {
+      "spellId": "disguise-self",
+      "spellLevel": 1,
+      "minimumClassLevel": 1,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stranger"
+    },
+    {
+      "spellId": "invisibility",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stranger"
+    },
+    {
+      "spellId": "displacement",
+      "spellLevel": 3,
+      "minimumClassLevel": 6,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stranger"
+    },
+    {
+      "spellId": "riding-possession",
+      "spellLevel": 4,
+      "minimumClassLevel": 8,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stranger"
+    },
+    {
+      "spellId": "prying-eyes",
+      "spellLevel": 5,
+      "minimumClassLevel": 10,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stranger"
+    },
+    {
+      "spellId": "veil",
+      "spellLevel": 6,
+      "minimumClassLevel": 12,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stranger"
+    },
+    {
+      "spellId": "project-image",
+      "spellLevel": 7,
+      "minimumClassLevel": 14,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stranger"
+    },
+    {
+      "spellId": "maze",
+      "spellLevel": 8,
+      "minimumClassLevel": 16,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stranger"
+    },
+    {
+      "spellId": "later-spell-divide-mind",
+      "spellLevel": 9,
+      "minimumClassLevel": 18,
+      "mode": "known",
+      "requiredOptionId": "starseeker-stranger"
+    },
+    {
+      "spellId": "forced-quiet",
+      "spellLevel": 1,
+      "minimumClassLevel": 1,
+      "mode": "known",
+      "requiredOptionId": "starseeker-follower"
+    },
+    {
+      "spellId": "darkness",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known",
+      "requiredOptionId": "starseeker-follower"
+    },
+    {
+      "spellId": "vision-of-hell",
+      "spellLevel": 3,
+      "minimumClassLevel": 6,
+      "mode": "known",
+      "requiredOptionId": "starseeker-follower"
+    },
+    {
+      "spellId": "enervation",
+      "spellLevel": 4,
+      "minimumClassLevel": 8,
+      "mode": "known",
+      "requiredOptionId": "starseeker-follower"
+    },
+    {
+      "spellId": "waves-of-fatigue",
+      "spellLevel": 5,
+      "minimumClassLevel": 10,
+      "mode": "known",
+      "requiredOptionId": "starseeker-follower"
+    },
+    {
+      "spellId": "shadow-walk",
+      "spellLevel": 6,
+      "minimumClassLevel": 12,
+      "mode": "known",
+      "requiredOptionId": "starseeker-follower"
+    },
+    {
+      "spellId": "simulacrum",
+      "spellLevel": 7,
+      "minimumClassLevel": 14,
+      "mode": "known",
+      "requiredOptionId": "starseeker-follower"
+    },
+    {
+      "spellId": "destruction",
+      "spellLevel": 8,
+      "minimumClassLevel": 16,
+      "mode": "known",
+      "requiredOptionId": "starseeker-follower"
+    },
+    {
+      "spellId": "energy-drain",
+      "spellLevel": 9,
+      "minimumClassLevel": 18,
+      "mode": "known",
+      "requiredOptionId": "starseeker-follower"
     }
   ],
   "source": {

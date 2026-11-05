@@ -1,0 +1,16 @@
+{
+  "id": "esoteric-starseeker-weakened-schools",
+  "name": "Weakened School",
+  "classIds": ["psychic"],
+  "optionDefaults": {"groupId": "esoteric-starseeker-weakened-schools", "classIds": ["psychic"], "minimumLevel": 1, "prerequisites": [], "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Psychic%20Esoteric%20Starseeker"}},
+  "options": [
+    {"id": "starseeker-weakened-abjuration", "name": "Abjuration", "benefit": "Abjuration spells take a full-round action, or one additional full-round action, to cast."},
+    {"id": "starseeker-weakened-conjuration", "name": "Conjuration", "benefit": "Conjuration spells take a full-round action, or one additional full-round action, to cast."},
+    {"id": "starseeker-weakened-divination", "name": "Divination", "benefit": "Divination spells take a full-round action, or one additional full-round action, to cast."},
+    {"id": "starseeker-weakened-enchantment", "name": "Enchantment", "benefit": "Enchantment spells take a full-round action, or one additional full-round action, to cast."},
+    {"id": "starseeker-weakened-evocation", "name": "Evocation", "benefit": "Evocation spells take a full-round action, or one additional full-round action, to cast."},
+    {"id": "starseeker-weakened-illusion", "name": "Illusion", "benefit": "Illusion spells take a full-round action, or one additional full-round action, to cast."},
+    {"id": "starseeker-weakened-necromancy", "name": "Necromancy", "benefit": "Necromancy spells take a full-round action, or one additional full-round action, to cast."},
+    {"id": "starseeker-weakened-transmutation", "name": "Transmutation", "benefit": "Transmutation spells take a full-round action, or one additional full-round action, to cast."}
+  ]
+}

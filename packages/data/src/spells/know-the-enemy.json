@@ -1,0 +1,11 @@
+{
+  "id": "know-the-enemy",
+  "name": "Know the Enemy",
+  "school": "divination",
+  "levelByClass": {"inquisitor": 1},
+  "components": ["V", "S", "DF"],
+  "castingTime": "1 minute",
+  "range": "personal",
+  "summary": "Study evidence of a creature to attempt a Knowledge check about that creature with an insight bonus.",
+  "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Know the Enemy"}
+}

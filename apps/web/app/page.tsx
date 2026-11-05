@@ -2217,9 +2217,9 @@ export default function Home() {
   const archetypeBonusSpells = useMemo(
     () => mergeSpellLists(
       spellsFromAdditions(spells, characterClass.bonusSpellAdditions, characterClass.id, maximumSpellLevel),
-      spellsFromArchetypeGrants(spells, characterClass.spellGrants, characterClass.id, primaryClassLevel, maximumSpellLevel, "known", activeEffects.map((effect) => effect.name)),
+      spellsFromArchetypeGrants(spells, characterClass.spellGrants, characterClass.id, primaryClassLevel, maximumSpellLevel, "known", activeEffects.map((effect) => effect.name), Object.values(selectedOptions)),
     ),
-    [activeEffects, characterClass.bonusSpellAdditions, characterClass.id, characterClass.spellGrants, maximumSpellLevel, primaryClassLevel, spells],
+    [activeEffects, characterClass.bonusSpellAdditions, characterClass.id, characterClass.spellGrants, maximumSpellLevel, primaryClassLevel, selectedOptions, spells],
   );
   const grantedSpells = useMemo(
     () => withoutExcludedSpells([
@@ -2492,7 +2492,7 @@ export default function Home() {
       ...secondaryPatronSpells,
       ...secondarySelectedOptionSpells.filter((spell) => !spell.selectedAccessOnly),
       ...spellsFromAdditions(spells, secondaryCharacterClass?.bonusSpellAdditions, secondaryCharacterClass?.id ?? "", secondaryMaximumSpellLevel),
-      ...spellsFromArchetypeGrants(spells, secondaryCharacterClass?.spellGrants, secondaryCharacterClass?.id ?? "", secondaryClassLevel, secondaryMaximumSpellLevel, "known", activeEffects.map((effect) => effect.name)),
+      ...spellsFromArchetypeGrants(spells, secondaryCharacterClass?.spellGrants, secondaryCharacterClass?.id ?? "", secondaryClassLevel, secondaryMaximumSpellLevel, "known", activeEffects.map((effect) => effect.name), Object.values(selectedOptions)),
     ], secondaryCharacterClass?.spellListExclusions),
     [
       secondaryBloodlineSpells,
@@ -2503,6 +2503,7 @@ export default function Home() {
       secondaryCharacterClass?.spellListExclusions,
       secondaryMaximumSpellLevel,
       secondaryClassLevel,
+      selectedOptions,
       spells,
     ],
   );
