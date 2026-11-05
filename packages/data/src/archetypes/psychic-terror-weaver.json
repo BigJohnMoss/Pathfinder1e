@@ -41,32 +41,6 @@
                 "cadence": "day",
                 "kind": "spell-like"
               }
-            },
-            {
-              "id": "terror-weaver-manipulation-slot",
-              "label": "Cast Charm Person from a spell slot",
-              "classId": "psychic",
-              "minimumLevel": 2,
-              "actionTypeByLevel": [
-                {
-                  "level": 2,
-                  "actionType": "standard"
-                }
-              ],
-              "confirmations": [
-                {
-                  "id": "slot-spent",
-                  "label": "An unused psychic spell slot of 1st level or higher has been expended",
-                  "requiredForActivation": true
-                }
-              ],
-              "spellLikeAbility": {
-                "spellId": "charm-person",
-                "spellName": "Charm Person",
-                "cadence": "at-will",
-                "kind": "spell-equivalent"
-              },
-              "summary": "Use the expended slot's spell level when determining the Will save DC."
             }
           ]
         },
@@ -118,54 +92,6 @@
                 "spellName": "Aura of Doom",
                 "cadence": "day",
                 "kind": "spell-like"
-              }
-            },
-            {
-              "id": "terror-weaver-aura-slot",
-              "label": "Cast Aura of Intimidation from a spell slot",
-              "classId": "psychic",
-              "minimumLevel": 9,
-              "actionTypeByLevel": [
-                {
-                  "level": 9,
-                  "actionType": "standard"
-                }
-              ],
-              "confirmations": [
-                {
-                  "id": "slot-spent",
-                  "label": "An unused psychic spell slot of 4th level or higher has been expended",
-                  "requiredForActivation": true
-                }
-              ],
-              "modeLabel": "Condition",
-              "modes": [
-                {
-                  "id": "shaken",
-                  "label": "Shaken",
-                  "summary": "Enemies that fail the aura save become shaken.",
-                  "minimumLevel": 9,
-                  "maximumLevel": 10
-                },
-                {
-                  "id": "frightened",
-                  "label": "Frightened",
-                  "summary": "Enemies that fail the aura save become frightened.",
-                  "minimumLevel": 11,
-                  "maximumLevel": 18
-                },
-                {
-                  "id": "panicked",
-                  "label": "Panicked",
-                  "summary": "Enemies that fail the aura save become panicked.",
-                  "minimumLevel": 19
-                }
-              ],
-              "spellLikeAbility": {
-                "spellId": "later-spell-aura-of-doom",
-                "spellName": "Aura of Doom",
-                "cadence": "at-will",
-                "kind": "spell-equivalent"
               }
             }
           ]
@@ -219,6 +145,10 @@
         }
       ]
     }
+  ],
+  "spellGrants": [
+    {"spellId": "charm-person", "spellLevel": 1, "minimumClassLevel": 2, "mode": "known", "sourceFeatureId": "psychic-terror-weaver-manipulation-sp-2"},
+    {"spellId": "later-spell-aura-of-doom", "spellLevel": 4, "minimumClassLevel": 9, "mode": "known", "sourceFeatureId": "psychic-terror-weaver-aura-of-intimidation-sp-9"}
   ],
   "resourceAdjustments": [
     {
