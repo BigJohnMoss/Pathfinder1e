@@ -4,9 +4,9 @@
   "classId": "psychic",
   "summary": "Formless adepts master their psychic powers to unshackle themselves from the confines of the flesh and empower their spellcasting.",
   "replacesText": "Phrenic Pool; Psychic Discipline; Discipline Powers; 1st and 15th-level Phrenic Amplification; Discipline Spells; Remade Self",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Charisma calculates the phrenic pool; all three body forms have independent Charisma-scaled increment pools, level-based duration and action upgrades, and mutually exclusive tracked effects. Bonus spells appear only while a form is active. Formless Spell, Psychic Possession, and Formless Master defenses are tracked actions."
   ],
   "replacements": [
     {
@@ -29,14 +29,170 @@
           "name": "Formless Body",
           "level": 1,
           "type": "archetype",
-          "summary": "A formless adept gradually sheds his body, taking on increasingly nebulous forms. A formless adept can assume a formless body as a standard action. He can remain in each formless body type for a number of rounds per day equal to 3 + his Charisma modifier. The rounds don’t have to be used consecutively, but must be used in 1-round increments. Resuming his physical form takes another standard action; otherwise, the formless adept continues spending rounds of formless body until he runs out of them. The formless adept must return to his physical form before assuming a different formless body. Blurred Body (Su) : At 1st level, a formless adept can act under the effect of a blur spell. At 5th level, the formless adept can use this ability for a number of minutes per day instead of rounds per day. These minutes don’t have to be used consecutively, but must be used in 1-minute increments. Gaseous Body (Su) : At 5th level, a formless adept can become gaseous as gaseous form . At 13th level, the formless adept can use this ability for a number of minutes per day instead of rounds per day. These minutes don’t have to be used consecutively, but must be used in 1-minute increments. Incorporeal Body (Su) : At 13th level, a formless adept can become incorporeal ( Pathfinder RPG Bestiary 301). This ability replaces the psychic discipline and discipline powers class features."
+          "summary": "Track blurred, gaseous, and incorporeal forms with independent 3 + Charisma daily increment pools. Blurred increments become minutes at level 5, gaseous increments become minutes at level 13, and level 20 activation becomes swift.",
+          "resourceActions": [
+            {
+              "id": "formless-blurred-body",
+              "label": "Assume Blurred Body",
+              "classId": "psychic",
+              "minimumLevel": 1,
+              "resourceId": "formlessBlurred",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 20,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Formless Body",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 20,
+                "description": "Blurred Body grants 20% concealment. Each increment lasts 1 round before level 5 and 1 minute from level 5 onward.",
+                "defaultRounds": 1,
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 1,
+                    "rounds": 1
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 10
+                  }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "formless-gaseous-body",
+              "label": "Assume Gaseous Body",
+              "classId": "psychic",
+              "minimumLevel": 5,
+              "resourceId": "formlessGaseous",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 20,
+                  "actionType": "swift"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "gaseous-form",
+                "spellName": "Gaseous Form",
+                "cadence": "day",
+                "kind": "spell-equivalent"
+              },
+              "activeEffect": {
+                "name": "Formless Body",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Gaseous Body applies gaseous form. Each increment lasts 1 round before level 13 and 1 minute from level 13 onward.",
+                "defaultRounds": 1,
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 5,
+                    "rounds": 1
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 10
+                  }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "formless-incorporeal-body",
+              "label": "Assume Incorporeal Body",
+              "classId": "psychic",
+              "minimumLevel": 13,
+              "resourceId": "formlessIncorporeal",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 13,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 20,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Formless Body",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The character is incorporeal for this 1-round increment.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "formless-return-body",
+              "label": "Return to physical form",
+              "classId": "psychic",
+              "minimumLevel": 1,
+              "requiredActiveEffectName": "Formless Body",
+              "removeActiveEffectName": "Formless Body",
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "psychic-formless-adept-formless-spell-1",
           "name": "Formless Spell",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a formless adept gains the formless spell phrenic amplification. He can spend 1 point from his phrenic pool to cast a spell with a standard-action casting time as part of the action he uses to assume his formless body, expending the spell slot as normal. This ability replaces the 1st-level phrenic amplification."
+          "summary": "Spend 1 phrenic point to cast a standard-action spell while assuming a form; at level 20 this also supports the published swift/standard switching rules.",
+          "resourceActions": [
+            {
+              "id": "formless-spell",
+              "label": "Apply Formless Spell",
+              "classId": "psychic",
+              "minimumLevel": 1,
+              "resourceId": "phrenicPool",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "free"
+                }
+              ],
+              "activeEffect": {
+                "name": "Formless Spell",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Cast the qualifying spell as part of assuming or, at level 20, switching body form.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "consumeOnUse": true
+              }
+            }
+          ]
         },
         {
           "id": "psychic-formless-adept-bonus-spells-1",
@@ -50,16 +206,267 @@
           "name": "Psychic Possession (Su)",
           "level": 15,
           "type": "archetype",
-          "summary": "At 15th level, while using his incorporeal body ability, a formless adept can attempt to psychically possess another living creature. To use this ability, the formless adept must be adjacent to the target. This effect works as the greater possession spell and can be maintained only as long as the formless adept maintains his incorporeal body form. The target can attempt a Will save with a DC equal to 10 + 1/2 the formless adept’s class level + the formless adept’s Intelligence modifier to resist the effect. A creature that successfully saves is immune to the formless adept’s psychic possession for 24 hours. This ability replaces the 15th-level phrenic amplification."
+          "summary": "While incorporeal and adjacent, resolve greater possession with the exact Intelligence-based Will DC and 24-hour success immunity.",
+          "resourceActions": [
+            {
+              "id": "formless-psychic-possession",
+              "label": "Attempt Psychic Possession",
+              "classId": "psychic",
+              "minimumLevel": 15,
+              "requiredActiveEffectName": "Formless Body",
+              "actionTypeByLevel": [
+                {
+                  "level": 15,
+                  "actionType": "standard"
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "intelligence",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "psychic"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 15,
+                    "range": "Adjacent"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 15,
+                    "name": "Psychic Possession",
+                    "description": "Greater possession persists only while Incorporeal Body is maintained.",
+                    "duration": {
+                      "kind": "until-ended"
+                    }
+                  }
+                ],
+                "successEffect": {
+                  "name": "Psychic Possession immunity",
+                  "description": "Immune to this Formless Adept's Psychic Possession for 24 hours.",
+                  "rounds": 14400
+                }
+              }
+            }
+          ]
         },
         {
           "id": "psychic-formless-adept-formless-master-su-20",
           "name": "Formless Master (Su)",
           "level": 20,
           "type": "archetype",
-          "summary": "At 20th level, a formless adept can assume any formless body as a swift action and change between formless body types as a standard action (without returning to his physical form first). He can use the formless spell phrenic amplification to cast any spell with a swiftaction casting time when assuming a formless body or any spell with a standard-action casting time while switching between formless bodies. The formless adept also adds his Charisma bonus as a deflection bonus to his AC while in a formless body. A formless adept can attempt a saving throw to bypass any spells that prevent entry of incorporeal creatures (such as anti-incorporeal shell ACG ), even if the spells don’t normally allow one. This ability replaces remade self."
+          "summary": "At level 20 forms activate as swift actions, can replace one another, Formless Spell expands, and Charisma becomes a deflection bonus to AC while transformed.",
+          "resourceActions": [
+            {
+              "id": "formless-master-defense",
+              "label": "Apply Formless Master defense",
+              "classId": "psychic",
+              "minimumLevel": 20,
+              "requiredActiveEffectName": "Formless Body",
+              "actionTypeByLevel": [
+                {
+                  "level": 20,
+                  "actionType": "free"
+                }
+              ],
+              "activeEffect": {
+                "name": "Formless Master Defense",
+                "targets": [
+                  "armorClass"
+                ],
+                "bonus": 0,
+                "bonusAbilityModifier": "charisma",
+                "description": "Charisma modifier applies as a deflection bonus to AC while Formless Body remains active.",
+                "defaultRounds": 99999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            }
+          ]
         }
       ]
+    }
+  ],
+  "spellGrants": [
+    {
+      "spellId": "chill-touch",
+      "spellLevel": 1,
+      "minimumClassLevel": 1,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "expeditious-retreat",
+      "spellLevel": 1,
+      "minimumClassLevel": 1,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "levitate",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "stricken-heart",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "gaseous-form",
+      "spellLevel": 3,
+      "minimumClassLevel": 6,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "vampiric-touch",
+      "spellLevel": 3,
+      "minimumClassLevel": 6,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "shadow-step",
+      "spellLevel": 4,
+      "minimumClassLevel": 8,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "telekinesis",
+      "spellLevel": 4,
+      "minimumClassLevel": 8,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "dominate-person",
+      "spellLevel": 5,
+      "minimumClassLevel": 10,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "later-spell-synapse-overload",
+      "spellLevel": 5,
+      "minimumClassLevel": 10,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "disintegrate",
+      "spellLevel": 6,
+      "minimumClassLevel": 12,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "enemy-hammer",
+      "spellLevel": 6,
+      "minimumClassLevel": 12,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "finger-of-death",
+      "spellLevel": 7,
+      "minimumClassLevel": 14,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "telekinetic-sphere",
+      "spellLevel": 7,
+      "minimumClassLevel": 14,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "etherealness",
+      "spellLevel": 8,
+      "minimumClassLevel": 16,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "power-word-stun",
+      "spellLevel": 8,
+      "minimumClassLevel": 16,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "dominate-monster",
+      "spellLevel": 9,
+      "minimumClassLevel": 18,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    },
+    {
+      "spellId": "later-spell-telekinetic-storm",
+      "spellLevel": 9,
+      "minimumClassLevel": 18,
+      "mode": "known",
+      "requiredActiveEffectName": "Formless Body"
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "phrenicPool",
+      "label": "Phrenic Pool",
+      "unit": "point",
+      "operation": "replace",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "abilityModifier": "charisma",
+      "minimum": 1,
+      "refreshCadence": "day"
+    },
+    {
+      "resourceId": "formlessBlurred",
+      "label": "Blurred Body",
+      "unit": "increment",
+      "operation": "add",
+      "minimumLevel": 1,
+      "base": 3,
+      "abilityModifier": "charisma",
+      "minimum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "formlessGaseous",
+      "label": "Gaseous Body",
+      "unit": "increment",
+      "operation": "add",
+      "minimumLevel": 5,
+      "base": 3,
+      "abilityModifier": "charisma",
+      "minimum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "formlessIncorporeal",
+      "label": "Incorporeal Body",
+      "unit": "round",
+      "operation": "add",
+      "minimumLevel": 13,
+      "base": 3,
+      "abilityModifier": "charisma",
+      "minimum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
     }
   ],
   "source": {

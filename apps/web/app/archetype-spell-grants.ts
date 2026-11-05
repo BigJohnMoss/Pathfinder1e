@@ -7,8 +7,10 @@ export function spellsFromArchetypeGrants<T extends Pick<CharacterSpell, "id" | 
   classLevel: number,
   maximumSpellLevel: number,
   mode: ArchetypeSpellGrant["mode"],
+  activeEffectNames: string[] = [],
 ) {
   return (grants ?? []).flatMap((grant) => {
+    if (grant.requiredActiveEffectName && !activeEffectNames.includes(grant.requiredActiveEffectName)) return [];
     const spell = catalogue.find((candidate) => candidate.id === grant.spellId);
     return spell && grant.mode === mode && grant.minimumClassLevel <= classLevel && grant.spellLevel <= maximumSpellLevel
       ? [{ ...spell, levelByClass: { ...spell.levelByClass, [classId]: grant.spellLevel } }]
