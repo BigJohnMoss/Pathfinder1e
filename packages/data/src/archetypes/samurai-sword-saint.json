@@ -4,9 +4,11 @@
   "classId": "samurai",
   "summary": "Sword saints hail from lands where samurai are prevalent, and are often ronin who wander the world seeking new challenges to perfect their intricate style of swordplay called iaijutsu.",
   "replacesText": "Samurai's Mount; Mounted Charge; Banner; Greater Banner",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Iaijutsu Strike rolls its attack and level-scaled bonus damage, enforces its challenge, sheathed-weapon, first-attack, and per-target limits, and applies the correct Armor Class penalty.",
+    "Brutal Slash restricts Weapon Expertise to katana or wakizashi and provides a half-level critical-confirmation roll.",
+    "Terrifying and Roaring Iaijutsu calculate their exact saving throws and rolled durations for each witnessing foe."
   ],
   "replacements": [
     {
@@ -21,31 +23,338 @@
           "name": "Iaijutsu Strike (Ex)",
           "level": 3,
           "type": "archetype",
-          "summary": "A sword saint can perform a lightning-quick iaijutsu strike against the target of his challenge to inflict devastating wounds while drawing his sword. After the sword saint has challenged a foe but before he has attacked the target of his challenge, he may choose to use his iaijutsu strike as a full-round action, making an attack roll with his weapon as normal. In order to use this ability, the sword saint’s weapon must be sheathed at the start of his turn. If he successfully hits his opponent with an iaijutsu strike, his attack deals an additional +1d6 points of damage. This bonus damage increases by an additional +1d6 at 3rd level and every two levels thereafter to a maximum of +10d6 damage at 19th level. Any extra damage as a result of a successful iaijutsu strike is not multiplied by a critical hit. After making an iaijutsu strike, a sword saint takes a –4 penalty to his AC until his next turn, but his weapon is now drawn and he may continually to fight normally. Regardless of whether he hits his opponent with the iaijutsu strike, a sword saint cannot use this ability on the same foe more than once per day. At 10th level, a sword saint learns to focus faster and is able to make an iaijutsu strike as a standard action, and the penalty to his AC is reduced to –2. This ability replaces a samurai’s mount."
+          "summary": "A sword saint can perform a lightning-quick iaijutsu strike against the target of his challenge to inflict devastating wounds while drawing his sword. After the sword saint has challenged a foe but before he has attacked the target of his challenge, he may choose to use his iaijutsu strike as a full-round action, making an attack roll with his weapon as normal. In order to use this ability, the sword saint’s weapon must be sheathed at the start of his turn. If he successfully hits his opponent with an iaijutsu strike, his attack deals an additional +1d6 points of damage. This bonus damage increases by an additional +1d6 at 3rd level and every two levels thereafter to a maximum of +10d6 damage at 19th level. Any extra damage as a result of a successful iaijutsu strike is not multiplied by a critical hit. After making an iaijutsu strike, a sword saint takes a –4 penalty to his AC until his next turn, but his weapon is now drawn and he may continually to fight normally. Regardless of whether he hits his opponent with the iaijutsu strike, a sword saint cannot use this ability on the same foe more than once per day. At 10th level, a sword saint learns to focus faster and is able to make an iaijutsu strike as a standard action, and the penalty to his AC is reduced to –2. This ability replaces a samurai’s mount.",
+          "resourceActions": [
+            {
+              "id": "sword-saint-iaijutsu-strike",
+              "label": "Make Iaijutsu Strike",
+              "minimumLevel": 3,
+              "classId": "samurai",
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "full-round"
+                },
+                {
+                  "level": 10,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "challenge-target",
+                  "label": "The target is the current challenge target",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "first-attack",
+                  "label": "You have not yet attacked this challenge target",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "sheathed",
+                  "label": "The weapon was sheathed at the start of the turn",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "once-per-target",
+                  "label": "You have not attempted Iaijutsu Strike against this foe today",
+                  "requiredForActivation": true
+                }
+              ],
+              "combatRoll": {
+                "attack": {
+                  "kind": "melee",
+                  "label": "Iaijutsu weapon attack"
+                },
+                "damage": {
+                  "type": "bonus weapon damage (not multiplied on a critical hit)",
+                  "diceCountByLevel": [
+                    {
+                      "level": 3,
+                      "count": 2
+                    },
+                    {
+                      "level": 5,
+                      "count": 3
+                    },
+                    {
+                      "level": 7,
+                      "count": 4
+                    },
+                    {
+                      "level": 9,
+                      "count": 5
+                    },
+                    {
+                      "level": 11,
+                      "count": 6
+                    },
+                    {
+                      "level": 13,
+                      "count": 7
+                    },
+                    {
+                      "level": 15,
+                      "count": 8
+                    },
+                    {
+                      "level": 17,
+                      "count": 9
+                    },
+                    {
+                      "level": 19,
+                      "count": 10
+                    }
+                  ],
+                  "dieSidesByLevel": [
+                    {
+                      "level": 3,
+                      "sides": 6
+                    }
+                  ]
+                },
+                "rangeByLevel": [
+                  {
+                    "level": 3,
+                    "range": "melee"
+                  }
+                ]
+              },
+              "activeEffect": {
+                "name": "Iaijutsu Strike AC penalty",
+                "targets": [
+                  "armorClass"
+                ],
+                "bonus": -4,
+                "bonusByLevel": [
+                  {
+                    "level": 3,
+                    "bonus": -4
+                  },
+                  {
+                    "level": 10,
+                    "bonus": -2
+                  }
+                ],
+                "description": "Armor Class penalty after attempting Iaijutsu Strike, whether the attack hits or misses.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Roll the weapon attack and only the extra Iaijutsu damage. Record this foe as used for the day and apply the AC penalty until your next turn."
+            }
+          ]
         },
         {
           "id": "samurai-sword-saint-brutal-slash-ex-3",
           "name": "Brutal Slash (Ex)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, a sword saint’s iaijutsu strike becomes even more deadly. If a sword saint threatens a critical hit with his iaijutsu strike, he adds a bonus equal to 1/2 his class level to the attack roll to confirm a critical hit. The sword saint may only select the katana or the wakizashi as his chosen weapon for the weapon expertise ability. This ability alters weapon expertise and replaces mounted archer."
+          "summary": "At 3rd level, a sword saint’s iaijutsu strike becomes even more deadly. If a sword saint threatens a critical hit with his iaijutsu strike, he adds a bonus equal to 1/2 his class level to the attack roll to confirm a critical hit. The sword saint may only select the katana or the wakizashi as his chosen weapon for the weapon expertise ability. This ability alters weapon expertise and replaces mounted archer.",
+          "resourceActions": [
+            {
+              "id": "sword-saint-brutal-slash-confirm",
+              "label": "Confirm Brutal Slash critical",
+              "minimumLevel": 3,
+              "classId": "samurai",
+              "confirmations": [
+                {
+                  "id": "threat",
+                  "label": "The Iaijutsu Strike threatened a critical hit",
+                  "requiredForActivation": true
+                }
+              ],
+              "diceRoll": {
+                "label": "Critical confirmation",
+                "diceCountByLevel": [
+                  {
+                    "level": 3,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 3,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Normal confirmation modifier",
+                "flatModifierByLevel": [
+                  {
+                    "level": 3,
+                    "modifier": 1
+                  },
+                  {
+                    "level": 4,
+                    "modifier": 2
+                  },
+                  {
+                    "level": 6,
+                    "modifier": 3
+                  },
+                  {
+                    "level": 8,
+                    "modifier": 4
+                  },
+                  {
+                    "level": 10,
+                    "modifier": 5
+                  },
+                  {
+                    "level": 12,
+                    "modifier": 6
+                  },
+                  {
+                    "level": 14,
+                    "modifier": 7
+                  },
+                  {
+                    "level": 16,
+                    "modifier": 8
+                  },
+                  {
+                    "level": 18,
+                    "modifier": 9
+                  },
+                  {
+                    "level": 20,
+                    "modifier": 10
+                  }
+                ],
+                "targetDcInputLabel": "Target AC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "critical confirmed"
+                  }
+                ],
+                "failureLabel": "critical not confirmed"
+              },
+              "summary": "Roll the confirmation with the automatic half-Samurai-level Brutal Slash bonus."
+            }
+          ]
         },
         {
           "id": "samurai-sword-saint-terrifying-iaijutsu-ex-5",
           "name": "Terrifying Iaijutsu (Ex)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, a sword saint’s iaijutsu strike devastates the morale of foes that witness it. When a sword saint successfully hits with an iaijutsu strike, all foes within 30 feet must succeed at a Will save (DC 10 + 1/2 the sword saint’s class level + the sword saint’s Cha modifier) or become shaken for 1d4+1 rounds. This ability replaces banner."
+          "summary": "At 5th level, a sword saint’s iaijutsu strike devastates the morale of foes that witness it. When a sword saint successfully hits with an iaijutsu strike, all foes within 30 feet must succeed at a Will save (DC 10 + 1/2 the sword saint’s class level + the sword saint’s Cha modifier) or become shaken for 1d4+1 rounds. This ability replaces banner.",
+          "resourceActions": [
+            {
+              "id": "sword-saint-terrifying-iaijutsu",
+              "label": "Resolve Terrifying Iaijutsu for a foe",
+              "minimumLevel": 5,
+              "classId": "samurai",
+              "confirmations": [
+                {
+                  "id": "successful-hit",
+                  "label": "The Iaijutsu Strike hit",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "witness",
+                  "label": "This foe witnessed the hit from within 30 feet",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "samurai"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 5,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 5,
+                    "name": "Terrifying Iaijutsu — shaken",
+                    "description": "Shaken by the witnessed Iaijutsu Strike.",
+                    "duration": {
+                      "kind": "dice-rounds",
+                      "count": 1,
+                      "sides": 4,
+                      "fixedBonus": 1
+                    }
+                  }
+                ]
+              },
+              "summary": "Resolve one witnessing foe's Will save and automatically roll the exact 1d4+1-round duration. Repeat for each foe in range."
+            }
+          ]
         },
         {
           "id": "samurai-sword-saint-roaring-iaijutsu-ex-14",
           "name": "Roaring Iaijutsu (Ex)",
           "level": 14,
           "type": "archetype",
-          "summary": "At 14th level, a sword saint’s iaijutsu strike deafens foes upon impact. When a sword saint successfully hits with an iaijutsu strike, all foes within 30 feet must succeed at a Fortitude save (DC 10 + 1/2 the sword saint’s class level + the sword saint’s Str modifier) or be deafened for 1d4 minutes. This ability replaces greater banner."
+          "summary": "At 14th level, a sword saint’s iaijutsu strike deafens foes upon impact. When a sword saint successfully hits with an iaijutsu strike, all foes within 30 feet must succeed at a Fortitude save (DC 10 + 1/2 the sword saint’s class level + the sword saint’s Str modifier) or be deafened for 1d4 minutes. This ability replaces greater banner.",
+          "resourceActions": [
+            {
+              "id": "sword-saint-roaring-iaijutsu",
+              "label": "Resolve Roaring Iaijutsu for a foe",
+              "minimumLevel": 14,
+              "classId": "samurai",
+              "confirmations": [
+                {
+                  "id": "successful-hit",
+                  "label": "The Iaijutsu Strike hit",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "within-range",
+                  "label": "This foe is within 30 feet",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Fortitude",
+                "ability": "strength",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "samurai"
+              },
+              "targetEffectRoll": {
+                "modifier": "fortitude",
+                "rangeByLevel": [
+                  {
+                    "level": 14,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 14,
+                    "name": "Roaring Iaijutsu — deafened",
+                    "description": "Deafened by the impact of the Iaijutsu Strike.",
+                    "duration": {
+                      "kind": "dice-rounds",
+                      "count": 1,
+                      "sides": 4,
+                      "multiplier": 10
+                    }
+                  }
+                ]
+              },
+              "summary": "Resolve one foe's Fortitude save and automatically convert the 1d4-minute duration to rounds. Repeat for each foe in range."
+            }
+          ]
         }
       ]
     }
+  ],
+  "prohibitedOptionIds": [
+    "samurai-expertise-longbow",
+    "samurai-expertise-naginata"
   ],
   "source": {
     "title": "Archives of Nethys",
