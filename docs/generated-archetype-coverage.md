@@ -29,7 +29,7 @@ This report distinguishes selectable replacement integration from bespoke rules 
 | Psychic | 8 | 0 | 0 | 8 |
 | Ranger | 9 | 53 | 0 | 62 |
 | Rogue | 12 | 66 | 0 | 78 |
-| Samurai | 2 | 5 | 0 | 7 |
+| Samurai | 3 | 4 | 0 | 7 |
 | Shaman | 0 | 17 | 0 | 17 |
 | Skald | 1 | 25 | 0 | 26 |
 | Slayer | 0 | 26 | 0 | 26 |
