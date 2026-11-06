@@ -322,6 +322,7 @@ export interface ClassFeatureOccurrence {
     savingThrow?: {
       label: string;
       ability?: AbilityName;
+      abilityOptions?: AbilityName[];
       base?: number;
       levelDivisor?: number;
       classId?: string;
