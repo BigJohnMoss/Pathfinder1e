@@ -4,9 +4,11 @@
   "classId": "samurai",
   "summary": "The ward speaker draws power from simple rituals to honor the spirits found throughout the world so that he might better protect those entrusted to his care.",
   "replacesText": "Alignment; Resolve; Greater Resolve; True Resolve; Honorable Stand",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The current kami fortune is selectable and each 1-minute propitiation spends from the exact level-scaled daily pool while replacing the prior fortune.",
+    "All five fortunes expose their passive benefits, scaling feats, save DCs, durations, dismissal spells, and once-per-day high-level abilities.",
+    "Fortune rerolls and Resilient Stand spend the correct resource and require their rules conditions."
   ],
   "replacements": [
     {
@@ -21,23 +23,478 @@
           "name": "Alignment",
           "level": 1,
           "type": "archetype",
-          "summary": "A ward speaker must be of a nonevil alignment. This alters the samurai’s alignment."
+          "summary": "A ward speaker must be of a nonevil alignment. This alters the samurai’s alignment.",
+          "requiredOptionMessage": "Ward Speaker requires a nonevil alignment."
         },
         {
           "id": "samurai-ward-speaker-propitiation-ex-su-sp-1",
           "name": "Propitiation (Ex, Su, Sp)",
           "level": 1,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "ward-speaker-fortunes",
+          "summary": "A ward speaker can perform a special ritual to propitiate kami and gain a sliver of their power. This ritual must be performed at a shrine or a location warded by a specific type of kami. The propitiation takes 1 minute and involves clapping, ringing bells, bowing, and token offerings of coins, food, incense, or other gifts. The ward speaker’s propitiation must be performed uninterrupted to receive any benefits from it. At the end of this ritual, the ward speaker immediately gains a fortune depending on the type of kami he sought to propitiate. Common kami are presented beginning on page 159 of Bestiary 3 , and the fortunes each of those kami grant are listed below. As an immediate action, the ward speaker can dismiss the fortune to reroll one d20 roll before the results of the roll are revealed; he must use the result of the second roll, even if it’s worse. If not dismissed, a fortune remains in effect until the ward speaker regains the use of his daily abilities, at which point the fortune and its benefits end. If a ward speaker dismisses a fortune to receive a benefit based on the specific kami he propitiated (see below), he does not also gain the reroll described here. The ward speaker can perform this ritual once per day at 1st level, plus one additional time per day for every 3 levels beyond 1st, to a maximum of seven times per day at 19th level. He can maintain only one fortune at a time; performing a propitiation while he already has a fortune active ends the previous fortune and its benefits. This replaces resolve, greater resolve, and true resolve. Jinushigami (Ex, Sp) : The ward speaker (and his mount, if he has one) gains a 10-foot enhancement bonus to base speed. At 9th level, this enhancement bonus increases to 20 feet. At 17th level, once per day, he can dismiss this fortune as an immediate action to cast earthquake as a spell-like ability, using his samurai level as his caster level. Kodama (Su) : As a standard action, the ward speaker can afflict one target that can see him with a distracting gaze. If the target fails a Will save (DC = 10 + half the ward speaker’s samurai level), it is staggered for 1d4 rounds. At 9th level, it is instead staggered for 2d4 rounds. At 17th level, it is instead staggered for 1 minute. Once a creature has been targeted by this ability, it cannot be targeted by it again for 24 hours. Shikigami (Ex) : The ward speaker gains Catch Off-Guard and Throw Anything as bonus feats. At 9th level, he gains Toughness and Step Up. At 17th level, he gains Following Step and Step Up and Strike, even if he does not meet the prerequisites. Toshigami (Sp) : The ward speaker can speak with plants, as the speak with plants spell. At 9th level, the ward speaker can dismiss this fortune as an immediate action to cast haste as a spell-like ability. Once per day at 17th level, the ward speaker can instead dismiss this fortune to cast temporal stasis as a spell-like ability. The ward speaker’s caster level for these spell-like abilities is equal to his samurai level. Zuishin (Sp) : As an immediate action, the ward speaker can dismiss this fortune to cast cure light wounds as a spell-like ability. At 9th level, the ward speaker can dismiss this fortune to cast cure serious wounds , lesser restoration , remove curse , or remove disease ; at 17th level, he also adds breath of life and heal to this list. The ward speaker’s caster level for these spell-like abilities is equal to his samurai level.",
+          "resourceActions": [
+            {
+              "id": "ward-speaker-propitiate",
+              "label": "Perform selected Propitiation",
+              "minimumLevel": 1,
+              "classId": "samurai",
+              "resourceId": "wardSpeakerPropitiation",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "1-minute"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "warded-location",
+                  "label": "You are at a shrine or location warded by the selected kami",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "uninterrupted",
+                  "label": "The ritual was completed uninterrupted with an offering",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Ward Speaker Fortune",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "description": "The selected kami fortune remains until dismissed, replaced, or daily abilities refresh."
+              },
+              "summary": "Spend one daily ritual use, replace any current fortune, and activate the selected kami fortune."
+            },
+            {
+              "id": "ward-speaker-fortune-reroll",
+              "label": "Dismiss Fortune to reroll",
+              "minimumLevel": 1,
+              "classId": "samurai",
+              "requiredActiveEffectName": "Ward Speaker Fortune",
+              "removeActiveEffectName": "Ward Speaker Fortune",
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "immediate"
+                }
+              ],
+              "rerollAction": {
+                "kind": "d20",
+                "label": "Reroll before the result is revealed; keep the second roll"
+              },
+              "summary": "Dismiss the current fortune and keep the second d20 result even if it is worse."
+            },
+            {
+              "id": "ward-speaker-kodama-gaze",
+              "label": "Use Kodama distracting gaze",
+              "minimumLevel": 1,
+              "classId": "samurai",
+              "requiredOptionId": "ward-speaker-fortune-kodama",
+              "requiredActiveEffectName": "Ward Speaker Fortune",
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "can-see",
+                  "label": "The target can see you and has not been targeted by this gaze in the last 24 hours",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "fixedDcByLevel": [
+                  {
+                    "level": 1,
+                    "dc": 10
+                  },
+                  {
+                    "level": 2,
+                    "dc": 11
+                  },
+                  {
+                    "level": 4,
+                    "dc": 12
+                  },
+                  {
+                    "level": 6,
+                    "dc": 13
+                  },
+                  {
+                    "level": 8,
+                    "dc": 14
+                  },
+                  {
+                    "level": 10,
+                    "dc": 15
+                  },
+                  {
+                    "level": 12,
+                    "dc": 16
+                  },
+                  {
+                    "level": 14,
+                    "dc": 17
+                  },
+                  {
+                    "level": 16,
+                    "dc": 18
+                  },
+                  {
+                    "level": 18,
+                    "dc": 19
+                  },
+                  {
+                    "level": 20,
+                    "dc": 20
+                  }
+                ]
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "effectsByLevel": [
+                  {
+                    "level": 1,
+                    "name": "Kodama gaze — staggered",
+                    "description": "Staggered; this creature cannot be targeted by the gaze again for 24 hours.",
+                    "duration": {
+                      "kind": "dice-rounds",
+                      "count": 1,
+                      "sides": 4
+                    }
+                  },
+                  {
+                    "level": 9,
+                    "name": "Kodama gaze — staggered",
+                    "description": "Staggered; this creature cannot be targeted by the gaze again for 24 hours.",
+                    "duration": {
+                      "kind": "dice-rounds",
+                      "count": 2,
+                      "sides": 4
+                    }
+                  },
+                  {
+                    "level": 17,
+                    "name": "Kodama gaze — staggered",
+                    "description": "Staggered for 1 minute; this creature cannot be targeted by the gaze again for 24 hours.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 10
+                    }
+                  }
+                ]
+              },
+              "summary": "Resolve the exact level-scaled Will save and stagger duration."
+            },
+            {
+              "id": "ward-speaker-toshigami-speak-with-plants",
+              "label": "Speak with plants",
+              "minimumLevel": 1,
+              "classId": "samurai",
+              "requiredOptionId": "ward-speaker-fortune-toshigami",
+              "requiredActiveEffectName": "Ward Speaker Fortune",
+              "spellLikeAbility": {
+                "spellId": "speak-with-plants",
+                "spellName": "Speak with Plants",
+                "cadence": "at-will"
+              },
+              "summary": "Use speak with plants while the Toshigami fortune is active."
+            },
+            {
+              "id": "ward-speaker-toshigami-haste",
+              "label": "Dismiss Toshigami Fortune for haste",
+              "minimumLevel": 9,
+              "classId": "samurai",
+              "requiredOptionId": "ward-speaker-fortune-toshigami",
+              "requiredActiveEffectName": "Ward Speaker Fortune",
+              "removeActiveEffectName": "Ward Speaker Fortune",
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "immediate"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "haste",
+                "spellName": "Haste",
+                "cadence": "at-will"
+              },
+              "summary": "Dismiss the active Toshigami fortune to cast haste at Samurai caster level."
+            },
+            {
+              "id": "ward-speaker-toshigami-temporal-stasis",
+              "label": "Dismiss Toshigami Fortune for temporal stasis",
+              "minimumLevel": 17,
+              "classId": "samurai",
+              "resourceId": "wardSpeakerTemporalStasis",
+              "cost": 1,
+              "requiredOptionId": "ward-speaker-fortune-toshigami",
+              "requiredActiveEffectName": "Ward Speaker Fortune",
+              "removeActiveEffectName": "Ward Speaker Fortune",
+              "actionTypeByLevel": [
+                {
+                  "level": 17,
+                  "actionType": "immediate"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "temporal-stasis",
+                "spellName": "Temporal Stasis",
+                "cadence": "day"
+              },
+              "summary": "Spend the once-per-day use and dismiss the fortune to cast temporal stasis at Samurai caster level."
+            },
+            {
+              "id": "ward-speaker-jinushigami-earthquake",
+              "label": "Dismiss Jinushigami Fortune for earthquake",
+              "minimumLevel": 17,
+              "classId": "samurai",
+              "resourceId": "wardSpeakerEarthquake",
+              "cost": 1,
+              "requiredOptionId": "ward-speaker-fortune-jinushigami",
+              "requiredActiveEffectName": "Ward Speaker Fortune",
+              "removeActiveEffectName": "Ward Speaker Fortune",
+              "actionTypeByLevel": [
+                {
+                  "level": 17,
+                  "actionType": "immediate"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "earthquake",
+                "spellName": "Earthquake",
+                "cadence": "day"
+              },
+              "summary": "Spend the once-per-day use and dismiss the fortune to cast earthquake at Samurai caster level."
+            },
+            {
+              "id": "ward-speaker-zuishin-dismiss",
+              "label": "Dismiss Zuishin Fortune",
+              "minimumLevel": 1,
+              "classId": "samurai",
+              "requiredOptionId": "ward-speaker-fortune-zuishin",
+              "requiredActiveEffectName": "Ward Speaker Fortune",
+              "removeActiveEffectName": "Ward Speaker Fortune",
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "immediate"
+                }
+              ],
+              "modeLabel": "Curative spell",
+              "modes": [
+                {
+                  "id": "cure-light-wounds",
+                  "label": "Cure Light Wounds",
+                  "minimumLevel": 1,
+                  "summary": "Cast cure light wounds at Samurai caster level."
+                },
+                {
+                  "id": "cure-serious-wounds",
+                  "label": "Cure Serious Wounds",
+                  "minimumLevel": 9,
+                  "summary": "Cast cure serious wounds at Samurai caster level."
+                },
+                {
+                  "id": "lesser-restoration",
+                  "label": "Lesser Restoration",
+                  "minimumLevel": 9,
+                  "summary": "Cast lesser restoration at Samurai caster level."
+                },
+                {
+                  "id": "remove-curse",
+                  "label": "Remove Curse",
+                  "minimumLevel": 9,
+                  "summary": "Cast remove curse at Samurai caster level."
+                },
+                {
+                  "id": "remove-disease",
+                  "label": "Remove Disease",
+                  "minimumLevel": 9,
+                  "summary": "Cast remove disease at Samurai caster level."
+                },
+                {
+                  "id": "breath-of-life",
+                  "label": "Breath of Life",
+                  "minimumLevel": 17,
+                  "summary": "Cast breath of life at Samurai caster level."
+                },
+                {
+                  "id": "heal",
+                  "label": "Heal",
+                  "minimumLevel": 17,
+                  "summary": "Cast heal at Samurai caster level."
+                }
+              ],
+              "summary": "Dismiss the active Zuishin fortune to cast the selected available curative spell-like ability at Samurai caster level."
+            }
+          ]
+        },
+        {
+          "id": "samurai-ward-speaker-jinushigami-speed-1",
+          "name": "Jinushigami Fortune",
+          "level": 1,
           "type": "archetype",
-          "summary": "A ward speaker can perform a special ritual to propitiate kami and gain a sliver of their power. This ritual must be performed at a shrine or a location warded by a specific type of kami. The propitiation takes 1 minute and involves clapping, ringing bells, bowing, and token offerings of coins, food, incense, or other gifts. The ward speaker’s propitiation must be performed uninterrupted to receive any benefits from it. At the end of this ritual, the ward speaker immediately gains a fortune depending on the type of kami he sought to propitiate. Common kami are presented beginning on page 159 of Bestiary 3 , and the fortunes each of those kami grant are listed below. As an immediate action, the ward speaker can dismiss the fortune to reroll one d20 roll before the results of the roll are revealed; he must use the result of the second roll, even if it’s worse. If not dismissed, a fortune remains in effect until the ward speaker regains the use of his daily abilities, at which point the fortune and its benefits end. If a ward speaker dismisses a fortune to receive a benefit based on the specific kami he propitiated (see below), he does not also gain the reroll described here. The ward speaker can perform this ritual once per day at 1st level, plus one additional time per day for every 3 levels beyond 1st, to a maximum of seven times per day at 19th level. He can maintain only one fortune at a time; performing a propitiation while he already has a fortune active ends the previous fortune and its benefits. This replaces resolve, greater resolve, and true resolve. Jinushigami (Ex, Sp) : The ward speaker (and his mount, if he has one) gains a 10-foot enhancement bonus to base speed. At 9th level, this enhancement bonus increases to 20 feet. At 17th level, once per day, he can dismiss this fortune as an immediate action to cast earthquake as a spell-like ability, using his samurai level as his caster level. Kodama (Su) : As a standard action, the ward speaker can afflict one target that can see him with a distracting gaze. If the target fails a Will save (DC = 10 + half the ward speaker’s samurai level), it is staggered for 1d4 rounds. At 9th level, it is instead staggered for 2d4 rounds. At 17th level, it is instead staggered for 1 minute. Once a creature has been targeted by this ability, it cannot be targeted by it again for 24 hours. Shikigami (Ex) : The ward speaker gains Catch Off-Guard and Throw Anything as bonus feats. At 9th level, he gains Toughness and Step Up. At 17th level, he gains Following Step and Step Up and Strike, even if he does not meet the prerequisites. Toshigami (Sp) : The ward speaker can speak with plants, as the speak with plants spell. At 9th level, the ward speaker can dismiss this fortune as an immediate action to cast haste as a spell-like ability. Once per day at 17th level, the ward speaker can instead dismiss this fortune to cast temporal stasis as a spell-like ability. The ward speaker’s caster level for these spell-like abilities is equal to his samurai level. Zuishin (Sp) : As an immediate action, the ward speaker can dismiss this fortune to cast cure light wounds as a spell-like ability. At 9th level, the ward speaker can dismiss this fortune to cast cure serious wounds , lesser restoration , remove curse , or remove disease ; at 17th level, he also adds breath of life and heal to this list. The ward speaker’s caster level for these spell-like abilities is equal to his samurai level."
+          "requiredOptionId": "ward-speaker-fortune-jinushigami",
+          "summary": "While the Jinushigami fortune is active, the ward speaker and mount gain +10 feet enhancement to base speed, increasing to +20 feet at 9th level.",
+          "resourceActions": [
+            {
+              "id": "ward-speaker-jinushigami-speed",
+              "label": "Apply Jinushigami speed",
+              "minimumLevel": 1,
+              "classId": "samurai",
+              "requiredActiveEffectName": "Ward Speaker Fortune",
+              "activeEffect": {
+                "name": "Jinushigami speed",
+                "targets": [
+                  "landSpeed"
+                ],
+                "bonus": 10,
+                "bonusByLevel": [
+                  {
+                    "level": 1,
+                    "bonus": 10
+                  },
+                  {
+                    "level": 9,
+                    "bonus": 20
+                  }
+                ],
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "description": "Enhancement bonus to the ward speaker's and mount's base speed while the fortune remains active."
+              },
+              "summary": "Apply the level-scaled speed bonus to the ward speaker and mount."
+            }
+          ]
+        },
+        {
+          "id": "samurai-ward-speaker-shikigami-feats-1",
+          "name": "Shikigami Fortune Feats",
+          "level": 1,
+          "type": "archetype",
+          "requiredOptionId": "ward-speaker-fortune-shikigami",
+          "grantedFeatIds": [
+            "catch-off-guard",
+            "throw-anything"
+          ],
+          "summary": "Gain Catch Off-Guard and Throw Anything while the Shikigami fortune is selected."
+        },
+        {
+          "id": "samurai-ward-speaker-shikigami-feats-9",
+          "name": "Improved Shikigami Fortune Feats",
+          "level": 9,
+          "type": "archetype",
+          "requiredOptionId": "ward-speaker-fortune-shikigami",
+          "grantedFeatIds": [
+            "toughness",
+            "step-up"
+          ],
+          "summary": "Also gain Toughness and Step Up while the Shikigami fortune is selected."
+        },
+        {
+          "id": "samurai-ward-speaker-shikigami-feats-17",
+          "name": "Greater Shikigami Fortune Feats",
+          "level": 17,
+          "type": "archetype",
+          "requiredOptionId": "ward-speaker-fortune-shikigami",
+          "grantedFeatIds": [
+            "following-step",
+            "step-up-and-strike"
+          ],
+          "summary": "Also gain Following Step and Step Up and Strike without needing their prerequisites while the Shikigami fortune is selected."
         },
         {
           "id": "samurai-ward-speaker-resilient-stand-ex-11",
           "name": "Resilient Stand (Ex)",
           "level": 11,
           "type": "archetype",
-          "summary": "At 11th level, the spirits can bolster a ward speaker’s willpower and resolve, granting him an inner reservoir he can use when he needs it most. If a ward speaker has not expended his daily uses of propitiation, he can call upon the spirits to reroll a saving throw during an honorable stand instead of expending a use of resolve to do so. He must take the result of the second roll, even if it is worse. This expends a daily use of propitiation. This alters honorable stand."
+          "summary": "At 11th level, the spirits can bolster a ward speaker’s willpower and resolve, granting him an inner reservoir he can use when he needs it most. If a ward speaker has not expended his daily uses of propitiation, he can call upon the spirits to reroll a saving throw during an honorable stand instead of expending a use of resolve to do so. He must take the result of the second roll, even if it is worse. This expends a daily use of propitiation. This alters honorable stand.",
+          "resourceActions": [
+            {
+              "id": "ward-speaker-resilient-stand",
+              "label": "Use Resilient Stand",
+              "minimumLevel": 11,
+              "classId": "samurai",
+              "resourceId": "wardSpeakerPropitiation",
+              "cost": 1,
+              "confirmations": [
+                {
+                  "id": "honorable-stand",
+                  "label": "This saving throw occurs during Honorable Stand",
+                  "requiredForActivation": true
+                }
+              ],
+              "rerollAction": {
+                "kind": "d20",
+                "label": "Reroll saving throw and keep the second result"
+              },
+              "summary": "Spend one unexpended Propitiation use to reroll the save during Honorable Stand."
+            }
+          ]
         }
       ]
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "resolve",
+      "label": "Resolve (replaced by Propitiation)",
+      "unit": "point",
+      "operation": "replace",
+      "minimumLevel": 1,
+      "base": 0,
+      "maximum": 0,
+      "hidden": true
+    },
+    {
+      "resourceId": "wardSpeakerPropitiation",
+      "label": "Propitiation",
+      "unit": "ritual",
+      "operation": "replace",
+      "minimumLevel": 1,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 3,
+      "maximum": 7,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "wardSpeakerEarthquake",
+      "label": "Jinushigami Earthquake",
+      "unit": "cast",
+      "operation": "add",
+      "minimumLevel": 17,
+      "base": 1,
+      "maximum": 1,
+      "refreshCadence": "day",
+      "requiredOptionId": "ward-speaker-fortune-jinushigami",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "wardSpeakerTemporalStasis",
+      "label": "Toshigami Temporal Stasis",
+      "unit": "cast",
+      "operation": "add",
+      "minimumLevel": 17,
+      "base": 1,
+      "maximum": 1,
+      "refreshCadence": "day",
+      "requiredOptionId": "ward-speaker-fortune-toshigami",
+      "dedicatedAction": true
     }
   ],
   "source": {
