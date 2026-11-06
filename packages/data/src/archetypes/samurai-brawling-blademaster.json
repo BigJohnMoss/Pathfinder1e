@@ -4,9 +4,11 @@
   "classId": "samurai",
   "summary": "Brawling blademaster samurai use weapon strikes and unarmed attacks in equal measure",
   "replacesText": "Weapon and Armor Proficiency; Mount; Weapon Expertise; Mounted Archer; Banner; Greater Banner",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Weapon, armor, and shield proficiencies are replaced exactly; Improved Unarmed Strike and Two-Weapon Fighting are granted automatically.",
+    "Samurai and Monk levels stack for the visible unarmed-strike damage progression, and Nimble scales through level 18.",
+    "Harmonious Flow, Perfect Clarity, and Superior Focus expose their exact challenge-conditional modifiers."
   ],
   "replacements": [
     {
@@ -30,20 +32,89 @@
           "name": "Empty Hand (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A brawling blademaster gains Improved Unarmed Strike as a bonus feat. She uses her samurai level as her monk level for determining the amount of damage she deals with an unarmed strike. These levels stack with monk levels to determine the brawling blademaster’s unarmed strike damage. This replaces mount."
+          "grantedFeatId": "improved-unarmed-strike",
+          "effectiveLevelClassIds": [
+            "samurai",
+            "monk"
+          ],
+          "summary": "A brawling blademaster gains Improved Unarmed Strike as a bonus feat. She uses her samurai level as her monk level for determining the amount of damage she deals with an unarmed strike. These levels stack with monk levels to determine the brawling blademaster’s unarmed strike damage. This replaces mount.",
+          "progressionProfiles": [
+            {
+              "id": "brawling-blademaster-unarmed-damage",
+              "label": "Unarmed strike damage",
+              "classId": "samurai",
+              "columns": [
+                {
+                  "id": "medium",
+                  "label": "Medium damage"
+                },
+                {
+                  "id": "small",
+                  "label": "Small damage"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "medium": "1d6",
+                    "small": "1d4"
+                  }
+                },
+                {
+                  "level": 4,
+                  "values": {
+                    "medium": "1d8",
+                    "small": "1d6"
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "medium": "1d10",
+                    "small": "1d8"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "medium": "2d6",
+                    "small": "1d10"
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "medium": "2d8",
+                    "small": "2d6"
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "medium": "2d10",
+                    "small": "2d8"
+                  }
+                }
+              ],
+              "summary": "Use the combined Samurai and Monk level for this Monk-equivalent unarmed-strike damage progression."
+            }
+          ]
         },
         {
           "id": "samurai-brawling-blademaster-nimble-ex-2",
           "name": "Nimble (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a brawling blademaster gains the gunslinger’s nimble class feature , using her samurai level as his gunslinger level."
+          "summary": "At 2nd level, a brawling blademaster gains the gunslinger’s nimble class feature, using her samurai level as her gunslinger level."
         },
         {
           "id": "samurai-brawling-blademaster-dual-expertise-ex-3",
           "name": "Dual Expertise (Ex)",
           "level": 3,
           "type": "archetype",
+          "grantedFeatId": "two-weapon-fighting",
+          "ignoreFeatPrerequisites": true,
           "summary": "At 3rd level, a brawling blademaster gains Two-Weapon Fighting as a bonus feat, even if she doesn’t meet the prerequisites. Furthermore, when the brawling blademaster selects a feat with the bonus feat class feature, she can ignore any Dexterity requirements for the feat if its prerequisites include the Two-Weapon Fighting feat. This replaces weapon expertise."
         },
         {
@@ -68,6 +139,71 @@
           "summary": "At 14th level, the brawling blademaster gains a +2 bonus on saving throws during a challenge. This replaces greater banner."
         }
       ]
+    }
+  ],
+  "proficiencyAdjustments": [
+    {
+      "sourceFeatureId": "samurai-brawling-blademaster-weapon-and-armor-proficiency-1",
+      "category": "weapon",
+      "operation": "replace",
+      "proficiencies": [
+        "All simple weapons",
+        "All martial weapons",
+        "Katana",
+        "Wakizashi"
+      ]
+    },
+    {
+      "sourceFeatureId": "samurai-brawling-blademaster-weapon-and-armor-proficiency-1",
+      "category": "armor",
+      "operation": "replace",
+      "proficiencies": [
+        "Light armor"
+      ]
+    },
+    {
+      "sourceFeatureId": "samurai-brawling-blademaster-weapon-and-armor-proficiency-1",
+      "category": "shield",
+      "operation": "remove",
+      "proficiencies": [
+        "All shields"
+      ]
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "samurai-brawling-blademaster-nimble-ex-2",
+      "label": "Nimble — Armor Class",
+      "condition": "while wearing light or no armor",
+      "minimumLevel": 2,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 4,
+      "maximum": 5
+    },
+    {
+      "sourceFeatureId": "samurai-brawling-blademaster-harmonious-flow-ex-4",
+      "label": "Harmonious Flow — attack-roll penalty offset",
+      "condition": "attacking the challenge target with a light or one-handed manufactured weapon and an unarmed strike, with one hand empty",
+      "minimumLevel": 4,
+      "base": 2,
+      "maximum": 2
+    },
+    {
+      "sourceFeatureId": "samurai-brawling-blademaster-perfect-clarity-ex-5",
+      "label": "Perfect Clarity — challenge AC penalty offset",
+      "condition": "during a challenge; this removes the normal challenge Armor Class penalty",
+      "minimumLevel": 5,
+      "base": 2,
+      "maximum": 2
+    },
+    {
+      "sourceFeatureId": "samurai-brawling-blademaster-superior-focus-ex-14",
+      "label": "Superior Focus — saving throws",
+      "condition": "during a challenge",
+      "minimumLevel": 14,
+      "base": 2,
+      "maximum": 2
     }
   ],
   "source": {
