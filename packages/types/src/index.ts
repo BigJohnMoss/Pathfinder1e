@@ -269,6 +269,7 @@ export interface ClassFeatureOccurrence {
       enemySaveModifier: "fortitude" | "reflex" | "will";
     };
     modeLabel?: string;
+    textInputLabel?: string;
     modes?: Array<{ id: string; label: string; summary?: string; minimumLevel?: number; maximumLevel?: number; defaultRounds?: number; featCount?: number; variableFeatCount?: boolean; actionType?: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" | "1-hour" | "24-hour"; requiredOptionId?: string; activeEffects?: Array<{ target: ActiveEffectTarget; bonus: number; bonusByLevel?: Array<{ level: number; bonus: number }>; label: string; description: string; fastHealing?: number; skillIds?: string[] }> }>;
     featSelection?: {
       label: string;
@@ -353,6 +354,7 @@ export interface ClassFeatureOccurrence {
       diceCountByLevel: Array<{ level: number; count: number }>;
       dieSidesByLevel: Array<{ level: number; sides: number }>;
       takeHighest?: boolean;
+      bonusDiceByMode?: Array<{ modeId: string; count: number; sides: number }>;
       appliedEffect?: {
         name: string;
         target: ActiveEffectTarget;
@@ -638,6 +640,8 @@ export interface CharacterClass {
   spellSlotAdjustmentMinimumSpellLevel?: number;
   preparedSpellAdjustmentPerLevel?: number;
   spellsKnownAdjustmentPerLevel?: number;
+  recentSpellLevelsKnownCount?: number;
+  recentSpellLevelsKnownDivisor?: number;
   companionGrants?: ArchetypeCompanionGrant[];
   companionProgressionAdjustments?: CompanionProgressionAdjustment[];
   unarmedDamageProgressions?: Array<{
@@ -711,6 +715,8 @@ export interface CharacterArchetype {
   spellSlotAdjustmentMinimumSpellLevel?: number;
   preparedSpellAdjustmentPerLevel?: number;
   spellsKnownAdjustmentPerLevel?: number;
+  recentSpellLevelsKnownCount?: number;
+  recentSpellLevelsKnownDivisor?: number;
   companionGrants?: ArchetypeCompanionGrant[];
   companionProgressionAdjustments?: CompanionProgressionAdjustment[];
   unarmedDamageProgressions?: Array<{

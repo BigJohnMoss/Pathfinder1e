@@ -26,7 +26,7 @@ This report distinguishes selectable replacement integration from bespoke rules 
 | Occultist | 0 | 20 | 0 | 20 |
 | Oracle | 1 | 25 | 0 | 26 |
 | Paladin | 7 | 40 | 0 | 47 |
-| Psychic | 7 | 1 | 0 | 8 |
+| Psychic | 8 | 0 | 0 | 8 |
 | Ranger | 9 | 53 | 0 | 62 |
 | Rogue | 12 | 66 | 0 | 78 |
 | Samurai | 0 | 7 | 0 | 7 |

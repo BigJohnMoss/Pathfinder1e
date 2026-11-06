@@ -2259,8 +2259,13 @@ export default function Home() {
     [characterClass.id, preparedCasting, selectedOptionSpellChoices],
   );
   const knownLimits = useMemo(
-    () => spontaneousCasting?.known ?? [],
-    [spontaneousCasting],
+    () => (spontaneousCasting?.known ?? []).map((entry) => ({
+      ...entry,
+      count: entry.level > 0 && characterClass.recentSpellLevelsKnownCount && characterClass.recentSpellLevelsKnownDivisor && entry.level > maximumSpellLevel - characterClass.recentSpellLevelsKnownCount
+        ? Math.ceil(entry.count / characterClass.recentSpellLevelsKnownDivisor)
+        : entry.count,
+    })),
+    [characterClass.recentSpellLevelsKnownCount, characterClass.recentSpellLevelsKnownDivisor, maximumSpellLevel, spontaneousCasting],
   );
   const oppositionSchoolIds = useMemo(
     () => oppositionSchoolsFromOptions(classId, selectedOptions),
@@ -2529,8 +2534,13 @@ export default function Home() {
     [secondaryCharacterClass, secondaryPreparedCasting, selectedOptionSpellChoices],
   );
   const secondaryKnownLimits = useMemo(
-    () => secondarySpontaneousCasting?.known ?? [],
-    [secondarySpontaneousCasting],
+    () => (secondarySpontaneousCasting?.known ?? []).map((entry) => ({
+      ...entry,
+      count: entry.level > 0 && secondaryCharacterClass?.recentSpellLevelsKnownCount && secondaryCharacterClass.recentSpellLevelsKnownDivisor && entry.level > secondaryMaximumSpellLevel - secondaryCharacterClass.recentSpellLevelsKnownCount
+        ? Math.ceil(entry.count / secondaryCharacterClass.recentSpellLevelsKnownDivisor)
+        : entry.count,
+    })),
+    [secondaryCharacterClass, secondaryMaximumSpellLevel, secondarySpontaneousCasting],
   );
   const secondarySpellDcs = secondaryHasSpellcasting
     ? Object.fromEntries(

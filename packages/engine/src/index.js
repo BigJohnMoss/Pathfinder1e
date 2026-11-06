@@ -1460,6 +1460,8 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
       : undefined,
     spellSlotAdjustmentPerLevel: archetype.spellSlotAdjustmentPerLevel,
     spellSlotAdjustmentMinimumSpellLevel: archetype.spellSlotAdjustmentMinimumSpellLevel,
+    recentSpellLevelsKnownCount: archetype.recentSpellLevelsKnownCount,
+    recentSpellLevelsKnownDivisor: archetype.recentSpellLevelsKnownDivisor,
     preparedSpellAdjustmentPerLevel: archetype.preparedSpellAdjustmentPerLevel,
     spellsKnownAdjustmentPerLevel: archetype.spellsKnownAdjustmentPerLevel,
     companionGrants: [
