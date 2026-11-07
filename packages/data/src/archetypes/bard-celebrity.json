@@ -22,29 +22,291 @@
           "name": "Famous",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a celebrity bard may choose a region where he is famous, and within that region, the locals are more likely to react favorably toward the bard. The bard gains a bonus on Diplomacy and Intimidate checks in that area and to influence people from that area. At 1st level, this region is a settlement or settlements with a total population of 1,000 or fewer people, and the modifier on Diplomacy and Intimidate checks is +1. As the celebrity grows more famous, additional areas learn of him (typically places where he has lived or traveled, or settlements adjacent to those where he is known) and his bonuses apply to even more people. At 5th level, the region is a settlement or settlements with a total population of 5,000 or fewer people, and the modifier on Diplomacy and Intimidate checks is +2. At 9th level, the region is a settlement or settlements with a total population of up to 25,000 people, and the modifier on Diplomacy and Intimidate checks is +3. At 13th level, the region is a settlement or settlements with a total population of up to 100,000 people, and the modifier to Diplomacy and Intimidate is +4. At 17th level and above, the bard’s renown has spread far, and most civilized folk know of him (GM’s discretion); the bard’s modifier on Diplomacy and Intimidate checks is +5. This ability replaces inspire courage."
+          "summary": "At 1st level, a celebrity bard may choose a region where he is famous, and within that region, the locals are more likely to react favorably toward the bard. The bard gains a bonus on Diplomacy and Intimidate checks in that area and to influence people from that area. At 1st level, this region is a settlement or settlements with a total population of 1,000 or fewer people, and the modifier on Diplomacy and Intimidate checks is +1. As the celebrity grows more famous, additional areas learn of him (typically places where he has lived or traveled, or settlements adjacent to those where he is known) and his bonuses apply to even more people. At 5th level, the region is a settlement or settlements with a total population of 5,000 or fewer people, and the modifier on Diplomacy and Intimidate checks is +2. At 9th level, the region is a settlement or settlements with a total population of up to 25,000 people, and the modifier on Diplomacy and Intimidate checks is +3. At 13th level, the region is a settlement or settlements with a total population of up to 100,000 people, and the modifier to Diplomacy and Intimidate is +4. At 17th level and above, the bard’s renown has spread far, and most civilized folk know of him (GM’s discretion); the bard’s modifier on Diplomacy and Intimidate checks is +5. This ability replaces inspire courage.",
+          "progressionProfiles": [
+            {
+              "id": "bard-celebrity-famous-1-progression",
+              "label": "Famous region",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "population",
+                  "label": "Population reached"
+                },
+                {
+                  "id": "bonus",
+                  "label": "Skill bonus"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "population": "Up to 1,000",
+                    "bonus": "+1"
+                  }
+                },
+                {
+                  "level": 5,
+                  "values": {
+                    "population": "Up to 5,000",
+                    "bonus": "+2"
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "population": "Up to 25,000",
+                    "bonus": "+3"
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "population": "Up to 100,000",
+                    "bonus": "+4"
+                  }
+                },
+                {
+                  "level": 17,
+                  "values": {
+                    "population": "Most civilized folk (GM discretion)",
+                    "bonus": "+5"
+                  }
+                }
+              ],
+              "summary": "Applies to Diplomacy and Intimidate checks in the selected region and when influencing its people."
+            }
+          ]
         },
         {
           "id": "bard-celebrity-bardic-performance-5",
           "name": "Bardic Performance",
           "level": 5,
           "type": "archetype",
-          "summary": "A celebrity gains the following type of bardic performance. Gather Crowd (Ex) : At 5th level, the celebrity is skilled at drawing an audience to his performances. If he is in a settlement or populated area, he can shout, sing, or otherwise make himself noticed in order to attract an audience to his impromptu stage. The size of the crowd depends on the local population, but typically is a number of people equal to 1/2 the bard’s class level Ã— the result of the bard’s Perform check. The crowd gathers over the next 1d10 rounds. If the bard fails to engage the crowd (such as by performing, kissing babies, trying to use fascinate, and so on), it disperses over the next 1d10 rounds. This ability replaces lore master. Shining Star (Su) : At 8th level, the celebrity has learned how to focus attention on himself so thoroughly that even the presence of danger does not distract his adoring crowd. When using fascinate, a target making a save to break the effect because of a potential threat takes a –4 penalty on that save, and even obvious threats require a save rather than automatically breaking the effect. Creatures affected by the bard’s fascinate ability ignore the shaken condition. The ability replaces dirge of doom."
+          "summary": "A celebrity gains the following type of bardic performance. Gather Crowd (Ex) : At 5th level, the celebrity is skilled at drawing an audience to his performances. If he is in a settlement or populated area, he can shout, sing, or otherwise make himself noticed in order to attract an audience to his impromptu stage. The size of the crowd depends on the local population, but typically is a number of people equal to 1/2 the bard’s class level Ã— the result of the bard’s Perform check. The crowd gathers over the next 1d10 rounds. If the bard fails to engage the crowd (such as by performing, kissing babies, trying to use fascinate, and so on), it disperses over the next 1d10 rounds. This ability replaces lore master. Shining Star (Su) : At 8th level, the celebrity has learned how to focus attention on himself so thoroughly that even the presence of danger does not distract his adoring crowd. When using fascinate, a target making a save to break the effect because of a potential threat takes a –4 penalty on that save, and even obvious threats require a save rather than automatically breaking the effect. Creatures affected by the bard’s fascinate ability ignore the shaken condition. The ability replaces dirge of doom.",
+          "numericCalculations": [
+            {
+              "id": "celebrity-gather-crowd-size",
+              "label": "Gather Crowd audience",
+              "inputLabel": "Perform check result",
+              "inputMinimum": 0,
+              "inputMaximum": 999,
+              "inputDefault": 20,
+              "outputLabel": "Typical crowd size",
+              "classId": "bard",
+              "baseByLevel": [
+                {
+                  "level": 5,
+                  "value": 0
+                }
+              ],
+              "inputMultiplierByLevel": [
+                {
+                  "level": 5,
+                  "multiplier": 2
+                },
+                {
+                  "level": 6,
+                  "multiplier": 3
+                },
+                {
+                  "level": 7,
+                  "multiplier": 3
+                },
+                {
+                  "level": 8,
+                  "multiplier": 4
+                },
+                {
+                  "level": 9,
+                  "multiplier": 4
+                },
+                {
+                  "level": 10,
+                  "multiplier": 5
+                },
+                {
+                  "level": 11,
+                  "multiplier": 5
+                },
+                {
+                  "level": 12,
+                  "multiplier": 6
+                },
+                {
+                  "level": 13,
+                  "multiplier": 6
+                },
+                {
+                  "level": 14,
+                  "multiplier": 7
+                },
+                {
+                  "level": 15,
+                  "multiplier": 7
+                },
+                {
+                  "level": 16,
+                  "multiplier": 8
+                },
+                {
+                  "level": 17,
+                  "multiplier": 8
+                },
+                {
+                  "level": 18,
+                  "multiplier": 9
+                },
+                {
+                  "level": 19,
+                  "multiplier": 9
+                },
+                {
+                  "level": 20,
+                  "multiplier": 10
+                }
+              ],
+              "summary": "The local population can limit the result. The audience gathers over 1d10 rounds and disperses over 1d10 rounds if not engaged."
+            }
+          ],
+          "performanceRules": [
+            {
+              "id": "celebrity-gather-crowd",
+              "name": "Gather Crowd",
+              "minimumLevel": 5,
+              "kind": "active",
+              "summary": "Calculate the typical audience from Bard level and the Perform result, then roll its gathering time.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "celebrity-gather-crowd"
+              ]
+            },
+            {
+              "id": "celebrity-shining-star",
+              "name": "Shining Star",
+              "minimumLevel": 8,
+              "kind": "active",
+              "summary": "Fascinated creatures take –4 on saves prompted by potential threats, obvious threats allow a save, and affected creatures ignore shaken.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "celebrity-shining-star"
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "celebrity-gather-crowd",
+              "label": "Gather Crowd",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "diceRoll": {
+                "label": "Rounds for crowd to gather",
+                "diceCountByLevel": [
+                  {
+                    "level": 5,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 5,
+                    "sides": 10
+                  }
+                ]
+              },
+              "summary": "Spend one performance round, enter the Perform result above, and roll the time needed for the crowd to gather."
+            },
+            {
+              "id": "celebrity-shining-star",
+              "label": "Begin Shining Star",
+              "minimumLevel": 8,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Shining Star",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": -4,
+                "defaultRounds": 1,
+                "replaceExisting": true,
+                "description": "A fascinated target takes –4 on saves to break fascination because of potential threats; obvious threats permit a save instead of ending it. Affected creatures ignore shaken.",
+                "additionalEffectsByLevel": [
+                  {
+                    "minimumLevel": 8,
+                    "name": "Shining Star — shaken suppression",
+                    "target": "allies",
+                    "bonus": 0,
+                    "description": "Creatures affected by this Fascinate ignore the shaken condition."
+                  }
+                ]
+              },
+              "summary": "Maintain Fascinate and spend one performance round each round."
+            }
+          ]
         }
       ]
     }
   ],
   "skillBonusAdjustments": [
-    { "skill": "Diplomacy", "minimumLevel": 1, "base": 1, "perInterval": 1, "interval": 4, "maximum": 5, "condition": "within the celebrity's chosen region or influencing people from that region" },
-    { "skill": "Intimidate", "minimumLevel": 1, "base": 1, "perInterval": 1, "interval": 4, "maximum": 5, "condition": "within the celebrity's chosen region or influencing people from that region" }
+    {
+      "sourceFeatureId": "bard-celebrity-famous-1",
+      "skill": "Diplomacy",
+      "minimumLevel": 1,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 4,
+      "maximum": 5,
+      "condition": "within the chosen famous region or influencing people from that region"
+    },
+    {
+      "sourceFeatureId": "bard-celebrity-famous-1",
+      "skill": "Intimidate",
+      "minimumLevel": 1,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 4,
+      "maximum": 5,
+      "condition": "within the chosen famous region or influencing people from that region"
+    }
   ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Celebrity"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Famous exposes its level-scaled regional Diplomacy and Intimidate modifiers. Bardic performances remain descriptive."
+    "Famous region scaling and conditional skills, Gather Crowd size/time, and Shining Star's fascination rules are automated."
   ]
 }

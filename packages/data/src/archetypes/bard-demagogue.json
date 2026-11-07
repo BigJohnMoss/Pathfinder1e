@@ -23,14 +23,379 @@
           "name": "Famous",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a demagogue is famous in a particular region. This works like the famous ability of the celebrity bard archetype , except the demagogue’s skill bonuses apply to Bluff and Intimidate instead of Diplomacy and Intimidate. This ability replaces inspire courage +1."
+          "summary": "At 1st level, a demagogue is famous in a particular region. This works like the famous ability of the celebrity bard archetype , except the demagogue’s skill bonuses apply to Bluff and Intimidate instead of Diplomacy and Intimidate. This ability replaces inspire courage +1.",
+          "progressionProfiles": [
+            {
+              "id": "bard-demagogue-famous-1-progression",
+              "label": "Famous region",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "population",
+                  "label": "Population reached"
+                },
+                {
+                  "id": "bonus",
+                  "label": "Skill bonus"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "population": "Up to 1,000",
+                    "bonus": "+1"
+                  }
+                },
+                {
+                  "level": 5,
+                  "values": {
+                    "population": "Up to 5,000",
+                    "bonus": "+2"
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "population": "Up to 25,000",
+                    "bonus": "+3"
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "population": "Up to 100,000",
+                    "bonus": "+4"
+                  }
+                },
+                {
+                  "level": 17,
+                  "values": {
+                    "population": "Most civilized folk (GM discretion)",
+                    "bonus": "+5"
+                  }
+                }
+              ],
+              "summary": "Applies to Bluff and Intimidate checks in the selected region and when influencing its people."
+            }
+          ]
         },
         {
           "id": "bard-demagogue-bardic-performance-5",
           "name": "Bardic Performance",
           "level": 5,
           "type": "archetype",
-          "summary": "A demagogue gains the following type of bardic performance. Gather Crowd (Ex) : At 5th level, the demagogue gains the ability to quickly gather a crowd. This is identical to the gather crowd ability of the celebrity bard archetype . This ability replaces lore master. Incite Violence (Ex) : At 6th level, the demagogue can use his performance to fan the fury of a crowd of people he has fascinated. Using this ability does not disrupt the fascinate effect, but does require a standard action to activate (in addition to the free action to continue the fascinate effect). The bard selects a number of targets equal to his level, who must make Will saves (DC 10 + 1/2 the bard’s level + the bard’s Charisma modifier) or be affected by rage for a number of rounds equal to the bard’s level. The bard indicates who is the intended target of violence (either after using this ability or as part of the performance leading to it) and the enraged members of the crowd immediately attack the target if possible. The target does not need to be present (“kill the king” is a suitable choice) and can be an object instead of a person (“destroy the prison!” is likewise appropriate). Other members of the crowd may follow suit, though they do not gain the benefits of rage . This is a sound-based effect and is affected by countersong. If two or more bards are attempting to direct the crowd against different targets, they must make opposed Charisma checks, with the crowd following the directions of the winner. This ability replaces suggestion. Righteous Cause (Ex) : At 18th level, the demagogue can lift a crowd’s emotions and turn them toward a common purpose. First, he must fascinate the crowd, and then use incite violence without designating a target, at which point he can use righteous cause. Instead of driving the crowd with anger, he fills them with purpose. Fascinated creatures must make Will saves (DC 10 + 1/2 the bard’s level + the bard’s Charisma modifier) to resist. Those who fail are affected by mass suggestion of a plausible idea that lingers with them for one day. Typical uses of this ability are to spark rebellion, overthrow a king, build a beneficial structure such as an orphanage, or donate money to a cause. This ability replaces mass suggestion ."
+          "summary": "A demagogue gains the following type of bardic performance. Gather Crowd (Ex) : At 5th level, the demagogue gains the ability to quickly gather a crowd. This is identical to the gather crowd ability of the celebrity bard archetype . This ability replaces lore master. Incite Violence (Ex) : At 6th level, the demagogue can use his performance to fan the fury of a crowd of people he has fascinated. Using this ability does not disrupt the fascinate effect, but does require a standard action to activate (in addition to the free action to continue the fascinate effect). The bard selects a number of targets equal to his level, who must make Will saves (DC 10 + 1/2 the bard’s level + the bard’s Charisma modifier) or be affected by rage for a number of rounds equal to the bard’s level. The bard indicates who is the intended target of violence (either after using this ability or as part of the performance leading to it) and the enraged members of the crowd immediately attack the target if possible. The target does not need to be present (“kill the king” is a suitable choice) and can be an object instead of a person (“destroy the prison!” is likewise appropriate). Other members of the crowd may follow suit, though they do not gain the benefits of rage . This is a sound-based effect and is affected by countersong. If two or more bards are attempting to direct the crowd against different targets, they must make opposed Charisma checks, with the crowd following the directions of the winner. This ability replaces suggestion. Righteous Cause (Ex) : At 18th level, the demagogue can lift a crowd’s emotions and turn them toward a common purpose. First, he must fascinate the crowd, and then use incite violence without designating a target, at which point he can use righteous cause. Instead of driving the crowd with anger, he fills them with purpose. Fascinated creatures must make Will saves (DC 10 + 1/2 the bard’s level + the bard’s Charisma modifier) to resist. Those who fail are affected by mass suggestion of a plausible idea that lingers with them for one day. Typical uses of this ability are to spark rebellion, overthrow a king, build a beneficial structure such as an orphanage, or donate money to a cause. This ability replaces mass suggestion .",
+          "numericCalculations": [
+            {
+              "id": "demagogue-gather-crowd-size",
+              "label": "Gather Crowd audience",
+              "inputLabel": "Perform check result",
+              "inputMinimum": 0,
+              "inputMaximum": 999,
+              "inputDefault": 20,
+              "outputLabel": "Typical crowd size",
+              "classId": "bard",
+              "baseByLevel": [
+                {
+                  "level": 5,
+                  "value": 0
+                }
+              ],
+              "inputMultiplierByLevel": [
+                {
+                  "level": 5,
+                  "multiplier": 2
+                },
+                {
+                  "level": 6,
+                  "multiplier": 3
+                },
+                {
+                  "level": 7,
+                  "multiplier": 3
+                },
+                {
+                  "level": 8,
+                  "multiplier": 4
+                },
+                {
+                  "level": 9,
+                  "multiplier": 4
+                },
+                {
+                  "level": 10,
+                  "multiplier": 5
+                },
+                {
+                  "level": 11,
+                  "multiplier": 5
+                },
+                {
+                  "level": 12,
+                  "multiplier": 6
+                },
+                {
+                  "level": 13,
+                  "multiplier": 6
+                },
+                {
+                  "level": 14,
+                  "multiplier": 7
+                },
+                {
+                  "level": 15,
+                  "multiplier": 7
+                },
+                {
+                  "level": 16,
+                  "multiplier": 8
+                },
+                {
+                  "level": 17,
+                  "multiplier": 8
+                },
+                {
+                  "level": 18,
+                  "multiplier": 9
+                },
+                {
+                  "level": 19,
+                  "multiplier": 9
+                },
+                {
+                  "level": 20,
+                  "multiplier": 10
+                }
+              ],
+              "summary": "The local population can limit the result. The audience gathers over 1d10 rounds and disperses over 1d10 rounds if not engaged."
+            }
+          ],
+          "performanceRules": [
+            {
+              "id": "demagogue-gather-crowd",
+              "name": "Gather Crowd",
+              "minimumLevel": 5,
+              "kind": "active",
+              "summary": "Calculate the typical audience from Bard level and the Perform result, then roll its gathering time.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "demagogue-gather-crowd"
+              ]
+            },
+            {
+              "id": "demagogue-incite-violence",
+              "name": "Incite Violence",
+              "minimumLevel": 6,
+              "kind": "active",
+              "summary": "While Fascinate continues, up to Bard level fascinated targets save or rage for Bard level rounds and attack the named target.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "demagogue-incite-violence"
+              ]
+            },
+            {
+              "id": "demagogue-righteous-cause",
+              "name": "Righteous Cause",
+              "minimumLevel": 18,
+              "kind": "active",
+              "summary": "After Fascinate and Incite Violence without a target, failed saves apply a plausible mass suggestion for one day.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "demagogue-righteous-cause"
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "demagogue-gather-crowd",
+              "label": "Gather Crowd",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "diceRoll": {
+                "label": "Rounds for crowd to gather",
+                "diceCountByLevel": [
+                  {
+                    "level": 5,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 5,
+                    "sides": 10
+                  }
+                ]
+              },
+              "summary": "Spend one performance round, enter the Perform result above, and roll the time needed for the crowd to gather."
+            },
+            {
+              "id": "demagogue-incite-violence",
+              "label": "Incite Violence",
+              "minimumLevel": 6,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "fascinated-crowd",
+                  "label": "The selected crowd members are currently fascinated",
+                  "requiredForActivation": true
+                }
+              ],
+              "targetCountByLevel": [
+                {
+                  "level": 6,
+                  "count": 6
+                },
+                {
+                  "level": 7,
+                  "count": 7
+                },
+                {
+                  "level": 8,
+                  "count": 8
+                },
+                {
+                  "level": 9,
+                  "count": 9
+                },
+                {
+                  "level": 10,
+                  "count": 10
+                },
+                {
+                  "level": 11,
+                  "count": 11
+                },
+                {
+                  "level": 12,
+                  "count": 12
+                },
+                {
+                  "level": 13,
+                  "count": 13
+                },
+                {
+                  "level": 14,
+                  "count": 14
+                },
+                {
+                  "level": 15,
+                  "count": 15
+                },
+                {
+                  "level": 16,
+                  "count": 16
+                },
+                {
+                  "level": 17,
+                  "count": 17
+                },
+                {
+                  "level": 18,
+                  "count": 18
+                },
+                {
+                  "level": 19,
+                  "count": 19
+                },
+                {
+                  "level": 20,
+                  "count": 20
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "effectsByLevel": [
+                  {
+                    "level": 6,
+                    "name": "Incited Violence",
+                    "description": "Affected by rage and compelled to attack the named person or object; sound-based and subject to countersong.",
+                    "duration": {
+                      "kind": "level-rounds"
+                    }
+                  }
+                ]
+              },
+              "summary": "Resolve each selected crowd member (up to Bard level) against the displayed Will DC while Fascinate continues."
+            },
+            {
+              "id": "demagogue-righteous-cause",
+              "label": "Righteous Cause",
+              "minimumLevel": 18,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 18,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "fascinate-incite-sequence",
+                  "label": "The crowd is fascinated and Incite Violence was used without naming a target",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "effectsByLevel": [
+                  {
+                    "level": 18,
+                    "name": "Righteous Cause",
+                    "description": "Affected by a plausible mass suggestion chosen for the common cause for one day.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 999
+                    }
+                  }
+                ]
+              },
+              "summary": "Resolve fascinated creatures against the displayed Will DC and track the one-day plausible suggestion."
+            }
+          ]
         }
       ]
     }
@@ -40,8 +405,30 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Demagogue"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Famous region scaling and conditional skills, Gather Crowd, Incite Violence target cap/save/rage duration, and Righteous Cause prerequisites/save/duration are automated."
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "bard-demagogue-famous-1",
+      "skill": "Bluff",
+      "minimumLevel": 1,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 4,
+      "maximum": 5,
+      "condition": "within the chosen famous region or influencing people from that region"
+    },
+    {
+      "sourceFeatureId": "bard-demagogue-famous-1",
+      "skill": "Intimidate",
+      "minimumLevel": 1,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 4,
+      "maximum": 5,
+      "condition": "within the chosen famous region or influencing people from that region"
+    }
   ]
 }
