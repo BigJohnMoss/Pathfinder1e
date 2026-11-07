@@ -459,7 +459,7 @@ export interface ClassFeatureOccurrence {
         }>;
         duration:
           | { kind: "fixed-rounds"; rounds: number }
-          | { kind: "dice-rounds"; count: number; sides: number }
+          | { kind: "dice-rounds"; count: number; sides: number; fixedBonus?: number; multiplier?: number }
           | { kind: "level-rounds" }
           | { kind: "level-minutes"; multiplier?: number }
           | { kind: "level-hours"; multiplier?: number }
