@@ -4,10 +4,6 @@
   "classId": "alchemist",
   "summary": "A breakthrough in Nidalese alchemy led to the creation of glooms, magical fields of darkness from the Shadow Plane that can be momentarily animated with the use of strange compounds.",
   "replacesText": "Bomb; Poison Resistance; Poison Use; Swift Poisoning",
-  "mechanicalCoverage": "partial",
-  "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ],
   "replacements": [
     {
       "featureIds": [
@@ -22,21 +18,128 @@
           "name": "Gloom (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "A gloom chymist is skilled at mixing potent concoctions known as glooms, which are infused with shadow energy. A gloom is identical to a bomb except that it deals 1d6 points of cold damage + additional damage equal to the gloom chymist’s Intelligence modifier. This damage increases by 1d6 for every 2 alchemist levels beyond 1st the gloom chymist has. A gloom does not qualify as a bomb for the purposes of feats or discoveries. This ability replaces bomb."
+          "summary": "A gloom chymist is skilled at mixing potent concoctions known as glooms, which are infused with shadow energy. A gloom is identical to a bomb except that it deals 1d6 points of cold damage + additional damage equal to the gloom chymist’s Intelligence modifier. This damage increases by 1d6 for every 2 alchemist levels beyond 1st the gloom chymist has. A gloom does not qualify as a bomb for the purposes of feats or discoveries. This ability replaces bomb.",
+          "resourceActions": [
+            {
+              "id": "gloom-chymist-throw-gloom",
+              "label": "Throw gloom",
+              "resourceId": "glooms",
+              "cost": 1,
+              "actionTypeByLevel": [{ "level": 1, "actionType": "standard" }],
+              "combatRoll": {
+                "attack": { "kind": "ranged-touch", "label": "Gloom ranged touch attack", "abilityModifier": "dexterity" },
+                "damage": {
+                  "type": "cold",
+                  "diceCountByLevel": [
+                    { "level": 1, "count": 1 }, { "level": 3, "count": 2 }, { "level": 5, "count": 3 }, { "level": 7, "count": 4 },
+                    { "level": 9, "count": 5 }, { "level": 11, "count": 6 }, { "level": 13, "count": 7 }, { "level": 15, "count": 8 },
+                    { "level": 17, "count": 9 }, { "level": 19, "count": 10 }
+                  ],
+                  "dieSidesByLevel": [{ "level": 1, "sides": 6 }],
+                  "abilityModifier": "intelligence"
+                },
+                "rangeByLevel": [{ "level": 1, "range": "20 feet" }]
+              }
+            }
+          ]
         },
         {
           "id": "alchemist-gloom-chymist-umbral-gloom-su-2",
           "name": "Umbral Gloom (Su)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, whenever a gloom chymist makes a gloom, he can have it increase or decrease the light level by one step within its splash radius, in addition to its other effects. This change lasts for a number of rounds equal to the gloom chymist’s Intelligence modifier. At 8th level, the gloom chymist expend two uses of his daily glooms to increase or decrease light levels as per daylight or deeper darkness , respectively, using his alchemist level as the caster level. This ability replaces poison resistance, poison use, and swift poisoning."
+          "summary": "At 2nd level, whenever a gloom chymist makes a gloom, he can have it increase or decrease the light level by one step within its splash radius, in addition to its other effects. This change lasts for a number of rounds equal to the gloom chymist’s Intelligence modifier. At 8th level, the gloom chymist expend two uses of his daily glooms to increase or decrease light levels as per daylight or deeper darkness , respectively, using his alchemist level as the caster level. This ability replaces poison resistance, poison use, and swift poisoning.",
+          "resourceActions": [
+            {
+              "id": "gloom-chymist-throw-umbral-gloom",
+              "label": "Throw gloom with light change",
+              "resourceId": "glooms",
+              "cost": 1,
+              "minimumLevel": 2,
+              "actionTypeByLevel": [{ "level": 2, "actionType": "standard" }],
+              "modeLabel": "Light change",
+              "modes": [
+                { "id": "increase-light", "label": "Increase light one step", "summary": "Increase the light level one step in the splash radius." },
+                { "id": "decrease-light", "label": "Decrease light one step", "summary": "Decrease the light level one step in the splash radius." }
+              ],
+              "combatRoll": {
+                "attack": { "kind": "ranged-touch", "label": "Gloom ranged touch attack", "abilityModifier": "dexterity" },
+                "damage": {
+                  "type": "cold",
+                  "diceCountByLevel": [
+                    { "level": 2, "count": 1 }, { "level": 3, "count": 2 }, { "level": 5, "count": 3 }, { "level": 7, "count": 4 },
+                    { "level": 9, "count": 5 }, { "level": 11, "count": 6 }, { "level": 13, "count": 7 }, { "level": 15, "count": 8 },
+                    { "level": 17, "count": 9 }, { "level": 19, "count": 10 }
+                  ],
+                  "dieSidesByLevel": [{ "level": 2, "sides": 6 }],
+                  "abilityModifier": "intelligence"
+                },
+                "rangeByLevel": [{ "level": 2, "range": "20 feet" }]
+              },
+              "activeEffect": {
+                "name": "Umbral Gloom — light change",
+                "targets": ["area"],
+                "bonus": 0,
+                "description": "The selected one-step light change fills the gloom's splash radius.",
+                "defaultRounds": 1,
+                "durationAbilityModifier": "intelligence",
+                "durationAbilityModifierMultiplier": 1,
+                "minimumDurationRounds": 1,
+                "fixedRounds": true
+              }
+            },
+            {
+              "id": "gloom-chymist-empowered-umbral-gloom",
+              "label": "Create empowered umbral gloom",
+              "resourceId": "glooms",
+              "cost": 2,
+              "minimumLevel": 8,
+              "actionTypeByLevel": [{ "level": 8, "actionType": "standard" }],
+              "modeLabel": "Light effect",
+              "modes": [
+                { "id": "daylight", "label": "Daylight", "summary": "Increase light as daylight using alchemist level as caster level." },
+                { "id": "deeper-darkness", "label": "Deeper darkness", "summary": "Decrease light as deeper darkness using alchemist level as caster level." }
+              ],
+              "activeEffect": {
+                "name": "Empowered Umbral Gloom",
+                "targets": ["area"],
+                "bonus": 0,
+                "description": "Apply the selected daylight or deeper darkness effect using alchemist level as caster level.",
+                "defaultRounds": 800,
+                "defaultRoundsByLevel": [
+                  { "level": 8, "rounds": 800 }, { "level": 9, "rounds": 900 }, { "level": 10, "rounds": 1000 }, { "level": 11, "rounds": 1100 },
+                  { "level": 12, "rounds": 1200 }, { "level": 13, "rounds": 1300 }, { "level": 14, "rounds": 1400 }, { "level": 15, "rounds": 1500 },
+                  { "level": 16, "rounds": 1600 }, { "level": 17, "rounds": 1700 }, { "level": 18, "rounds": 1800 }, { "level": 19, "rounds": 1900 },
+                  { "level": 20, "rounds": 2000 }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            }
+          ]
         }
       ]
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "glooms",
+      "label": "Gloom",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 1,
+      "base": 3,
+      "abilityModifier": "intelligence",
+      "minimum": 1
     }
   ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Gloom%20Chymist"
-  }
+  },
+  "mechanicalCoverage": "full",
+  "mechanicalNotes": [
+    "Glooms use a tracked 3 + Intelligence daily pool, resolve the scaling ranged-touch cold attack and Intelligence damage, and create timed one-step light fields. Level 8 unlocks the two-use daylight/deeper darkness workflow."
+  ]
 }

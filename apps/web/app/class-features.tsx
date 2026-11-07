@@ -525,7 +525,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
               onAddEffect?.({ id: `${action.id}-self-${Date.now()}-${Math.random()}`, name: effectName, target: outcome.effect.target, bonus: outcomeBonus, description: `${outcome.label}: ${resolvedOutcomeSummary}`, roundsRemaining: 999, consumeOnUse: true });
               setActionResults((current) => ({ ...current, [action.id]: `${outcome.label} drawn for ${actionTargetName.trim() || defaultActionTargetName}: ${resolvedOutcomeSummary} The app will consume it on the next qualifying roll.` }));
             }
-          } else if (action.activeEffect && !action.rerollAction && !action.diceRoll) setActionResults((current) => ({
+          } else if (action.activeEffect && !action.rerollAction && !action.diceRoll && !action.combatRoll) setActionResults((current) => ({
             ...current,
             [action.id]: action.featSelection
               ? action.featSelection.source === "catalogue"
