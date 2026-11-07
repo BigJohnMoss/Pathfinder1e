@@ -3,7 +3,29 @@
   "name": "Planar Extremist",
   "classId": "druid",
   "spellSlotAdjustmentPerLevel": -1,
-  "summary": "(Ex-druid archetype) Planar extremists are those druids that have lost their neutral stance and find themselves gravitating toward one of the four most extreme alignments",
+  "spellListExclusions": [
+    "summon-natures-ally-1",
+    "summon-natures-ally-2",
+    "summon-natures-ally-3",
+    "summon-natures-ally-4",
+    "summon-natures-ally-5",
+    "summon-natures-ally-6",
+    "summon-natures-ally-7",
+    "summon-natures-ally-8",
+    "summon-natures-ally-9"
+  ],
+  "spellListAdditions": {
+    "summon-monster-1": 1,
+    "summon-monster-2": 2,
+    "summon-monster-3": 3,
+    "summon-monster-4": 4,
+    "summon-monster-5": 5,
+    "summon-monster-6": 6,
+    "summon-monster-7": 7,
+    "summon-monster-8": 8,
+    "summon-monster-9": 9
+  },
+  "summary": "(Ex-druid archetype) Planar extremists abandon neutrality and bind themselves to one of the four extreme alignments.",
   "replacesText": "Alignment; Spells; Nature's Bond; Spontaneous Casting; Resist Nature's Lure; Wild Shape",
   "replacements": [
     {
@@ -36,50 +58,696 @@
           "name": "Alignment",
           "level": 1,
           "type": "archetype",
-          "summary": "A planar extremist must have an alignment of chaotic evil, chaotic good, lawful evil, or lawful good. This alters the druid’s alignment."
+          "summary": "Choose chaotic evil, chaotic good, lawful evil, or lawful good. This updates the character alignment and controls every alignment-dependent choice.",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-alignments",
+          "optionChoiceIds": [
+            "alignment-chaotic-evil",
+            "alignment-chaotic-good",
+            "alignment-lawful-evil",
+            "alignment-lawful-good"
+          ]
         },
         {
           "id": "druid-planar-extremist-aura-ex-1",
           "name": "Aura (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "The planar extremist radiates an aura matching her alignment as if she were a cleric of her druid level."
+          "summary": "Radiate an aura matching the selected alignment with strength equal to Druid level.",
+          "progressionProfiles": [
+            {
+              "id": "planar-extremist-aura",
+              "label": "Aligned aura",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "strength",
+                  "label": "Aura strength"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "strength": 1
+                  }
+                },
+                {
+                  "level": 2,
+                  "values": {
+                    "strength": 2
+                  }
+                },
+                {
+                  "level": 3,
+                  "values": {
+                    "strength": 3
+                  }
+                },
+                {
+                  "level": 4,
+                  "values": {
+                    "strength": 4
+                  }
+                },
+                {
+                  "level": 5,
+                  "values": {
+                    "strength": 5
+                  }
+                },
+                {
+                  "level": 6,
+                  "values": {
+                    "strength": 6
+                  }
+                },
+                {
+                  "level": 7,
+                  "values": {
+                    "strength": 7
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "strength": 8
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "strength": 9
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "strength": 10
+                  }
+                },
+                {
+                  "level": 11,
+                  "values": {
+                    "strength": 11
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "strength": 12
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "strength": 13
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "strength": 14
+                  }
+                },
+                {
+                  "level": 15,
+                  "values": {
+                    "strength": 15
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "strength": 16
+                  }
+                },
+                {
+                  "level": 17,
+                  "values": {
+                    "strength": 17
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "strength": 18
+                  }
+                },
+                {
+                  "level": 19,
+                  "values": {
+                    "strength": 19
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "strength": 20
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-planar-extremist-spells-1",
           "name": "Spells",
           "level": 1,
           "type": "archetype",
-          "summary": "A planar extremist gains one fewer spell slot per spell level than normal in which to prepare spells. The planar extremist removes all summon nature’s ally spells from her spell list and replaces them with the summon monster spells of the same levels. The druid can otherwise cast spells as normal for a druid of her level. This alters the druid’s spells."
+          "summary": "Lose one slot of every spell level, remove summon nature's ally I-IX, and add summon monster I-IX at the corresponding levels. The spellbook applies these changes."
         },
         {
           "id": "druid-planar-extremist-planar-bond-1",
           "name": "Planar Bond",
           "level": 1,
           "type": "archetype",
-          "summary": "A planar extremist forms a bond with a manifestation of the Outer Plane with which she is aligned. This bond can take one of two forms. The first is a close tie to the plane to which she is aligned, granting the planar extremist one of the domains of her alignment (for example, a lawful good planar extremist could take either the Lawful or Good domain). This option otherwise functions as a druid’s nature bond if she chose a close tie to the natural world. The second option is to form a close bond with an outsider from an Outer Plane. The abilities of this outsider companion are determined using the rules for eidolons for the unchained summoner PU class, as if the planar extremist were a summoner of her druid level, except the outsider companion gains no additional evolution pool (only the evolutions from its base form and base evolutions for its subtype), and it must be of a subtype whose alignment exactly matches the alignment of the planar extremist. The planar extremist can summon her outsider companion with the same 1-minute ritual a summoner normally uses to do so, but she can’t cast summon monster spells if she currently has her outsider companion summoned, and she can’t summon her companion if she already has a creature summoned through other means. As the planar ally gains class levels, her eidolon’s base statistics and base evolutions increase as if her druid level were her summoner level. The eidolon gains the darkvision, link, share spells, evasion, ability score increase, devotion, multiattack, and improved evasion abilities at the appropriate levels, but never gains an evolution pool. Abilities and spells that grant additional evolution points to eidolons do not function for her outsider companion, though any abilities that would grant evolution points to an animal companion do work. The planar extremist does not gain life link or any other class features a summoner gains in relation to her eidolon. This replaces nature’s bond."
+          "summary": "Choose either an aligned domain or a full-level outsider companion.",
+          "choiceRequired": true,
+          "optionGroupId": "druid-planar-extremist-bonds"
+        },
+        {
+          "id": "druid-planar-extremist-planar-domain-1",
+          "name": "Aligned Domain",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Choose one domain matching either component of the selected alignment. Domain powers and spell access use full Druid level.",
+          "choiceRequired": true,
+          "requiredOptionId": "planar-extremist-domain-bond",
+          "requiredOptionMessage": "Choose Aligned Domain for Planar Bond.",
+          "optionGroupId": "cleric-domains",
+          "optionChoiceIdsByAlignment": {
+            "chaotic-evil": [
+              "domain-chaos",
+              "domain-evil"
+            ],
+            "chaotic-good": [
+              "domain-chaos",
+              "domain-good"
+            ],
+            "lawful-evil": [
+              "domain-law",
+              "domain-evil"
+            ],
+            "lawful-good": [
+              "domain-law",
+              "domain-good"
+            ]
+          }
+        },
+        {
+          "id": "druid-planar-extremist-outsider-companion-1",
+          "name": "Outsider Companion",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Choose the outsider subtype forced by alignment and its base form. The companion sheet uses full Druid level and a fixed 0 evolution pool.",
+          "choiceRequired": true,
+          "requiredOptionId": "planar-extremist-outsider-bond",
+          "requiredOptionMessage": "Choose Outsider Companion for Planar Bond.",
+          "optionGroupId": "druid-planar-extremist-companions",
+          "optionChoiceIdsByAlignment": {
+            "chaotic-evil": [
+              "planar-extremist-companion-demon"
+            ],
+            "chaotic-good": [
+              "planar-extremist-companion-azata"
+            ],
+            "lawful-evil": [
+              "planar-extremist-companion-devil"
+            ],
+            "lawful-good": [
+              "planar-extremist-companion-angel"
+            ]
+          },
+          "progressionProfiles": [
+            {
+              "id": "planar-extremist-outsider-progression",
+              "label": "Outsider companion progression",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "effectiveLevel",
+                  "label": "Summoner-equivalent level"
+                },
+                {
+                  "id": "evolutionPool",
+                  "label": "Evolution pool"
+                },
+                {
+                  "id": "unlocks",
+                  "label": "Companion abilities"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "effectiveLevel": 1,
+                    "evolutionPool": 0,
+                    "unlocks": "Darkvision, link, share spells"
+                  }
+                },
+                {
+                  "level": 2,
+                  "values": {
+                    "effectiveLevel": 2,
+                    "evolutionPool": 0,
+                    "unlocks": "Evasion"
+                  }
+                },
+                {
+                  "level": 5,
+                  "values": {
+                    "effectiveLevel": 5,
+                    "evolutionPool": 0,
+                    "unlocks": "Ability score increase"
+                  }
+                },
+                {
+                  "level": 6,
+                  "values": {
+                    "effectiveLevel": 6,
+                    "evolutionPool": 0,
+                    "unlocks": "Devotion"
+                  }
+                },
+                {
+                  "level": 7,
+                  "values": {
+                    "effectiveLevel": 7,
+                    "evolutionPool": 0,
+                    "unlocks": "Multiattack"
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "effectiveLevel": 9,
+                    "evolutionPool": 0,
+                    "unlocks": "Second ability score increase"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "effectiveLevel": 12,
+                    "evolutionPool": 0,
+                    "unlocks": "Improved evasion"
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "effectiveLevel": 13,
+                    "evolutionPool": 0,
+                    "unlocks": "Third ability score increase"
+                  }
+                },
+                {
+                  "level": 17,
+                  "values": {
+                    "effectiveLevel": 17,
+                    "evolutionPool": 0,
+                    "unlocks": "Fourth ability score increase"
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "effectiveLevel": 20,
+                    "evolutionPool": 0,
+                    "unlocks": "Full level-20 base statistics"
+                  }
+                }
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "planar-extremist-summon-outsider",
+              "label": "Summon outsider companion",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "requiredOptionId": "planar-extremist-outsider-bond",
+              "blockedByActiveEffectNames": [
+                "Planar Extremist Outsider Companion",
+                "Summoned Creature Active"
+              ],
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "1-minute"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "no-other-summon",
+                  "label": "No creature is currently summoned by another means",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Planar Extremist Outsider Companion",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The outsider companion is summoned. Summon monster conversion is locked until it is dismissed.",
+                "defaultRounds": 99999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "planar-extremist-dismiss-outsider",
+              "label": "Dismiss outsider companion",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "requiredOptionId": "planar-extremist-outsider-bond",
+              "requiredActiveEffectName": "Planar Extremist Outsider Companion",
+              "removeActiveEffectName": "Planar Extremist Outsider Companion",
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-planar-extremist-spontaneous-casting-1",
           "name": "Spontaneous Casting",
           "level": 1,
           "type": "archetype",
-          "summary": "A planar extremist can channel stored spell energy into summoning spells that she hasn’t prepared ahead of time. She can lose a prepared spell in order to cast a summon monster spell of the same level or lower, but only to summon creatures whose alignment matches hers. This alters a druid’s spontaneous casting."
+          "summary": "Lose a prepared spell to cast summon monster of the same level or lower. The spellbook exposes this conversion and blocks it while the outsider companion is active.",
+          "spellAutomation": {
+            "preparedKeywordConversion": {
+              "label": "Aligned Summoning",
+              "spellIds": [
+                "summon-monster-1",
+                "summon-monster-2",
+                "summon-monster-3",
+                "summon-monster-4",
+                "summon-monster-5",
+                "summon-monster-6",
+                "summon-monster-7",
+                "summon-monster-8",
+                "summon-monster-9"
+              ],
+              "requiresTargetPrepared": false,
+              "blockedByActiveEffectName": "Planar Extremist Outsider Companion",
+              "restriction": "Choose only summoned creatures whose alignment exactly matches the Planar Extremist."
+            }
+          }
         },
         {
           "id": "druid-planar-extremist-resist-the-opposite-ex-4",
           "name": "Resist the Opposite (Ex)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a planar extremist gains a +2 bonus on saving throws against the spell-like and supernatural abilities of creatures whose alignment is diametrically opposed to her own. This replaces resist nature’s lure."
+          "summary": "Gain +2 on saving throws against spell-like and supernatural abilities of creatures whose alignment is diametrically opposed to the selected alignment."
         },
         {
           "id": "druid-planar-extremist-planar-aspect-su-4",
           "name": "Planar Aspect (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, as a standard action, a planar extremist can gain the benefits of the bloodrager bloodline associated with her alignment (choosing from Abyssal, Celestial, or Infernal), as if she were a bloodrager of her druid level. She can gain these benefits for 1 minute per druid level as if she were bloodraging (but she gains no other benefits or penalties of bloodrage) or until she dismisses it as a swift action; this duration need not be used consecutively but must be spent in 1-minute increments. She can use this ability an additional time per day at 6th level and every 4 levels thereafter, for a total of five times per day at 18th level. At 20th level, a planar extremist can use planar aspect at will. This replaces wild shape."
+          "summary": "Activate the Abyssal, Celestial, or Infernal bloodrager bloodline associated with the selected alignment at full Druid level. Uses and duration scale automatically; level 20 is at will.",
+          "resourceActions": [
+            {
+              "id": "planar-extremist-planar-aspect",
+              "label": "Activate planar aspect",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "planarAspectUses",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Bloodline",
+              "modes": [
+                {
+                  "id": "abyssal",
+                  "label": "Abyssal (chaotic evil)",
+                  "requiredOptionId": "alignment-chaotic-evil",
+                  "summary": "Claws; demonic bulk; energy resistances; Abyssal Bloodrage; demonic aura; and demonic immunities at their normal bloodrager levels."
+                },
+                {
+                  "id": "celestial-cg",
+                  "label": "Celestial (chaotic good)",
+                  "requiredOptionId": "alignment-chaotic-good",
+                  "summary": "Angelic attacks, celestial resistances, conviction, wings, angelic protection, and ascension at their normal bloodrager levels."
+                },
+                {
+                  "id": "celestial-lg",
+                  "label": "Celestial (lawful good)",
+                  "requiredOptionId": "alignment-lawful-good",
+                  "summary": "Angelic attacks, celestial resistances, conviction, wings, angelic protection, and ascension at their normal bloodrager levels."
+                },
+                {
+                  "id": "infernal",
+                  "label": "Infernal (lawful evil)",
+                  "requiredOptionId": "alignment-lawful-evil",
+                  "summary": "Hellfire strike, infernal resistance, diabolical arrogance, dark wings, hellfire charge, and Fiend of the Pit at their normal bloodrager levels."
+                }
+              ],
+              "activeEffect": {
+                "name": "Planar Aspect",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The alignment-associated bloodrager bloodline powers are active using Druid level as bloodrager level; no other bloodrage benefits or penalties apply.",
+                "defaultRounds": 40,
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 40
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 50
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 60
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 70
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 80
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 90
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 100
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 110
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 120
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 130
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 140
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 150
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 160
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 170
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 180
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 190
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 200
+                  }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "planar-extremist-dismiss-planar-aspect",
+              "label": "Dismiss planar aspect",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "requiredActiveEffectName": "Planar Aspect",
+              "removeActiveEffectName": "Planar Aspect",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "swift"
+                }
+              ]
+            }
+          ],
+          "progressionProfiles": [
+            {
+              "id": "planar-extremist-bloodline-powers",
+              "label": "Planar Aspect bloodline progression",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "abyssal",
+                  "label": "Abyssal"
+                },
+                {
+                  "id": "celestial",
+                  "label": "Celestial"
+                },
+                {
+                  "id": "infernal",
+                  "label": "Infernal"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "abyssal": "Claws, demonic bulk",
+                    "celestial": "Angelic attacks, acid/cold resistance 5",
+                    "infernal": "Hellfire strike, fire resistance 5, +2 vs poison"
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "abyssal": "Claw damage increases; acid/cold/fire resistance 5",
+                    "celestial": "Conviction reroll",
+                    "infernal": "Fire resistance 10, +4 vs poison, +4 vs enchantment/fear"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "abyssal": "Flaming claws, Abyssal Bloodrage +2 Strength",
+                    "celestial": "Acid/cold resistance 10; fly 60 ft. (good)",
+                    "infernal": "Flaming burst strike; fly 60 ft. (average)"
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "abyssal": "Abyssal Bloodrage +4 Strength; resistances 10; demonic aura",
+                    "celestial": "+4 deflection AC and saves vs evil; protection from evil",
+                    "infernal": "Fly 80 ft. (good); hellfire charge"
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "abyssal": "Abyssal Bloodrage +6 Strength; electricity/poison immunity",
+                    "celestial": "Fly 80 ft.; acid/cold/petrification immunity; electricity/fire resistance 10; +4 vs poison",
+                    "infernal": "Fire/poison immunity; acid/cold resistance 10; see in darkness"
+                  }
+                }
+              ]
+            }
+          ]
         }
+      ]
+    }
+  ],
+  "druidDomainIds": [
+    "domain-chaos",
+    "domain-evil",
+    "domain-good",
+    "domain-law"
+  ],
+  "companionGrants": [
+    {
+      "id": "planar-extremist-outsider",
+      "kind": "eidolon",
+      "label": "outsider companion",
+      "optionFeatureId": "druid-planar-extremist-outsider-companion-1",
+      "sourceFeatureId": "druid-planar-extremist-outsider-companion-1",
+      "minimumLevel": 1,
+      "effectiveLevelAdjustment": 0,
+      "rules": [
+        "Use full Druid level as unchained Summoner level.",
+        "Evolution pool is fixed at 0.",
+        "Gain darkvision, link, share spells, evasion, ability increases, devotion, multiattack, and improved evasion at normal levels.",
+        "Life link and all other Summoner relationship features are not granted."
+      ]
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "planarAspectUses",
+      "label": "Planar Aspect",
+      "unit": "use",
+      "operation": "add",
+      "minimumLevel": 4,
+      "base": 1,
+      "maximumByLevel": [
+        {
+          "level": 4,
+          "maximum": 1
+        },
+        {
+          "level": 6,
+          "maximum": 2
+        },
+        {
+          "level": 10,
+          "maximum": 3
+        },
+        {
+          "level": 14,
+          "maximum": 4
+        },
+        {
+          "level": 18,
+          "maximum": 5
+        }
+      ],
+      "atWillAtLevel": 20,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-planar-extremist-resist-the-opposite-ex-4",
+      "label": "Resist the Opposite",
+      "condition": "Saving throws against spell-like and supernatural abilities of creatures diametrically opposed to the selected alignment",
+      "minimumLevel": 4,
+      "base": 2,
+      "appliesTo": [
+        "fortitude",
+        "reflex",
+        "will"
       ]
     }
   ],
@@ -88,8 +756,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Planar%20Extremist"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Extreme alignment selection, legal domain and outsider choices, spell-list replacement, reduced slots, spontaneous summon conversion and companion lockout, full-level zero-pool outsider progression, opposed-alignment saves, and Planar Aspect resources, duration, dismissal, and bloodline progression are automated."
   ]
 }

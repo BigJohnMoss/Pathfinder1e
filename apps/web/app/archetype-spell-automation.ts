@@ -23,6 +23,8 @@ export type PreparedSpellAutomation = {
     keyword?: string;
     spellIds?: string[];
     requiresTargetPrepared: boolean;
+    blockedByActiveEffectName?: string;
+    restriction?: string;
   };
   preparedArmamentConversion?: {
     label: string;
@@ -145,6 +147,8 @@ export function classSpellAutomation(
           keyword: conversion.keyword,
           spellIds: conversion.spellIds,
           requiresTargetPrepared: Boolean(conversion.requiresTargetPrepared),
+          blockedByActiveEffectName: conversion.blockedByActiveEffectName,
+          restriction: conversion.restriction,
         } }
       : {}),
     ...(!conversion && optionConversion && optionConversionSpellIds.length > 0

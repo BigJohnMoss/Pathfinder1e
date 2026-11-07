@@ -1,0 +1,55 @@
+{
+  "id": "druid-planar-extremist-companions",
+  "name": "Planar Extremist Outsider Companions",
+  "classIds": ["druid"],
+  "options": [
+    {
+      "id": "planar-extremist-companion-azata",
+      "groupId": "druid-planar-extremist-companions",
+      "name": "Chaotic Good Outsider (Azata)",
+      "classIds": ["druid"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Configure a chaotic good outsider companion. Choose its biped, quadruped, or serpentine base form.",
+      "choice": {"key": "base-form", "label": "Base form", "options": [{"id": "biped", "name": "Biped"}, {"id": "quadruped", "name": "Quadruped"}, {"id": "serpentine", "name": "Serpentine"}]},
+      "companionRules": ["Alignment and subtype: chaotic good outsider (azata).", "Use unchained eidolon base statistics at full Druid level.", "Evolution pool is always 0; only base-form and subtype evolutions apply."],
+      "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Planar%20Extremist"}
+    },
+    {
+      "id": "planar-extremist-companion-angel",
+      "groupId": "druid-planar-extremist-companions",
+      "name": "Lawful Good Outsider (Angel)",
+      "classIds": ["druid"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Configure a lawful good outsider companion. Choose its biped, quadruped, or serpentine base form.",
+      "choice": {"key": "base-form", "label": "Base form", "options": [{"id": "biped", "name": "Biped"}, {"id": "quadruped", "name": "Quadruped"}, {"id": "serpentine", "name": "Serpentine"}]},
+      "companionRules": ["Alignment and subtype: lawful good outsider (angel).", "Use unchained eidolon base statistics at full Druid level.", "Evolution pool is always 0; only base-form and subtype evolutions apply."],
+      "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Planar%20Extremist"}
+    },
+    {
+      "id": "planar-extremist-companion-devil",
+      "groupId": "druid-planar-extremist-companions",
+      "name": "Lawful Evil Outsider (Devil)",
+      "classIds": ["druid"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Configure a lawful evil outsider companion. Choose its biped, quadruped, or serpentine base form.",
+      "choice": {"key": "base-form", "label": "Base form", "options": [{"id": "biped", "name": "Biped"}, {"id": "quadruped", "name": "Quadruped"}, {"id": "serpentine", "name": "Serpentine"}]},
+      "companionRules": ["Alignment and subtype: lawful evil outsider (devil).", "Use unchained eidolon base statistics at full Druid level.", "Evolution pool is always 0; only base-form and subtype evolutions apply."],
+      "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Planar%20Extremist"}
+    },
+    {
+      "id": "planar-extremist-companion-demon",
+      "groupId": "druid-planar-extremist-companions",
+      "name": "Chaotic Evil Outsider (Demon)",
+      "classIds": ["druid"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Configure a chaotic evil outsider companion. Choose its biped, quadruped, or serpentine base form.",
+      "choice": {"key": "base-form", "label": "Base form", "options": [{"id": "biped", "name": "Biped"}, {"id": "quadruped", "name": "Quadruped"}, {"id": "serpentine", "name": "Serpentine"}]},
+      "companionRules": ["Alignment and subtype: chaotic evil outsider (demon).", "Use unchained eidolon base statistics at full Druid level.", "Evolution pool is always 0; only base-form and subtype evolutions apply."],
+      "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Planar%20Extremist"}
+    }
+  ]
+}

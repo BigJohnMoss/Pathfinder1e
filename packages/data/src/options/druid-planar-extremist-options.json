@@ -1,0 +1,27 @@
+{
+  "id": "druid-planar-extremist-bonds",
+  "name": "Planar Extremist Bonds",
+  "classIds": ["druid"],
+  "options": [
+    {
+      "id": "planar-extremist-domain-bond",
+      "groupId": "druid-planar-extremist-bonds",
+      "name": "Aligned Domain",
+      "classIds": ["druid"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Choose one domain matching one component of your extreme alignment. Its powers and domain spells use your full Druid level.",
+      "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Planar%20Extremist"}
+    },
+    {
+      "id": "planar-extremist-outsider-bond",
+      "groupId": "druid-planar-extremist-bonds",
+      "name": "Outsider Companion",
+      "classIds": ["druid"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Gain an outsider companion using unchained eidolon statistics at full Druid level, with an exactly matching alignment and no evolution pool.",
+      "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Planar%20Extremist"}
+    }
+  ]
+}

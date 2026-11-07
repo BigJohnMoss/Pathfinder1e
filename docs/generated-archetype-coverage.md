@@ -12,7 +12,7 @@ This report distinguishes selectable replacement integration from bespoke rules 
 | Brawler | 0 | 19 | 0 | 19 |
 | Cavalier | 2 | 35 | 0 | 37 |
 | Cleric | 0 | 35 | 0 | 35 |
-| Druid | 74 | 1 | 0 | 75 |
+| Druid | 75 | 0 | 0 | 75 |
 | Fighter | 12 | 55 | 0 | 67 |
 | Gunslinger | 0 | 23 | 0 | 23 |
 | Hunter | 0 | 21 | 0 | 21 |
@@ -52,6 +52,6 @@ This report distinguishes selectable replacement integration from bespoke rules 
 - **Class-skill rules:** 224 archetypes have calculated additions or removals recognized from standard rules text.
 - **Weapon and armor proficiency rules:** 159 archetypes have calculated grants, losses, or exceptions recognized from standard rules text.
 - **Skill-rank progression rules:** 13 archetypes have calculated fixed or additive ranks per level recognized from standard rules text.
-- **Reusable daily resources:** 380 archetypes have bounded fixed, level-scaled, or ability-scaled pools connected to spend, refresh, and persistence controls.
+- **Reusable daily resources:** 383 archetypes have bounded fixed, level-scaled, or ability-scaled pools connected to spend, refresh, and persistence controls.
 - **Fixed bonus-feat grants:** 203 archetypes grant exact catalogue feats at their published levels and apply supported feat effects automatically.
 - **Restricted bonus-feat choices:** 64 archetypes expose earned, level-aware selectors limited to their published feat ids or feat categories.

@@ -169,6 +169,7 @@ export interface ClassFeatureOccurrence {
   };
   optionGroupId?: string | null;
   optionChoiceIds?: string[];
+  optionChoiceIdsByAlignment?: Partial<Record<Alignment, string[]>>;
   channelEnergyDiceAdvancementOptionIds?: string[];
   channelEnergyPolarityOptionIds?: { positive: string; negative: string };
   favoredTerrainBaseBonus?: number;
@@ -554,6 +555,8 @@ export interface ClassFeatureOccurrence {
       keyword?: string;
       spellIds?: string[];
       requiresTargetPrepared?: boolean;
+      blockedByActiveEffectName?: string;
+      restriction?: string;
     };
     preparedOptionSpellConversion?: {
       label: string;
