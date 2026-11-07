@@ -1,0 +1,24 @@
+{
+  "id": "swarm-monger-familiars",
+  "name": "Swarm Monger Familiars",
+  "classIds": ["druid"],
+  "uniqueAcrossSelections": true,
+  "optionDefaults": {
+    "groupId": "swarm-monger-familiars",
+    "classIds": ["druid"],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Swarm%20Monger"
+    }
+  },
+  "options": [
+    { "id": "swarm-monger-familiar-cat", "name": "Cat", "benefit": "Gain a cat as the Fecund Familiar." },
+    { "id": "swarm-monger-familiar-house-centipede", "name": "House centipede", "benefit": "Gain a house centipede as the Fecund Familiar." },
+    { "id": "swarm-monger-familiar-rat", "name": "Rat", "benefit": "Gain a rat as the Fecund Familiar." },
+    { "id": "swarm-monger-familiar-raven", "name": "Raven", "benefit": "Gain a raven as the Fecund Familiar." },
+    { "id": "swarm-monger-familiar-scarlet-spider", "name": "Scarlet spider", "benefit": "Gain a scarlet spider as the Fecund Familiar." }
+  ]
+}
