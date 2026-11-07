@@ -29,9 +29,545 @@
         {
           "id": "skald-urban-skald-raging-song-su-8",
           "name": "Raging Song (Su)",
-          "level": 8,
+          "level": 1,
           "type": "archetype",
-          "summary": "An urban skald gains a different selection of raging songs, as noted below. The save DC for a raging song that allows a save is equal to 10 + 1/2 the urban skald’s skald level + his Charisma modifier. Controlled Inspired Rage (Su) : When the urban skald inspires rage, he does not grant the normal benefits. Instead, he can apply a +2 morale bonus to his allies’ Strength, Dexterity, or Constitution. This bonus increases to +4 at 8th level and to +6 at 16th level. The urban skald can apply the full bonus to one ability score or split the bonus between several scores in increments of 2. The choice applies to all affected allies. The controlled inspired rage grants no bonus on Will saves, imposes no penalties to AC, and does not prevent affected allies from using Intelligence-, Dexterity-, or Charisma-based skills. This alters inspired rage. Infuriating Mockery (Su) : At 3rd level, the urban skald can inspire reckless fury in one foe within 30 feet. If the foe fails a Will saving throw, it takes a –2 penalty to AC and on attack rolls, cannot use any Intelligence-, Dexterity-, or Charismabased skills, and must succeed at a concentration check to cast spells (DC = 15 + spell level) for as long as it remains in range of the skald and the performance is maintained. At 7th level and every 4 levels thereafter, the urban skald can target an additional foe with this ability. This replaces song of marching and damage reduction. Humiliating Defamation (Su) : At 10th level, the urban skald can ostracize a foe. The song has one primary target, who the skald must see and name or describe. That target must attempt a Will save. On a failed save, the primary target cannot benefit from any morale bonus or teamwork feats, cannot treat any creature as an ally, and must attempt to save against any spell cast on it (including harmless spells, even if it casts them on itself ). These effects remain as long as the primary target can hear the skald and the skald maintains the performance. All other foes within 60 feet of the skald are secondary targets. Secondary targets must succeed at Will saves or they cannot treat the primary target as an ally, and cannot target it with spells or abilities that are harmless. These effects remain as long as the secondary targets are within 60 feet of the skald and the skald maintains the performance. This is a sonic mind-affecting charm effect. This ability replaces dirge of doom."
+          "summary": "An urban skald gains a different selection of raging songs, as noted below. The save DC for a raging song that allows a save is equal to 10 + 1/2 the urban skald’s skald level + his Charisma modifier. Controlled Inspired Rage (Su) : When the urban skald inspires rage, he does not grant the normal benefits. Instead, he can apply a +2 morale bonus to his allies’ Strength, Dexterity, or Constitution. This bonus increases to +4 at 8th level and to +6 at 16th level. The urban skald can apply the full bonus to one ability score or split the bonus between several scores in increments of 2. The choice applies to all affected allies. The controlled inspired rage grants no bonus on Will saves, imposes no penalties to AC, and does not prevent affected allies from using Intelligence-, Dexterity-, or Charisma-based skills. This alters inspired rage. Infuriating Mockery (Su) : At 3rd level, the urban skald can inspire reckless fury in one foe within 30 feet. If the foe fails a Will saving throw, it takes a –2 penalty to AC and on attack rolls, cannot use any Intelligence-, Dexterity-, or Charismabased skills, and must succeed at a concentration check to cast spells (DC = 15 + spell level) for as long as it remains in range of the skald and the performance is maintained. At 7th level and every 4 levels thereafter, the urban skald can target an additional foe with this ability. This replaces song of marching and damage reduction. Humiliating Defamation (Su) : At 10th level, the urban skald can ostracize a foe. The song has one primary target, who the skald must see and name or describe. That target must attempt a Will save. On a failed save, the primary target cannot benefit from any morale bonus or teamwork feats, cannot treat any creature as an ally, and must attempt to save against any spell cast on it (including harmless spells, even if it casts them on itself ). These effects remain as long as the primary target can hear the skald and the skald maintains the performance. All other foes within 60 feet of the skald are secondary targets. Secondary targets must succeed at Will saves or they cannot treat the primary target as an ally, and cannot target it with spells or abilities that are harmless. These effects remain as long as the secondary targets are within 60 feet of the skald and the skald maintains the performance. This is a sonic mind-affecting charm effect. This ability replaces dirge of doom.",
+          "performanceRules": [
+            {
+              "id": "controlled-inspired-rage",
+              "name": "Controlled Inspired Rage",
+              "minimumLevel": 1,
+              "kind": "active",
+              "summary": "Allocate the full scaling morale bonus among Strength, Dexterity, and Constitution in +2 increments for every affected ally.",
+              "resourceId": "ragingSongRounds",
+              "cost": 1,
+              "actionIds": [
+                "urban-skald-controlled-rage"
+              ]
+            },
+            {
+              "id": "infuriating-mockery",
+              "name": "Infuriating Mockery",
+              "minimumLevel": 3,
+              "kind": "active",
+              "summary": "One foe within 30 feet, plus one additional foe at level 7 and every 4 levels thereafter, attempts a Will save against the maintained penalties.",
+              "resourceId": "ragingSongRounds",
+              "cost": 1,
+              "actionIds": [
+                "urban-skald-infuriating-mockery",
+                "urban-skald-infuriating-mockery-extra"
+              ]
+            },
+            {
+              "id": "humiliating-defamation",
+              "name": "Humiliating Defamation",
+              "minimumLevel": 10,
+              "kind": "active",
+              "summary": "A named primary target and secondary foes within 60 feet make Will saves against the maintained social isolation effects.",
+              "resourceId": "ragingSongRounds",
+              "cost": 1,
+              "actionIds": [
+                "urban-skald-humiliating-primary",
+                "urban-skald-humiliating-secondary"
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "urban-skald-controlled-rage",
+              "label": "Begin Controlled Inspired Rage",
+              "minimumLevel": 1,
+              "resourceId": "ragingSongRounds",
+              "cost": 1,
+              "modeLabel": "Ability allocation",
+              "modes": [
+                {
+                  "id": "constitution-2",
+                  "label": "Constitution +2",
+                  "minimumLevel": 1,
+                  "summary": "Grant Constitution +2 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "constitution",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Constitution",
+                      "description": "Constitution receives a +2 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "dexterity-2",
+                  "label": "Dexterity +2",
+                  "minimumLevel": 1,
+                  "summary": "Grant Dexterity +2 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "dexterity",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Dexterity",
+                      "description": "Dexterity receives a +2 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "strength-2",
+                  "label": "Strength +2",
+                  "minimumLevel": 1,
+                  "summary": "Grant Strength +2 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Strength",
+                      "description": "Strength receives a +2 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "constitution-4",
+                  "label": "Constitution +4",
+                  "minimumLevel": 8,
+                  "summary": "Grant Constitution +4 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "constitution",
+                      "bonus": 4,
+                      "label": "Controlled Inspired Rage — Constitution",
+                      "description": "Constitution receives a +4 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "dexterity-2-constitution-2",
+                  "label": "Dexterity +2, Constitution +2",
+                  "minimumLevel": 8,
+                  "summary": "Grant Dexterity +2, Constitution +2 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "dexterity",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Dexterity",
+                      "description": "Dexterity receives a +2 morale bonus from Controlled Inspired Rage."
+                    },
+                    {
+                      "target": "constitution",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Constitution",
+                      "description": "Constitution receives a +2 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "dexterity-4",
+                  "label": "Dexterity +4",
+                  "minimumLevel": 8,
+                  "summary": "Grant Dexterity +4 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "dexterity",
+                      "bonus": 4,
+                      "label": "Controlled Inspired Rage — Dexterity",
+                      "description": "Dexterity receives a +4 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "strength-2-constitution-2",
+                  "label": "Strength +2, Constitution +2",
+                  "minimumLevel": 8,
+                  "summary": "Grant Strength +2, Constitution +2 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Strength",
+                      "description": "Strength receives a +2 morale bonus from Controlled Inspired Rage."
+                    },
+                    {
+                      "target": "constitution",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Constitution",
+                      "description": "Constitution receives a +2 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "strength-2-dexterity-2",
+                  "label": "Strength +2, Dexterity +2",
+                  "minimumLevel": 8,
+                  "summary": "Grant Strength +2, Dexterity +2 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Strength",
+                      "description": "Strength receives a +2 morale bonus from Controlled Inspired Rage."
+                    },
+                    {
+                      "target": "dexterity",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Dexterity",
+                      "description": "Dexterity receives a +2 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "strength-4",
+                  "label": "Strength +4",
+                  "minimumLevel": 8,
+                  "summary": "Grant Strength +4 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 4,
+                      "label": "Controlled Inspired Rage — Strength",
+                      "description": "Strength receives a +4 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "constitution-6",
+                  "label": "Constitution +6",
+                  "minimumLevel": 16,
+                  "summary": "Grant Constitution +6 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "constitution",
+                      "bonus": 6,
+                      "label": "Controlled Inspired Rage — Constitution",
+                      "description": "Constitution receives a +6 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "dexterity-2-constitution-4",
+                  "label": "Dexterity +2, Constitution +4",
+                  "minimumLevel": 16,
+                  "summary": "Grant Dexterity +2, Constitution +4 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "dexterity",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Dexterity",
+                      "description": "Dexterity receives a +2 morale bonus from Controlled Inspired Rage."
+                    },
+                    {
+                      "target": "constitution",
+                      "bonus": 4,
+                      "label": "Controlled Inspired Rage — Constitution",
+                      "description": "Constitution receives a +4 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "dexterity-4-constitution-2",
+                  "label": "Dexterity +4, Constitution +2",
+                  "minimumLevel": 16,
+                  "summary": "Grant Dexterity +4, Constitution +2 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "dexterity",
+                      "bonus": 4,
+                      "label": "Controlled Inspired Rage — Dexterity",
+                      "description": "Dexterity receives a +4 morale bonus from Controlled Inspired Rage."
+                    },
+                    {
+                      "target": "constitution",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Constitution",
+                      "description": "Constitution receives a +2 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "dexterity-6",
+                  "label": "Dexterity +6",
+                  "minimumLevel": 16,
+                  "summary": "Grant Dexterity +6 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "dexterity",
+                      "bonus": 6,
+                      "label": "Controlled Inspired Rage — Dexterity",
+                      "description": "Dexterity receives a +6 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "strength-2-constitution-4",
+                  "label": "Strength +2, Constitution +4",
+                  "minimumLevel": 16,
+                  "summary": "Grant Strength +2, Constitution +4 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Strength",
+                      "description": "Strength receives a +2 morale bonus from Controlled Inspired Rage."
+                    },
+                    {
+                      "target": "constitution",
+                      "bonus": 4,
+                      "label": "Controlled Inspired Rage — Constitution",
+                      "description": "Constitution receives a +4 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "strength-2-dexterity-2-constitution-2",
+                  "label": "Strength +2, Dexterity +2, Constitution +2",
+                  "minimumLevel": 16,
+                  "summary": "Grant Strength +2, Dexterity +2, Constitution +2 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Strength",
+                      "description": "Strength receives a +2 morale bonus from Controlled Inspired Rage."
+                    },
+                    {
+                      "target": "dexterity",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Dexterity",
+                      "description": "Dexterity receives a +2 morale bonus from Controlled Inspired Rage."
+                    },
+                    {
+                      "target": "constitution",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Constitution",
+                      "description": "Constitution receives a +2 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "strength-2-dexterity-4",
+                  "label": "Strength +2, Dexterity +4",
+                  "minimumLevel": 16,
+                  "summary": "Grant Strength +2, Dexterity +4 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Strength",
+                      "description": "Strength receives a +2 morale bonus from Controlled Inspired Rage."
+                    },
+                    {
+                      "target": "dexterity",
+                      "bonus": 4,
+                      "label": "Controlled Inspired Rage — Dexterity",
+                      "description": "Dexterity receives a +4 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "strength-4-constitution-2",
+                  "label": "Strength +4, Constitution +2",
+                  "minimumLevel": 16,
+                  "summary": "Grant Strength +4, Constitution +2 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 4,
+                      "label": "Controlled Inspired Rage — Strength",
+                      "description": "Strength receives a +4 morale bonus from Controlled Inspired Rage."
+                    },
+                    {
+                      "target": "constitution",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Constitution",
+                      "description": "Constitution receives a +2 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "strength-4-dexterity-2",
+                  "label": "Strength +4, Dexterity +2",
+                  "minimumLevel": 16,
+                  "summary": "Grant Strength +4, Dexterity +2 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 4,
+                      "label": "Controlled Inspired Rage — Strength",
+                      "description": "Strength receives a +4 morale bonus from Controlled Inspired Rage."
+                    },
+                    {
+                      "target": "dexterity",
+                      "bonus": 2,
+                      "label": "Controlled Inspired Rage — Dexterity",
+                      "description": "Dexterity receives a +2 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                },
+                {
+                  "id": "strength-6",
+                  "label": "Strength +6",
+                  "minimumLevel": 16,
+                  "summary": "Grant Strength +6 as morale bonuses while Controlled Inspired Rage is maintained.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 6,
+                      "label": "Controlled Inspired Rage — Strength",
+                      "description": "Strength receives a +6 morale bonus from Controlled Inspired Rage."
+                    }
+                  ]
+                }
+              ],
+              "activeEffect": {
+                "name": "Controlled Inspired Rage",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "The selected morale-bonus allocation applies to all affected allies.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend 1 raging song round to begin; continue spending one round for each round maintained."
+            },
+            {
+              "id": "urban-skald-infuriating-mockery",
+              "label": "Begin Infuriating Mockery",
+              "minimumLevel": 3,
+              "resourceId": "ragingSongRounds",
+              "cost": 1,
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "skald"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 3,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 3,
+                    "name": "Infuriating Mockery",
+                    "description": "Target takes −2 AC and attack rolls, loses listed skill use, and must make concentration checks while in range and the performance is maintained.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 999
+                    }
+                  }
+                ]
+              },
+              "summary": "Target takes −2 AC and attack rolls, loses listed skill use, and must make concentration checks while in range and the performance is maintained."
+            },
+            {
+              "id": "urban-skald-infuriating-mockery-extra",
+              "label": "Resolve additional Mockery target",
+              "minimumLevel": 7,
+              "resourceId": "ragingSongRounds",
+              "cost": 0,
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "skald"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 7,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 7,
+                    "name": "Infuriating Mockery",
+                    "description": "Resolve one additional target unlocked at level 7 and every 4 levels thereafter; do not spend another song round for this target.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 999
+                    }
+                  }
+                ]
+              },
+              "summary": "Resolve one additional target unlocked at level 7 and every 4 levels thereafter; do not spend another song round for this target."
+            },
+            {
+              "id": "urban-skald-humiliating-primary",
+              "label": "Begin Humiliating Defamation",
+              "minimumLevel": 10,
+              "resourceId": "ragingSongRounds",
+              "cost": 1,
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "skald"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 10,
+                    "range": "60 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 10,
+                    "name": "Humiliating Defamation — primary",
+                    "description": "Primary target cannot benefit from morale bonuses or teamwork feats, treat creatures as allies, or waive saves against spells while it hears the maintained song.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 999
+                    }
+                  }
+                ]
+              },
+              "summary": "Primary target cannot benefit from morale bonuses or teamwork feats, treat creatures as allies, or waive saves against spells while it hears the maintained song."
+            },
+            {
+              "id": "urban-skald-humiliating-secondary",
+              "label": "Resolve Defamation secondary target",
+              "minimumLevel": 10,
+              "resourceId": "ragingSongRounds",
+              "cost": 0,
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "skald"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 10,
+                    "range": "60 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 10,
+                    "name": "Humiliating Defamation — secondary",
+                    "description": "Secondary target cannot treat the named primary target as an ally or target it with harmless effects while in range and the song is maintained.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 999
+                    }
+                  }
+                ]
+              },
+              "summary": "Secondary target cannot treat the named primary target as an ally or target it with harmless effects while in range and the song is maintained."
+            }
+          ]
         },
         {
           "id": "skald-urban-skald-back-of-the-crowd-ex-3",

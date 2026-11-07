@@ -52,7 +52,7 @@ These rule-text signals are multi-label: one archetype can contribute to several
 
 | Candidate subsystem | Partial archetypes |
 |---|---:|
-| Resources and limited uses | 624 |
+| Resources and limited uses | 625 |
 | Companions, mounts, familiars, and eidolons | 239 |
 | Spell lists, slots, and casting | 622 |
 | Selectable progressions and dependent choices | 751 |
