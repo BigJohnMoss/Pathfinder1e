@@ -210,6 +210,5 @@ export function inferArchetypeSenseAdjustments(archetype) {
 }
 
 export function archetypeSenseAdjustments(archetype) {
-  if ((archetype?.mechanicalCoverage ?? "partial") === "full") return [];
   return inferArchetypeSenseAdjustments(archetype);
 }
