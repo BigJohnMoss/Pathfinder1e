@@ -2,7 +2,15 @@
   "id": "druid-sunrider",
   "name": "Sunrider",
   "classId": "druid",
-  "companionGrants": [{ "id": "sunrider-mount", "kind": "mount", "label": "Sunrider mount (horse or pony)", "optionId": "sunrider-mount", "minimumLevel": 1 }],
+  "companionGrants": [
+    {
+      "id": "sunrider-mount",
+      "kind": "mount",
+      "label": "Sunrider mount (horse or pony)",
+      "optionId": "sunrider-mount",
+      "minimumLevel": 1
+    }
+  ],
   "summary": "Sunriders help their allies, be they fellow tribe members or fellow adventurers, to survive in harsh desert terrain, while simultaneously making it even harsher for their foes.",
   "replacesText": "Class Skills; Weapon and Armor Proficiencies; Nature Bond; Woodland Stride; Trackless Step; Resist Nature's Lure; Wild Shape",
   "replacements": [
@@ -41,22 +49,89 @@
           "id": "druid-sunrider-nature-bond-ex-1",
           "name": "Nature Bond (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "A sunrider must use this ability to bond with a horse or a pony as an animal companion; she cannot choose a different animal or choose a domain instead of an animal companion. This alters nature bond."
+          "type": "selectable",
+          "summary": "A sunrider must use this ability to bond with a horse or a pony as an animal companion; she cannot choose a different animal or choose a domain instead of an animal companion. This alters nature bond.",
+          "choiceRequired": true,
+          "optionGroupId": "druid-nature-bonds",
+          "optionChoiceIds": [
+            "druid-nature-bond-animal"
+          ],
+          "progressionKey": "druid-nature-bond",
+          "progressionProfiles": [
+            {
+              "id": "sunrider-mount-bond",
+              "label": "Sunrider Nature Bond",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "mount",
+                  "label": "Required companion"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "mount": "Horse or pony animal companion"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-sunrider-born-to-the-saddle-ex-2",
           "name": "Born to the Saddle (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, while wearing light or no armor, a sunrider does not need to attempt Ride checks for any task listed in the Ride skill with a DC of 15 or lower. She does not take an armor check penalty on Ride checks while riding her mount. This ability replaces woodland stride."
+          "summary": "At 2nd level, while wearing light or no armor, a sunrider does not need to attempt Ride checks for any task listed in the Ride skill with a DC of 15 or lower. She does not take an armor check penalty on Ride checks while riding her mount. This ability replaces woodland stride.",
+          "progressionProfiles": [
+            {
+              "id": "sunrider-born-to-saddle",
+              "label": "Born to the Saddle",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "ride",
+                  "label": "Ride checks"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 2,
+                  "values": {
+                    "ride": "While in light or no armor: automatic success on DC 15 or lower Ride tasks; no armor check penalty while riding the bonded mount"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-sunrider-mounted-advantage-su-3",
           "name": "Mounted Advantage (Su)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, any allied mount within 30 feet of a sunrider can ignore the effects of rocky or sandy difficult terrain. This ability replaces trackless step."
+          "summary": "At 3rd level, any allied mount within 30 feet of a sunrider can ignore the effects of rocky or sandy difficult terrain. This ability replaces trackless step.",
+          "resourceActions": [
+            {
+              "id": "sunrider-mounted-advantage",
+              "label": "Track Mounted Advantage",
+              "classId": "druid",
+              "minimumLevel": 3,
+              "activeEffect": {
+                "name": "Mounted Advantage",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "Allied mounts within 30 feet ignore rocky and sandy difficult terrain.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Track the passive 30-foot allied-mount terrain aura during encounters."
+            }
+          ]
         },
         {
           "id": "druid-sunrider-desert-born-ex-4",
@@ -70,20 +145,351 @@
           "name": "Concerted Effort (Ex)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a sunrider can extend the bond she shares with her horse to other nearby mounted companions, forming them into a fighting force that seems to share a single mind. Allied mounts within 60 feet of the sunrider gain evasion as per the animal companion special ability. At 6th level, the range expands to 90 feet and allied mounts gain a +10-foot enhancement bonus to their speed. At 8th level, the range expands to 120 feet and allied mounts gain devotion as per the animal companion special ability. At 10th level, allied mounts gain multiattack as per the animal companion special ability. At 12th level, allied mounts gain a +2 bonus on saving throws. At 14th level, allied mounts gain a +20-foot enhancement bonus to their speed. At 16th level, allied mounts gain improved evasion as per the animal companion special ability. At 18th level, allied mounts gain a +2 dodge bonus to their Armor Class and a +2 bonus on attack rolls. At 20th level, allied mounts gain DR 5/— and energy resistance 10 to acid, cold, electricity, fire, and sonic damage. These abilities function only while allied mounts are within range of the sunrider (her own mount always counts as an ally). This ability replaces wild shape."
+          "summary": "At 4th level, a sunrider can extend the bond she shares with her horse to other nearby mounted companions, forming them into a fighting force that seems to share a single mind. Allied mounts within 60 feet of the sunrider gain evasion as per the animal companion special ability. At 6th level, the range expands to 90 feet and allied mounts gain a +10-foot enhancement bonus to their speed. At 8th level, the range expands to 120 feet and allied mounts gain devotion as per the animal companion special ability. At 10th level, allied mounts gain multiattack as per the animal companion special ability. At 12th level, allied mounts gain a +2 bonus on saving throws. At 14th level, allied mounts gain a +20-foot enhancement bonus to their speed. At 16th level, allied mounts gain improved evasion as per the animal companion special ability. At 18th level, allied mounts gain a +2 dodge bonus to their Armor Class and a +2 bonus on attack rolls. At 20th level, allied mounts gain DR 5/— and energy resistance 10 to acid, cold, electricity, fire, and sonic damage. These abilities function only while allied mounts are within range of the sunrider (her own mount always counts as an ally). This ability replaces wild shape.",
+          "progressionProfiles": [
+            {
+              "id": "sunrider-concerted-effort",
+              "label": "Concerted Effort",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "range",
+                  "label": "Aura"
+                },
+                {
+                  "id": "benefits",
+                  "label": "Allied mount benefits"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "range": "60 feet",
+                    "benefits": "Evasion"
+                  }
+                },
+                {
+                  "level": 6,
+                  "values": {
+                    "range": "90 feet",
+                    "benefits": "Evasion; +10-foot enhancement speed"
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "range": "120 feet",
+                    "benefits": "Evasion; +10-foot enhancement speed; devotion"
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "range": "120 feet",
+                    "benefits": "Evasion; +10-foot enhancement speed; devotion; multiattack"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "range": "120 feet",
+                    "benefits": "Evasion; +10-foot enhancement speed; devotion; multiattack; +2 saves"
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "range": "120 feet",
+                    "benefits": "Evasion; +20-foot enhancement speed; devotion; multiattack; +2 saves"
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "range": "120 feet",
+                    "benefits": "Improved evasion; +20-foot enhancement speed; devotion; multiattack; +2 saves"
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "range": "120 feet",
+                    "benefits": "Improved evasion; +20-foot enhancement speed; devotion; multiattack; +2 saves; +2 dodge AC; +2 attacks"
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "range": "120 feet",
+                    "benefits": "Improved evasion; +20-foot enhancement speed; devotion; multiattack; +2 saves; +2 dodge AC; +2 attacks; DR 5/—; acid, cold, electricity, fire, and sonic resistance 10"
+                  }
+                }
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "sunrider-concerted-effort",
+              "label": "Track Concerted Effort",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "modeLabel": "Current aura tier",
+              "modes": [
+                {
+                  "id": "level-4",
+                  "label": "Level 4 · 60 feet",
+                  "minimumLevel": 4,
+                  "maximumLevel": 5,
+                  "summary": "Evasion",
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Concerted Effort — allied mounts",
+                      "description": "Evasion"
+                    }
+                  ]
+                },
+                {
+                  "id": "level-6",
+                  "label": "Level 6 · 90 feet",
+                  "minimumLevel": 6,
+                  "maximumLevel": 7,
+                  "summary": "Evasion; +10-foot enhancement speed",
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Concerted Effort — allied mounts",
+                      "description": "Evasion; +10-foot enhancement speed"
+                    }
+                  ]
+                },
+                {
+                  "id": "level-8",
+                  "label": "Level 8 · 120 feet",
+                  "minimumLevel": 8,
+                  "maximumLevel": 9,
+                  "summary": "Evasion; +10-foot enhancement speed; devotion",
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Concerted Effort — allied mounts",
+                      "description": "Evasion; +10-foot enhancement speed; devotion"
+                    }
+                  ]
+                },
+                {
+                  "id": "level-10",
+                  "label": "Level 10 · 120 feet",
+                  "minimumLevel": 10,
+                  "maximumLevel": 11,
+                  "summary": "Evasion; +10-foot enhancement speed; devotion; multiattack",
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Concerted Effort — allied mounts",
+                      "description": "Evasion; +10-foot enhancement speed; devotion; multiattack"
+                    }
+                  ]
+                },
+                {
+                  "id": "level-12",
+                  "label": "Level 12 · 120 feet",
+                  "minimumLevel": 12,
+                  "maximumLevel": 13,
+                  "summary": "Evasion; +10-foot enhancement speed; devotion; multiattack; +2 saves",
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Concerted Effort — allied mounts",
+                      "description": "Evasion; +10-foot enhancement speed; devotion; multiattack; +2 saves"
+                    }
+                  ]
+                },
+                {
+                  "id": "level-14",
+                  "label": "Level 14 · 120 feet",
+                  "minimumLevel": 14,
+                  "maximumLevel": 15,
+                  "summary": "Evasion; +20-foot enhancement speed; devotion; multiattack; +2 saves",
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Concerted Effort — allied mounts",
+                      "description": "Evasion; +20-foot enhancement speed; devotion; multiattack; +2 saves"
+                    }
+                  ]
+                },
+                {
+                  "id": "level-16",
+                  "label": "Level 16 · 120 feet",
+                  "minimumLevel": 16,
+                  "maximumLevel": 17,
+                  "summary": "Improved evasion; +20-foot enhancement speed; devotion; multiattack; +2 saves",
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Concerted Effort — allied mounts",
+                      "description": "Improved evasion; +20-foot enhancement speed; devotion; multiattack; +2 saves"
+                    }
+                  ]
+                },
+                {
+                  "id": "level-18",
+                  "label": "Level 18 · 120 feet",
+                  "minimumLevel": 18,
+                  "maximumLevel": 19,
+                  "summary": "Improved evasion; +20-foot enhancement speed; devotion; multiattack; +2 saves; +2 dodge AC; +2 attacks",
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Concerted Effort — allied mounts",
+                      "description": "Improved evasion; +20-foot enhancement speed; devotion; multiattack; +2 saves; +2 dodge AC; +2 attacks"
+                    }
+                  ]
+                },
+                {
+                  "id": "level-20",
+                  "label": "Level 20 · 120 feet",
+                  "minimumLevel": 20,
+                  "maximumLevel": 20,
+                  "summary": "Improved evasion; +20-foot enhancement speed; devotion; multiattack; +2 saves; +2 dodge AC; +2 attacks; DR 5/—; acid, cold, electricity, fire, and sonic resistance 10",
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Concerted Effort — allied mounts",
+                      "description": "Improved evasion; +20-foot enhancement speed; devotion; multiattack; +2 saves; +2 dodge AC; +2 attacks; DR 5/—; acid, cold, electricity, fire, and sonic resistance 10"
+                    }
+                  ]
+                }
+              ],
+              "activeEffect": {
+                "name": "Concerted Effort",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "Allied mounts in the selected level-aware radius gain the listed cumulative benefits; the Sunrider's own mount always qualifies.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Apply the exact cumulative allied-mount aura for the current Druid level."
+            }
+          ]
         }
       ]
     }
   ],
-  "classSkillAdditions": ["Knowledge (local)"],
-  "classSkillRemovals": ["Profession"],
+  "classSkillAdditions": [
+    "Knowledge (local)"
+  ],
+  "classSkillRemovals": [
+    "Profession"
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Sunrider"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Skill and weapon changes, the horse-or-pony bond lock, mounted Ride rules, terrain protection, every personal and allied Desert Born bonus, and all nine cumulative Concerted Effort aura tiers are automated."
+  ],
+  "proficiencyAdjustments": [
+    {
+      "sourceFeatureId": "druid-sunrider-weapon-and-armor-proficiencies-1",
+      "category": "weapon",
+      "operation": "add",
+      "proficiencies": [
+        "Shortbow"
+      ]
+    },
+    {
+      "sourceFeatureId": "druid-sunrider-weapon-and-armor-proficiencies-1",
+      "category": "weapon",
+      "operation": "remove",
+      "proficiencies": [
+        "Scythe",
+        "Sickle",
+        "Quarterstaff"
+      ]
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-sunrider-born-to-the-saddle-ex-2",
+      "label": "Born to the Saddle",
+      "condition": "Ride checks while riding the bonded mount in light or no armor; ignore armor check penalty",
+      "minimumLevel": 2,
+      "base": 0
+    },
+    {
+      "sourceFeatureId": "druid-sunrider-desert-born-ex-4",
+      "label": "Desert Born — Initiative",
+      "condition": "Initiative while in desert terrain",
+      "minimumLevel": 4,
+      "base": 2
+    },
+    {
+      "sourceFeatureId": "druid-sunrider-desert-born-ex-4",
+      "label": "Desert Born — Knowledge (geography)",
+      "condition": "Knowledge (geography) while in desert terrain",
+      "minimumLevel": 4,
+      "base": 2
+    },
+    {
+      "sourceFeatureId": "druid-sunrider-desert-born-ex-4",
+      "label": "Desert Born — Perception",
+      "condition": "Perception while in desert terrain",
+      "minimumLevel": 4,
+      "base": 2
+    },
+    {
+      "sourceFeatureId": "druid-sunrider-desert-born-ex-4",
+      "label": "Desert Born — Stealth",
+      "condition": "Stealth while in desert terrain",
+      "minimumLevel": 4,
+      "base": 2
+    },
+    {
+      "sourceFeatureId": "druid-sunrider-desert-born-ex-4",
+      "label": "Desert Born — Survival",
+      "condition": "Survival while in desert terrain",
+      "minimumLevel": 4,
+      "base": 2
+    },
+    {
+      "sourceFeatureId": "druid-sunrider-desert-born-ex-4",
+      "label": "Desert Born allies — Initiative",
+      "condition": "Initiative for mounted allies within 30 feet while in desert terrain",
+      "minimumLevel": 4,
+      "base": 1
+    },
+    {
+      "sourceFeatureId": "druid-sunrider-desert-born-ex-4",
+      "label": "Desert Born allies — Perception",
+      "condition": "Perception for mounted allies within 30 feet while in desert terrain",
+      "minimumLevel": 4,
+      "base": 1
+    },
+    {
+      "sourceFeatureId": "druid-sunrider-desert-born-ex-4",
+      "label": "Desert Born allies — Survival",
+      "condition": "Survival for mounted allies within 30 feet while in desert terrain",
+      "minimumLevel": 4,
+      "base": 1
+    }
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-animal"
   ]
 }
