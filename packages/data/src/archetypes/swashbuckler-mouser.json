@@ -22,7 +22,103 @@
           "name": "Deeds",
           "level": 1,
           "type": "archetype",
-          "summary": "The mouser gains the following deeds, each of which replaces an existing deed. Underfoot Assault (Ex) : At 1st level, if a foe whose size is larger than the mouser’s is adjacent to her and misses her with a melee attack, the mouser can as an immediate action spend 1 panache point to move 5 feet into an area of the attacker’s space. This movement does not count against the mouser’s movement the next round, and it doesn’t provoke attacks of opportunity. While the mouser is within a foe’s space, she is considered to occupy her square within that foe’s space. While the mouser is within her foe’s space, the foe takes a –4 penalty on all attack rolls and combat maneuver checks not made against the mouser, and all of the mouser’s allies that are adjacent to both the foe and the mouser are considered to be flanking the foe. The mouser is considered to be flanking the foe whose space she is within if she is adjacent to an ally who is also adjacent to the foe. The mouser can move within her foe’s space and leave the foe’s space unhindered and without provoking attacks of opportunity, but if the foe attempts to move to a position where the mouser is no longer in its space, the movement provokes an attack of opportunity from the mouser. This deed replaces opportune parry and riposte. Quick Steal (Ex) : At 3rd level, as a swift action the mouser can spend 1 panache point when she hits a for larger than her size with a light or one-handed piercing melee weapon to attempt a steal combat maneuver check against the creature she hit. Using this deed does not provoke an attack of opportunity. This deed replaces menacing swordplay. Hamstring (Ex) : At 7th level, as long as a mouser has at least 1 panache point when she hits a foe whose size is larger than her own with a light or one-handed piercing melee weapon, she can as a swift action attempt a dirty trick combat maneuver check. Instead of the normal conditions that can be applied with dirty trick, this deed can only stagger the target if the check is successful. This deed replaces targeted strike. Cat’s Charge (Ex) : At 11th level, as long as a mouser has at least 1 panache point, when she charges a foe whose size is larger than her own, the mouser can end her charge in any space she can reach, not just the closest space. All other requirements of the charge must still be satisfied. This deed replaces bleeding wound."
+          "summary": "The mouser gains the following deeds, each of which replaces an existing deed. Underfoot Assault (Ex) : At 1st level, if a foe whose size is larger than the mouser’s is adjacent to her and misses her with a melee attack, the mouser can as an immediate action spend 1 panache point to move 5 feet into an area of the attacker’s space. This movement does not count against the mouser’s movement the next round, and it doesn’t provoke attacks of opportunity. While the mouser is within a foe’s space, she is considered to occupy her square within that foe’s space. While the mouser is within her foe’s space, the foe takes a –4 penalty on all attack rolls and combat maneuver checks not made against the mouser, and all of the mouser’s allies that are adjacent to both the foe and the mouser are considered to be flanking the foe. The mouser is considered to be flanking the foe whose space she is within if she is adjacent to an ally who is also adjacent to the foe. The mouser can move within her foe’s space and leave the foe’s space unhindered and without provoking attacks of opportunity, but if the foe attempts to move to a position where the mouser is no longer in its space, the movement provokes an attack of opportunity from the mouser. This deed replaces opportune parry and riposte. Quick Steal (Ex) : At 3rd level, as a swift action the mouser can spend 1 panache point when she hits a for larger than her size with a light or one-handed piercing melee weapon to attempt a steal combat maneuver check against the creature she hit. Using this deed does not provoke an attack of opportunity. This deed replaces menacing swordplay. Hamstring (Ex) : At 7th level, as long as a mouser has at least 1 panache point when she hits a foe whose size is larger than her own with a light or one-handed piercing melee weapon, she can as a swift action attempt a dirty trick combat maneuver check. Instead of the normal conditions that can be applied with dirty trick, this deed can only stagger the target if the check is successful. This deed replaces targeted strike. Cat’s Charge (Ex) : At 11th level, as long as a mouser has at least 1 panache point, when she charges a foe whose size is larger than her own, the mouser can end her charge in any space she can reach, not just the closest space. All other requirements of the charge must still be satisfied. This deed replaces bleeding wound.",
+          "deedRules": [
+            {
+              "id": "underfoot-assault",
+              "name": "Underfoot Assault",
+              "minimumLevel": 1,
+              "kind": "active",
+              "summary": "After a larger adjacent foe misses in melee, spend panache as an immediate action to enter its space and apply the underfoot positioning rules.",
+              "resourceId": "panache",
+              "cost": 1,
+              "actionIds": [
+                "mouser-underfoot-assault"
+              ]
+            },
+            {
+              "id": "quick-steal",
+              "name": "Quick Steal",
+              "minimumLevel": 3,
+              "kind": "active",
+              "summary": "After hitting a larger foe with an eligible piercing weapon, spend panache as a swift action for a non-provoking steal maneuver.",
+              "resourceId": "panache",
+              "cost": 1,
+              "actionIds": [
+                "mouser-quick-steal"
+              ]
+            },
+            {
+              "id": "hamstring",
+              "name": "Hamstring",
+              "minimumLevel": 7,
+              "kind": "active",
+              "summary": "While maintaining panache, a qualifying hit against a larger foe enables a swift dirty trick that can only stagger.",
+              "resourceId": "panache",
+              "minimumResource": 1,
+              "actionIds": [
+                "mouser-hamstring"
+              ]
+            },
+            {
+              "id": "cats-charge",
+              "name": "Cat's Charge",
+              "minimumLevel": 11,
+              "kind": "passive",
+              "summary": "While maintaining panache, a charge against a larger foe may end in any reachable legal space rather than only the closest.",
+              "resourceId": "panache",
+              "minimumResource": 1
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "mouser-underfoot-assault",
+              "label": "Underfoot Assault",
+              "minimumLevel": 1,
+              "resourceId": "panache",
+              "cost": 1,
+              "activeEffect": {
+                "name": "Underfoot Assault",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "Move 5 feet into the larger attacker's space without provoking and apply the underfoot flanking and attack-penalty rules until you or the foe leaves its space.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Move 5 feet into the larger attacker's space without provoking and apply the underfoot flanking and attack-penalty rules until you or the foe leaves its space."
+            },
+            {
+              "id": "mouser-quick-steal",
+              "label": "Attempt Quick Steal",
+              "minimumLevel": 3,
+              "resourceId": "panache",
+              "cost": 1,
+              "summary": "Attempt the steal combat maneuver as a swift action without provoking after the qualifying hit."
+            },
+            {
+              "id": "mouser-hamstring",
+              "label": "Attempt Hamstring",
+              "minimumLevel": 7,
+              "resourceId": "panache",
+              "cost": 0,
+              "minimumResourceRemaining": 1,
+              "activeEffect": {
+                "name": "Attempt Hamstring",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "Attempt the swift dirty trick after a qualifying hit; on success the only available condition is staggered.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Attempt the swift dirty trick after a qualifying hit; on success the only available condition is staggered."
+            }
+          ]
         }
       ]
     }

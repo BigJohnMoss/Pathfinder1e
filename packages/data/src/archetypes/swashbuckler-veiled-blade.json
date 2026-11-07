@@ -29,7 +29,70 @@
           "name": "Deeds",
           "level": 1,
           "type": "archetype",
-          "summary": "A veiled blade gains the following deeds. Quick Draw (Ex) At 1st level, whenever she has at least 1 panache point, a veiled blade gains the benefits of the Quick Draw feat. This deed replaces the swashbuckler’s opportune parry and riposte deed. Hidden Blade (Ex) At 3rd level, whenever she has at least 1 panache point, a veiled blade can hide any light or onehanded piercing melee weapon using Sleight of Hand, and she receives a +4 insight bonus on her check to hide the weapon. This deed replaces the menacing swordplay deed. Instant Unveil (Ex) At 7th level, when she uses her swashbuckler’s initiative deed to draw a light or onehanded piercing weapon as part of an initiative check, she can draw that weapon even if it is hidden. This deed replaces the swashbuckler’s grace deed. Soul Veil (Sp) At 15th level, a veiled blade can merge a light or one-handed piercing melee weapon with herself, as if using the spell ghost brand , except that it takes only a swift action to manifest or store the weapon. This ability lasts until it is dispelled or until the veiled blade merges with a different light or one-handed piercing melee weapon. This deed replaces the swashbuckler’s edge deed."
+          "summary": "A veiled blade gains the following deeds. Quick Draw (Ex) At 1st level, whenever she has at least 1 panache point, a veiled blade gains the benefits of the Quick Draw feat. This deed replaces the swashbuckler’s opportune parry and riposte deed. Hidden Blade (Ex) At 3rd level, whenever she has at least 1 panache point, a veiled blade can hide any light or onehanded piercing melee weapon using Sleight of Hand, and she receives a +4 insight bonus on her check to hide the weapon. This deed replaces the menacing swordplay deed. Instant Unveil (Ex) At 7th level, when she uses her swashbuckler’s initiative deed to draw a light or onehanded piercing weapon as part of an initiative check, she can draw that weapon even if it is hidden. This deed replaces the swashbuckler’s grace deed. Soul Veil (Sp) At 15th level, a veiled blade can merge a light or one-handed piercing melee weapon with herself, as if using the spell ghost brand , except that it takes only a swift action to manifest or store the weapon. This ability lasts until it is dispelled or until the veiled blade merges with a different light or one-handed piercing melee weapon. This deed replaces the swashbuckler’s edge deed.",
+          "deedRules": [
+            {
+              "id": "quick-draw",
+              "name": "Quick Draw",
+              "minimumLevel": 1,
+              "kind": "passive",
+              "summary": "Maintain panache to gain Quick Draw.",
+              "resourceId": "panache",
+              "minimumResource": 1,
+              "grantedFeatIds": [
+                "quick-draw"
+              ]
+            },
+            {
+              "id": "hidden-blade",
+              "name": "Hidden Blade",
+              "minimumLevel": 3,
+              "kind": "passive",
+              "summary": "Maintain panache to hide any eligible piercing weapon and gain +4 insight on the Sleight of Hand check.",
+              "resourceId": "panache",
+              "minimumResource": 1
+            },
+            {
+              "id": "instant-unveil",
+              "name": "Instant Unveil",
+              "minimumLevel": 7,
+              "kind": "passive",
+              "summary": "When swashbuckler's initiative draws an eligible weapon, it may be drawn even while hidden.",
+              "resourceId": "panache"
+            },
+            {
+              "id": "soul-veil",
+              "name": "Soul Veil",
+              "minimumLevel": 15,
+              "kind": "active",
+              "summary": "Merge an eligible piercing weapon into yourself as ghost brand; manifest or store it as a swift action.",
+              "resourceId": "panache",
+              "actionIds": [
+                "veiled-blade-soul-veil"
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "veiled-blade-soul-veil",
+              "label": "Activate Soul Veil",
+              "minimumLevel": 15,
+              "resourceId": "panache",
+              "cost": 0,
+              "activeEffect": {
+                "name": "Activate Soul Veil",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Merge with the eligible weapon; manifest or store it as a swift action. Remove this tracker when dispelled or when merging a different weapon.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Merge with the eligible weapon; manifest or store it as a swift action. Remove this tracker when dispelled or when merging a different weapon."
+            }
+          ]
         }
       ]
     }
@@ -38,5 +101,14 @@
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Swashbuckler%20Veiled%20Blade"
-  }
+  },
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "swashbuckler-veiled-blade-deeds-1",
+      "skill": "Sleight of Hand",
+      "minimumLevel": 3,
+      "base": 4,
+      "condition": "At least 1 panache remains and the check hides a light or one-handed piercing melee weapon"
+    }
+  ]
 }

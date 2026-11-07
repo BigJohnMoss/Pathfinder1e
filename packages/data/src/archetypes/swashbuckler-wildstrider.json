@@ -26,7 +26,78 @@
           "name": "Deeds",
           "level": 15,
           "type": "archetype",
-          "summary": "A wildstrider gains the following deeds, each of which replaces an existing deed. Subterfuge (Ex) : A wildstrider adds Stealth to the list of skills to which the derring-do deed applies. At 15th level, she adds Stealth to the list of skills on which she can take 10 using the swashbuckler’s edge deed. This deed replaces dodging panache and alters derring-do and swashbuckler’s edge. Adroit Step (Ex) : At 3rd level, a wildstrider can use a swift action to treat a 5-foot square of difficult terrain as if it were normal terrain. If she also spends a panache point, she can treat all difficult terrain as though it were normal terrain until the end of her turn. This deed replaces kip-up. Keen Gaze (Ex) : At 11th level, while a wildstrider has at least 1 panache point, she can ignore the miss chance from concealment (but not total concealment) caused by normal and magical fog, smoke, and undergrowth, but not other sources of concealment or a miss chance, such as blur . This deed replaces subtle blade."
+          "summary": "A wildstrider gains the following deeds, each of which replaces an existing deed. Subterfuge (Ex) : A wildstrider adds Stealth to the list of skills to which the derring-do deed applies. At 15th level, she adds Stealth to the list of skills on which she can take 10 using the swashbuckler’s edge deed. This deed replaces dodging panache and alters derring-do and swashbuckler’s edge. Adroit Step (Ex) : At 3rd level, a wildstrider can use a swift action to treat a 5-foot square of difficult terrain as if it were normal terrain. If she also spends a panache point, she can treat all difficult terrain as though it were normal terrain until the end of her turn. This deed replaces kip-up. Keen Gaze (Ex) : At 11th level, while a wildstrider has at least 1 panache point, she can ignore the miss chance from concealment (but not total concealment) caused by normal and magical fog, smoke, and undergrowth, but not other sources of concealment or a miss chance, such as blur . This deed replaces subtle blade.",
+          "deedRules": [
+            {
+              "id": "subterfuge",
+              "name": "Subterfuge",
+              "minimumLevel": 1,
+              "kind": "passive",
+              "summary": "Add Stealth to derring-do; from level 15 add Stealth to swashbuckler's edge take-10 skills.",
+              "resourceId": "panache"
+            },
+            {
+              "id": "adroit-step",
+              "name": "Adroit Step",
+              "minimumLevel": 3,
+              "kind": "active",
+              "summary": "As a swift action normalize one 5-foot square of difficult terrain, or spend panache to ignore all difficult terrain through the end of the turn.",
+              "resourceId": "panache",
+              "actionIds": [
+                "wildstrider-adroit-step-square",
+                "wildstrider-adroit-step-all"
+              ]
+            },
+            {
+              "id": "keen-gaze",
+              "name": "Keen Gaze",
+              "minimumLevel": 11,
+              "kind": "passive",
+              "summary": "Maintain panache to ignore concealment miss chance from fog, smoke, and undergrowth, but not total concealment or other sources.",
+              "resourceId": "panache",
+              "minimumResource": 1
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "wildstrider-adroit-step-square",
+              "label": "Normalize one difficult square",
+              "minimumLevel": 3,
+              "resourceId": "panache",
+              "cost": 0,
+              "activeEffect": {
+                "name": "Normalize one difficult square",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Treat one 5-foot square of difficult terrain as normal terrain for this step.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Treat one 5-foot square of difficult terrain as normal terrain for this step."
+            },
+            {
+              "id": "wildstrider-adroit-step-all",
+              "label": "Ignore difficult terrain this turn",
+              "minimumLevel": 3,
+              "resourceId": "panache",
+              "cost": 1,
+              "activeEffect": {
+                "name": "Ignore difficult terrain this turn",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Treat all difficult terrain as normal terrain through the end of this turn.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Treat all difficult terrain as normal terrain through the end of this turn."
+            }
+          ]
         }
       ]
     }
@@ -35,5 +106,19 @@
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Swashbuckler%20Wildstrider"
-  }
+  },
+  "skillCheckRules": [
+    {
+      "sourceFeatureId": "swashbuckler-wildstrider-deeds-15",
+      "label": "Swashbuckler's Edge — Stealth",
+      "minimumLevel": 15,
+      "skills": [
+        "Stealth"
+      ],
+      "result": 10,
+      "allowsStress": false,
+      "trainedOnly": false,
+      "condition": "Uses the swashbuckler's edge deed"
+    }
+  ]
 }

@@ -30,6 +30,7 @@ import { archetypeDefenseAdjustments, archetypeDefenses, inferredArchetypeDefens
 import { archetypeArmorConditionedBenefits, inferredArchetypeArmorConditionedDefenseDetails } from "./archetype-armor-conditioned-defense.js";
 import { archetypeWeaponProficiencyRules, inferredArchetypeWeaponProficiencyRuleDetails } from "./archetype-weapon-proficiencies.js";
 import { archetypeFixedOptionGrantDetails, fixedOptionIdsThroughLevel } from "./archetype-fixed-options.js";
+import { archetypeDeedRules, inferredArchetypeDeedRuleDetails, namedDeeds } from "./archetype-deeds.js";
 import { archetypeSkillCheckRules, inferredArchetypeSkillCheckDetails, inferArchetypeSkillCheckRules } from "./archetype-skill-checks.js";
 import { archetypeAbilityScoreAdjustments, inferredArchetypeAbilityScoreDetails, inferArchetypeAbilityScoreAdjustments } from "./archetype-abilities.js";
 import { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments, inferredArchetypeAlignmentDetails } from "./archetype-alignment.js";
@@ -75,6 +76,7 @@ export { archetypeLandSpeedAdjustments, inferArchetypeLandSpeedAdjustments };
 export { archetypeArmorConditionedBenefits, archetypeDefenseAdjustments, archetypeDefenses, inferArchetypeDefenseAdjustments };
 export { archetypeWeaponProficiencyRules };
 export { fixedOptionIdsThroughLevel };
+export { archetypeDeedRules, namedDeeds };
 export { archetypeSkillCheckRules, inferArchetypeSkillCheckRules };
 export { archetypeAbilityScoreAdjustments, inferArchetypeAbilityScoreAdjustments };
 export { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments };
@@ -2107,6 +2109,9 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const fixedOptionGrantDetails = archetypeFixedOptionGrantDetails(archetype);
   if (fixedOptionGrantDetails.grants.length)
     automated.push(`${fixedOptionGrantDetails.grants.length} fixed class option grant${fixedOptionGrantDetails.grants.length === 1 ? "" : "s"}`);
+  const deedRuleDetails = inferredArchetypeDeedRuleDetails(archetype);
+  if (deedRuleDetails.rules.length)
+    automated.push(`${deedRuleDetails.rules.length} structured deed rule${deedRuleDetails.rules.length === 1 ? "" : "s"}`);
   if (temporaryHitPointActionDetails.actions.length)
     automated.push(`${temporaryHitPointActionDetails.actions.length} calculated temporary-hit-point action${temporaryHitPointActionDetails.actions.length === 1 ? "" : "s"}`);
   if (rerollActionDetails.actions.length)
@@ -2201,6 +2206,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...favoredEnemyChoiceDetails.fullyAutomatedFeatureIds,
     ...companionGrantDetails.fullyAutomatedFeatureIds,
     ...fixedOptionGrantDetails.fullyAutomatedFeatureIds,
+    ...deedRuleDetails.fullyAutomatedFeatureIds,
   ].filter(Boolean));
   const manualFeatures = replacementFeatures
     .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))
