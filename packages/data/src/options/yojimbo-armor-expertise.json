@@ -1,0 +1,30 @@
+{
+  "id": "yojimbo-armor-expertise",
+  "name": "Yojimbo Armor Expertise",
+  "classIds": ["samurai"],
+  "optionDefaults": {
+    "groupId": "yojimbo-armor-expertise",
+    "classIds": ["samurai"],
+    "minimumLevel": 3,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Samurai%20Yojimbo"
+    }
+  },
+  "options": [
+    { "id": "yojimbo-armor-padded", "name": "Padded", "benefit": "Apply Armor Expertise while wearing padded armor." },
+    { "id": "yojimbo-armor-leather", "name": "Leather", "benefit": "Apply Armor Expertise while wearing leather armor." },
+    { "id": "yojimbo-armor-studded-leather", "name": "Studded Leather", "benefit": "Apply Armor Expertise while wearing studded leather armor." },
+    { "id": "yojimbo-armor-chain-shirt", "name": "Chain Shirt", "benefit": "Apply Armor Expertise while wearing a chain shirt." },
+    { "id": "yojimbo-armor-hide", "name": "Hide", "benefit": "Apply Armor Expertise while wearing hide armor." },
+    { "id": "yojimbo-armor-scale-mail", "name": "Scale Mail", "benefit": "Apply Armor Expertise while wearing scale mail." },
+    { "id": "yojimbo-armor-chainmail", "name": "Chainmail", "benefit": "Apply Armor Expertise while wearing chainmail." },
+    { "id": "yojimbo-armor-breastplate", "name": "Breastplate", "benefit": "Apply Armor Expertise while wearing a breastplate." },
+    { "id": "yojimbo-armor-splint-mail", "name": "Splint Mail", "benefit": "Apply Armor Expertise while wearing splint mail." },
+    { "id": "yojimbo-armor-banded-mail", "name": "Banded Mail", "benefit": "Apply Armor Expertise while wearing banded mail." },
+    { "id": "yojimbo-armor-half-plate", "name": "Half-Plate", "benefit": "Apply Armor Expertise while wearing half-plate." },
+    { "id": "yojimbo-armor-full-plate", "name": "Full Plate", "benefit": "Apply Armor Expertise while wearing full plate." }
+  ]
+}

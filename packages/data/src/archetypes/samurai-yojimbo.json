@@ -4,9 +4,11 @@
   "classId": "samurai",
   "summary": "Yojimbo are highly trained bodyguards favored by the nobles and warlords of distant Minkai.",
   "replacesText": "Mount; Weapon Expertise; Mounted Archer",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Resolute Defense records the current ward and spends the correct Resolve cost for the selected transferred effect.",
+    "Armor Expertise has a persistent armor-type choice and displays the exact Fighter-equivalent armor-training progression.",
+    "Intercept grants Bodyguard without prerequisites and applies the improved +3 aid-another Armor Class bonus."
   ],
   "replacements": [
     {
@@ -21,21 +23,194 @@
           "name": "Resolute Defense (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, whenever a yojimbo issues a challenge, he can select one ally as his ward for the duration of the challenge. Whenever the yojimbo is adjacent to his ward, he can use resolve, greater resolve, and true resolve on his ward rather than targeting himself. This ability replaces mount."
+          "summary": "At 1st level, whenever a yojimbo issues a challenge, he can select one ally as his ward for the duration of the challenge. Whenever the yojimbo is adjacent to his ward, he can use resolve, greater resolve, and true resolve on his ward rather than targeting himself. This ability replaces mount.",
+          "resourceActions": [
+            {
+              "id": "yojimbo-designate-ward",
+              "label": "Designate challenge ward",
+              "minimumLevel": 1,
+              "classId": "samurai",
+              "textInputLabel": "Ward name",
+              "confirmations": [
+                {
+                  "id": "challenge-issued",
+                  "label": "A challenge has just been issued",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Yojimbo Ward",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "description": "The named ally is your ward for this challenge and may receive Resolve, Greater Resolve, and True Resolve while adjacent."
+              },
+              "summary": "Record the one ally protected as your ward for the current challenge."
+            },
+            {
+              "id": "yojimbo-transfer-resolve",
+              "label": "Use Resolve on ward",
+              "minimumLevel": 1,
+              "classId": "samurai",
+              "resourceId": "resolve",
+              "cost": 1,
+              "requiredActiveEffectName": "Yojimbo Ward",
+              "confirmations": [
+                {
+                  "id": "adjacent",
+                  "label": "The ward is adjacent to you",
+                  "requiredForActivation": true
+                }
+              ],
+              "modeLabel": "Resolve use",
+              "modes": [
+                {
+                  "id": "resolute-save",
+                  "label": "Resolute",
+                  "summary": "The ward rolls a Fortitude or Will save twice and keeps the better result."
+                },
+                {
+                  "id": "determined",
+                  "label": "Determined",
+                  "actionType": "standard",
+                  "summary": "Remove fatigued, shaken, or sickened from the ward; at 8th level this can instead remove exhausted, frightened, or nauseated."
+                },
+                {
+                  "id": "greater-resolve",
+                  "label": "Greater Resolve",
+                  "minimumLevel": 9,
+                  "summary": "After the ward fails a Fortitude or Will save, reroll it and keep the second result."
+                },
+                {
+                  "id": "true-resolve",
+                  "label": "True Resolve",
+                  "minimumLevel": 17,
+                  "summary": "Apply True Resolve's death-prevention benefit to the ward; manually spend all Resolve if that clause requires it."
+                }
+              ],
+              "summary": "Spend Resolve to apply the selected Samurai Resolve benefit to the adjacent ward. True Resolve's variable all-remaining cost remains explicit in its mode instructions."
+            },
+            {
+              "id": "yojimbo-transfer-unstoppable",
+              "label": "Use Unstoppable on ward",
+              "minimumLevel": 1,
+              "classId": "samurai",
+              "resourceId": "resolve",
+              "cost": 2,
+              "requiredActiveEffectName": "Yojimbo Ward",
+              "confirmations": [
+                {
+                  "id": "adjacent-and-disabled",
+                  "label": "The ward is adjacent and disabled or dying",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Spend 2 Resolve as an immediate action to stabilize the ward and let the ward remain conscious without becoming staggered."
+            }
+          ]
         },
         {
           "id": "samurai-yojimbo-armor-expertise-ex-3",
           "name": "Armor Expertise (Ex)",
           "level": 3,
-          "type": "archetype",
-          "summary": "At 3rd level, a yojimbo selects one type of armor, such as chain shirt or scale mail. The yojimbo gains armor training, treating his samurai level as his fighter level, when wearing the selected armor. This ability replaces weapon expertise."
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "yojimbo-armor-expertise",
+          "effectiveLevelClassIds": [
+            "samurai"
+          ],
+          "summary": "At 3rd level, a yojimbo selects one type of armor, such as chain shirt or scale mail. The yojimbo gains armor training, treating his samurai level as his fighter level, when wearing the selected armor. This ability replaces weapon expertise.",
+          "progressionProfiles": [
+            {
+              "id": "yojimbo-armor-training-progression",
+              "label": "Selected armor training",
+              "classId": "samurai",
+              "columns": [
+                {
+                  "id": "bonus",
+                  "label": "Max Dex / armor-check adjustment"
+                },
+                {
+                  "id": "movement",
+                  "label": "Movement"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 3,
+                  "values": {
+                    "bonus": "+1",
+                    "movement": "Normal speed in selected medium armor"
+                  }
+                },
+                {
+                  "level": 7,
+                  "values": {
+                    "bonus": "+2",
+                    "movement": "Normal speed in selected medium armor"
+                  }
+                },
+                {
+                  "level": 11,
+                  "values": {
+                    "bonus": "+3",
+                    "movement": "Normal speed in selected medium or heavy armor"
+                  }
+                },
+                {
+                  "level": 15,
+                  "values": {
+                    "bonus": "+4",
+                    "movement": "Normal speed in selected medium or heavy armor"
+                  }
+                }
+              ],
+              "summary": "Reduce the selected armor's armor check penalty and increase its maximum Dexterity bonus by the listed amount, using Samurai level as Fighter level."
+            }
+          ]
         },
         {
           "id": "samurai-yojimbo-intercept-ex-4",
           "name": "Intercept (Ex)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a yojimbo learns to better disrupt the attacks of his enemies. He gains Bodyguard APG as a bonus feat, even if he does not meet the prerequisite. In addition, whenever the yojimbo uses the aid another action to increase an ally’s Armor Class, the bonus to Armor Class from the aid another action increases by 1. This ability replaces mounted archer."
+          "grantedFeatId": "bodyguard",
+          "summary": "At 4th level, a yojimbo learns to better disrupt the attacks of his enemies. He gains Bodyguard APG as a bonus feat, even if he does not meet the prerequisite. In addition, whenever the yojimbo uses the aid another action to increase an ally’s Armor Class, the bonus to Armor Class from the aid another action increases by 1. This ability replaces mounted archer.",
+          "resourceActions": [
+            {
+              "id": "yojimbo-intercept",
+              "label": "Use Intercept",
+              "minimumLevel": 4,
+              "classId": "samurai",
+              "confirmations": [
+                {
+                  "id": "adjacent-ally",
+                  "label": "The ally is adjacent",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "attack-of-opportunity",
+                  "label": "An attack of opportunity is available and will be expended",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Yojimbo Intercept",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 3,
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "description": "+3 circumstance bonus to Armor Class against the triggering attack (+2 aid another, increased by 1 from Intercept)."
+              },
+              "summary": "Spend an attack of opportunity through Bodyguard and apply the improved +3 Armor Class aid-another bonus."
+            }
+          ]
         }
       ]
     }
