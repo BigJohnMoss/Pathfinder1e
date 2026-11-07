@@ -42,22 +42,156 @@
           "id": "bard-arrowsong-minstrel-arcane-archery-1",
           "name": "Arcane Archery",
           "level": 1,
-          "type": "archetype",
-          "summary": "An Arrowsong minstrel’s skill at ranged martial arts allows her to learn to cast a number of powerful, offensive spells that would otherwise be unavailable to her. At 1st level, she selects a number of spells from the sorcerer/ wizard spell list equal to her Charisma modifier (minimum 1) and adds them to her bard spell list as bard spells of the same level. The spells selected must not already be on the bard spell list, and must be 6th level or lower. At 4th level and every 4 bard levels thereafter, she adds an additional sorcerer/wizard spell to her bard spell list. An Arrowsong minstrel is limited to the following spells when adding spells to her spell list in this manner: acid arrow , arrow eruption , flame arrow , gravity bow , greater magic weapon , longshot , magic weapon , protection from arrows , spectral hand , true strike , and sorcerer/wizard spells of the evocation school. An Arrowsong minstrel must still select these spells as spells known before she can cast them. In addition, for the purpose of meeting the requirements of combat feats and prestige classes, an Arrowsong minstrel treats her bard level as her base attack bonus (in addition to base attack bonuses gained from other classes and Hit Dice). Her skilled blending of archery and arcane magic also allows an Arrowsong minstrel to fulfill a spell’s somatic components even when using a bow in both hands (though not other ranged weapons). This ability replaces bardic knowledge, dirge of doom, distraction, fascinate, inspire competence, lore master, and soothing performance."
+          "type": "selectable",
+          "summary": "An Arrowsong minstrel’s skill at ranged martial arts allows her to learn to cast a number of powerful, offensive spells that would otherwise be unavailable to her. At 1st level, she selects a number of spells from the sorcerer/ wizard spell list equal to her Charisma modifier (minimum 1) and adds them to her bard spell list as bard spells of the same level. The spells selected must not already be on the bard spell list, and must be 6th level or lower. At 4th level and every 4 bard levels thereafter, she adds an additional sorcerer/wizard spell to her bard spell list. An Arrowsong minstrel is limited to the following spells when adding spells to her spell list in this manner: acid arrow , arrow eruption , flame arrow , gravity bow , greater magic weapon , longshot , magic weapon , protection from arrows , spectral hand , true strike , and sorcerer/wizard spells of the evocation school. An Arrowsong minstrel must still select these spells as spells known before she can cast them. In addition, for the purpose of meeting the requirements of combat feats and prestige classes, an Arrowsong minstrel treats her bard level as her base attack bonus (in addition to base attack bonuses gained from other classes and Hit Dice). Her skilled blending of archery and arcane magic also allows an Arrowsong minstrel to fulfill a spell’s somatic components even when using a bow in both hands (though not other ranged weapons). This ability replaces bardic knowledge, dirge of doom, distraction, fascinate, inspire competence, lore master, and soothing performance. The builder creates a number of initial spell-list choices equal to the current Charisma modifier (minimum 1).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-arrowsong-spells",
+          "choiceCount": {
+            "base": 0,
+            "abilityModifier": "charisma",
+            "minimum": 1,
+            "maximum": 20
+          }
+        },
+        {
+          "id": "bard-arrowsong-minstrel-arcane-archery-spell-4",
+          "name": "Arcane Archery Spell (4th)",
+          "level": 4,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "bard-arrowsong-spells",
+          "summary": "Choose one additional legal Sorcerer/Wizard spell and add it to the Bard spell list; it must still be selected as a spell known."
+        },
+        {
+          "id": "bard-arrowsong-minstrel-arcane-archery-spell-8",
+          "name": "Arcane Archery Spell (8th)",
+          "level": 8,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "bard-arrowsong-spells",
+          "summary": "Choose one additional legal Sorcerer/Wizard spell and add it to the Bard spell list; it must still be selected as a spell known."
+        },
+        {
+          "id": "bard-arrowsong-minstrel-arcane-archery-spell-12",
+          "name": "Arcane Archery Spell (12th)",
+          "level": 12,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "bard-arrowsong-spells",
+          "summary": "Choose one additional legal Sorcerer/Wizard spell and add it to the Bard spell list; it must still be selected as a spell known."
+        },
+        {
+          "id": "bard-arrowsong-minstrel-arcane-archery-spell-16",
+          "name": "Arcane Archery Spell (16th)",
+          "level": 16,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "bard-arrowsong-spells",
+          "summary": "Choose one additional legal Sorcerer/Wizard spell and add it to the Bard spell list; it must still be selected as a spell known."
+        },
+        {
+          "id": "bard-arrowsong-minstrel-arcane-archery-spell-20",
+          "name": "Arcane Archery Spell (20th)",
+          "level": 20,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "bard-arrowsong-spells",
+          "summary": "Choose one additional legal Sorcerer/Wizard spell and add it to the Bard spell list; it must still be selected as a spell known."
         },
         {
           "id": "bard-arrowsong-minstrel-precise-minstrel-ex-2",
           "name": "Precise Minstrel (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, an Arrowsong minstrel gains Precise Shot as a bonus feat. In addition, any creature that is affected by any of the Arrowsong minstrel’s bardic performance does not provide soft cover to enemies against her ranged attacks with a bow. This ability replaces the versatile performance gained at 2nd level and well-versed."
+          "summary": "At 2nd level, an Arrowsong minstrel gains Precise Shot as a bonus feat. In addition, any creature that is affected by any of the Arrowsong minstrel’s bardic performance does not provide soft cover to enemies against her ranged attacks with a bow. This ability replaces the versatile performance gained at 2nd level and well-versed.",
+          "grantedFeatId": "precise-shot",
+          "resourceActions": [
+            {
+              "id": "arrowsong-precise-minstrel",
+              "label": "Track Precise Minstrel",
+              "minimumLevel": 2,
+              "classId": "bard",
+              "confirmations": [
+                {
+                  "id": "bow",
+                  "label": "The ranged attack uses a bow",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "performance",
+                  "label": "The intervening creature is affected by your Bardic Performance",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Precise Minstrel",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The affected creature does not provide soft cover against this bow attack.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Track the soft-cover exception for an eligible bow attack."
+            }
+          ]
         },
         {
           "id": "bard-arrowsong-minstrel-arrowsong-strike-su-6",
           "name": "Arrowsong Strike (Su)",
           "level": 6,
           "type": "archetype",
-          "summary": "At 6th level, an Arrowsong minstrel can use spellstrike ( as per the magus class feature ) to cast a single-target ranged touch attack spell and deliver it through a ranged weapon attack. Even if the spell can normally affect multiple targets, only a single missile, ray, or effect accompanies the attack. She cannot use spellstrike with normal touch attacks or melee attacks. At 18th level, an Arrowsong minstrel using a multiple-target spell with this ability can deliver one ray or line of effect with each attack when using a full-attack action, up to the maximum allowed by the spell (in the case of ray effects). Any effects not used in the round the spell is cast are lost. This ability replaces suggestion and mass suggestion."
+          "summary": "At 6th level, an Arrowsong minstrel can use spellstrike ( as per the magus class feature ) to cast a single-target ranged touch attack spell and deliver it through a ranged weapon attack. Even if the spell can normally affect multiple targets, only a single missile, ray, or effect accompanies the attack. She cannot use spellstrike with normal touch attacks or melee attacks. At 18th level, an Arrowsong minstrel using a multiple-target spell with this ability can deliver one ray or line of effect with each attack when using a full-attack action, up to the maximum allowed by the spell (in the case of ray effects). Any effects not used in the round the spell is cast are lost. This ability replaces suggestion and mass suggestion.",
+          "resourceActions": [
+            {
+              "id": "arrowsong-strike",
+              "label": "Use Arrowsong Strike",
+              "minimumLevel": 6,
+              "classId": "bard",
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 18,
+                  "actionType": "full-round"
+                }
+              ],
+              "modes": [
+                {
+                  "id": "single",
+                  "label": "Single ranged spellstrike",
+                  "summary": "Deliver one single-target ranged-touch spell effect through one ranged weapon attack."
+                },
+                {
+                  "id": "multi",
+                  "label": "Full-attack rays/effects",
+                  "minimumLevel": 18,
+                  "summary": "Deliver one ray or line of effect with each full-attack attack, up to the spell's maximum; unused effects are lost."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "eligible-spell",
+                  "label": "The spell uses a ranged touch attack and the delivery weapon is ranged",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Arrowsong Strike",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Resolve the selected ranged spellstrike mode as part of the ranged weapon attack.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Track the level-aware ranged spellstrike delivery mode."
+            }
+          ]
         }
       ]
     }
@@ -67,8 +201,9 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Arrowsong%20Minstrel"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ]
+    "Weapon changes, diminished slots, Charisma-counted unique spell-list choices, Bard-level feat BAB, Precise Shot/soft-cover handling, and both ranged spellstrike tiers are automated."
+  ],
+  "featPrerequisiteBabUsesClassLevel": true
 }

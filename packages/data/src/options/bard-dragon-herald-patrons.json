@@ -1,0 +1,234 @@
+{
+  "id": "bard-dragon-herald-patrons",
+  "name": "Dragon Herald Patrons",
+  "classIds": [
+    "bard"
+  ],
+  "options": [
+    {
+      "id": "dragon-herald-black",
+      "name": "Black dragon",
+      "groupId": "bard-dragon-herald-patrons",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Use acid for Coat of Arms, Diplomatic Protection, and Rebuke Foes. Record a sacred place associated with this patron.",
+      "energyType": "acid",
+      "choice": {
+        "key": "sacred-place",
+        "label": "Sacred place",
+        "allowCustom": true
+      },
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dragon%20Herald"
+      }
+    },
+    {
+      "id": "dragon-herald-blue",
+      "name": "Blue dragon",
+      "groupId": "bard-dragon-herald-patrons",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Use electricity for Coat of Arms, Diplomatic Protection, and Rebuke Foes. Record a sacred place associated with this patron.",
+      "energyType": "electricity",
+      "choice": {
+        "key": "sacred-place",
+        "label": "Sacred place",
+        "allowCustom": true
+      },
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dragon%20Herald"
+      }
+    },
+    {
+      "id": "dragon-herald-green",
+      "name": "Green dragon",
+      "groupId": "bard-dragon-herald-patrons",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Use acid for Coat of Arms, Diplomatic Protection, and Rebuke Foes. Record a sacred place associated with this patron.",
+      "energyType": "acid",
+      "choice": {
+        "key": "sacred-place",
+        "label": "Sacred place",
+        "allowCustom": true
+      },
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dragon%20Herald"
+      }
+    },
+    {
+      "id": "dragon-herald-red",
+      "name": "Red dragon",
+      "groupId": "bard-dragon-herald-patrons",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Use fire for Coat of Arms, Diplomatic Protection, and Rebuke Foes. Record a sacred place associated with this patron.",
+      "energyType": "fire",
+      "choice": {
+        "key": "sacred-place",
+        "label": "Sacred place",
+        "allowCustom": true
+      },
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dragon%20Herald"
+      }
+    },
+    {
+      "id": "dragon-herald-white",
+      "name": "White dragon",
+      "groupId": "bard-dragon-herald-patrons",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Use cold for Coat of Arms, Diplomatic Protection, and Rebuke Foes. Record a sacred place associated with this patron.",
+      "energyType": "cold",
+      "choice": {
+        "key": "sacred-place",
+        "label": "Sacred place",
+        "allowCustom": true
+      },
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dragon%20Herald"
+      }
+    },
+    {
+      "id": "dragon-herald-brass",
+      "name": "Brass dragon",
+      "groupId": "bard-dragon-herald-patrons",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Use fire for Coat of Arms, Diplomatic Protection, and Rebuke Foes. Record a sacred place associated with this patron.",
+      "energyType": "fire",
+      "choice": {
+        "key": "sacred-place",
+        "label": "Sacred place",
+        "allowCustom": true
+      },
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dragon%20Herald"
+      }
+    },
+    {
+      "id": "dragon-herald-bronze",
+      "name": "Bronze dragon",
+      "groupId": "bard-dragon-herald-patrons",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Use electricity for Coat of Arms, Diplomatic Protection, and Rebuke Foes. Record a sacred place associated with this patron.",
+      "energyType": "electricity",
+      "choice": {
+        "key": "sacred-place",
+        "label": "Sacred place",
+        "allowCustom": true
+      },
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dragon%20Herald"
+      }
+    },
+    {
+      "id": "dragon-herald-copper",
+      "name": "Copper dragon",
+      "groupId": "bard-dragon-herald-patrons",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Use acid for Coat of Arms, Diplomatic Protection, and Rebuke Foes. Record a sacred place associated with this patron.",
+      "energyType": "acid",
+      "choice": {
+        "key": "sacred-place",
+        "label": "Sacred place",
+        "allowCustom": true
+      },
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dragon%20Herald"
+      }
+    },
+    {
+      "id": "dragon-herald-gold",
+      "name": "Gold dragon",
+      "groupId": "bard-dragon-herald-patrons",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Use fire for Coat of Arms, Diplomatic Protection, and Rebuke Foes. Record a sacred place associated with this patron.",
+      "energyType": "fire",
+      "choice": {
+        "key": "sacred-place",
+        "label": "Sacred place",
+        "allowCustom": true
+      },
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dragon%20Herald"
+      }
+    },
+    {
+      "id": "dragon-herald-silver",
+      "name": "Silver dragon",
+      "groupId": "bard-dragon-herald-patrons",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Use cold for Coat of Arms, Diplomatic Protection, and Rebuke Foes. Record a sacred place associated with this patron.",
+      "energyType": "cold",
+      "choice": {
+        "key": "sacred-place",
+        "label": "Sacred place",
+        "allowCustom": true
+      },
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dragon%20Herald"
+      }
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dragon%20Herald"
+  }
+}

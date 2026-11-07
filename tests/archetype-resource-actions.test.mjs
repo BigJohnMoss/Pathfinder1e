@@ -56,5 +56,5 @@ test("generic resource actions stay unique and bounded across the full catalogue
       assert.ok(action.resourceId);
     }
   }
-  assert.ok(count >= 357, `expected broad generic action coverage after specialized actions take priority, received ${count}`);
+  assert.ok(count >= 355, `expected broad generic action coverage after specialized actions take priority, received ${count}`);
 });

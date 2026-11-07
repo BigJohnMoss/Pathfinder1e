@@ -36,8 +36,10 @@
           "id": "bard-dragon-herald-dragon-patron-ex-1",
           "name": "Dragon Patron (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "A dragon herald must choose a particular true dragon species whose glory to extol. In most cases, this is a dragon with whom the herald is familiar, but it could be a dragon deity, a long-dead dragon hero, or even an entire dragon lineage. The energy type associated with her dragon patron (as shown on the draconic sorcerer bloodline ) determines the energy type used by several of her abilities. She must also designate a sacred space relevant to her dragon choice—usually the lair of a patron dragon or a shrine or holy place associated with a dragon type."
+          "type": "selectable",
+          "summary": "A dragon herald must choose a particular true dragon species whose glory to extol. In most cases, this is a dragon with whom the herald is familiar, but it could be a dragon deity, a long-dead dragon hero, or even an entire dragon lineage. The energy type associated with her dragon patron (as shown on the draconic sorcerer bloodline ) determines the energy type used by several of her abilities. She must also designate a sacred space relevant to her dragon choice—usually the lair of a patron dragon or a shrine or holy place associated with a dragon type.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-dragon-herald-patrons"
         },
         {
           "id": "bard-dragon-herald-coat-of-arms-ex-1",
@@ -51,28 +53,459 @@
           "name": "Dragon Voice (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A dragon herald gains a bonus equal\nto half her level on Intimidate and Diplomacy checks. She\ngains Draconic as a bonus language.\nThis ability replaces bardic knowledge."
+          "summary": "A dragon herald gains a bonus equal\nto half her level on Intimidate and Diplomacy checks. She\ngains Draconic as a bonus language.\nThis ability replaces bardic knowledge.",
+          "progressionProfiles": [
+            {
+              "id": "dragon-herald-language",
+              "label": "Dragon Voice",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "language",
+                  "label": "Bonus language"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "language": "Draconic"
+                  }
+                }
+              ],
+              "summary": "Draconic is granted without consuming a normal language choice."
+            }
+          ]
         },
         {
           "id": "bard-dragon-herald-bardic-performance-3",
           "name": "Bardic Performance",
           "level": 3,
           "type": "archetype",
-          "summary": "A dragon herald gains the following types of bardic performance: Diplomatic Immunity (Su) : A dragon herald can use bardic performance to generate a sanctuary effect upon herself. Most use this to deliver the word of their patron or to safely complete Diplomacy or Intimidate checks in the presence of hostile foes. The effect persists for as long as the dragon herald performs and for 1 round after. This performance replaces countersong and fascinate. Diplomatic Protection (Su) : At 3rd level, the dragon herald can use bardic performance to wrap a single ally in the colors and scales of her patron. The dragon herald must be able to see her ally, and that ally must be able to perceive her performance. While the herald performs, the target gains resistance equal to twice the dragon herald’s level to the energy type associated with the dragon herald’s patron, and an enhancement bonus to natural armor equal to 1/2 the dragon herald’s level. This performance replaces inspire competence. Rebuke Foes (Su) : At 12th level, the dragon herald gains the ability to rain down her patron’s wrath on her enemies, dealing energy damage of the appropriate type equal to twice her dragon herald level (Reflex save for half ). She can target one enemy within 50 feet for every 4 dragon herald levels she has. This effect occurs once per round for as long as she continues her performance. This performance replaces soothing performance. Retreat to Lair (Sp) : At 15th level, the dragon herald can spend 5 daily uses of performance as a full-round action to teleport herself, or a willing target touched, to her sacred place. This performance replaces inspire heroics."
+          "summary": "A dragon herald gains the following types of bardic performance: Diplomatic Immunity (Su) : A dragon herald can use bardic performance to generate a sanctuary effect upon herself. Most use this to deliver the word of their patron or to safely complete Diplomacy or Intimidate checks in the presence of hostile foes. The effect persists for as long as the dragon herald performs and for 1 round after. This performance replaces countersong and fascinate. Diplomatic Protection (Su) : At 3rd level, the dragon herald can use bardic performance to wrap a single ally in the colors and scales of her patron. The dragon herald must be able to see her ally, and that ally must be able to perceive her performance. While the herald performs, the target gains resistance equal to twice the dragon herald’s level to the energy type associated with the dragon herald’s patron, and an enhancement bonus to natural armor equal to 1/2 the dragon herald’s level. This performance replaces inspire competence. Rebuke Foes (Su) : At 12th level, the dragon herald gains the ability to rain down her patron’s wrath on her enemies, dealing energy damage of the appropriate type equal to twice her dragon herald level (Reflex save for half ). She can target one enemy within 50 feet for every 4 dragon herald levels she has. This effect occurs once per round for as long as she continues her performance. This performance replaces soothing performance. Retreat to Lair (Sp) : At 15th level, the dragon herald can spend 5 daily uses of performance as a full-round action to teleport herself, or a willing target touched, to her sacred place. This performance replaces inspire heroics.",
+          "performanceRules": [
+            {
+              "id": "dragon-diplomatic-immunity",
+              "name": "Diplomatic Immunity",
+              "minimumLevel": 1,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "dragon-diplomatic-immunity"
+              ],
+              "summary": "Place sanctuary on yourself while performing and for 1 round afterward."
+            },
+            {
+              "id": "dragon-diplomatic-protection",
+              "name": "Diplomatic Protection",
+              "minimumLevel": 3,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "dragon-diplomatic-protection"
+              ],
+              "summary": "Grant one ally patron-energy resistance equal to twice Bard level and natural armor enhancement equal to half Bard level."
+            },
+            {
+              "id": "dragon-rebuke-foes",
+              "name": "Rebuke Foes",
+              "minimumLevel": 12,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "dragon-rebuke-foes"
+              ],
+              "summary": "Each round damage one target per 4 Bard levels within 50 feet for twice Bard level patron-energy damage; Reflex half."
+            },
+            {
+              "id": "dragon-retreat-to-lair",
+              "name": "Retreat to Lair",
+              "minimumLevel": 15,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 5,
+              "actionIds": [
+                "dragon-retreat-to-lair"
+              ],
+              "summary": "Spend 5 rounds to teleport yourself or one willing touched creature to the recorded sacred place."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "dragon-diplomatic-immunity",
+              "label": "Begin Diplomatic Immunity",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Diplomatic Immunity",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Sanctuary protects the Dragon Herald while performing and for 1 round after it ends.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend one performance round and track sanctuary."
+            },
+            {
+              "id": "dragon-diplomatic-protection",
+              "label": "Begin Diplomatic Protection",
+              "minimumLevel": 3,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "ally",
+                  "label": "One visible ally can perceive the performance",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Diplomatic Protection",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The ally gains patron-energy resistance equal to twice Bard level and natural armor enhancement equal to half Bard level.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Track both level-scaled defenses on one ally."
+            },
+            {
+              "id": "dragon-rebuke-foes",
+              "label": "Rebuke Foes",
+              "minimumLevel": 12,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "targetCountByLevel": [
+                {
+                  "level": 12,
+                  "count": 3
+                },
+                {
+                  "level": 16,
+                  "count": 4
+                },
+                {
+                  "level": 20,
+                  "count": 5
+                }
+              ],
+              "savingThrow": {
+                "label": "Reflex",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "modes": [
+                {
+                  "id": "acid",
+                  "label": "Acid damage",
+                  "summary": "Choose the mode matching the selected patron."
+                },
+                {
+                  "id": "electricity",
+                  "label": "Electricity damage",
+                  "summary": "Choose the mode matching the selected patron."
+                },
+                {
+                  "id": "fire",
+                  "label": "Fire damage",
+                  "summary": "Choose the mode matching the selected patron."
+                },
+                {
+                  "id": "cold",
+                  "label": "Cold damage",
+                  "summary": "Choose the mode matching the selected patron."
+                }
+              ],
+              "targetEffectRoll": {
+                "modifier": "reflex",
+                "rangeByLevel": [
+                  {
+                    "level": 12,
+                    "range": "50 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 12,
+                    "name": "Rebuke Foes — full damage",
+                    "description": "The target takes patron-energy damage equal to twice Bard level; a successful save instead takes half.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 1
+                    }
+                  }
+                ]
+              },
+              "summary": "Once per round, resolve twice-level patron-energy damage against the level-aware number of targets within 50 feet."
+            },
+            {
+              "id": "dragon-retreat-to-lair",
+              "label": "Retreat to Lair",
+              "minimumLevel": 15,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 5,
+              "actionTypeByLevel": [
+                {
+                  "level": 15,
+                  "actionType": "full-round"
+                }
+              ],
+              "recipients": [
+                {
+                  "id": "self",
+                  "label": "Self"
+                },
+                {
+                  "id": "willing-target",
+                  "label": "Willing touched target"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "place",
+                  "label": "Dragon Patron's sacred place is recorded",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Retreat to Lair",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Teleport the chosen recipient to the patron's sacred place.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend exactly 5 performance rounds and resolve the teleport."
+            }
+          ],
+          "progressionProfiles": [
+            {
+              "id": "dragon-rebuke-scaling",
+              "label": "Rebuke Foes",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "damage",
+                  "label": "Patron-energy damage"
+                },
+                {
+                  "id": "targets",
+                  "label": "Targets within 50 feet"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 3,
+                  "values": {
+                    "damage": "Unavailable until level 12",
+                    "targets": "—"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "damage": 24,
+                    "targets": 3
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "damage": 26,
+                    "targets": 3
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "damage": 28,
+                    "targets": 3
+                  }
+                },
+                {
+                  "level": 15,
+                  "values": {
+                    "damage": 30,
+                    "targets": 3
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "damage": 32,
+                    "targets": 4
+                  }
+                },
+                {
+                  "level": 17,
+                  "values": {
+                    "damage": 34,
+                    "targets": 4
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "damage": 36,
+                    "targets": 4
+                  }
+                },
+                {
+                  "level": 19,
+                  "values": {
+                    "damage": 38,
+                    "targets": 4
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "damage": 40,
+                    "targets": 5
+                  }
+                }
+              ],
+              "summary": "A successful Reflex save halves the displayed damage."
+            }
+          ]
         },
         {
           "id": "bard-dragon-herald-master-of-persuasion-ex-5",
           "name": "Master of Persuasion (Ex)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, the dragon\nherald becomes so sure in her craft that she can take 10\non any Diplomacy or Intimidate check, even when rushed\nor threatened. Once per day, she may attempt either a\nDiplomacy or Intimidate check as a full-round action,\ninstead of spending a full minute. She can use this ability\none additional time per day at 11th and 17th level.\nThis ability replaces lore master."
+          "summary": "At 5th level, the dragon\nherald becomes so sure in her craft that she can take 10\non any Diplomacy or Intimidate check, even when rushed\nor threatened. Once per day, she may attempt either a\nDiplomacy or Intimidate check as a full-round action,\ninstead of spending a full minute. She can use this ability\none additional time per day at 11th and 17th level.\nThis ability replaces lore master.",
+          "resourceActions": [
+            {
+              "id": "dragon-fast-persuasion",
+              "label": "Make a fast social check",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "masterOfPersuasion",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "full-round"
+                }
+              ],
+              "modeLabel": "Skill",
+              "modes": [
+                {
+                  "id": "diplomacy",
+                  "label": "Diplomacy",
+                  "summary": "Attempt Diplomacy as a full-round action instead of taking 1 minute."
+                },
+                {
+                  "id": "intimidate",
+                  "label": "Intimidate",
+                  "summary": "Attempt Intimidate as a full-round action instead of taking 1 minute."
+                }
+              ],
+              "diceRoll": {
+                "label": "Fast social check",
+                "diceCountByLevel": [
+                  {
+                    "level": 5,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 5,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Skill modifier",
+                "targetDcInputLabel": "Check DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "Success"
+                  }
+                ],
+                "failureLabel": "Failure"
+              },
+              "summary": "Spend one of the level-scaled daily uses."
+            }
+          ]
         },
         {
           "id": "bard-dragon-herald-extol-glory-su-10",
           "name": "Extol Glory (Su)",
           "level": 10,
           "type": "archetype",
-          "summary": "At 10th level, the dragon herald gains the\nability to spread her patron’s glory to all intelligent creatures.\nWhen she speaks Draconic, any intelligent creature that\nhears her and knows any language can understand her words.\nThis ability does not allow the dragon herald to understand\nlanguages with which she is not familiar.\nThis ability replaces jack-of-all-trades."
+          "summary": "At 10th level, the dragon herald gains the\nability to spread her patron’s glory to all intelligent creatures.\nWhen she speaks Draconic, any intelligent creature that\nhears her and knows any language can understand her words.\nThis ability does not allow the dragon herald to understand\nlanguages with which she is not familiar.\nThis ability replaces jack-of-all-trades.",
+          "resourceActions": [
+            {
+              "id": "dragon-extol-glory",
+              "label": "Speak universally understood Draconic",
+              "minimumLevel": 10,
+              "classId": "bard",
+              "confirmations": [
+                {
+                  "id": "intelligent",
+                  "label": "Listeners are intelligent and know at least one language",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Extol Glory",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Listeners understand the Dragon Herald's Draconic words; this does not grant the Herald understanding of their languages.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Track the one-way supernatural language effect."
+            }
+          ]
         }
       ]
     }
@@ -82,11 +515,72 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dragon%20Herald"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Kobold eligibility, patron energy and sacred-place choice, resistance and social scaling, all four performances, Master of Persuasion, Draconic, and Extol Glory are automated."
   ],
-  "manualRequirements": [
-    "Restricted to Kobold characters; that ancestry is not yet available in this builder."
+  "requirements": [
+    {
+      "type": "ancestry",
+      "id": "kobold"
+    }
+  ],
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "bard-dragon-herald-coat-of-arms-ex-1",
+      "kind": "energyResistance",
+      "label": "Coat of Arms",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelMultiplier": 1,
+      "qualifier": "energy type selected by Dragon Patron",
+      "condition": "Stacks with inherent racial resistance, not magical or temporary resistance"
+    }
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "bard-dragon-herald-dragon-voice-ex-1",
+      "skill": "Diplomacy",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 0
+    },
+    {
+      "sourceFeatureId": "bard-dragon-herald-dragon-voice-ex-1",
+      "skill": "Intimidate",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 0
+    }
+  ],
+  "skillCheckRules": [
+    {
+      "sourceFeatureId": "bard-dragon-herald-master-of-persuasion-ex-5",
+      "label": "Master of Persuasion",
+      "minimumLevel": 5,
+      "skills": [
+        "Diplomacy",
+        "Intimidate"
+      ],
+      "result": 10,
+      "allowsStress": true
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "masterOfPersuasion",
+      "label": "Master of Persuasion fast check",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 5,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 6,
+      "maximum": 3,
+      "refreshCadence": "day",
+      "sourceFeatureId": "bard-dragon-herald-master-of-persuasion-ex-5"
+    }
   ]
 }

@@ -1,0 +1,3375 @@
+{
+  "id": "bard-arrowsong-spells",
+  "name": "Arrowsong Minstrel Spells",
+  "classIds": [
+    "bard"
+  ],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "arrowsong-spell-breeze",
+      "name": "Breeze",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Breeze to the Arrowsong Minstrel's Bard spell list at spell level 0; it must still be selected as a spell known. Create a light wind.",
+      "spellId": "breeze",
+      "spellLevel": 0,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Paizo Blog - Ultimate Cantrips",
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Breeze"
+      }
+    },
+    {
+      "id": "arrowsong-spell-penumbra",
+      "name": "Penumbra",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Penumbra to the Arrowsong Minstrel's Bard spell list at spell level 0; it must still be selected as a spell known. Keep something in the shadows.",
+      "spellId": "penumbra",
+      "spellLevel": 0,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Paizo Blog - Ultimate Cantrips",
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Penumbra"
+      }
+    },
+    {
+      "id": "arrowsong-spell-ray-of-frost",
+      "name": "Ray of Frost",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Ray of Frost to the Arrowsong Minstrel's Bard spell list at spell level 0; it must still be selected as a spell known. Fire a ray that deals cold damage.",
+      "spellId": "ray-of-frost",
+      "spellLevel": 0,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 330,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ray%20of%20Frost"
+      }
+    },
+    {
+      "id": "arrowsong-spell-scoop",
+      "name": "Scoop",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Scoop to the Arrowsong Minstrel's Bard spell list at spell level 0; it must still be selected as a spell known. Use a small vessel of force to scoop up liquid or small objects.",
+      "spellId": "scoop",
+      "spellLevel": 0,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Paizo Blog - Ultimate Cantrips",
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Scoop"
+      }
+    },
+    {
+      "id": "arrowsong-spell-spark",
+      "name": "Spark",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Spark to the Arrowsong Minstrel's Bard spell list at spell level 0; it must still be selected as a spell known. Ignites flammable objects.",
+      "spellId": "spark",
+      "spellLevel": 0,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 246,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Spark"
+      }
+    },
+    {
+      "id": "arrowsong-spell-bestow-planar-infusion-i",
+      "name": "Bestow Planar Infusion I",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Bestow Planar Infusion I to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. Grant the target the effects of a planar infusion",
+      "spellId": "bestow-planar-infusion-i",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Planar Adventures",
+        "page": 39,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bestow%20Planar%20Infusion%20I"
+      }
+    },
+    {
+      "id": "arrowsong-spell-burning-hands",
+      "name": "Burning Hands",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Burning Hands to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. 1d4/level fire damage (max 5d4).",
+      "spellId": "burning-hands",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 251,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Burning%20Hands"
+      }
+    },
+    {
+      "id": "arrowsong-spell-dancing-darkness",
+      "name": "Dancing Darkness",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Dancing Darkness to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. Create four spheres of floating darkness.",
+      "spellId": "dancing-darkness",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Blood of Shadows",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Dancing%20Darkness"
+      }
+    },
+    {
+      "id": "arrowsong-spell-ear-piercing-scream",
+      "name": "Ear-Piercing Scream",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Ear-Piercing Scream to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. Deal sonic damage and daze target.",
+      "spellId": "ear-piercing-scream",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 218,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ear-Piercing%20Scream"
+      }
+    },
+    {
+      "id": "arrowsong-spell-flare-burst",
+      "name": "Flare Burst",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Flare Burst to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. As flare, but affects all creatures in 10 ft.",
+      "spellId": "flare-burst",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 223,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Flare%20Burst"
+      }
+    },
+    {
+      "id": "arrowsong-spell-floating-disk",
+      "name": "Floating Disk",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Floating Disk to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. Creates 3-ft.-diameter horizontal disk that holds 100 lbs./level.",
+      "spellId": "floating-disk",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 284,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Floating%20Disk"
+      }
+    },
+    {
+      "id": "arrowsong-spell-gentle-breeze",
+      "name": "Gentle Breeze",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Gentle Breeze to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. Light wind protects one target from clouds, gases, heat, and vapors.",
+      "spellId": "gentle-breeze",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 183,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Gentle%20Breeze"
+      }
+    },
+    {
+      "id": "arrowsong-spell-gravity-bow",
+      "name": "Gravity Bow",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Gravity Bow to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. Arrows do damage as though one size category bigger.",
+      "spellId": "gravity-bow",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 226,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Gravity%20Bow"
+      }
+    },
+    {
+      "id": "arrowsong-spell-hydraulic-push",
+      "name": "Hydraulic Push",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Hydraulic Push to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. Wave of water bull rushes an enemy.",
+      "spellId": "hydraulic-push",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 228,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Hydraulic%20Push"
+      }
+    },
+    {
+      "id": "arrowsong-spell-longshot",
+      "name": "Longshot",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Longshot to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. Grants a +10-foot bonus to the range increment for any ranged weapon fired.",
+      "spellId": "longshot",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 236,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Longshot"
+      }
+    },
+    {
+      "id": "arrowsong-spell-magic-missile",
+      "name": "Magic Missile",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Magic Missile to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. Create force missiles that strike targets automatically.",
+      "spellId": "magic-missile",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 309,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Magic%20Missile"
+      }
+    },
+    {
+      "id": "arrowsong-spell-magic-weapon",
+      "name": "Magic Weapon",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Magic Weapon to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. Weapon gains +1 bonus.",
+      "spellId": "magic-weapon",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 310,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Magic%20Weapon"
+      }
+    },
+    {
+      "id": "arrowsong-spell-shocking-grasp",
+      "name": "Shocking Grasp",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Shocking Grasp to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. Touch delivers 1d6/level electricity damage (max 5d6).",
+      "spellId": "shocking-grasp",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 343,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shocking%20Grasp"
+      }
+    },
+    {
+      "id": "arrowsong-spell-snowball",
+      "name": "Snowball",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Snowball to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. Throw a conjured ball of snow at a target",
+      "spellId": "snowball",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Wilderness",
+        "page": 235,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Snowball"
+      }
+    },
+    {
+      "id": "arrowsong-spell-thunderstomp",
+      "name": "Thunderstomp",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Thunderstomp to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. Trip one creature within range.",
+      "spellId": "thunderstomp",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 196,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Thunderstomp"
+      }
+    },
+    {
+      "id": "arrowsong-spell-touch-of-combustion",
+      "name": "Touch of Combustion",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Touch of Combustion to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. Cause someone to combust with a touch.",
+      "spellId": "touch-of-combustion",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 131,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Touch%20of%20Combustion"
+      }
+    },
+    {
+      "id": "arrowsong-spell-true-strike",
+      "name": "True Strike",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add True Strike to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. +20 on your next attack roll.",
+      "spellId": "true-strike",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 363,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=True%20Strike"
+      }
+    },
+    {
+      "id": "arrowsong-spell-unwelcome-halo",
+      "name": "Unwelcome Halo",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Unwelcome Halo to the Arrowsong Minstrel's Bard spell list at spell level 1; it must still be selected as a spell known. Force a halo around a target, preventing it from hiding in the dark.",
+      "spellId": "unwelcome-halo",
+      "spellLevel": 1,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Inner Sea Gods",
+        "page": 244,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Unwelcome%20Halo"
+      }
+    },
+    {
+      "id": "arrowsong-spell-acid-arrow",
+      "name": "Acid Arrow",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Acid Arrow to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Ranged touch attack; 2d4 damage for 1 round + 1 round/three levels.",
+      "spellId": "acid-arrow",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 239,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Acid%20Arrow"
+      }
+    },
+    {
+      "id": "arrowsong-spell-admonishing-ray",
+      "name": "Admonishing Ray",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Admonishing Ray to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Fire multiple rays that deal nonlethal force.",
+      "spellId": "admonishing-ray",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Taldor, Echoes of Glory",
+        "page": 24,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Admonishing%20Ray"
+      }
+    },
+    {
+      "id": "arrowsong-spell-aggressive-thundercloud",
+      "name": "Aggressive Thundercloud",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Aggressive Thundercloud to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Flying storm cloud deals 3d6 electricity damage.",
+      "spellId": "aggressive-thundercloud",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 172,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Aggressive%20Thundercloud"
+      }
+    },
+    {
+      "id": "arrowsong-spell-arrow-eruption",
+      "name": "Arrow Eruption",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Arrow Eruption to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Creates duplicates of killing arrow.",
+      "spellId": "arrow-eruption",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 202,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Arrow%20Eruption"
+      }
+    },
+    {
+      "id": "arrowsong-spell-beacon-of-guilt",
+      "name": "Beacon of Guilt",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Beacon of Guilt to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Cursed object highlights creatures that attempt to take it.",
+      "spellId": "beacon-of-guilt",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Villain Codex",
+        "page": 44,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Beacon%20of%20Guilt"
+      }
+    },
+    {
+      "id": "arrowsong-spell-burning-arc-keleshite",
+      "name": "Burning Arc (Keleshite)",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Burning Arc (Keleshite) to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Fire an arc of flame from your fingers which bounces from target to target.",
+      "spellId": "burning-arc-keleshite",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Humans of Golarion",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Burning%20Arc%20(Keleshite)"
+      }
+    },
+    {
+      "id": "arrowsong-spell-burning-gaze",
+      "name": "Burning Gaze",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Burning Gaze to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Inflict 1d6 fire damage to creature by looking at it.",
+      "spellId": "burning-gaze",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 208,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Burning%20Gaze"
+      }
+    },
+    {
+      "id": "arrowsong-spell-burst-of-radiance",
+      "name": "Burst of Radiance",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Burst of Radiance to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Fill the area with a blinding light.",
+      "spellId": "burst-of-radiance",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Champions of Purity",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Burst%20of%20Radiance"
+      }
+    },
+    {
+      "id": "arrowsong-spell-contact-entity-i",
+      "name": "Contact Entity I",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Contact Entity I to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Ask eldritch entities to find and converse with you",
+      "spellId": "contact-entity-i",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 112,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Contact%20Entity%20I"
+      }
+    },
+    {
+      "id": "arrowsong-spell-continual-flame",
+      "name": "Continual Flame",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Continual Flame to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Makes a permanent, heatless light.",
+      "spellId": "continual-flame",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 260,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Continual%20Flame"
+      }
+    },
+    {
+      "id": "arrowsong-spell-defensive-shock",
+      "name": "Defensive Shock",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Defensive Shock to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Electricity damages your attackers.",
+      "spellId": "defensive-shock",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 216,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Defensive%20Shock"
+      }
+    },
+    {
+      "id": "arrowsong-spell-elemental-touch",
+      "name": "Elemental Touch",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Elemental Touch to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Gain energy damage touch attack.",
+      "spellId": "elemental-touch",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 218,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Elemental%20Touch"
+      }
+    },
+    {
+      "id": "arrowsong-spell-fiery-runes",
+      "name": "Fiery Runes",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Fiery Runes to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Charge a weapon with magical fiery runes.",
+      "spellId": "fiery-runes",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Melee Tactics Toolbox",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Fiery%20Runes"
+      }
+    },
+    {
+      "id": "arrowsong-spell-fire-breath",
+      "name": "Fire Breath",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Fire Breath to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Exhale a cone of flame at will.",
+      "spellId": "fire-breath",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 221,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Fire%20Breath"
+      }
+    },
+    {
+      "id": "arrowsong-spell-fire-sneeze",
+      "name": "Fire Sneeze",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Fire Sneeze to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Sneeze flame to set your enemies on fire and knock them prone.",
+      "spellId": "fire-sneeze",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Goblins of Golarion",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Fire%20Sneeze"
+      }
+    },
+    {
+      "id": "arrowsong-spell-flaming-sphere",
+      "name": "Flaming Sphere",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Flaming Sphere to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Rolling ball of fire deals 3d6 fire damage.",
+      "spellId": "flaming-sphere",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 283,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Flaming%20Sphere"
+      }
+    },
+    {
+      "id": "arrowsong-spell-flickering-lights",
+      "name": "Flickering Lights",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Flickering Lights to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Create an area of inconsistent lighting.",
+      "spellId": "flickering-lights",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 118,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Flickering%20Lights"
+      }
+    },
+    {
+      "id": "arrowsong-spell-flurry-of-snowballs",
+      "name": "Flurry of Snowballs",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Flurry of Snowballs to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Cone-shaped blast of snowballs deals 4d6 cold damage.",
+      "spellId": "flurry-of-snowballs",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Pathfinder #67: The Snows of Summer",
+        "page": 72,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Flurry%20of%20Snowballs"
+      }
+    },
+    {
+      "id": "arrowsong-spell-force-sword",
+      "name": "Force Sword",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Force Sword to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Create a magical longsword made entirely of force.",
+      "spellId": "force-sword",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Arcane Anthology",
+        "page": 8,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Force%20Sword"
+      }
+    },
+    {
+      "id": "arrowsong-spell-frigid-touch",
+      "name": "Frigid Touch",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Frigid Touch to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Target takes cold damage and is staggered.",
+      "spellId": "frigid-touch",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 221,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Frigid%20Touch"
+      }
+    },
+    {
+      "id": "arrowsong-spell-frost-fall",
+      "name": "Frost Fall",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Frost Fall to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. The area is covered in a chilling frost.",
+      "spellId": "frost-fall",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 230,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Frost%20Fall"
+      }
+    },
+    {
+      "id": "arrowsong-spell-ghost-whip",
+      "name": "Ghost Whip",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Ghost Whip to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Create a ghost touch whip that passes through objects.",
+      "spellId": "ghost-whip",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Occult Adventures",
+        "page": 172,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ghost%20Whip"
+      }
+    },
+    {
+      "id": "arrowsong-spell-gust-of-wind",
+      "name": "Gust of Wind",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Gust of Wind to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Blows away or knocks down smaller creatures.",
+      "spellId": "gust-of-wind",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 293,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Gust%20of%20Wind"
+      }
+    },
+    {
+      "id": "arrowsong-spell-gusting-sphere",
+      "name": "Gusting Sphere",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Gusting Sphere to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Release a swirling ball of wind to move around and knock your enemies about.",
+      "spellId": "gusting-sphere",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 160,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Gusting%20Sphere"
+      }
+    },
+    {
+      "id": "arrowsong-spell-ice-slick",
+      "name": "Ice Slick",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Ice Slick to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Coat an area with thin ice, dealing cold damage and causing creatures to fall prone.",
+      "spellId": "ice-slick",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Monster Codex",
+        "page": 69,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ice%20Slick"
+      }
+    },
+    {
+      "id": "arrowsong-spell-imbue-with-elemental-might",
+      "name": "Imbue with Elemental Might",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Imbue with Elemental Might to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. As imbue with spell ability, except you transfer your elemental assault ability to the target.",
+      "spellId": "imbue-with-elemental-might",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 203,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Imbue%20with%20Elemental%20Might"
+      }
+    },
+    {
+      "id": "arrowsong-spell-light-prison",
+      "name": "Light Prison",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Light Prison to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Surround a creature with a light prison, damaging and blinding it if it attempts to escape.",
+      "spellId": "light-prison",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Inner Sea Gods",
+        "page": 236,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Light%20Prison"
+      }
+    },
+    {
+      "id": "arrowsong-spell-molten-orb",
+      "name": "Molten Orb",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Molten Orb to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Molten metal splash weapon deals 2d6 fire damage plus ongoing damage.",
+      "spellId": "molten-orb",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 188,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Molten%20Orb"
+      }
+    },
+    {
+      "id": "arrowsong-spell-pilfering-hand",
+      "name": "Pilfering Hand",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Pilfering Hand to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. You may seize an object or manipulate it from afar.",
+      "spellId": "pilfering-hand",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 239,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Pilfering%20Hand"
+      }
+    },
+    {
+      "id": "arrowsong-spell-protection-from-arrows",
+      "name": "Protection from Arrows",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Protection from Arrows to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Subject gains DR 10/magic against ranged attacks.",
+      "spellId": "protection-from-arrows",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 327,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Protection%20from%20Arrows"
+      }
+    },
+    {
+      "id": "arrowsong-spell-protective-penumbra",
+      "name": "Protective Penumbra",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Protective Penumbra to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Shadow protects the target from light.",
+      "spellId": "protective-penumbra",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 233,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Protective%20Penumbra"
+      }
+    },
+    {
+      "id": "arrowsong-spell-revealing-light",
+      "name": "Revealing Light",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Revealing Light to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. As light, but hampers Stealth checks",
+      "spellId": "revealing-light",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Monster Hunter's Handbook",
+        "page": 31,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Revealing%20Light"
+      }
+    },
+    {
+      "id": "arrowsong-spell-ricochet-shot",
+      "name": "Ricochet Shot",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Ricochet Shot to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Imbues a projectile weapon to give its ammunition the ability to ricochet.",
+      "spellId": "ricochet-shot",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 243,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ricochet%20Shot"
+      }
+    },
+    {
+      "id": "arrowsong-spell-scorching-ray",
+      "name": "Scorching Ray",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Scorching Ray to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Ranged touch attack deals 4d6 fire damage, + 1 ray/four levels (max 3).",
+      "spellId": "scorching-ray",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 337,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Scorching%20Ray"
+      }
+    },
+    {
+      "id": "arrowsong-spell-sonic-scream",
+      "name": "Sonic Scream",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Sonic Scream to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Create a cone of damaging sound at will.",
+      "spellId": "sonic-scream",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 193,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sonic%20Scream"
+      }
+    },
+    {
+      "id": "arrowsong-spell-spectral-hand",
+      "name": "Spectral Hand",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Spectral Hand to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Creates disembodied glowing hand to deliver touch attacks.",
+      "spellId": "spectral-hand",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 346,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Spectral%20Hand"
+      }
+    },
+    {
+      "id": "arrowsong-spell-spontaneous-immolation",
+      "name": "Spontaneous Immolation",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Spontaneous Immolation to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Target takes 3d6 points of fire damage and catches on fire.",
+      "spellId": "spontaneous-immolation",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 245,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Spontaneous%20Immolation"
+      }
+    },
+    {
+      "id": "arrowsong-spell-telekinetic-strikes",
+      "name": "Telekinetic Strikes",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Telekinetic Strikes to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Imbue a creature's limbs with force, adding damage to unarmed strikes",
+      "spellId": "telekinetic-strikes",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Psychic Anthology",
+        "page": 11,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Telekinetic%20Strikes"
+      }
+    },
+    {
+      "id": "arrowsong-spell-veil-of-ash",
+      "name": "Veil of Ash",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Veil of Ash to the Arrowsong Minstrel's Bard spell list at spell level 2; it must still be selected as a spell known. Conjure a small cloud of burning ash in the target's face.",
+      "spellId": "veil-of-ash",
+      "spellLevel": 2,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Pathfinder #24: The Final Wish",
+        "page": 61,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Veil%20of%20Ash"
+      }
+    },
+    {
+      "id": "arrowsong-spell-air-geyser",
+      "name": "Air Geyser",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Air Geyser to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Blast of air deals 2d6 bludgeoning damage and knocks opponent upward.",
+      "spellId": "air-geyser",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 173,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Air%20Geyser"
+      }
+    },
+    {
+      "id": "arrowsong-spell-apsus-shining-scales",
+      "name": "Apsu's Shining Scales",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Apsu's Shining Scales to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Gain +5 armor bonus to your AC, natural attacks are good and silver, and infuse your breath weapon with holy power.",
+      "spellId": "apsus-shining-scales",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Legacy of Dragons",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Apsu's%20Shining%20Scales"
+      }
+    },
+    {
+      "id": "arrowsong-spell-battering-blast",
+      "name": "Battering Blast",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Battering Blast to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Hurl a fist sized ball of force to damage your enemy and knock them back.",
+      "spellId": "battering-blast",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Dungeons of Golarion",
+        "page": 33,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Battering%20Blast"
+      }
+    },
+    {
+      "id": "arrowsong-spell-blacklight",
+      "name": "Blacklight",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Blacklight to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Create an area of total darkness.",
+      "spellId": "blacklight",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Pathfinder Campaign Setting",
+        "page": 206,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Blacklight"
+      }
+    },
+    {
+      "id": "arrowsong-spell-call-the-void",
+      "name": "Call the Void",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Call the Void to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Surround yourself with an aura of nothingness.",
+      "spellId": "call-the-void",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Dragon Empires Primer",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Call%20the%20Void"
+      }
+    },
+    {
+      "id": "arrowsong-spell-campfire-wall",
+      "name": "Campfire Wall",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Campfire Wall to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Creates a shelter around a campfire.",
+      "spellId": "campfire-wall",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 210,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Campfire%20Wall"
+      }
+    },
+    {
+      "id": "arrowsong-spell-chain-of-perdition",
+      "name": "Chain of Perdition",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Chain of Perdition to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Creates a floating chain of force.",
+      "spellId": "chain-of-perdition",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 225,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Chain%20of%20Perdition"
+      }
+    },
+    {
+      "id": "arrowsong-spell-channel-the-gift",
+      "name": "Channel the Gift",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Channel the Gift to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Fuel a target’s spellcasting, spontaneously cast spells without expending the slot.",
+      "spellId": "channel-the-gift",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Inner Sea Gods",
+        "page": 230,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Channel%20the%20Gift"
+      }
+    },
+    {
+      "id": "arrowsong-spell-contact-entity-ii",
+      "name": "Contact Entity II",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Contact Entity II to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Ask more powerful entities to find and converse with you",
+      "spellId": "contact-entity-ii",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 113,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Contact%20Entity%20II"
+      }
+    },
+    {
+      "id": "arrowsong-spell-contingent-action",
+      "name": "Contingent Action",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Contingent Action to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Set the condition for triggering a target’s readied standard, move, or swift action.",
+      "spellId": "contingent-action",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 178,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Contingent%20Action"
+      }
+    },
+    {
+      "id": "arrowsong-spell-dark-light",
+      "name": "Dark-Light",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Dark-Light to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Create a dazzling light that only affects those without light sensitivity.",
+      "spellId": "dark-light",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Kobolds of Golarion",
+        "page": 26,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Dark-Light"
+      }
+    },
+    {
+      "id": "arrowsong-spell-diamond-spray",
+      "name": "Diamond Spray",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Diamond Spray to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Fire a cone of slivers that deal 1d6 damage/level and bypass adamantine and cold iron DR.",
+      "spellId": "diamond-spray",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Pathfinder #24: The Final Wish",
+        "page": 60,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Diamond%20Spray"
+      }
+    },
+    {
+      "id": "arrowsong-spell-distracting-cacophony",
+      "name": "Distracting Cacophony",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Distracting Cacophony to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Noise makes it difficult to cast.",
+      "spellId": "distracting-cacophony",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 217,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Distracting%20Cacophony"
+      }
+    },
+    {
+      "id": "arrowsong-spell-draconic-reservoir",
+      "name": "Draconic Reservoir",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Draconic Reservoir to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Subject can absorb energy damage and enhance melee attacks with it.",
+      "spellId": "draconic-reservoir",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 217,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Draconic%20Reservoir"
+      }
+    },
+    {
+      "id": "arrowsong-spell-ectoplasmic-snare",
+      "name": "Ectoplasmic Snare",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Ectoplasmic Snare to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Tendril of ectoplasm grapples a creature and tethers you to it.",
+      "spellId": "ectoplasmic-snare",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Occult Adventures",
+        "page": 168,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ectoplasmic%20Snare"
+      }
+    },
+    {
+      "id": "arrowsong-spell-elemental-aura",
+      "name": "Elemental Aura",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Elemental Aura to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Creates an aura of energy around you.",
+      "spellId": "elemental-aura",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 218,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Elemental%20Aura"
+      }
+    },
+    {
+      "id": "arrowsong-spell-final-sacrifice",
+      "name": "Final Sacrifice",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Final Sacrifice to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Cause a summoned creature to explode.",
+      "spellId": "final-sacrifice",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Monster Summoner's Handbook",
+        "page": 22,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Final%20Sacrifice"
+      }
+    },
+    {
+      "id": "arrowsong-spell-fireball",
+      "name": "Fireball",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Fireball to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. 1d6 damage per level, 20-ft. radius.",
+      "spellId": "fireball",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 283,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Fireball"
+      }
+    },
+    {
+      "id": "arrowsong-spell-firestream",
+      "name": "Firestream",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Firestream to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Spray a rushing stream of fire from your hand.",
+      "spellId": "firestream",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 131,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Firestream"
+      }
+    },
+    {
+      "id": "arrowsong-spell-flame-arrow",
+      "name": "Flame Arrow",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Flame Arrow to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Arrows deal +1d6 fire damage.",
+      "spellId": "flame-arrow",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 283,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Flame%20Arrow"
+      }
+    },
+    {
+      "id": "arrowsong-spell-force-punch",
+      "name": "Force Punch",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Force Punch to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Target takes force damage and is pushed away.",
+      "spellId": "force-punch",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 221,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Force%20Punch"
+      }
+    },
+    {
+      "id": "arrowsong-spell-heatstroke",
+      "name": "Heatstroke",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Heatstroke to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Fire a ray to give someone heatstroke, dealing 1d4 nonleathal damage and inducing exhaustion.",
+      "spellId": "heatstroke",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Sargava, the Lost Colony",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Heatstroke"
+      }
+    },
+    {
+      "id": "arrowsong-spell-hydraulic-torrent",
+      "name": "Hydraulic Torrent",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Hydraulic Torrent to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Creates torrent of water that bull rushes any creature in its path.",
+      "spellId": "hydraulic-torrent",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 229,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Hydraulic%20Torrent"
+      }
+    },
+    {
+      "id": "arrowsong-spell-lightning-bolt",
+      "name": "Lightning Bolt",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Lightning Bolt to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Electricity deals 1d6/level damage.",
+      "spellId": "lightning-bolt",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 304,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Lightning%20Bolt"
+      }
+    },
+    {
+      "id": "arrowsong-spell-motes-of-dusk-and-dawn",
+      "name": "Motes of Dusk and Dawn",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Motes of Dusk and Dawn to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Create up to four motes that shed light or darkness.",
+      "spellId": "motes-of-dusk-and-dawn",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Blood of Shadows",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Motes%20of%20Dusk%20and%20Dawn"
+      }
+    },
+    {
+      "id": "arrowsong-spell-night-of-blades",
+      "name": "Night of Blades",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Night of Blades to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Create an immobile wall of tiny black blades.",
+      "spellId": "night-of-blades",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Inner Sea Gods",
+        "page": 237,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Night%20of%20Blades"
+      }
+    },
+    {
+      "id": "arrowsong-spell-numerological-evocation",
+      "name": "Numerological Evocation",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Numerological Evocation to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Use the Path of Numbers to fire rays of elemental energy.",
+      "spellId": "numerological-evocation",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Occult Mysteries",
+        "page": 51,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Numerological%20Evocation"
+      }
+    },
+    {
+      "id": "arrowsong-spell-pain-strike",
+      "name": "Pain Strike",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Pain Strike to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Inflicts 1d6 nonlethal damage 1 round/level.",
+      "spellId": "pain-strike",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 234,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Pain%20Strike"
+      }
+    },
+    {
+      "id": "arrowsong-spell-recharge",
+      "name": "Recharge",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Recharge to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Restore charges to a technological item.",
+      "spellId": "recharge",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Technology Guide",
+        "page": 11,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Recharge"
+      }
+    },
+    {
+      "id": "arrowsong-spell-sheet-lightning",
+      "name": "Sheet Lightning",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Sheet Lightning to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Create an area of electricity that dazes all those within.",
+      "spellId": "sheet-lightning",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Rival Guide",
+        "page": 23,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sheet%20Lightning"
+      }
+    },
+    {
+      "id": "arrowsong-spell-shifting-shadows",
+      "name": "Shifting Shadows",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Shifting Shadows to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Obscure the appearance of all creatures within the shifting shadows.",
+      "spellId": "shifting-shadows",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Dirty Tactics Toolbox",
+        "page": 31,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shifting%20Shadows"
+      }
+    },
+    {
+      "id": "arrowsong-spell-silverlight",
+      "name": "Silverlight",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Silverlight to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Create a bright silver light that is harmful to those vulnerable to silver.",
+      "spellId": "silverlight",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Guide to the River Kingdoms",
+        "page": 25,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Silverlight"
+      }
+    },
+    {
+      "id": "arrowsong-spell-spotlight",
+      "name": "Spotlight",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Spotlight to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Create a mobile area of bright light while also suppressing light surrounding it.",
+      "spellId": "spotlight",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Blood of Shadows",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Spotlight"
+      }
+    },
+    {
+      "id": "arrowsong-spell-thunderstomp-greater",
+      "name": "Thunderstomp, Greater",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Thunderstomp, Greater to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Trip multiple creatures within range.",
+      "spellId": "thunderstomp-greater",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 196,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Thunderstomp%2C%20Greater"
+      }
+    },
+    {
+      "id": "arrowsong-spell-trial-of-fire-and-acid",
+      "name": "Trial of Fire and Acid",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Trial of Fire and Acid to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Cover the target creature in burning acid.",
+      "spellId": "trial-of-fire-and-acid",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Monster Codex",
+        "page": 225,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Trial%20of%20Fire%20and%20Acid"
+      }
+    },
+    {
+      "id": "arrowsong-spell-twilight-knife",
+      "name": "Twilight Knife",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Twilight Knife to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Floating knife attacks with you.",
+      "spellId": "twilight-knife",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 252,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Twilight%20Knife"
+      }
+    },
+    {
+      "id": "arrowsong-spell-unflappable-mien",
+      "name": "Unflappable Mien",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Unflappable Mien to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Protective barrier of force knocks creatures and deals force damage",
+      "spellId": "unflappable-mien",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Disciple's Doctrine",
+        "page": 19,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Unflappable%20Mien"
+      }
+    },
+    {
+      "id": "arrowsong-spell-vengeful-comets",
+      "name": "Vengeful Comets",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Vengeful Comets to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Create a group of orbiting comets that can immediately strike those who target you with spells.",
+      "spellId": "vengeful-comets",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Inner Sea Magic",
+        "page": 62,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Vengeful%20Comets"
+      }
+    },
+    {
+      "id": "arrowsong-spell-violent-misfire",
+      "name": "Violent Misfire",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Violent Misfire to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Cause a firearm to misfire and explode",
+      "spellId": "violent-misfire",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "People of the Wastes",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Violent%20Misfire"
+      }
+    },
+    {
+      "id": "arrowsong-spell-wall-of-split-illumination",
+      "name": "Wall of Split Illumination",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Wall of Split Illumination to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Create a wall of illumination, darkness on one side, light on the other.",
+      "spellId": "wall-of-split-illumination",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Blood of Shadows",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Wall%20of%20Split%20Illumination"
+      }
+    },
+    {
+      "id": "arrowsong-spell-wind-wall",
+      "name": "Wind Wall",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Wind Wall to the Arrowsong Minstrel's Bard spell list at spell level 3; it must still be selected as a spell known. Deflects arrows, smaller creatures, and gases.",
+      "spellId": "wind-wall",
+      "spellLevel": 3,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 370,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Wind%20Wall"
+      }
+    },
+    {
+      "id": "arrowsong-spell-aggressive-thundercloud-greater",
+      "name": "Aggressive Thundercloud, Greater",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Aggressive Thundercloud, Greater to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Flying storm cloud deals 6d6 electricity damage.",
+      "spellId": "aggressive-thundercloud-greater",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 172,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Aggressive%20Thundercloud%2C%20Greater"
+      }
+    },
+    {
+      "id": "arrowsong-spell-agonize",
+      "name": "Agonize",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Agonize to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Pain encourages an outsider to obey you.",
+      "spellId": "agonize",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 205,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Agonize"
+      }
+    },
+    {
+      "id": "arrowsong-spell-ball-lightning",
+      "name": "Ball Lightning",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Ball Lightning to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Flying balls of lightning deal 3d6 electricity damage each.",
+      "spellId": "ball-lightning",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 204,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ball%20Lightning"
+      }
+    },
+    {
+      "id": "arrowsong-spell-bestow-planar-infusion-ii",
+      "name": "Bestow Planar Infusion II",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Bestow Planar Infusion II to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Grants the target the benefits of an improved planar infusion",
+      "spellId": "bestow-planar-infusion-ii",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Planar Adventures",
+        "page": 39,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bestow%20Planar%20Infusion%20II"
+      }
+    },
+    {
+      "id": "arrowsong-spell-bit-of-luck",
+      "name": "Bit of Luck",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Bit of Luck to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Gain a pool of luck that can be used to add a luck bonus to any d20 rolls, which can turn a failure into a success",
+      "spellId": "bit-of-luck",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Blood of the Beast",
+        "page": 7,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bit%20of%20Luck"
+      }
+    },
+    {
+      "id": "arrowsong-spell-blast-of-wind",
+      "name": "Blast of Wind",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Blast of Wind to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. As gust of wind, treat creatures in the area as smaller than they are for the effects of the wind",
+      "spellId": "blast-of-wind",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Elemental Master's Handbook",
+        "page": 17,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Blast%20of%20Wind"
+      }
+    },
+    {
+      "id": "arrowsong-spell-brightest-light",
+      "name": "Brightest Light",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Brightest Light to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. As daylight, but lasts longer and can dispel darkness effects",
+      "spellId": "brightest-light",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 115,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Brightest%20Light"
+      }
+    },
+    {
+      "id": "arrowsong-spell-contingent-scroll",
+      "name": "Contingent Scroll",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Contingent Scroll to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Transfer a scroll’s power to the target; the scroll is then triggered as contingency.",
+      "spellId": "contingent-scroll",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 178,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Contingent%20Scroll"
+      }
+    },
+    {
+      "id": "arrowsong-spell-controlled-fireball",
+      "name": "Controlled Fireball",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Controlled Fireball to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. As fireball, but secretly deals less damage to your allies.",
+      "spellId": "controlled-fireball",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 208,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Controlled%20Fireball"
+      }
+    },
+    {
+      "id": "arrowsong-spell-creeping-ice",
+      "name": "Creeping Ice",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Creeping Ice to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Sheet of ice slowly spreads outward on a horizontal surface.",
+      "spellId": "creeping-ice",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 178,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Creeping%20Ice"
+      }
+    },
+    {
+      "id": "arrowsong-spell-deadmans-contingency",
+      "name": "Deadman's Contingency",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Deadman's Contingency to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Set one of a list of contingencies for your demise.",
+      "spellId": "deadmans-contingency",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 210,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Deadman's%20Contingency"
+      }
+    },
+    {
+      "id": "arrowsong-spell-detonate",
+      "name": "Detonate",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Detonate to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Inflicts 1d8/level energy damage to all creatures within 15 ft.",
+      "spellId": "detonate",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 215,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Detonate"
+      }
+    },
+    {
+      "id": "arrowsong-spell-dragons-breath",
+      "name": "Dragon's Breath",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Dragon's Breath to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Gives you a dragon's breath weapon.",
+      "spellId": "dragons-breath",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 217,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Dragon's%20Breath"
+      }
+    },
+    {
+      "id": "arrowsong-spell-emergency-force-sphere",
+      "name": "Emergency Force Sphere",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Emergency Force Sphere to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Create a quick hemispherical wall of force to protect you from falling debris.",
+      "spellId": "emergency-force-sphere",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Cheliax, Empire of Devils",
+        "page": 23,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Emergency%20Force%20Sphere"
+      }
+    },
+    {
+      "id": "arrowsong-spell-fire-shield",
+      "name": "Fire Shield",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Fire Shield to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Creatures attacking you take fire damage; you're protected from heat or cold.",
+      "spellId": "fire-shield",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 282,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Fire%20Shield"
+      }
+    },
+    {
+      "id": "arrowsong-spell-flaming-sphere-greater",
+      "name": "Flaming Sphere, Greater",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Flaming Sphere, Greater to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Rolling ball of fire deals 6d6 fire damage and ignites targets.",
+      "spellId": "flaming-sphere-greater",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 182,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Flaming%20Sphere%2C%20Greater"
+      }
+    },
+    {
+      "id": "arrowsong-spell-hurricane-blast",
+      "name": "Hurricane Blast",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Hurricane Blast to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Create a severe blast of air bursting out from you.",
+      "spellId": "hurricane-blast",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Pathfinder #24: The Final Wish",
+        "page": 60,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Hurricane%20Blast"
+      }
+    },
+    {
+      "id": "arrowsong-spell-ice-storm",
+      "name": "Ice Storm",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Ice Storm to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Hail deals 5d6 damage in cylinder 40 ft. across.",
+      "spellId": "ice-storm",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 298,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ice%20Storm"
+      }
+    },
+    {
+      "id": "arrowsong-spell-martial-telekinesis",
+      "name": "Martial Telekinesis",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Martial Telekinesis to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. As the combat maneuver version of telekinesis, with some additional changes",
+      "spellId": "martial-telekinesis",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Inner Sea Races",
+        "page": 221,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Martial%20Telekinesis"
+      }
+    },
+    {
+      "id": "arrowsong-spell-mydriatic-spontaneity",
+      "name": "Mydriatic Spontaneity",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Mydriatic Spontaneity to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Cause splitting headaches and an oversensitivity to light and darkness.",
+      "spellId": "mydriatic-spontaneity",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Blood of Shadows",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mydriatic%20Spontaneity"
+      }
+    },
+    {
+      "id": "arrowsong-spell-pyrotechnic-eruption",
+      "name": "Pyrotechnic Eruption",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Pyrotechnic Eruption to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Erupting flames burn a target several times.",
+      "spellId": "pyrotechnic-eruption",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 125,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Pyrotechnic%20Eruption"
+      }
+    },
+    {
+      "id": "arrowsong-spell-resilient-sphere",
+      "name": "Resilient Sphere",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Resilient Sphere to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Force globe protects but traps one subject.",
+      "spellId": "resilient-sphere",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 333,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Resilient%20Sphere"
+      }
+    },
+    {
+      "id": "arrowsong-spell-river-of-wind",
+      "name": "River of Wind",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add River of Wind to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. A stream of wind causes nonlethal damage and can knock down or push creatures.",
+      "spellId": "river-of-wind",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 240,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=River%20of%20Wind"
+      }
+    },
+    {
+      "id": "arrowsong-spell-rope-tornado",
+      "name": "Rope Tornado",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Rope Tornado to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Tornado-force winds knock creatures prone or from the air",
+      "spellId": "rope-tornado",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Wilderness Origins",
+        "page": 27,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Rope%20Tornado"
+      }
+    },
+    {
+      "id": "arrowsong-spell-suppressing-stone",
+      "name": "Suppressing Stone",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Suppressing Stone to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Infuse arcane power into an ioun stone to protect you from mental attacks.",
+      "spellId": "suppressing-stone",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Inner Sea Races",
+        "page": 223,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Suppressing%20Stone"
+      }
+    },
+    {
+      "id": "arrowsong-spell-telekinetic-charge",
+      "name": "Telekinetic Charge",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Telekinetic Charge to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Launches an ally through the air.",
+      "spellId": "telekinetic-charge",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 247,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Telekinetic%20Charge"
+      }
+    },
+    {
+      "id": "arrowsong-spell-unbearable-brightness",
+      "name": "Unbearable Brightness",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Unbearable Brightness to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Your glowing body dazzles or blinds others.",
+      "spellId": "unbearable-brightness",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 197,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Unbearable%20Brightness"
+      }
+    },
+    {
+      "id": "arrowsong-spell-vitriolic-mist",
+      "name": "Vitriolic Mist",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Vitriolic Mist to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. As fire shield, except acid damage.",
+      "spellId": "vitriolic-mist",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 248,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Vitriolic%20Mist"
+      }
+    },
+    {
+      "id": "arrowsong-spell-volcanic-storm",
+      "name": "Volcanic Storm",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Volcanic Storm to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Hot rocks deal 5d6 damage.",
+      "spellId": "volcanic-storm",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 248,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Volcanic%20Storm"
+      }
+    },
+    {
+      "id": "arrowsong-spell-wall-of-fire",
+      "name": "Wall of Fire",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Wall of Fire to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Deals 2d4 fire damage out to 10 ft. and 1d4 out to 20 ft. Passing through wall deals 2d6 damage +1/level.",
+      "spellId": "wall-of-fire",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 365,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Wall%20of%20Fire"
+      }
+    },
+    {
+      "id": "arrowsong-spell-wall-of-ice",
+      "name": "Wall of Ice",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Wall of Ice to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Ice plane creates wall or hemisphere creates dome.",
+      "spellId": "wall-of-ice",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 366,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Wall%20of%20Ice"
+      }
+    },
+    {
+      "id": "arrowsong-spell-water-shield",
+      "name": "Water Shield",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Water Shield to the Arrowsong Minstrel's Bard spell list at spell level 4; it must still be selected as a spell known. Surround yourself with a protective spout of acid.",
+      "spellId": "water-shield",
+      "spellLevel": 4,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Pathfinder #24: The Final Wish",
+        "page": 61,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Water%20Shield"
+      }
+    },
+    {
+      "id": "arrowsong-spell-augmenting-wall",
+      "name": "Augmenting Wall",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Augmenting Wall to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Create a wall of faintly shimmering elemental energy; this can be configured to allow ranged weapons to pass through it in one direction.",
+      "spellId": "augmenting-wall",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ranged Tactics Toolbox",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Augmenting%20Wall"
+      }
+    },
+    {
+      "id": "arrowsong-spell-burn-corruption",
+      "name": "Burn Corruption",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Burn Corruption to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Scour the life in an area, especially Abyssal life.",
+      "spellId": "burn-corruption",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Inner Sea Races",
+        "page": 218,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Burn%20Corruption"
+      }
+    },
+    {
+      "id": "arrowsong-spell-burst-of-force",
+      "name": "Burst of Force",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Burst of Force to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Emit a blast of force to damage and knock creatures prone",
+      "spellId": "burst-of-force",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Psychic Anthology",
+        "page": 10,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Burst%20of%20Force"
+      }
+    },
+    {
+      "id": "arrowsong-spell-cone-of-cold",
+      "name": "Cone of Cold",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Cone of Cold to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. 1d6/level cold damage.",
+      "spellId": "cone-of-cold",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 258,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Cone%20of%20Cold"
+      }
+    },
+    {
+      "id": "arrowsong-spell-contact-entity-iii",
+      "name": "Contact Entity III",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Contact Entity III to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Ask very powerful eldritch entities to find and converse with you, or they may reply telepathically.",
+      "spellId": "contact-entity-iii",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 113,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Contact%20Entity%20III"
+      }
+    },
+    {
+      "id": "arrowsong-spell-fire-snake",
+      "name": "Fire Snake",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Fire Snake to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Creates a serpentine path of fire 5 ft. long/level that deals 1d6 fire damage/level.",
+      "spellId": "fire-snake",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 222,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Fire%20Snake"
+      }
+    },
+    {
+      "id": "arrowsong-spell-icy-prison",
+      "name": "Icy Prison",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Icy Prison to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Thick ice holds and damages the target.",
+      "spellId": "icy-prison",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 224,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Icy%20Prison"
+      }
+    },
+    {
+      "id": "arrowsong-spell-interposing-hand",
+      "name": "Interposing Hand",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Interposing Hand to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Hand provides cover against 1 opponent.",
+      "spellId": "interposing-hand",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 301,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Interposing%20Hand"
+      }
+    },
+    {
+      "id": "arrowsong-spell-lightning-arc",
+      "name": "Lightning Arc",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Lightning Arc to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Targets in a line take 1d6 electricity/level.",
+      "spellId": "lightning-arc",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 227,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Lightning%20Arc"
+      }
+    },
+    {
+      "id": "arrowsong-spell-pain-strike-mass",
+      "name": "Pain Strike, Mass",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Pain Strike, Mass to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. As pain strike, but affects multiple creatures.",
+      "spellId": "pain-strike-mass",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 234,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Pain%20Strike%2C%20Mass"
+      }
+    },
+    {
+      "id": "arrowsong-spell-runic-overload",
+      "name": "Runic Overload",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Runic Overload to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Charge magical runes to an explosive degree.",
+      "spellId": "runic-overload",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Giant Hunter's Handbook",
+        "page": 26,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Runic%20Overload"
+      }
+    },
+    {
+      "id": "arrowsong-spell-sending",
+      "name": "Sending",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Sending to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Delivers short message anywhere, instantly.",
+      "spellId": "sending",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 339,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sending"
+      }
+    },
+    {
+      "id": "arrowsong-spell-shroud-of-darkness",
+      "name": "Shroud of Darkness",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Shroud of Darkness to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Affected creatures have their vision impaired",
+      "spellId": "shroud-of-darkness",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Inner Sea Temples",
+        "page": 13,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shroud%20of%20Darkness"
+      }
+    },
+    {
+      "id": "arrowsong-spell-sonic-thrust",
+      "name": "Sonic Thrust",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Sonic Thrust to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Sound moves targets away from you.",
+      "spellId": "sonic-thrust",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 239,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sonic%20Thrust"
+      }
+    },
+    {
+      "id": "arrowsong-spell-wall-of-ectoplasm",
+      "name": "Wall of Ectoplasm",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Wall of Ectoplasm to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Wall of spirits blocks movement on Material Plane and Ethereal Plane and causes fear.",
+      "spellId": "wall-of-ectoplasm",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Occult Adventures",
+        "page": 190,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Wall%20of%20Ectoplasm"
+      }
+    },
+    {
+      "id": "arrowsong-spell-wall-of-force",
+      "name": "Wall of Force",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Wall of Force to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Wall is immune to damage.",
+      "spellId": "wall-of-force",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 365,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Wall%20of%20Force"
+      }
+    },
+    {
+      "id": "arrowsong-spell-wall-of-light",
+      "name": "Wall of Light",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Wall of Light to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Create a wall of blinding light.",
+      "spellId": "wall-of-light",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "The Dragon's Demand",
+        "page": 24,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Wall%20of%20Light"
+      }
+    },
+    {
+      "id": "arrowsong-spell-wall-of-sound",
+      "name": "Wall of Sound",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Wall of Sound to the Arrowsong Minstrel's Bard spell list at spell level 5; it must still be selected as a spell known. Sonic wall deflects and damages creatures.",
+      "spellId": "wall-of-sound",
+      "spellLevel": 5,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 248,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Wall%20of%20Sound"
+      }
+    },
+    {
+      "id": "arrowsong-spell-alaznists-jinx",
+      "name": "Alaznist's Jinx",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Alaznist's Jinx to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Inlfict the spell burn spellblight",
+      "spellId": "alaznists-jinx",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 21,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Alaznist's%20Jinx"
+      }
+    },
+    {
+      "id": "arrowsong-spell-chain-lightning",
+      "name": "Chain Lightning",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Chain Lightning to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. 1d6/level damage and 1 secondary bolt/level.",
+      "spellId": "chain-lightning",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 253,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Chain%20Lightning"
+      }
+    },
+    {
+      "id": "arrowsong-spell-chains-of-fire",
+      "name": "Chains of Fire",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Chains of Fire to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. As chain lightning but with fire damage, albeit at a shorter range.",
+      "spellId": "chains-of-fire",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 131,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Chains%20of%20Fire"
+      }
+    },
+    {
+      "id": "arrowsong-spell-cold-ice-strike",
+      "name": "Cold Ice Strike",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Cold Ice Strike to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Cone of ice slivers deals 1d6 cold/level.",
+      "spellId": "cold-ice-strike",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 211,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Cold%20Ice%20Strike"
+      }
+    },
+    {
+      "id": "arrowsong-spell-contagious-flame",
+      "name": "Contagious Flame",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Contagious Flame to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Scorching rays cause 4d6 fire damage, then move on to new targets.",
+      "spellId": "contagious-flame",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 212,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Contagious%20Flame"
+      }
+    },
+    {
+      "id": "arrowsong-spell-contingency",
+      "name": "Contingency",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Contingency to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Sets trigger condition for another spell.",
+      "spellId": "contingency",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 259,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Contingency"
+      }
+    },
+    {
+      "id": "arrowsong-spell-cosmic-ray",
+      "name": "Cosmic Ray",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Cosmic Ray to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Attack a creature with cosmic energy.",
+      "spellId": "cosmic-ray",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "People of the Stars",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Cosmic%20Ray"
+      }
+    },
+    {
+      "id": "arrowsong-spell-decapitate",
+      "name": "Decapitate",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Decapitate to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Turn a critical hit into a decapitation.",
+      "spellId": "decapitate",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 115,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Decapitate"
+      }
+    },
+    {
+      "id": "arrowsong-spell-elemental-assessor",
+      "name": "Elemental Assessor",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Elemental Assessor to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Shoot a ray made up of multiple energies at your enemy.",
+      "spellId": "elemental-assessor",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Chronicle of the Righteous",
+        "page": 50,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Elemental%20Assessor"
+      }
+    },
+    {
+      "id": "arrowsong-spell-explode-head",
+      "name": "Explode Head",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Explode Head to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Explode the head of a creature with 20 hp or fewer and deal damage in a 10-ft. radius around it.",
+      "spellId": "explode-head",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Occult Adventures",
+        "page": 171,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Explode%20Head"
+      }
+    },
+    {
+      "id": "arrowsong-spell-forceful-hand",
+      "name": "Forceful Hand",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Forceful Hand to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Hand pushes creatures away.",
+      "spellId": "forceful-hand",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 285,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Forceful%20Hand"
+      }
+    },
+    {
+      "id": "arrowsong-spell-freezing-sphere",
+      "name": "Freezing Sphere",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Freezing Sphere to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Freezes water or deals cold damage.",
+      "spellId": "freezing-sphere",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 287,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Freezing%20Sphere"
+      }
+    },
+    {
+      "id": "arrowsong-spell-furious-fire-barrage",
+      "name": "Furious Fire Barrage",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Furious Fire Barrage to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Conjure balls of flame to throw.",
+      "spellId": "furious-fire-barrage",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Agents of Evil",
+        "page": 31,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Furious%20Fire%20Barrage"
+      }
+    },
+    {
+      "id": "arrowsong-spell-hellfire-ray",
+      "name": "Hellfire Ray",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Hellfire Ray to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Damn creatures to Hell with a blast of pure hellfire.",
+      "spellId": "hellfire-ray",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Book of the Damned",
+        "page": 184,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Hellfire%20Ray"
+      }
+    },
+    {
+      "id": "arrowsong-spell-last-azlantis-defending-sword",
+      "name": "Last Azlanti's Defending Sword",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Last Azlanti's Defending Sword to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Create a blade like mage’s sword that focuses more on defense.",
+      "spellId": "last-azlantis-defending-sword",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Arcane Anthology",
+        "page": 9,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Last%20Azlanti's%20Defending%20Sword"
+      }
+    },
+    {
+      "id": "arrowsong-spell-leashed-shackles",
+      "name": "Leashed Shackles",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Leashed Shackles to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Target is restricted to a specific location.",
+      "spellId": "leashed-shackles",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 226,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Leashed%20Shackles"
+      }
+    },
+    {
+      "id": "arrowsong-spell-mages-decree",
+      "name": "Mage's Decree",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Mage's Decree to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Send a message to creatures within miles.",
+      "spellId": "mages-decree",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 218,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mage's%20Decree"
+      }
+    },
+    {
+      "id": "arrowsong-spell-path-of-the-winds",
+      "name": "Path of the Winds",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Path of the Winds to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Call forth mighty winds to clear a path for you.",
+      "spellId": "path-of-the-winds",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 160,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Path%20of%20the%20Winds"
+      }
+    },
+    {
+      "id": "arrowsong-spell-sign-of-wrath",
+      "name": "Sign of Wrath",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Sign of Wrath to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Create a giant symbol of wrath to forcibly repulse all nearby creatures.",
+      "spellId": "sign-of-wrath",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Rise of the Runelords Anniversary Edition",
+        "page": 419,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sign%20of%20Wrath"
+      }
+    },
+    {
+      "id": "arrowsong-spell-sirocco",
+      "name": "Sirocco",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Sirocco to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Hot wind does 4d6 damage, fatigues those damaged, and knocks creatures prone.",
+      "spellId": "sirocco",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 244,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sirocco"
+      }
+    },
+    {
+      "id": "arrowsong-spell-symbol-of-storms",
+      "name": "Symbol of Storms",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Symbol of Storms to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Symbol creates stormwinds and lightning when triggered",
+      "spellId": "symbol-of-storms",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Blood of the Ancients",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Symbol%20of%20Storms"
+      }
+    },
+    {
+      "id": "arrowsong-spell-torrent-of-elemental-rage",
+      "name": "Torrent of Elemental Rage",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Torrent of Elemental Rage to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Fire raw elemental energy in a 30 ft. long line.",
+      "spellId": "torrent-of-elemental-rage",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Pathfinder #24: The Final Wish",
+        "page": 60,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Torrent%20of%20Elemental%20Rage"
+      }
+    },
+    {
+      "id": "arrowsong-spell-transfer-familiar",
+      "name": "Transfer Familiar",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Transfer Familiar to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. Temporarily grant control of your familiar to another creature.",
+      "spellId": "transfer-familiar",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "Familiar Folio",
+        "page": 23,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Transfer%20Familiar"
+      }
+    },
+    {
+      "id": "arrowsong-spell-violent-misfire-greater",
+      "name": "Violent Misfire, Greater",
+      "groupId": "bard-arrowsong-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Add Violent Misfire, Greater to the Arrowsong Minstrel's Bard spell list at spell level 6; it must still be selected as a spell known. As per violent misfire, but 1 target/level",
+      "spellId": "violent-misfire-greater",
+      "spellLevel": 6,
+      "spellAccessOnly": true,
+      "source": {
+        "title": "People of the Wastes",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Violent%20Misfire%2C%20Greater"
+      }
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Arrowsong%20Minstrel"
+  }
+}

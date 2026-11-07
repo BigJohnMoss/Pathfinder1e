@@ -20,19 +20,22 @@ export function spontaneousSpellcastingProgression(characterClass, level, { abil
   const known = spellcasting.knownByLevel?.[level - 1];
   if (!Array.isArray(slots) || !Array.isArray(known)) throw new Error("Spontaneous spellcasting progression is incomplete.");
 
-  const highestBaseLevel = Math.max(0, ...slots.map((count, index) => count > 0 ? index + 1 : 0));
-  const maximumSpellLevel = Math.min(Math.max(0, abilityScore - 10), highestBaseLevel);
+  const unlocks = spellcasting.spellLevelUnlocks;
+  const highestUnlockedLevel = Array.isArray(unlocks)
+    ? Math.max(0, ...unlocks.map((unlockLevel, index) => level >= unlockLevel ? index + 1 : 0))
+    : Math.max(0, ...slots.map((count, index) => count > 0 ? index + 1 : 0));
+  const maximumSpellLevel = Math.min(Math.max(0, abilityScore - 10), highestUnlockedLevel);
   const bonusByLevel = bonusSpellsByLevel(abilityScore, slots.length);
   return {
     ability: spellcasting.ability,
     castingType: "spontaneous",
     maximumSpellLevel,
-    slots: slots.map((base, index) => ({
-      level: index + 1,
-      base,
-      bonus: bonusByLevel[index + 1] ?? 0,
-      count: base + (bonusByLevel[index + 1] ?? 0)
-    })).filter((entry) => entry.count > 0 && entry.level <= maximumSpellLevel),
+    slots: slots.map((base, index) => {
+      const spellLevel = index + 1;
+      const unlocked = !Array.isArray(unlocks) || level >= (unlocks[index] ?? Number.POSITIVE_INFINITY);
+      const bonus = unlocked ? (bonusByLevel[spellLevel] ?? 0) : 0;
+      return { level: spellLevel, base: unlocked ? base : 0, bonus, count: (unlocked ? base : 0) + bonus };
+    }).filter((entry) => entry.count > 0 && entry.level <= maximumSpellLevel),
     known: known.map((count, spellLevel) => ({ level: spellLevel, count }))
       .filter((entry) => entry.count > 0 && entry.level <= maximumSpellLevel)
   };
