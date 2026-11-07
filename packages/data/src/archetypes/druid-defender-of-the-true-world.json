@@ -26,35 +26,209 @@
           "name": "Bonus Languages",
           "level": 1,
           "type": "archetype",
-          "summary": "A defender of the true world can select Aklo, Sylvan, or Undercommon as bonus languages, in addition to the normal list of bonus languages available."
+          "summary": "A defender of the true world can select Aklo, Sylvan, or Undercommon as bonus languages, in addition to the normal list of bonus languages available.",
+          "progressionProfiles": [
+            {
+              "id": "defender-true-world-languages",
+              "label": "Bonus language additions",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "languages",
+                  "label": "Additional choices"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "languages": "Aklo, Sylvan, Undercommon"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-defender-of-the-true-world-enemy-of-the-first-world-1",
           "name": "Enemy of the First World",
           "level": 1,
           "type": "archetype",
-          "summary": "A defender of the true world cannot use summon nature’s ally to summon fey creatures. This modifies spontaneous casting."
+          "summary": "A defender of the true world cannot use summon nature’s ally to summon fey creatures. This modifies spontaneous casting.",
+          "resourceActions": [
+            {
+              "id": "defender-true-world-legal-summon",
+              "label": "Confirm Legal Nature Summon",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "confirmations": [
+                {
+                  "id": "non-fey",
+                  "label": "No selected summon nature's ally creature has the fey type",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Apply the archetype's permanent prohibition on summoning fey with summon nature's ally."
+            }
+          ],
+          "progressionProfiles": [
+            {
+              "id": "defender-true-world-summon-restriction",
+              "label": "Enemy of the First World",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "restriction",
+                  "label": "Summon restriction"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "restriction": "Summon nature's ally cannot select fey creatures"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-defender-of-the-true-world-fey-empathy-ex-20",
           "name": "Fey Empathy (Ex)",
-          "level": 20,
+          "level": 1,
           "type": "archetype",
-          "summary": "A defender of the true world gains a +2 competence bonus on Bluff, Diplomacy, and Intimidate checks when interacting with fey creatures. This bonus increases by 1 for every 4 druid levels she has (maximum +7 at 20th level). This replaces wild empathy."
+          "summary": "A defender of the true world gains a +2 competence bonus on Bluff, Diplomacy, and Intimidate checks when interacting with fey creatures. This bonus increases by 1 for every 4 druid levels she has (maximum +7 at 20th level). This replaces wild empathy.",
+          "progressionProfiles": [
+            {
+              "id": "defender-true-world-fey-empathy",
+              "label": "Fey Empathy",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "bonus",
+                  "label": "Bluff, Diplomacy, Intimidate vs. fey"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "bonus": "+2 competence"
+                  }
+                },
+                {
+                  "level": 4,
+                  "values": {
+                    "bonus": "+3 competence"
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "bonus": "+4 competence"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "bonus": "+5 competence"
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "bonus": "+6 competence"
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "bonus": "+7 competence"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-defender-of-the-true-world-fey-stalker-ex-3",
           "name": "Fey Stalker (Ex)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, the defender of the true world’s animal companion and any creatures she summons with summon nature’s ally gain a +1 morale bonus on attack and damage rolls against fey creatures. This bonus increases to +2 at 8th level, +3 at 13th level, and +4 at 18th level. This ability replaces trackless step"
+          "summary": "At 3rd level, the defender of the true world’s animal companion and any creatures she summons with summon nature’s ally gain a +1 morale bonus on attack and damage rolls against fey creatures. This bonus increases to +2 at 8th level, +3 at 13th level, and +4 at 18th level. This ability replaces trackless step",
+          "progressionProfiles": [
+            {
+              "id": "defender-true-world-fey-stalker",
+              "label": "Fey Stalker",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "bonus",
+                  "label": "Companion and summoned creature attacks/damage vs. fey"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 3,
+                  "values": {
+                    "bonus": "+1 morale"
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "bonus": "+2 morale"
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "bonus": "+3 morale"
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "bonus": "+4 morale"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-defender-of-the-true-world-feybane-ex-4",
           "name": "Feybane (Ex)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a defender of the true world doesn’t gain a bonus on saving throws against spells and effects that utilize or target plants. She instead treats her natural attacks as cold iron for the purpose of overcoming damage reduction, and she gains a +2 bonus on caster level checks to overcome the spell resistance of fey creatures. This ability alters resist nature’s lure."
+          "summary": "At 4th level, a defender of the true world doesn’t gain a bonus on saving throws against spells and effects that utilize or target plants. She instead treats her natural attacks as cold iron for the purpose of overcoming damage reduction, and she gains a +2 bonus on caster level checks to overcome the spell resistance of fey creatures. This ability alters resist nature’s lure.",
+          "progressionProfiles": [
+            {
+              "id": "defender-true-world-feybane",
+              "label": "Feybane",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "natural",
+                  "label": "Natural attacks"
+                },
+                {
+                  "id": "spellResistance",
+                  "label": "Fey spell resistance"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "natural": "Count as cold iron for damage reduction",
+                    "spellResistance": "+2 caster-level checks"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-defender-of-the-true-world-beguiling-immunity-ex-9",
@@ -68,19 +242,269 @@
           "name": "First World Deceiver (Su)",
           "level": 13,
           "type": "archetype",
-          "summary": "At 13th level, a defender of the true world gains the ability to change her appearance as per alter self , except she can take the form of a humanoid or fey creature. Her base land speed from this ability cannot exceed 60 feet. This ability replaces a thousand faces."
+          "summary": "At 13th level, a defender of the true world gains the ability to change her appearance as per alter self , except she can take the form of a humanoid or fey creature. Her base land speed from this ability cannot exceed 60 feet. This ability replaces a thousand faces.",
+          "resourceActions": [
+            {
+              "id": "defender-true-world-deceiver",
+              "label": "Assume First World Guise",
+              "classId": "druid",
+              "minimumLevel": 13,
+              "actionTypeByLevel": [
+                {
+                  "level": 13,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Alter self form",
+              "modes": [
+                {
+                  "id": "humanoid",
+                  "label": "Humanoid form",
+                  "summary": "Assume a legal humanoid form as alter self."
+                },
+                {
+                  "id": "fey",
+                  "label": "Fey form",
+                  "summary": "Assume a legal fey form as alter self."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "speed-cap",
+                  "label": "The selected form's base land speed is no higher than 60 feet",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "First World Deceiver",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Assume the selected humanoid or fey form under alter self, with base land speed capped at 60 feet.",
+                "defaultRounds": 130,
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 13,
+                    "rounds": 130
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 140
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 150
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 160
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 170
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 180
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 190
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 200
+                  }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Select a legal form and track the exact minute-per-level alter self duration."
+            }
+          ]
         }
       ]
     }
   ],
-  "classSkillAdditions": ["Diplomacy"],
+  "classSkillAdditions": [
+    "Diplomacy"
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Defender%20of%20the%20True%20World"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Diplomacy proficiency, added languages, the fey summon guard, all Fey Empathy and Fey Stalker scaling bonuses, cold-iron natural attacks, the fey spell-resistance bonus, Beguiling Immunity, and both First World Deceiver forms and duration are automated."
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-defender-of-the-true-world-fey-empathy-ex-20",
+      "label": "Fey Empathy — Bluff",
+      "condition": "Bluff checks when interacting with fey",
+      "minimumLevel": 1,
+      "base": 2,
+      "bonusByLevel": [
+        {
+          "level": 1,
+          "bonus": 2
+        },
+        {
+          "level": 4,
+          "bonus": 3
+        },
+        {
+          "level": 8,
+          "bonus": 4
+        },
+        {
+          "level": 12,
+          "bonus": 5
+        },
+        {
+          "level": 16,
+          "bonus": 6
+        },
+        {
+          "level": 20,
+          "bonus": 7
+        }
+      ]
+    },
+    {
+      "sourceFeatureId": "druid-defender-of-the-true-world-fey-empathy-ex-20",
+      "label": "Fey Empathy — Diplomacy",
+      "condition": "Diplomacy checks when interacting with fey",
+      "minimumLevel": 1,
+      "base": 2,
+      "bonusByLevel": [
+        {
+          "level": 1,
+          "bonus": 2
+        },
+        {
+          "level": 4,
+          "bonus": 3
+        },
+        {
+          "level": 8,
+          "bonus": 4
+        },
+        {
+          "level": 12,
+          "bonus": 5
+        },
+        {
+          "level": 16,
+          "bonus": 6
+        },
+        {
+          "level": 20,
+          "bonus": 7
+        }
+      ]
+    },
+    {
+      "sourceFeatureId": "druid-defender-of-the-true-world-fey-empathy-ex-20",
+      "label": "Fey Empathy — Intimidate",
+      "condition": "Intimidate checks when interacting with fey",
+      "minimumLevel": 1,
+      "base": 2,
+      "bonusByLevel": [
+        {
+          "level": 1,
+          "bonus": 2
+        },
+        {
+          "level": 4,
+          "bonus": 3
+        },
+        {
+          "level": 8,
+          "bonus": 4
+        },
+        {
+          "level": 12,
+          "bonus": 5
+        },
+        {
+          "level": 16,
+          "bonus": 6
+        },
+        {
+          "level": 20,
+          "bonus": 7
+        }
+      ]
+    },
+    {
+      "sourceFeatureId": "druid-defender-of-the-true-world-fey-stalker-ex-3",
+      "label": "Fey Stalker — attacks",
+      "condition": "Animal companion and summon nature's ally creature attack rolls against fey",
+      "minimumLevel": 3,
+      "base": 1,
+      "bonusByLevel": [
+        {
+          "level": 3,
+          "bonus": 1
+        },
+        {
+          "level": 8,
+          "bonus": 2
+        },
+        {
+          "level": 13,
+          "bonus": 3
+        },
+        {
+          "level": 18,
+          "bonus": 4
+        }
+      ]
+    },
+    {
+      "sourceFeatureId": "druid-defender-of-the-true-world-fey-stalker-ex-3",
+      "label": "Fey Stalker — damage",
+      "condition": "Animal companion and summon nature's ally creature damage rolls against fey",
+      "minimumLevel": 3,
+      "base": 1,
+      "bonusByLevel": [
+        {
+          "level": 3,
+          "bonus": 1
+        },
+        {
+          "level": 8,
+          "bonus": 2
+        },
+        {
+          "level": 13,
+          "bonus": 3
+        },
+        {
+          "level": 18,
+          "bonus": 4
+        }
+      ]
+    },
+    {
+      "sourceFeatureId": "druid-defender-of-the-true-world-feybane-ex-4",
+      "label": "Feybane",
+      "condition": "Caster-level checks to overcome the spell resistance of fey",
+      "minimumLevel": 4,
+      "base": 2
+    }
+  ],
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "druid-defender-of-the-true-world-beguiling-immunity-ex-9",
+      "kind": "immunity",
+      "label": "Beguiling Immunity",
+      "minimumLevel": 9,
+      "base": 0,
+      "qualifier": "mind-affecting effects created by fey"
+    }
   ]
 }
