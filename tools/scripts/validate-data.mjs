@@ -349,7 +349,7 @@ for (const [index, url] of archetypeUrls.entries()) {
       }
       if (feature.spellAutomation?.preparedKeywordConversion !== undefined) {
         const conversion = feature.spellAutomation.preparedKeywordConversion;
-        if (!conversion || typeof conversion.label !== "string" || !conversion.label.trim() || typeof conversion.keyword !== "string" || !conversion.keyword.trim()) errors.push(`${file}: ${feature.id} has invalid preparedKeywordConversion`);
+        if (!conversion || typeof conversion.label !== "string" || !conversion.label.trim() || typeof conversion.keyword !== "string" || !conversion.keyword.trim() || (conversion.requiresTargetPrepared !== undefined && typeof conversion.requiresTargetPrepared !== "boolean")) errors.push(`${file}: ${feature.id} has invalid preparedKeywordConversion`);
       }
     }
   }

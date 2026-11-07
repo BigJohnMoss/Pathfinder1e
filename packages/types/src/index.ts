@@ -528,6 +528,7 @@ export interface ClassFeatureOccurrence {
     preparedKeywordConversion?: {
       label: string;
       keyword: string;
+      requiresTargetPrepared?: boolean;
     };
     fastHealingAura?: {
       label: string;
