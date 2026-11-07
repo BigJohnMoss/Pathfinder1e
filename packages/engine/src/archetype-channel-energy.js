@@ -2,7 +2,7 @@ import { resolvedArchetypeResourceAdjustments } from "./archetype-resources.js";
 
 const featureLabel = (feature) => String(feature?.name ?? "Channel Energy").replace(/\s*\((?:Ex|Su|Sp)(?:,\s*(?:Ex|Su|Sp))*\)\s*$/i, "").trim();
 
-function channelModes(summary) {
+function channelModes(summary, feature) {
   if (/only to harm undead or haunts/i.test(summary)) return [
     { id: "harm-undead", label: "Harm undead", summary: "Channel positive energy to harm eligible undead." },
     { id: "harm-haunts", label: "Harm haunts", summary: "Channel positive energy to disrupt eligible haunts." },
@@ -16,6 +16,12 @@ function channelModes(summary) {
     { id: "positive-harm", label: "Positive: harm undead", summary: "Channel positive energy to harm eligible undead; affected creatures use the listed Will save." },
     { id: "negative-heal", label: "Negative: heal undead", summary: "Channel negative energy to heal eligible undead." },
     { id: "negative-harm", label: "Negative: harm living", summary: "Channel negative energy to harm eligible living creatures; affected creatures use the listed Will save." },
+  ];
+  if (feature?.channelEnergyPolarityOptionIds && /good .*channels positive energy|good witch channels positive energy/i.test(summary) && /evil .*channels negative energy|evil witch channels negative energy/i.test(summary)) return [
+    { id: "positive-heal", label: "Positive: heal living", summary: "Channel positive energy to heal eligible living creatures.", requiredOptionId: feature.channelEnergyPolarityOptionIds.positive },
+    { id: "positive-harm", label: "Positive: harm undead", summary: "Channel positive energy to harm eligible undead; affected creatures use the listed Will save.", requiredOptionId: feature.channelEnergyPolarityOptionIds.positive },
+    { id: "negative-heal", label: "Negative: heal undead", summary: "Channel negative energy to heal eligible undead.", requiredOptionId: feature.channelEnergyPolarityOptionIds.negative },
+    { id: "negative-harm", label: "Negative: harm living", summary: "Channel negative energy to harm eligible living creatures; affected creatures use the listed Will save.", requiredOptionId: feature.channelEnergyPolarityOptionIds.negative },
   ];
   if (/channel negative energy/i.test(summary)) return [
     { id: "heal-undead", label: "Heal undead", summary: "Channel negative energy to heal eligible undead." },
@@ -78,6 +84,11 @@ function channelDice(feature, summary) {
     };
   }
   const fixed = summary.match(/(?:equal to|heals or deals|burst heals or deals)\s+(\d+)d(\d+)/i);
+  if (fixed && feature.channelEnergyDiceAdvancementOptionIds?.length) return {
+    diceCountByLevel: [{ level: minimumLevel, count: Number(fixed[1]) }],
+    dieSidesByLevel: [{ level: minimumLevel, sides: Number(fixed[2]) }],
+    diceCountBonusOptionIds: feature.channelEnergyDiceAdvancementOptionIds,
+  };
   if (fixed && !/as a cleric/i.test(summary)) return {
     diceCountByLevel: [{ level: minimumLevel, count: Number(fixed[1]) }],
     dieSidesByLevel: [{ level: minimumLevel, sides: Number(fixed[2]) }],
@@ -99,6 +110,7 @@ function fullyRepresented(feature, summary) {
   if (/gains the ability to channel negative energy[^.]+effective cleric level equal to (?:his|her|their) [a-z]+ level\s*(?:-|–|−|minus)\s*3/i.test(summary) && /1 \+ (?:his|her|their) Charisma modifier/i.test(summary)) return true;
   if (/channel positive energy[^.]+3 \+ (?:his|her|their) Charisma modifier/i.test(summary) && /only to harm undead or haunts/i.test(summary)) return true;
   if (/channels the pure evil|channel evil/i.test(summary) && /nauseated for 1 round and then sickened for 1d4 rounds/i.test(summary)) return true;
+  if (/Every time .*new hex/i.test(summary) && feature.channelEnergyDiceAdvancementOptionIds?.length && feature.channelEnergyPolarityOptionIds) return true;
   return false;
 }
 
@@ -119,7 +131,7 @@ export function inferredArchetypeChannelEnergyActionDetails(archetype) {
     if (!resource) continue;
     const minimumLevel = Math.max(1, Number(resource.minimumLevel ?? feature.level ?? 1));
     const levelAdjustment = /DC (?:of this save )?is equal to 10 \+ 1\/2 (?:the )?[^.]{0,80}\blevel/i.test(summary) ? 0 : effectiveLevelAdjustment(summary);
-    const modes = channelModes(summary);
+    const modes = channelModes(summary, feature);
     actions.push({
       sourceFeatureId: feature.id,
       action: {

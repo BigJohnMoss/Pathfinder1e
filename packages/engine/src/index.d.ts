@@ -129,6 +129,7 @@ export function isPersonalRangeSpell(spell: Pick<CharacterSpell, "range">): bool
 export function extendedSpellDuration(duration?: string | null): string | null;
 export function arcaneReservoir(level: number): { maximum: number; dailyRefresh: number };
 export { bardicPerformanceRounds } from "./bardic-performance.js";
+export { channelEnergyPolarityOptionIdsForAlignment } from "./channel-energy.js";
 export { druidWildShapeUses } from "./druid-wild-shape.js";
 export { apgClassResourceMaximums, applyArchetypeResourceAdjustments, normalizeClassResourceUses, normalizeClassResourcesByClass } from "./apg-class-resources.js";
 export { eidolonEvolutionPool, eidolonProgression, eidolonBaseForm, validateEidolonEvolutions } from "./eidolon.js";

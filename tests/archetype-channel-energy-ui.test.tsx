@@ -101,3 +101,26 @@ test("Channel Evil healing mode does not request an enemy save", async () => {
   assert.equal(screen.queryByLabelText("Use Channel Evil target Hit Dice"), null);
   assert.equal(screen.getAllByText("Activation: standard action.").length, 1);
 });
+
+test("Hex Channeler requires its alignment polarity and counts only traded hexes", async () => {
+  const witch = data.classes.find((item) => item.id === "witch");
+  const hexChanneler = archetypes.find((item) => item.id === "witch-hex-channeler");
+  const applied = applyArchetype(witch, hexChanneler, data.classes, data.spells);
+  const common = {
+    level: 10,
+    className: applied.name,
+    features: featuresThroughLevel(applied, 10),
+    classLevels: { witch: 10 },
+    abilityModifiers: { charisma: 3 },
+    dailyResources: [{ id: "archetype-witch-hex-channeler-channel-energy-su-2", label: "Channel Energy", unit: "use", maximum: 6, used: 0, onUsedChange: () => {} }],
+  };
+  const { rerender } = render(<ClassFeatures {...common} />);
+  assert.equal(screen.getByRole("button", { name: "Use Channel Energy" }).hasAttribute("disabled"), true);
+
+  const selectedOptionIds = ["hex-channeler-positive", "hex-channeler-channel-die-4", "hex-channeler-channel-die-8", "hex-channeler-channel-die-10"];
+  rerender(<ClassFeatures {...common} selectedOptionIds={selectedOptionIds} />);
+  assert.equal(screen.getByLabelText("Use Channel Energy roll profile").textContent, "4d6");
+  const modes = screen.getByRole("combobox", { name: "Use Channel Energy mode" }) as HTMLSelectElement;
+  assert.deepEqual(Array.from(modes.options).map((option) => option.value), ["positive-heal", "positive-harm"]);
+  assert.equal(screen.getByRole("button", { name: "Use Channel Energy" }).hasAttribute("disabled"), false);
+});

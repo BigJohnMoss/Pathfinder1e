@@ -76,3 +76,18 @@ test("catalogue channel inference remains exact and excludes incidental channel 
   assert.ok(actions.every(({ action }) => action.resourceId && action.diceRoll && action.modes.length >= 2 && action.diceRoll.modeEffects.length === action.modes.length));
   assert.equal(actions.some(({ sourceFeatureId }) => /(?:cleansing-flames|maddening-gaze|luck-hexes)/i.test(sourceFeatureId)), false);
 });
+
+test("Hex Channeler advances dice only for persistent traded-hex choices", () => {
+  const source = archetype("witch-hex-channeler");
+  const action = inferArchetypeChannelEnergyActions(source)[0].action;
+  assert.deepEqual(action.diceRoll.diceCountByLevel, [{ level: 2, count: 1 }]);
+  assert.equal(action.diceRoll.diceCountBonusOptionIds.length, 9);
+  assert.deepEqual(action.modes.map(({ id, requiredOptionId }) => [id, requiredOptionId]), [
+    ["positive-heal", "hex-channeler-positive"],
+    ["positive-harm", "hex-channeler-positive"],
+    ["negative-heal", "hex-channeler-negative"],
+    ["negative-harm", "hex-channeler-negative"],
+  ]);
+  assert.deepEqual(archetypeAutomationSummary(source, data.feats, data.spells).manual, []);
+  assert.equal(source.mechanicalCoverage, "full");
+});

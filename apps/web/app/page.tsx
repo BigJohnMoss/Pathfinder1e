@@ -90,6 +90,7 @@ import {
   availableOptions,
   bardicPerformanceRounds,
   characterCombatStats,
+  channelEnergyPolarityOptionIdsForAlignment,
   characterLandSpeed,
   characterPrecisionDamageRules,
   classProgression,
@@ -1657,9 +1658,12 @@ export default function Home() {
     const unrestrictedBaseGroup = generatedFeatGroup ?? signatureGroup ?? optionGroups.find(
       (item) => item.id === feature.optionGroupId,
     );
-    const rawBaseGroup = unrestrictedBaseGroup && feature.optionChoiceIds?.length
-      ? { ...unrestrictedBaseGroup, options: unrestrictedBaseGroup.options.filter((option) => feature.optionChoiceIds?.includes(option.id)) }
+    const alignmentRestrictedGroup = unrestrictedBaseGroup && feature.optionGroupId === "hex-channeler-polarities"
+      ? { ...unrestrictedBaseGroup, options: unrestrictedBaseGroup.options.filter((option) => channelEnergyPolarityOptionIdsForAlignment(alignment).includes(option.id)) }
       : unrestrictedBaseGroup;
+    const rawBaseGroup = alignmentRestrictedGroup && feature.optionChoiceIds?.length
+      ? { ...alignmentRestrictedGroup, options: alignmentRestrictedGroup.options.filter((option) => feature.optionChoiceIds?.includes(option.id)) }
+      : alignmentRestrictedGroup;
     const augmentationOptions = (featureCharacterClass?.optionGroupAugmentations ?? [])
       .filter((augmentation) =>
         augmentation.targetGroupId === feature.optionGroupId &&
@@ -1830,7 +1834,9 @@ export default function Home() {
               )
           : feature.requiredSpellLevel !== undefined
             ? baseOptions.filter((option) => (option as CharacterOption).spellLevel === feature.requiredSpellLevel)
-            : baseOptions;
+            : feature.optionGroupId === "witch-hexes"
+              ? baseOptions.filter((option) => (option as CharacterOption).repeatable || option.id === selectedOptions[feature.id] || !Object.entries(selectedOptions).some(([featureId, optionId]) => featureId !== feature.id && optionId === option.id))
+              : baseOptions;
     const levelAwareOptions = options.map((option) => {
       const richOption = option as CharacterOption;
       return richOption.powers && feature.optionGroupId === "blood-arcanist-bloodlines"

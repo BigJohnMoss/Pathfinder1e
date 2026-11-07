@@ -1,0 +1,37 @@
+{
+  "id": "hex-channeler-polarities",
+  "name": "Hex Channeler Energy Polarity",
+  "classIds": [
+    "witch"
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Witch%20Hex%20Channeler"
+  },
+  "optionDefaults": {
+    "groupId": "hex-channeler-polarities",
+    "classIds": [
+      "witch"
+    ],
+    "minimumLevel": 2,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Witch%20Hex%20Channeler"
+    }
+  },
+  "options": [
+    {
+      "id": "hex-channeler-positive",
+      "name": "Positive Energy",
+      "benefit": "Heal living creatures or harm undead with positive energy."
+    },
+    {
+      "id": "hex-channeler-negative",
+      "name": "Negative Energy",
+      "benefit": "Heal undead or harm living creatures with negative energy."
+    }
+  ]
+}
