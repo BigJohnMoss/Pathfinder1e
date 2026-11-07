@@ -43,76 +43,428 @@
           "name": "Illiteracy",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a feral child is unable to read and write, though she may learn by taking 1 rank of Linguistics. She does not gain Druidic as a free language and cannot select Sylvan as a bonus language."
+          "summary": "At 1st level, a feral child is unable to read and write, though she may learn by taking 1 rank of Linguistics. She does not gain Druidic as a free language and cannot select Sylvan as a bonus language.",
+          "progressionProfiles": [
+            {
+              "id": "feral-child-literacy",
+              "label": "Illiteracy",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "rule",
+                  "label": "Language rule"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "rule": "Cannot read or write until 1 Linguistics rank is purchased; does not gain Druidic and cannot choose Sylvan as a bonus language"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-feral-child-improved-unarmed-strike-1",
           "name": "Improved Unarmed Strike",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a feral child gains Improved Unarmed Strike as a bonus feat."
+          "summary": "At 1st level, a feral child gains Improved Unarmed Strike as a bonus feat.",
+          "grantedFeatId": "improved-unarmed-strike"
         },
         {
           "id": "druid-feral-child-beast-family-ex-1",
           "name": "Beast Family (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "At 1st level, a feral child may choose one specific type of animal as the type that raised her. She gains a +2 circumstance bonus on Handle Animal and wild empathy checks with animals of that type, and she can communicate with them as if using a continual speak with animals spell-like ability, but this ability is nonmagical."
+          "type": "selectable",
+          "summary": "At 1st level, a feral child may choose one specific type of animal as the type that raised her. She gains a +2 circumstance bonus on Handle Animal and wild empathy checks with animals of that type, and she can communicate with them as if using a continual speak with animals spell-like ability, but this ability is nonmagical.",
+          "choiceRequired": true,
+          "optionGroupId": "feral-child-beast-families",
+          "optionChoiceIds": [
+            "feral-child-beast-family"
+          ],
+          "progressionKey": "feral-child-beast-family",
+          "resourceActions": [
+            {
+              "id": "feral-child-speak-with-family",
+              "label": "Speak with Beast Family",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "requiredOptionId": "feral-child-beast-family",
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "free"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "family-type",
+                  "label": "The target is the selected Beast Family animal type",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Beast Family Communication",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Communicate nonmagically with the selected animal family as though using speak with animals.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Record communication with the selected animal family; this ability is nonmagical and continual."
+            }
+          ]
         },
         {
           "id": "druid-feral-child-nature-bond-ex-1",
           "name": "Nature Bond (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "At 1st level, a feral child must select an animal companion as her nature bond."
+          "type": "selectable",
+          "summary": "At 1st level, a feral child must select an animal companion as her nature bond.",
+          "choiceRequired": true,
+          "optionGroupId": "druid-nature-bonds",
+          "optionChoiceIds": [
+            "druid-nature-bond-animal"
+          ],
+          "progressionKey": "druid-nature-bond"
         },
         {
           "id": "druid-feral-child-favored-terrain-ex-3",
           "name": "Favored Terrain (Ex)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, a feral child gains the favored terrain ability as a ranger of her class level. A feral child may not choose urban as a favored terrain. This ability replaces trackless step and a thousand faces."
+          "summary": "At 3rd level, a feral child gains the favored terrain ability as a ranger of her class level. A feral child may not choose urban as a favored terrain. This ability replaces trackless step and a thousand faces.",
+          "optionChoiceIds": [
+            "ranger-terrain-cold",
+            "ranger-terrain-desert",
+            "ranger-terrain-forest",
+            "ranger-terrain-jungle",
+            "ranger-terrain-mountain",
+            "ranger-terrain-plains",
+            "ranger-terrain-planes",
+            "ranger-terrain-swamp",
+            "ranger-terrain-underground",
+            "ranger-terrain-water"
+          ]
         },
         {
           "id": "druid-feral-child-native-cunning-ex-3",
-          "name": "Native Cunning (Ex)",
+          "name": "Native Cunning Maneuver 1",
           "level": 3,
-          "type": "archetype",
-          "summary": "At 3rd level, a feral child gains trap sense as a barbarian of equal level, and in her favored terrain, she immediately receives a Perception check to notice traps within 10 feet, as the trap spotter rogue talent. In addition, at 3rd level and every three levels thereafter, she may choose one combat maneuver, and gains a bonus equal to her trap sense bonus to her CMD against that maneuver. This ability replaces wild shape."
+          "type": "selectable",
+          "summary": "At 3rd level, a feral child gains trap sense as a barbarian of equal level, and in her favored terrain, she immediately receives a Perception check to notice traps within 10 feet, as the trap spotter rogue talent. In addition, at 3rd level and every three levels thereafter, she may choose one combat maneuver, and gains a bonus equal to her trap sense bonus to her CMD against that maneuver. This ability replaces wild shape.",
+          "choiceRequired": true,
+          "optionGroupId": "feral-child-combat-maneuvers",
+          "progressionKey": "feral-child-native-cunning",
+          "progressionProfiles": [
+            {
+              "id": "feral-child-native-cunning",
+              "label": "Native Cunning",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "trapSense",
+                  "label": "Trap sense / selected-maneuver CMD"
+                },
+                {
+                  "id": "maneuvers",
+                  "label": "Maneuvers selected"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 3,
+                  "values": {
+                    "trapSense": "+1",
+                    "maneuvers": 1
+                  }
+                },
+                {
+                  "level": 6,
+                  "values": {
+                    "trapSense": "+2",
+                    "maneuvers": 2
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "trapSense": "+3",
+                    "maneuvers": 3
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "trapSense": "+4",
+                    "maneuvers": 4
+                  }
+                },
+                {
+                  "level": 15,
+                  "values": {
+                    "trapSense": "+5",
+                    "maneuvers": 5
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "trapSense": "+6",
+                    "maneuvers": 6
+                  }
+                }
+              ],
+              "summary": "Trap Spotter grants an immediate Perception check for traps within 10 feet while in favored terrain."
+            }
+          ]
+        },
+        {
+          "id": "druid-feral-child-native-cunning-ex-3-choice-6",
+          "name": "Native Cunning Maneuver 2",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Choose another combat maneuver. Add the current trap-sense bonus to CMD against that maneuver.",
+          "choiceRequired": true,
+          "optionGroupId": "feral-child-combat-maneuvers",
+          "progressionKey": "feral-child-native-cunning"
+        },
+        {
+          "id": "druid-feral-child-native-cunning-ex-3-choice-9",
+          "name": "Native Cunning Maneuver 3",
+          "level": 9,
+          "type": "selectable",
+          "summary": "Choose another combat maneuver. Add the current trap-sense bonus to CMD against that maneuver.",
+          "choiceRequired": true,
+          "optionGroupId": "feral-child-combat-maneuvers",
+          "progressionKey": "feral-child-native-cunning"
+        },
+        {
+          "id": "druid-feral-child-native-cunning-ex-3-choice-12",
+          "name": "Native Cunning Maneuver 4",
+          "level": 12,
+          "type": "selectable",
+          "summary": "Choose another combat maneuver. Add the current trap-sense bonus to CMD against that maneuver.",
+          "choiceRequired": true,
+          "optionGroupId": "feral-child-combat-maneuvers",
+          "progressionKey": "feral-child-native-cunning"
+        },
+        {
+          "id": "druid-feral-child-native-cunning-ex-3-choice-15",
+          "name": "Native Cunning Maneuver 5",
+          "level": 15,
+          "type": "selectable",
+          "summary": "Choose another combat maneuver. Add the current trap-sense bonus to CMD against that maneuver.",
+          "choiceRequired": true,
+          "optionGroupId": "feral-child-combat-maneuvers",
+          "progressionKey": "feral-child-native-cunning"
+        },
+        {
+          "id": "druid-feral-child-native-cunning-ex-3-choice-18",
+          "name": "Native Cunning Maneuver 6",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Choose another combat maneuver. Add the current trap-sense bonus to CMD against that maneuver.",
+          "choiceRequired": true,
+          "optionGroupId": "feral-child-combat-maneuvers",
+          "progressionKey": "feral-child-native-cunning"
         },
         {
           "id": "druid-feral-child-native-fortitude-ex-4",
           "name": "Native Fortitude (Ex)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a feral child gains a +1 bonus on saving throws against disease, exhaustion, fatigue, fear, and poison. When she is in her favored terrain, she instead applies her favored terrain bonus on such saving throws. She also recovers from ability damage, exhaustion, and fatigue at twice the normal rate. This ability replaces resist nature’s lure."
+          "summary": "At 4th level, a feral child gains a +1 bonus on saving throws against disease, exhaustion, fatigue, fear, and poison. When she is in her favored terrain, she instead applies her favored terrain bonus on such saving throws. She also recovers from ability damage, exhaustion, and fatigue at twice the normal rate. This ability replaces resist nature’s lure.",
+          "progressionProfiles": [
+            {
+              "id": "feral-child-native-fortitude",
+              "label": "Native Fortitude",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "saves",
+                  "label": "Disease, exhaustion, fatigue, fear, poison"
+                },
+                {
+                  "id": "recovery",
+                  "label": "Recovery"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "saves": "+1, or the current favored-terrain bonus while in favored terrain",
+                    "recovery": "Twice normal rate from ability damage, exhaustion, and fatigue"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-feral-child-native-call-su-9",
           "name": "Native Call (Su)",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, when in her favored terrain, for any summon nature’s ally spells a feral child uses to summon animals that are native to that terrain, she treats the duration of the spell as if she were 2 levels higher. At 17th level, when the feral child uses summon nature’s ally spells to summon such animals, those animals gain a +2 bonus to both their Strength and Constitution ability scores. This stacks with the effects of the Augmented Summoning feat. This ability replaces venom immunity and timeless body."
+          "summary": "At 9th level, when in her favored terrain, for any summon nature’s ally spells a feral child uses to summon animals that are native to that terrain, she treats the duration of the spell as if she were 2 levels higher. At 17th level, when the feral child uses summon nature’s ally spells to summon such animals, those animals gain a +2 bonus to both their Strength and Constitution ability scores. This stacks with the effects of the Augmented Summoning feat. This ability replaces venom immunity and timeless body.",
+          "resourceActions": [
+            {
+              "id": "feral-child-native-call",
+              "label": "Track Native Animal Summon",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "modeLabel": "Current Native Call tier",
+              "modes": [
+                {
+                  "id": "extended",
+                  "label": "+2 effective levels for duration",
+                  "minimumLevel": 9,
+                  "maximumLevel": 16,
+                  "summary": "A native animal summoned in favored terrain uses caster level +2 for duration only."
+                },
+                {
+                  "id": "empowered",
+                  "label": "Extended; +2 Strength and Constitution",
+                  "minimumLevel": 17,
+                  "summary": "A native animal summoned in favored terrain uses caster level +2 for duration and gains +2 Strength and Constitution."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "favored-terrain",
+                  "label": "The Feral Child is in a selected favored terrain",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "native-animal",
+                  "label": "Every summoned creature is an animal native to that terrain",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Native Call Summon",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "The summoned native animals receive the selected level-aware Native Call benefits. Augment Summoning continues to stack.",
+                "defaultRounds": 1
+              },
+              "summary": "Record the favored-terrain summon and its extended duration; apply the level-17 ability bonuses when unlocked."
+            }
+          ]
         }
       ]
     }
   ],
-  "classSkillAdditions": ["Acrobatics"],
-  "classSkillRemovals": ["Fly","Profession"],
-  "proficiencyAdjustments": [{"category":"weapon","operation":"remove","proficiencies":["Scimitar","Scythe","Sickle"]},{"category":"shield","operation":"remove","proficiencies":["All shields"]}],
+  "classSkillAdditions": [
+    "Acrobatics"
+  ],
+  "classSkillRemovals": [
+    "Fly",
+    "Profession"
+  ],
+  "proficiencyAdjustments": [
+    {
+      "category": "weapon",
+      "operation": "remove",
+      "proficiencies": [
+        "Scimitar",
+        "Scythe",
+        "Sickle"
+      ]
+    },
+    {
+      "category": "shield",
+      "operation": "remove",
+      "proficiencies": [
+        "All shields"
+      ]
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Feral%20Child"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Human ancestry, proficiencies, skills, literacy restrictions, Improved Unarmed Strike, custom Beast Family selection, communication and bonuses, animal-only Nature Bond, non-urban Favored Terrain progression, all six Native Cunning maneuver choices and CMD scaling, Trap Spotter, Native Fortitude, and both Native Call tiers are automated."
   ],
   "requirements": [
     {
       "type": "ancestry",
       "id": "human"
     }
+  ],
+  "wildEmpathyAdjustments": [
+    {
+      "sourceFeatureId": "druid-feral-child-beast-family-ex-1",
+      "label": "Beast Family",
+      "classId": "druid",
+      "minimumLevel": 1,
+      "bonus": 2,
+      "targets": "the selected Beast Family animal type",
+      "condition": "when interacting with the selected animal family"
+    }
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "druid-feral-child-beast-family-ex-1",
+      "skill": "Handle Animal",
+      "minimumLevel": 1,
+      "base": 2,
+      "condition": "with the selected Beast Family animal type"
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-feral-child-native-cunning-ex-3",
+      "label": "Native Cunning — selected maneuvers",
+      "condition": "CMD against each selected Native Cunning combat maneuver",
+      "minimumLevel": 3,
+      "base": 0,
+      "levelDivisor": 3,
+      "levelMultiplier": 1,
+      "minimum": 1,
+      "maximum": 6
+    },
+    {
+      "sourceFeatureId": "druid-feral-child-native-fortitude-ex-4",
+      "label": "Native Fortitude",
+      "condition": "Saving throws against disease, exhaustion, fatigue, fear, and poison outside favored terrain",
+      "minimumLevel": 4,
+      "base": 1
+    },
+    {
+      "sourceFeatureId": "druid-feral-child-native-call-su-9",
+      "label": "Native Call — duration",
+      "condition": "Caster level for duration only when summon nature's ally summons animals native to the current favored terrain",
+      "minimumLevel": 9,
+      "base": 2
+    },
+    {
+      "sourceFeatureId": "druid-feral-child-native-call-su-9",
+      "label": "Native Call — Strength",
+      "condition": "Strength of animals summoned through Native Call",
+      "minimumLevel": 17,
+      "base": 2
+    },
+    {
+      "sourceFeatureId": "druid-feral-child-native-call-su-9",
+      "label": "Native Call — Constitution",
+      "condition": "Constitution of animals summoned through Native Call",
+      "minimumLevel": 17,
+      "base": 2
+    }
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-animal"
   ]
 }

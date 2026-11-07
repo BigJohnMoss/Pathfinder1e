@@ -1,0 +1,30 @@
+{
+  "id": "feral-child-combat-maneuvers",
+  "name": "Feral Child Defensive Maneuvers",
+  "classIds": ["druid"],
+  "uniqueAcrossSelections": true,
+  "optionDefaults": {
+    "groupId": "feral-child-combat-maneuvers",
+    "classIds": ["druid"],
+    "minimumLevel": 3,
+    "prerequisites": [],
+    "benefit": "Add the current Native Cunning trap-sense bonus to CMD against this combat maneuver.",
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Feral%20Child"
+    }
+  },
+  "options": [
+    {"id": "feral-child-maneuver-bull-rush", "name": "Bull Rush"},
+    {"id": "feral-child-maneuver-dirty-trick", "name": "Dirty Trick"},
+    {"id": "feral-child-maneuver-disarm", "name": "Disarm"},
+    {"id": "feral-child-maneuver-drag", "name": "Drag"},
+    {"id": "feral-child-maneuver-grapple", "name": "Grapple"},
+    {"id": "feral-child-maneuver-overrun", "name": "Overrun"},
+    {"id": "feral-child-maneuver-reposition", "name": "Reposition"},
+    {"id": "feral-child-maneuver-steal", "name": "Steal"},
+    {"id": "feral-child-maneuver-sunder", "name": "Sunder"},
+    {"id": "feral-child-maneuver-trip", "name": "Trip"}
+  ]
+}
