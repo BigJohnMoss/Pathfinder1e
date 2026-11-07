@@ -28,8 +28,8 @@ test("full archetypes never report manual effects", () => {
   assert.deepEqual(archetypeAutomationSummary({ mechanicalCoverage: "full", replacements: [{ features: [{ name: "Feature", level: 1 }] }] }).manual, []);
 });
 
-test("completed single-gap Alchemist archetypes expose no manual mechanics", () => {
-  for (const id of ["alchemist-aerochemist", "alchemist-oenopion-researcher", "alchemist-royal-alchemist", "alchemist-preservationist"]) {
+test("completed Alchemist archetypes expose no manual mechanics", () => {
+  for (const id of ["alchemist-aerochemist", "alchemist-oenopion-researcher", "alchemist-royal-alchemist", "alchemist-preservationist", "alchemist-gloom-chymist"]) {
     const archetype = catalogueArchetypes.find((candidate) => candidate.id === id);
     assert.ok(archetype, id);
     assert.deepEqual(archetypeAutomationSummary(archetype, [], catalogueSpells).manual, [], id);

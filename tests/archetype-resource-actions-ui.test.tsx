@@ -17,6 +17,7 @@ const ectochymist = JSON.parse(readFileSync(new URL("../packages/data/src/archet
 const aerochemist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-aerochemist.json", import.meta.url), "utf8")) as CharacterArchetype;
 const oenopionResearcher = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-oenopion-researcher.json", import.meta.url), "utf8")) as CharacterArchetype;
 const royalAlchemist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-royal-alchemist.json", import.meta.url), "utf8")) as CharacterArchetype;
+const gloomChymist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-gloom-chymist.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -119,4 +120,27 @@ test("Royal Alchemist antidotes enforce pool cost and calculate bonus and durati
   assert.equal(effects[0]?.bonus, 4);
   assert.equal(effects[0]?.roundsRemaining, 2400);
   assert.equal(screen.getByRole("button", { name: "Prepare immunity antidote" }).hasAttribute("disabled"), true);
+});
+
+test("Gloom Chymist rolls scaling cold damage and tracks its light field", async () => {
+  const effects: ActiveEffect[] = [];
+  const used: number[] = [];
+  const applied = applyArchetype(alchemist, gloomChymist);
+  render(<ClassFeatures
+    level={9}
+    className={applied.name}
+    features={featuresThroughLevel(applied, 9)}
+    classLevels={{ alchemist: 9 }}
+    abilityModifiers={{ dexterity: 3, intelligence: 4 }}
+    baseAttackBonus={6}
+    dailyResources={[{ id: "glooms", label: "Gloom", unit: "use", maximum: 7, used: 0, onUsedChange: (value) => used.push(value) }]}
+    activeEffects={effects}
+    onAddEffect={(effect) => effects.push(effect)}
+  />);
+  await userEvent.setup().click(screen.getByRole("button", { name: "Throw gloom with light change" }));
+  assert.deepEqual(used, [1]);
+  assert.equal(effects[0]?.roundsRemaining, 4);
+  assert.equal(effects[0]?.target, "area");
+  assert.match(screen.getByLabelText("Throw gloom with light change result").textContent ?? "", /5d6.*\+ 4.*cold damage/i);
+  assert.match(screen.getByRole("button", { name: "Create empowered umbral gloom" }).closest("div")?.textContent ?? "", /Spend 2/);
 });
