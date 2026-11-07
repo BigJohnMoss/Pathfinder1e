@@ -26,50 +26,499 @@
           "id": "druid-kraken-caller-call-of-the-waves-ex-1",
           "name": "Call of the Waves (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "A kraken caller must choose Besmara as her deity. If she ever changes her deity, she loses this archetype and becomes a normal druid."
+          "type": "selectable",
+          "summary": "A kraken caller must choose Besmara as her deity. If she ever changes her deity, she loses this archetype and becomes a normal druid.",
+          "choiceRequired": true,
+          "optionGroupId": "kraken-caller-deity",
+          "optionChoiceIds": [
+            "kraken-caller-deity-besmara"
+          ],
+          "progressionKey": "kraken-caller-deity"
         },
         {
           "id": "druid-kraken-caller-bonus-languages-1",
           "name": "Bonus Languages",
           "level": 1,
           "type": "archetype",
-          "summary": "A kraken caller’s bonus language options include Aquan instead of Sylvan. This ability alters the druid’s bonus languages class feature."
+          "summary": "A kraken caller’s bonus language options include Aquan instead of Sylvan. This ability alters the druid’s bonus languages class feature.",
+          "progressionProfiles": [
+            {
+              "id": "kraken-caller-languages",
+              "label": "Kraken Caller Languages",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "added",
+                  "label": "Added"
+                },
+                {
+                  "id": "removed",
+                  "label": "Removed"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "added": "Aquan",
+                    "removed": "Sylvan"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-kraken-caller-dauntless-swimmer-ex-2",
           "name": "Dauntless Swimmer (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a kraken caller can always take 10 on Swim checks, even if she is rushed or threatened. This ability replaces woodland stride."
+          "summary": "At 2nd level, a kraken caller can always take 10 on Swim checks, even if she is rushed or threatened. This ability replaces woodland stride.",
+          "resourceActions": [
+            {
+              "id": "kraken-caller-take-ten-swim",
+              "label": "Take 10 on Swim",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "fixedD20Result": {
+                "label": "Swim d20 result before modifiers",
+                "result": 10
+              },
+              "summary": "Use a natural result of 10 on a Swim check even while rushed or threatened."
+            }
+          ]
         },
         {
           "id": "druid-kraken-caller-hold-breath-ex-3",
           "name": "Hold Breath (Ex)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, a kraken caller can hold her breath for a number of minutes equal to her Constitution score before she risks drowning. This ability replaces trackless step."
+          "summary": "At 3rd level, a kraken caller can hold her breath for a number of minutes equal to her Constitution score before she risks drowning. This ability replaces trackless step.",
+          "numericCalculations": [
+            {
+              "id": "kraken-caller-hold-breath",
+              "label": "Hold Breath",
+              "inputLabel": "Constitution score",
+              "inputMinimum": 1,
+              "inputMaximum": 99,
+              "inputDefault": 10,
+              "outputLabel": "Minutes before drowning checks",
+              "baseByLevel": [
+                {
+                  "level": 3,
+                  "value": 0
+                }
+              ],
+              "classId": "druid",
+              "summary": "The Kraken Caller can hold her breath for this many minutes."
+            }
+          ]
         },
         {
           "id": "druid-kraken-caller-resist-the-waves-lure-ex-4",
           "name": "Resist the Waves’ Lure (Ex)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a kraken caller gains a +4 bonus on saving throws against the spell-like and supernatural abilities of creatures with the aquatic subtype. This ability replaces resist nature’s lure."
+          "summary": "At 4th level, a kraken caller gains a +4 bonus on saving throws against the spell-like and supernatural abilities of creatures with the aquatic subtype. This ability replaces resist nature’s lure.",
+          "progressionProfiles": [
+            {
+              "id": "kraken-caller-aquatic-resistance",
+              "label": "Resist the Waves' Lure",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "save",
+                  "label": "Save bonus"
+                },
+                {
+                  "id": "source",
+                  "label": "Against"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "save": "+4",
+                    "source": "Spell-like and supernatural abilities of aquatic-subtype creatures"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-kraken-caller-wild-shape-su-4",
           "name": "Wild Shape (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "A kraken caller’s options for wild shape are limited to animals with the aquatic or water subtype or that have the amphibious special quality. The kraken caller can alternatively expend a daily use of wild shape to grow tentacles out of her body while otherwise retaining her own form. This effect lasts for 10 minutes per level, or until the kraken caller changes back. At 4th level, the kraken caller grows two tentacles while in this form. The tentacles have a reach of 5 feet regardless of the kraken caller’s size, and the kraken caller can use them as secondary natural attacks that deal 1d4 points of damage (1d3 for a Small kraken caller). She also gains a racial bonus on Climb, Swim, and dirty trick combat maneuver checks equal to the number of tentacles grown. At each of 6th, 8th, 10th, and 12th levels, a kraken caller can grow an additional tentacle. As a move action, she can retract or regrow any number of the additional tentacles, redistributing the mass of any retracted tentacles. For every 2 retracted tentacles, she can increase the reach of the remaining tentacles by 5 feet (to a maximum of 15 feet), or increase the damage dealt by her tentacles as if she were one size category larger. While in this form, a kraken caller can expel a 10-footradius cloud of ink once per minute as a standard action. This cloud provides total concealment in water and persists for 1 round per level. The ink has no effect out of water. This ability alters wild shape."
+          "summary": "A kraken caller’s options for wild shape are limited to animals with the aquatic or water subtype or that have the amphibious special quality. The kraken caller can alternatively expend a daily use of wild shape to grow tentacles out of her body while otherwise retaining her own form. This effect lasts for 10 minutes per level, or until the kraken caller changes back. At 4th level, the kraken caller grows two tentacles while in this form. The tentacles have a reach of 5 feet regardless of the kraken caller’s size, and the kraken caller can use them as secondary natural attacks that deal 1d4 points of damage (1d3 for a Small kraken caller). She also gains a racial bonus on Climb, Swim, and dirty trick combat maneuver checks equal to the number of tentacles grown. At each of 6th, 8th, 10th, and 12th levels, a kraken caller can grow an additional tentacle. As a move action, she can retract or regrow any number of the additional tentacles, redistributing the mass of any retracted tentacles. For every 2 retracted tentacles, she can increase the reach of the remaining tentacles by 5 feet (to a maximum of 15 feet), or increase the damage dealt by her tentacles as if she were one size category larger. While in this form, a kraken caller can expel a 10-footradius cloud of ink once per minute as a standard action. This cloud provides total concealment in water and persists for 1 round per level. The ink has no effect out of water. This ability alters wild shape.",
+          "progressionProfiles": [
+            {
+              "id": "kraken-caller-tentacles",
+              "label": "Tentacle Form",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "tentacles",
+                  "label": "Tentacles"
+                },
+                {
+                  "id": "bonus",
+                  "label": "Climb, Swim, dirty trick"
+                },
+                {
+                  "id": "reach",
+                  "label": "Base reach"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "tentacles": 2,
+                    "bonus": "+2",
+                    "reach": "5 feet"
+                  }
+                },
+                {
+                  "level": 6,
+                  "values": {
+                    "tentacles": 3,
+                    "bonus": "+3",
+                    "reach": "5 feet"
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "tentacles": 4,
+                    "bonus": "+4",
+                    "reach": "5 feet"
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "tentacles": 5,
+                    "bonus": "+5",
+                    "reach": "5 feet"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "tentacles": 6,
+                    "bonus": "+6",
+                    "reach": "5 feet"
+                  }
+                }
+              ],
+              "summary": "Each tentacle is a secondary natural attack dealing 1d4 damage for Medium or 1d3 for Small creatures."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "kraken-caller-aquatic-wild-shape",
+              "label": "Use Aquatic Wild Shape",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "legal-form",
+                  "label": "The animal has the aquatic or water subtype or amphibious special quality",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Kraken Caller Aquatic Wild Shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Assume the selected legal aquatic, water, or amphibious animal form.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": true
+              },
+              "summary": "Spend one Wild Shape use; nonaquatic forms are prohibited."
+            },
+            {
+              "id": "kraken-caller-tentacle-form",
+              "label": "Assume Tentacle Form",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Mass distribution",
+              "modes": [
+                {
+                  "id": "all-tentacles",
+                  "label": "All tentacles",
+                  "minimumLevel": 4,
+                  "summary": "Keep every available tentacle at 5-foot reach and base damage."
+                },
+                {
+                  "id": "reach-5",
+                  "label": "+5-foot reach",
+                  "minimumLevel": 6,
+                  "summary": "Retract two tentacles; remaining tentacles have 10-foot reach."
+                },
+                {
+                  "id": "damage-1",
+                  "label": "+1 damage size",
+                  "minimumLevel": 6,
+                  "summary": "Retract two tentacles; remaining tentacles deal damage as one size larger."
+                },
+                {
+                  "id": "reach-10",
+                  "label": "+10-foot reach",
+                  "minimumLevel": 10,
+                  "summary": "Retract four tentacles; remaining tentacles have the maximum 15-foot reach."
+                },
+                {
+                  "id": "damage-2",
+                  "label": "+2 damage sizes",
+                  "minimumLevel": 10,
+                  "summary": "Retract four tentacles; remaining tentacles deal damage as two sizes larger."
+                },
+                {
+                  "id": "mixed",
+                  "label": "+5-foot reach and +1 damage size",
+                  "minimumLevel": 10,
+                  "summary": "Retract four tentacles and split the two redistribution increments between reach and damage."
+                }
+              ],
+              "activeEffect": {
+                "name": "Kraken Caller Tentacle Form",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Grow the level-scaled number of tentacles and apply the selected legal redistribution. The tentacle count is also the racial bonus on Climb, Swim, and dirty trick checks.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 500
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 700
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 900
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 1000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 1100
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 1200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 1300
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 1400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 1500
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 1600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 1700
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 1800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 1900
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 2000
+                  }
+                ],
+                "replaceExisting": true
+              },
+              "summary": "Spend one Wild Shape use. Duration is 10 minutes per Druid level."
+            },
+            {
+              "id": "kraken-caller-ink-cloud",
+              "label": "Expel Ink Cloud",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "requiredActiveEffectName": "Kraken Caller Tentacle Form",
+              "blockedByActiveEffectName": "Ink Cloud Recharge",
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "underwater",
+                  "label": "The Kraken Caller is underwater",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Ink Cloud Recharge",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "A 10-foot-radius underwater ink cloud grants total concealment and persists for 1 round per Druid level. Ink Cloud cannot be used again until this 1-minute recharge ends.",
+                "defaultRounds": 10,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Create the cloud and begin the exact once-per-minute cooldown."
+            }
+          ]
         },
         {
           "id": "druid-kraken-caller-beast-of-the-depths-su-13",
           "name": "Beast of the Depths (Su)",
           "level": 13,
           "type": "archetype",
-          "summary": "At 13th level, a kraken caller gains a swim speed equal to her base land speed and can breathe water as though affected by the spell water breathing. This ability replaces a thousand faces."
+          "summary": "At 13th level, a kraken caller gains a swim speed equal to her base land speed and can breathe water as though affected by the spell water breathing. This ability replaces a thousand faces.",
+          "resourceActions": [
+            {
+              "id": "kraken-caller-beast-of-depths",
+              "label": "Track Beast of the Depths",
+              "classId": "druid",
+              "minimumLevel": 13,
+              "spellLikeAbility": {
+                "spellId": "water-breathing",
+                "spellName": "Water Breathing",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "activeEffect": {
+                "name": "Beast of the Depths",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Gain a swim speed equal to base land speed and breathe water continuously.",
+                "defaultRounds": 999999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Records the permanent level-13 swim speed and water-breathing benefits."
+            }
+          ]
         }
       ]
     }
@@ -79,8 +528,106 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Kraken%20Caller"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Besmara requirement, language swap, take 10 while swimming, Constitution-based breath duration, aquatic save bonus, legal Wild Shape forms, exact tentacle count/bonuses/duration, redistribution presets, underwater ink and cooldown, and permanent Beast of the Depths benefits are automated."
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "druid-kraken-caller-wild-shape-su-4",
+      "skill": "Climb",
+      "minimumLevel": 4,
+      "base": 0,
+      "bonusByLevel": [
+        {
+          "level": 4,
+          "bonus": 2
+        },
+        {
+          "level": 6,
+          "bonus": 3
+        },
+        {
+          "level": 8,
+          "bonus": 4
+        },
+        {
+          "level": 10,
+          "bonus": 5
+        },
+        {
+          "level": 12,
+          "bonus": 6
+        }
+      ],
+      "condition": "while Kraken Caller Tentacle Form is active"
+    },
+    {
+      "sourceFeatureId": "druid-kraken-caller-wild-shape-su-4",
+      "skill": "Swim",
+      "minimumLevel": 4,
+      "base": 0,
+      "bonusByLevel": [
+        {
+          "level": 4,
+          "bonus": 2
+        },
+        {
+          "level": 6,
+          "bonus": 3
+        },
+        {
+          "level": 8,
+          "bonus": 4
+        },
+        {
+          "level": 10,
+          "bonus": 5
+        },
+        {
+          "level": 12,
+          "bonus": 6
+        }
+      ],
+      "condition": "while Kraken Caller Tentacle Form is active"
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-kraken-caller-resist-the-waves-lure-ex-4",
+      "label": "Resist the Waves' Lure",
+      "condition": "Saving throws against spell-like and supernatural abilities of aquatic-subtype creatures",
+      "minimumLevel": 4,
+      "base": 4
+    },
+    {
+      "sourceFeatureId": "druid-kraken-caller-wild-shape-su-4",
+      "label": "Tentacle Form — dirty trick",
+      "condition": "Dirty trick combat maneuver checks while Kraken Caller Tentacle Form is active",
+      "minimumLevel": 4,
+      "base": 0,
+      "bonusByLevel": [
+        {
+          "level": 4,
+          "bonus": 2
+        },
+        {
+          "level": 6,
+          "bonus": 3
+        },
+        {
+          "level": 8,
+          "bonus": 4
+        },
+        {
+          "level": 10,
+          "bonus": 5
+        },
+        {
+          "level": 12,
+          "bonus": 6
+        }
+      ]
+    }
   ]
 }
