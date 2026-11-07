@@ -339,6 +339,13 @@ export interface ClassFeatureOccurrence {
       diceCountByLevel: Array<{ level: number; count: number }>;
       dieSidesByLevel: Array<{ level: number; sides: number }>;
       takeHighest?: boolean;
+      appliedEffect?: {
+        name: string;
+        target: ActiveEffectTarget;
+        operation: "bonus" | "penalty";
+        description: string;
+        rounds?: number;
+      };
       diceCountBonusOptionIds?: string[];
       abilityModifier?: AbilityName;
       modifierInputLabel?: string;
@@ -1159,6 +1166,7 @@ export interface CharacterTrait {
 
 export interface CharacterOption extends SelectableOption {
   companionRules?: string[];
+  companionEffectiveLevelAdjustment?: number;
   castsAsPrepared?: boolean;
   ignoresMaximumSpellLevel?: boolean;
   preparedCapacityCost?: number;

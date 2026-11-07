@@ -415,6 +415,17 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
             const roll = rollDice(diceCount, dieSides, diceModifier);
             const rolledTotal = action.diceRoll.takeHighest ? Math.max(...roll.rolls) + diceModifier : roll.total;
             const resolvedTotal = Math.floor(rolledTotal / diceResultDivisor);
+            if (action.diceRoll.appliedEffect && onAddEffect) {
+              const applied = action.diceRoll.appliedEffect;
+              onAddEffect({
+                id: `${action.id}-rolled-effect-${Date.now()}-${Math.random()}`,
+                name: applied.name,
+                target: applied.target,
+                bonus: applied.operation === "penalty" ? -resolvedTotal : resolvedTotal,
+                description: applied.description.replaceAll("{amount}", String(resolvedTotal)),
+                roundsRemaining: applied.rounds ?? 999999,
+              });
+            }
             const mode = selectedMode?.label ?? action.diceRoll.label;
             const targetDc = rerollInput.original;
             const targetMargin = resolvedTotal - targetDc;

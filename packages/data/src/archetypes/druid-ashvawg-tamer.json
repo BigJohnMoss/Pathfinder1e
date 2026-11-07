@@ -32,14 +32,220 @@
           "name": "Bestial Bond (Sp)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, the druid can call out to savage powers of the wilds, entreating them to aid her and her companion. Doing so allows her to cast cure serious wounds , neutralize poison , or remove disease on her animal companion as a spell-like ability by channeling the power of nature. The druid does not need to have these spells prepared as they come directly from the goddess. Using this ability, however, causes the druid to take 1d4 points of Wisdom damage. Any effect that prevents this Wisdom damage from occurring also prevents the use of this ability."
+          "summary": "At 4th level, the druid can call out to savage powers of the wilds, entreating them to aid her and her companion. Doing so allows her to cast cure serious wounds , neutralize poison , or remove disease on her animal companion as a spell-like ability by channeling the power of nature. The druid does not need to have these spells prepared as they come directly from the goddess. Using this ability, however, causes the druid to take 1d4 points of Wisdom damage. Any effect that prevents this Wisdom damage from occurring also prevents the use of this ability.",
+          "resourceActions": [
+            {
+              "id": "ashvawg-cure-serious-wounds",
+              "label": "Cure Serious Wounds",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "cure-serious-wounds",
+                "spellName": "Cure Serious Wounds",
+                "cadence": "at-will",
+                "kind": "spell-like"
+              },
+              "diceRoll": {
+                "label": "Wisdom damage",
+                "diceCountByLevel": [
+                  {
+                    "level": 4,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 4,
+                    "sides": 4
+                  }
+                ],
+                "appliedEffect": {
+                  "name": "Bestial Bond Wisdom Damage",
+                  "target": "wisdom",
+                  "operation": "penalty",
+                  "description": "Bestial Bond dealt {amount} points of Wisdom damage. Remove this tracked damage when it is healed."
+                }
+              },
+              "confirmations": [
+                {
+                  "id": "animal-companion-target",
+                  "label": "Target is your animal companion",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "wisdom-damage-applies",
+                  "label": "Nothing prevents the required Wisdom damage",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Cast cure serious wounds on your animal companion and automatically roll and track the required 1d4 Wisdom damage."
+            },
+            {
+              "id": "ashvawg-neutralize-poison",
+              "label": "Neutralize Poison",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "neutralize-poison",
+                "spellName": "Neutralize Poison",
+                "cadence": "at-will",
+                "kind": "spell-like"
+              },
+              "diceRoll": {
+                "label": "Wisdom damage",
+                "diceCountByLevel": [
+                  {
+                    "level": 4,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 4,
+                    "sides": 4
+                  }
+                ],
+                "appliedEffect": {
+                  "name": "Bestial Bond Wisdom Damage",
+                  "target": "wisdom",
+                  "operation": "penalty",
+                  "description": "Bestial Bond dealt {amount} points of Wisdom damage. Remove this tracked damage when it is healed."
+                }
+              },
+              "confirmations": [
+                {
+                  "id": "animal-companion-target",
+                  "label": "Target is your animal companion",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "wisdom-damage-applies",
+                  "label": "Nothing prevents the required Wisdom damage",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Cast neutralize poison on your animal companion and automatically roll and track the required 1d4 Wisdom damage."
+            },
+            {
+              "id": "ashvawg-remove-disease",
+              "label": "Remove Disease",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "remove-disease",
+                "spellName": "Remove Disease",
+                "cadence": "at-will",
+                "kind": "spell-like"
+              },
+              "diceRoll": {
+                "label": "Wisdom damage",
+                "diceCountByLevel": [
+                  {
+                    "level": 4,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 4,
+                    "sides": 4
+                  }
+                ],
+                "appliedEffect": {
+                  "name": "Bestial Bond Wisdom Damage",
+                  "target": "wisdom",
+                  "operation": "penalty",
+                  "description": "Bestial Bond dealt {amount} points of Wisdom damage. Remove this tracked damage when it is healed."
+                }
+              },
+              "confirmations": [
+                {
+                  "id": "animal-companion-target",
+                  "label": "Target is your animal companion",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "wisdom-damage-applies",
+                  "label": "Nothing prevents the required Wisdom damage",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Cast remove disease on your animal companion and automatically roll and track the required 1d4 Wisdom damage."
+            }
+          ]
         },
         {
           "id": "druid-ashvawg-tamer-variant-companion-ex-4",
           "name": "Variant Companion (Ex)",
           "level": 4,
-          "type": "archetype",
-          "summary": "At 4th level the druid adds additional non-animals to her alternate list of animal companions. If she chooses one of these creatures as an animal companion, she may use her wild empathy ability to influence the creature (even though it is not an animal and its intelligence may be above 2), though she takes a –4 penalty on this check. If the druid and the companion share a common language these checks are not needed. If the companion’s intelligence is 3 or higher, the number of “tricks” the druid can teach it refers to the number of commands the creature understands regardless of language."
+          "type": "core",
+          "summary": "At 4th level the druid adds additional non-animals to her alternate list of animal companions. If she chooses one of these creatures as an animal companion, she may use her wild empathy ability to influence the creature (even though it is not an animal and its intelligence may be above 2), though she takes a –4 penalty on this check. If the druid and the companion share a common language these checks are not needed. If the companion’s intelligence is 3 or higher, the number of “tricks” the druid can teach it refers to the number of commands the creature understands regardless of language.",
+          "progressionProfiles": [
+            {
+              "id": "ashvawg-variant-companions",
+              "label": "Monstrous Companion Access",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "choices",
+                  "label": "New choices"
+                },
+                {
+                  "id": "effectiveLevel",
+                  "label": "Effective companion level"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "choices": "Darkmantle, krenshar, shocker lizard; hippogriff",
+                    "effectiveLevel": "Full Druid level; hippogriff uses Druid level - 3"
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "choices": "Worg",
+                    "effectiveLevel": "Druid level - 6"
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "choices": "Girallon, griffon, owlbear, sea cat",
+                    "effectiveLevel": "Druid level - 9"
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "choices": "Bulette, chimera",
+                    "effectiveLevel": "Druid level - 12"
+                  }
+                }
+              ],
+              "summary": "The Animal Companion selector unlocks each monstrous option at its legal class level and the companion sheet applies its individual effective-level penalty."
+            }
+          ]
         },
         {
           "id": "druid-ashvawg-tamer-1st-level-or-higher-1",
@@ -74,7 +280,61 @@
           "name": "Undying Bond (Sp)",
           "level": 6,
           "type": "archetype",
-          "summary": "At 6th level the druid can use her bestial bond ability to cast resurrection on her animal companion."
+          "summary": "At 6th level the druid can use her bestial bond ability to cast resurrection on her animal companion.",
+          "resourceActions": [
+            {
+              "id": "ashvawg-resurrection",
+              "label": "Resurrection",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "resurrection",
+                "spellName": "Resurrection",
+                "cadence": "at-will",
+                "kind": "spell-like"
+              },
+              "diceRoll": {
+                "label": "Wisdom damage",
+                "diceCountByLevel": [
+                  {
+                    "level": 6,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 6,
+                    "sides": 4
+                  }
+                ],
+                "appliedEffect": {
+                  "name": "Bestial Bond Wisdom Damage",
+                  "target": "wisdom",
+                  "operation": "penalty",
+                  "description": "Bestial Bond dealt {amount} points of Wisdom damage. Remove this tracked damage when it is healed."
+                }
+              },
+              "confirmations": [
+                {
+                  "id": "animal-companion-target",
+                  "label": "Target is your animal companion",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "wisdom-damage-applies",
+                  "label": "Nothing prevents the required Wisdom damage",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Cast resurrection on your animal companion and automatically roll and track the required 1d4 Wisdom damage."
+            }
+          ]
         },
         {
           "id": "druid-ashvawg-tamer-exotic-companion-ex-9",
@@ -119,8 +379,39 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ashvawg%20Tamer"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Class-skill exchanges, all eleven level-gated monstrous companion choices and their effective-level adjustments, variant-companion Wild Empathy, Bestial Bond and Undying Bond spell-like actions with rolled persistent Wisdom damage, and the lost level-6 Wild Shape use are automated."
+  ],
+  "classSkillAdditions": [
+    "Intimidate",
+    "Knowledge (arcana)"
+  ],
+  "classSkillRemovals": [
+    "Diplomacy",
+    "Heal"
+  ],
+  "optionGroupAugmentations": [
+    {
+      "targetGroupId": "ranger-animal-companions",
+      "sourceGroupId": "druid-ashvawg-tamer-companions"
+    }
+  ],
+  "wildShapeUseAdjustments": [
+    {
+      "level": 6,
+      "delta": -1
+    }
+  ],
+  "wildEmpathyAdjustments": [
+    {
+      "sourceFeatureId": "druid-ashvawg-tamer-variant-companion-ex-4",
+      "label": "Variant Companion Wild Empathy",
+      "classId": "druid",
+      "minimumLevel": 4,
+      "bonus": -4,
+      "targets": "your Ashvawg Tamer monstrous companion",
+      "condition": "unless you and the companion share a language"
+    }
   ]
 }

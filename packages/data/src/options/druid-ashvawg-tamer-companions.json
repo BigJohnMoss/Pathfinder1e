@@ -1,0 +1,312 @@
+{
+  "id": "druid-ashvawg-tamer-companions",
+  "name": "Ashvawg Tamer Monstrous Companions",
+  "classIds": [
+    "druid"
+  ],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "ashvawg-animal-companion-darkmantle",
+      "groupId": "druid-ashvawg-tamer-companions",
+      "name": "Darkmantle",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "druid-nature-bond-animal"
+        }
+      ],
+      "benefit": "Gain a Darkmantle using full Druid level as effective companion level.",
+      "companionEffectiveLevelAdjustment": 0,
+      "companionRules": [
+        "Effective companion level: Druid level.",
+        "Wild Empathy can influence this companion at a -4 penalty unless you share a language.",
+        "For Intelligence 3 or higher, tricks represent understood commands regardless of language."
+      ],
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ashvawg%20Tamer"
+      }
+    },
+    {
+      "id": "ashvawg-animal-companion-krenshar",
+      "groupId": "druid-ashvawg-tamer-companions",
+      "name": "Krenshar",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "druid-nature-bond-animal"
+        }
+      ],
+      "benefit": "Gain a Krenshar using full Druid level as effective companion level.",
+      "companionEffectiveLevelAdjustment": 0,
+      "companionRules": [
+        "Effective companion level: Druid level.",
+        "Wild Empathy can influence this companion at a -4 penalty unless you share a language.",
+        "For Intelligence 3 or higher, tricks represent understood commands regardless of language."
+      ],
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ashvawg%20Tamer"
+      }
+    },
+    {
+      "id": "ashvawg-animal-companion-shocker-lizard",
+      "groupId": "druid-ashvawg-tamer-companions",
+      "name": "Shocker Lizard",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "druid-nature-bond-animal"
+        }
+      ],
+      "benefit": "Gain a Shocker Lizard using full Druid level as effective companion level.",
+      "companionEffectiveLevelAdjustment": 0,
+      "companionRules": [
+        "Effective companion level: Druid level.",
+        "Wild Empathy can influence this companion at a -4 penalty unless you share a language.",
+        "For Intelligence 3 or higher, tricks represent understood commands regardless of language."
+      ],
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ashvawg%20Tamer"
+      }
+    },
+    {
+      "id": "ashvawg-animal-companion-hippogriff",
+      "groupId": "druid-ashvawg-tamer-companions",
+      "name": "Hippogriff",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "druid-nature-bond-animal"
+        }
+      ],
+      "benefit": "Gain a Hippogriff using Druid level -3 as effective companion level.",
+      "companionEffectiveLevelAdjustment": -3,
+      "companionRules": [
+        "Effective companion level: Druid level -3.",
+        "Wild Empathy can influence this companion at a -4 penalty unless you share a language.",
+        "For Intelligence 3 or higher, tricks represent understood commands regardless of language."
+      ],
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ashvawg%20Tamer"
+      }
+    },
+    {
+      "id": "ashvawg-animal-companion-girallon",
+      "groupId": "druid-ashvawg-tamer-companions",
+      "name": "Girallon",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "druid-nature-bond-animal"
+        }
+      ],
+      "benefit": "Gain a Girallon using Druid level -9 as effective companion level.",
+      "companionEffectiveLevelAdjustment": -9,
+      "companionRules": [
+        "Effective companion level: Druid level -9.",
+        "Wild Empathy can influence this companion at a -4 penalty unless you share a language.",
+        "For Intelligence 3 or higher, tricks represent understood commands regardless of language."
+      ],
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ashvawg%20Tamer"
+      }
+    },
+    {
+      "id": "ashvawg-animal-companion-griffon",
+      "groupId": "druid-ashvawg-tamer-companions",
+      "name": "Griffon",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "druid-nature-bond-animal"
+        }
+      ],
+      "benefit": "Gain a Griffon using Druid level -9 as effective companion level.",
+      "companionEffectiveLevelAdjustment": -9,
+      "companionRules": [
+        "Effective companion level: Druid level -9.",
+        "Wild Empathy can influence this companion at a -4 penalty unless you share a language.",
+        "For Intelligence 3 or higher, tricks represent understood commands regardless of language."
+      ],
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ashvawg%20Tamer"
+      }
+    },
+    {
+      "id": "ashvawg-animal-companion-owlbear",
+      "groupId": "druid-ashvawg-tamer-companions",
+      "name": "Owlbear",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "druid-nature-bond-animal"
+        }
+      ],
+      "benefit": "Gain a Owlbear using Druid level -9 as effective companion level.",
+      "companionEffectiveLevelAdjustment": -9,
+      "companionRules": [
+        "Effective companion level: Druid level -9.",
+        "Wild Empathy can influence this companion at a -4 penalty unless you share a language.",
+        "For Intelligence 3 or higher, tricks represent understood commands regardless of language."
+      ],
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ashvawg%20Tamer"
+      }
+    },
+    {
+      "id": "ashvawg-animal-companion-sea-cat",
+      "groupId": "druid-ashvawg-tamer-companions",
+      "name": "Sea Cat",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "druid-nature-bond-animal"
+        }
+      ],
+      "benefit": "Gain a Sea Cat using Druid level -9 as effective companion level.",
+      "companionEffectiveLevelAdjustment": -9,
+      "companionRules": [
+        "Effective companion level: Druid level -9.",
+        "Wild Empathy can influence this companion at a -4 penalty unless you share a language.",
+        "For Intelligence 3 or higher, tricks represent understood commands regardless of language."
+      ],
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ashvawg%20Tamer"
+      }
+    },
+    {
+      "id": "ashvawg-animal-companion-bulette",
+      "groupId": "druid-ashvawg-tamer-companions",
+      "name": "Bulette",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "druid-nature-bond-animal"
+        }
+      ],
+      "benefit": "Gain a Bulette using Druid level -12 as effective companion level.",
+      "companionEffectiveLevelAdjustment": -12,
+      "companionRules": [
+        "Effective companion level: Druid level -12.",
+        "Wild Empathy can influence this companion at a -4 penalty unless you share a language.",
+        "For Intelligence 3 or higher, tricks represent understood commands regardless of language."
+      ],
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ashvawg%20Tamer"
+      }
+    },
+    {
+      "id": "ashvawg-animal-companion-chimera",
+      "groupId": "druid-ashvawg-tamer-companions",
+      "name": "Chimera",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "druid-nature-bond-animal"
+        }
+      ],
+      "benefit": "Gain a Chimera using Druid level -12 as effective companion level.",
+      "companionEffectiveLevelAdjustment": -12,
+      "companionRules": [
+        "Effective companion level: Druid level -12.",
+        "Wild Empathy can influence this companion at a -4 penalty unless you share a language.",
+        "For Intelligence 3 or higher, tricks represent understood commands regardless of language."
+      ],
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ashvawg%20Tamer"
+      }
+    },
+    {
+      "id": "ashvawg-animal-companion-worg",
+      "groupId": "druid-ashvawg-tamer-companions",
+      "name": "Worg",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 9,
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "druid-nature-bond-animal"
+        }
+      ],
+      "benefit": "Gain a Worg using Druid level -6 as effective companion level.",
+      "companionEffectiveLevelAdjustment": -6,
+      "companionRules": [
+        "Effective companion level: Druid level -6.",
+        "Wild Empathy can influence this companion at a -4 penalty unless you share a language.",
+        "For Intelligence 3 or higher, tricks represent understood commands regardless of language."
+      ],
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ashvawg%20Tamer"
+      }
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ashvawg%20Tamer"
+  }
+}

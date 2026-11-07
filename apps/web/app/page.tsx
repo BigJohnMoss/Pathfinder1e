@@ -2645,7 +2645,8 @@ export default function Home() {
       return definition ? alternateRewardValue(definition, favoredClassAlternateBonuses[id] ?? 0) : 0;
     };
     const add = (id: string, kind: CompanionDescriptor["kind"], optionId: string, fallback: string, effectiveLevel: number, bonuses: Pick<CompanionDescriptor, "bonusHitPoints" | "bonusSkillRanks"> = {}) => {
-      if (optionId && effectiveLevel > 0) descriptors.push({ id, kind, optionId, label: optionLabel(optionId, fallback), effectiveLevel, ...bonuses });
+      const adjustedEffectiveLevel = effectiveLevel + (optionDefinition(optionId)?.companionEffectiveLevelAdjustment ?? 0);
+      if (optionId && adjustedEffectiveLevel > 0) descriptors.push({ id, kind, optionId, label: optionLabel(optionId, fallback), effectiveLevel: adjustedEffectiveLevel, ...bonuses });
     };
     add("eidolon", "eidolon", eidolonBaseFormId, "Eidolon", summonerClassLevel, { bonusHitPoints: reward("gnome-summoner-eidolon-hp"), bonusSkillRanks: reward("halfling-summoner-eidolon-skill") });
     add("witch-familiar", "familiar", selectedValue("witch-familiar-"), "Witch familiar", classLevelMap.witch ?? 0, { bonusSkillRanks: reward("half-orc-witch-familiar") });
