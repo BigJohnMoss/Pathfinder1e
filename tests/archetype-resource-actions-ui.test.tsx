@@ -19,6 +19,7 @@ const oenopionResearcher = JSON.parse(readFileSync(new URL("../packages/data/src
 const royalAlchemist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-royal-alchemist.json", import.meta.url), "utf8")) as CharacterArchetype;
 const gloomChymist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-gloom-chymist.json", import.meta.url), "utf8")) as CharacterArchetype;
 const concocter = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-concocter.json", import.meta.url), "utf8")) as CharacterArchetype;
+const dragonbloodChymist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-dragonblood-chymist.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -185,4 +186,31 @@ test("Concocter tracks mutagenic mixtures and resolves weighted extract-potion o
   }
   assert.match(screen.getByLabelText("Drink extract-potion mixture result").textContent ?? "", /Extract fails/);
   assert.equal(effects.some((effect) => effect.name === "Fresh Extract-Potion Mixture"), false);
+});
+
+test("Dragonblood Chymist scales its mutagen and resolves mandatory breath bombs", async () => {
+  const effects: ActiveEffect[] = [];
+  const used: number[] = [];
+  const applied = applyArchetype(alchemist, dragonbloodChymist);
+  render(<ClassFeatures
+    level={16}
+    className={applied.name}
+    features={featuresThroughLevel(applied, 16)}
+    classLevels={{ alchemist: 16 }}
+    abilityModifiers={{ intelligence: 4 }}
+    saveModifiers={{ reflex: 2 }}
+    dailyResources={[{ id: "bombs", label: "Bomb", unit: "use", maximum: 20, used: 0, onUsedChange: (value) => used.push(value) }]}
+    activeEffects={effects}
+    onAddEffect={(effect) => effects.push(effect)}
+  />);
+  const setup = userEvent.setup();
+  await setup.click(screen.getByRole("button", { name: "Brew and consume dragonblood mutagen" }));
+  assert.deepEqual(effects.map(({ target, bonus, roundsRemaining }) => ({ target, bonus, roundsRemaining })), [
+    { target: "strength", bonus: 6, roundsRemaining: 1600 },
+    { target: "armorClass", bonus: 6, roundsRemaining: 1600 },
+  ]);
+  await setup.click(screen.getByRole("button", { name: "Use explosive breath" }));
+  assert.deepEqual(used, [1]);
+  assert.match(screen.getByLabelText("Use explosive breath result").textContent ?? "", /8d6.*\+ 4.*fire damage/i);
+  assert.match(screen.getByLabelText("Use explosive breath result").textContent ?? "", /Reflex save/i);
 });
