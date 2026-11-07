@@ -36,62 +36,852 @@
           "name": "Bonus Languages",
           "level": 1,
           "type": "archetype",
-          "summary": "A goliath druid with an Intelligence bonus can select Giant as a bonus language."
+          "summary": "A goliath druid with an Intelligence bonus can select Giant as a bonus language.",
+          "progressionProfiles": [
+            {
+              "id": "goliath-druid-bonus-language",
+              "label": "Bonus Language",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "language",
+                  "label": "Additional choice"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "language": "Giant"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-goliath-druid-primal-size-1",
           "name": "Primal Size",
           "level": 1,
           "type": "archetype",
-          "summary": "A goliath druid adds enlarge person to her list of class spells. She can cast this spell only on herself. She can also channel stored spell energy to cast this spell without preparing it—she can lose a prepared spell of 1st level or higher to cast enlarge person . This ability replaces nature sense."
+          "summary": "A goliath druid adds enlarge person to her list of class spells. She can cast this spell only on herself. She can also channel stored spell energy to cast this spell without preparing it—she can lose a prepared spell of 1st level or higher to cast enlarge person . This ability replaces nature sense.",
+          "spellAutomation": {
+            "preparedKeywordConversion": {
+              "label": "Primal Size",
+              "keyword": "enlarge person"
+            }
+          },
+          "progressionProfiles": [
+            {
+              "id": "goliath-druid-primal-size",
+              "label": "Primal Size",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "spell",
+                  "label": "Added spell"
+                },
+                {
+                  "id": "conversion",
+                  "label": "Prepared conversion"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "spell": "Enlarge person (self only; dinosaur or megafauna companion also legal)",
+                    "conversion": "Lose a prepared spell of level 1 or higher"
+                  }
+                }
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "goliath-druid-primal-size-target",
+              "label": "Confirm Primal Size Target",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "spellLikeAbility": {
+                "spellId": "enlarge-person",
+                "spellName": "Enlarge Person",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "modeLabel": "Target",
+              "modes": [
+                {
+                  "id": "self",
+                  "label": "Self",
+                  "summary": "The normal legal target for Primal Size."
+                },
+                {
+                  "id": "companion",
+                  "label": "Dinosaur or megafauna companion",
+                  "summary": "The companion is treated as a legal target despite not being humanoid."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "prepared-slot",
+                  "label": "A prepared Druid spell of 1st level or higher is being expended",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Use the spellbook's Primal Size conversion control to spend the prepared slot, then confirm the archetype's legal target."
+            }
+          ]
         },
         {
           "id": "druid-goliath-druid-primal-bond-ex-1",
           "name": "Primal Bond (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "When a goliath druid forms a nature bond, if she selects a cleric domain, she must selected from the Animal, Destruction, or Strength domains, or the Ferocity, Growth, or Rage subdomains APG . If the goliath druid selects an animal companion, she must select a dinosaur or megafauna. If she has a dinosaur or megafauna animal companion, she can target it with enlarge person even though the companion isn’t of the humanoid type. This ability alters nature bond."
+          "type": "selectable",
+          "summary": "When a goliath druid forms a nature bond, if she selects a cleric domain, she must selected from the Animal, Destruction, or Strength domains, or the Ferocity, Growth, or Rage subdomains APG . If the goliath druid selects an animal companion, she must select a dinosaur or megafauna. If she has a dinosaur or megafauna animal companion, she can target it with enlarge person even though the companion isn’t of the humanoid type. This ability alters nature bond.",
+          "choiceRequired": true,
+          "optionGroupId": "druid-nature-bonds",
+          "optionChoiceIds": [
+            "druid-nature-bond-animal",
+            "druid-nature-bond-domain"
+          ],
+          "progressionKey": "druid-nature-bond"
         },
         {
           "id": "druid-goliath-druid-primal-empathy-ex-1",
           "name": "Primal Empathy (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A goliath druid’s wild empathy functions only with creatures that are Large or larger. This ability alters wild empathy."
+          "summary": "A goliath druid’s wild empathy functions only with creatures that are Large or larger. This ability alters wild empathy.",
+          "resourceActions": [
+            {
+              "id": "goliath-druid-primal-empathy",
+              "label": "Roll Primal Empathy",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "confirmations": [
+                {
+                  "id": "large-creature",
+                  "label": "Target creature is Large or larger",
+                  "requiredForActivation": true
+                }
+              ],
+              "diceRoll": {
+                "label": "Primal Empathy check",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 20
+                  }
+                ],
+                "abilityModifier": "charisma",
+                "flatModifierByLevel": [
+                  {
+                    "level": 1,
+                    "modifier": 1
+                  },
+                  {
+                    "level": 2,
+                    "modifier": 2
+                  },
+                  {
+                    "level": 3,
+                    "modifier": 3
+                  },
+                  {
+                    "level": 4,
+                    "modifier": 4
+                  },
+                  {
+                    "level": 5,
+                    "modifier": 5
+                  },
+                  {
+                    "level": 6,
+                    "modifier": 6
+                  },
+                  {
+                    "level": 7,
+                    "modifier": 7
+                  },
+                  {
+                    "level": 8,
+                    "modifier": 8
+                  },
+                  {
+                    "level": 9,
+                    "modifier": 9
+                  },
+                  {
+                    "level": 10,
+                    "modifier": 10
+                  },
+                  {
+                    "level": 11,
+                    "modifier": 11
+                  },
+                  {
+                    "level": 12,
+                    "modifier": 12
+                  },
+                  {
+                    "level": 13,
+                    "modifier": 13
+                  },
+                  {
+                    "level": 14,
+                    "modifier": 14
+                  },
+                  {
+                    "level": 15,
+                    "modifier": 15
+                  },
+                  {
+                    "level": 16,
+                    "modifier": 16
+                  },
+                  {
+                    "level": 17,
+                    "modifier": 17
+                  },
+                  {
+                    "level": 18,
+                    "modifier": 18
+                  },
+                  {
+                    "level": 19,
+                    "modifier": 19
+                  },
+                  {
+                    "level": 20,
+                    "modifier": 20
+                  }
+                ],
+                "targetDcInputLabel": "Target DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "attitude improves"
+                  }
+                ],
+                "failureLabel": "attitude unchanged"
+              },
+              "summary": "Roll 1d20 + Druid level + Charisma modifier against a Large-or-larger creature."
+            }
+          ]
         },
         {
           "id": "druid-goliath-druid-face-nature-s-might-ex-4",
           "name": "Face Nature’s Might (Ex)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a goliath druid gains a +4 bonus on saving throws against the spell-like and supernatural abilities of giants. This ability replaces resist nature’s lure."
+          "summary": "At 4th level, a goliath druid gains a +4 bonus on saving throws against the spell-like and supernatural abilities of giants. This ability replaces resist nature’s lure.",
+          "progressionProfiles": [
+            {
+              "id": "goliath-druid-face-natures-might",
+              "label": "Face Nature’s Might",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "bonus",
+                  "label": "Save bonus"
+                },
+                {
+                  "id": "condition",
+                  "label": "Condition"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "bonus": "+4",
+                    "condition": "Against spell-like and supernatural abilities of giants"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-goliath-druid-wild-shape-su-6",
           "name": "Wild Shape (Su)",
           "level": 6,
           "type": "archetype",
-          "summary": "Druids’ ability to wild shape into a creature of the animal type allows a goliath druid to assume only the form of a dinosaur or megafauna. She doesn’t gain the ability to become an elemental or plant. At 6th level, the goliath druid can use wild shape to become a Large humanoid of the giant subtype. This functions as the alter self spell, except the goliath druid gains a +4 size bonus to Strength, a –2 penalty to Dexterity, and a +1 natural armor bonus. If the Large humanoid form she takes has rock throwing, she gains rock throwing (range 40 feet, 1d8 damage). If the form has the aquatic subtype, she gains the aquatic and amphibious subtypes. At 12th level, when taking the form of a giant, the goliath druid’s wild shape functions as giant form I . At 14th level, the goliath druid can also use wild shape to change into a Huge giant. When taking the form of a giant, the goliath druid’s wild shape functions as giant form II . This ability alters wild shape."
+          "summary": "Druids’ ability to wild shape into a creature of the animal type allows a goliath druid to assume only the form of a dinosaur or megafauna. She doesn’t gain the ability to become an elemental or plant. At 6th level, the goliath druid can use wild shape to become a Large humanoid of the giant subtype. This functions as the alter self spell, except the goliath druid gains a +4 size bonus to Strength, a –2 penalty to Dexterity, and a +1 natural armor bonus. If the Large humanoid form she takes has rock throwing, she gains rock throwing (range 40 feet, 1d8 damage). If the form has the aquatic subtype, she gains the aquatic and amphibious subtypes. At 12th level, when taking the form of a giant, the goliath druid’s wild shape functions as giant form I . At 14th level, the goliath druid can also use wild shape to change into a Huge giant. When taking the form of a giant, the goliath druid’s wild shape functions as giant form II . This ability alters wild shape.",
+          "progressionProfiles": [
+            {
+              "id": "goliath-druid-wild-shape",
+              "label": "Goliath Wild Shape",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "animal",
+                  "label": "Animal forms"
+                },
+                {
+                  "id": "giant",
+                  "label": "Giant forms"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 6,
+                  "values": {
+                    "animal": "Dinosaur or megafauna only",
+                    "giant": "Large giant; modified alter self"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "animal": "Dinosaur or megafauna only",
+                    "giant": "Giant form I"
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "animal": "Dinosaur or megafauna only",
+                    "giant": "Large or Huge giant; giant form II"
+                  }
+                }
+              ],
+              "summary": "Elemental and plant forms never unlock for this archetype."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "goliath-druid-primeval-shape",
+              "label": "Wild Shape into primeval animal",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Legal creature type",
+              "modes": [
+                {
+                  "id": "dinosaur",
+                  "label": "Dinosaur",
+                  "summary": "Use the normal animal-form tier permitted by Druid level."
+                },
+                {
+                  "id": "megafauna",
+                  "label": "Megafauna",
+                  "summary": "Use the normal animal-form tier permitted by Druid level."
+                }
+              ],
+              "activeEffect": {
+                "name": "Goliath Primeval Shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Assume the selected dinosaur or megafauna form for 1 hour per Druid level.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": true
+              },
+              "summary": "Spend one Wild Shape use; animal forms are restricted to dinosaurs and megafauna."
+            },
+            {
+              "id": "goliath-druid-giant-shape",
+              "label": "Wild Shape into giant",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Giant form tier",
+              "modes": [
+                {
+                  "id": "large-giant",
+                  "label": "Large giant (modified alter self)",
+                  "minimumLevel": 6,
+                  "maximumLevel": 11,
+                  "summary": "+4 size Strength, −2 Dexterity, +1 natural armor.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 4,
+                      "label": "Goliath Giant Shape — Strength",
+                      "description": "+4 size bonus to Strength."
+                    },
+                    {
+                      "target": "dexterity",
+                      "bonus": -2,
+                      "label": "Goliath Giant Shape — Dexterity",
+                      "description": "−2 size penalty to Dexterity."
+                    },
+                    {
+                      "target": "armorClass",
+                      "bonus": 1,
+                      "label": "Goliath Giant Shape — natural armor",
+                      "description": "+1 natural armor bonus."
+                    }
+                  ]
+                },
+                {
+                  "id": "giant-form-i",
+                  "label": "Giant form I",
+                  "minimumLevel": 12,
+                  "maximumLevel": 13,
+                  "summary": "Resolve the selected Large giant with giant form I."
+                },
+                {
+                  "id": "giant-form-ii",
+                  "label": "Giant form II (Large or Huge)",
+                  "minimumLevel": 14,
+                  "summary": "Resolve the selected Large or Huge giant with giant form II."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "legal-giant",
+                  "label": "Selected form has the giant subtype and is legal for the chosen spell tier",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Goliath Giant Shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Assume the selected giant form for 1 hour per Druid level; gain rock throwing if the form has it and aquatic/amphibious if it has the aquatic subtype.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "replaceExisting": true
+              },
+              "summary": "Spend one Wild Shape use and apply the level-appropriate giant-form rules and inherited traits."
+            }
+          ]
         },
         {
           "id": "druid-goliath-druid-primal-summons-1",
           "name": "Primal Summons",
           "level": 1,
           "type": "archetype",
-          "summary": "A goliath druid adds the following creatures to the list of creatures she can normally summon using summon nature’s ally spells. Summon Nature’s Ally I : Compsognathus B2 . Summon Nature’s Ally II : Dimorphodon B4 . Summon Nature’s Ally III : Velociraptor B4 . Summon Nature’s Ally IV : Ogre, parasaurolophus B2 . Summon Nature’s Ally V : Glyptodon B2 , iguanodon B3 . Summon Nature’s Ally VI : Baluchitherium B3 , megalania B3 . Summon Nature’s Ally VII : Cliff giant B4 . Summon Nature’s Ally VIII : Spinosaurus B3 . Summon Nature’s Ally IX : Diplodocus B4 . This ability replaces venom immunity and a thousand faces."
+          "summary": "A goliath druid adds the following creatures to the list of creatures she can normally summon using summon nature’s ally spells. Summon Nature’s Ally I : Compsognathus B2 . Summon Nature’s Ally II : Dimorphodon B4 . Summon Nature’s Ally III : Velociraptor B4 . Summon Nature’s Ally IV : Ogre, parasaurolophus B2 . Summon Nature’s Ally V : Glyptodon B2 , iguanodon B3 . Summon Nature’s Ally VI : Baluchitherium B3 , megalania B3 . Summon Nature’s Ally VII : Cliff giant B4 . Summon Nature’s Ally VIII : Spinosaurus B3 . Summon Nature’s Ally IX : Diplodocus B4 . This ability replaces venom immunity and a thousand faces.",
+          "progressionProfiles": [
+            {
+              "id": "goliath-druid-primal-summons",
+              "label": "Primal Summons",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "creatures",
+                  "label": "Added summon options"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "creatures": "SNA 1: Compsognathus"
+                  }
+                },
+                {
+                  "level": 3,
+                  "values": {
+                    "creatures": "SNA 2: Dimorphodon"
+                  }
+                },
+                {
+                  "level": 5,
+                  "values": {
+                    "creatures": "SNA 3: Velociraptor"
+                  }
+                },
+                {
+                  "level": 7,
+                  "values": {
+                    "creatures": "SNA 4: Ogre or parasaurolophus"
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "creatures": "SNA 5: Glyptodon or iguanodon"
+                  }
+                },
+                {
+                  "level": 11,
+                  "values": {
+                    "creatures": "SNA 6: Baluchitherium or megalania"
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "creatures": "SNA 7: Cliff giant"
+                  }
+                },
+                {
+                  "level": 15,
+                  "values": {
+                    "creatures": "SNA 8: Spinosaurus"
+                  }
+                },
+                {
+                  "level": 17,
+                  "values": {
+                    "creatures": "SNA 9: Diplodocus"
+                  }
+                }
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "goliath-druid-primal-summon",
+              "label": "Track Primal Summon",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "modeLabel": "Added creature",
+              "modes": [
+                {
+                  "id": "sna-1",
+                  "label": "SNA 1: Compsognathus",
+                  "minimumLevel": 1,
+                  "summary": "Added legal option for summon nature's ally 1."
+                },
+                {
+                  "id": "sna-2",
+                  "label": "SNA 2: Dimorphodon",
+                  "minimumLevel": 3,
+                  "summary": "Added legal option for summon nature's ally 2."
+                },
+                {
+                  "id": "sna-3",
+                  "label": "SNA 3: Velociraptor",
+                  "minimumLevel": 5,
+                  "summary": "Added legal option for summon nature's ally 3."
+                },
+                {
+                  "id": "sna-4",
+                  "label": "SNA 4: Ogre or parasaurolophus",
+                  "minimumLevel": 7,
+                  "summary": "Added legal option for summon nature's ally 4."
+                },
+                {
+                  "id": "sna-5",
+                  "label": "SNA 5: Glyptodon or iguanodon",
+                  "minimumLevel": 9,
+                  "summary": "Added legal option for summon nature's ally 5."
+                },
+                {
+                  "id": "sna-6",
+                  "label": "SNA 6: Baluchitherium or megalania",
+                  "minimumLevel": 11,
+                  "summary": "Added legal option for summon nature's ally 6."
+                },
+                {
+                  "id": "sna-7",
+                  "label": "SNA 7: Cliff giant",
+                  "minimumLevel": 13,
+                  "summary": "Added legal option for summon nature's ally 7."
+                },
+                {
+                  "id": "sna-8",
+                  "label": "SNA 8: Spinosaurus",
+                  "minimumLevel": 15,
+                  "summary": "Added legal option for summon nature's ally 8."
+                },
+                {
+                  "id": "sna-9",
+                  "label": "SNA 9: Diplodocus",
+                  "minimumLevel": 17,
+                  "summary": "Added legal option for summon nature's ally 9."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "spell-cast",
+                  "label": "The matching summon nature’s ally spell was cast",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Primal Summon",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "Track the added summoned creature for the spell's normal round-per-level duration.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 1,
+                    "rounds": 1
+                  },
+                  {
+                    "level": 2,
+                    "rounds": 2
+                  },
+                  {
+                    "level": 3,
+                    "rounds": 3
+                  },
+                  {
+                    "level": 4,
+                    "rounds": 4
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 5
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 6
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 7
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 8
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 9
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 10
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 11
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 12
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 13
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 14
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 15
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 16
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 17
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 18
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 19
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 20
+                  }
+                ],
+                "replaceExisting": false
+              },
+              "summary": "Choose the added creature and track its normal summon duration."
+            }
+          ]
         }
       ]
     }
   ],
-  "classSkillAdditions": ["Bluff","Diplomacy","Knowledge (local)"],
-  "classSkillRemovals": ["Craft","Profession","Ride"],
+  "classSkillAdditions": [
+    "Bluff",
+    "Diplomacy",
+    "Knowledge (local)"
+  ],
+  "classSkillRemovals": [
+    "Craft",
+    "Profession",
+    "Ride"
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Goliath%20Druid"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Class skills and Giant language access, enlarge person spell access and prepared conversion, restricted domain/companion choices, Large-only Primal Empathy, the conditional giant-defense bonus, every legal primeval and giant Wild Shape tier, inherited giant traits, and all nine Primal Summons lists are automated."
+  ],
+  "spellListAdditions": {
+    "enlarge-person": 1
+  },
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-animal",
+    "druid-nature-bond-domain"
+  ],
+  "druidAnimalCompanionIds": [
+    "ranger-animal-companion-dinosaur",
+    "ranger-animal-companion-megafauna"
+  ],
+  "druidDomainIds": [
+    "domain-animal",
+    "domain-destruction",
+    "domain-strength",
+    "subdomain-ferocity",
+    "subdomain-growth",
+    "subdomain-rage"
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-goliath-druid-face-nature-s-might-ex-4",
+      "label": "Face Nature’s Might",
+      "condition": "Saving throws against spell-like and supernatural abilities of giants",
+      "minimumLevel": 4,
+      "base": 4
+    }
   ]
 }

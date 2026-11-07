@@ -458,6 +458,35 @@
         "page": null,
         "url": "https://www.aonprd.com/ClassDisplay.aspx?ItemName=Companion"
       }
+    },
+    {
+      "id": "ranger-animal-companion-megafauna",
+      "groupId": "ranger-animal-companions",
+      "name": "Megafauna",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [
+        {
+          "type": "class-level",
+          "classId": "druid",
+          "minimum": 1
+        }
+      ],
+      "benefit": "A selectable prehistoric mammal companion represented by the appropriate published megafauna profile.",
+      "powers": [
+        {
+          "name": "Starting Statistics",
+          "level": 1,
+          "summary": "Choose a legal megafauna companion profile; use its listed size, movement, attacks, senses, and advancement."
+        }
+      ],
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Goliath%20Druid"
+      }
     }
   ]
 }
