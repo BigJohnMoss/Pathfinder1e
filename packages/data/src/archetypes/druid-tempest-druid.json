@@ -431,14 +431,14 @@
       "skill": "Knowledge (nature)",
       "minimumLevel": 1,
       "base": 4,
-      "condition": "checks in coastal or marshy lands"
+        "condition": "in coastal or marshy lands"
     },
     {
       "sourceFeatureId": "druid-tempest-druid-sodden-shore-sense-ex-1",
       "skill": "Survival",
       "minimumLevel": 1,
       "base": 4,
-      "condition": "checks in coastal or marshy lands"
+        "condition": "in coastal or marshy lands"
     }
   ],
   "resourceAdjustments": [

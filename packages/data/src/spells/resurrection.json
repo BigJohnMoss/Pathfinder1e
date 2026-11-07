@@ -1,0 +1,11 @@
+{
+  "id": "resurrection",
+  "name": "Resurrection",
+  "school": "conjuration",
+  "levelByClass": {"cleric": 7, "oracle": 7},
+  "components": ["V", "S", "M", "DF"],
+  "castingTime": "1 minute",
+  "range": "touch",
+  "summary": "Restore a dead creature to life even when little of its body remains.",
+  "source": {"title": "Core Rulebook", "page": 334, "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Resurrection"}
+}

@@ -16,6 +16,7 @@ const characterClass = (id) => data.classes.find((entry) => entry.id === id);
 const cases = new Map([
   ["witch-flood-walker", [4, 10, 16, 18]],
   ["witch-gravewalker", [4, 6, 12, 14, 16]],
+  ["witch-hag-of-gyronna", [2, 6, 10, 14, 18]],
   ["witch-mountain-witch", [2, 4, 6, 8, 10, 12, 14, 16, 18]],
 ]);
 
@@ -39,7 +40,7 @@ test("complete Witch patron-spell tables replace the exact patron milestones", (
 });
 
 test("incomplete patron tables stay manual instead of hiding unavailable replacement spells", () => {
-  for (const id of ["witch-dreamweaver", "witch-hag-of-gyronna", "witch-sea-witch"]) {
+  for (const id of ["witch-dreamweaver", "witch-sea-witch"]) {
     const selected = archetype(id);
     const inferred = inferArchetypeSpellAdditions(selected, data.spells);
     assert.deepEqual(inferred.bonusSpellReplacementClassLevels, [], id);

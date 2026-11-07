@@ -8,8 +8,8 @@ test("Druid receives the complete Core spell list", () => {
   assert.deepEqual(Object.fromEntries(Array.from({ length: 10 }, (_, level) => [
     level,
     druidSpells.filter((spell) => spell.levelByClass.druid === level).length
-  ])), { 0: 13, 1: 20, 2: 26, 3: 22, 4: 17, 5: 19, 6: 18, 7: 13, 8: 11, 9: 10 });
-  assert.equal(druidSpells.length, 169);
+  ])), { 0: 13, 1: 20, 2: 26, 3: 22, 4: 18, 5: 19, 6: 19, 7: 13, 8: 11, 9: 10 });
+  assert.equal(druidSpells.length, 171);
 });
 
 test("Druid class-level overlays reuse shared spell records", () => {

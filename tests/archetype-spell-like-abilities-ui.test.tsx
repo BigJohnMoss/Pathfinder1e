@@ -50,9 +50,9 @@ test("limited spell-like abilities spend their matching tracked resource", async
     classLevels={{ druid: 6 }}
     dailyResources={[{ id: action.resourceId, label: "Zephyr Message", unit: "use", maximum: 1, used: 0, onUsedChange: (used) => spent.push(used) }]}
   />);
-  await userEvent.setup().click(screen.getByRole("button", { name: "Cast whispering wind" }));
+  await userEvent.setup().click(screen.getByRole("button", { name: "Send Zephyr Message" }));
   assert.deepEqual(spent, [1]);
-  assert.equal(screen.getByLabelText("Cast whispering wind result").textContent, "whispering wind cast as a spell-like ability.");
+  assert.equal(screen.getByLabelText("Send Zephyr Message result").textContent, "Whispering Wind cast as a spell-like ability.");
 });
 
 test("spell-equivalent archetype powers explain their activation accurately", async () => {

@@ -8,8 +8,8 @@ test("Ranger receives the complete Core spell list", () => {
   assert.deepEqual(Object.fromEntries([1, 2, 3, 4].map((level) => [
     level,
     rangerSpells.filter((spell) => spell.levelByClass.ranger === level).length
-  ])), { 1: 19, 2: 12, 3: 13, 4: 7 });
-  assert.equal(rangerSpells.length, 51);
+  ])), { 1: 20, 2: 12, 3: 13, 4: 7 });
+  assert.equal(rangerSpells.length, 52);
 });
 
 test("Ranger class-level overlays reuse shared spell records", () => {

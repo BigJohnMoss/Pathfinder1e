@@ -2795,6 +2795,7 @@ export default function Home() {
   const hasWildShape = progression.features.some(
     (feature) =>
       feature.progressionKey === "druid-wild-shape" ||
+      feature.name === "Wild Shape" ||
       feature.resourceActions?.some((action) => action.resourceId === "wildShape"),
   );
   const baseWildShapeMaximum = druidClassLevel > 0 && hasWildShape
@@ -3709,6 +3710,7 @@ export default function Home() {
     const draftHasWildShape = Boolean(draftDruidClass?.features.some(
       (feature) =>
         feature.progressionKey === "druid-wild-shape" ||
+        feature.name === "Wild Shape" ||
         feature.resourceActions?.some((action) => action.resourceId === "wildShape"),
     ));
     const draftBaseWildShapeMaximum = draftDruidLevel > 0 && draftHasWildShape

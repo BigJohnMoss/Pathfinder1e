@@ -6,12 +6,18 @@ import spells from "../generated/pf1e-spells.mjs";
 import { applyArchetype, applyArchetypeResourceAdjustments, archetypeAutomationSummary, inferArchetypeSpellLikeAbilityActions } from "../packages/engine/src/index.js";
 
 const archetype = (id) => archetypes.find((item) => item.id === id);
+const spellLikeActions = (item) => [
+  ...inferArchetypeSpellLikeAbilityActions(item),
+  ...item.replacements.flatMap(({ features }) => features).flatMap((feature) =>
+    (feature.resourceActions ?? []).filter(({ spellLikeAbility }) => spellLikeAbility).map((action) => ({ sourceFeatureId: feature.id, action }))),
+];
 
 test("fixed spell-like abilities become cast actions with the published cadence", () => {
-  const greenFaith = inferArchetypeSpellLikeAbilityActions(archetype("druid-green-faith-initiate"));
-  assert.deepEqual(greenFaith.map(({ action }) => [action.spellLikeAbility.spellName, action.spellLikeAbility.cadence, action.minimumLevel]), [
-    ["whispering wind", "day", 6],
-    ["legend lore", "week", 10],
+  const greenFaith = spellLikeActions(archetype("druid-green-faith-initiate"));
+  assert.deepEqual(greenFaith.map(({ action }) => [action.spellLikeAbility.spellId, action.spellLikeAbility.cadence, action.minimumLevel]), [
+    ["whispering-wind", "day", 6],
+    ["transport-via-plants", "day", 9],
+    ["legend-lore", "week", 10],
   ]);
   const atWill = inferArchetypeSpellLikeAbilityActions(archetype("alchemist-blazing-torchbearer"))[0].action;
   assert.equal(atWill.label, "Cast spark");
@@ -19,8 +25,8 @@ test("fixed spell-like abilities become cast actions with the published cadence"
 });
 
 test("innate (Sp) features without redundant spell-like wording become bounded cast actions", () => {
-  const reincarnate = inferArchetypeSpellLikeAbilityActions(archetype("druid-restorer"))[0].action;
-  assert.equal(reincarnate.label, "Cast reincarnate");
+  const reincarnate = spellLikeActions(archetype("druid-restorer"))[0].action;
+  assert.equal(reincarnate.label, "Guide across Lifetimes");
   assert.equal(reincarnate.minimumLevel, 13);
   assert.equal(applyArchetypeResourceAdjustments({}, [archetype("druid-restorer")], 13)[reincarnate.resourceId], 1);
 
@@ -54,9 +60,8 @@ test("named spell-equivalent powers become bounded activation actions", () => {
 test("spell-like resources enforce daily, weekly, formula, and scaling limits", () => {
   const greenFaith = archetype("druid-green-faith-initiate");
   const maximums = applyArchetypeResourceAdjustments({}, [greenFaith], 10);
-  const actions = inferArchetypeSpellLikeAbilityActions(greenFaith);
-  assert.equal(maximums[actions[0].action.resourceId], 1);
-  assert.equal(maximums[actions[1].action.resourceId], 1);
+  const actions = spellLikeActions(greenFaith);
+  assert.ok(actions.every(({ action }) => maximums[action.resourceId] === 1));
 
   const drowned = archetype("spiritualist-drowned-channeler");
   const hydraulic = inferArchetypeSpellLikeAbilityActions(drowned).find(({ action }) => action.spellLikeAbility.spellName === "hydraulic push").action;
@@ -72,23 +77,24 @@ test("applied archetypes expose inferred spell-like actions to the feature UI", 
   const druid = data.classes.find((item) => item.id === "druid");
   const applied = applyArchetype(druid, archetype("druid-green-faith-initiate"));
   const zephyr = applied.features.find((feature) => feature.id === "druid-green-faith-initiate-zephyr-message-sp-6");
-  assert.equal(zephyr.resourceActions[0].label, "Cast whispering wind");
+  assert.equal(zephyr.resourceActions[0].label, "Send Zephyr Message");
   assert.equal(zephyr.resourceActions[0].cost, 1);
   assert.ok(!archetypeAutomationSummary(archetype("druid-green-faith-initiate")).manual.some((item) => item.startsWith("Zephyr Message")));
 });
 
 test("catalogue inference is bounded, unique, named, and player-owned", () => {
+  const spellIds = new Set(spells.map((spell) => spell.id));
   const spellNames = new Set(spells.map((spell) => spell.name.toLowerCase()));
   let actionCount = 0;
   for (const item of archetypes) {
-    const actions = inferArchetypeSpellLikeAbilityActions(item);
+    const actions = spellLikeActions(item);
     actionCount += actions.length;
     assert.equal(new Set(actions.map(({ action }) => action.id)).size, actions.length, `${item.id} has unique spell-like actions`);
     for (const { sourceFeatureId, action } of actions) {
       assert.ok(action.minimumLevel >= 1 && action.minimumLevel <= 20, `${item.id} has a bounded minimum level`);
       assert.doesNotMatch(action.spellLikeAbility.spellName, /^(?:it|spells?|his |her |their )/i, `${item.id} names a concrete spell`);
       assert.doesNotMatch(sourceFeatureId, /(?:companion|eidolon|familiar|mount|phantom)/i, `${item.id} excludes subordinate abilities`);
-      assert.ok(spellNames.has(action.spellLikeAbility.spellName.toLowerCase()) || action.spellLikeAbility.spellName === "transmogrify", `${item.id} references a known spell name`);
+      assert.ok(spellIds.has(action.spellLikeAbility.spellId) || spellNames.has(action.spellLikeAbility.spellName.toLowerCase()) || action.spellLikeAbility.spellId === "transmogrify", `${item.id} references a known spell`);
     }
   }
   assert.ok(actionCount >= 89, `expected broad catalogue coverage, received ${actionCount}`);

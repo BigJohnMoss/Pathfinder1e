@@ -30,7 +30,7 @@ test("full archetypes never report manual effects", () => {
 
 test("static archetype alignment rules expose exact builder eligibility", () => {
   const automated = catalogueArchetypes.filter((archetype) => inferArchetypeAllowedAlignments(archetype).length);
-  assert.equal(automated.length, 39);
+  assert.equal(automated.length, 38);
   const allowed = (id) => inferArchetypeAllowedAlignments(catalogueArchetypes.find((archetype) => archetype.id === id));
   assert.deepEqual(allowed("cleric-elder-mythos-cultist"), ["chaotic-neutral", "chaotic-evil"]);
   assert.deepEqual(allowed("monk-karmic-monk"), ["lawful-good", "lawful-neutral", "neutral", "lawful-evil"]);
@@ -719,7 +719,7 @@ test("exact conditional skill bonuses retain their published trigger", () => {
   ]);
   assert.equal(archetypeSkillBonuses([archetype("gunslinger-commando")], { gunslinger: 10 }).conditionalModifiers[0].bonus, 5);
   assert.ok(!archetypeAutomationSummary(archetype("gunslinger-commando")).manual.some((item) => item.startsWith("Track")));
-  assert.ok(archetypeAutomationSummary(archetype("druid-aerie-protector")).manual.some((item) => item.startsWith("Sky and Stone")), "an additional untracked benefit keeps the feature manual");
+  assert.ok(!archetypeAutomationSummary(archetype("druid-aerie-protector")).manual.some((item) => item.startsWith("Sky and Stone")), "the completed Aerie Protector automation leaves no manual feature");
   assert.ok(!inferArchetypeSkillBonusAdjustments(archetype("slayer-spiritslayer")).some((adjustment) => adjustment.sourceFeatureId === "slayer-spiritslayer-spiritslayer-talents-1"), "optional talents are never granted automatically");
   assert.equal(archetypeSkillBonuses([archetype("bard-magician")], { bard: 10 }).skillBonuses.Spellcraft, 5);
   assert.equal(archetypeSkillBonuses([archetype("bard-detective")], { bard: 10 }).conditionalModifiers.find((item) => item.label === "Perception checks")?.bonus, 5);
@@ -934,10 +934,10 @@ test("multiple fixed grants in one sentence use their nearest published levels",
     { id: "greater-spring-attack", name: "Greater Spring Attack" },
   ]).filter(grant => grant.featureId === "samurai-warrior-poet-battle-dance-ex-6");
   assert.deepEqual(warriorPoet, [
-    { featureId: "samurai-warrior-poet-battle-dance-ex-6", featId: "spring-attack", level: 6 },
     { featureId: "samurai-warrior-poet-battle-dance-ex-6", featId: "improved-spring-attack", level: 12 },
     { featureId: "samurai-warrior-poet-battle-dance-ex-6", featId: "greater-spring-attack", level: 18 },
   ]);
+  assert.equal(record("samurai-warrior-poet").replacements.flatMap((replacement) => replacement.features).find((feature) => feature.id === "samurai-warrior-poet-battle-dance-ex-6").grantedFeatId, "spring-attack");
   assert.deepEqual(inferArchetypeGrantedFeats(record("rogue-sharper"), [
     { id: "improved-steal", name: "Improved Steal" },
     { id: "greater-steal", name: "Greater Steal" },
@@ -1246,8 +1246,8 @@ test("fixed Oracle bonus-spell replacements grant resolved spells at exact class
   const automated = catalogueArchetypes
     .map((archetype) => ({ archetype, rules: inferArchetypeSpellAdditions(archetype, catalogueSpells) }))
     .filter(({ archetype, rules }) => archetype.classId === "oracle" && rules.bonusSpellReplacementClassLevels?.length);
-  assert.equal(automated.length, 14);
-  assert.equal(automated.reduce((total, { rules }) => total + rules.spellGrants.length, 0), 81);
+  assert.equal(automated.length, 15);
+  assert.equal(automated.reduce((total, { rules }) => total + rules.spellGrants.length, 0), 90);
   for (const { archetype, rules } of automated) {
     assert.equal(archetype.classId, "oracle");
     assert.ok(rules.spellGrants.every((grant) => grant.mode === "known" && grant.minimumClassLevel >= 1 && grant.minimumClassLevel <= 18));
@@ -1544,7 +1544,7 @@ test("standard archetype rules text applies unannotated proficiency changes", ()
   for (const [id, expected] of cases) {
     const archetype = record(id);
     assert.deepEqual(inferArchetypeProficiencyAdjustments(archetype), expected, `${id} inferred changes`);
-    assert.deepEqual(applyArchetype({ id: archetype.classId, name: "Class", classSkills: [], features: [] }, archetype).proficiencyAdjustments, expected);
+    assert.deepEqual(applyArchetype({ id: archetype.classId, name: "Class", classSkills: [], features: [] }, archetype).proficiencyAdjustments.map(({ sourceFeatureId: _sourceFeatureId, ...adjustment }) => adjustment), expected);
     assert.ok(archetypeAutomationSummary(archetype).automated.some(item => /proficiencies/.test(item)), `${id} automation summary`);
   }
 });
@@ -1682,7 +1682,7 @@ test("authored catalogue proficiency overlays complete exact multi-sentence repl
   for (const overlay of batch.overlays) {
     const archetype = catalogueArchetypes.find((entry) => entry.id === overlay.archetypeId);
     assert.ok(archetype, `${overlay.archetypeId} generated archetype`);
-    assert.deepEqual(archetype.proficiencyAdjustments, overlay.proficiencyAdjustments, `${overlay.archetypeId} exact proficiency replacement`);
+    assert.deepEqual(archetype.proficiencyAdjustments.map(({ sourceFeatureId: _sourceFeatureId, ...adjustment }) => adjustment), overlay.proficiencyAdjustments, `${overlay.archetypeId} exact proficiency replacement`);
     assert.ok(!archetypeAutomationSummary(archetype).manual.some(item => /Proficienc(?:y|ies) \(level/.test(item)), `${overlay.archetypeId} complete proficiency feature`);
   }
 });
@@ -1693,7 +1693,7 @@ test("exact pure proficiency replacements complete the remaining shared chassis 
   for (const overlay of batch.overlays) {
     const archetype = catalogueArchetypes.find((entry) => entry.id === overlay.archetypeId);
     assert.ok(archetype, `${overlay.archetypeId} generated archetype`);
-    assert.deepEqual(archetype.proficiencyAdjustments, overlay.proficiencyAdjustments, `${overlay.archetypeId} exact proficiency replacement`);
+    assert.deepEqual(archetype.proficiencyAdjustments.map(({ sourceFeatureId: _sourceFeatureId, ...adjustment }) => adjustment), overlay.proficiencyAdjustments, `${overlay.archetypeId} exact proficiency replacement`);
     assert.ok(!archetypeAutomationSummary(archetype).manual.some((item) => /Proficienc(?:y|ies)(?: and Class Skills)? \(level/.test(item)), `${overlay.archetypeId} proficiency feature automated`);
   }
   const pearlSeeker = applyArchetype({ id: "paladin", name: "Paladin", classSkills: [], features: [] }, catalogueArchetypes.find((entry) => entry.id === "paladin-pearl-seeker"));
@@ -1709,7 +1709,7 @@ test("inferred proficiency automation stays normalized across the full archetype
   const inferred = records.map(archetype => ({ archetype, adjustments: inferArchetypeProficiencyAdjustments(archetype) }))
     .filter(item => item.adjustments.length > 0);
   assert.equal(inferred.length, 159);
-  assert.equal(inferred.filter(item => !item.archetype.proficiencyAdjustments?.length).length, 133);
+  assert.equal(inferred.filter(item => !item.archetype.proficiencyAdjustments?.length).length, 125);
   for (const { archetype, adjustments } of inferred) {
     for (const adjustment of adjustments) {
       assert.ok(["weapon", "armor", "shield"].includes(adjustment.category), `${archetype.id} category`);
