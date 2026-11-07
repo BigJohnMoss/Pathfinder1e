@@ -2785,16 +2785,17 @@ export default function Home() {
         const resourceMaximum = maximum + (gnomeBombReward
           ? alternateRewardValue(gnomeBombReward, favoredClassAlternateBonuses[gnomeBombReward.id] ?? 0)
           : 0);
+        const atWill = adjustment?.atWillAtLevel !== undefined && resourceClassLevel >= adjustment.atWillAtLevel;
         return {
           classId: resourceClassId,
           id: resourceId,
           label: `${classes.find((item) => item.id === resourceClassId)?.name ?? resourceClassId} ${adjustment?.label ?? resourceLabels[resourceId]?.[0] ?? resourceId}`,
           unit: adjustment?.unit ?? resourceLabels[resourceId]?.[1] ?? "use",
-          maximum: resourceMaximum,
+          maximum: atWill ? null : resourceMaximum,
           refreshCadence: adjustment?.refreshCadence ?? "day",
           hidden: adjustment?.hidden ?? false,
           used: classResourceUsesByClass[resourceClassId]?.[resourceId] ?? 0,
-          onUsedChange: (used: number) =>
+          onUsedChange: (used: number) => atWill ? undefined :
             setClassResourceUsesByClass((current) => ({
               ...current,
               [resourceClassId]: {
