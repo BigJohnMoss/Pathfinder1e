@@ -89,9 +89,10 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const calculationLevel = calculation.classId ? classLevels[calculation.classId] ?? 0 : level;
         const base = calculation.baseByLevel.filter((step) => step.level <= calculationLevel).sort((left, right) => left.level - right.level).at(-1)?.value ?? 0;
         const multiplier = calculation.inputMultiplierByLevel?.filter((step) => step.level <= calculationLevel).sort((left, right) => left.level - right.level).at(-1)?.multiplier ?? 1;
+        const result = Math.min(calculation.maximumClassLevel ? calculationLevel : Number.POSITIVE_INFINITY, base + input * multiplier);
         return <div className="feature-rule-calculation" role="group" aria-label={calculation.label} key={calculation.id}>
           <label>{calculation.inputLabel}<input aria-label={calculation.inputLabel} type="number" min={calculation.inputMinimum} max={calculation.inputMaximum} value={input} onChange={(event) => setCalculationInputs((current) => ({ ...current, [calculation.id]: Math.max(calculation.inputMinimum, Math.min(calculation.inputMaximum, Number(event.target.value) || calculation.inputMinimum)) }))} /></label>
-          <output aria-label={calculation.outputLabel}>{calculation.outputLabel}: {base + input * multiplier}</output>
+          <output aria-label={calculation.outputLabel}>{calculation.outputLabel}: {result}</output>
           {calculation.summary && <small>{calculation.summary}</small>}
         </div>;
       })}{feature.resourceActions?.filter((action) => {
@@ -215,7 +216,8 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const effectTarget = action.activeEffect ? effectTargets[action.id] ?? action.activeEffect.targets[0] : undefined;
         const effectSkill = action.activeEffect?.skillOptions?.length ? effectSkills[action.id] ?? action.activeEffect.skillOptions[0] : undefined;
         const effectTargetChoiceLabel = action.activeEffect?.targets.every((target) => abilityEffectTargets.has(target)) ? "Affected ability" : "Affected target";
-        const defaultRounds = selectedMode?.defaultRounds ?? action.activeEffect?.defaultRoundsByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.rounds ?? action.activeEffect?.defaultRounds ?? 10;
+        const baseDefaultRounds = selectedMode?.defaultRounds ?? action.activeEffect?.defaultRoundsByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.rounds ?? action.activeEffect?.defaultRounds ?? 10;
+        const defaultRounds = Math.max(1, baseDefaultRounds + (action.activeEffect?.durationAbilityModifier ? abilityModifiers[action.activeEffect.durationAbilityModifier] ?? 0 : 0));
         const rounds = action.activeEffect ? Math.max(1, Math.min(99999, effectRounds[action.id] ?? defaultRounds)) : 0;
         const effectRange = action.activeEffect?.rangeByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.feet;
         const effectUpgrade = action.activeEffect?.upgrades?.filter((upgrade) => selectedOptionSet.has(upgrade.requiredOptionId)).at(-1);

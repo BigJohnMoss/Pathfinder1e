@@ -452,6 +452,7 @@ export interface ClassFeatureOccurrence {
       improvedBonus?: number;
       defaultRounds?: number;
       defaultRoundsByLevel?: Array<{ level: number; rounds: number }>;
+      durationAbilityModifier?: AbilityName;
       durationDice?: { count: number; sides: number };
       rangeByLevel?: Array<{ level: number; feet: number }>;
       fixedRounds?: boolean;
@@ -494,6 +495,7 @@ export interface ClassFeatureOccurrence {
     baseByLevel: Array<{ level: number; value: number }>;
     inputMultiplierByLevel?: Array<{ level: number; multiplier: number }>;
     classId?: string;
+    maximumClassLevel?: boolean;
     summary?: string;
   }>;
   progressionProfiles?: Array<{
