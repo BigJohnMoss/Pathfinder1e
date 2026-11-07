@@ -85,7 +85,7 @@ test("complete Nature Bond restriction rules leave the manual queue", () => {
 test("every inferred restriction references a known catalog option", () => {
   const knownPaths = new Set(data.optionGroups.find((group) => group.id === "druid-nature-bonds").options.map((option) => option.id));
   const knownCompanions = new Set(data.optionGroups.find((group) => group.id === "ranger-animal-companions").options.map((option) => option.id));
-  const knownDomains = new Set(data.optionGroups.find((group) => group.id === "cleric-domains").options.map((option) => option.id));
+  const knownDomains = new Set(data.optionGroups.flatMap((group) => group.options ?? []).filter((option) => option.id.startsWith("domain-") || option.id.startsWith("subdomain-")).map((option) => option.id));
   for (const item of archetypes) {
     const inferred = inferArchetypeNatureBondRules(item);
     assert.ok(inferred.natureBondOptionIds.every((id) => knownPaths.has(id)), item.id);

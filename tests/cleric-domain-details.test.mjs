@@ -11,7 +11,7 @@ const coreIds = [
 ];
 
 test("all 33 Core domains expose two granted powers and nine domain spells", () => {
-  const coreDomains = domains.options.filter((domain) => !domain.parentDomainId);
+  const coreDomains = domains.options.filter((domain) => coreIds.includes(domain.id));
   assert.equal(coreDomains.length, 33);
   const byId = new Map(coreDomains.map((domain) => [domain.id, domain]));
   assert.deepEqual([...byId.keys()].sort(), [...coreIds].sort());

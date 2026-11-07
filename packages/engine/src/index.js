@@ -1224,6 +1224,14 @@ export function normalizeCharacterDraft(
   };
 }
 
+const spellModifierRuleKey = (rule) => `${rule.sourceFeatureId ?? "class"}:${rule.target}:${[...(rule.spellIds ?? [])].sort().join("|")}:${[...(rule.descriptors ?? [])].sort().join("|")}`;
+
+function mergedSpellModifierAdjustments(...collections) {
+  const byRule = new Map();
+  for (const rule of collections.flat()) byRule.set(spellModifierRuleKey(rule), rule);
+  return [...byRule.values()];
+}
+
 export function applyArchetype(characterClass, archetype, referenceClasses = [], spellCatalog = []) {
   if (!archetype || archetype.classId !== characterClass.id)
     return characterClass;
@@ -1412,11 +1420,11 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
       ...inferredSpellAccess.spellListExclusions,
       ...(archetype.spellListExclusions ?? []),
     ])],
-    spellModifierAdjustments: [
-      ...(characterClass.spellModifierAdjustments ?? []),
-      ...inferredSpellModifiers,
-      ...(archetype.spellModifierAdjustments ?? []),
-    ],
+    spellModifierAdjustments: mergedSpellModifierAdjustments(
+      characterClass.spellModifierAdjustments ?? [],
+      inferredSpellModifiers,
+      archetype.spellModifierAdjustments ?? [],
+    ),
     wildEmpathyAdjustments: [
       ...(characterClass.wildEmpathyAdjustments ?? []),
       ...inferredWildEmpathy,

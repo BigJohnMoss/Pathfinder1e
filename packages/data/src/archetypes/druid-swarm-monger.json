@@ -561,7 +561,7 @@
                 }
               ],
               "spellLikeAbility": {
-                "spellId": "swarm-skin",
+                "spellId": "later-spell-swarm-skin",
                 "spellName": "Swarm Skin",
                 "cadence": "day",
                 "kind": "spell-equivalent"

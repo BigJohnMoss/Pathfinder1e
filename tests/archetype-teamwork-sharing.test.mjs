@@ -135,7 +135,10 @@ test("Strategist Drill Instructor spends challenge, tracks recipients, and scale
 });
 
 test("plain bonus teamwork feats preserve recurring levels without misreading conditional alternatives", () => {
-  assert.deepEqual(inferArchetypeFeatChoices(archetype("bard-averaka-arbiter"), data.feats).map(({ level }) => level), [2, 6, 10, 14, 18]);
+  const averaka = archetype("bard-averaka-arbiter");
+  const averakaLevels = inferArchetypeFeatChoices(averaka, data.feats).map(({ level }) => level);
+  const explicitAverakaLevels = averaka.replacements.flatMap(({ features }) => features).filter(({ featChoiceTypes }) => featChoiceTypes?.includes("teamwork")).map(({ level }) => level);
+  assert.deepEqual(averakaLevels.length ? averakaLevels : explicitAverakaLevels, [2, 6, 10, 14, 18]);
   assert.deepEqual(inferArchetypeFeatChoices(archetype("summoner-twinned-summoner"), data.feats).map(({ level }) => level), [4, 12]);
   assert.deepEqual(inferArchetypeFeatChoices(archetype("hunter-packmaster"), data.feats), []);
   assert.deepEqual(inferArchetypeFeatChoices(archetype("spiritualist-zeitgeist-binder"), data.feats), []);

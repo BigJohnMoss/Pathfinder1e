@@ -45,6 +45,8 @@ function choiceLevels(feature) {
   const subsequent = text.match(/\bAt (\d+)(?:st|nd|rd|th) level and every (\d+) (?:class )?levels? thereafter\b[^.]{0,180}\b(?:additional|new) favored terrain\b/i)
     ?? text.match(/\bAt (\d+)(?:st|nd|rd|th) level and every (\d+) levels? thereafter\b[^.]{0,180}\bchooses? a new (?:favorite|favored )?terrain/i);
   if (subsequent) return [first, ...levelsFrom(Number(subsequent[1]), Number(subsequent[2]))].filter((level, index, values) => values.indexOf(level) === index);
+  const chooseEvery = text.match(/\bAt (\d+)(?:st|nd|rd|th) level and every (\d+) levels? thereafter,?\s+choose\b[^.]{0,160}\bas favored terrain\b/i);
+  if (chooseEvery) return levelsFrom(Number(chooseEvery[1]), Number(chooseEvery[2]));
   const everyAfterFirst = text.match(/\b(?:new|additional) favored terrain every (three|four|five|\d+) levels? thereafter\b/i)
     ?? text.match(/\bevery (three|four|five|\d+) levels? thereafter[^.]{0,100}\b(?:new|additional) (?:type of )?terrain\b/i);
   if (everyAfterFirst) return levelsFrom(first, numericValue(everyAfterFirst[1]));
@@ -76,6 +78,11 @@ function allowedTerrainIds(feature) {
   if (fixed) return namedTerrainIds(fixed[1]);
   const either = text.match(/\bmust select either ([^.]+?) as (?:his|her|their) favored terrain/i);
   if (either) return namedTerrainIds(either[1]);
+  const choose = text.match(/\bchoose ([^.]+?) as favored terrain\b/i);
+  if (choose) {
+    const ids = namedTerrainIds(choose[1]);
+    if (ids.length) return ids;
+  }
   const only = text.match(/\bcan choose only ([^.]+?) from the ranger['’]s favored terrain list/i);
   if (only) return namedTerrainIds(only[1]);
   const restricted = text.match(/\brestricted to ([^.]+?)(?:[.;]|$)/i);
@@ -125,7 +132,7 @@ export function inferredArchetypeFavoredTerrainChoiceDetails(archetype) {
       feature: index === 0
         ? {
             ...feature,
-            level: feature.effectiveLevelClassIds?.length ? feature.level : level,
+            level,
             ...(feature.effectiveLevelClassIds?.length ? { minimumEffectiveLevel: level } : {}),
             type: "selectable",
             choiceRequired: true,
@@ -136,7 +143,7 @@ export function inferredArchetypeFavoredTerrainChoiceDetails(archetype) {
         : {
             id: `${feature.id}-choice-${level}`,
             name: `Favored Terrain ${index + 1}`,
-            level: feature.effectiveLevelClassIds?.length ? feature.level : level,
+            level,
             ...(feature.effectiveLevelClassIds?.length ? {
               effectiveLevelClassIds: feature.effectiveLevelClassIds,
               minimumEffectiveLevel: level,

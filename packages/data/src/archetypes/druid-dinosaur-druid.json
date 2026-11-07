@@ -437,6 +437,17 @@
       ]
     }
   ],
+  "abilityScoreAdjustments": [
+    {
+      "sourceFeatureId": "druid-dinosaur-druid-dinosaur-shape-su-1",
+      "label": "Dinosaur Shape: Constitution",
+      "ability": "constitution",
+      "minimumLevel": 1,
+      "base": 2,
+      "bonusType": "size",
+      "condition": "when she assumes the form of a dinosaur via wild shape"
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

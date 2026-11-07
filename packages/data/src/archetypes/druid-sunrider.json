@@ -491,5 +491,9 @@
   ],
   "druidNatureBondOptionIds": [
     "druid-nature-bond-animal"
+  ],
+  "druidAnimalCompanionIds": [
+    "ranger-animal-companion-horse",
+    "ranger-animal-companion-pony"
   ]
 }

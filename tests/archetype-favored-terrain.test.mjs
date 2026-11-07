@@ -96,6 +96,10 @@ test("all inferred terrain choices use bounded, unique levels and known option i
     const choices = inferArchetypeFavoredTerrainChoices(item);
     assert.equal(new Set(choices.map(({ feature }) => feature.id)).size, choices.length, item.id);
     assert.ok(choices.every(({ feature }) => feature.level >= 1 && feature.level <= 20), item.id);
-    assert.ok(choices.every(({ feature }) => feature.optionChoiceIds.length && feature.optionChoiceIds.every((id) => known.has(id))), item.id);
+    assert.ok(choices.every(({ feature }) => {
+      if (feature.optionChoiceIds?.length) return feature.optionChoiceIds.every((id) => known.has(id));
+      const group = data.optionGroups.find(({ id }) => id === feature.optionGroupId);
+      return group?.options?.length && group.options.every(({ favoredTerrainId }) => known.has(favoredTerrainId));
+    }), item.id);
   }
 });

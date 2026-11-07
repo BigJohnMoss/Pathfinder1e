@@ -18,6 +18,17 @@ export const archetypeAutomationArrayFields = [
 
 export const archetypeAutomationObjectFields = ["arcaneSpellFailure"];
 
+function automationEntryKey(field, entry) {
+  if (typeof entry === "string") return entry;
+  if (field === "skillBonusAdjustments" && entry?.sourceFeatureId && entry?.skill)
+    return `${entry.sourceFeatureId}:${entry.skill}`;
+  if (field === "proficiencyAdjustments" && entry?.category && entry?.operation && Array.isArray(entry?.proficiencies))
+    return `${entry.category}:${entry.operation}:${[...entry.proficiencies].sort().join("|")}`;
+  if (field === "spellModifierAdjustments" && entry?.sourceFeatureId && entry?.target && Array.isArray(entry?.spellIds))
+    return `${entry.sourceFeatureId}:${entry.target}:${[...entry.spellIds].sort().join("|")}`;
+  return JSON.stringify(entry);
+}
+
 export function mergeArchetypeAutomation(archetypes, overlayFiles = []) {
   const overlays = overlayFiles.flatMap((file) => file.overlays ?? []);
   const byArchetypeId = new Map();
@@ -32,7 +43,7 @@ export function mergeArchetypeAutomation(archetypes, overlayFiles = []) {
         const combined = [...(merged[field] ?? []), ...additions];
         const seen = new Set();
         merged[field] = combined.filter((entry) => {
-          const key = typeof entry === "string" ? entry : JSON.stringify(entry);
+          const key = automationEntryKey(field, entry);
           if (seen.has(key)) return false;
           seen.add(key);
           return true;

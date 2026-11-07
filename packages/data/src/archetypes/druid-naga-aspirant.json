@@ -1580,6 +1580,17 @@
       ]
     }
   ],
+  "landSpeedAdjustments": [
+    {
+      "sourceFeatureId": "druid-naga-aspirant-naga-shape-su-6",
+      "label": "Naga Shape",
+      "minimumLevel": 6,
+      "bonus": 10,
+      "bonusType": "enhancement",
+      "condition": "while in naga form",
+      "timing": "beforeReduction"
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
