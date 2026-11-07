@@ -18,28 +18,257 @@
           "name": "Nature’s Armaments",
           "level": 1,
           "type": "archetype",
-          "summary": "A green scourge can lose a prepared 1st- or 2nd-level spell in order to cast shillelagh or flame blade , respectively. She can instead choose to lose a higher-level spell in order to increase the enhancement bonus of her shillelagh , or to add any of the following weapon special abilities to her shillelagh or flame blade : bane (aberrations only), frost, mighty cleaving, returning, shock, throwing , or vicious . If the target weapon is a quarterstaff, these bonuses apply to only one of its ends. If a flame blade gains the frost or shock special ability, the base damage of the spell changes to match the energy type; neither a flame blade nor shillelagh can gain both of these special abilities. A green scourge cannot add the throwing property to a flame blade unless she also adds the returning property. When adding weapon special abilities or increasing the enhancement bonus, the final level of the spell expended is 1 higher than the base spell level (2nd for shillelagh and 3rd for flame blade ), increased by the additional special abilities’ total base price modifier (see Table 15–9 on page 469 of the Core Rulebook ). For example, creating an aberration-bane vicious flame blade requires spending a 5th-level spell slot, which also counts as a 5th-level spell for purposes of dispelling. This ability alters spontaneous casting."
+          "summary": "A green scourge can lose a prepared 1st- or 2nd-level spell in order to cast shillelagh or flame blade , respectively. She can instead choose to lose a higher-level spell in order to increase the enhancement bonus of her shillelagh , or to add any of the following weapon special abilities to her shillelagh or flame blade : bane (aberrations only), frost, mighty cleaving, returning, shock, throwing , or vicious . If the target weapon is a quarterstaff, these bonuses apply to only one of its ends. If a flame blade gains the frost or shock special ability, the base damage of the spell changes to match the energy type; neither a flame blade nor shillelagh can gain both of these special abilities. A green scourge cannot add the throwing property to a flame blade unless she also adds the returning property. When adding weapon special abilities or increasing the enhancement bonus, the final level of the spell expended is 1 higher than the base spell level (2nd for shillelagh and 3rd for flame blade ), increased by the additional special abilities’ total base price modifier (see Table 15–9 on page 469 of the Core Rulebook ). For example, creating an aberration-bane vicious flame blade requires spending a 5th-level spell slot, which also counts as a 5th-level spell for purposes of dispelling. This ability alters spontaneous casting.",
+          "spellAutomation": {
+            "preparedArmamentConversion": {
+              "label": "Nature’s Armaments",
+              "spells": [
+                {
+                  "spellId": "shillelagh",
+                  "baseSpellLevel": 1,
+                  "baseEnhancementBonus": 1,
+                  "maximumEnhancementBonus": 5,
+                  "properties": [
+                    {
+                      "id": "aberration-bane",
+                      "label": "Bane (aberrations)",
+                      "priceModifier": 1,
+                      "description": "+2 enhancement and +2d6 damage against aberrations."
+                    },
+                    {
+                      "id": "frost",
+                      "label": "Frost",
+                      "priceModifier": 1,
+                      "description": "Change flame blade's base damage to cold or add 1d6 cold damage to shillelagh.",
+                      "incompatibleWith": [
+                        "shock"
+                      ]
+                    },
+                    {
+                      "id": "mighty-cleaving",
+                      "label": "Mighty cleaving",
+                      "priceModifier": 1,
+                      "description": "Gain one additional Cleave attack per round when the wielder has Cleave."
+                    },
+                    {
+                      "id": "returning",
+                      "label": "Returning",
+                      "priceModifier": 1,
+                      "description": "A thrown weapon returns before the wielder's next turn."
+                    },
+                    {
+                      "id": "shock",
+                      "label": "Shock",
+                      "priceModifier": 1,
+                      "description": "Change flame blade's base damage to electricity or add 1d6 electricity damage to shillelagh.",
+                      "incompatibleWith": [
+                        "frost"
+                      ]
+                    },
+                    {
+                      "id": "throwing",
+                      "label": "Throwing",
+                      "priceModifier": 1,
+                      "description": "The melee weapon can be thrown with a 10-foot range increment."
+                    },
+                    {
+                      "id": "vicious",
+                      "label": "Vicious",
+                      "priceModifier": 1,
+                      "description": "+2d6 damage to the target and 1d6 damage to the wielder on a hit."
+                    }
+                  ]
+                },
+                {
+                  "spellId": "flame-blade",
+                  "baseSpellLevel": 2,
+                  "properties": [
+                    {
+                      "id": "aberration-bane",
+                      "label": "Bane (aberrations)",
+                      "priceModifier": 1,
+                      "description": "+2 enhancement and +2d6 damage against aberrations."
+                    },
+                    {
+                      "id": "frost",
+                      "label": "Frost",
+                      "priceModifier": 1,
+                      "description": "Change flame blade's base damage to cold or add 1d6 cold damage to shillelagh.",
+                      "incompatibleWith": [
+                        "shock"
+                      ]
+                    },
+                    {
+                      "id": "mighty-cleaving",
+                      "label": "Mighty cleaving",
+                      "priceModifier": 1,
+                      "description": "Gain one additional Cleave attack per round when the wielder has Cleave."
+                    },
+                    {
+                      "id": "returning",
+                      "label": "Returning",
+                      "priceModifier": 1,
+                      "description": "A thrown weapon returns before the wielder's next turn."
+                    },
+                    {
+                      "id": "shock",
+                      "label": "Shock",
+                      "priceModifier": 1,
+                      "description": "Change flame blade's base damage to electricity or add 1d6 electricity damage to shillelagh.",
+                      "incompatibleWith": [
+                        "frost"
+                      ]
+                    },
+                    {
+                      "id": "throwing",
+                      "label": "Throwing",
+                      "priceModifier": 1,
+                      "description": "The melee weapon can be thrown with a 10-foot range increment.",
+                      "requires": [
+                        "returning"
+                      ]
+                    },
+                    {
+                      "id": "vicious",
+                      "label": "Vicious",
+                      "priceModifier": 1,
+                      "description": "+2d6 damage to the target and 1d6 damage to the wielder on a hit."
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "progressionProfiles": [
+            {
+              "id": "green-scourge-natures-armaments",
+              "label": "Nature’s Armaments pricing",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "spell",
+                  "label": "Base conversion"
+                },
+                {
+                  "id": "upgrades",
+                  "label": "Upgrade cost"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "spell": "Shillelagh: 1st-level slot; flame blade: 2nd-level slot",
+                    "upgrades": "Base spell level + 1 + added enhancement/property modifiers"
+                  }
+                }
+              ],
+              "summary": "The spellbook enforces frost/shock exclusivity, returning before throwing on flame blade, and the maximum 9th-level prepared slot."
+            }
+          ]
         },
         {
           "id": "druid-green-scourge-aberration-sense-ex-1",
           "name": "Aberration Sense (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a green scourge adds Knowledge (dungeoneering) to her class skills and gains a +2 bonus on Knowledge (dungeoneering) checks. This replaces nature sense."
+          "summary": "At 1st level, a green scourge adds Knowledge (dungeoneering) to her class skills and gains a +2 bonus on Knowledge (dungeoneering) checks. This replaces nature sense.",
+          "progressionProfiles": [
+            {
+              "id": "green-scourge-aberration-sense",
+              "label": "Aberration Sense",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "skill",
+                  "label": "Class skill"
+                },
+                {
+                  "id": "bonus",
+                  "label": "Bonus"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "skill": "Knowledge (dungeoneering)",
+                    "bonus": "+2 untyped"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-green-scourge-scentless-ex-3",
           "name": "Scentless (Ex)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, a green scourge cannot be detected or tracked with the scent ability or any other special senses that rely on acute smell. She can choose to exude a scent if desired. This ability replaces trackless step."
+          "summary": "At 3rd level, a green scourge cannot be detected or tracked with the scent ability or any other special senses that rely on acute smell. She can choose to exude a scent if desired. This ability replaces trackless step.",
+          "resourceActions": [
+            {
+              "id": "green-scourge-scentless",
+              "label": "Set Scent State",
+              "classId": "druid",
+              "minimumLevel": 3,
+              "modeLabel": "Scent state",
+              "modes": [
+                {
+                  "id": "suppressed",
+                  "label": "Scent suppressed",
+                  "summary": "Cannot be detected or tracked by scent or other smell-based special senses.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Scentless",
+                      "description": "Cannot be detected or tracked by scent or other acute-smell special senses."
+                    }
+                  ]
+                },
+                {
+                  "id": "exuded",
+                  "label": "Scent deliberately exuded",
+                  "summary": "Temporarily allow the Green Scourge's scent to be detected."
+                }
+              ],
+              "summary": "Track whether the normally scentless Green Scourge is deliberately exuding a scent."
+            }
+          ]
         },
         {
           "id": "druid-green-scourge-resist-unnatural-influence-ex-4",
           "name": "Resist Unnatural Influence (Ex)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a green scourge gains a +4 bonus on saving throws against aberrations’ spelllike abilities, supernatural abilities, and poisons. This replaces resist nature’s lure."
+          "summary": "At 4th level, a green scourge gains a +4 bonus on saving throws against aberrations’ spelllike abilities, supernatural abilities, and poisons. This replaces resist nature’s lure.",
+          "progressionProfiles": [
+            {
+              "id": "green-scourge-resist-unnatural-influence",
+              "label": "Resist Unnatural Influence",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "bonus",
+                  "label": "Save bonus"
+                },
+                {
+                  "id": "against",
+                  "label": "Against"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "bonus": "+4",
+                    "against": "Aberration spell-like abilities, supernatural abilities, and poisons"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -49,8 +278,28 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Green%20Scourge"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Nature’s Armaments now spends the lowest legal prepared slot for either spell, calculates enhancement and property prices, and enforces incompatible and dependent properties. Aberration Sense, selectable scent suppression, and the conditional aberration-defense bonus are also automated."
+  ],
+  "classSkillAdditions": [
+    "Knowledge (dungeoneering)"
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-green-scourge-resist-unnatural-influence-ex-4",
+      "label": "Resist Unnatural Influence",
+      "condition": "Saving throws against aberrations' spell-like abilities, supernatural abilities, and poisons",
+      "minimumLevel": 4,
+      "base": 4
+    }
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "druid-green-scourge-aberration-sense-ex-1",
+      "skill": "Knowledge (dungeoneering)",
+      "minimumLevel": 1,
+      "base": 2
+    }
   ]
 }

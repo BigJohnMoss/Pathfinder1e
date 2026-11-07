@@ -533,6 +533,23 @@ export interface ClassFeatureOccurrence {
       keyword: string;
       requiresTargetPrepared?: boolean;
     };
+    preparedArmamentConversion?: {
+      label: string;
+      spells: Array<{
+        spellId: string;
+        baseSpellLevel: number;
+        baseEnhancementBonus?: number;
+        maximumEnhancementBonus?: number;
+        properties: Array<{
+          id: string;
+          label: string;
+          priceModifier: number;
+          description: string;
+          incompatibleWith?: string[];
+          requires?: string[];
+        }>;
+      }>;
+    };
     fastHealingAura?: {
       label: string;
       resourceId: string;
