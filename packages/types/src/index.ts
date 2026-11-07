@@ -901,6 +901,7 @@ export interface ArchetypeSpellGrant {
   minimumClassLevel: number;
   mode: "list" | "known";
   sourceFeatureId?: string;
+  requiredActiveEffectName?: string;
 }
 export interface ArchetypeSpellModifierAdjustment {
   sourceFeatureId?: string;

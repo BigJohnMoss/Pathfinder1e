@@ -2217,9 +2217,9 @@ export default function Home() {
   const archetypeBonusSpells = useMemo(
     () => mergeSpellLists(
       spellsFromAdditions(spells, characterClass.bonusSpellAdditions, characterClass.id, maximumSpellLevel),
-      spellsFromArchetypeGrants(spells, characterClass.spellGrants, characterClass.id, primaryClassLevel, maximumSpellLevel, "known"),
+      spellsFromArchetypeGrants(spells, characterClass.spellGrants, characterClass.id, primaryClassLevel, maximumSpellLevel, "known", activeEffects.map((effect) => effect.name)),
     ),
-    [characterClass.bonusSpellAdditions, characterClass.id, characterClass.spellGrants, maximumSpellLevel, primaryClassLevel, spells],
+    [activeEffects, characterClass.bonusSpellAdditions, characterClass.id, characterClass.spellGrants, maximumSpellLevel, primaryClassLevel, spells],
   );
   const grantedSpells = useMemo(
     () => withoutExcludedSpells([
@@ -2376,6 +2376,7 @@ export default function Home() {
       secondaryHasSpellcasting,
       secondaryMaximumSpellLevel,
       secondaryClassLevel,
+      activeEffects,
       spells,
     ],
   );
@@ -2491,7 +2492,7 @@ export default function Home() {
       ...secondaryPatronSpells,
       ...secondarySelectedOptionSpells.filter((spell) => !spell.selectedAccessOnly),
       ...spellsFromAdditions(spells, secondaryCharacterClass?.bonusSpellAdditions, secondaryCharacterClass?.id ?? "", secondaryMaximumSpellLevel),
-      ...spellsFromArchetypeGrants(spells, secondaryCharacterClass?.spellGrants, secondaryCharacterClass?.id ?? "", secondaryClassLevel, secondaryMaximumSpellLevel, "known"),
+      ...spellsFromArchetypeGrants(spells, secondaryCharacterClass?.spellGrants, secondaryCharacterClass?.id ?? "", secondaryClassLevel, secondaryMaximumSpellLevel, "known", activeEffects.map((effect) => effect.name)),
     ], secondaryCharacterClass?.spellListExclusions),
     [
       secondaryBloodlineSpells,
