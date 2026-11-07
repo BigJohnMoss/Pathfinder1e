@@ -530,7 +530,8 @@ export interface ClassFeatureOccurrence {
     };
     preparedKeywordConversion?: {
       label: string;
-      keyword: string;
+      keyword?: string;
+      spellIds?: string[];
       requiresTargetPrepared?: boolean;
     };
     preparedArmamentConversion?: {

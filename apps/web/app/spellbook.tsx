@@ -829,7 +829,11 @@ export function Spellbook({
                   const boostDescriptor = qualifyingDescriptor(spell);
                   const automaticDuration = derivedDuration(spell);
                   const preparedConversion = spellAutomation?.preparedKeywordConversion;
-                  const conversionEligible = Boolean(preparedConversion && spell.name.toLowerCase().includes(preparedConversion.keyword.toLowerCase()) && (!preparedConversion.requiresTargetPrepared || prepared > 0));
+                  const conversionMatches = Boolean(preparedConversion && (
+                    preparedConversion.spellIds?.includes(spell.id) ||
+                    (preparedConversion.keyword && spell.name.toLowerCase().includes(preparedConversion.keyword.toLowerCase()))
+                  ));
+                  const conversionEligible = conversionMatches && (!preparedConversion!.requiresTargetPrepared || prepared > 0);
                   const conversionSourceLevel = conversionEligible
                     ? preparedLimits
                         .map((entry) => entry.level)

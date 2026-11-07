@@ -352,7 +352,7 @@ for (const [index, url] of archetypeUrls.entries()) {
       }
       if (feature.spellAutomation?.preparedKeywordConversion !== undefined) {
         const conversion = feature.spellAutomation.preparedKeywordConversion;
-        if (!conversion || typeof conversion.label !== "string" || !conversion.label.trim() || typeof conversion.keyword !== "string" || !conversion.keyword.trim() || (conversion.requiresTargetPrepared !== undefined && typeof conversion.requiresTargetPrepared !== "boolean")) errors.push(`${file}: ${feature.id} has invalid preparedKeywordConversion`);
+        if (!conversion || typeof conversion.label !== "string" || !conversion.label.trim() || (conversion.keyword === undefined && conversion.spellIds === undefined) || (conversion.keyword !== undefined && (typeof conversion.keyword !== "string" || !conversion.keyword.trim())) || (conversion.spellIds !== undefined && (!Array.isArray(conversion.spellIds) || conversion.spellIds.length === 0 || new Set(conversion.spellIds).size !== conversion.spellIds.length || conversion.spellIds.some(spellId => !spellIds.has(spellId)))) || (conversion.requiresTargetPrepared !== undefined && typeof conversion.requiresTargetPrepared !== "boolean")) errors.push(`${file}: ${feature.id} has invalid preparedKeywordConversion`);
       }
       if (feature.spellAutomation?.preparedArmamentConversion !== undefined) {
         const conversion = feature.spellAutomation.preparedArmamentConversion;
