@@ -44,6 +44,7 @@ export { animalCompanionProgression, familiarProgression, normalizeCompanionStat
 export { archetypeCompanionEffectiveLevel, inferArchetypeCompanionGrants, inferredArchetypeCompanionGrantDetails, resolvedArchetypeCompanionGrants };
 export { eidolonProgression } from "./eidolon.js";
 export { drakeCompanionProgression } from "./drake.js";
+export { phantomFocusDetails, phantomProgression } from "./phantom.js";
 export { confirmCriticalThreat, parseCriticalThreatRange, parseDiceExpression, resolveAttackRoll, rollD20Check, rollDice, rollDiceExpression } from "./dice.js";
 export { inferArchetypeResourceAdjustments };
 export { resolvedArchetypeResourceAdjustments };

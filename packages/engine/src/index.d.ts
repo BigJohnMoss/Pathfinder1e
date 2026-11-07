@@ -17,6 +17,7 @@ export function fixedOptionIdsThroughLevel(characterClass: SharedCharacterClass,
 export { archetypeDeedRules, namedDeeds } from "./archetype-deeds.js";
 export { archetypePerformanceRules, namedPerformances } from "./archetype-performances.js";
 export { confirmCriticalThreat, parseCriticalThreatRange, parseDiceExpression, resolveAttackRoll, rollD20Check, rollDice, rollDiceExpression } from "./dice.js";
+export { phantomFocusDetails, phantomProgression } from "./phantom.js";
 
 export interface ClassProgression {
   level: number;
