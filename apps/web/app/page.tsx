@@ -2743,10 +2743,12 @@ export default function Home() {
       feature.progressionKey === "druid-wild-shape" ||
       feature.resourceActions?.some((action) => action.resourceId === "wildShape"),
   );
-  const wildShapeMaximum =
-    druidClassLevel > 0 && hasWildShape
-      ? druidWildShapeUses(druidWildShapeEffectiveLevel)
-      : 0;
+  const baseWildShapeMaximum = druidClassLevel > 0 && hasWildShape
+    ? druidWildShapeUses(druidWildShapeEffectiveLevel)
+    : 0;
+  const wildShapeMaximum = baseWildShapeMaximum === null
+    ? null
+    : Math.max(0, baseWildShapeMaximum + (druidCharacterClass?.wildShapeUseAdjustments ?? []).filter((adjustment) => druidClassLevel >= adjustment.level).reduce((total, adjustment) => total + adjustment.delta, 0));
   const resourceLabels: Record<string, [string, string]> = {
     bombs: ["Bombs", "bomb"],
     challenges: ["Challenges", "challenge"],
@@ -3650,10 +3652,17 @@ export default function Home() {
         draftDruidLevel + (draftDruidClass?.wildShapeLevelAdjustment ?? 0),
       ),
     );
-    const draftWildShapeMaximum =
-      draftDruidLevel > 0
-        ? druidWildShapeUses(draftWildShapeEffectiveLevel)
-        : 0;
+    const draftHasWildShape = Boolean(draftDruidClass?.features.some(
+      (feature) =>
+        feature.progressionKey === "druid-wild-shape" ||
+        feature.resourceActions?.some((action) => action.resourceId === "wildShape"),
+    ));
+    const draftBaseWildShapeMaximum = draftDruidLevel > 0 && draftHasWildShape
+      ? druidWildShapeUses(draftWildShapeEffectiveLevel)
+      : 0;
+    const draftWildShapeMaximum = draftBaseWildShapeMaximum === null
+      ? null
+      : Math.max(0, draftBaseWildShapeMaximum + (draftDruidClass?.wildShapeUseAdjustments ?? []).filter((adjustment) => draftDruidLevel >= adjustment.level).reduce((total, adjustment) => total + adjustment.delta, 0));
     const draftOppositionSchoolIds = oppositionSchoolsFromOptions(
       draft.classId,
       draft.selectedOptions,

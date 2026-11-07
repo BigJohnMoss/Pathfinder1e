@@ -456,6 +456,7 @@ export interface ClassFeatureOccurrence {
       defaultRoundsByLevel?: Array<{ level: number; rounds: number }>;
       durationAbilityModifier?: AbilityName;
       durationFromVariableCost?: boolean;
+      durationFromVariableCostMultiplier?: number;
       durationDice?: { count: number; sides: number };
       rangeByLevel?: Array<{ level: number; feet: number }>;
       fixedRounds?: boolean;
@@ -598,6 +599,7 @@ export interface CharacterClass {
     grantsImprovedUnarmedStrike?: boolean;
   }>;
   wildShapeLevelAdjustment?: number;
+  wildShapeUseAdjustments?: Array<{ level: number; delta: number }>;
   druidNatureBondOptionIds?: string[];
   druidAnimalCompanionIds?: string[];
   druidDomainIds?: string[];
@@ -675,6 +677,7 @@ export interface CharacterArchetype {
   spellcastingMinimumLevel?: number;
   featPrerequisiteBabUsesClassLevel?: boolean;
   wildShapeLevelAdjustment?: number;
+  wildShapeUseAdjustments?: Array<{ level: number; delta: number }>;
   druidNatureBondOptionIds?: string[];
   druidAnimalCompanionIds?: string[];
   druidDomainIds?: string[];
