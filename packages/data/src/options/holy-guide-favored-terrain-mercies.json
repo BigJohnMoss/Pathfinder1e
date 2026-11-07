@@ -1,0 +1,102 @@
+{
+  "id": "holy-guide-favored-terrain-mercies",
+  "name": "Holy Guide Favored Terrain Alternatives",
+  "classIds": [
+    "paladin"
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Holy%20Guide"
+  },
+  "optionDefaults": {
+    "groupId": "holy-guide-favored-terrain-mercies",
+    "classIds": [
+      "paladin"
+    ],
+    "minimumLevel": 9,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Holy%20Guide"
+    },
+    "favoredTerrainAdvancement": {
+      "newTerrainBonus": 2,
+      "increaseBonus": 2
+    },
+    "choice": {
+      "key": "favoredTerrainIncrease",
+      "label": "Increase favored terrain bonus",
+      "optionSource": "selected-favored-terrains"
+    }
+  },
+  "options": [
+    {
+      "id": "holy-guide-favored-terrain-cold",
+      "name": "Cold favored terrain",
+      "favoredTerrainId": "ranger-terrain-cold",
+      "benefit": "Choose cold as a new favored terrain with a +2 bonus, then increase one of your favored-terrain bonuses by +2. This replaces the mercy selected at this level."
+    },
+    {
+      "id": "holy-guide-favored-terrain-desert",
+      "name": "Desert favored terrain",
+      "favoredTerrainId": "ranger-terrain-desert",
+      "benefit": "Choose desert as a new favored terrain with a +2 bonus, then increase one of your favored-terrain bonuses by +2. This replaces the mercy selected at this level."
+    },
+    {
+      "id": "holy-guide-favored-terrain-forest",
+      "name": "Forest favored terrain",
+      "favoredTerrainId": "ranger-terrain-forest",
+      "benefit": "Choose forest as a new favored terrain with a +2 bonus, then increase one of your favored-terrain bonuses by +2. This replaces the mercy selected at this level."
+    },
+    {
+      "id": "holy-guide-favored-terrain-jungle",
+      "name": "Jungle favored terrain",
+      "favoredTerrainId": "ranger-terrain-jungle",
+      "benefit": "Choose jungle as a new favored terrain with a +2 bonus, then increase one of your favored-terrain bonuses by +2. This replaces the mercy selected at this level."
+    },
+    {
+      "id": "holy-guide-favored-terrain-mountain",
+      "name": "Mountain favored terrain",
+      "favoredTerrainId": "ranger-terrain-mountain",
+      "benefit": "Choose mountain as a new favored terrain with a +2 bonus, then increase one of your favored-terrain bonuses by +2. This replaces the mercy selected at this level."
+    },
+    {
+      "id": "holy-guide-favored-terrain-plains",
+      "name": "Plains favored terrain",
+      "favoredTerrainId": "ranger-terrain-plains",
+      "benefit": "Choose plains as a new favored terrain with a +2 bonus, then increase one of your favored-terrain bonuses by +2. This replaces the mercy selected at this level."
+    },
+    {
+      "id": "holy-guide-favored-terrain-planes",
+      "name": "Planes (choose one) favored terrain",
+      "favoredTerrainId": "ranger-terrain-planes",
+      "benefit": "Choose planes (choose one) as a new favored terrain with a +2 bonus, then increase one of your favored-terrain bonuses by +2. This replaces the mercy selected at this level."
+    },
+    {
+      "id": "holy-guide-favored-terrain-swamp",
+      "name": "Swamp favored terrain",
+      "favoredTerrainId": "ranger-terrain-swamp",
+      "benefit": "Choose swamp as a new favored terrain with a +2 bonus, then increase one of your favored-terrain bonuses by +2. This replaces the mercy selected at this level."
+    },
+    {
+      "id": "holy-guide-favored-terrain-underground",
+      "name": "Underground favored terrain",
+      "favoredTerrainId": "ranger-terrain-underground",
+      "benefit": "Choose underground as a new favored terrain with a +2 bonus, then increase one of your favored-terrain bonuses by +2. This replaces the mercy selected at this level."
+    },
+    {
+      "id": "holy-guide-favored-terrain-urban",
+      "name": "Urban favored terrain",
+      "favoredTerrainId": "ranger-terrain-urban",
+      "benefit": "Choose urban as a new favored terrain with a +2 bonus, then increase one of your favored-terrain bonuses by +2. This replaces the mercy selected at this level."
+    },
+    {
+      "id": "holy-guide-favored-terrain-water",
+      "name": "Water favored terrain",
+      "favoredTerrainId": "ranger-terrain-water",
+      "benefit": "Choose water as a new favored terrain with a +2 bonus, then increase one of your favored-terrain bonuses by +2. This replaces the mercy selected at this level."
+    }
+  ]
+}

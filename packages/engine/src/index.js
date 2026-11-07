@@ -36,7 +36,7 @@ import { archetypeSkillCheckRules, inferredArchetypeSkillCheckDetails, inferArch
 import { archetypeAbilityScoreAdjustments, inferredArchetypeAbilityScoreDetails, inferArchetypeAbilityScoreAdjustments } from "./archetype-abilities.js";
 import { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments, inferredArchetypeAlignmentDetails } from "./archetype-alignment.js";
 import { characterPrecisionDamageRules, inferArchetypePrecisionDamageAdjustments, inferredArchetypePrecisionDamageDetails, precisionDamageAtLevel } from "./archetype-precision-damage.js";
-import { inferArchetypeFavoredTerrainChoices, inferredArchetypeFavoredTerrainChoiceDetails } from "./archetype-favored-terrain.js";
+import { calculateFavoredTerrainBonuses, inferArchetypeFavoredTerrainChoices, inferredArchetypeFavoredTerrainChoiceDetails } from "./archetype-favored-terrain.js";
 import { inferArchetypeFavoredEnemyChoices, inferredArchetypeFavoredEnemyChoiceDetails } from "./archetype-favored-enemy.js";
 import { inferArchetypeNatureBondRules, inferredArchetypeNatureBondDetails } from "./archetype-nature-bond.js";
 import { inferArchetypeOmissions, inferredArchetypeOmissionDetails } from "./archetype-omissions.js";
@@ -83,7 +83,7 @@ export { archetypeSkillCheckRules, inferArchetypeSkillCheckRules };
 export { archetypeAbilityScoreAdjustments, inferArchetypeAbilityScoreAdjustments };
 export { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments };
 export { characterPrecisionDamageRules, inferArchetypePrecisionDamageAdjustments, precisionDamageAtLevel };
-export { inferArchetypeFavoredTerrainChoices, inferredArchetypeFavoredTerrainChoiceDetails };
+export { calculateFavoredTerrainBonuses, inferArchetypeFavoredTerrainChoices, inferredArchetypeFavoredTerrainChoiceDetails };
 export { inferArchetypeFavoredEnemyChoices, inferredArchetypeFavoredEnemyChoiceDetails };
 export { inferArchetypeNatureBondRules, inferredArchetypeNatureBondDetails };
 export { inferArchetypeOmissions, inferredArchetypeOmissionDetails };

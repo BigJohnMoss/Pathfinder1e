@@ -87,7 +87,15 @@ function allowedTerrainIds(feature) {
   return allTerrainIds;
 }
 
-function fullyRepresented(feature, levels, allowedIds) {
+function favoredTerrainAdvancement(archetype, feature) {
+  return (archetype?.optionGroupAugmentations ?? []).find((augmentation) =>
+    augmentation.targetGroupId === "paladin-mercies" &&
+    /favored-terrain/i.test(augmentation.sourceGroupId) &&
+    /select another mercy/i.test(String(feature?.summary ?? "")),
+  );
+}
+
+function fullyRepresented(feature, levels, allowedIds, structuredAdvancement = false) {
   const text = String(feature.summary ?? "");
   if (!levels.length || !allowedIds.length) return false;
   if (/\b(?:damage rolls?|mount gains|levels? (?:from|in) both classes|stack for|courtly function|party|Shadow Plane)\b/i.test(text)) return false;
@@ -95,6 +103,7 @@ function fullyRepresented(feature, levels, allowedIds) {
   return sentences.every((sentence) =>
     archetypeReplacementBoilerplate(sentence) ||
     /\bfavored terrains?\b|\bfavorite terrain\b|\bplanar terrain\b/i.test(sentence) ||
+    (structuredAdvancement && /\bfunctions? like the ranger ability\b/i.test(sentence)) ||
     /\bbonus(?:es)?\b[^.]{0,100}\b(?:this ability|aquatic terrain)\b[^.]{0,100}\bincreases? by\b/i.test(sentence),
   );
 }
@@ -105,13 +114,15 @@ export function inferredArchetypeFavoredTerrainChoiceDetails(archetype) {
   const sentenceCoverage = [];
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
     if (!favoredTerrainFeature(feature)) continue;
-    const levels = choiceLevels(feature).filter((level) => Number.isInteger(level) && level >= 1 && level <= 20);
+    const advancement = favoredTerrainAdvancement(archetype, feature);
+    const inferredLevels = choiceLevels(feature);
+    const levels = (advancement ? inferredLevels.slice(0, 1) : inferredLevels).filter((level) => Number.isInteger(level) && level >= 1 && level <= 20);
     const optionChoiceIds = allowedTerrainIds(feature);
     if (!levels.length || !optionChoiceIds.length) continue;
     levels.forEach((level, index) => choices.push({
       sourceFeatureId: feature.id,
       feature: index === 0
-        ? { ...feature, level, type: "selectable", choiceRequired: true, optionGroupId: "ranger-favored-terrains", optionChoiceIds }
+        ? { ...feature, level, type: "selectable", choiceRequired: true, optionGroupId: "ranger-favored-terrains", optionChoiceIds, ...(advancement ? { favoredTerrainBaseBonus: 2 } : {}) }
         : {
             id: `${feature.id}-choice-${level}`,
             name: `Favored Terrain ${index + 1}`,
@@ -128,11 +139,35 @@ export function inferredArchetypeFavoredTerrainChoiceDetails(archetype) {
       if (/\bfavored terrains?\b|\bfavorite terrain\b|\bplanar terrain\b/i.test(sentence) || /\bbonus(?:es)?\b[^.]{0,100}\b(?:this ability|aquatic terrain)\b[^.]{0,100}\bincreases? by\b/i.test(sentence))
         sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
     });
-    if (fullyRepresented(feature, levels, optionChoiceIds)) fullyAutomatedFeatureIds.add(feature.id);
+    if (fullyRepresented(feature, levels, optionChoiceIds, Boolean(advancement))) fullyAutomatedFeatureIds.add(feature.id);
   }
   return { choices, fullyAutomatedFeatureIds, sentenceCoverage };
 }
 
 export function inferArchetypeFavoredTerrainChoices(archetype) {
   return inferredArchetypeFavoredTerrainChoiceDetails(archetype).choices;
+}
+
+const terrainIdForOption = (option) => option?.favoredTerrainId ?? (option?.groupId === "ranger-favored-terrains" ? option.id : undefined);
+
+export function calculateFavoredTerrainBonuses(selections, selectedOptions = {}) {
+  const bonuses = new Map();
+  const add = (terrainId, amount, name) => {
+    if (!terrainId || !Number.isFinite(amount) || amount === 0) return;
+    const current = bonuses.get(terrainId) ?? { id: terrainId, name: name ?? terrainId.replace(/^ranger-terrain-/, "").replace(/-/g, " "), bonus: 0 };
+    bonuses.set(terrainId, { ...current, name: current.name || name, bonus: current.bonus + amount });
+  };
+  for (const selection of [...(selections ?? [])].sort((left, right) => (left.level ?? 0) - (right.level ?? 0))) {
+    const option = selection?.option;
+    const terrainId = terrainIdForOption(option);
+    if (!option || !terrainId) continue;
+    if (selection.baseBonus) add(terrainId, selection.baseBonus, option.name);
+    const advancement = option.favoredTerrainAdvancement;
+    if (!advancement) continue;
+    add(terrainId, advancement.newTerrainBonus, option.name.replace(/ favored terrain$/i, ""));
+    const detailKey = option.choice?.key ? `${selection.featureId}-${option.choice.key}` : "";
+    const increasedTerrainId = detailKey ? selectedOptions[detailKey] : "";
+    if (increasedTerrainId) add(increasedTerrainId, advancement.increaseBonus);
+  }
+  return [...bonuses.values()].sort((left, right) => left.name.localeCompare(right.name));
 }

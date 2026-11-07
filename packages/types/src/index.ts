@@ -163,6 +163,7 @@ export interface ClassFeatureOccurrence {
   optionChoiceIds?: string[];
   channelEnergyDiceAdvancementOptionIds?: string[];
   channelEnergyPolarityOptionIds?: { positive: string; negative: string };
+  favoredTerrainBaseBonus?: number;
   grantsAllOptions?: boolean;
   featChoiceIds?: string[];
   featChoiceTypes?: string[];
@@ -872,12 +873,18 @@ export interface SelectableOption {
   selectionLimit?: number;
   familyId?: string;
   exclusiveGroupId?: string;
+  favoredTerrainId?: string;
+  favoredTerrainAdvancement?: {
+    newTerrainBonus: number;
+    increaseBonus: number;
+  };
   choice?: {
     key: string;
     label: string;
     options?: Array<{ id: string; name: string }>;
     allowCustom?: boolean;
     uniqueAcrossSelections?: boolean;
+    optionSource?: "selected-favored-terrains";
   };
   resourceActions?: Array<{
     id: string;

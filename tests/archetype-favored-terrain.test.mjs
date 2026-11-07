@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import archetypes from "../generated/pf1e-archetypes.mjs";
 import feats from "../generated/pf1e-feats.mjs";
 import data from "../generated/pf1e-data.mjs";
-import { applyArchetype, archetypeAutomationSummary, inferArchetypeFavoredTerrainChoices } from "../packages/engine/src/index.js";
+import { applyArchetype, archetypeAutomationSummary, calculateFavoredTerrainBonuses, inferArchetypeFavoredTerrainChoices } from "../packages/engine/src/index.js";
 
 const archetype = (id) => archetypes.find((item) => item.id === id);
 const levels = (id) => inferArchetypeFavoredTerrainChoices(archetype(id)).map(({ feature }) => feature.level);
@@ -13,7 +13,7 @@ test("favored-terrain archetypes expose their exact selection schedules", () => 
   assert.deepEqual(levels("bard-wasteland-chronicler"), [3, 8, 13, 18]);
   assert.deepEqual(levels("gunslinger-commando"), [2, 6, 10, 14, 18]);
   assert.deepEqual(levels("hunter-forester"), [5, 9, 13, 17]);
-  assert.deepEqual(levels("paladin-holy-guide"), [3, 6, 9, 12, 15, 18]);
+  assert.deepEqual(levels("paladin-holy-guide"), [3]);
   assert.deepEqual(levels("paladin-wilderness-warden"), [3, 9, 15]);
   assert.deepEqual(levels("rogue-chameleon"), [3, 6, 9, 12, 15, 18]);
   assert.deepEqual(levels("ranger-dusk-stalker"), [3, 8, 13, 18]);
@@ -47,6 +47,37 @@ test("applied archetypes include stable selectable terrain features", () => {
   assert.deepEqual(choices.map((feature) => feature.level), [2, 6, 10, 14, 18]);
   assert.ok(choices.every((feature) => feature.choiceRequired && feature.optionChoiceIds.length === 11));
   assert.equal(new Set(choices.map((feature) => feature.id)).size, choices.length);
+});
+
+test("Holy Guide uses later mercy slots for optional terrain advancement", () => {
+  const paladin = data.classes.find((item) => item.id === "paladin");
+  const source = archetype("paladin-holy-guide");
+  const applied = applyArchetype(paladin, source);
+  const terrainChoices = applied.features.filter((feature) => feature.optionGroupId === "ranger-favored-terrains");
+  assert.deepEqual(terrainChoices.map((feature) => feature.level), [3]);
+  assert.equal(terrainChoices[0].favoredTerrainBaseBonus, 2);
+  assert.deepEqual(applied.features.filter((feature) => feature.progressionKey === "paladin-mercy").map((feature) => feature.level), [9, 12, 15, 18]);
+  assert.deepEqual(applied.optionGroupAugmentations, [{ targetGroupId: "paladin-mercies", sourceGroupId: "holy-guide-favored-terrain-mercies", minimumFeatureLevel: 9 }]);
+  assert.ok(!archetypeAutomationSummary(source, feats).manual.includes("Favored Terrain (Ex) (level 3)"));
+});
+
+test("favored-terrain bonus calculation applies each new terrain and selected increase", () => {
+  const rangerTerrains = data.optionGroups.find((group) => group.id === "ranger-favored-terrains").options;
+  const holyGuideTerrains = data.optionGroups.find((group) => group.id === "holy-guide-favored-terrain-mercies").options;
+  const find = (options, id) => options.find((option) => option.id === id);
+  const selections = [
+    { featureId: "initial", level: 3, baseBonus: 2, option: find(rangerTerrains, "ranger-terrain-forest") },
+    { featureId: "mercy-9", level: 9, option: find(holyGuideTerrains, "holy-guide-favored-terrain-desert") },
+    { featureId: "mercy-12", level: 12, option: find(holyGuideTerrains, "holy-guide-favored-terrain-urban") },
+  ];
+  assert.deepEqual(calculateFavoredTerrainBonuses(selections, {
+    "mercy-9-favoredTerrainIncrease": "ranger-terrain-forest",
+    "mercy-12-favoredTerrainIncrease": "ranger-terrain-desert",
+  }), [
+    { id: "ranger-terrain-desert", name: "Desert", bonus: 4 },
+    { id: "ranger-terrain-forest", name: "Forest", bonus: 4 },
+    { id: "ranger-terrain-urban", name: "Urban", bonus: 2 },
+  ]);
 });
 
 test("complete favored-terrain choice rules leave the manual queue", () => {

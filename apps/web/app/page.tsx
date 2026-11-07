@@ -1848,6 +1848,7 @@ export default function Home() {
       name: feature.name,
       level: feature.level,
       classLevel: featureClassLevel,
+      favoredTerrainBaseBonus: feature.favoredTerrainBaseBonus,
       options: levelAwareOptions,
       selected: levelAwareOptions.find(
         (option) => option.id === selectedOptions[feature.id],

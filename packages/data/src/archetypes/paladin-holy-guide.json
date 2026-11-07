@@ -40,8 +40,15 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Holy%20Guide"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The initial favored terrain, every later mercy-or-terrain choice, unique terrain selection, required +2 bonus increase, and resulting terrain bonuses are automated."
+  ],
+  "optionGroupAugmentations": [
+    {
+      "targetGroupId": "paladin-mercies",
+      "sourceGroupId": "holy-guide-favored-terrain-mercies",
+      "minimumFeatureLevel": 9
+    }
   ]
 }

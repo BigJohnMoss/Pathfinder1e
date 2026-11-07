@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { spells as characterSpells, type CharacterSpell } from "./character-catalogue";
 import { alignmentsWithinOneStep, channelEnergyChoices } from "../../../packages/engine/src/cleric-alignment.js";
 import { channelEnergyProgression } from "../../../packages/engine/src/channel-energy.js";
+import { calculateFavoredTerrainBonuses } from "../../../packages/engine/src/index.js";
 import { optionsGrantedBySelection } from "../../../packages/engine/src/dependent-options.js";
 import { arcaneBondDetailOptions } from "../../../packages/engine/src/wizard-arcane-bond.js";
 import { oppositionSchoolOptions } from "../../../packages/engine/src/wizard-schools.js";
@@ -10,8 +11,8 @@ import type { AbilityName, ActiveEffect, CharacterOption } from "../../../packag
 import type { DailyResource } from "./class-features";
 
 type BloodlineVariant = NonNullable<CharacterOption["variants"]>[number];
-type Option = Pick<CharacterOption, "id" | "name" | "benefit"> & Partial<Omit<CharacterOption, "id" | "name" | "benefit">> & { choice?: { key: string; label: string; options?: Array<{ id: string; name: string }>; allowCustom?: boolean; uniqueAcrossSelections?: boolean } };
-type Choice = { id: string; name: string; level: number; classLevel?: number; options: Option[]; selected?: Option; requiredOptionId?: string; requiredOptionMessage?: string };
+type Option = Pick<CharacterOption, "id" | "name" | "benefit"> & Partial<Omit<CharacterOption, "id" | "name" | "benefit">>;
+type Choice = { id: string; name: string; level: number; classLevel?: number; favoredTerrainBaseBonus?: number; options: Option[]; selected?: Option; requiredOptionId?: string; requiredOptionMessage?: string };
 type ChoiceChangeRule = { locked: boolean; preventClear?: boolean; message: string };
 
 const slug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -191,7 +192,11 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
         .filter((other) => other.id !== choice.id && isPaladinMercy(other))
         .map((other) => selectedOptions[other.id])
         .filter((id): id is string => Boolean(id));
-      return choice.options.filter((option) => !selectedByOtherMercy.includes(option.id));
+      return choice.options
+        .filter((option) => !selectedByOtherMercy.includes(option.id))
+        .map((option) => option.choice?.optionSource === "selected-favored-terrains"
+          ? { ...option, choice: { ...option.choice, options: favoredTerrainDetailOptions(choice, option) } }
+          : option);
     }
     if (isOracleRevelation(choice)) {
       const selectedOptionIds = Object.values(selectedOptions);
@@ -224,6 +229,24 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     && other.selected?.exclusiveGroupId === option.exclusiveGroupId
     && other.selected?.familyId !== option.familyId
   ));
+  const terrainIdForOption = (option?: Option) => option?.favoredTerrainId ?? (option?.groupId === "ranger-favored-terrains" ? option.id : undefined);
+  const favoredTerrainDetailOptions = (choice: Choice, option: Option) => {
+    if (option.choice?.optionSource !== "selected-favored-terrains") return option.choice?.options ?? [];
+    const choiceIndex = orderedChoices.findIndex((candidate) => candidate.id === choice.id);
+    const terrainNames = new Map<string, string>();
+    for (const candidate of orderedChoices.slice(0, choiceIndex + 1)) {
+      const selectedCandidate = candidate.id === choice.id ? option : candidate.selected;
+      const terrainId = terrainIdForOption(selectedCandidate);
+      if (!terrainId) continue;
+      const catalogueOption = orderedChoices.flatMap((item) => item.options).find((item) => item.id === terrainId);
+      terrainNames.set(terrainId, catalogueOption?.name ?? selectedCandidate?.name.replace(/ favored terrain$/i, "") ?? terrainId);
+    }
+    return [...terrainNames].map(([id, name]) => ({ id, name })).sort((left, right) => left.name.localeCompare(right.name));
+  };
+  const favoredTerrainBonuses = calculateFavoredTerrainBonuses(
+    orderedChoices.map((choice) => ({ featureId: choice.id, level: choice.level, baseBonus: choice.favoredTerrainBaseBonus, option: choice.selected })),
+    selectedOptions,
+  );
 
   useEffect(() => {
     const seenMercies = new Set<string>();
@@ -251,7 +274,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
       if (selectedOption?.choice) {
         const detailKey = `${choice.id}-${selectedOption.choice.key}`;
         const detailValue = selectedOptions[detailKey];
-        if (detailValue && !selectedOption.choice.allowCustom && !(selectedOption.choice.options ?? []).some((option) => option.id === detailValue)) onOptionChange(detailKey, "");
+        if (detailValue && !selectedOption.choice.allowCustom && !favoredTerrainDetailOptions(choice, selectedOption).some((option) => option.id === detailValue)) onOptionChange(detailKey, "");
         if (detailValue && selectedOption.choice.uniqueAcrossSelections) {
           const uniqueKey = `${selectedOption.id}:${selectedOption.choice.key}:${detailValue}`;
           if (seenUniqueDetails.has(uniqueKey)) onOptionChange(detailKey, "");
@@ -273,7 +296,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
   const refreshDomainSlots = () => domainSlotChoices.forEach((choice) => onOptionChange(`${choice.id}-used`, ""));
   const refreshSpecialistSlots = () => specialistSlotChoices.forEach((choice) => onOptionChange(`${choice.id}-used`, ""));
 
-  return <section className="choice-panel"><div><p className="eyebrow">FEATURE CHOICES</p><h2>Configure class features</h2><p>Dependent choices are ordered so each selection unlocks the next legal options.</p></div>{domainSlotChoices.length > 0 && <button type="button" className="domain-slot-refresh" onClick={refreshDomainSlots}>Refresh domain spell slots</button>}{specialistSlotChoices.length > 0 && <button type="button" className="domain-slot-refresh" onClick={refreshSpecialistSlots}>Refresh specialist school slots</button>}{orderedChoices.map((choice) => {
+  return <section className="choice-panel"><div><p className="eyebrow">FEATURE CHOICES</p><h2>Configure class features</h2><p>Dependent choices are ordered so each selection unlocks the next legal options.</p></div>{favoredTerrainBonuses.length > 0 && <aside className="favored-terrain-summary" aria-label="Favored terrain bonuses"><strong>Favored terrain bonuses</strong><ul>{favoredTerrainBonuses.map((terrain) => <li key={terrain.id}><span>{terrain.name}</span><b>+{terrain.bonus}</b></li>)}</ul></aside>}{domainSlotChoices.length > 0 && <button type="button" className="domain-slot-refresh" onClick={refreshDomainSlots}>Refresh domain spell slots</button>}{specialistSlotChoices.length > 0 && <button type="button" className="domain-slot-refresh" onClick={refreshSpecialistSlots}>Refresh specialist school slots</button>}{orderedChoices.map((choice) => {
     if (choice.id === "beast-master-companion-roster-4") return <BeastMasterRoster key={choice.id} choice={choice} selectedOptions={selectedOptions} classLevel={choice.classLevel ?? classLevel} onOptionChange={onOptionChange} />;
     const options = optionsFor(choice);
     const domainLevel = domainSpellLevel(choice);

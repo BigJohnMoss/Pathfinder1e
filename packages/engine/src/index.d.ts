@@ -1,4 +1,4 @@
-import type { AbilityName, AbilityScores, Alignment, CharacterArchetype, CharacterClass as SharedCharacterClass, CharacterDraftV1, CharacterFeat, CharacterSpell, CharacterTrait, CompanionProgressionAdjustment } from "../../types/src/index.js";
+import type { AbilityName, AbilityScores, Alignment, CharacterArchetype, CharacterClass as SharedCharacterClass, CharacterDraftV1, CharacterFeat, CharacterOption, CharacterSpell, CharacterTrait, CompanionProgressionAdjustment } from "../../types/src/index.js";
 
 export type BabProgression = "full" | "three-quarters" | "half";
 export type SaveProgression = "good" | "poor";
@@ -144,6 +144,7 @@ export function normalizeCharacterDraft(value: unknown, options?: { classIds?: s
 export function applyArchetype(characterClass: CharacterClass, archetype?: CharacterArchetype, referenceClasses?: CharacterClass[], spellCatalog?: CharacterSpell[]): CharacterClass;
 export function inferArchetypeFavoredTerrainChoices(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; feature: CharacterClass["features"][number] }>;
 export function inferredArchetypeFavoredTerrainChoiceDetails(archetype?: CharacterArchetype): { choices: ReturnType<typeof inferArchetypeFavoredTerrainChoices>; fullyAutomatedFeatureIds: Set<string>; sentenceCoverage: Array<{ sourceFeatureId: string; sentenceIndex: number }> };
+export function calculateFavoredTerrainBonuses(selections: Array<{ featureId: string; level: number; baseBonus?: number; option?: Pick<CharacterOption, "id" | "name"> & Partial<CharacterOption> }>, selectedOptions?: Record<string, string>): Array<{ id: string; name: string; bonus: number }>;
 export function inferArchetypeFavoredEnemyChoices(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; feature: CharacterClass["features"][number] }>;
 export function inferredArchetypeFavoredEnemyChoiceDetails(archetype?: CharacterArchetype): { choices: ReturnType<typeof inferArchetypeFavoredEnemyChoices>; fullyAutomatedFeatureIds: Set<string>; sentenceCoverage: Array<{ sourceFeatureId: string; sentenceIndex: number }> };
 export function inferArchetypeNatureBondRules(archetype?: CharacterArchetype): { natureBondOptionIds: string[]; animalCompanionIds: string[]; domainIds: string[] };
