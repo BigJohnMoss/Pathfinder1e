@@ -1,0 +1,25 @@
+{
+  "id": "spire-defender-exotic-weapon",
+  "name": "Spire Defender Exotic Weapon",
+  "classIds": ["magus"],
+  "optionDefaults": {
+    "groupId": "spire-defender-exotic-weapon",
+    "classIds": ["magus"],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Magus%20Spire%20Defender"
+    }
+  },
+  "options": [
+    {
+      "id": "spire-defender-qualifying-exotic-weapon",
+      "name": "Qualifying exotic weapon",
+      "benefit": "Choose one exotic light or one-handed melee weapon with the disarm or trip special feature.",
+      "choice": { "key": "weapon", "label": "Exotic weapon", "allowCustom": true }
+    }
+  ]
+}
+

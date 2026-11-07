@@ -4,6 +4,21 @@
   "classId": "monk",
   "summary": "Softstrike monks employ a nonlethal but effective form of combat.",
   "replacesText": "Weapon Proficiency; Unarmed Strike; 6th, 10th-level Bonus Feats; Wholeness of Body; Quivering Palm; Empty Body",
+  "proficiencyAdjustments": [
+    {
+      "sourceFeatureId": "monk-softstrike-monk-weapon-proficiency-1",
+      "category": "weapon",
+      "operation": "replace",
+      "proficiencies": ["Aklys", "Bolas", "Club", "Light flail", "Light mace", "Nunchaku", "Quarterstaff", "Sap", "Sling"]
+    },
+    {
+      "sourceFeatureId": "monk-softstrike-monk-weapon-proficiency-1",
+      "category": "weapon",
+      "operation": "add",
+      "proficiencies": ["Any weapon with the monk special quality that can deal bludgeoning damage"],
+      "condition": "for a multiple-damage-type monk weapon, only when dealing bludgeoning damage"
+    }
+  ],
   "replacements": [
     {
       "featureIds": [

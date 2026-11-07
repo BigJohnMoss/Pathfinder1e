@@ -1672,7 +1672,7 @@ test("complete multi-sentence proficiency rules leave the manual queue", () => {
   assert.deepEqual(record("skald-belkzen-war-drummer").proficiencyAdjustments, [
     { category: "weapon", operation: "replace", proficiencies: ["All simple weapons", "Greatclub"] },
   ]);
-  assert.ok(archetypeAutomationSummary(record("magus-spire-defender")).manual.some(item => item.startsWith("Weapon Proficiency (level")), "restricted weapon choices remain manual");
+  assert.ok(!archetypeAutomationSummary(record("magus-spire-defender")).manual.some(item => item.startsWith("Weapon Proficiency (level")), "structured restricted weapon choices are automated");
   assert.ok(archetypeAutomationSummary(record("cavalier-musketeer")).manual.some(item => item.startsWith("Weapon and Armor Proficiency (level")), "the unmodeled fighter-level stacking rule remains manual");
 });
 
@@ -1709,7 +1709,7 @@ test("inferred proficiency automation stays normalized across the full archetype
   const inferred = records.map(archetype => ({ archetype, adjustments: inferArchetypeProficiencyAdjustments(archetype) }))
     .filter(item => item.adjustments.length > 0);
   assert.equal(inferred.length, 159);
-  assert.equal(inferred.filter(item => !item.archetype.proficiencyAdjustments?.length).length, 138);
+  assert.equal(inferred.filter(item => !item.archetype.proficiencyAdjustments?.length).length, 135);
   for (const { archetype, adjustments } of inferred) {
     for (const adjustment of adjustments) {
       assert.ok(["weapon", "armor", "shield"].includes(adjustment.category), `${archetype.id} category`);

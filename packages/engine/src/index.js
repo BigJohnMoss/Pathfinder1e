@@ -28,6 +28,7 @@ import { archetypeSenseAdjustments, inferredArchetypeSenseDetails, inferArchetyp
 import { archetypeLandSpeedAdjustments, inferredArchetypeLandSpeedDetails, inferArchetypeLandSpeedAdjustments } from "./archetype-movement.js";
 import { archetypeDefenseAdjustments, archetypeDefenses, inferredArchetypeDefenseDetails, inferArchetypeDefenseAdjustments } from "./archetype-defenses.js";
 import { archetypeArmorConditionedBenefits, inferredArchetypeArmorConditionedDefenseDetails } from "./archetype-armor-conditioned-defense.js";
+import { archetypeWeaponProficiencyRules, inferredArchetypeWeaponProficiencyRuleDetails } from "./archetype-weapon-proficiencies.js";
 import { archetypeSkillCheckRules, inferredArchetypeSkillCheckDetails, inferArchetypeSkillCheckRules } from "./archetype-skill-checks.js";
 import { archetypeAbilityScoreAdjustments, inferredArchetypeAbilityScoreDetails, inferArchetypeAbilityScoreAdjustments } from "./archetype-abilities.js";
 import { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments, inferredArchetypeAlignmentDetails } from "./archetype-alignment.js";
@@ -71,6 +72,7 @@ export { archetypeCombatModifierAdjustments, inferArchetypeCombatModifierAdjustm
 export { archetypeSenseAdjustments, inferArchetypeSenseAdjustments };
 export { archetypeLandSpeedAdjustments, inferArchetypeLandSpeedAdjustments };
 export { archetypeArmorConditionedBenefits, archetypeDefenseAdjustments, archetypeDefenses, inferArchetypeDefenseAdjustments };
+export { archetypeWeaponProficiencyRules };
 export { archetypeSkillCheckRules, inferArchetypeSkillCheckRules };
 export { archetypeAbilityScoreAdjustments, inferArchetypeAbilityScoreAdjustments };
 export { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments };
@@ -1357,6 +1359,10 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
       ...(characterClass.proficiencyAdjustments ?? []),
       ...(archetype.proficiencyAdjustments ?? inferredProficiencies),
     ],
+    weaponUseAdjustments: [
+      ...(characterClass.weaponUseAdjustments ?? []),
+      ...(archetype.weaponUseAdjustments ?? []),
+    ],
     arcaneSpellFailure: archetype.arcaneSpellFailure ?? characterClass.arcaneSpellFailure,
     optionGroupAugmentations: [
       ...(characterClass.optionGroupAugmentations ?? []),
@@ -1946,6 +1952,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (archetype.classSkillAdditions?.length || archetype.classSkillRemovals?.length || inferredClassSkills.additions.length || inferredClassSkills.removals.length || classSkillDetails.replacement.length) automated.push("Class skill changes");
   if ([archetype.babProgression, archetype.saveProgressionOverrides, archetype.skillRanksPerLevel, archetype.hitDie].some(value => value !== undefined)) automated.push("Class combat-statistic progression");
   const proficiencyDetails = inferArchetypeProficiencyDetails(archetype);
+  const weaponProficiencyRuleDetails = inferredArchetypeWeaponProficiencyRuleDetails(archetype);
   const proficiencyAdjustments = archetype.proficiencyAdjustments?.length
     ? archetype.proficiencyAdjustments
     : proficiencyDetails.adjustments;
@@ -1953,6 +1960,8 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     const action = adjustment.operation === "add" ? "gain" : adjustment.operation === "remove" ? "lose" : "use only";
     automated.push(`${adjustment.category[0].toUpperCase()}${adjustment.category.slice(1)} proficiencies: ${action} ${adjustment.proficiencies.join(", ") || "none"}`);
   }
+  if (weaponProficiencyRuleDetails.fullyAutomatedFeatureIds.size)
+    automated.push(`${weaponProficiencyRuleDetails.fullyAutomatedFeatureIds.size} complete weapon proficiency rule${weaponProficiencyRuleDetails.fullyAutomatedFeatureIds.size === 1 ? "" : "s"}`);
   if (archetype.arcaneSpellFailure) {
     const ignoredArmor = (archetype.arcaneSpellFailure.ignoredArmorCategories ?? [])
       .map(({ category, minimumLevel }) => `${category} armor at level ${minimumLevel}`);
@@ -2135,6 +2144,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const adjustmentFeatureIds = new Set([
     ...classSkillDetails.fullyAutomatedFeatureIds,
     ...proficiencyDetails.fullyAutomatedFeatureIds,
+    ...weaponProficiencyRuleDetails.fullyAutomatedFeatureIds,
     ...(archetype.arcaneSpellFailure?.fullyAutomatedFeatureIds ?? []),
     ...skillRankDetails.fullyAutomatedFeatureIds,
     ...natureBondDetails.fullyAutomatedFeatureIds,
