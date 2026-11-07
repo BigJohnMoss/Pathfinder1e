@@ -1,0 +1,17 @@
+{
+  "id": "tempest-druid-domains",
+  "name": "Tempest Druid Domains",
+  "classIds": ["druid"],
+  "options": [
+    {
+      "id": "domain-aquatic",
+      "groupId": "tempest-druid-domains",
+      "name": "Aquatic Domain",
+      "classIds": ["druid"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Gain Sealord, Seastrike, and the Aquatic domain spell list.",
+      "source": { "title": "Ultimate Magic", "page": 33, "url": "https://www.aonprd.com/DruidDomains.aspx" }
+    }
+  ]
+}

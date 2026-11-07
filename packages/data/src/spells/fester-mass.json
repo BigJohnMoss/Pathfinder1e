@@ -1,0 +1,16 @@
+{
+  "id": "fester-mass",
+  "name": "Fester, Mass",
+  "school": "necromancy",
+  "levelByClass": { "inquisitor": 6, "witch": 6 },
+  "components": ["V", "S", "M"],
+  "castingTime": "1 standard action",
+  "range": "close",
+  "target": "one creature/level, no two more than 30 feet apart",
+  "duration": "1 round/level or 1 round; see text",
+  "savingThrow": "Fortitude partial",
+  "spellResistance": "yes",
+  "summary": "Multiple foes resist healing with spell resistance 12 + caster level and halve healing that ignores spell resistance; a successful Fortitude save reduces duration to 1 round.",
+  "description": "This functions as fester, except it affects multiple foes. Each target gains spell resistance equal to 12 + your caster level against effects that restore hit points or grant temporary hit points, and healing that ignores spell resistance is halved. A successful Fortitude save reduces the duration to 1 round.",
+  "source": { "title": "Advanced Player's Guide", "page": 221, "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Fester,%20Mass" }
+}

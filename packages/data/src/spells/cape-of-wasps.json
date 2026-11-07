@@ -1,0 +1,14 @@
+{
+  "id": "cape-of-wasps",
+  "name": "Cape of Wasps",
+  "school": "conjuration",
+  "levelByClass": { "druid": 4, "hunter": 4, "witch": 4 },
+  "components": ["V", "S"],
+  "castingTime": "1 standard action",
+  "range": "personal",
+  "target": "you",
+  "duration": "1 round/level (D)",
+  "summary": "Summon a wasp swarm into your space for ranged concealment and retaliation against melee attackers, or make it carry you with a 20-foot fly speed.",
+  "description": "A wasp swarm fills your space without attacking you. It grants partial concealment against ranged attacks, and a creature that successfully strikes you in melee takes 2d6 swarm damage and the swarm's poison. As a free action, you can make the swarm cling tightly and carry you at a 20-foot fly speed with poor maneuverability; in that form it neither grants concealment nor harms melee attackers. You can switch it back as a free action.",
+  "source": { "title": "Ultimate Magic", "page": 210, "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Cape%20of%20Wasps" }
+}
