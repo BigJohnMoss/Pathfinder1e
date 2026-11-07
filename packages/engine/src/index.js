@@ -1,5 +1,5 @@
 import { normalizeCompanionState } from "./companions.js";
-import { archetypeCompanionEffectiveLevel, inferArchetypeCompanionGrants, resolvedArchetypeCompanionGrants } from "./archetype-companions.js";
+import { archetypeCompanionEffectiveLevel, inferArchetypeCompanionGrants, inferredArchetypeCompanionGrantDetails, resolvedArchetypeCompanionGrants } from "./archetype-companions.js";
 import { inferArchetypeResourceAdjustments, resolvedArchetypeResourceAdjustments } from "./archetype-resources.js";
 import { inferArchetypeTemporaryHitPointActions, inferredArchetypeTemporaryHitPointActionDetails } from "./archetype-temporary-hit-points.js";
 import { inferArchetypeRerollActions, inferredArchetypeRerollActionDetails } from "./archetype-rerolls.js";
@@ -35,7 +35,7 @@ import { inferArchetypeFavoredEnemyChoices, inferredArchetypeFavoredEnemyChoiceD
 import { inferArchetypeNatureBondRules, inferredArchetypeNatureBondDetails } from "./archetype-nature-bond.js";
 import { inferArchetypeOmissions, inferredArchetypeOmissionDetails } from "./archetype-omissions.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
-export { archetypeCompanionEffectiveLevel, inferArchetypeCompanionGrants, resolvedArchetypeCompanionGrants };
+export { archetypeCompanionEffectiveLevel, inferArchetypeCompanionGrants, inferredArchetypeCompanionGrantDetails, resolvedArchetypeCompanionGrants };
 export { eidolonProgression } from "./eidolon.js";
 export { drakeCompanionProgression } from "./drake.js";
 export { confirmCriticalThreat, parseCriticalThreatRange, parseDiceExpression, resolveAttackRoll, rollD20Check, rollDice, rollDiceExpression } from "./dice.js";
@@ -1894,6 +1894,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const favoredTerrainChoiceDetails = inferredArchetypeFavoredTerrainChoiceDetails(archetype);
   const favoredEnemyChoiceDetails = inferredArchetypeFavoredEnemyChoiceDetails(archetype);
   const natureBondDetails = inferredArchetypeNatureBondDetails(archetype);
+  const companionGrantDetails = inferredArchetypeCompanionGrantDetails(archetype);
   const omissionDetails = inferredArchetypeOmissionDetails(archetype);
   const inferredWildEmpathy = inferredArchetypeWildEmpathyDetails(archetype);
   const precisionDamageDetails = inferredArchetypePrecisionDamageDetails(archetype);
@@ -2037,6 +2038,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ["rerolls", rerollActionDetails.sentenceCoverage ?? []],
     ["favored terrain", favoredTerrainChoiceDetails.sentenceCoverage ?? []],
     ["favored enemy", favoredEnemyChoiceDetails.sentenceCoverage ?? []],
+    ["companion grants", companionGrantDetails.sentenceCoverage ?? []],
   ];
   const crossRuleFeatureIds = new Set(replacementFeatures.filter((feature) => {
     const coveringFamilies = ruleSentenceCoverage.filter(([, entries]) =>
@@ -2162,6 +2164,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...inferredFeatAlternativeDetails.fullyAutomatedFeatureIds,
     ...favoredTerrainChoiceDetails.fullyAutomatedFeatureIds,
     ...favoredEnemyChoiceDetails.fullyAutomatedFeatureIds,
+    ...companionGrantDetails.fullyAutomatedFeatureIds,
   ].filter(Boolean));
   const manualFeatures = replacementFeatures
     .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))

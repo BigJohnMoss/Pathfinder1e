@@ -11,6 +11,7 @@ export { characterPrecisionDamageRules, inferArchetypePrecisionDamageAdjustments
 export function adjustedCompanionLevel(level: number, adjustment: CompanionProgressionAdjustment): number;
 export function archetypeCompanionEffectiveLevel(grant: NonNullable<CharacterArchetype["companionGrants"]>[number], classLevel: number, characterLevel?: number): number;
 export function inferArchetypeCompanionGrants(archetype: CharacterArchetype): NonNullable<CharacterArchetype["companionGrants"]>;
+export function inferredArchetypeCompanionGrantDetails(archetype: CharacterArchetype): { grants: NonNullable<CharacterArchetype["companionGrants"]>; fullyAutomatedFeatureIds: Set<string>; sentenceCoverage: Array<{ sourceFeatureId: string; sentenceIndex: number }> };
 export function resolvedArchetypeCompanionGrants(archetype: CharacterArchetype): NonNullable<CharacterArchetype["companionGrants"]>;
 export { confirmCriticalThreat, parseCriticalThreatRange, parseDiceExpression, resolveAttackRoll, rollD20Check, rollDice, rollDiceExpression } from "./dice.js";
 
