@@ -227,7 +227,13 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const effectSkill = action.activeEffect?.skillOptions?.length ? effectSkills[action.id] ?? action.activeEffect.skillOptions[0] : undefined;
         const effectTargetChoiceLabel = action.activeEffect?.targets.every((target) => abilityEffectTargets.has(target)) ? "Affected ability" : "Affected target";
         const baseDefaultRounds = action.activeEffect?.durationFromVariableCost && selectedVariableAmount !== undefined ? selectedVariableAmount * (action.activeEffect.durationFromVariableCostMultiplier ?? 1) : selectedMode?.defaultRounds ?? action.activeEffect?.defaultRoundsByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.rounds ?? action.activeEffect?.defaultRounds ?? 10;
-        const defaultRounds = Math.max(1, baseDefaultRounds + (action.activeEffect?.durationAbilityModifier ? abilityModifiers[action.activeEffect.durationAbilityModifier] ?? 0 : 0));
+        const durationAbilityRounds = action.activeEffect?.durationAbilityModifier
+          ? (abilityModifiers[action.activeEffect.durationAbilityModifier] ?? 0) * (action.activeEffect.durationAbilityModifierMultiplier ?? 1)
+          : 0;
+        const defaultRounds = Math.max(
+          action.activeEffect?.minimumDurationRounds ?? 1,
+          action.activeEffect?.durationAbilityModifierMultiplier === undefined ? baseDefaultRounds + durationAbilityRounds : durationAbilityRounds,
+        );
         const rounds = action.activeEffect ? Math.max(1, Math.min(999999, effectRounds[action.id] ?? defaultRounds)) : 0;
         const effectRange = action.activeEffect?.rangeByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.feet;
         const effectUpgrade = action.activeEffect?.upgrades?.filter((upgrade) => selectedOptionSet.has(upgrade.requiredOptionId)).at(-1);
@@ -235,7 +241,10 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           ? effectUpgrade?.name ?? action.activeEffect?.name
           : selectedActionFeatNames.length ? `${effectUpgrade?.name ?? action.activeEffect?.name} — ${selectedActionFeatNames.join(" + ")}` : effectUpgrade?.name ?? action.activeEffect?.name;
         const tableEffectBonus = action.activeEffect?.bonusByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.bonus;
-        const uncappedEffectBonus = (effectUpgrade?.bonus ?? tableEffectBonus ?? (action.activeEffect ? (action.activeEffect.improvedAtLevel && level >= action.activeEffect.improvedAtLevel ? action.activeEffect.improvedBonus ?? action.activeEffect.bonus : action.activeEffect.bonus) : 0)) + (action.activeEffect?.bonusAbilityModifier ? abilityModifiers[action.activeEffect.bonusAbilityModifier] ?? 0 : 0);
+        const variableCostEffectBonus = action.activeEffect?.bonusFromVariableCost && selectedVariableAmount !== undefined
+          ? Math.floor(selectedVariableAmount / (action.activeEffect.bonusFromVariableCostDivisor ?? 1))
+          : 0;
+        const uncappedEffectBonus = (effectUpgrade?.bonus ?? tableEffectBonus ?? (action.activeEffect ? (action.activeEffect.improvedAtLevel && level >= action.activeEffect.improvedAtLevel ? action.activeEffect.improvedBonus ?? action.activeEffect.bonus : action.activeEffect.bonus) : 0)) + (action.activeEffect?.bonusAbilityModifier ? abilityModifiers[action.activeEffect.bonusAbilityModifier] ?? 0 : 0) + variableCostEffectBonus;
         const classLevelCappedEffectBonus = action.activeEffect?.maximumBonusClassLevel ? Math.min(actionLevel, uncappedEffectBonus) : uncappedEffectBonus;
         const effectBonus = Math.max(action.activeEffect?.minimumBonus ?? Number.NEGATIVE_INFINITY, classLevelCappedEffectBonus);
         const additionalActiveEffects = action.activeEffect?.additionalEffectsByLevel?.filter((effect) => effect.minimumLevel <= actionLevel) ?? [];
