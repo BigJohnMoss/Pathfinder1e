@@ -46,21 +46,410 @@
           "name": "Oracular Performance",
           "level": 1,
           "type": "archetype",
-          "summary": "A fortune-teller can use Perform (oratory) to read a fortune as part of a bardic performance. Once per hour when the bard performs a fortune-telling using a fortune-teller’s deck, a crystal ball, or a similar item, he can read the fortune of one subject of the bardic performance. This is part of the same action used to activate the performance. The fortune-teller rolls d%, adds his bard level to the result, and consults the table below. The outcome depends on whether the chosen creature is an ally (for a beneficial performance) or an enemy (for a detrimental performance). d%Result for AllyResult for Enemy 1-35WoeWeal 36-65InconclusiveInconclusive 66+WealWoe On an inconclusive result, the bard fails to get any information from the reading and the subject is affected by the performance normally. For an ally, on a weal result the subject’s bonus from the performance increases by 1, and on a woe result the subject’s bonus decreases by 1 (minimum 0). This affects only numeric bonuses. For example, a subject wouldn’t gain another Hit Die from inspire greatness. For an enemy, on a weal result the subject gains a +2 bonus on its saving throw to negate the bard’s performance, and on a woe result it takes a –2 penalty on its save. An oracular performance has no effect on an enemy if the performance doesn’t require a saving throw. All adjustments from an oracular performance on a foe last only for that instance of the bardic performance. All adjustments on an ally last for 1 minute, applying each time the fortune-teller uses that particular bardic performance on that ally but ending when the duration expires, even if the performance continues. This ability alters bardic performance and replaces countersong and distraction."
+          "summary": "A fortune-teller can use Perform (oratory) to read a fortune as part of a bardic performance. Once per hour when the bard performs a fortune-telling using a fortune-teller’s deck, a crystal ball, or a similar item, he can read the fortune of one subject of the bardic performance. This is part of the same action used to activate the performance. The fortune-teller rolls d%, adds his bard level to the result, and consults the table below. The outcome depends on whether the chosen creature is an ally (for a beneficial performance) or an enemy (for a detrimental performance). d%Result for AllyResult for Enemy 1-35WoeWeal 36-65InconclusiveInconclusive 66+WealWoe On an inconclusive result, the bard fails to get any information from the reading and the subject is affected by the performance normally. For an ally, on a weal result the subject’s bonus from the performance increases by 1, and on a woe result the subject’s bonus decreases by 1 (minimum 0). This affects only numeric bonuses. For example, a subject wouldn’t gain another Hit Die from inspire greatness. For an enemy, on a weal result the subject gains a +2 bonus on its saving throw to negate the bard’s performance, and on a woe result it takes a –2 penalty on its save. An oracular performance has no effect on an enemy if the performance doesn’t require a saving throw. All adjustments from an oracular performance on a foe last only for that instance of the bardic performance. All adjustments on an ally last for 1 minute, applying each time the fortune-teller uses that particular bardic performance on that ally but ending when the duration expires, even if the performance continues. This ability alters bardic performance and replaces countersong and distraction.",
+          "resourceActions": [
+            {
+              "id": "fortune-teller-oracular-performance",
+              "label": "Read Oracular Performance",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "oracularReading",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "modeLabel": "Subject",
+              "modes": [
+                {
+                  "id": "ally",
+                  "label": "Ally",
+                  "summary": "Resolve the ally column; adjustments to numeric performance bonuses last 1 minute."
+                },
+                {
+                  "id": "enemy",
+                  "label": "Enemy",
+                  "summary": "Resolve the enemy column; save adjustments apply to this performance instance."
+                }
+              ],
+              "diceRoll": {
+                "label": "d% + Bard level",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 100
+                  }
+                ],
+                "flatModifierByLevel": [
+                  {
+                    "level": 1,
+                    "modifier": 1
+                  },
+                  {
+                    "level": 2,
+                    "modifier": 2
+                  },
+                  {
+                    "level": 3,
+                    "modifier": 3
+                  },
+                  {
+                    "level": 4,
+                    "modifier": 4
+                  },
+                  {
+                    "level": 5,
+                    "modifier": 5
+                  },
+                  {
+                    "level": 6,
+                    "modifier": 6
+                  },
+                  {
+                    "level": 7,
+                    "modifier": 7
+                  },
+                  {
+                    "level": 8,
+                    "modifier": 8
+                  },
+                  {
+                    "level": 9,
+                    "modifier": 9
+                  },
+                  {
+                    "level": 10,
+                    "modifier": 10
+                  },
+                  {
+                    "level": 11,
+                    "modifier": 11
+                  },
+                  {
+                    "level": 12,
+                    "modifier": 12
+                  },
+                  {
+                    "level": 13,
+                    "modifier": 13
+                  },
+                  {
+                    "level": 14,
+                    "modifier": 14
+                  },
+                  {
+                    "level": 15,
+                    "modifier": 15
+                  },
+                  {
+                    "level": 16,
+                    "modifier": 16
+                  },
+                  {
+                    "level": 17,
+                    "modifier": 17
+                  },
+                  {
+                    "level": 18,
+                    "modifier": 18
+                  },
+                  {
+                    "level": 19,
+                    "modifier": 19
+                  },
+                  {
+                    "level": 20,
+                    "modifier": 20
+                  }
+                ],
+                "outcomesByTotal": [
+                  {
+                    "minimumTotal": 1,
+                    "maximumTotal": 35,
+                    "label": "Woe for ally · Weal for enemy",
+                    "summary": "Ally performance bonus −1 (minimum 0); enemy gains +2 on its save.",
+                    "effectsByMode": [
+                      {
+                        "modeId": "ally",
+                        "name": "Oracular Performance — Woe",
+                        "target": "allies",
+                        "bonus": 0,
+                        "description": "Reduce this ally's numeric bonus from the chosen bardic performance by 1, minimum 0.",
+                        "rounds": 10
+                      },
+                      {
+                        "modeId": "enemy",
+                        "name": "Oracular Performance — Enemy Weal",
+                        "target": "performanceSaveDc",
+                        "bonus": -2,
+                        "description": "This enemy gains +2 on its save against the current bardic performance.",
+                        "rounds": 1
+                      }
+                    ]
+                  },
+                  {
+                    "minimumTotal": 36,
+                    "maximumTotal": 65,
+                    "label": "Inconclusive",
+                    "summary": "No adjustment; resolve the performance normally."
+                  },
+                  {
+                    "minimumTotal": 66,
+                    "label": "Weal for ally · Woe for enemy",
+                    "summary": "Ally performance bonus +1; enemy takes −2 on its save.",
+                    "effectsByMode": [
+                      {
+                        "modeId": "ally",
+                        "name": "Oracular Performance — Weal",
+                        "target": "allies",
+                        "bonus": 0,
+                        "description": "Increase this ally's numeric bonus from the chosen bardic performance by 1.",
+                        "rounds": 10
+                      },
+                      {
+                        "modeId": "enemy",
+                        "name": "Oracular Performance — Enemy Woe",
+                        "target": "performanceSaveDc",
+                        "bonus": 2,
+                        "description": "This enemy takes −2 on its save against the current bardic performance.",
+                        "rounds": 1
+                      }
+                    ]
+                  }
+                ]
+              },
+              "summary": "Spend the once-per-hour reading and automatically resolve the exact ally or enemy result."
+            }
+          ]
         },
         {
           "id": "bard-fortune-teller-fortune-teller-s-acumen-2",
           "name": "Fortune-Teller’s Acumen",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, whenever he casts a spell from the divination school, a fortune-teller can use a fortune-teller’s deck, crystal ball, or similar item instead of the spell’s material component, as long as the cost of the material component is no more than 100 gp per bard level. If he chooses to cast the spell using such an item and the spell’s normal material component (regardless of that component’s cost), he casts the spell at +1 caster level. This special focus can’t be used with other special foci that have a similar effect, but can be used with spells that normally require a focus component (which must also be provided). This ability replaces well-versed."
+          "summary": "At 2nd level, whenever he casts a spell from the divination school, a fortune-teller can use a fortune-teller’s deck, crystal ball, or similar item instead of the spell’s material component, as long as the cost of the material component is no more than 100 gp per bard level. If he chooses to cast the spell using such an item and the spell’s normal material component (regardless of that component’s cost), he casts the spell at +1 caster level. This special focus can’t be used with other special foci that have a similar effect, but can be used with spells that normally require a focus component (which must also be provided). This ability replaces well-versed.",
+          "numericCalculations": [
+            {
+              "id": "fortune-teller-focus-limit",
+              "label": "Special-focus component limit",
+              "inputLabel": "Material component cost",
+              "inputMinimum": 0,
+              "inputMaximum": 2000,
+              "inputDefault": 0,
+              "outputLabel": "Maximum replaceable gp",
+              "baseByLevel": [
+                {
+                  "level": 2,
+                  "value": 200
+                },
+                {
+                  "level": 3,
+                  "value": 300
+                },
+                {
+                  "level": 4,
+                  "value": 400
+                },
+                {
+                  "level": 5,
+                  "value": 500
+                },
+                {
+                  "level": 6,
+                  "value": 600
+                },
+                {
+                  "level": 7,
+                  "value": 700
+                },
+                {
+                  "level": 8,
+                  "value": 800
+                },
+                {
+                  "level": 9,
+                  "value": 900
+                },
+                {
+                  "level": 10,
+                  "value": 1000
+                },
+                {
+                  "level": 11,
+                  "value": 1100
+                },
+                {
+                  "level": 12,
+                  "value": 1200
+                },
+                {
+                  "level": 13,
+                  "value": 1300
+                },
+                {
+                  "level": 14,
+                  "value": 1400
+                },
+                {
+                  "level": 15,
+                  "value": 1500
+                },
+                {
+                  "level": 16,
+                  "value": 1600
+                },
+                {
+                  "level": 17,
+                  "value": 1700
+                },
+                {
+                  "level": 18,
+                  "value": 1800
+                },
+                {
+                  "level": 19,
+                  "value": 1900
+                },
+                {
+                  "level": 20,
+                  "value": 2000
+                }
+              ],
+              "classId": "bard",
+              "summary": "The fortune-telling focus can replace a divination material component costing no more than 100 gp per Bard level."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "fortune-teller-acumen",
+              "label": "Apply Acumen caster-level bonus",
+              "minimumLevel": 2,
+              "classId": "bard",
+              "confirmations": [
+                {
+                  "id": "divination",
+                  "label": "The spell is from the divination school",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "both-components",
+                  "label": "Use both the fortune-telling focus and the normal material component",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Fortune-Teller's Acumen",
+                "targets": [
+                  "casterLevel"
+                ],
+                "bonus": 1,
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "consumeOnUse": true,
+                "description": "+1 caster level for the next qualifying divination spell; cannot combine with another similar special focus."
+              },
+              "summary": "Validate the component limit above or consume the one-cast +1 caster-level effect."
+            }
+          ]
         },
         {
           "id": "bard-fortune-teller-bardic-performance-8",
           "name": "Bardic Performance",
           "level": 8,
           "type": "archetype",
-          "summary": "A fortune-teller gains the following bardic performance. Transparent Fate (Su) : At 8th level, the fortune-teller can cause all enemies within 30 feet to have their near future revealed for all to see. A successful Will saving throw (DC = 10 + 1/2 the fortune-teller’s level + the fortune-teller’s Cha modifier) negates the effect. This ability causes any creature attacked by an affected enemy to gain a +2 bonus to AC and on saving throws against the attack. As a secondary effect, if an affected creature’s hit points are reduced to less than its Constitution score, it also sees a vision of its own death and must succeed at another Will save or become frightened for 1 round. A given creature needs to save against this secondary effect at most once per performance of transparent fate, even if its hit points are reduced to less than its Constitution score multiple times. A creature that was targeted by oracular performance when this performance began applies any save DC adjustment to this secondary save as well. At the GM’s discretion, the revelation of the creature’s fate might have other consequences; for example, a creature’s allies might see it was planning to betray them. This ability replaces dirge of doom."
+          "summary": "A fortune-teller gains the following bardic performance. Transparent Fate (Su) : At 8th level, the fortune-teller can cause all enemies within 30 feet to have their near future revealed for all to see. A successful Will saving throw (DC = 10 + 1/2 the fortune-teller’s level + the fortune-teller’s Cha modifier) negates the effect. This ability causes any creature attacked by an affected enemy to gain a +2 bonus to AC and on saving throws against the attack. As a secondary effect, if an affected creature’s hit points are reduced to less than its Constitution score, it also sees a vision of its own death and must succeed at another Will save or become frightened for 1 round. A given creature needs to save against this secondary effect at most once per performance of transparent fate, even if its hit points are reduced to less than its Constitution score multiple times. A creature that was targeted by oracular performance when this performance began applies any save DC adjustment to this secondary save as well. At the GM’s discretion, the revelation of the creature’s fate might have other consequences; for example, a creature’s allies might see it was planning to betray them. This ability replaces dirge of doom.",
+          "performanceRules": [
+            {
+              "id": "fortune-teller-transparent-fate",
+              "name": "Transparent Fate",
+              "minimumLevel": 8,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "fortune-teller-transparent-fate"
+              ],
+              "summary": "Reveal the near future of enemies within 30 feet; Will negates."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "fortune-teller-transparent-fate",
+              "label": "Begin Transparent Fate",
+              "minimumLevel": 8,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 8,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 8,
+                    "name": "Transparent Fate",
+                    "description": "Creatures attacked by this enemy gain +2 AC and +2 on saving throws against the attack. If the enemy falls below its Constitution score, resolve its once-per-performance secondary Will save or frighten it for 1 round.",
+                    "activeEffects": [
+                      {
+                        "target": "armorClass",
+                        "bonus": 2,
+                        "label": "Transparent Fate — AC",
+                        "description": "+2 AC against attacks by the affected enemy."
+                      },
+                      {
+                        "target": "savingThrows",
+                        "bonus": 2,
+                        "label": "Transparent Fate — saves",
+                        "description": "+2 on saving throws against attacks by the affected enemy."
+                      }
+                    ],
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 1
+                    }
+                  }
+                ]
+              },
+              "summary": "Spend one performance round, resolve the exact performance save DC, and track both defensive bonuses and the secondary fear trigger."
+            }
+          ]
         }
       ]
     }
@@ -70,8 +459,20 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Fortune-Teller"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "All divination additions, the exact hourly d100-plus-level outcome table and effects, Acumen component limit and caster-level bonus, and Transparent Fate saves and defenses are automated."
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "oracularReading",
+      "label": "Oracular reading",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 1,
+      "base": 1,
+      "refreshCadence": "hour",
+      "sourceFeatureId": "bard-fortune-teller-oracular-performance-1"
+    }
   ]
 }

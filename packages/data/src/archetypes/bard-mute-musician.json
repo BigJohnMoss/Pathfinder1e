@@ -33,28 +33,310 @@
           "name": "Mute (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A mute musician has a disability or injury (possibly self-inflicted or even psychological) that prevents her from speaking or vocalizing. Language-dependent effects (including Perform [oratory]) require the bard to be able to use telepathy, nonverbal languages, or writing to communicate. She cannot use Perform (sing) or speak languages, though she can still create audible bardic performances by means of a musical instrument. A mute musician can provide verbal and somatic components for spells she casts via any musical instrument in which she has ranks in the appropriate Perform skill."
+          "summary": "A mute musician has a disability or injury (possibly self-inflicted or even psychological) that prevents her from speaking or vocalizing. Language-dependent effects (including Perform [oratory]) require the bard to be able to use telepathy, nonverbal languages, or writing to communicate. She cannot use Perform (sing) or speak languages, though she can still create audible bardic performances by means of a musical instrument. A mute musician can provide verbal and somatic components for spells she casts via any musical instrument in which she has ranks in the appropriate Perform skill.",
+          "resourceActions": [
+            {
+              "id": "mute-musician-vow",
+              "label": "Track Mute state",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "activeEffect": {
+                "name": "Mute Musician vow",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Cannot speak, sing, or use Perform (oratory); language-dependent communication needs telepathy, a nonverbal language, or writing. Ranked instruments provide verbal and somatic spell components.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Activate the persistent speech and component restrictions."
+            }
+          ]
         },
         {
           "id": "bard-mute-musician-eschew-materials-ex-1",
           "name": "Eschew Materials (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A mute musician gains Eschew Materials as a bonus feat at 1st level. This ability replaces bardic knowledge."
+          "summary": "A mute musician gains Eschew Materials as a bonus feat at 1st level. This ability replaces bardic knowledge.",
+          "grantedFeatId": "eschew-materials"
         },
         {
           "id": "bard-mute-musician-bardic-performance-3",
           "name": "Bardic Performance",
           "level": 3,
           "type": "archetype",
-          "summary": "A mute musician gains the following bardic performances. Symphony of Silence (Su) : At 3rd level, the mute musician’s music muffles all other sounds within a 30-foot radius. All creatures in the area of effect gain a +2 bonus on all saving throws made against sonic attacks or language-dependent effects. This bonus increases to +3 at 7th level, +4 at 11th level, +5 at 15th level, and +6 at 19th level. Symphony of silence relies on audible components. This bardic performance replaces inspire competence. Maddening Harmonics (Su) : At 14th level, the mute musician can create a performance so baffling and discordant that it usurps all thought within a 30-foot radius with chaos and entropy. The mute musician can select which creatures in this area are affected by the maddening harmonics and which are not. All targeted creatures within this area must succeed at a Will saving throw (DC = 10 + 1/2 the bard’s level + the bard’s Charisma modifier) or be confused for as long as they can hear the performance. If the creature succeeds at its saving throw, it is immune to this ability for 24 hours. This performance relies on audible components. This bardic performance replaces frightening tune. Ceaseless Performance (Su) : At 15th level, the mute musician can continue taking the free action to maintain a bardic performance even while confused, cowering in fear, dazed, nauseated, panicked, paralyzed, petrified, silenced, staggered, stunned, or unconscious. Even if the mute musician is killed, she can continue to take the free action to maintain her performance as long as she has rounds remaining. Only the utter destruction of the mute musician’s body (such as via destruction or disintegrate , or by reducing the bard to a negative hit point total equal to 10 Ã— her Constitution score) causes the performance to end. This ability replaces inspire heroics. Song of the Conjunction (Su) : At 18th level, the mute musician can harmonize with the alien chorus beyond the music of the spheres, creating a portentous cosmic alignment. This effect duplicates a gate used to travel, save that the destination point must be on the same plane as the bard, but it is not otherwise limited by distance. This bardic performance replaces mass suggestion."
+          "summary": "A mute musician gains the following bardic performances. Symphony of Silence (Su) : At 3rd level, the mute musician’s music muffles all other sounds within a 30-foot radius. All creatures in the area of effect gain a +2 bonus on all saving throws made against sonic attacks or language-dependent effects. This bonus increases to +3 at 7th level, +4 at 11th level, +5 at 15th level, and +6 at 19th level. Symphony of silence relies on audible components. This bardic performance replaces inspire competence. Maddening Harmonics (Su) : At 14th level, the mute musician can create a performance so baffling and discordant that it usurps all thought within a 30-foot radius with chaos and entropy. The mute musician can select which creatures in this area are affected by the maddening harmonics and which are not. All targeted creatures within this area must succeed at a Will saving throw (DC = 10 + 1/2 the bard’s level + the bard’s Charisma modifier) or be confused for as long as they can hear the performance. If the creature succeeds at its saving throw, it is immune to this ability for 24 hours. This performance relies on audible components. This bardic performance replaces frightening tune. Ceaseless Performance (Su) : At 15th level, the mute musician can continue taking the free action to maintain a bardic performance even while confused, cowering in fear, dazed, nauseated, panicked, paralyzed, petrified, silenced, staggered, stunned, or unconscious. Even if the mute musician is killed, she can continue to take the free action to maintain her performance as long as she has rounds remaining. Only the utter destruction of the mute musician’s body (such as via destruction or disintegrate , or by reducing the bard to a negative hit point total equal to 10 Ã— her Constitution score) causes the performance to end. This ability replaces inspire heroics. Song of the Conjunction (Su) : At 18th level, the mute musician can harmonize with the alien chorus beyond the music of the spheres, creating a portentous cosmic alignment. This effect duplicates a gate used to travel, save that the destination point must be on the same plane as the bard, but it is not otherwise limited by distance. This bardic performance replaces mass suggestion.",
+          "performanceRules": [
+            {
+              "id": "mute-symphony-silence",
+              "name": "Symphony of Silence",
+              "minimumLevel": 3,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "mute-symphony-silence"
+              ],
+              "summary": "Muffle sound and grant the level-scaled save bonus in 30 feet."
+            },
+            {
+              "id": "mute-maddening-harmonics",
+              "name": "Maddening Harmonics",
+              "minimumLevel": 14,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "mute-maddening-harmonics"
+              ],
+              "summary": "Selected creatures in 30 feet save or remain confused while hearing the performance."
+            },
+            {
+              "id": "mute-ceaseless-performance",
+              "name": "Ceaseless Performance",
+              "minimumLevel": 15,
+              "kind": "passive",
+              "summary": "Continue the free maintenance action through listed conditions and death until bodily destruction or rounds expire."
+            },
+            {
+              "id": "mute-song-conjunction",
+              "name": "Song of the Conjunction",
+              "minimumLevel": 18,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "mute-song-conjunction"
+              ],
+              "summary": "Duplicate gate for same-plane travel without a distance limit."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "mute-symphony-silence",
+              "label": "Begin Symphony of Silence",
+              "minimumLevel": 3,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Symphony of Silence",
+                "targets": [
+                  "savingThrows"
+                ],
+                "bonus": 2,
+                "bonusByLevel": [
+                  {
+                    "level": 3,
+                    "bonus": 2
+                  },
+                  {
+                    "level": 7,
+                    "bonus": 3
+                  },
+                  {
+                    "level": 11,
+                    "bonus": 4
+                  },
+                  {
+                    "level": 15,
+                    "bonus": 5
+                  },
+                  {
+                    "level": 19,
+                    "bonus": 6
+                  }
+                ],
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "description": "Within 30 feet, +2 to +6 on saves against sonic attacks and language-dependent effects."
+              },
+              "summary": "Spend one performance round and apply the exact level-scaled save bonus."
+            },
+            {
+              "id": "mute-maddening-harmonics",
+              "label": "Begin Maddening Harmonics",
+              "minimumLevel": 14,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 14,
+                  "actionType": "swift"
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 14,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 14,
+                    "name": "Confused",
+                    "description": "Confused for as long as the creature can hear Maddening Harmonics.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 1
+                    }
+                  }
+                ],
+                "successEffect": {
+                  "name": "Maddening Harmonics immunity",
+                  "description": "Immune to this Mute Musician's Maddening Harmonics for 24 hours.",
+                  "rounds": 999
+                }
+              },
+              "summary": "Spend one round, resolve the exact Will DC, and track confusion or 24-hour immunity."
+            },
+            {
+              "id": "mute-song-conjunction",
+              "label": "Use Song of the Conjunction",
+              "minimumLevel": 18,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 18,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "same-plane",
+                  "label": "Destination is on the same plane",
+                  "requiredForActivation": true
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "gate",
+                "spellName": "Gate (travel only, same plane)",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "summary": "Spend one performance round and travel to any destination on the same plane."
+            }
+          ]
         },
         {
-          "id": "bard-mute-musician-insights-from-beyond-ex-2",
-          "name": "Insights from Beyond (Ex)",
+          "id": "bard-mute-musician-insight-spell-1",
+          "name": "Insight Spell 1",
           "level": 2,
-          "type": "archetype",
-          "summary": "At 2nd level, a mute musician adds two abjuration, conjuration (calling), conjuration (summoning), or conjuration (teleportation) spells from the sorcerer/wizard spell list to her list of bard spells known. At 6th level and every 4 bard levels thereafter, she can choose two more spells to add to her spells known. This class feature replaces versatile performance."
+          "type": "selectable",
+          "summary": "Choose a qualifying abjuration, calling, summoning, or teleportation Sorcerer/Wizard spell of a level the Bard can cast and add it to spells known (1 of 10).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-mute-insight-spells"
+        },
+        {
+          "id": "bard-mute-musician-insight-spell-2",
+          "name": "Insight Spell 2",
+          "level": 2,
+          "type": "selectable",
+          "summary": "Choose a qualifying abjuration, calling, summoning, or teleportation Sorcerer/Wizard spell of a level the Bard can cast and add it to spells known (2 of 10).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-mute-insight-spells"
+        },
+        {
+          "id": "bard-mute-musician-insight-spell-3",
+          "name": "Insight Spell 3",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Choose a qualifying abjuration, calling, summoning, or teleportation Sorcerer/Wizard spell of a level the Bard can cast and add it to spells known (3 of 10).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-mute-insight-spells"
+        },
+        {
+          "id": "bard-mute-musician-insight-spell-4",
+          "name": "Insight Spell 4",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Choose a qualifying abjuration, calling, summoning, or teleportation Sorcerer/Wizard spell of a level the Bard can cast and add it to spells known (4 of 10).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-mute-insight-spells"
+        },
+        {
+          "id": "bard-mute-musician-insight-spell-5",
+          "name": "Insight Spell 5",
+          "level": 10,
+          "type": "selectable",
+          "summary": "Choose a qualifying abjuration, calling, summoning, or teleportation Sorcerer/Wizard spell of a level the Bard can cast and add it to spells known (5 of 10).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-mute-insight-spells"
+        },
+        {
+          "id": "bard-mute-musician-insight-spell-6",
+          "name": "Insight Spell 6",
+          "level": 10,
+          "type": "selectable",
+          "summary": "Choose a qualifying abjuration, calling, summoning, or teleportation Sorcerer/Wizard spell of a level the Bard can cast and add it to spells known (6 of 10).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-mute-insight-spells"
+        },
+        {
+          "id": "bard-mute-musician-insight-spell-7",
+          "name": "Insight Spell 7",
+          "level": 14,
+          "type": "selectable",
+          "summary": "Choose a qualifying abjuration, calling, summoning, or teleportation Sorcerer/Wizard spell of a level the Bard can cast and add it to spells known (7 of 10).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-mute-insight-spells"
+        },
+        {
+          "id": "bard-mute-musician-insight-spell-8",
+          "name": "Insight Spell 8",
+          "level": 14,
+          "type": "selectable",
+          "summary": "Choose a qualifying abjuration, calling, summoning, or teleportation Sorcerer/Wizard spell of a level the Bard can cast and add it to spells known (8 of 10).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-mute-insight-spells"
+        },
+        {
+          "id": "bard-mute-musician-insight-spell-9",
+          "name": "Insight Spell 9",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Choose a qualifying abjuration, calling, summoning, or teleportation Sorcerer/Wizard spell of a level the Bard can cast and add it to spells known (9 of 10).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-mute-insight-spells"
+        },
+        {
+          "id": "bard-mute-musician-insight-spell-10",
+          "name": "Insight Spell 10",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Choose a qualifying abjuration, calling, summoning, or teleportation Sorcerer/Wizard spell of a level the Bard can cast and add it to spells known (10 of 10).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-mute-insight-spells"
         },
         {
           "id": "bard-mute-musician-dulled-horror-ex-2",
@@ -68,14 +350,64 @@
           "name": "Eldritch Caesura (Su)",
           "level": 10,
           "type": "archetype",
-          "summary": "At 10th level, a mute musician can insert unsettling silences into her otherworldly music by spending an additional 1 round of bardic performance per round. This supernatural technique impossibly blurs the line between music and light, transmitting audible performances and sonic bard spells through most barriers save lead. This allows the music and sonic spells to affect creatures across planar boundaries (including on the Ethereal or Shadow Planes), vacuums, and areas of magical silence. This class feature replaces jack-of-all-trades."
+          "summary": "At 10th level, a mute musician can insert unsettling silences into her otherworldly music by spending an additional 1 round of bardic performance per round. This supernatural technique impossibly blurs the line between music and light, transmitting audible performances and sonic bard spells through most barriers save lead. This allows the music and sonic spells to affect creatures across planar boundaries (including on the Ethereal or Shadow Planes), vacuums, and areas of magical silence. This class feature replaces jack-of-all-trades.",
+          "resourceActions": [
+            {
+              "id": "mute-eldritch-caesura",
+              "label": "Use Eldritch Caesura",
+              "minimumLevel": 10,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "minimumResourceRemaining": 1,
+              "confirmations": [
+                {
+                  "id": "audible",
+                  "label": "An audible performance or sonic Bard spell is active",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Eldritch Caesura",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Spend this additional performance round to transmit the audible performance or sonic Bard spell through planar boundaries, vacuums, and magical silence; lead still blocks it.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend the additional round and track barrier-bypassing transmission for this round."
+            }
+          ]
         },
         {
           "id": "bard-mute-musician-ex-mute-musicians-1",
           "name": "Ex-Mute Musicians",
           "level": 1,
           "type": "archetype",
-          "summary": "A mute musician who regains the ability to speak or chooses to speak aloud loses all abilities granted by this archetype. She can regain the archetype’s abilities by spending 24 hours without speaking."
+          "summary": "A mute musician who regains the ability to speak or chooses to speak aloud loses all abilities granted by this archetype. She can regain the archetype’s abilities by spending 24 hours without speaking.",
+          "resourceActions": [
+            {
+              "id": "mute-musician-broken-vow",
+              "label": "Mark speech and suspend archetype",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "activeEffect": {
+                "name": "Mute Musician abilities suspended",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "All abilities from this archetype are lost after speaking or regaining speech. Remove this tracker only after 24 hours without speaking.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Track loss of every archetype ability until the 24-hour silence requirement is completed."
+            }
+          ]
         }
       ]
     }
@@ -85,8 +417,38 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Mute%20Musician"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Mute and broken-vow states, Eschew Materials, all four performances, ten unique level-gated spells known, Dulled Horror saves, and Eldritch Caesura resource and barrier rules are automated."
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "bard-mute-musician-dulled-horror-ex-2",
+      "label": "Dulled Horror — confusion",
+      "condition": "saving throws against confusion",
+      "minimumLevel": 2,
+      "base": 4
+    },
+    {
+      "sourceFeatureId": "bard-mute-musician-dulled-horror-ex-2",
+      "label": "Dulled Horror — fear",
+      "condition": "saving throws against fear",
+      "minimumLevel": 2,
+      "base": 4
+    },
+    {
+      "sourceFeatureId": "bard-mute-musician-dulled-horror-ex-2",
+      "label": "Dulled Horror — insanity effects",
+      "condition": "saving throws against insanity effects",
+      "minimumLevel": 2,
+      "base": 4
+    },
+    {
+      "sourceFeatureId": "bard-mute-musician-dulled-horror-ex-2",
+      "label": "Dulled Horror — supernatural abilities of aberrations",
+      "condition": "saving throws against supernatural abilities of aberrations",
+      "minimumLevel": 2,
+      "base": 4
+    }
   ]
 }

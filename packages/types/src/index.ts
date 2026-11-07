@@ -318,6 +318,20 @@ export interface ClassFeatureOccurrence {
       modifierInputLabel?: string;
       targetDcInputLabel?: string;
       outcomesByMargin?: Array<{ minimumMargin: number; label: string }>;
+      outcomesByTotal?: Array<{
+        minimumTotal: number;
+        maximumTotal?: number;
+        label: string;
+        summary?: string;
+        effectsByMode?: Array<{
+          modeId: string;
+          name: string;
+          target: ActiveEffectTarget;
+          bonus: number;
+          description: string;
+          rounds: number;
+        }>;
+      }>;
       failureLabel?: string;
       flatModifierByLevel?: Array<{ level: number; modifier: number }>;
       resultDivisorByMode?: Array<{ modeId: string; divisor: number }>;
@@ -659,7 +673,7 @@ export interface CharacterArchetype {
     effectiveLevelClassIds?: string[];
     advancementOptionId?: string;
     requiredOptionId?: string;
-    refreshCadence?: "day" | "week";
+    refreshCadence?: "hour" | "day" | "week";
     hidden?: boolean;
     dedicatedAction?: boolean;
   }>;
