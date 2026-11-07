@@ -21,7 +21,69 @@
           "name": "Fey Magic",
           "level": 1,
           "type": "archetype",
-          "summary": "A First World minstrel adds summon nature’s ally spells to his spell list instead of the equivalent summon monster spells. This ability alters the First World minstrel’s spell list."
+          "summary": "A First World minstrel adds summon nature’s ally spells to his spell list instead of the equivalent summon monster spells. This ability alters the First World minstrel’s spell list.",
+          "progressionProfiles": [
+            {
+              "id": "first-world-fey-magic-list",
+              "label": "Fey Magic substitutions",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "removed",
+                  "label": "Removed"
+                },
+                {
+                  "id": "added",
+                  "label": "Added"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "removed": "Summon Monster 1",
+                    "added": "Summon Nature's Ally 1"
+                  }
+                },
+                {
+                  "level": 4,
+                  "values": {
+                    "removed": "Summon Monster 2",
+                    "added": "Summon Nature's Ally 2"
+                  }
+                },
+                {
+                  "level": 7,
+                  "values": {
+                    "removed": "Summon Monster 3",
+                    "added": "Summon Nature's Ally 3"
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "removed": "Summon Monster 4",
+                    "added": "Summon Nature's Ally 4"
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "removed": "Summon Monster 5",
+                    "added": "Summon Nature's Ally 5"
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "removed": "Summon Monster 6",
+                    "added": "Summon Nature's Ally 6"
+                  }
+                }
+              ],
+              "summary": "Each Bard spell level substitutes the equivalent Summon Nature's Ally spell."
+            }
+          ]
         },
         {
           "id": "bard-first-world-minstrel-wild-empathy-ex-1",
@@ -35,7 +97,286 @@
           "name": "Bardic Performance",
           "level": 1,
           "type": "archetype",
-          "summary": "A First World minstrel gains the following types of bardic performance. Echoes of the First World (Su) : A First World minstrel infuses himself or a single willing ally within 30 feet with the strange magic of the First World, granting the target one of the special abilities from the fey creature template other than change shape for 1 round. For every 3 levels beyond 1st the First World minstrel has, he can target one additional ally or add an additional special ability to one of his targets. This is a polymorph effect that relies on audible components. This ability replaces inspire courage. Gremlin’s Luck (Su) : A First World minstrel of 8th level or higher can use his performance to inflict bad luck on a target within 30 feet for 1 round. Whenever the target rolls an ability check, attack roll, saving throw, or skill check, it must roll twice and take the worse result. A target that succeeds at a Will save (DC 10 + half the First World minstrel’s level + his Charisma modifier) negates the effect and is immune to this ability for 24 hours. This is a mind-affecting effect that relies on audible components. This ability replaces dirge of doom."
+          "summary": "A First World minstrel gains the following types of bardic performance. Echoes of the First World (Su) : A First World minstrel infuses himself or a single willing ally within 30 feet with the strange magic of the First World, granting the target one of the special abilities from the fey creature template other than change shape for 1 round. For every 3 levels beyond 1st the First World minstrel has, he can target one additional ally or add an additional special ability to one of his targets. This is a polymorph effect that relies on audible components. This ability replaces inspire courage. Gremlin’s Luck (Su) : A First World minstrel of 8th level or higher can use his performance to inflict bad luck on a target within 30 feet for 1 round. Whenever the target rolls an ability check, attack roll, saving throw, or skill check, it must roll twice and take the worse result. A target that succeeds at a Will save (DC 10 + half the First World minstrel’s level + his Charisma modifier) negates the effect and is immune to this ability for 24 hours. This is a mind-affecting effect that relies on audible components. This ability replaces dirge of doom.",
+          "resourceActions": [
+            {
+              "id": "first-world-echoes",
+              "label": "Begin Echoes of the First World",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "modeLabel": "Fey ability",
+              "modes": [
+                {
+                  "id": "camouflage",
+                  "label": "Camouflage",
+                  "summary": "+4 racial Stealth and hide in any natural terrain.",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "label": "Echoes — Camouflage",
+                      "description": "Hide in any natural terrain and gain +4 racial Stealth.",
+                      "skillIds": [
+                        "Stealth"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "resist-acid",
+                  "label": "Energy Resistance — acid",
+                  "summary": "Resistance 10 to acid.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Echoes — acid resistance",
+                      "description": "Energy resistance 10 to acid."
+                    }
+                  ]
+                },
+                {
+                  "id": "resist-cold",
+                  "label": "Energy Resistance — cold",
+                  "summary": "Resistance 10 to cold.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Echoes — cold resistance",
+                      "description": "Energy resistance 10 to cold."
+                    }
+                  ]
+                },
+                {
+                  "id": "resist-electricity",
+                  "label": "Energy Resistance — electricity",
+                  "summary": "Resistance 10 to electricity.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Echoes — electricity resistance",
+                      "description": "Energy resistance 10 to electricity."
+                    }
+                  ]
+                },
+                {
+                  "id": "resist-fire",
+                  "label": "Energy Resistance — fire",
+                  "summary": "Resistance 10 to fire.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Echoes — fire resistance",
+                      "description": "Energy resistance 10 to fire."
+                    }
+                  ]
+                },
+                {
+                  "id": "resist-sonic",
+                  "label": "Energy Resistance — sonic",
+                  "summary": "Resistance 10 to sonic.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Echoes — sonic resistance",
+                      "description": "Energy resistance 10 to sonic."
+                    }
+                  ]
+                },
+                {
+                  "id": "evasion",
+                  "label": "Evasion",
+                  "summary": "Gain evasion.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Echoes — Evasion",
+                      "description": "Evasion applies for this round."
+                    }
+                  ]
+                },
+                {
+                  "id": "long-step",
+                  "label": "Long Step",
+                  "summary": "Teleport up to 10 feet per Hit Die as a move action, once every 1d4 rounds.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Echoes — Long Step",
+                      "description": "Long Step is available: teleport up to 10 feet per Hit Die as a move action; 1d4-round recharge."
+                    }
+                  ]
+                },
+                {
+                  "id": "spell-resistance",
+                  "label": "Spell Resistance",
+                  "summary": "Spell resistance equals 11 + the target's CR.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Echoes — Spell Resistance",
+                      "description": "Spell resistance equals 11 + this target's CR."
+                    }
+                  ]
+                },
+                {
+                  "id": "trackless-step",
+                  "label": "Trackless Step",
+                  "summary": "Leave no trail in natural surroundings unless desired.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Echoes — Trackless Step",
+                      "description": "The target leaves no trail in natural surroundings unless it chooses to."
+                    }
+                  ]
+                },
+                {
+                  "id": "vanish",
+                  "label": "Vanish",
+                  "summary": "Become invisible for 1 round as a swift action.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Echoes — Vanish",
+                      "description": "The target can vanish for 1 round as invisibility using a swift action."
+                    }
+                  ]
+                },
+                {
+                  "id": "woodland-stride",
+                  "label": "Woodland Stride",
+                  "summary": "Move normally through natural undergrowth.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Echoes — Woodland Stride",
+                      "description": "Move through natural undergrowth at normal speed without harm or impairment; magically manipulated growth still applies."
+                    }
+                  ]
+                }
+              ],
+              "targetCountByLevel": [
+                {
+                  "level": 1,
+                  "count": 1
+                },
+                {
+                  "level": 4,
+                  "count": 2
+                },
+                {
+                  "level": 7,
+                  "count": 3
+                },
+                {
+                  "level": 10,
+                  "count": 4
+                },
+                {
+                  "level": 13,
+                  "count": 5
+                },
+                {
+                  "level": 16,
+                  "count": 6
+                },
+                {
+                  "level": 19,
+                  "count": 7
+                }
+              ],
+              "activeEffect": {
+                "name": "Echoes of the First World",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "The selected fey-template ability applies to the configured number of willing targets for 1 round. This is an audible polymorph effect.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend 1 performance round; select every legal fey-template ability except Change Shape and track the exact level-scaled target cap."
+            },
+            {
+              "id": "first-world-gremlins-luck",
+              "label": "Resolve Gremlin's Luck",
+              "minimumLevel": 8,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 8,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 8,
+                    "name": "Gremlin's Luck",
+                    "description": "For 1 round, roll every ability check, attack roll, saving throw, and skill check twice and take the worse result.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 1
+                    }
+                  }
+                ],
+                "successEffect": {
+                  "name": "Gremlin's Luck immunity",
+                  "description": "Immune to this First World Minstrel's Gremlin's Luck for 24 hours.",
+                  "rounds": 999
+                }
+              },
+              "summary": "Spend 1 performance round, resolve the level-and-Charisma Will DC, track the one-round misfortune, and record 24-hour immunity on a success."
+            }
+          ]
         },
         {
           "id": "bard-first-world-minstrel-resist-nature-s-lure-ex-2",
@@ -52,8 +393,33 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20First%20World%20Minstrel"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The six spell substitutions, Wild Empathy, all legal Fey Creature template abilities, level-scaled target count, Gremlin's Luck save/effect/immunity, and Resist Nature's Lure are automated."
+  ],
+  "spellListAdditions": {
+    "summon-natures-ally-1": 1,
+    "summon-natures-ally-2": 2,
+    "summon-natures-ally-3": 3,
+    "summon-natures-ally-4": 4,
+    "summon-natures-ally-5": 5,
+    "summon-natures-ally-6": 6
+  },
+  "spellListExclusions": [
+    "summon-monster-1",
+    "summon-monster-2",
+    "summon-monster-3",
+    "summon-monster-4",
+    "summon-monster-5",
+    "summon-monster-6"
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "bard-first-world-minstrel-resist-nature-s-lure-ex-2",
+      "label": "Resist Nature's Lure +4",
+      "condition": "Saving throws against spell-like and supernatural abilities of fey and against spells and effects that target plants",
+      "minimumLevel": 2,
+      "base": 4
+    }
   ]
 }

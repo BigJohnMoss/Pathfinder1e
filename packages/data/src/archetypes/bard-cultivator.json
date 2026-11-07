@@ -46,14 +46,88 @@
           "name": "Verdant Voice",
           "level": 1,
           "type": "archetype",
-          "summary": "By combining traditional Green Faith chants and fey songs into his bardic performance, a cultivator gains the ability to affect a creature of the plant type with mind-affecting bardic performances. However, doing so requires the cultivator to expend 1 additional round of bardic performance each round he maintains a performance augmented by verdant voice. This replaces bardic knowledge."
+          "summary": "By combining traditional Green Faith chants and fey songs into his bardic performance, a cultivator gains the ability to affect a creature of the plant type with mind-affecting bardic performances. However, doing so requires the cultivator to expend 1 additional round of bardic performance each round he maintains a performance augmented by verdant voice. This replaces bardic knowledge.",
+          "resourceActions": [
+            {
+              "id": "cultivator-verdant-voice",
+              "label": "Augment Performance with Verdant Voice",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "plant-target",
+                  "label": "The performance is being augmented to affect a creature of the plant type",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Verdant Voice",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "This performance can affect plant creatures despite being mind-affecting. Its normal round plus the additional Verdant Voice round have been spent.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend the normal round plus the exact 1 additional performance round required to affect plants."
+            }
+          ]
         },
         {
           "id": "bard-cultivator-song-of-growth-su-1",
           "name": "Song of Growth (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "A cultivator can spontaneously promote massive plant growth with his bardic performance. While he maintains his song of growth, the cultivator can spend a standard action to select one side of a square within 30 feet of himself and instantly create an opaque barrier of plant matter to block that face, providing total cover. He can create one barrier as part of starting his bardic performance if he starts the performance as a standard action. The side the cultivator selects must be supported by the ground, and the growth itself cannot support more than 5 pounds of weight. The conjured barrier has hardness 0, AC 5, and 2 hit points per bard level. A cultivator can maintain a number of plant growths equal to his Charisma modifier + half his bard level. These barriers immediately crumble to dust when the cultivator ends his performance. This performance replaces countersong."
+          "summary": "A cultivator can spontaneously promote massive plant growth with his bardic performance. While he maintains his song of growth, the cultivator can spend a standard action to select one side of a square within 30 feet of himself and instantly create an opaque barrier of plant matter to block that face, providing total cover. He can create one barrier as part of starting his bardic performance if he starts the performance as a standard action. The side the cultivator selects must be supported by the ground, and the growth itself cannot support more than 5 pounds of weight. The conjured barrier has hardness 0, AC 5, and 2 hit points per bard level. A cultivator can maintain a number of plant growths equal to his Charisma modifier + half his bard level. These barriers immediately crumble to dust when the cultivator ends his performance. This performance replaces countersong.",
+          "resourceActions": [
+            {
+              "id": "cultivator-song-growth",
+              "label": "Create Song of Growth Barrier",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                }
+              ],
+              "maximumActiveEffects": {
+                "name": "Song of Growth Barrier",
+                "levelDivisor": 2,
+                "abilityModifier": "charisma",
+                "minimum": 0
+              },
+              "activeEffect": {
+                "name": "Song of Growth Barrier",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "One opaque square face within 30 feet provides total cover. Hardness 0, AC 5, {doubleClassLevel} hit points. It must be ground-supported and holds at most 5 pounds; remove all barriers when the performance ends.",
+                "defaultRounds": 1
+              },
+              "summary": "Create one barrier and enforce the exact Charisma modifier + half Bard level active-barrier limit."
+            }
+          ]
         },
         {
           "id": "bard-cultivator-resist-nature-s-lure-ex-2",
@@ -67,19 +141,111 @@
           "name": "Nature Lore (Ex)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, the cultivator gains the lore master bard ability, except he can use it only on Knowledge (nature) checks and Survival checks to track creatures in natural environments. This alters lore master."
+          "summary": "At 5th level, the cultivator gains the lore master bard ability, except he can use it only on Knowledge (nature) checks and Survival checks to track creatures in natural environments. This alters lore master.",
+          "resourceActions": [
+            {
+              "id": "cultivator-nature-lore-take-20",
+              "label": "Use Nature Lore Take 20",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "natureLoreTake20",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Skill",
+              "modes": [
+                {
+                  "id": "nature",
+                  "label": "Knowledge (nature)",
+                  "summary": "Use the result for a Knowledge (nature) check."
+                },
+                {
+                  "id": "survival",
+                  "label": "Survival — track in natural terrain",
+                  "summary": "Use the result for a Survival check to track in a natural environment."
+                }
+              ],
+              "fixedD20Result": {
+                "label": "Natural d20 result",
+                "result": 20
+              },
+              "summary": "Spend one of the exact 1/2/3 daily uses and use a natural d20 result of 20 without additional time."
+            }
+          ]
         }
       ]
     }
   ],
-  "classSkillAdditions": ["Survival"],
+  "classSkillAdditions": [
+    "Survival"
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Cultivator"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Plant spell additions, class skill, Verdant Voice's extra cost, the barrier count and statistics, Resist Nature's Lure, unlimited take 10, and bounded take 20 uses are automated."
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "bard-cultivator-resist-nature-s-lure-ex-2",
+      "label": "Resist Nature's Lure",
+      "condition": "Saving throws against spell-like and supernatural abilities of fey and against spells and effects that target plants",
+      "minimumLevel": 2,
+      "base": 2,
+      "bonusByLevel": [
+        {
+          "level": 2,
+          "bonus": 2
+        },
+        {
+          "level": 4,
+          "bonus": 4
+        }
+      ]
+    }
+  ],
+  "skillCheckRules": [
+    {
+      "sourceFeatureId": "bard-cultivator-nature-lore-ex-5",
+      "label": "Nature Lore",
+      "minimumLevel": 5,
+      "skills": [
+        "Knowledge (nature)"
+      ],
+      "result": 10,
+      "allowsStress": true
+    },
+    {
+      "sourceFeatureId": "bard-cultivator-nature-lore-ex-5",
+      "label": "Nature Lore tracking",
+      "minimumLevel": 5,
+      "skills": [
+        "Survival"
+      ],
+      "result": 10,
+      "allowsStress": true,
+      "condition": "Tracking creatures in natural environments"
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "natureLoreTake20",
+      "label": "Nature Lore take 20",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 5,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 6,
+      "maximum": 3,
+      "refreshCadence": "day"
+    }
   ]
 }

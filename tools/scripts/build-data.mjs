@@ -87,7 +87,7 @@ const optionGroups=rawOptionGroups.map(group=>{
     const publishedLevels=Object.values(spell.levelByClass??{}).filter(Number.isInteger);
     const sourceLevels=matchingSources(spell).map(source=>spell.levelByClass[source.classId]);
     const spellLevel=filter.additionalSpellLevels?.[spell.id]??(filter.anyClassList?Math.min(...publishedLevels):Math.min(...sourceLevels))??0;
-    if(filter.maximumSpellLevel!==undefined&&spellLevel>filter.maximumSpellLevel) return null;
+    if((filter.minimumSpellLevel!==undefined&&spellLevel<filter.minimumSpellLevel)||(filter.maximumSpellLevel!==undefined&&spellLevel>filter.maximumSpellLevel)) return null;
     const targetClassId=filter.targetClassId??filter.classId;
     const minimumLevel=filter.minimumClassLevelBySpellLevel?.[spellLevel]??classLevelForSpellLevel(targetClassId,spellLevel);
     return {

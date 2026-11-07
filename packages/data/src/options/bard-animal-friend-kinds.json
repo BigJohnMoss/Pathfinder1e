@@ -1,0 +1,40 @@
+{
+  "id": "bard-animal-friend-kinds",
+  "name": "Animal Friend Kinds",
+  "classIds": [
+    "bard"
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Animal%20Speaker"
+  },
+  "optionDefaults": {
+    "groupId": "bard-animal-friend-kinds",
+    "classIds": [
+      "bard"
+    ],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Animal%20Speaker"
+    }
+  },
+  "options": [
+    {
+      "id": "bard-animal-friend-kind",
+      "name": "Chosen animal kind",
+      "benefit": "Name a specific animal kind. Animal Friend, Nature's Speaker, and the +4 Handle Animal bonus apply to that kind.",
+      "repeatable": true,
+      "selectionLimit": 4,
+      "choice": {
+        "key": "animalKind",
+        "label": "Animal kind",
+        "allowCustom": true,
+        "uniqueAcrossSelections": true
+      }
+    }
+  ]
+}

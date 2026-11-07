@@ -1171,14 +1171,18 @@ export default function Home() {
   ]);
   const landSpeed = useMemo(() => {
     const load = equipmentEncumbrance(abilities.strength, inventory).load;
-    return characterLandSpeed(
+    const calculated = characterLandSpeed(
       ancestry.speed,
       equippedArmorCategory(inventory),
       load,
       allSelectedArchetypes,
       classLevelMap,
     );
-  }, [abilities.strength, allSelectedArchetypes, ancestry.speed, classLevelMap, inventory]);
+    const activeSpeedBonus = activeEffects.filter((effect) => effect.target === "landSpeed").reduce((total, effect) => total + effect.bonus, 0);
+    return activeSpeedBonus
+      ? { ...calculated, speed: calculated.speed + activeSpeedBonus, adjustments: [...calculated.adjustments, { label: `${activeSpeedBonus >= 0 ? "+" : ""}${activeSpeedBonus} ft.`, bonus: activeSpeedBonus, source: "Active effect" }] }
+      : calculated;
+  }, [abilities.strength, activeEffects, allSelectedArchetypes, ancestry.speed, classLevelMap, inventory]);
   const selectedArchetypeConditionalModifiers = useMemo(
     () => archetypeConditionalModifiers(allSelectedArchetypes, classLevelMap, combat.abilityModifiers),
     [allSelectedArchetypes, classLevelMap, combat.abilityModifiers],
