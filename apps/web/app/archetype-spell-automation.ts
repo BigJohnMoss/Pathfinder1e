@@ -18,6 +18,10 @@ export type PreparedSpellAutomation = {
     label: string;
     school: string;
   };
+  preparedKeywordConversion?: {
+    label: string;
+    keyword: string;
+  };
   fastHealingAura?: {
     label: string;
     resourceId: string;
@@ -65,6 +69,10 @@ export function classSpellAutomation(
     (feature) => feature.spellAutomation?.extendDuration,
   );
   const extend = extendFeature?.spellAutomation?.extendDuration;
+  const conversionFeature = availableFeatures.find(
+    (feature) => feature.spellAutomation?.preparedKeywordConversion,
+  );
+  const conversion = conversionFeature?.spellAutomation?.preparedKeywordConversion;
   const fastHealingFeature = availableFeatures.find(
     (feature) => feature.spellAutomation?.fastHealingAura,
   );
@@ -75,7 +83,7 @@ export function classSpellAutomation(
   const descriptorBoost = descriptorBoostFeature?.spellAutomation?.descriptorReservoirBoost;
   const spellstrike = selectedOptionIds.includes("blade-adept-spell-strike");
   const criticalStrike = selectedOptionIds.includes("blade-adept-magus-arcana-critical-strike");
-  if (!share && !extend && !fastHealing && !descriptorBoost && !spellstrike && !criticalStrike) return undefined;
+  if (!share && !extend && !conversion && !fastHealing && !descriptorBoost && !spellstrike && !criticalStrike) return undefined;
 
   return {
     ...(spellstrike ? { spellstrike: { label: "Spellstrike", closeRange: selectedOptionIds.includes("blade-adept-magus-arcana-close-range") } } : {}),
@@ -99,6 +107,12 @@ export function classSpellAutomation(
       ? { automaticExtendDuration: {
           label: extendFeature!.name.replace(/\s*\([^)]*\)\s*$/, ""),
           school: extend.school,
+        } }
+      : {}),
+    ...(conversion
+      ? { preparedKeywordConversion: {
+          label: conversion.label,
+          keyword: conversion.keyword,
         } }
       : {}),
     ...(fastHealing

@@ -347,6 +347,10 @@ for (const [index, url] of archetypeUrls.entries()) {
           else featureRequiredOptionRefs.push({ file, featureId: feature.id, itemId: profile.id, optionId: profile.requiredOptionId });
         }
       }
+      if (feature.spellAutomation?.preparedKeywordConversion !== undefined) {
+        const conversion = feature.spellAutomation.preparedKeywordConversion;
+        if (!conversion || typeof conversion.label !== "string" || !conversion.label.trim() || typeof conversion.keyword !== "string" || !conversion.keyword.trim()) errors.push(`${file}: ${feature.id} has invalid preparedKeywordConversion`);
+      }
     }
   }
   if (archetype.optionGroupAugmentations !== undefined && (!Array.isArray(archetype.optionGroupAugmentations) || archetype.optionGroupAugmentations.length === 0)) errors.push(`${file}: optionGroupAugmentations must be a non-empty array`);

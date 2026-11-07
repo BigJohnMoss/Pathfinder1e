@@ -525,6 +525,10 @@ export interface ClassFeatureOccurrence {
     extendDuration?: {
       school: string;
     };
+    preparedKeywordConversion?: {
+      label: string;
+      keyword: string;
+    };
     fastHealingAura?: {
       label: string;
       resourceId: string;
