@@ -4,9 +4,9 @@
   "classId": "psychic",
   "summary": "A number of exceptional Darklands half-orcs have developed potent psychic abilities, unlocked by generations of exposure to a specific combination of mind-altering fungi and radiation",
   "replacesText": "Detect Thoughts; Telepathic Bond; 11th, 15th, 19th-level Phrenic Amplifications",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The daily and spell-slot forms of Manipulation and Aura of Intimidation are exposed as spell-equivalent actions, Aura of Intimidation upgrades from shaken to frightened and panicked at the published levels, and Persistent Nightmare spends phrenic points and tracks its delayed 24-hour Will penalty."
   ],
   "replacements": [
     {
@@ -20,23 +20,158 @@
           "name": "Manipulation (Sp)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a terror weaver can cast charm person once per day as a spell-like ability. He can also expend any unused spell slot of 1st level or higher to cast charm person . If he does so, he uses the level of the spell slot expended to determine the save DC. When a terror weaver gains this ability, if he already knows charm person , he can learn a different 1st-level spell in place of charm person , losing the old spell in exchange for the new one. This replaces detect thoughts."
+          "summary": "Cast charm person once per day or by expending any psychic spell slot of 1st level or higher; a slot-powered casting uses that slot's level for its save DC.",
+          "resourceActions": [
+            {
+              "id": "terror-weaver-manipulation-daily",
+              "label": "Use daily Charm Person",
+              "classId": "psychic",
+              "minimumLevel": 2,
+              "resourceId": "terrorWeaverCharm",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "standard"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "charm-person",
+                "spellName": "Charm Person",
+                "cadence": "day",
+                "kind": "spell-like"
+              }
+            }
+          ]
         },
         {
           "id": "psychic-terror-weaver-aura-of-intimidation-sp-9",
           "name": "Aura of Intimidation (Sp)",
           "level": 9,
           "type": "archetype",
-          "summary": "Because he lacks the physical prowess of most orcs, a terror weaver seeks to end fights before they start. At 9th level, he can cast aura of doom as a spell-like ability once per day. He can also expend any unused spell slot of 4th level or higher to cast aura of doom . Casting the spell using a higher-level spell slot gives no benefit on its own, but the terror weaver can apply metamagic feats that would increase the spell level to the appropriate level. At 11th level, a terror weaver’s aura of doom causes enemies to become frightened instead of shaken. At 19th level, it causes enemies to become panicked. This replaces telepathic bond and the phrenic amplifications gained at 11th and 19th levels."
+          "summary": "Cast aura of doom once per day or by expending a 4th-level-or-higher psychic spell slot. Its condition improves from shaken to frightened at level 11 and panicked at level 19.",
+          "resourceActions": [
+            {
+              "id": "terror-weaver-aura-daily",
+              "label": "Use daily Aura of Intimidation",
+              "classId": "psychic",
+              "minimumLevel": 9,
+              "resourceId": "terrorWeaverAura",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Condition",
+              "modes": [
+                {
+                  "id": "shaken",
+                  "label": "Shaken",
+                  "summary": "Enemies that fail the aura save become shaken.",
+                  "minimumLevel": 9,
+                  "maximumLevel": 10
+                },
+                {
+                  "id": "frightened",
+                  "label": "Frightened",
+                  "summary": "Enemies that fail the aura save become frightened.",
+                  "minimumLevel": 11,
+                  "maximumLevel": 18
+                },
+                {
+                  "id": "panicked",
+                  "label": "Panicked",
+                  "summary": "Enemies that fail the aura save become panicked.",
+                  "minimumLevel": 19
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "later-spell-aura-of-doom",
+                "spellName": "Aura of Doom",
+                "cadence": "day",
+                "kind": "spell-like"
+              }
+            }
+          ]
         },
         {
           "id": "psychic-terror-weaver-persistent-nightmare-sp-15",
           "name": "Persistent Nightmare (Sp)",
           "level": 15,
           "type": "archetype",
-          "summary": "Gloomkin often suffer from lifetimes of cruelty and abuse, and a terror weaver repays that suffering back onto his tormentors. At 15th level, when he successfully casts a mind-affecting spell on a target, he can spend 2 points from his phrenic pool to afflict the target with a nightmare spell the next time it goes to sleep. The day after nightmare has taken effect, regardless of the victim’s saving throw, the target takes a –2 penalty on Will saves against the terror weaver’s mind-affecting spells and abilities for 24 hours. This ability replaces the phrenic amplification gained at 15th level."
+          "summary": "After successfully casting a mind-affecting spell, spend 2 phrenic points to deliver nightmare when the target next sleeps and track its subsequent -2 Will penalty for 24 hours.",
+          "resourceActions": [
+            {
+              "id": "terror-weaver-persistent-nightmare",
+              "label": "Apply Persistent Nightmare",
+              "classId": "psychic",
+              "minimumLevel": 15,
+              "resourceId": "phrenicPool",
+              "cost": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 15,
+                  "actionType": "free"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "mind-affecting-success",
+                  "label": "A mind-affecting spell was successfully cast on this target",
+                  "requiredForActivation": true
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "nightmare",
+                "spellName": "Nightmare",
+                "cadence": "at-will",
+                "kind": "spell-like"
+              },
+              "activeEffect": {
+                "name": "Persistent Nightmare",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": -2,
+                "description": "Nightmare triggers the next time the target sleeps. For the following 24 hours, it takes -2 on Will saves against this Terror Weaver's mind-affecting spells and abilities, regardless of its nightmare save.",
+                "defaultRounds": 14400,
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            }
+          ]
         }
       ]
+    }
+  ],
+  "spellGrants": [
+    {"spellId": "charm-person", "spellLevel": 1, "minimumClassLevel": 2, "mode": "known", "sourceFeatureId": "psychic-terror-weaver-manipulation-sp-2"},
+    {"spellId": "later-spell-aura-of-doom", "spellLevel": 4, "minimumClassLevel": 9, "mode": "known", "sourceFeatureId": "psychic-terror-weaver-aura-of-intimidation-sp-9"}
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "terrorWeaverCharm",
+      "label": "Manipulation",
+      "unit": "use",
+      "operation": "add",
+      "minimumLevel": 2,
+      "base": 1,
+      "maximum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "terrorWeaverAura",
+      "label": "Aura of Intimidation",
+      "unit": "use",
+      "operation": "add",
+      "minimumLevel": 9,
+      "base": 1,
+      "maximum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
     }
   ],
   "source": {
