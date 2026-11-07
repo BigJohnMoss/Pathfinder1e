@@ -900,7 +900,9 @@ export default function Home() {
     );
   }, [archetypeFeatAlternatives, baseCharacterClass.features, characterClass.features, primaryClassLevel]);
   const selectableProgressionFeatures = useMemo(
-    () => [...progression.features, ...inferredArchetypeFeatChoices, ...retainedArchetypeFeatSlots].flatMap((feature) => {
+    () => [...progression.features, ...inferredArchetypeFeatChoices, ...retainedArchetypeFeatSlots]
+      .filter((feature) => !feature.minimumEffectiveLevel || (feature.effectiveLevelClassIds ?? []).reduce((total, classId) => total + (classLevelMap[classId] ?? 0), 0) >= feature.minimumEffectiveLevel)
+      .flatMap((feature) => {
       if (!feature.choiceCount) return [feature];
       const abilityBonus = feature.choiceCount.abilityModifier
         ? Math.floor(((abilities[feature.choiceCount.abilityModifier] ?? 10) - 10) / 2)
@@ -916,7 +918,7 @@ export default function Home() {
         choiceCount: undefined,
       }));
     }),
-    [abilities, inferredArchetypeFeatChoices, progression.features, retainedArchetypeFeatSlots],
+    [abilities, classLevelMap, inferredArchetypeFeatChoices, progression.features, retainedArchetypeFeatSlots],
   );
   const alternativeAllowsFeat = (feature: (typeof progression.features)[number], feat: (typeof feats)[number]) =>
     archetypeFeatAlternatives.some((alternative) =>
@@ -1604,8 +1606,9 @@ export default function Home() {
       "classId" in feature && typeof feature.classId === "string"
         ? feature.classId
         : characterClass.id;
-    const featureClassLevel =
-      classLevelMap[featureClassId] ?? primaryClassLevel;
+    const featureClassLevel = feature.effectiveLevelClassIds?.length
+      ? feature.effectiveLevelClassIds.reduce((total, classId) => total + (classLevelMap[classId] ?? 0), 0)
+      : classLevelMap[featureClassId] ?? primaryClassLevel;
     const featureCharacterClass = progressionClasses.find(
       (item) => item.id === featureClassId,
     );
@@ -1749,6 +1752,8 @@ export default function Home() {
             ? group.options.filter((option) =>
                 featureCharacterClass.rangerCombatStyleIds?.includes(option.id),
               )
+            : group && group.id === "ranger-favored-terrains" && featureClassId !== "ranger"
+              ? group.options
             : group &&
                 featureCharacterClass?.mountedCompanionOnly &&
                 group.id === "ranger-animal-companions"
@@ -1876,7 +1881,7 @@ export default function Home() {
     return {
       id: feature.id,
       name: feature.name,
-      level: feature.level,
+      level: feature.minimumEffectiveLevel ?? feature.level,
       classLevel: featureClassLevel,
       favoredTerrainBaseBonus: feature.favoredTerrainBaseBonus,
       companionRoster: feature.companionRoster,

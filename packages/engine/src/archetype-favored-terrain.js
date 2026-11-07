@@ -98,7 +98,8 @@ function favoredTerrainAdvancement(archetype, feature) {
 function fullyRepresented(feature, levels, allowedIds, structuredAdvancement = false) {
   const text = String(feature.summary ?? "");
   if (!levels.length || !allowedIds.length) return false;
-  if (/\b(?:damage rolls?|mount gains|levels? (?:from|in) both classes|stack for|courtly function|party|Shadow Plane)\b/i.test(text)) return false;
+  if (/\b(?:damage rolls?|mount gains|courtly function|party|Shadow Plane)\b/i.test(text)) return false;
+  if (/\b(?:levels? (?:from|in) both classes|stack for)\b/i.test(text) && !feature.effectiveLevelClassIds?.length) return false;
   const sentences = archetypeRuleSentences(text);
   return sentences.every((sentence) =>
     archetypeReplacementBoilerplate(sentence) ||
@@ -122,16 +123,29 @@ export function inferredArchetypeFavoredTerrainChoiceDetails(archetype) {
     levels.forEach((level, index) => choices.push({
       sourceFeatureId: feature.id,
       feature: index === 0
-        ? { ...feature, level, type: "selectable", choiceRequired: true, optionGroupId: "ranger-favored-terrains", optionChoiceIds, ...(advancement ? { favoredTerrainBaseBonus: 2 } : {}) }
-        : {
-            id: `${feature.id}-choice-${level}`,
-            name: `Favored Terrain ${index + 1}`,
-            level,
+        ? {
+            ...feature,
+            level: feature.effectiveLevelClassIds?.length ? feature.level : level,
+            ...(feature.effectiveLevelClassIds?.length ? { minimumEffectiveLevel: level } : {}),
             type: "selectable",
-            summary: "Choose another terrain and increase one favored-terrain bonus according to this archetype's progression.",
             choiceRequired: true,
             optionGroupId: "ranger-favored-terrains",
             optionChoiceIds,
+            favoredTerrainBaseBonus: 2,
+          }
+        : {
+            id: `${feature.id}-choice-${level}`,
+            name: `Favored Terrain ${index + 1}`,
+            level: feature.effectiveLevelClassIds?.length ? feature.level : level,
+            ...(feature.effectiveLevelClassIds?.length ? {
+              effectiveLevelClassIds: feature.effectiveLevelClassIds,
+              minimumEffectiveLevel: level,
+            } : {}),
+            type: "selectable",
+            summary: "Choose another terrain and increase one favored-terrain bonus according to this archetype's progression.",
+            choiceRequired: true,
+            optionGroupId: feature.favoredTerrainAdvancementOptionGroupId ?? "ranger-favored-terrains",
+            ...(feature.favoredTerrainAdvancementOptionGroupId ? {} : { optionChoiceIds }),
             source: feature.source,
           },
     }));

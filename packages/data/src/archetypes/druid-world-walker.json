@@ -18,14 +18,64 @@
           "name": "Favored Terrain (Ex)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, the world walker gains the ranger’s favored terrain ability. She treats her druid level as her ranger level for this ability. If she has levels in both classes, both class’s levels stack for determining the effect of this ability. This ability replaces trackless step and resist nature’s lure."
+          "summary": "At 3rd level, the world walker gains the ranger’s favored terrain ability. She treats her druid level as her ranger level for this ability. If she has levels in both classes, both class’s levels stack for determining the effect of this ability. This ability replaces trackless step and resist nature’s lure.",
+          "effectiveLevelClassIds": [
+            "druid",
+            "ranger"
+          ],
+          "favoredTerrainAdvancementOptionGroupId": "world-walker-favored-terrain-advancements"
         },
         {
           "id": "druid-world-walker-path-of-trees-su-9",
           "name": "Path of Trees (Su)",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, once a day, a wanderer can step within a tree and then teleport from that tree to another one in a manner similar to the tree stride spell. She gains an extra use of this ability each day at 12th level, and a third use of this ability at 15th level. Furthermore, a world walker of 13th level or higher can use this ability to teleport to any other tree of its type up to 100 miles away. This ability replaces both venom immunity and timeless body."
+          "summary": "At 9th level, once a day, a wanderer can step within a tree and then teleport from that tree to another one in a manner similar to the tree stride spell. She gains an extra use of this ability each day at 12th level, and a third use of this ability at 15th level. Furthermore, a world walker of 13th level or higher can use this ability to teleport to any other tree of its type up to 100 miles away. This ability replaces both venom immunity and timeless body.",
+          "resourceActions": [
+            {
+              "id": "world-walker-path-of-trees",
+              "label": "Use Path of Trees",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "resourceId": "pathOfTreesUses",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Travel mode",
+              "modes": [
+                {
+                  "id": "tree-stride",
+                  "label": "Tree stride",
+                  "minimumLevel": 9,
+                  "summary": "Travel between trees using the distance limits for tree stride."
+                },
+                {
+                  "id": "same-type-teleport",
+                  "label": "Same-type tree teleport",
+                  "minimumLevel": 13,
+                  "summary": "Teleport to another tree of the same type up to 100 miles away."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "destination-tree",
+                  "label": "A legal destination tree is available",
+                  "requiredForActivation": true
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "tree-stride",
+                "spellName": "Tree Stride",
+                "cadence": "day",
+                "kind": "spell-equivalent"
+              },
+              "summary": "Spend one daily use to travel by tree using the selected legal mode."
+            }
+          ]
         }
       ]
     }
@@ -35,8 +85,35 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20World%20Walker"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Favored Terrain selections, +2 bonus advancement, Druid-plus-Ranger effective-level stacking, daily Path of Trees uses, and both tree-travel modes are automated."
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "pathOfTreesUses",
+      "label": "Path of Trees",
+      "unit": "use",
+      "operation": "add",
+      "minimumLevel": 9,
+      "base": 1,
+      "maximumByLevel": [
+        {
+          "level": 9,
+          "maximum": 1
+        },
+        {
+          "level": 12,
+          "maximum": 2
+        },
+        {
+          "level": 15,
+          "maximum": 3
+        }
+      ],
+      "maximum": 3,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
   ]
 }
