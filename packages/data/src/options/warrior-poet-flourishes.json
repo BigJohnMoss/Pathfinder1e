@@ -1,0 +1,26 @@
+{
+  "id": "warrior-poet-flourishes",
+  "name": "Warrior Poet Flourishes",
+  "classIds": ["samurai"],
+  "optionDefaults": {
+    "groupId": "warrior-poet-flourishes",
+    "classIds": ["samurai"],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Samurai%20Warrior%20Poet"
+    }
+  },
+  "options": [
+    { "id": "warrior-poet-flourish-chrysanthemum", "name": "Chrysanthemum's Blooming", "minimumLevel": 11, "featId": "vital-strike", "benefit": "Gain Vital Strike and apply it during Spring Attack; at level 16, Improved Vital Strike can be applied instead if possessed." },
+    { "id": "warrior-poet-flourish-exodus", "name": "Exodus of Jinin", "repeatable": true, "selectionLimit": 3, "benefit": "Increase land speed by 10 feet while wearing light or no armor and carrying no more than a light load; select up to three times." },
+    { "id": "warrior-poet-flourish-harmony", "name": "Harmony of the Tranquil Garden", "benefit": "Focus as a move action for level-scaled blindsense for 1 round." },
+    { "id": "warrior-poet-flourish-guidance", "name": "Jininsiel's Guidance", "minimumLevel": 4, "benefit": "Gain uncanny dodge." },
+    { "id": "warrior-poet-flourish-improved-guidance", "name": "Jininsiel's Guidance — Improved", "minimumLevel": 8, "requiredOptionIds": ["warrior-poet-flourish-guidance"], "benefit": "A second selection upgrades Jininsiel's Guidance to improved uncanny dodge." },
+    { "id": "warrior-poet-flourish-kitsune", "name": "Kitsune's Mystique", "featId": "improved-feint", "benefit": "Gain Improved Feint without prerequisites and feint one threatened creature during Spring Attack or other movement." },
+    { "id": "warrior-poet-flourish-petals", "name": "Petals on the Wind", "benefit": "Move 5 feet before making a provoked attack of opportunity, borrowing that movement from the next turn." },
+    { "id": "warrior-poet-flourish-wrath", "name": "Wrath of the Heavens", "featId": "shot-on-the-run", "benefit": "Gain Shot on the Run without prerequisites." }
+  ]
+}

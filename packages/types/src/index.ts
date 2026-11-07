@@ -475,6 +475,8 @@ export interface ClassFeatureOccurrence {
       targets: ActiveEffectTarget[];
       bonus: number;
       bonusAbilityModifier?: AbilityName;
+      minimumBonus?: number;
+      maximumBonusClassLevel?: boolean;
       bonusByLevel?: Array<{ level: number; bonus: number }>;
       description?: string;
       improvedAtLevel?: number;

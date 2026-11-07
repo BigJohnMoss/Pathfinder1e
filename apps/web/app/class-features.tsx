@@ -235,7 +235,9 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           ? effectUpgrade?.name ?? action.activeEffect?.name
           : selectedActionFeatNames.length ? `${effectUpgrade?.name ?? action.activeEffect?.name} — ${selectedActionFeatNames.join(" + ")}` : effectUpgrade?.name ?? action.activeEffect?.name;
         const tableEffectBonus = action.activeEffect?.bonusByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.bonus;
-        const effectBonus = (effectUpgrade?.bonus ?? tableEffectBonus ?? (action.activeEffect ? (action.activeEffect.improvedAtLevel && level >= action.activeEffect.improvedAtLevel ? action.activeEffect.improvedBonus ?? action.activeEffect.bonus : action.activeEffect.bonus) : 0)) + (action.activeEffect?.bonusAbilityModifier ? abilityModifiers[action.activeEffect.bonusAbilityModifier] ?? 0 : 0);
+        const uncappedEffectBonus = (effectUpgrade?.bonus ?? tableEffectBonus ?? (action.activeEffect ? (action.activeEffect.improvedAtLevel && level >= action.activeEffect.improvedAtLevel ? action.activeEffect.improvedBonus ?? action.activeEffect.bonus : action.activeEffect.bonus) : 0)) + (action.activeEffect?.bonusAbilityModifier ? abilityModifiers[action.activeEffect.bonusAbilityModifier] ?? 0 : 0);
+        const classLevelCappedEffectBonus = action.activeEffect?.maximumBonusClassLevel ? Math.min(actionLevel, uncappedEffectBonus) : uncappedEffectBonus;
+        const effectBonus = Math.max(action.activeEffect?.minimumBonus ?? Number.NEGATIVE_INFINITY, classLevelCappedEffectBonus);
         const additionalActiveEffects = action.activeEffect?.additionalEffectsByLevel?.filter((effect) => effect.minimumLevel <= actionLevel) ?? [];
         const saveLevel = (action.savingThrow?.classId ? classLevels[action.savingThrow.classId] ?? 0 : level) + (action.savingThrow?.levelAdjustment ?? 0);
         const fixedSaveDc = action.savingThrow?.fixedDcByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.dc;
