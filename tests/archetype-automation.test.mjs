@@ -7,6 +7,7 @@ import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automat
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
 import catalogueSpells from "../generated/pf1e-spells.mjs";
 import { inferArchetypeAllowedAlignments } from "../packages/engine/src/index.js";
+import { applyArchetypeResourceAdjustments } from "../packages/engine/src/index.js";
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
@@ -29,7 +30,7 @@ test("full archetypes never report manual effects", () => {
 });
 
 test("completed Alchemist archetypes expose no manual mechanics", () => {
-  for (const id of ["alchemist-aerochemist", "alchemist-oenopion-researcher", "alchemist-royal-alchemist", "alchemist-preservationist", "alchemist-gloom-chymist", "alchemist-concocter"]) {
+  for (const id of ["alchemist-aerochemist", "alchemist-oenopion-researcher", "alchemist-royal-alchemist", "alchemist-preservationist", "alchemist-gloom-chymist", "alchemist-concocter", "alchemist-dragonblood-chymist"]) {
     const archetype = catalogueArchetypes.find((candidate) => candidate.id === id);
     assert.ok(archetype, id);
     assert.deepEqual(archetypeAutomationSummary(archetype, [], catalogueSpells).manual, [], id);
@@ -38,6 +39,10 @@ test("completed Alchemist archetypes expose no manual mechanics", () => {
   const bottledAllySix = preservationist.replacements.flatMap((replacement) => replacement.features ?? []).find((feature) => feature.name === "Bottled Ally VI");
   assert.equal(bottledAllySix?.level, 18);
   assert.equal(preservationist.spellListAdditions["summon-natures-ally-9"], 6);
+  const gloomChymist = catalogueArchetypes.find((candidate) => candidate.id === "alchemist-gloom-chymist");
+  const dragonbloodChymist = catalogueArchetypes.find((candidate) => candidate.id === "alchemist-dragonblood-chymist");
+  assert.equal(applyArchetypeResourceAdjustments({}, [gloomChymist], 9, { intelligence: 4 }).glooms, 13);
+  assert.equal(applyArchetypeResourceAdjustments({}, [dragonbloodChymist], 9, { intelligence: 4 }).bombs, 13);
 });
 
 test("static archetype alignment rules expose exact builder eligibility", () => {

@@ -128,7 +128,8 @@
       "unit": "use",
       "operation": "replace",
       "minimumLevel": 1,
-      "base": 3,
+      "base": 0,
+      "levelMultiplier": 1,
       "abilityModifier": "intelligence",
       "minimum": 1
     }

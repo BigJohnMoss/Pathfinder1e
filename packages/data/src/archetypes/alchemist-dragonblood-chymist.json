@@ -4,10 +4,6 @@
   "classId": "alchemist",
   "summary": "The dragonblood chymist specializes in the reckless distillation of extracts and elixirs that allow them to experience the might of a dragon, however dangerous it might be\n.",
   "replacesText": "Mutagen; 2nd, 12th, 16th-level discovery; Throw Anything; Poison Resistance; Poison Use; Swift Poisoning",
-  "mechanicalCoverage": "partial",
-  "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ],
   "replacements": [
     {
       "featureIds": [
@@ -27,14 +23,80 @@
           "name": "Dragonblood Mutagen (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a dragonblood chymist discovers how to create a mutagen that he can imbibe in order to mimic the might of a dragon. While he maintains his original form, his features take on a draconic appearance, becoming scaly and lizard-like. He gains a +2 natural armor bonus and a +2 alchemical bonus to his Strength for 10 minutes per class level. At 2nd level, the dragonblood chymist has learned to concentrate the potency of his dragonblood mutagen such that it grants him two claw attacks and a bite attack. If these are the only attacks the dragonblood chymist makes in a round, they are primary attacks and are made using his full base attack bonus. Otherwise, these natural attacks are treated as secondary attacks. The claw attacks deal 1d4 points of damage (1d3 if he is Small) and the bite attack deals 1d6 points of damage (1d4 if he is Small). While the mutagen is in effect, he gains a +2 competence bonus on Intimidate checks. At 12th level, the dragonblood mutagen grants a +4 natural armor bonus and a +4 alchemical bonus to his Strength. At 16th level, the dragonblood mutagen grants a +6 natural armor bonus and a +6 alchemical bonus to his Strength. This ability otherwise functions asÂ mutagen. This ability modifies the mutagen class feature; replaces the discoveries gained at 2nd, 12th, and 16th levels; and precludes the dragonblood chymist from taking any other mutagen discoveries."
+          "summary": "At 1st level, a dragonblood chymist discovers how to create a mutagen that he can imbibe in order to mimic the might of a dragon. While he maintains his original form, his features take on a draconic appearance, becoming scaly and lizard-like. He gains a +2 natural armor bonus and a +2 alchemical bonus to his Strength for 10 minutes per class level. At 2nd level, the dragonblood chymist has learned to concentrate the potency of his dragonblood mutagen such that it grants him two claw attacks and a bite attack. If these are the only attacks the dragonblood chymist makes in a round, they are primary attacks and are made using his full base attack bonus. Otherwise, these natural attacks are treated as secondary attacks. The claw attacks deal 1d4 points of damage (1d3 if he is Small) and the bite attack deals 1d6 points of damage (1d4 if he is Small). While the mutagen is in effect, he gains a +2 competence bonus on Intimidate checks. At 12th level, the dragonblood mutagen grants a +4 natural armor bonus and a +4 alchemical bonus to his Strength. At 16th level, the dragonblood mutagen grants a +6 natural armor bonus and a +6 alchemical bonus to his Strength. This ability otherwise functions asÂ mutagen. This ability modifies the mutagen class feature; replaces the discoveries gained at 2nd, 12th, and 16th levels; and precludes the dragonblood chymist from taking any other mutagen discoveries.",
+          "resourceActions": [
+            {
+              "id": "dragonblood-chymist-mutagen",
+              "label": "Brew and consume dragonblood mutagen",
+              "actionTypeByLevel": [{ "level": 1, "actionType": "1-hour" }],
+              "activeEffect": {
+                "name": "Dragonblood Mutagen",
+                "targets": ["strength"],
+                "bonus": 2,
+                "bonusByLevel": [
+                  { "level": 1, "bonus": 2 },
+                  { "level": 12, "bonus": 4 },
+                  { "level": 16, "bonus": 6 }
+                ],
+                "description": "Gain the scaling Strength and natural armor bonuses. From level 2, gain two claws and a bite plus +2 competence on Intimidate; use the feature text for natural-attack damage and primary/secondary handling.",
+                "defaultRounds": 100,
+                "defaultRoundsByLevel": [
+                  { "level": 1, "rounds": 100 }, { "level": 2, "rounds": 200 }, { "level": 3, "rounds": 300 }, { "level": 4, "rounds": 400 },
+                  { "level": 5, "rounds": 500 }, { "level": 6, "rounds": 600 }, { "level": 7, "rounds": 700 }, { "level": 8, "rounds": 800 },
+                  { "level": 9, "rounds": 900 }, { "level": 10, "rounds": 1000 }, { "level": 11, "rounds": 1100 }, { "level": 12, "rounds": 1200 },
+                  { "level": 13, "rounds": 1300 }, { "level": 14, "rounds": 1400 }, { "level": 15, "rounds": 1500 }, { "level": 16, "rounds": 1600 },
+                  { "level": 17, "rounds": 1700 }, { "level": 18, "rounds": 1800 }, { "level": 19, "rounds": 1900 }, { "level": 20, "rounds": 2000 }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "additionalEffectsByLevel": [
+                  {
+                    "minimumLevel": 1,
+                    "name": "Dragonblood Mutagen — natural armor",
+                    "target": "armorClass",
+                    "bonus": 2,
+                    "bonusByLevel": [
+                      { "level": 1, "bonus": 2 },
+                      { "level": 12, "bonus": 4 },
+                      { "level": 16, "bonus": 6 }
+                    ],
+                    "description": "Scaling natural armor bonus from Dragonblood Mutagen."
+                  }
+                ]
+              }
+            }
+          ]
         },
         {
           "id": "alchemist-dragonblood-chymist-explosive-breath-su-1",
           "name": "Explosive Breath (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a dragonblood chymist gains the ability to expel fire from his mouth in the same manner as a dragon. He gains the breath weapon bomb alchemist discovery but must apply this discovery to every bomb he creates. This ability replaces the Throw Anything ability"
+          "summary": "At 1st level, a dragonblood chymist gains the ability to expel fire from his mouth in the same manner as a dragon. He gains the breath weapon bomb alchemist discovery but must apply this discovery to every bomb he creates. This ability replaces the Throw Anything ability",
+          "resourceActions": [
+            {
+              "id": "dragonblood-chymist-explosive-breath",
+              "label": "Use explosive breath",
+              "resourceId": "bombs",
+              "cost": 1,
+              "actionTypeByLevel": [{ "level": 1, "actionType": "standard" }],
+              "savingThrow": { "label": "Reflex", "ability": "intelligence", "base": 10, "levelDivisor": 2, "classId": "alchemist" },
+              "combatRoll": {
+                "damage": {
+                  "type": "fire",
+                  "diceCountByLevel": [
+                    { "level": 1, "count": 1 }, { "level": 3, "count": 2 }, { "level": 5, "count": 3 }, { "level": 7, "count": 4 },
+                    { "level": 9, "count": 5 }, { "level": 11, "count": 6 }, { "level": 13, "count": 7 }, { "level": 15, "count": 8 },
+                    { "level": 17, "count": 9 }, { "level": 19, "count": 10 }
+                  ],
+                  "dieSidesByLevel": [{ "level": 1, "sides": 6 }],
+                  "abilityModifier": "intelligence"
+                },
+                "rangeByLevel": [{ "level": 1, "range": "15-foot cone" }],
+                "targetSave": { "modifier": "reflex", "outcome": "half-damage" }
+              }
+            }
+          ]
         },
         {
           "id": "alchemist-dragonblood-chymist-draconic-resistances-ex-2",
@@ -46,9 +108,59 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "bombs",
+      "label": "Bomb",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelMultiplier": 1,
+      "abilityModifier": "intelligence",
+      "minimum": 1
+    }
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "alchemist-dragonblood-chymist-dragonblood-mutagen-su-1",
+      "skill": "Intimidate",
+      "minimumLevel": 2,
+      "base": 2,
+      "condition": "while Dragonblood Mutagen is active"
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "alchemist-dragonblood-chymist-draconic-resistances-ex-2",
+      "label": "Saving throws",
+      "condition": "against paralysis and sleep effects",
+      "minimumLevel": 2,
+      "base": 2,
+      "bonusByLevel": [
+        { "level": 2, "bonus": 2 },
+        { "level": 6, "bonus": 4 },
+        { "level": 10, "bonus": 6 }
+      ]
+    }
+  ],
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "alchemist-dragonblood-chymist-draconic-resistances-ex-2",
+      "kind": "immunity",
+      "label": "Draconic Resistances",
+      "minimumLevel": 10,
+      "base": 0,
+      "qualifier": "paralysis and sleep effects"
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Dragonblood%20Chymist"
-  }
+  },
+  "mechanicalCoverage": "full",
+  "mechanicalNotes": [
+    "Dragonblood Mutagen tracks scaling Strength, natural armor, duration, natural-attack guidance, and conditional Intimidate. Explosive Breath spends the level-plus-Intelligence bomb pool and resolves its mandatory 15-foot cone with exact bomb damage and Reflex half. Draconic save bonuses and level-10 immunities are applied."
+  ]
 }
