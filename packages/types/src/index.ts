@@ -1009,6 +1009,7 @@ export interface SelectableOption {
   spellAccessOnly?: boolean;
   repeatable?: boolean;
   selectionLimit?: number;
+  requiredOptionIds?: string[];
   familyId?: string;
   exclusiveGroupId?: string;
   favoredTerrainId?: string;

@@ -56,6 +56,7 @@ function OptionDetails({ option, archetypeReplacesText = "" }: { option: Option;
     <p>{option.benefit}</p>
     {option.parentDomainId && <p><strong>Associated domain:</strong> {option.parentDomainId.replace(/^domain-/, "").replace(/-/g, " ")}</p>}
     {option.replacesPower && <p><strong>Replaces:</strong> {option.replacesPower}</p>}
+    {option.requiredOptionIds?.length ? <p><strong>Requires selected option:</strong> {option.requiredOptionIds.map((id) => id.replaceAll("-", " ")).join(", ")}</p> : null}
     {option.classSkills && option.classSkills.length > 0 && <p><strong>Granted class skills:</strong> {option.classSkills.join(", ")}</p>}
     {option.classSkill && <p><strong>Bloodline class skill:</strong> {option.classSkill}</p>}
     {option.arcana && <p><strong>Bloodline arcana:</strong> {option.arcana}</p>}
@@ -187,6 +188,8 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     const schoolName = selectedWizardSchool?.name.replace(/ School$/, "") ?? "school";
     return specialistSchoolSpells(characterSpells, selectedWizardSchool, level).map((spell) => spellAsOption(spell, schoolName));
   };
+  const selectedOptionIdSet = new Set(Object.values(selectedOptions).filter(Boolean));
+  const eligibleOptionsFor = (choice: Choice) => optionsFor(choice).filter((option) => option.requiredOptionIds?.every((id) => selectedOptionIdSet.has(id)) ?? true);
   const optionsFor = (choice: Choice) => {
     if (choice.id === "blood-arcanist-bloodline-1" && selectedSorcererBloodline) return choice.options.filter((option) => (option.familyId ?? option.id) === selectedSorcererBloodline.id && (!selectedBloodlineVariant || option.selectedVariant?.id === selectedBloodlineVariant.id));
     if (choice.id === "sorcerer-bloodline-1" && selectedBloodArcanistBloodline) return choice.options.filter((option) => option.id === (selectedBloodArcanistBloodline.familyId ?? selectedBloodArcanistBloodline.id));
@@ -271,7 +274,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
         }
         seenMercies.add(selectedId);
       }
-      const options = optionsFor(choice);
+      const options = eligibleOptionsFor(choice);
       if (choice.id.endsWith("opposition-school-1-first") && selectedWizardSchool?.elementalOppositionSchool && options.length === 1 && selectedId !== options[0].id) {
         onOptionChange(choice.id, options[0].id);
         continue;
@@ -309,7 +312,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
 
   return <section className="choice-panel"><div><p className="eyebrow">FEATURE CHOICES</p><h2>Configure class features</h2><p>Dependent choices are ordered so each selection unlocks the next legal options.</p></div>{favoredTerrainBonuses.length > 0 && <aside className="favored-terrain-summary" aria-label="Favored terrain bonuses"><strong>Favored terrain bonuses</strong><ul>{favoredTerrainBonuses.map((terrain) => <li key={terrain.id}><span>{terrain.name}</span><b>+{terrain.bonus}</b></li>)}</ul></aside>}{domainSlotChoices.length > 0 && <button type="button" className="domain-slot-refresh" onClick={refreshDomainSlots}>Refresh domain spell slots</button>}{specialistSlotChoices.length > 0 && <button type="button" className="domain-slot-refresh" onClick={refreshSpecialistSlots}>Refresh specialist school slots</button>}{orderedChoices.map((choice) => {
     if (choice.companionRoster || choice.id === "beast-master-companion-roster-4") return <CompanionRoster key={choice.id} choice={choice} selectedOptions={selectedOptions} classLevel={choice.classLevel ?? classLevel} onOptionChange={onOptionChange} />;
-    const options = optionsFor(choice);
+    const options = eligibleOptionsFor(choice);
     const domainLevel = domainSpellLevel(choice);
     const specialistLevel = specialistSpellLevel(choice);
     const trackedSpellSlot = Boolean(domainLevel || specialistLevel);

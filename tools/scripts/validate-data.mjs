@@ -68,6 +68,7 @@ function checkSelectableOption(option, file) {
   if (option.repeatable !== undefined && typeof option.repeatable !== "boolean") errors.push(`${file}: repeatable must be a boolean`);
   if (option.selectionLimit !== undefined && (!Number.isInteger(option.selectionLimit) || option.selectionLimit < 1)) errors.push(`${file}: selectionLimit must be a positive integer`);
   if (option.selectionLimit !== undefined && option.repeatable !== true) errors.push(`${file}: selectionLimit requires repeatable`);
+  if (option.requiredOptionIds !== undefined && (!Array.isArray(option.requiredOptionIds) || option.requiredOptionIds.length === 0 || option.requiredOptionIds.some((id) => typeof id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)))) errors.push(`${file}: requiredOptionIds must contain valid option ids`);
   for (const key of ["familyId", "exclusiveGroupId"]) {
     if (option[key] !== undefined && (typeof option[key] !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(option[key]))) errors.push(`${file}: ${key} must be a slug`);
   }
