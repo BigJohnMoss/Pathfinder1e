@@ -233,18 +233,18 @@ const monkBonusFeatIdsAt10 = [
   "snatch-arrows",
   "spring-attack",
 ];
-const adaptBonusFeatPrerequisite = (prerequisite: Prerequisite, classId: string): Prerequisite => {
+const adaptBonusFeatPrerequisite = (prerequisite: Prerequisite, classId: string, babUsesClassLevel = false): Prerequisite => {
   if (prerequisite.type === "class-level" && ["fighter", "monk"].includes(prerequisite.classId) && ["brawler"].includes(classId)) {
     return { ...prerequisite, classId };
   }
   if (prerequisite.type === "class-level" && prerequisite.classId === "fighter" && ["warpriest", "swashbuckler", "bloodrager"].includes(classId)) {
     return { ...prerequisite, classId };
   }
-  if (prerequisite.type === "bab" && classId === "warpriest") {
+  if (prerequisite.type === "bab" && (classId === "warpriest" || babUsesClassLevel)) {
     return { type: "class-level", classId, minimum: prerequisite.minimum };
   }
   if (prerequisite.type === "any") {
-    return { ...prerequisite, prerequisites: prerequisite.prerequisites.map((item) => adaptBonusFeatPrerequisite(item, classId) as Exclude<Prerequisite, { type: "any" }>) };
+    return { ...prerequisite, prerequisites: prerequisite.prerequisites.map((item) => adaptBonusFeatPrerequisite(item, classId, babUsesClassLevel) as Exclude<Prerequisite, { type: "any" }>) };
   }
   return prerequisite;
 };
@@ -1643,7 +1643,7 @@ export default function Home() {
               groupId: feature.optionGroupId!,
               classIds: [featureClassId],
               minimumLevel: 1,
-              prerequisites: generatedFeatConfig.ignorePrerequisites ? [] : feat.prerequisites.map((item) => adaptBonusFeatPrerequisite(item, featureClassId)),
+              prerequisites: generatedFeatConfig.ignorePrerequisites ? [] : feat.prerequisites.map((item) => adaptBonusFeatPrerequisite(item, featureClassId, Boolean(feature.featChoiceBabUsesClassLevel))),
               benefit: feat.benefit,
               featId: feat.id,
               source: feat.source,

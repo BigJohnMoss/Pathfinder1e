@@ -1,0 +1,35 @@
+{
+  "id": "bard-dwarven-scholar-weapons",
+  "name": "Dwarven Scholar Weapon",
+  "classIds": [
+    "bard"
+  ],
+  "options": [
+    {
+      "id": "bard-dwarven-scholar-weapon",
+      "name": "Chosen dwarven weapon",
+      "groupId": "bard-dwarven-scholar-weapons",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Gain proficiency with one weapon whose name contains 'dwarven'.",
+      "choice": {
+        "key": "weapon",
+        "label": "Dwarven weapon",
+        "allowCustom": true
+      },
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dwarven%20Scholar"
+      }
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dwarven%20Scholar"
+  }
+}

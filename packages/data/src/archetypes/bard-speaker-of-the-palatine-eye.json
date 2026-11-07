@@ -21,7 +21,34 @@
           "name": "Angelic Grace (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "Members of the Order of the Palatine Eye carry themselves with the austerity and import their heavenly aspirations demand. A speaker of the Palatine Eye does not have Acrobatics or Escape Artist as class skills, but he gains Celestial as a bonus language. This does not count toward the number of languages he is otherwise able to learn. This alters the bard’s class skills."
+          "summary": "Members of the Order of the Palatine Eye carry themselves with the austerity and import their heavenly aspirations demand. A speaker of the Palatine Eye does not have Acrobatics or Escape Artist as class skills, but he gains Celestial as a bonus language. This does not count toward the number of languages he is otherwise able to learn. This alters the bard’s class skills.",
+          "progressionProfiles": [
+            {
+              "id": "speaker-celestial-language",
+              "label": "Angelic Grace",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "language",
+                  "label": "Bonus language"
+                },
+                {
+                  "id": "removed",
+                  "label": "Removed class skills"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "language": "Celestial (does not consume a language choice)",
+                    "removed": "Acrobatics, Escape Artist"
+                  }
+                }
+              ],
+              "summary": "The class-skill removals apply automatically."
+            }
+          ]
         },
         {
           "id": "bard-speaker-of-the-palatine-eye-spells-1",
@@ -35,14 +62,83 @@
           "name": "Corpse Speaker (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "A speaker of the Palatine Eye can make it appear as if a corpse is speaking, similar to ventriloquism. A creature must succeed at a Will saving throw (DC = 10 + half the bard’s level + the bard’s Charisma modifier) to see through the ruse. A creature that fails the saving throw is convinced that the corpse is speaking of its own volition. This replaces countersong."
+          "summary": "A speaker of the Palatine Eye can make it appear as if a corpse is speaking, similar to ventriloquism. A creature must succeed at a Will saving throw (DC = 10 + half the bard’s level + the bard’s Charisma modifier) to see through the ruse. A creature that fails the saving throw is convinced that the corpse is speaking of its own volition. This replaces countersong.",
+          "resourceActions": [
+            {
+              "id": "speaker-corpse-speaker",
+              "label": "Make a corpse appear to speak",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "effectsByLevel": [
+                  {
+                    "level": 1,
+                    "name": "Fooled by Corpse Speaker",
+                    "description": "The creature believes the corpse speaks of its own volition, as a supernatural ventriloquism-like ruse.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 1
+                    }
+                  }
+                ]
+              },
+              "summary": "Resolve the exact Charisma-based Will DC for each observer."
+            }
+          ]
         },
         {
           "id": "bard-speaker-of-the-palatine-eye-keen-ritualist-ex-10",
           "name": "Keen Ritualist (Ex)",
           "level": 10,
           "type": "archetype",
-          "summary": "At 10th level, a speaker of the Palatine Eye reduces the number of secondary casters required to cast a ritual by 2. At 16th level, the DCs of skill checks the speaker of the Palatine Eye attempts during a ritual are reduced by 2. At 19th level, a speaker of the Palatine Eye can perform any ritual by himself without needing to satisfy any secondary caster requirements. The DCs of skill checks he attempts during a ritual are reduced by an additional 2, for a maximum DC reduction of 4. This replaces jack-of-all-trades."
+          "summary": "At 10th level, a speaker of the Palatine Eye reduces the number of secondary casters required to cast a ritual by 2. At 16th level, the DCs of skill checks the speaker of the Palatine Eye attempts during a ritual are reduced by 2. At 19th level, a speaker of the Palatine Eye can perform any ritual by himself without needing to satisfy any secondary caster requirements. The DCs of skill checks he attempts during a ritual are reduced by an additional 2, for a maximum DC reduction of 4. This replaces jack-of-all-trades.",
+          "numericCalculations": [
+            {
+              "id": "speaker-secondary-casters",
+              "label": "Keen Ritualist secondary casters",
+              "inputLabel": "Normally required secondary casters",
+              "inputMinimum": 2,
+              "inputMaximum": 20,
+              "inputDefault": 2,
+              "outputLabel": "Required secondary casters",
+              "baseByLevel": [
+                {
+                  "level": 10,
+                  "value": -2
+                },
+                {
+                  "level": 19,
+                  "value": 0
+                }
+              ],
+              "inputMultiplierByLevel": [
+                {
+                  "level": 10,
+                  "multiplier": 1
+                },
+                {
+                  "level": 19,
+                  "multiplier": 0
+                }
+              ],
+              "classId": "bard",
+              "summary": "Reduce the requirement by 2 from level 10; at level 19 every ritual can be performed alone."
+            }
+          ]
         }
       ]
     }
@@ -52,8 +148,31 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Speaker%20of%20the%20Palatine%20Eye"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Class-skill removals and Celestial, inferred Mesmerist psychic casting, Corpse Speaker's save, and every Keen Ritualist caster/DC milestone are automated."
+  ],
+  "classSkillRemovals": [
+    "Acrobatics",
+    "Escape Artist"
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "bard-speaker-of-the-palatine-eye-keen-ritualist-ex-10",
+      "label": "Keen Ritualist",
+      "condition": "skill checks attempted during a ritual (equivalent to the published DC reduction)",
+      "minimumLevel": 16,
+      "base": 2,
+      "bonusByLevel": [
+        {
+          "level": 16,
+          "bonus": 2
+        },
+        {
+          "level": 19,
+          "bonus": 4
+        }
+      ]
+    }
   ]
 }
