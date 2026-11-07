@@ -4,9 +4,9 @@
   "classId": "psychic",
   "summary": "Psychic duelists hone their mental powers for combat, much as warriors do with their blades.",
   "replacesText": "4th-level Discipline Spell; 7th-level Phrenic Amplification; Phrenic Amplifications; Telepathic Bond; Telepathy",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Instigate psychic duel is granted with its +1 save DC, offensive manifestation conversion spends a level-capped number of phrenic points, all four manifestation amplifications are selectable and have tracked controls, Thought Made Real records its spell sacrifice and target, and Expert Manifester tracks its free point."
   ],
   "replacements": [
     {
@@ -21,29 +21,316 @@
           "name": "Psychic Duel Acumen (Ex)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a psychic duelist adds instigate psychic duel to her list of spells known, and the save DC of any instigate psychic duel spell she casts increases by 1. Beginning at 6th level, she can also expend any unused psychic spell slot of 3rd level or higher to cast instigate psychic duel . If she does so, she uses the level of the spell slot expended to determine the Will save DC. In addition, when the psychic duelist sacrifices points from her phrenic pool to generate manifestation points for an offensive manifestation, she uses d8s for damage dice instead of d4s. This ability replaces the 4th-level discipline spell."
+          "summary": "Instigate psychic duel is always known with +1 save DC. Spend phrenic points up to the highest spell level available to generate offensive manifestation points whose damage dice are d8s.",
+          "resourceActions": [
+            {
+              "id": "psychic-duelist-offensive-manifestation-points",
+              "label": "Generate offensive manifestation points",
+              "classId": "psychic",
+              "minimumLevel": 4,
+              "resourceId": "phrenicPool",
+              "variableCost": {
+                "label": "Phrenic points",
+                "minimum": 1,
+                "maximumByLevel": [
+                  {
+                    "level": 4,
+                    "maximum": 2
+                  },
+                  {
+                    "level": 6,
+                    "maximum": 3
+                  },
+                  {
+                    "level": 8,
+                    "maximum": 4
+                  },
+                  {
+                    "level": 10,
+                    "maximum": 5
+                  },
+                  {
+                    "level": 12,
+                    "maximum": 6
+                  },
+                  {
+                    "level": 14,
+                    "maximum": 7
+                  },
+                  {
+                    "level": 16,
+                    "maximum": 8
+                  },
+                  {
+                    "level": 18,
+                    "maximum": 9
+                  }
+                ]
+              },
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "free"
+                }
+              ],
+              "activeEffect": {
+                "name": "Psychic Duelist manifestation points",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The selected phrenic points become manifestation points for this offensive manifestation; its damage dice are d8s instead of d4s.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            }
+          ]
         },
         {
           "id": "psychic-psychic-duelist-manifestation-amplifications-7",
           "name": "Manifestation Amplifications",
           "level": 7,
           "type": "archetype",
-          "summary": "At 7th level, a psychic duelist gains a manifestation amplification instead of a phrenic amplification; thereafter, whenever the psychic duelist gains a phrenic amplification, she can select either a phrenic amplification or a manifestation amplification. A manifestation amplification functions for a manifestation as a phrenic amplification does for a spell, with the same restrictions. The manifestation being amplified is called the linked manifestation. Phrenic pool points spent toward manifestation amplifications are separate from points sacrificed to generate manifestation points. For example, a psychic duelist capable of casting 4th-level spells (with a maximum of 4 MP per manifestation) could turn 4 points from her phrenic pool into MP and spend 2 points on a manifestation amplification, expending a total of 6 points from her phrenic pool. Extended Effect (Ex) : The psychic duelist can spend points from her phrenic pool to increase the duration of a condition by 1 round per point spent. She can spend a maximum of 1 phrenic pool point in this way; this maximum increases to 2 points at 11th level, to 3 points at 15th level, and to 4 points at 19th level. If the target succeeds at its saving throw, this amplification has no effect (though the points are still lost). This amplification can be linked only to offensive manifestations that impose conditions. Faithful Creature (Ex) : When she manifests a thoughtform creature, the psychic duelist can spend 1 point from her phrenic pool to give that creature the ability to persist even if it doesn’t attack. She can concentrate to maintain the creature as a swift action instead of as a full-round action, but the creature can attack only if the psychic duelist concentrates as a full-round action. In addition, the psychic backlash damage from that thought-form creature is halved. This amplification can be linked only to thoughtform creature manifestations. Punishing Thought-form (Ex) : The psychic duelist can spend 1 point from her phrenic pool to increase the damage die size of an offensive manifestation by one step (d4 to d6, d6 to d8, or d8 to d10). This amplification can be linked only to offensive manifestations. Reciprocal Defense (Su) : The psychic duelist can spend 1 point from her phrenic pool when using a defensive manifestation to improve her defenses in the real world as well. Her physical body gains a +2 insight bonus to AC for the number of rounds the defensive manifestation lasts, or for 1 round if the manifestation doesn’t have a duration. This bonus increases to +3 at 11th level and to +4 at 15th level. This amplification can be linked only to defensive manifestations. This ability replaces the 7th-level phrenic amplification and alters phrenic amplifications."
+          "summary": "Choose a manifestation amplification and spend phrenic points separately from the points converted into manifestation points.",
+          "choiceRequired": true,
+          "optionGroupId": "psychic-manifestation-amplifications",
+          "progressionKey": "psychic-amplification",
+          "resourceActions": [
+            {
+              "id": "psychic-duelist-extended-effect",
+              "label": "Apply Extended Effect",
+              "classId": "psychic",
+              "minimumLevel": 7,
+              "requiredOptionId": "psychic-manifestation-extended-effect",
+              "resourceId": "phrenicPool",
+              "variableCost": {
+                "label": "Extra rounds",
+                "minimum": 1,
+                "maximumByLevel": [
+                  {
+                    "level": 7,
+                    "maximum": 1
+                  },
+                  {
+                    "level": 11,
+                    "maximum": 2
+                  },
+                  {
+                    "level": 15,
+                    "maximum": 3
+                  },
+                  {
+                    "level": 19,
+                    "maximum": 4
+                  }
+                ]
+              },
+              "actionTypeByLevel": [
+                {
+                  "level": 7,
+                  "actionType": "free"
+                }
+              ],
+              "activeEffect": {
+                "name": "Extended manifestation effect",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "Increase the linked manifestation condition by the selected number of rounds if the target fails its save.",
+                "defaultRounds": 1,
+                "fixedRounds": true
+              }
+            },
+            {
+              "id": "psychic-duelist-faithful-creature",
+              "label": "Apply Faithful Creature",
+              "classId": "psychic",
+              "minimumLevel": 7,
+              "requiredOptionId": "psychic-manifestation-faithful-creature",
+              "resourceId": "phrenicPool",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 7,
+                  "actionType": "free"
+                }
+              ],
+              "activeEffect": {
+                "name": "Faithful thoughtform creature",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The thoughtform can persist without attacking, swift-action concentration maintains it, and its backlash damage is halved.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "psychic-duelist-punishing-thoughtform",
+              "label": "Apply Punishing Thought-form",
+              "classId": "psychic",
+              "minimumLevel": 7,
+              "requiredOptionId": "psychic-manifestation-punishing-thoughtform",
+              "resourceId": "phrenicPool",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 7,
+                  "actionType": "free"
+                }
+              ],
+              "activeEffect": {
+                "name": "Punishing thought-form",
+                "targets": [
+                  "damageRolls"
+                ],
+                "bonus": 0,
+                "description": "Increase the linked offensive manifestation's damage die by one step.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "consumeOnUse": true
+              }
+            },
+            {
+              "id": "psychic-duelist-reciprocal-defense",
+              "label": "Apply Reciprocal Defense",
+              "classId": "psychic",
+              "minimumLevel": 7,
+              "requiredOptionId": "psychic-manifestation-reciprocal-defense",
+              "resourceId": "phrenicPool",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 7,
+                  "actionType": "free"
+                }
+              ],
+              "activeEffect": {
+                "name": "Reciprocal Defense",
+                "targets": [
+                  "armorClass"
+                ],
+                "bonus": 2,
+                "bonusByLevel": [
+                  {
+                    "level": 7,
+                    "bonus": 2
+                  },
+                  {
+                    "level": 11,
+                    "bonus": 3
+                  },
+                  {
+                    "level": 15,
+                    "bonus": 4
+                  }
+                ],
+                "description": "Insight bonus to physical AC for the defensive manifestation's duration.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              }
+            }
+          ]
         },
         {
           "id": "psychic-psychic-duelist-thought-made-real-su-9",
           "name": "Thought Made Real (Su)",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, a psychic duelist can bring offensive manifestations directly into her foes’ minds, attacking with them without entering a psychic duel. When doing so, she can generate manifestation points only by sacrificing a spell, not through any other methods. Using an offensive manifestation in this way functions as casting a spell with a full-round-action casting time. Conditions imposed by these offensive manifestations last for their full duration, even though the target isn’t in a psychic duel. The psychic duelist can use manifestation amplifications on offensive manifestations created this way. Such offensive manifestations can’t affect thought-form creatures. This is a mind-affecting illusion (phantasm) effect. A thoughtform creature manifested in this way is visible only to its target. This ability replaces telepathic bond ."
+          "summary": "Sacrifice a spell to make an offensive manifestation directly against one foe as a full-round mind-affecting phantasm.",
+          "resourceActions": [
+            {
+              "id": "psychic-duelist-thought-made-real",
+              "label": "Use Thought Made Real",
+              "classId": "psychic",
+              "minimumLevel": 9,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "spell-sacrificed",
+                  "label": "I sacrificed an unused psychic spell slot",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "valid-target",
+                  "label": "The target is not a thought-form creature",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Thought Made Real",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "Resolve the chosen offensive manifestation against the named foe; conditions last their full duration and manifestation amplifications can apply.",
+                "defaultRounds": 1,
+                "fixedRounds": true
+              }
+            }
+          ]
         },
         {
           "id": "psychic-psychic-duelist-expert-manifester-ex-17",
           "name": "Expert Manifester (Ex)",
           "level": 17,
           "type": "archetype",
-          "summary": "At 17th level, a psychic duelist doesn’t have to expend as many resources to create manifestations. She gains 1 additional MP each time she creates a psychic manifestation, in addition to the MP she gains by sacrificing resources. This doesn’t increase the maximum number of points she can spend per manifestation, but does allow her to create a manifestation costing 1 MP without sacrificing any resources. This ability replaces telepathy."
+          "summary": "Every manifestation gains 1 free MP without increasing its maximum MP limit.",
+          "resourceActions": [
+            {
+              "id": "psychic-duelist-expert-manifester",
+              "label": "Apply Expert Manifester point",
+              "classId": "psychic",
+              "minimumLevel": 17,
+              "actionTypeByLevel": [
+                {
+                  "level": 17,
+                  "actionType": "free"
+                }
+              ],
+              "activeEffect": {
+                "name": "Expert Manifester",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Add 1 free MP to this manifestation without increasing its maximum MP limit.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            }
+          ]
         }
+      ]
+    }
+  ],
+  "spellGrants": [
+    {
+      "spellId": "later-spell-instigate-psychic-duel",
+      "spellLevel": 2,
+      "minimumClassLevel": 4,
+      "mode": "known"
+    }
+  ],
+  "spellModifierAdjustments": [
+    {
+      "sourceFeatureId": "psychic-psychic-duelist-psychic-duel-acumen-ex-4",
+      "label": "Psychic Duel Acumen",
+      "target": "saveDc",
+      "minimumLevel": 4,
+      "base": 1,
+      "spellIds": [
+        "later-spell-instigate-psychic-duel"
       ]
     }
   ],
