@@ -24,36 +24,774 @@
           "id": "druid-life-channeler-alignment-1",
           "name": "Alignment",
           "level": 1,
-          "type": "archetype",
-          "summary": "In addition to a druid’s usual alignment requirements, a life channeler must be of a nongood alignment. If she becomes good, she can no longer take levels in the druid class or fill her wicker talismans (see below), but she otherwise keeps all her abilities. This alters the druid’s alignment requirements."
+          "type": "selectable",
+          "summary": "In addition to a druid’s usual alignment requirements, a life channeler must be of a nongood alignment. If she becomes good, she can no longer take levels in the druid class or fill her wicker talismans (see below), but she otherwise keeps all her abilities. This alters the druid’s alignment requirements.",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-alignments",
+          "optionChoiceIds": [
+            "alignment-lawful-neutral",
+            "alignment-neutral",
+            "alignment-chaotic-neutral",
+            "alignment-neutral-evil"
+          ],
+          "progressionKey": "life-channeler-alignment"
+        },
+        {
+          "id": "druid-nature-bond-1",
+          "name": "Nature Bond",
+          "level": 1,
+          "type": "selectable",
+          "summary": "A Life Channeler must select the domain form of Nature Bond.",
+          "choiceRequired": true,
+          "optionGroupId": "druid-nature-bonds",
+          "optionChoiceIds": [
+            "druid-nature-bond-domain"
+          ],
+          "progressionKey": "druid-nature-bond"
+        },
+        {
+          "id": "druid-domain-1",
+          "name": "Plant Bond",
+          "level": 1,
+          "type": "selectable",
+          "summary": "Choose the Plant domain or Growth subdomain.",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-domains",
+          "optionChoiceIds": [
+            "domain-plant",
+            "subdomain-growth"
+          ],
+          "requiredOptionId": "druid-nature-bond-domain",
+          "requiredOptionMessage": "Choose the Domain nature bond first",
+          "progressionKey": "druid-domain"
         },
         {
           "id": "druid-life-channeler-plant-preservation-su-1",
           "name": "Plant Preservation (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "A life channeler must choose the Plant domain with her nature bond (she can select the Growth subdomain if she wishes). When she performs a coup de grace that kills a sentient humanoid creature (not a summoned creature), she can do so ritualistically in order to affect the area centered on the body with the enrichment version of plant growth . The sacrifice is a death effect. This ability alters nature bond."
+          "summary": "A life channeler must choose the Plant domain with her nature bond (she can select the Growth subdomain if she wishes). When she performs a coup de grace that kills a sentient humanoid creature (not a summoned creature), she can do so ritualistically in order to affect the area centered on the body with the enrichment version of plant growth . The sacrifice is a death effect. This ability alters nature bond.",
+          "resourceActions": [
+            {
+              "id": "life-channeler-plant-preservation",
+              "label": "Perform Plant Preservation sacrifice",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "sentient-humanoid",
+                  "label": "The coup de grace killed a sentient humanoid",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "not-summoned",
+                  "label": "The victim was not summoned",
+                  "requiredForActivation": true
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "plant-growth",
+                "spellName": "Plant Growth (enrichment)",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "targetEffectRoll": {
+                "modifier": "none",
+                "effectsByLevel": [
+                  {
+                    "level": 1,
+                    "name": "Plant Preservation enrichment",
+                    "description": "The land centered on the sacrificed creature receives the enrichment form of plant growth. Use the Rampant Growth profile for current range, duration, and productivity.",
+                    "duration": {
+                      "kind": "until-ended"
+                    }
+                  }
+                ]
+              },
+              "summary": "Resolve the ritual coup de grace as a death effect and record the persistent enrichment."
+            }
+          ]
         },
         {
           "id": "druid-life-channeler-wicker-talismans-su-4",
           "name": "Wicker Talismans (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a life channeler gains a selection of wicker talismans that can store and convert the life energy of sentient creatures into the growth, health, and fertility of plants around her. The life channeler gains one wicker talisman corresponding to each level of druid spells she can cast, starting with 1st-level spells. These talismans are initially empty, but can hold life energy. When the life channeler ritualistically kills a creature with a coup de grace, she can store life energy in a talisman instead of gaining the plant growth effect. The creature must be of a CR equal to at least twice the spell level of the corresponding talisman. For instance, a CR 8 creature’s life energy could provide energy for a talisman holding up to a 4th-level spell. A talisman is either full or empty; it can’t hold more than one creature’s life energy. A life channeler can expend the energy stored in a talisman to cast her domain spell of the talisman’s level without expending a spell slot. Starting at 6th level, a life channeler gathers a flock of willing sacrifices. This grants her the benefits of the Leadership feat, except that using a follower as a human sacrifice with this ability doesn’t cause the life channeler to take a penalty to her Leadership score. This ability replaces wild shape."
+          "summary": "At 4th level, a life channeler gains a selection of wicker talismans that can store and convert the life energy of sentient creatures into the growth, health, and fertility of plants around her. The life channeler gains one wicker talisman corresponding to each level of druid spells she can cast, starting with 1st-level spells. These talismans are initially empty, but can hold life energy. When the life channeler ritualistically kills a creature with a coup de grace, she can store life energy in a talisman instead of gaining the plant growth effect. The creature must be of a CR equal to at least twice the spell level of the corresponding talisman. For instance, a CR 8 creature’s life energy could provide energy for a talisman holding up to a 4th-level spell. A talisman is either full or empty; it can’t hold more than one creature’s life energy. A life channeler can expend the energy stored in a talisman to cast her domain spell of the talisman’s level without expending a spell slot. Starting at 6th level, a life channeler gathers a flock of willing sacrifices. This grants her the benefits of the Leadership feat, except that using a follower as a human sacrifice with this ability doesn’t cause the life channeler to take a penalty to her Leadership score. This ability replaces wild shape.",
+          "numericCalculations": [
+            {
+              "id": "life-channeler-talisman-minimum-cr",
+              "label": "Wicker talisman eligibility",
+              "inputLabel": "Talisman spell level",
+              "inputMinimum": 1,
+              "inputMaximum": 9,
+              "inputDefault": 1,
+              "outputLabel": "Minimum victim CR",
+              "baseByLevel": [
+                {
+                  "level": 4,
+                  "value": 0
+                }
+              ],
+              "inputMultiplierByLevel": [
+                {
+                  "level": 4,
+                  "multiplier": 2
+                }
+              ],
+              "classId": "druid",
+              "summary": "The victim's CR must be at least twice the selected talisman's spell level."
+            }
+          ],
+          "progressionProfiles": [
+            {
+              "id": "life-channeler-wicker-talismans",
+              "label": "Wicker Talismans",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "highest",
+                  "label": "Highest talisman"
+                },
+                {
+                  "id": "total",
+                  "label": "Total talismans"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "highest": "2nd-level",
+                    "total": 2
+                  }
+                },
+                {
+                  "level": 5,
+                  "values": {
+                    "highest": "3rd-level",
+                    "total": 3
+                  }
+                },
+                {
+                  "level": 7,
+                  "values": {
+                    "highest": "4th-level",
+                    "total": 4
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "highest": "5th-level",
+                    "total": 5
+                  }
+                },
+                {
+                  "level": 11,
+                  "values": {
+                    "highest": "6th-level",
+                    "total": 6
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "highest": "7th-level",
+                    "total": 7
+                  }
+                },
+                {
+                  "level": 15,
+                  "values": {
+                    "highest": "8th-level",
+                    "total": 8
+                  }
+                },
+                {
+                  "level": 17,
+                  "values": {
+                    "highest": "9th-level",
+                    "total": 9
+                  }
+                }
+              ],
+              "summary": "Each talisman stores one creature's life energy independently and begins empty."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "life-channeler-fill-talisman-1",
+              "label": "Fill 1st-level Talisman",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "ritual-kill",
+                  "label": "A ritual coup de grace killed a sentient, nonsummoned creature",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "minimum-cr",
+                  "label": "The victim was CR 2 or higher",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Wicker Talisman 1 — Full",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Stores one sacrifice for the 1st-level domain spell.",
+                "defaultRounds": 999999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Fill this initially empty talisman; filling it again replaces rather than stacks its stored energy."
+            },
+            {
+              "id": "life-channeler-cast-talisman-1",
+              "label": "Cast Stored 1st-level Domain Spell",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "requiredActiveEffectName": "Wicker Talisman 1 — Full",
+              "removeActiveEffectName": "Wicker Talisman 1 — Full",
+              "summary": "Consume this talisman's stored life energy to cast the selected domain spell without expending a spell slot."
+            },
+            {
+              "id": "life-channeler-fill-talisman-2",
+              "label": "Fill 2nd-level Talisman",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "ritual-kill",
+                  "label": "A ritual coup de grace killed a sentient, nonsummoned creature",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "minimum-cr",
+                  "label": "The victim was CR 4 or higher",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Wicker Talisman 2 — Full",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Stores one sacrifice for the 2nd-level domain spell.",
+                "defaultRounds": 999999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Fill this initially empty talisman; filling it again replaces rather than stacks its stored energy."
+            },
+            {
+              "id": "life-channeler-cast-talisman-2",
+              "label": "Cast Stored 2nd-level Domain Spell",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "requiredActiveEffectName": "Wicker Talisman 2 — Full",
+              "removeActiveEffectName": "Wicker Talisman 2 — Full",
+              "summary": "Consume this talisman's stored life energy to cast the selected domain spell without expending a spell slot."
+            },
+            {
+              "id": "life-channeler-fill-talisman-3",
+              "label": "Fill 3rd-level Talisman",
+              "classId": "druid",
+              "minimumLevel": 5,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "ritual-kill",
+                  "label": "A ritual coup de grace killed a sentient, nonsummoned creature",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "minimum-cr",
+                  "label": "The victim was CR 6 or higher",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Wicker Talisman 3 — Full",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Stores one sacrifice for the 3rd-level domain spell.",
+                "defaultRounds": 999999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Fill this initially empty talisman; filling it again replaces rather than stacks its stored energy."
+            },
+            {
+              "id": "life-channeler-cast-talisman-3",
+              "label": "Cast Stored 3rd-level Domain Spell",
+              "classId": "druid",
+              "minimumLevel": 5,
+              "requiredActiveEffectName": "Wicker Talisman 3 — Full",
+              "removeActiveEffectName": "Wicker Talisman 3 — Full",
+              "summary": "Consume this talisman's stored life energy to cast the selected domain spell without expending a spell slot."
+            },
+            {
+              "id": "life-channeler-fill-talisman-4",
+              "label": "Fill 4th-level Talisman",
+              "classId": "druid",
+              "minimumLevel": 7,
+              "actionTypeByLevel": [
+                {
+                  "level": 7,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "ritual-kill",
+                  "label": "A ritual coup de grace killed a sentient, nonsummoned creature",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "minimum-cr",
+                  "label": "The victim was CR 8 or higher",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Wicker Talisman 4 — Full",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Stores one sacrifice for the 4th-level domain spell.",
+                "defaultRounds": 999999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Fill this initially empty talisman; filling it again replaces rather than stacks its stored energy."
+            },
+            {
+              "id": "life-channeler-cast-talisman-4",
+              "label": "Cast Stored 4th-level Domain Spell",
+              "classId": "druid",
+              "minimumLevel": 7,
+              "requiredActiveEffectName": "Wicker Talisman 4 — Full",
+              "removeActiveEffectName": "Wicker Talisman 4 — Full",
+              "summary": "Consume this talisman's stored life energy to cast the selected domain spell without expending a spell slot."
+            },
+            {
+              "id": "life-channeler-fill-talisman-5",
+              "label": "Fill 5th-level Talisman",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "ritual-kill",
+                  "label": "A ritual coup de grace killed a sentient, nonsummoned creature",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "minimum-cr",
+                  "label": "The victim was CR 10 or higher",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Wicker Talisman 5 — Full",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Stores one sacrifice for the 5th-level domain spell.",
+                "defaultRounds": 999999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Fill this initially empty talisman; filling it again replaces rather than stacks its stored energy."
+            },
+            {
+              "id": "life-channeler-cast-talisman-5",
+              "label": "Cast Stored 5th-level Domain Spell",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "requiredActiveEffectName": "Wicker Talisman 5 — Full",
+              "removeActiveEffectName": "Wicker Talisman 5 — Full",
+              "summary": "Consume this talisman's stored life energy to cast the selected domain spell without expending a spell slot."
+            },
+            {
+              "id": "life-channeler-fill-talisman-6",
+              "label": "Fill 6th-level Talisman",
+              "classId": "druid",
+              "minimumLevel": 11,
+              "actionTypeByLevel": [
+                {
+                  "level": 11,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "ritual-kill",
+                  "label": "A ritual coup de grace killed a sentient, nonsummoned creature",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "minimum-cr",
+                  "label": "The victim was CR 12 or higher",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Wicker Talisman 6 — Full",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Stores one sacrifice for the 6th-level domain spell.",
+                "defaultRounds": 999999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Fill this initially empty talisman; filling it again replaces rather than stacks its stored energy."
+            },
+            {
+              "id": "life-channeler-cast-talisman-6",
+              "label": "Cast Stored 6th-level Domain Spell",
+              "classId": "druid",
+              "minimumLevel": 11,
+              "requiredActiveEffectName": "Wicker Talisman 6 — Full",
+              "removeActiveEffectName": "Wicker Talisman 6 — Full",
+              "summary": "Consume this talisman's stored life energy to cast the selected domain spell without expending a spell slot."
+            },
+            {
+              "id": "life-channeler-fill-talisman-7",
+              "label": "Fill 7th-level Talisman",
+              "classId": "druid",
+              "minimumLevel": 13,
+              "actionTypeByLevel": [
+                {
+                  "level": 13,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "ritual-kill",
+                  "label": "A ritual coup de grace killed a sentient, nonsummoned creature",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "minimum-cr",
+                  "label": "The victim was CR 14 or higher",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Wicker Talisman 7 — Full",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Stores one sacrifice for the 7th-level domain spell.",
+                "defaultRounds": 999999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Fill this initially empty talisman; filling it again replaces rather than stacks its stored energy."
+            },
+            {
+              "id": "life-channeler-cast-talisman-7",
+              "label": "Cast Stored 7th-level Domain Spell",
+              "classId": "druid",
+              "minimumLevel": 13,
+              "requiredActiveEffectName": "Wicker Talisman 7 — Full",
+              "removeActiveEffectName": "Wicker Talisman 7 — Full",
+              "summary": "Consume this talisman's stored life energy to cast the selected domain spell without expending a spell slot."
+            },
+            {
+              "id": "life-channeler-fill-talisman-8",
+              "label": "Fill 8th-level Talisman",
+              "classId": "druid",
+              "minimumLevel": 15,
+              "actionTypeByLevel": [
+                {
+                  "level": 15,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "ritual-kill",
+                  "label": "A ritual coup de grace killed a sentient, nonsummoned creature",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "minimum-cr",
+                  "label": "The victim was CR 16 or higher",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Wicker Talisman 8 — Full",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Stores one sacrifice for the 8th-level domain spell.",
+                "defaultRounds": 999999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Fill this initially empty talisman; filling it again replaces rather than stacks its stored energy."
+            },
+            {
+              "id": "life-channeler-cast-talisman-8",
+              "label": "Cast Stored 8th-level Domain Spell",
+              "classId": "druid",
+              "minimumLevel": 15,
+              "requiredActiveEffectName": "Wicker Talisman 8 — Full",
+              "removeActiveEffectName": "Wicker Talisman 8 — Full",
+              "summary": "Consume this talisman's stored life energy to cast the selected domain spell without expending a spell slot."
+            },
+            {
+              "id": "life-channeler-fill-talisman-9",
+              "label": "Fill 9th-level Talisman",
+              "classId": "druid",
+              "minimumLevel": 17,
+              "actionTypeByLevel": [
+                {
+                  "level": 17,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "ritual-kill",
+                  "label": "A ritual coup de grace killed a sentient, nonsummoned creature",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "minimum-cr",
+                  "label": "The victim was CR 18 or higher",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Wicker Talisman 9 — Full",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Stores one sacrifice for the 9th-level domain spell.",
+                "defaultRounds": 999999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Fill this initially empty talisman; filling it again replaces rather than stacks its stored energy."
+            },
+            {
+              "id": "life-channeler-cast-talisman-9",
+              "label": "Cast Stored 9th-level Domain Spell",
+              "classId": "druid",
+              "minimumLevel": 17,
+              "requiredActiveEffectName": "Wicker Talisman 9 — Full",
+              "removeActiveEffectName": "Wicker Talisman 9 — Full",
+              "summary": "Consume this talisman's stored life energy to cast the selected domain spell without expending a spell slot."
+            }
+          ]
         },
         {
           "id": "druid-life-channeler-rampant-growth-4",
           "name": "Rampant Growth",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a life channeler can enrich the land more than usual with her sacrifices. When ritually killing a creature with a coup de grace for the plant growth enrichment effect or casting plant growth for the enrichment effect from one of her talismans, the effect has a range of 1 mile instead of a range of half a mile. At 8th level, if the sacrificed creature was at least CR 8, the effect lasts for 3 years instead of 1 year. At 12th level, if the sacrificed creature was at least CR 12, the effect increases productivity to two-thirds above normal, instead of one-third above normal. These effects stack, assuming the creature is high enough CR."
+          "summary": "At 4th level, a life channeler can enrich the land more than usual with her sacrifices. When ritually killing a creature with a coup de grace for the plant growth enrichment effect or casting plant growth for the enrichment effect from one of her talismans, the effect has a range of 1 mile instead of a range of half a mile. At 8th level, if the sacrificed creature was at least CR 8, the effect lasts for 3 years instead of 1 year. At 12th level, if the sacrificed creature was at least CR 12, the effect increases productivity to two-thirds above normal, instead of one-third above normal. These effects stack, assuming the creature is high enough CR.",
+          "progressionProfiles": [
+            {
+              "id": "life-channeler-rampant-growth",
+              "label": "Rampant Growth",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "range",
+                  "label": "Enrichment range"
+                },
+                {
+                  "id": "duration",
+                  "label": "Duration"
+                },
+                {
+                  "id": "productivity",
+                  "label": "Productivity"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "range": "1 mile",
+                    "duration": "1 year",
+                    "productivity": "+1/3 normal"
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "range": "1 mile",
+                    "duration": "3 years if victim CR 8+",
+                    "productivity": "+1/3 normal"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "range": "1 mile",
+                    "duration": "3 years if victim CR 8+",
+                    "productivity": "+2/3 normal if victim CR 12+"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-life-channeler-stored-life-9",
           "name": "Stored Life",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, a life channeler gains a third option when using a coup de grace on a sentient humanoid. If the victim had a CR at least as high as the life channeler’s class level, the life channeler can store the creature’s life energy in her body. She can have the life energy from only 1 creature in her body at a time. While she is storing life energy, if she would take damage or die from a death effect or if she would gain negative levels or take energy drain, she can sacrifice the stored energy to negate the effect without spending an action. This ability replaces venom immunity."
+          "summary": "At 9th level, a life channeler gains a third option when using a coup de grace on a sentient humanoid. If the victim had a CR at least as high as the life channeler’s class level, the life channeler can store the creature’s life energy in her body. She can have the life energy from only 1 creature in her body at a time. While she is storing life energy, if she would take damage or die from a death effect or if she would gain negative levels or take energy drain, she can sacrifice the stored energy to negate the effect without spending an action. This ability replaces venom immunity.",
+          "resourceActions": [
+            {
+              "id": "life-channeler-store-life",
+              "label": "Store Life in Body",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "sentient-humanoid",
+                  "label": "The coup de grace killed a sentient humanoid",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "cr-at-least-level",
+                  "label": "The victim's CR was at least the Life Channeler's Druid level",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Stored Life",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "One creature's life energy is stored and can negate one qualifying effect; storing another replaces this energy.",
+                "defaultRounds": 999999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Store one qualifying victim's energy until it is replaced or consumed."
+            },
+            {
+              "id": "life-channeler-consume-stored-life",
+              "label": "Consume Stored Life",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "requiredActiveEffectName": "Stored Life",
+              "removeActiveEffectName": "Stored Life",
+              "modeLabel": "Effect negated",
+              "modes": [
+                {
+                  "id": "death-damage",
+                  "label": "Damage from a death effect",
+                  "summary": "Negate the damage from the death effect."
+                },
+                {
+                  "id": "death",
+                  "label": "Death from a death effect",
+                  "summary": "Negate death from the death effect."
+                },
+                {
+                  "id": "negative-levels",
+                  "label": "Negative levels",
+                  "summary": "Negate the negative levels."
+                },
+                {
+                  "id": "energy-drain",
+                  "label": "Energy drain",
+                  "summary": "Negate the energy drain."
+                }
+              ],
+              "summary": "No action is required; consume the stored energy to negate the selected triggering effect."
+            }
+          ]
+        },
+        {
+          "id": "druid-life-channeler-leadership-6",
+          "name": "Leadership",
+          "level": 6,
+          "type": "archetype",
+          "summary": "Gain Leadership. Sacrificing one of these followers with Wicker Talismans does not penalize the Leadership score.",
+          "grantedFeatId": "leadership",
+          "progressionProfiles": [
+            {
+              "id": "life-channeler-leadership-exception",
+              "label": "Willing Sacrifices",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "rule",
+                  "label": "Leadership rule"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 6,
+                  "values": {
+                    "rule": "No Leadership-score penalty for sacrificing a follower through Wicker Talismans"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -63,8 +801,15 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Life%20Channeler"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Nongood Druid alignment, mandatory Plant/Growth bond and domain spells, Plant Preservation, every independently persistent Wicker Talisman with exact CR checks and unlock levels, Leadership, Rampant Growth scaling, and Stored Life replacement/consumption are automated."
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-domain"
+  ],
+  "druidDomainIds": [
+    "domain-plant",
+    "subdomain-growth"
   ]
 }
