@@ -18,8 +18,11 @@
           "id": "bard-pitax-academy-of-grand-arts-focused-performance-ex-2",
           "name": "Focused Performance (Ex)",
           "level": 2,
-          "type": "archetype",
-          "summary": "At 2nd level, a bard must choose one type of Perform skill. The bard gains Extra Performance as a bonus feat, usable only with the chosen category of the Perform skill. At 8th level, and every 6 levels thereafter, the bard gains Extra Performance as an additional bonus feat. The additional uses of bardic performance gained from these feats cannot be used with any category of the Performance skill other than the one chosen at 2nd level."
+          "type": "selectable",
+          "summary": "At 2nd level, a bard must choose one type of Perform skill. The bard gains Extra Performance as a bonus feat, usable only with the chosen category of the Perform skill. At 8th level, and every 6 levels thereafter, the bard gains Extra Performance as an additional bonus feat. The additional uses of bardic performance gained from these feats cannot be used with any category of the Performance skill other than the one chosen at 2nd level.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-focused-performance-categories",
+          "progressionKey": "bard-focused-performance"
         }
       ]
     }
@@ -29,8 +32,35 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Pitax%20%20Academy%20of%20Grand%20Arts"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The required Perform category and all four restricted Extra Performance grants (6 bonus rounds each at levels 2, 8, 14, and 20) are automated in a dedicated pool."
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "focusedPerformanceRounds",
+      "label": "Focused Performance bonus rounds",
+      "unit": "round",
+      "minimumLevel": 2,
+      "base": 6,
+      "maximumByLevel": [
+        {
+          "level": 2,
+          "maximum": 6
+        },
+        {
+          "level": 8,
+          "maximum": 12
+        },
+        {
+          "level": 14,
+          "maximum": 18
+        },
+        {
+          "level": 20,
+          "maximum": 24
+        }
+      ]
+    }
   ]
 }

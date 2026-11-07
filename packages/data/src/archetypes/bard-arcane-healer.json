@@ -26,7 +26,123 @@
           "name": "Inspiring Healing (Sp)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, an arcane healer gains the ability to expend rounds of his bardic performance to provide extra healing to his allies. By expending 2 rounds of bardic performance, an arcane healer can cast cure light wounds as a spell-like ability. At 11th level, the arcane healer can expend 2 rounds of bardic performance to cast cure moderate wounds as a spell-like ability. At 17th level, he may instead expend 2 rounds of bardic performance to cast cure serious wounds as a spell-like ability. No single target may be affected by an arcane healer’s inspiring healing ability more than once in a 24-hour period. This ability replaces loremaster."
+          "summary": "At 5th level, an arcane healer gains the ability to expend rounds of his bardic performance to provide extra healing to his allies. By expending 2 rounds of bardic performance, an arcane healer can cast cure light wounds as a spell-like ability. At 11th level, the arcane healer can expend 2 rounds of bardic performance to cast cure moderate wounds as a spell-like ability. At 17th level, he may instead expend 2 rounds of bardic performance to cast cure serious wounds as a spell-like ability. No single target may be affected by an arcane healer’s inspiring healing ability more than once in a 24-hour period. This ability replaces loremaster.",
+          "resourceActions": [
+            {
+              "id": "arcane-healer-inspiring-healing-light",
+              "label": "Inspiring Healing — Cure Light Wounds",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "target-eligible",
+                  "label": "This target has not received Inspiring Healing in the last 24 hours",
+                  "requiredForActivation": true
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "cure-light-wounds",
+                "spellName": "Cure Light Wounds",
+                "cadence": "day",
+                "kind": "spell-like"
+              },
+              "activeEffect": {
+                "name": "Inspiring Healing — 24-hour target limit",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "description": "The healed target cannot receive Inspiring Healing again for 24 hours. Remove after the next daily refresh."
+              },
+              "summary": "Spend two bardic performance rounds and mark the healed target’s once-per-24-hours limit."
+            },
+            {
+              "id": "arcane-healer-inspiring-healing-moderate",
+              "label": "Inspiring Healing — Cure Moderate Wounds",
+              "minimumLevel": 11,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 11,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "target-eligible",
+                  "label": "This target has not received Inspiring Healing in the last 24 hours",
+                  "requiredForActivation": true
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "cure-moderate-wounds",
+                "spellName": "Cure Moderate Wounds",
+                "cadence": "day",
+                "kind": "spell-like"
+              },
+              "activeEffect": {
+                "name": "Inspiring Healing — 24-hour target limit",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "description": "The healed target cannot receive Inspiring Healing again for 24 hours. Remove after the next daily refresh."
+              },
+              "summary": "Spend two bardic performance rounds and mark the healed target’s once-per-24-hours limit."
+            },
+            {
+              "id": "arcane-healer-inspiring-healing-serious",
+              "label": "Inspiring Healing — Cure Serious Wounds",
+              "minimumLevel": 17,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 17,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "target-eligible",
+                  "label": "This target has not received Inspiring Healing in the last 24 hours",
+                  "requiredForActivation": true
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "cure-serious-wounds",
+                "spellName": "Cure Serious Wounds",
+                "cadence": "day",
+                "kind": "spell-like"
+              },
+              "activeEffect": {
+                "name": "Inspiring Healing — 24-hour target limit",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "description": "The healed target cannot receive Inspiring Healing again for 24 hours. Remove after the next daily refresh."
+              },
+              "summary": "Spend two bardic performance rounds and mark the healed target’s once-per-24-hours limit."
+            }
+          ]
         }
       ]
     }
@@ -36,8 +152,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Arcane%20Healer"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Channel Energy and every Inspiring Healing cure tier, cost, unlock, and per-target 24-hour limit are automated."
   ]
 }

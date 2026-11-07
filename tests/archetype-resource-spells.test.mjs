@@ -21,12 +21,14 @@ test("resource-powered spell actions use the character's existing class pool", (
 });
 
 test("tiered performance spells retain their published levels and shared cost", () => {
-  const actions = inferArchetypeResourceSpellActions(archetype("bard-arcane-healer"));
-  assert.deepEqual(actions.map(({ action }) => [action.spellLikeAbility.spellName, action.minimumLevel, action.resourceId, action.cost]), [
-    ["cure light wounds", 5, "bardicPerformance", 2],
-    ["cure moderate wounds", 11, "bardicPerformance", 2],
-    ["cure serious wounds", 17, "bardicPerformance", 2],
+  const applied = applyArchetype(characterClass("bard"), archetype("bard-arcane-healer"), data.classes, data.spells);
+  const actions = applied.features.find((feature) => feature.id === "bard-arcane-healer-inspiring-healing-sp-5").resourceActions;
+  assert.deepEqual(actions.map((action) => [action.spellLikeAbility.spellName, action.minimumLevel, action.resourceId, action.cost]), [
+    ["Cure Light Wounds", 5, "bardicPerformance", 2],
+    ["Cure Moderate Wounds", 11, "bardicPerformance", 2],
+    ["Cure Serious Wounds", 17, "bardicPerformance", 2],
   ]);
+  assert.ok(actions.every((action) => action.confirmations[0].requiredForActivation && action.activeEffect.fixedRounds));
 });
 
 test("ki-powered spell equivalents preserve activation, duration, and prerequisites", () => {
@@ -109,7 +111,7 @@ test("reactive and restricted spell equivalents preserve formula costs and legal
 
 test("catalogue inference remains concrete, bounded, and excludes container features", () => {
   const actions = archetypes.flatMap((entry) => inferArchetypeResourceSpellActions(entry));
-  assert.ok(actions.length >= 28, `expected the expanded resource-spell batch, received ${actions.length}`);
+  assert.ok(actions.length >= 25, `expected the inferred resource-spell batch after exact Arcane Healer authorship, received ${actions.length}`);
   assert.ok(actions.every(({ action }) => action.resourceId && action.cost >= 1 && action.minimumLevel >= 1 && action.minimumLevel <= 20));
   assert.ok(actions.every(({ action }) => !/\b(?:ability|action|casts?|effect|when|whenever)\b/i.test(action.spellLikeAbility.spellName) && !/^(?:a )?spell$/i.test(action.spellLikeAbility.spellName)));
   assert.equal(actions.some(({ sourceFeatureId }) => /(?:forbidden-powers|special)-/i.test(sourceFeatureId)), false);

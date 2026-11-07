@@ -26,7 +26,136 @@
           "name": "Enrapturing Performance (Su)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a lotus geisha gains the ability to execute an enrapturing performance in addition to her bardic performance ability. An enrapturing performance is exactly like a bardic performance with the following exceptions. A lotus geisha can use an enrapturing performance to recreate the effects of any of her known bardic performances, but she focuses the performance on only a single target within range. While other creatures see and hear a lotus geisha’s enrapturing performance, only the target of this ability is affected by it. A lotus geisha cannot have a bardic performance and an enrapturing performance in effect at the same time. Every round spent engaged in an enrapturing performance counts against the total number of rounds per day she can use her bardic performance, and she cannot use this ability if she does not have any more rounds of bardic performance left for that day. Starting an enrapturing performance is a standard action; at 7th level, it becomes a move action, and at 13th level, it becomes a swift action. A lotus geisha adds a +2 bonus to the DC of Will saves made to resist the effects of her fascinate, frightening tune, and suggestion enrapturing performances. When a lotus geisha uses her enrapturing performance ability to emulate inspire competence, inspire courage, inspire greatness, or inspire heroics, any bonuses to AC or on ability checks, attack rolls, damage rolls, saving throws, and skill checks increase by +1. For example, a lotus geisha using inspire heroics as an enrapturing performance would grant her target a +5 morale bonus on saving throws and a +5 dodge bonus to AC, instead of the usual +4 bonuses. This ability replaces well-versed."
+          "summary": "At 2nd level, a lotus geisha gains the ability to execute an enrapturing performance in addition to her bardic performance ability. An enrapturing performance is exactly like a bardic performance with the following exceptions. A lotus geisha can use an enrapturing performance to recreate the effects of any of her known bardic performances, but she focuses the performance on only a single target within range. While other creatures see and hear a lotus geisha’s enrapturing performance, only the target of this ability is affected by it. A lotus geisha cannot have a bardic performance and an enrapturing performance in effect at the same time. Every round spent engaged in an enrapturing performance counts against the total number of rounds per day she can use her bardic performance, and she cannot use this ability if she does not have any more rounds of bardic performance left for that day. Starting an enrapturing performance is a standard action; at 7th level, it becomes a move action, and at 13th level, it becomes a swift action. A lotus geisha adds a +2 bonus to the DC of Will saves made to resist the effects of her fascinate, frightening tune, and suggestion enrapturing performances. When a lotus geisha uses her enrapturing performance ability to emulate inspire competence, inspire courage, inspire greatness, or inspire heroics, any bonuses to AC or on ability checks, attack rolls, damage rolls, saving throws, and skill checks increase by +1. For example, a lotus geisha using inspire heroics as an enrapturing performance would grant her target a +5 morale bonus on saving throws and a +5 dodge bonus to AC, instead of the usual +4 bonuses. This ability replaces well-versed.",
+          "resourceActions": [
+            {
+              "id": "lotus-geisha-enrapturing-performance",
+              "label": "Begin Enrapturing Performance",
+              "minimumLevel": 2,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "modeLabel": "Emulated performance",
+              "modes": [
+                {
+                  "id": "will-save-performance",
+                  "label": "Fascinate, Frightening Tune, or Suggestion",
+                  "summary": "One target takes a +2 increase to the Will save DC.",
+                  "activeEffects": [
+                    {
+                      "target": "performanceSaveDc",
+                      "bonus": 2,
+                      "label": "Enrapturing Performance — Will DC",
+                      "description": "+2 to the Will save DC of this single-target Fascinate, Frightening Tune, or Suggestion."
+                    }
+                  ]
+                },
+                {
+                  "id": "inspire-competence",
+                  "label": "Inspire Competence",
+                  "summary": "Increase its single target’s skill-check bonus by 1.",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 1,
+                      "label": "Enrapturing Inspire Competence",
+                      "description": "Increase the selected performance’s skill-check bonus by +1."
+                    }
+                  ]
+                },
+                {
+                  "id": "inspire-courage",
+                  "label": "Inspire Courage",
+                  "summary": "Increase its single target’s eligible save, attack, and damage bonuses by 1.",
+                  "activeEffects": [
+                    {
+                      "target": "savingThrowsAgainstCharmAndFear",
+                      "bonus": 1,
+                      "label": "Enrapturing Inspire Courage — saves",
+                      "description": "+1 beyond the normal Inspire Courage bonus."
+                    },
+                    {
+                      "target": "attackRolls",
+                      "bonus": 1,
+                      "label": "Enrapturing Inspire Courage — attacks",
+                      "description": "+1 beyond the normal Inspire Courage bonus."
+                    },
+                    {
+                      "target": "weaponDamageRolls",
+                      "bonus": 1,
+                      "label": "Enrapturing Inspire Courage — damage",
+                      "description": "+1 beyond the normal Inspire Courage bonus."
+                    }
+                  ]
+                },
+                {
+                  "id": "inspire-greatness",
+                  "label": "Inspire Greatness",
+                  "minimumLevel": 9,
+                  "summary": "Increase its single target’s attack and Fortitude bonuses by 1.",
+                  "activeEffects": [
+                    {
+                      "target": "attackRolls",
+                      "bonus": 1,
+                      "label": "Enrapturing Inspire Greatness — attacks",
+                      "description": "+1 beyond the normal Inspire Greatness bonus."
+                    },
+                    {
+                      "target": "fortitude",
+                      "bonus": 1,
+                      "label": "Enrapturing Inspire Greatness — Fortitude",
+                      "description": "+1 beyond the normal Inspire Greatness bonus."
+                    }
+                  ]
+                },
+                {
+                  "id": "inspire-heroics",
+                  "label": "Inspire Heroics",
+                  "minimumLevel": 15,
+                  "summary": "Increase its single target’s AC and saving throw bonuses by 1.",
+                  "activeEffects": [
+                    {
+                      "target": "armorClass",
+                      "bonus": 1,
+                      "label": "Enrapturing Inspire Heroics — AC",
+                      "description": "+1 beyond the normal Inspire Heroics bonus."
+                    },
+                    {
+                      "target": "savingThrows",
+                      "bonus": 1,
+                      "label": "Enrapturing Inspire Heroics — saves",
+                      "description": "+1 beyond the normal Inspire Heroics bonus."
+                    }
+                  ]
+                }
+              ],
+              "activeEffect": {
+                "name": "Enrapturing Performance",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "defaultRounds": 1,
+                "replaceExisting": true,
+                "description": "Only one target is affected; this cannot coexist with a normal bardic performance."
+              },
+              "summary": "Spend one performance round per round; only the chosen single target receives the emulated performance."
+            }
+          ]
         },
         {
           "id": "bard-lotus-geisha-bonus-feats-1",
@@ -43,8 +172,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Lotus%20Geisha"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Weapon replacement, fixed bonus feats, single-target performance exclusivity, activation speed, Will DC increases, and every increased inspiration bonus are automated."
   ]
 }
