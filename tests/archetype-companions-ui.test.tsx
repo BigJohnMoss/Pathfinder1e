@@ -67,3 +67,27 @@ test("Death Druid creates its phantom only after an emotional focus is selected"
   assert.match(card?.textContent ?? "", /11 d10 HD.*BAB.*2 × 2d6 slams/i);
   assert.match(card?.textContent ?? "", /Etheric Tether limits the manifested phantom to 50 feet/i);
 });
+
+test("Oceanrider filters aquatic mounts by rider size and shows the selected mount rules", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "cavalier");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "6" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "cavalier-oceanrider");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  const mountPicker = screen.getByLabelText(/Aquatic Mount/);
+  assert.deepEqual(within(mountPicker).getAllByRole("option").map((option) => option.textContent), ["Choose an option", "Seahorse", "Orca"]);
+  assert.equal(screen.queryByRole("heading", { name: "Companion sheets" }), null);
+  await user.selectOptions(mountPicker, "oceanrider-mount-orca");
+  const manager = screen.getByRole("heading", { name: "Companion sheets" }).closest("section");
+  assert.ok(manager);
+  const card = within(manager).getByText("Orca aquatic mount").closest("article");
+  assert.match(card?.textContent ?? "", /mount.*effective level 6/i);
+  assert.match(card?.textContent ?? "", /starts at size Large.*before level 7/i);
+
+  await user.click(screen.getByRole("tab", { name: "Basic info" }));
+  await user.selectOptions(screen.getByLabelText("Ancestry"), "halfling");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.deepEqual(within(screen.getByLabelText(/Aquatic Mount/)).getAllByRole("option").map((option) => option.textContent), ["Choose an option", "Dolphin"]);
+});

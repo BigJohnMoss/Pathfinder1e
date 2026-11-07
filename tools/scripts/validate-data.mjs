@@ -63,6 +63,7 @@ function checkChoice(choice, file) {
   for (const option of choice.options) { if (!option || typeof option.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(option.id) || typeof option.name !== "string" || !option.name.trim()) errors.push(`${file}: choice has an invalid option`); else if (ids.has(option.id)) errors.push(`${file}: choice has duplicate option ${option.id}`); else ids.add(option.id); }
 }
 function checkSelectableOption(option, file) {
+  if (option.companionRules !== undefined && (!Array.isArray(option.companionRules) || option.companionRules.length === 0 || option.companionRules.some((rule) => typeof rule !== "string" || !rule.trim()))) errors.push(`${file}: companionRules must contain non-empty rules`);
   if (option.repeatable !== undefined && typeof option.repeatable !== "boolean") errors.push(`${file}: repeatable must be a boolean`);
   if (option.selectionLimit !== undefined && (!Number.isInteger(option.selectionLimit) || option.selectionLimit < 1)) errors.push(`${file}: selectionLimit must be a positive integer`);
   if (option.selectionLimit !== undefined && option.repeatable !== true) errors.push(`${file}: selectionLimit requires repeatable`);
