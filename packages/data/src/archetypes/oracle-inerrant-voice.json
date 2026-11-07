@@ -29,10 +29,43 @@
           "name": "Revelations",
           "level": 3,
           "type": "archetype",
-          "summary": "An inerrant voice must take the following revelation at 3rd level. Vigilant Protector (Su) : Each day when you recover your spells, you can select a specific person you know other than yourself as your ward. When your ward becomes the target of an attack or spell and you are aware of the attack, you can cast an abjuration spell you know on the ally as an immediate action. You must expend the appropriate spell slot and be able to target the ally as normal for the spell. At 11th level, as an immediate action when you know your ward is targeted, you can transpose yourself with your ward, teleporting into the original target’s square (and becoming the new target of the attack or spell) while your ally is teleported into yours; this is a teleportation effect that doesn’t provoke attacks of opportunity. You can use this revelation once per day, plus an additional time at 7th level and every 4 oracle levels thereafter."
+          "summary": "An inerrant voice must take the following revelation at 3rd level. Vigilant Protector (Su) : Each day when you recover your spells, you can select a specific person you know other than yourself as your ward. When your ward becomes the target of an attack or spell and you are aware of the attack, you can cast an abjuration spell you know on the ally as an immediate action. You must expend the appropriate spell slot and be able to target the ally as normal for the spell. At 11th level, as an immediate action when you know your ward is targeted, you can transpose yourself with your ward, teleporting into the original target’s square (and becoming the new target of the attack or spell) while your ally is teleported into yours; this is a teleportation effect that doesn’t provoke attacks of opportunity. You can use this revelation once per day, plus an additional time at 7th level and every 4 oracle levels thereafter.",
+          "resourceActions": [
+            {
+              "id": "inerrant-voice-protective-abjuration",
+              "label": "Protect ward with abjuration",
+              "classId": "oracle",
+              "minimumLevel": 3,
+              "resourceId": "inerrantVoiceVigilantProtector",
+              "cost": 1,
+              "actionTypeByLevel": [{ "level": 3, "actionType": "immediate" }],
+              "confirmations": [
+                { "id": "ward-targeted", "label": "My designated ward is being targeted and I am aware of it", "requiredForActivation": true },
+                { "id": "spell-slot", "label": "I can target the ward and will expend the appropriate abjuration spell slot", "requiredForActivation": true }
+              ],
+              "summary": "Cast a known abjuration spell on the designated ward as an immediate action and expend its spell slot."
+            },
+            {
+              "id": "inerrant-voice-transpose-ward",
+              "label": "Transpose with ward",
+              "classId": "oracle",
+              "minimumLevel": 11,
+              "resourceId": "inerrantVoiceVigilantProtector",
+              "cost": 1,
+              "actionTypeByLevel": [{ "level": 11, "actionType": "immediate" }],
+              "confirmations": [{ "id": "ward-targeted", "label": "My designated ward is being targeted and I am aware of it", "requiredForActivation": true }],
+              "summary": "Teleport into the ward's square and become the new target while the ward teleports into yours; this does not provoke."
+            }
+          ]
         }
       ]
     }
+  ],
+  "fixedOptionGrants": [
+    { "sourceFeatureId": "oracle-inerrant-voice-revelations-3", "optionGroupId": "oracle-revelations", "optionId": "oracle-revelation-vigilant-protector", "minimumLevel": 3, "label": "Vigilant Protector" }
+  ],
+  "resourceAdjustments": [
+    { "resourceId": "inerrantVoiceVigilantProtector", "label": "Vigilant Protector", "unit": "use", "operation": "replace", "minimumLevel": 3, "base": 1, "minimum": 0, "maximumByLevel": [{ "level": 3, "maximum": 1 }, { "level": 7, "maximum": 2 }, { "level": 11, "maximum": 3 }, { "level": 15, "maximum": 4 }, { "level": 19, "maximum": 5 }], "dedicatedAction": true }
   ],
   "source": {
     "title": "Archives of Nethys",

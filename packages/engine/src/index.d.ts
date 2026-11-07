@@ -13,6 +13,7 @@ export function archetypeCompanionEffectiveLevel(grant: NonNullable<CharacterArc
 export function inferArchetypeCompanionGrants(archetype: CharacterArchetype): NonNullable<CharacterArchetype["companionGrants"]>;
 export function inferredArchetypeCompanionGrantDetails(archetype: CharacterArchetype): { grants: NonNullable<CharacterArchetype["companionGrants"]>; fullyAutomatedFeatureIds: Set<string>; sentenceCoverage: Array<{ sourceFeatureId: string; sentenceIndex: number }> };
 export function resolvedArchetypeCompanionGrants(archetype: CharacterArchetype): NonNullable<CharacterArchetype["companionGrants"]>;
+export function fixedOptionIdsThroughLevel(characterClass: SharedCharacterClass, level: number): string[];
 export { confirmCriticalThreat, parseCriticalThreatRange, parseDiceExpression, resolveAttackRoll, rollD20Check, rollDice, rollDiceExpression } from "./dice.js";
 
 export interface ClassProgression {
@@ -65,7 +66,7 @@ export function averageHitPoints(hitDie: number, level: number, constitutionModi
 export function multiclassAverageHitPoints(classes: CharacterClass[], classLevels: Array<{ classId: string; level: number }>, constitutionModifier?: number): number;
 export function carryingCapacity(strength: number): { light: number; medium: number; heavy: number };
 export function encumbrance(strength: number, items: Array<{ weight: number; quantity: number }>): { carriedWeight: number; capacity: { light: number; medium: number; heavy: number }; load: "light" | "medium" | "heavy" | "overloaded" };
-export function archetypeConditionalModifiers(archetypes: CharacterArchetype[], classLevels: Record<string, number>): Array<{ label: string; bonus: number; condition: string; source: string }>;
+export function archetypeConditionalModifiers(archetypes: CharacterArchetype[], classLevels: Record<string, number>, abilityModifiers?: Partial<Record<AbilityName, number>>): Array<{ label: string; bonus: number; condition: string; source: string }>;
 export function archetypeAbilityScoreBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): AbilityScores;
 export function archetypeAbilityScoreAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["abilityScoreAdjustments"]>;
 export function inferArchetypeAbilityScoreAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["abilityScoreAdjustments"]>;
@@ -93,7 +94,7 @@ export function inferArchetypeDefenseAdjustments(archetype: CharacterArchetype):
 export function archetypeDefenses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): Array<NonNullable<CharacterArchetype["defenseAdjustments"]>[number] & { value: number; source: string }>;
 export function inferArchetypeSkillCheckRules(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillCheckRules"]>;
 export function archetypeSkillCheckRules(archetypes: CharacterArchetype[], classLevels: Record<string, number>): Array<NonNullable<CharacterArchetype["skillCheckRules"]>[number] & { source: string }>;
-export function archetypeSkillBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): { skillBonuses: Record<string, number>; conditionalModifiers: Array<{ label: string; bonus: number; condition: string; source: string }> };
+export function archetypeSkillBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>, abilityModifiers?: Partial<Record<AbilityName, number>>): { skillBonuses: Record<string, number>; conditionalModifiers: Array<{ label: string; bonus: number; condition: string; source: string }> };
 export function inferArchetypeSkillAbilityOverrides(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillAbilityOverrides"]>;
 export function archetypeSkillAbilityOverrides(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillAbilityOverrides"]>;
 export function effectiveArchetypeSkillAbility(archetypes: CharacterArchetype[], classLevels: Record<string, number>, skill: string, defaultAbility: AbilityName): AbilityName;

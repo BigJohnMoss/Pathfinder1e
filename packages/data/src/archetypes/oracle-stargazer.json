@@ -38,10 +38,51 @@
           "name": "Revelations",
           "level": 1,
           "type": "archetype",
-          "summary": "A stargazer must take the following revelations at the listed levels. Guiding Star (Su) : As the heavens mystery revelation. You must take this revelation at 1st level. Star Chart (Ex) : As the heavens mystery revelation. You must take this revelation at 7th level."
+          "summary": "A stargazer must take the following revelations at the listed levels. Guiding Star (Su) : As the heavens mystery revelation. You must take this revelation at 1st level. Star Chart (Ex) : As the heavens mystery revelation. You must take this revelation at 7th level.",
+          "resourceActions": [
+            {
+              "id": "stargazer-guiding-star-spell",
+              "label": "Invoke guiding star",
+              "classId": "oracle",
+              "minimumLevel": 1,
+              "resourceId": "stargazerGuidingStar",
+              "cost": 1,
+              "modeLabel": "Free metamagic",
+              "modes": [
+                { "id": "empower", "label": "Empower Spell", "summary": "Cast one spell as though modified by Empower Spell without increasing its casting time or spell level." },
+                { "id": "extend", "label": "Extend Spell", "summary": "Cast one spell as though modified by Extend Spell without increasing its casting time or spell level." },
+                { "id": "silent", "label": "Silent Spell", "summary": "Cast one spell as though modified by Silent Spell without increasing its casting time or spell level." },
+                { "id": "still", "label": "Still Spell", "summary": "Cast one spell as though modified by Still Spell without increasing its casting time or spell level." }
+              ],
+              "confirmations": [{ "id": "outdoors-night", "label": "I am outdoors at night and can see the night sky", "requiredForActivation": true }],
+              "summary": "Once per night outdoors, apply one listed metamagic feat without increasing casting time or spell level."
+            },
+            {
+              "id": "stargazer-star-chart",
+              "label": "Consult star chart",
+              "classId": "oracle",
+              "minimumLevel": 7,
+              "resourceId": "stargazerStarChart",
+              "cost": 1,
+              "spellLikeAbility": { "spellId": "commune", "spellName": "Commune", "cadence": "day", "kind": "spell-equivalent" },
+              "actionTypeByLevel": [{ "level": 7, "actionType": "10-minute" }],
+              "summary": "Contemplate the chart for 10 minutes to gain the benefit of commune."
+            }
+          ]
         }
       ]
     }
+  ],
+  "fixedOptionGrants": [
+    { "sourceFeatureId": "oracle-stargazer-revelations-1", "optionGroupId": "oracle-revelations", "optionId": "oracle-revelation-guiding-star", "minimumLevel": 1, "label": "Guiding Star" },
+    { "sourceFeatureId": "oracle-stargazer-revelations-1", "optionGroupId": "oracle-revelations", "optionId": "oracle-revelation-star-chart", "minimumLevel": 7, "label": "Star Chart" }
+  ],
+  "resourceAdjustments": [
+    { "resourceId": "stargazerGuidingStar", "label": "Guiding Star nightly spell", "unit": "use", "operation": "replace", "minimumLevel": 1, "base": 1, "minimum": 0, "maximum": 1, "dedicatedAction": true },
+    { "resourceId": "stargazerStarChart", "label": "Star Chart", "unit": "use", "operation": "replace", "minimumLevel": 7, "base": 1, "minimum": 0, "maximum": 1, "dedicatedAction": true }
+  ],
+  "conditionalModifiers": [
+    { "sourceFeatureId": "oracle-stargazer-revelations-1", "label": "Wisdom-based checks", "condition": "The open night sky is visible", "minimumLevel": 1, "base": 0, "abilityModifier": "charisma" }
   ],
   "source": {
     "title": "Archives of Nethys",

@@ -9,6 +9,9 @@
     "source":{"title":"Advanced Player's Guide","page":45,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/oracle.html#mysteries"}
   },
   "options":[
+    {"id":"oracle-revelation-vigilant-protector","mysteryId":"oracle-archetype-inerrant-voice","name":"Vigilant Protector","minimumLevel":3,"benefit":"Designate a ward, react with protective abjuration, and later exchange places with the ward.","source":{"title":"Archives of Nethys","page":null,"url":"https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Inerrant%20Voice"}},
+    {"id":"oracle-revelation-divining-dance","mysteryId":"oracle-archetype-keleshite-prophet","name":"Divining Dance","minimumLevel":1,"benefit":"Perform a daily sacred dance whose Perform result selects a 24-hour divination benefit.","source":{"title":"Archives of Nethys","page":null,"url":"https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Keleshite%20Prophet"}},
+    {"id":"oracle-revelation-gift-of-prophecy","mysteryId":"oracle-archetype-seer","name":"Gift of Prophecy","minimumLevel":3,"benefit":"Enter a daily prophetic trance that improves from augury to divination and commune.","source":{"title":"Archives of Nethys","page":null,"url":"https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Seer"}},
     {"id":"oracle-revelation-battlecry","mysteryId":"oracle-mystery-battle","name":"Battlecry","minimumLevel":1,"benefit":"Inspire allies within 100 feet with a morale bonus on attacks, skills, and saves."},
     {"id":"oracle-revelation-battlefield-clarity","mysteryId":"oracle-mystery-battle","name":"Battlefield Clarity","minimumLevel":1,"benefit":"Reroll a failed save against debilitating battlefield conditions with an insight bonus."},
     {"id":"oracle-revelation-combat-healer-battle","mysteryId":"oracle-mystery-battle","name":"Combat Healer","minimumLevel":7,"benefit":"Spend two spell slots to cast a cure spell as a swift action."},

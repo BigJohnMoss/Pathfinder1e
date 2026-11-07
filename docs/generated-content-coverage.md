@@ -37,7 +37,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 
 | Reusable subsystem | Archetypes |
 |---|---:|
-| Resources and limited uses | 33 |
+| Resources and limited uses | 37 |
 | Companions and effective levels | 34 |
 | Spell lists, slots, and casting | 49 |
 | Class skills and skill-rank progressions | 56 |
@@ -54,11 +54,11 @@ These rule-text signals are multi-label: one archetype can contribute to several
 |---|---:|
 | Resources and limited uses | 624 |
 | Companions, mounts, familiars, and eidolons | 239 |
-| Spell lists, slots, and casting | 620 |
+| Spell lists, slots, and casting | 621 |
 | Selectable progressions and dependent choices | 751 |
-| Combat statistics and proficiencies | 846 |
+| Combat statistics and proficiencies | 848 |
 | Skills | 649 |
-| Feats | 475 |
+| Feats | 476 |
 | Narrative or uncategorized effects | 2 |
 
 ## Spell details

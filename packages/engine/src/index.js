@@ -29,6 +29,7 @@ import { archetypeLandSpeedAdjustments, inferredArchetypeLandSpeedDetails, infer
 import { archetypeDefenseAdjustments, archetypeDefenses, inferredArchetypeDefenseDetails, inferArchetypeDefenseAdjustments } from "./archetype-defenses.js";
 import { archetypeArmorConditionedBenefits, inferredArchetypeArmorConditionedDefenseDetails } from "./archetype-armor-conditioned-defense.js";
 import { archetypeWeaponProficiencyRules, inferredArchetypeWeaponProficiencyRuleDetails } from "./archetype-weapon-proficiencies.js";
+import { archetypeFixedOptionGrantDetails, fixedOptionIdsThroughLevel } from "./archetype-fixed-options.js";
 import { archetypeSkillCheckRules, inferredArchetypeSkillCheckDetails, inferArchetypeSkillCheckRules } from "./archetype-skill-checks.js";
 import { archetypeAbilityScoreAdjustments, inferredArchetypeAbilityScoreDetails, inferArchetypeAbilityScoreAdjustments } from "./archetype-abilities.js";
 import { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments, inferredArchetypeAlignmentDetails } from "./archetype-alignment.js";
@@ -73,6 +74,7 @@ export { archetypeSenseAdjustments, inferArchetypeSenseAdjustments };
 export { archetypeLandSpeedAdjustments, inferArchetypeLandSpeedAdjustments };
 export { archetypeArmorConditionedBenefits, archetypeDefenseAdjustments, archetypeDefenses, inferArchetypeDefenseAdjustments };
 export { archetypeWeaponProficiencyRules };
+export { fixedOptionIdsThroughLevel };
 export { archetypeSkillCheckRules, inferArchetypeSkillCheckRules };
 export { archetypeAbilityScoreAdjustments, inferArchetypeAbilityScoreAdjustments };
 export { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments };
@@ -419,7 +421,7 @@ const adjustmentBonusAtLevel = (adjustment, level) => {
   );
 };
 
-export function archetypeConditionalModifiers(archetypes = [], classLevels = {}) {
+export function archetypeConditionalModifiers(archetypes = [], classLevels = {}, abilityModifiers = {}) {
   return (archetypes ?? []).flatMap((archetype) => {
     const level = archetypeLevel(archetype, classLevels);
     return [
@@ -431,7 +433,7 @@ export function archetypeConditionalModifiers(archetypes = [], classLevels = {})
       ...archetypeAbilityScoreAdjustments(archetype).filter((modifier) => modifier.condition),
     ].flatMap((modifier) => {
       if (!adjustmentAppliesAtLevel(modifier, level)) return [];
-      const bonus = adjustmentBonusAtLevel(modifier, level);
+      const bonus = adjustmentBonusAtLevel(modifier, level) + (modifier.abilityModifier ? abilityModifiers[modifier.abilityModifier] ?? 0 : 0);
       return [{
         label: modifier.label,
         condition: modifier.condition,
@@ -547,13 +549,13 @@ export function archetypeSenses(archetypes = [], classLevels = {}) {
   });
 }
 
-export function archetypeSkillBonuses(archetypes = [], classLevels = {}) {
+export function archetypeSkillBonuses(archetypes = [], classLevels = {}, abilityModifiers = {}) {
   const result = { skillBonuses: {}, conditionalModifiers: [] };
   for (const archetype of archetypes ?? []) {
     const level = archetypeLevel(archetype, classLevels);
     for (const adjustment of archetypeSkillBonusAdjustments(archetype)) {
       if (!adjustmentAppliesAtLevel(adjustment, level)) continue;
-      const bonus = adjustmentBonusAtLevel(adjustment, level);
+      const bonus = adjustmentBonusAtLevel(adjustment, level) + (adjustment.abilityModifier ? abilityModifiers[adjustment.abilityModifier] ?? 0 : 0);
       if (adjustment.condition) result.conditionalModifiers.push({
         label: `${adjustment.skill} checks`,
         condition: adjustment.condition,
@@ -1368,6 +1370,10 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
       ...(characterClass.optionGroupAugmentations ?? []),
       ...(archetype.optionGroupAugmentations ?? []),
     ],
+    fixedOptionGrants: [
+      ...(characterClass.fixedOptionGrants ?? []),
+      ...(archetype.fixedOptionGrants ?? []),
+    ],
     spellListAdditions: {
       ...(characterClass.spellListAdditions ?? {}),
       ...inferredSpellAdditions.spellListAdditions,
@@ -2098,6 +2104,9 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (configured.length) automated.push(`${configured.length} selectable feature choice${configured.length === 1 ? "" : "s"}`);
   const resourceActions = replacementFeatures.flatMap(feature => feature.resourceActions ?? []);
   if (resourceActions.length) automated.push(`${resourceActions.length} resource-powered feature action${resourceActions.length === 1 ? "" : "s"}`);
+  const fixedOptionGrantDetails = archetypeFixedOptionGrantDetails(archetype);
+  if (fixedOptionGrantDetails.grants.length)
+    automated.push(`${fixedOptionGrantDetails.grants.length} fixed class option grant${fixedOptionGrantDetails.grants.length === 1 ? "" : "s"}`);
   if (temporaryHitPointActionDetails.actions.length)
     automated.push(`${temporaryHitPointActionDetails.actions.length} calculated temporary-hit-point action${temporaryHitPointActionDetails.actions.length === 1 ? "" : "s"}`);
   if (rerollActionDetails.actions.length)
@@ -2191,6 +2200,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...favoredTerrainChoiceDetails.fullyAutomatedFeatureIds,
     ...favoredEnemyChoiceDetails.fullyAutomatedFeatureIds,
     ...companionGrantDetails.fullyAutomatedFeatureIds,
+    ...fixedOptionGrantDetails.fullyAutomatedFeatureIds,
   ].filter(Boolean));
   const manualFeatures = replacementFeatures
     .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))

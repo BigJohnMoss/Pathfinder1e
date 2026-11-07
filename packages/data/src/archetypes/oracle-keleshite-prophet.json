@@ -37,10 +37,36 @@
           "name": "Revelations",
           "level": 1,
           "type": "archetype",
-          "summary": "A Keleshite prophet must take the following revelation at 1st level. Divining Dance (Su) Once per day, you can perform a sacred meditative dance that gives you great clarity of mind and prepares you for what lies ahead. This dance must last for at least 1 minute, uninterrupted, and you can take no other actions during the dance. When you dance, attempt a Perform (dance) check; the results of the check determine the benefits you gain for the next 24 hours, as listed below. You can always choose the benefit from a lower result, if you wish (for example, if your Perform [dance] result is 15, you can choose to gain a +1 bonus on your divinations’ saving throws instead of choosing to use augury once as a spell-like ability). Perform (Dance) Result Benefit 0-9Increase the saving throw DC of any divination spells you cast by 1. 10-19Once in the next 24 hours, as an immediate action, you can use augury as a spell-like ability, using your oracle level as your caster level. 20-29Once in the next 24 hours, you can use divination as a spell-like ability, using your oracle level as your caster level. If you are at least 8th level, you can cast it in 1 minute instead of 10 minutes. 30-39Once in the next 24 hours, you can use commune as a spell-like ability, using your oracle level as your caster level. If you are at least 10th level, its casting time is in 1 minute instead of 10 minutes. 40+Once in the next 24 hours, you can use contact other plane as a spell-like ability, using your oracle level as your caster level."
+          "summary": "A Keleshite prophet must take the following revelation at 1st level. Divining Dance (Su) Once per day, you can perform a sacred meditative dance that gives you great clarity of mind and prepares you for what lies ahead. This dance must last for at least 1 minute, uninterrupted, and you can take no other actions during the dance. When you dance, attempt a Perform (dance) check; the results of the check determine the benefits you gain for the next 24 hours, as listed below. You can always choose the benefit from a lower result, if you wish (for example, if your Perform [dance] result is 15, you can choose to gain a +1 bonus on your divinations’ saving throws instead of choosing to use augury once as a spell-like ability). Perform (Dance) Result Benefit 0-9Increase the saving throw DC of any divination spells you cast by 1. 10-19Once in the next 24 hours, as an immediate action, you can use augury as a spell-like ability, using your oracle level as your caster level. 20-29Once in the next 24 hours, you can use divination as a spell-like ability, using your oracle level as your caster level. If you are at least 8th level, you can cast it in 1 minute instead of 10 minutes. 30-39Once in the next 24 hours, you can use commune as a spell-like ability, using your oracle level as your caster level. If you are at least 10th level, its casting time is in 1 minute instead of 10 minutes. 40+Once in the next 24 hours, you can use contact other plane as a spell-like ability, using your oracle level as your caster level.",
+          "resourceActions": [
+            {
+              "id": "keleshite-prophet-divining-dance",
+              "label": "Complete divining dance",
+              "classId": "oracle",
+              "minimumLevel": 1,
+              "resourceId": "keleshiteProphetDiviningDance",
+              "cost": 1,
+              "modeLabel": "Perform (dance) result benefit",
+              "modes": [
+                { "id": "dc-bonus", "label": "0–9: +1 divination save DC", "summary": "For 24 hours, increase the saving throw DC of divination spells you cast by 1.", "actionType": "1-minute" },
+                { "id": "augury", "label": "10–19: augury once", "summary": "Use augury once in the next 24 hours as an immediate-action spell-like ability at oracle caster level.", "actionType": "1-minute" },
+                { "id": "divination", "label": "20–29: divination once", "summary": "Use divination once in the next 24 hours at oracle caster level; at level 8 its casting time becomes 1 minute.", "actionType": "1-minute" },
+                { "id": "commune", "label": "30–39: commune once", "summary": "Use commune once in the next 24 hours at oracle caster level; at level 10 its casting time becomes 1 minute.", "actionType": "1-minute" },
+                { "id": "contact-other-plane", "label": "40+: contact other plane once", "summary": "Use contact other plane once in the next 24 hours as a spell-like ability at oracle caster level.", "actionType": "1-minute" }
+              ],
+              "confirmations": [{ "id": "uninterrupted", "label": "I completed the uninterrupted dance and met this result (or a higher one)", "requiredForActivation": true }],
+              "summary": "Track the selected 24-hour benefit; a higher check result may choose any lower result."
+            }
+          ]
         }
       ]
     }
+  ],
+  "fixedOptionGrants": [
+    { "sourceFeatureId": "oracle-keleshite-prophet-revelations-1", "optionGroupId": "oracle-revelations", "optionId": "oracle-revelation-divining-dance", "minimumLevel": 1, "label": "Divining Dance" }
+  ],
+  "resourceAdjustments": [
+    { "resourceId": "keleshiteProphetDiviningDance", "label": "Divining Dance", "unit": "use", "operation": "replace", "minimumLevel": 1, "base": 1, "minimum": 0, "maximum": 1, "dedicatedAction": true }
   ],
   "source": {
     "title": "Archives of Nethys",
