@@ -26,7 +26,8 @@ test("tracked archetype resources gain a matching activation action", () => {
     },
   }]);
   const archaeologist = archetype("bard-archaeologist");
-  assert.equal(inferArchetypeResourceActions(archaeologist, specializedIds(archaeologist))[0].action.label, "Use 1 round of Archaeologist’s Luck");
+  assert.equal(inferArchetypeResourceActions(archaeologist, specializedIds(archaeologist)).length, 0);
+  assert.equal(archaeologist.replacements.flatMap((replacement) => replacement.features).find((feature) => feature.name.startsWith("Archaeologist’s Luck")).resourceActions[0].label, "Use Archaeologist's Luck");
 });
 
 test("applied archetypes expose generic actions without duplicating specialized actions", () => {

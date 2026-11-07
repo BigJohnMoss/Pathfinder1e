@@ -1,0 +1,19 @@
+{
+  "id": "bard-canny-foe-maneuvers",
+  "name": "Canny Foe Maneuvers",
+  "classIds": ["bard"],
+  "inheritsOptionsFrom": "brawler-maneuvers",
+  "uniqueAcrossSelections": true,
+  "optionDefaults": {
+    "groupId": "bard-canny-foe-maneuvers",
+    "classIds": ["bard"],
+    "minimumLevel": 2,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Daredevil"
+    }
+  },
+  "options": []
+}

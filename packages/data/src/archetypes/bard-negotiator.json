@@ -44,28 +44,530 @@
           "name": "Bardic Performance",
           "level": 1,
           "type": "archetype",
-          "summary": "A negotiator gains the following types of bardic performance. Counterargument (Su) : This performance acts as countersong, except a negotiator can use only Perform (act, comedy, oratory, or sing) to perform a counterargument. Fast Talk (Su) : At 1st level, a negotiator can use performance to affect the perceptions of any number of targets that can hear him. While the negotiator performs, these targets take a –1 penalty on saving throws against enchantment (charm) and illusion (figment, glamer, or shadow) effects, as well as a penalty on Appraise checks equal to half the negotiator’s level (minimum –1). A target that fails its Appraise check believes that the object in question is worth 10% more or less (negotiator’s choice) than its actual value. At 5th, 11th, and 17th levels, the saving throw penalty increases by 1 and the shift in an object’s perceived value increases by 10%. Fast talk is a language-dependent, mind-affecting ability that uses audible components. This performance replaces inspire courage. Binding Contract (Sp) : At 9th level, the negotiator can bind another creature’s promise to the negotiator with a geas. This acts as lesser geas , except the creature must have Hit Dice equal to or less than the negotiator’s level. The target can negate this effect with a successful Will save (DC = 10 + 1/2 the negotiator’s level + the negotiator’s Charisma modifier). The geas is discharged if the negotiator breaks his end of the bargain. Using this ability requires 3 rounds of continuous performance, and the target must be able to see and hear the bard throughout the performance. At 18th level, this effect acts as geas/quest (no HD limit, and the target cannot attempt a saving throw). Binding contract is an enchantment (compulsion), mind-affecting, language-dependent ability that relies on audible components. This performance replaces inspire greatness."
+          "summary": "A negotiator gains the following types of bardic performance. Counterargument (Su) : This performance acts as countersong, except a negotiator can use only Perform (act, comedy, oratory, or sing) to perform a counterargument. Fast Talk (Su) : At 1st level, a negotiator can use performance to affect the perceptions of any number of targets that can hear him. While the negotiator performs, these targets take a –1 penalty on saving throws against enchantment (charm) and illusion (figment, glamer, or shadow) effects, as well as a penalty on Appraise checks equal to half the negotiator’s level (minimum –1). A target that fails its Appraise check believes that the object in question is worth 10% more or less (negotiator’s choice) than its actual value. At 5th, 11th, and 17th levels, the saving throw penalty increases by 1 and the shift in an object’s perceived value increases by 10%. Fast talk is a language-dependent, mind-affecting ability that uses audible components. This performance replaces inspire courage. Binding Contract (Sp) : At 9th level, the negotiator can bind another creature’s promise to the negotiator with a geas. This acts as lesser geas , except the creature must have Hit Dice equal to or less than the negotiator’s level. The target can negate this effect with a successful Will save (DC = 10 + 1/2 the negotiator’s level + the negotiator’s Charisma modifier). The geas is discharged if the negotiator breaks his end of the bargain. Using this ability requires 3 rounds of continuous performance, and the target must be able to see and hear the bard throughout the performance. At 18th level, this effect acts as geas/quest (no HD limit, and the target cannot attempt a saving throw). Binding contract is an enchantment (compulsion), mind-affecting, language-dependent ability that relies on audible components. This performance replaces inspire greatness.",
+          "performanceRules": [
+            {
+              "id": "negotiator-counterargument",
+              "name": "Counterargument",
+              "minimumLevel": 1,
+              "kind": "passive",
+              "summary": "Countersong must use Perform (act), Perform (comedy), Perform (oratory), or Perform (sing).",
+              "condition": "Use one of the four permitted Perform skills"
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "negotiator-fast-talk",
+              "label": "Begin Fast Talk",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Fast Talk",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Audible, language-dependent, mind-affecting performance. Enemies take the displayed save penalty against charm and figment, glamer, or shadow effects; Appraise penalty equals half Bard level (minimum 1).",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "modes": [
+                {
+                  "id": "tier-1",
+                  "label": "−1 saves · ±10% value",
+                  "minimumLevel": 1,
+                  "maximumLevel": 4,
+                  "summary": "Apply −1 to the listed saves, half Bard level to Appraise, and shift perceived value by 10%."
+                },
+                {
+                  "id": "tier-2",
+                  "label": "−2 saves · ±20% value",
+                  "minimumLevel": 5,
+                  "maximumLevel": 10,
+                  "summary": "Apply −2 to the listed saves, half Bard level to Appraise, and shift perceived value by 20%."
+                },
+                {
+                  "id": "tier-3",
+                  "label": "−3 saves · ±30% value",
+                  "minimumLevel": 11,
+                  "maximumLevel": 16,
+                  "summary": "Apply −3 to the listed saves, half Bard level to Appraise, and shift perceived value by 30%."
+                },
+                {
+                  "id": "tier-4",
+                  "label": "−4 saves · ±40% value",
+                  "minimumLevel": 17,
+                  "summary": "Apply −4 to the listed saves, half Bard level to Appraise, and shift perceived value by 40%."
+                }
+              ],
+              "summary": "Spend 1 performance round per round and track the exact level tier and Appraise penalty."
+            },
+            {
+              "id": "negotiator-binding-contract",
+              "label": "Complete Binding Contract",
+              "minimumLevel": 9,
+              "maximumLevel": 17,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 3,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "continuous",
+                  "label": "The target saw and heard all 3 continuous rounds and has Hit Dice no greater than Bard level",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 9,
+                    "range": "visible and audible"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 9,
+                    "name": "Binding Contract — Lesser Geas",
+                    "description": "Bound by lesser geas until completed, discharged, or removed; discharge it if the Negotiator breaks their bargain.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 999
+                    }
+                  }
+                ]
+              },
+              "summary": "Spend 3 continuous performance rounds, enforce the Hit Dice limit, and resolve the Will save."
+            },
+            {
+              "id": "negotiator-binding-contract-greater",
+              "label": "Complete Greater Binding Contract",
+              "minimumLevel": 18,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 3,
+              "actionTypeByLevel": [
+                {
+                  "level": 18,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "continuous",
+                  "label": "The target saw and heard all 3 continuous rounds",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Binding Contract — Geas/Quest",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "No Hit Dice limit and no saving throw. Discharge the geas if the Negotiator breaks their end of the bargain.",
+                "defaultRounds": 999,
+                "fixedRounds": true
+              },
+              "summary": "Spend 3 continuous performance rounds and apply geas/quest without a save."
+            }
+          ]
         },
         {
           "id": "bard-negotiator-rogue-talents-2",
-          "name": "Rogue Talents",
+          "name": "Rogue Talent 1",
           "level": 2,
-          "type": "archetype",
-          "summary": "At 2nd level, a negotiator gains a rogue talent , as the rogue class feature of the same name. At 6th level and every 4 levels thereafter, the negotiator gains an additional rogue talent. A negotiator cannot select a rogue talent that modifies the sneak attack ability. This ability replaces versatile performance."
+          "type": "selectable",
+          "summary": "Choose a rogue talent. The app enforces level eligibility and prevents duplicate selections.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-rogue-talents",
+          "optionChoiceIds": [
+            "combat-trick",
+            "fast-stealth",
+            "finesse-rogue",
+            "ledge-walker",
+            "major-magic",
+            "minor-magic",
+            "quick-disable",
+            "resiliency",
+            "rogue-crawl",
+            "stand-up",
+            "surprise-attack",
+            "trap-spotter",
+            "weapon-training",
+            "assault-leader",
+            "camouflage",
+            "canny-observer",
+            "charmer",
+            "coax-information",
+            "combat-swipe",
+            "cunning-trigger",
+            "expert-leaper",
+            "fast-fingers",
+            "fast-picks",
+            "follow-clues",
+            "guileful-polyglot",
+            "hard-to-fool",
+            "honeyed-words",
+            "lasting-poison",
+            "nimble-climber",
+            "peerless-maneuver",
+            "positioning-attack",
+            "quick-disguise",
+            "quick-trapsmith",
+            "snap-shot",
+            "strong-impression",
+            "survivalist",
+            "swift-poison"
+          ]
+        },
+        {
+          "id": "bard-negotiator-rogue-talents-6",
+          "name": "Rogue Talent 2",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Choose a rogue talent. The app enforces level eligibility and prevents duplicate selections.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-rogue-talents",
+          "optionChoiceIds": [
+            "combat-trick",
+            "fast-stealth",
+            "finesse-rogue",
+            "ledge-walker",
+            "major-magic",
+            "minor-magic",
+            "quick-disable",
+            "resiliency",
+            "rogue-crawl",
+            "stand-up",
+            "surprise-attack",
+            "trap-spotter",
+            "weapon-training",
+            "assault-leader",
+            "camouflage",
+            "canny-observer",
+            "charmer",
+            "coax-information",
+            "combat-swipe",
+            "cunning-trigger",
+            "expert-leaper",
+            "fast-fingers",
+            "fast-picks",
+            "follow-clues",
+            "guileful-polyglot",
+            "hard-to-fool",
+            "honeyed-words",
+            "lasting-poison",
+            "nimble-climber",
+            "peerless-maneuver",
+            "positioning-attack",
+            "quick-disguise",
+            "quick-trapsmith",
+            "snap-shot",
+            "strong-impression",
+            "survivalist",
+            "swift-poison"
+          ]
+        },
+        {
+          "id": "bard-negotiator-rogue-talents-10",
+          "name": "Rogue Talent 3",
+          "level": 10,
+          "type": "selectable",
+          "summary": "Choose a rogue or advanced rogue talent. The app enforces level eligibility and prevents duplicate selections.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-rogue-talents",
+          "optionChoiceIds": [
+            "combat-trick",
+            "fast-stealth",
+            "finesse-rogue",
+            "ledge-walker",
+            "major-magic",
+            "minor-magic",
+            "quick-disable",
+            "resiliency",
+            "rogue-crawl",
+            "stand-up",
+            "surprise-attack",
+            "trap-spotter",
+            "weapon-training",
+            "defensive-roll",
+            "feat",
+            "improved-evasion",
+            "opportunist",
+            "skill-mastery",
+            "slippery-mind",
+            "assault-leader",
+            "camouflage",
+            "canny-observer",
+            "charmer",
+            "coax-information",
+            "combat-swipe",
+            "cunning-trigger",
+            "expert-leaper",
+            "fast-fingers",
+            "fast-picks",
+            "follow-clues",
+            "guileful-polyglot",
+            "hard-to-fool",
+            "honeyed-words",
+            "lasting-poison",
+            "nimble-climber",
+            "peerless-maneuver",
+            "positioning-attack",
+            "quick-disguise",
+            "quick-trapsmith",
+            "snap-shot",
+            "strong-impression",
+            "survivalist",
+            "swift-poison",
+            "another-day",
+            "deadly-cocktail",
+            "fast-tumble",
+            "frugal-trapsmith",
+            "master-of-disguise",
+            "redirect-attack",
+            "stealthy-sniper",
+            "thoughtful-reexamining"
+          ]
+        },
+        {
+          "id": "bard-negotiator-rogue-talents-14",
+          "name": "Rogue Talent 4",
+          "level": 14,
+          "type": "selectable",
+          "summary": "Choose a rogue or advanced rogue talent. The app enforces level eligibility and prevents duplicate selections.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-rogue-talents",
+          "optionChoiceIds": [
+            "combat-trick",
+            "fast-stealth",
+            "finesse-rogue",
+            "ledge-walker",
+            "major-magic",
+            "minor-magic",
+            "quick-disable",
+            "resiliency",
+            "rogue-crawl",
+            "stand-up",
+            "surprise-attack",
+            "trap-spotter",
+            "weapon-training",
+            "defensive-roll",
+            "feat",
+            "improved-evasion",
+            "opportunist",
+            "skill-mastery",
+            "slippery-mind",
+            "assault-leader",
+            "camouflage",
+            "canny-observer",
+            "charmer",
+            "coax-information",
+            "combat-swipe",
+            "cunning-trigger",
+            "expert-leaper",
+            "fast-fingers",
+            "fast-picks",
+            "follow-clues",
+            "guileful-polyglot",
+            "hard-to-fool",
+            "honeyed-words",
+            "lasting-poison",
+            "nimble-climber",
+            "peerless-maneuver",
+            "positioning-attack",
+            "quick-disguise",
+            "quick-trapsmith",
+            "snap-shot",
+            "strong-impression",
+            "survivalist",
+            "swift-poison",
+            "another-day",
+            "deadly-cocktail",
+            "fast-tumble",
+            "frugal-trapsmith",
+            "master-of-disguise",
+            "redirect-attack",
+            "stealthy-sniper",
+            "thoughtful-reexamining"
+          ]
+        },
+        {
+          "id": "bard-negotiator-rogue-talents-18",
+          "name": "Rogue Talent 5",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Choose a rogue or advanced rogue talent. The app enforces level eligibility and prevents duplicate selections.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-rogue-talents",
+          "optionChoiceIds": [
+            "combat-trick",
+            "fast-stealth",
+            "finesse-rogue",
+            "ledge-walker",
+            "major-magic",
+            "minor-magic",
+            "quick-disable",
+            "resiliency",
+            "rogue-crawl",
+            "stand-up",
+            "surprise-attack",
+            "trap-spotter",
+            "weapon-training",
+            "defensive-roll",
+            "feat",
+            "improved-evasion",
+            "opportunist",
+            "skill-mastery",
+            "slippery-mind",
+            "assault-leader",
+            "camouflage",
+            "canny-observer",
+            "charmer",
+            "coax-information",
+            "combat-swipe",
+            "cunning-trigger",
+            "expert-leaper",
+            "fast-fingers",
+            "fast-picks",
+            "follow-clues",
+            "guileful-polyglot",
+            "hard-to-fool",
+            "honeyed-words",
+            "lasting-poison",
+            "nimble-climber",
+            "peerless-maneuver",
+            "positioning-attack",
+            "quick-disguise",
+            "quick-trapsmith",
+            "snap-shot",
+            "strong-impression",
+            "survivalist",
+            "swift-poison",
+            "another-day",
+            "deadly-cocktail",
+            "fast-tumble",
+            "frugal-trapsmith",
+            "master-of-disguise",
+            "redirect-attack",
+            "stealthy-sniper",
+            "thoughtful-reexamining"
+          ]
         },
         {
           "id": "bard-negotiator-master-of-rhetoric-ex-5",
           "name": "Master of Rhetoric (Ex)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, the negotiator can take 10 on any Bluff, Diplomacy, Intimidate, Knowledge (local), or Sense Motive check if he has ranks in that skill. A negotiator can choose not to take 10 and can instead roll normally. In addition, the negotiator can take 20 on one of those skill checks (without spending any additional time). The negotiator can do this once per day at 5th level, twice per day at 11th level, and three times per day at 17th level. This ability replaces lore master."
+          "summary": "At 5th level, the negotiator can take 10 on any Bluff, Diplomacy, Intimidate, Knowledge (local), or Sense Motive check if he has ranks in that skill. A negotiator can choose not to take 10 and can instead roll normally. In addition, the negotiator can take 20 on one of those skill checks (without spending any additional time). The negotiator can do this once per day at 5th level, twice per day at 11th level, and three times per day at 17th level. This ability replaces lore master.",
+          "resourceActions": [
+            {
+              "id": "negotiator-master-rhetoric",
+              "label": "Use Master of Rhetoric Take 20",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "masterOfRhetoricTake20",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "free"
+                }
+              ],
+              "modeLabel": "Skill",
+              "modes": [
+                {
+                  "id": "bluff",
+                  "label": "Bluff",
+                  "summary": "Use the fixed result for a Bluff check."
+                },
+                {
+                  "id": "diplomacy",
+                  "label": "Diplomacy",
+                  "summary": "Use the fixed result for a Diplomacy check."
+                },
+                {
+                  "id": "intimidate",
+                  "label": "Intimidate",
+                  "summary": "Use the fixed result for a Intimidate check."
+                },
+                {
+                  "id": "knowledge-local",
+                  "label": "Knowledge (local)",
+                  "summary": "Use the fixed result for a Knowledge (local) check."
+                },
+                {
+                  "id": "sense-motive",
+                  "label": "Sense Motive",
+                  "summary": "Use the fixed result for a Sense Motive check."
+                }
+              ],
+              "fixedD20Result": {
+                "label": "Natural d20 result",
+                "result": 20
+              },
+              "summary": "Spend one daily use and treat the selected check's natural d20 result as 20 without extra time."
+            }
+          ]
         },
         {
           "id": "bard-negotiator-advanced-talents-10",
           "name": "Advanced Talents",
           "level": 10,
           "type": "archetype",
-          "summary": "At 10th level and every 4 levels thereafter, a negotiator can select an advanced rogue talent in place of a rogue talent. A negotiator cannot select an advanced talent that modifies the sneak attack ability."
+          "summary": "At 10th level and every 4 levels thereafter, a negotiator can select an advanced rogue talent in place of a rogue talent. A negotiator cannot select an advanced talent that modifies the sneak attack ability.",
+          "progressionProfiles": [
+            {
+              "id": "negotiator-advanced-talents",
+              "label": "Advanced Talent access",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "benefit",
+                  "label": "Benefit"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 10,
+                  "values": {
+                    "benefit": "The level 10, 14, and 18 slots also allow advanced talents that do not modify sneak attack"
+                  }
+                }
+              ],
+              "summary": "The selector filters out every talent whose rules modify sneak attack."
+            }
+          ]
         }
       ]
     }
@@ -75,8 +577,132 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Negotiator"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Hard Bargainer, all three performances, five filtered rogue-talent choices, trained take 10, and bounded take 20 uses are automated."
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "bard-negotiator-hard-bargainer-1",
+      "skill": "Bluff",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-negotiator-hard-bargainer-1",
+      "skill": "Diplomacy",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-negotiator-hard-bargainer-1",
+      "skill": "Intimidate",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-negotiator-hard-bargainer-1",
+      "skill": "Knowledge (local)",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-negotiator-hard-bargainer-1",
+      "skill": "Sense Motive",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    }
+  ],
+  "skillCheckRules": [
+    {
+      "sourceFeatureId": "bard-negotiator-master-of-rhetoric-ex-5",
+      "label": "Master of Rhetoric",
+      "minimumLevel": 5,
+      "skills": [
+        "Bluff"
+      ],
+      "result": 10,
+      "allowsStress": true,
+      "trainedOnly": true
+    },
+    {
+      "sourceFeatureId": "bard-negotiator-master-of-rhetoric-ex-5",
+      "label": "Master of Rhetoric",
+      "minimumLevel": 5,
+      "skills": [
+        "Diplomacy"
+      ],
+      "result": 10,
+      "allowsStress": true,
+      "trainedOnly": true
+    },
+    {
+      "sourceFeatureId": "bard-negotiator-master-of-rhetoric-ex-5",
+      "label": "Master of Rhetoric",
+      "minimumLevel": 5,
+      "skills": [
+        "Intimidate"
+      ],
+      "result": 10,
+      "allowsStress": true,
+      "trainedOnly": true
+    },
+    {
+      "sourceFeatureId": "bard-negotiator-master-of-rhetoric-ex-5",
+      "label": "Master of Rhetoric",
+      "minimumLevel": 5,
+      "skills": [
+        "Knowledge (local)"
+      ],
+      "result": 10,
+      "allowsStress": true,
+      "trainedOnly": true
+    },
+    {
+      "sourceFeatureId": "bard-negotiator-master-of-rhetoric-ex-5",
+      "label": "Master of Rhetoric",
+      "minimumLevel": 5,
+      "skills": [
+        "Sense Motive"
+      ],
+      "result": 10,
+      "allowsStress": true,
+      "trainedOnly": true
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "masterOfRhetoricTake20",
+      "label": "Master of Rhetoric take 20",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 5,
+      "base": 1,
+      "refreshCadence": "day",
+      "maximumByLevel": [
+        {
+          "level": 5,
+          "maximum": 1
+        },
+        {
+          "level": 11,
+          "maximum": 2
+        },
+        {
+          "level": 17,
+          "maximum": 3
+        }
+      ]
+    }
   ]
 }
