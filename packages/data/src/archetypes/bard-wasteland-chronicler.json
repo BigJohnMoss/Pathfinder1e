@@ -27,25 +27,69 @@
           "name": "Wasteland Specialist (Ex)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level and every 5 levels thereafter, the wasteland chronicler gains the benefits of the favored terrain ranger class feature , but the wasteland chronicler can choose only cold, desert, mountain, or swamp from the ranger’s favored terrain list. In addition, the wasteland chronicler adds half his level (minimum 1) as a bonus on Diplomacy checks to influence the attitude of wasteland dwellers. If the wasteland chronicler has the favored terrain ability from any other classes, the levels from these different sources stack for the purposes of improving the bonuses of selected favored terrains and choosing new favored terrains. This replaces inspire competence."
+          "summary": "At 3rd level and every 5 levels thereafter, choose cold, desert, mountain, or swamp as favored terrain and increase one favored-terrain bonus by +2. Bard and Ranger levels stack. Add half Bard level (minimum 1) to Diplomacy checks against wasteland dwellers.",
+          "effectiveLevelClassIds": [
+            "bard",
+            "ranger"
+          ],
+          "favoredTerrainAdvancementOptionGroupId": "wasteland-chronicler-favored-terrain-advancements"
         }
       ]
     }
   ],
   "skillBonusAdjustments": [
-    { "sourceFeatureId": "bard-wasteland-chronicler-wasteland-knowledge-ex-1", "skill": "Knowledge (geography)", "base": 0, "levelDivisor": 2, "minimum": 1 },
-    { "sourceFeatureId": "bard-wasteland-chronicler-wasteland-knowledge-ex-1", "skill": "Knowledge (local)", "base": 0, "levelDivisor": 2, "minimum": 1 },
-    { "sourceFeatureId": "bard-wasteland-chronicler-wasteland-knowledge-ex-1", "skill": "Knowledge (nature)", "base": 0, "levelDivisor": 2, "minimum": 1 },
-    { "sourceFeatureId": "bard-wasteland-chronicler-wasteland-knowledge-ex-1", "skill": "Knowledge (planes)", "base": 0, "levelDivisor": 2, "minimum": 1 },
-    { "sourceFeatureId": "bard-wasteland-chronicler-wasteland-knowledge-ex-1", "skill": "Survival", "base": 0, "levelDivisor": 2, "minimum": 1 }
+    {
+      "sourceFeatureId": "bard-wasteland-chronicler-wasteland-knowledge-ex-1",
+      "skill": "Knowledge (geography)",
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-wasteland-chronicler-wasteland-knowledge-ex-1",
+      "skill": "Knowledge (local)",
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-wasteland-chronicler-wasteland-knowledge-ex-1",
+      "skill": "Knowledge (nature)",
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-wasteland-chronicler-wasteland-knowledge-ex-1",
+      "skill": "Knowledge (planes)",
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-wasteland-chronicler-wasteland-knowledge-ex-1",
+      "skill": "Survival",
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-wasteland-chronicler-wasteland-specialist-ex-3",
+      "skill": "Diplomacy",
+      "minimumLevel": 3,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1,
+      "condition": "Checks to influence the attitude of wasteland dwellers"
+    }
   ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Wasteland%20Chronicler"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Wasteland Knowledge applies its half-level skill bonuses. Wasteland Specialist remains descriptive."
+    "All five Wasteland Knowledge bonuses, restricted favored-terrain selection and advancement at levels 3, 8, 13, and 18, Bard-plus-Ranger stacking, and the conditional Diplomacy bonus are automated."
   ]
 }
