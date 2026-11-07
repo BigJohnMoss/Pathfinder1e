@@ -1,0 +1,251 @@
+{
+  "id": "druid-wild-whisperer-talents",
+  "name": "Wild Whisperer Investigator Talents",
+  "classIds": [
+    "druid"
+  ],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "groupId": "druid-wild-whisperer-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 8,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 32,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/investigator.html#investigator-talents"
+      },
+      "id": "wild-whisperer-amazing-inspiration-talent",
+      "name": "Amazing Inspiration",
+      "benefit": "Increase the inspiration die to d8 and later d10."
+    },
+    {
+      "groupId": "druid-wild-whisperer-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 8,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 32,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/investigator.html#investigator-talents"
+      },
+      "id": "wild-whisperer-combat-inspiration",
+      "name": "Combat Inspiration",
+      "benefit": "Spend inspiration on attack and damage rolls at reduced cost."
+    },
+    {
+      "groupId": "druid-wild-whisperer-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 8,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 32,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/investigator.html#investigator-talents"
+      },
+      "id": "wild-whisperer-device-talent",
+      "name": "Device Talent",
+      "benefit": "Use inspiration on Use Magic Device checks without spending points.",
+      "choice": {
+        "key": "device-skill",
+        "label": "Device-related skill selected",
+        "allowCustom": true,
+        "uniqueAcrossSelections": true
+      }
+    },
+    {
+      "groupId": "druid-wild-whisperer-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 8,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 32,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/investigator.html#investigator-talents"
+      },
+      "id": "wild-whisperer-effortless-aid",
+      "name": "Effortless Aid",
+      "benefit": "Aid another as a move action, or a swift action by spending inspiration."
+    },
+    {
+      "groupId": "druid-wild-whisperer-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 8,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 32,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/investigator.html#investigator-talents"
+      },
+      "id": "wild-whisperer-empathy",
+      "name": "Empathy",
+      "benefit": "Use inspiration on Heal and Sense Motive without spending points."
+    },
+    {
+      "groupId": "druid-wild-whisperer-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 8,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 32,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/investigator.html#investigator-talents"
+      },
+      "id": "wild-whisperer-expanded-inspiration",
+      "name": "Expanded Inspiration",
+      "benefit": "Use inspiration on Diplomacy, Heal, Perception, Profession, and Sense Motive without spending points."
+    },
+    {
+      "groupId": "druid-wild-whisperer-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 8,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 32,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/investigator.html#investigator-talents"
+      },
+      "id": "wild-whisperer-inspired-alertness",
+      "name": "Inspired Alertness",
+      "benefit": "Spend inspiration to avoid being caught flat-footed."
+    },
+    {
+      "groupId": "druid-wild-whisperer-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 8,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 32,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/investigator.html#investigator-talents"
+      },
+      "id": "wild-whisperer-item-lore",
+      "name": "Item Lore",
+      "benefit": "Use inspiration on Appraise and Use Magic Device without spending points."
+    },
+    {
+      "groupId": "druid-wild-whisperer-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 8,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 32,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/investigator.html#investigator-talents"
+      },
+      "id": "wild-whisperer-quick-study",
+      "name": "Quick Study",
+      "benefit": "Study an opponent as a swift action."
+    },
+    {
+      "groupId": "druid-wild-whisperer-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 8,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 32,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/investigator.html#investigator-talents"
+      },
+      "id": "wild-whisperer-sickening-offensive",
+      "name": "Sickening Offensive",
+      "benefit": "A studied strike can sicken its target."
+    },
+    {
+      "groupId": "druid-wild-whisperer-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 8,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 32,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/investigator.html#investigator-talents"
+      },
+      "id": "wild-whisperer-underworld-inspiration",
+      "name": "Underworld Inspiration",
+      "benefit": "Use inspiration on Bluff, Disable Device, Disguise, Intimidate, and Sleight of Hand without spending points."
+    },
+    {
+      "groupId": "druid-wild-whisperer-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 11,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 32,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/investigator.html#investigator-talents"
+      },
+      "id": "wild-whisperer-evasion",
+      "name": "Evasion",
+      "benefit": "Take no damage on a successful qualifying Reflex save."
+    },
+    {
+      "groupId": "druid-wild-whisperer-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 32,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/investigator.html#investigator-talents"
+      },
+      "id": "wild-whisperer-tenacious-inspiration",
+      "name": "Tenacious Inspiration",
+      "benefit": "Roll two inspiration dice and take the higher result."
+    },
+    {
+      "groupId": "druid-wild-whisperer-talents",
+      "classIds": [
+        "druid"
+      ],
+      "minimumLevel": 8,
+      "prerequisites": [],
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 32,
+        "url": "https://legacy.aonprd.com/advancedClassGuide/classes/investigator.html#investigator-talents"
+      },
+      "id": "wild-whisperer-rogue-talent",
+      "name": "Rogue Talent",
+      "benefit": "Select an eligible rogue talent.",
+      "choice": {
+        "key": "rogue-talent",
+        "label": "Rogue talent selected",
+        "allowCustom": true,
+        "uniqueAcrossSelections": true
+      }
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Wild%20Whisperer"
+  }
+}
