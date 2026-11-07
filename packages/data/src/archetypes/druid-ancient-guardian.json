@@ -21,35 +21,224 @@
           "name": "Ancient Arms",
           "level": 1,
           "type": "archetype",
-          "summary": "An ancient guardian can’t wield weapons made primarily of metal. She is proficient with only the club, dart, quarterstaff, shortspear, sling, and spear. She is also proficient with all natural attacks (claw, bite, and so forth) of any form she assumes with wild shape. Using a prohibited weapon renders her unable to cast druid spells or use any of her druid supernatural or spell-like class abilities while wielding the weapon and for 24 hours after ceasing to wield it. This alters the druid’s normal weapon proficiencies."
+          "summary": "An ancient guardian can’t wield weapons made primarily of metal. She is proficient with only the club, dart, quarterstaff, shortspear, sling, and spear. She is also proficient with all natural attacks (claw, bite, and so forth) of any form she assumes with wild shape. Using a prohibited weapon renders her unable to cast druid spells or use any of her druid supernatural or spell-like class abilities while wielding the weapon and for 24 hours after ceasing to wield it. This alters the druid’s normal weapon proficiencies.",
+          "resourceActions": [
+            {
+              "id": "ancient-guardian-prohibited-weapon",
+              "label": "Record Prohibited Metal Weapon",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "free"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "metal-weapon",
+                  "label": "The wielded weapon is made primarily of metal",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Ancient Arms Suppression",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Druid spells and supernatural and spell-like Druid class abilities are unavailable while the prohibited weapon is wielded and for 24 hours afterward.",
+                "defaultRounds": 14400,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Start or restart the 24-hour Ancient Arms suppression tracker."
+            }
+          ]
         },
         {
           "id": "druid-ancient-guardian-community-bond-ex-1",
           "name": "Community Bond (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "At 1st level, an ancient guardian must choose the domain nature bond ability and select from the following domains: Community, Healing, Knowledge, Protection, or Repose. This ability alters nature bond."
+          "type": "selectable",
+          "summary": "At 1st level, an ancient guardian must choose the domain nature bond ability and select from the following domains: Community, Healing, Knowledge, Protection, or Repose. This ability alters nature bond.",
+          "choiceRequired": true,
+          "optionGroupId": "druid-nature-bonds",
+          "optionChoiceIds": [
+            "druid-nature-bond-domain"
+          ],
+          "progressionKey": "druid-nature-bond",
+          "progressionProfiles": [
+            {
+              "id": "ancient-guardian-community-bond",
+              "label": "Community Bond",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "domains",
+                  "label": "Legal domains"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "domains": "Community, Healing, Knowledge, Protection, or Repose"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-ancient-guardian-patience-of-nature-ex-1",
           "name": "Patience of Nature (Ex)",
-          "level": 1,
+          "level": 2,
           "type": "archetype",
-          "summary": "An ancient guardian does not gain wild empathy at 1st level. Instead, at 2nd level, an ancient guardian adds Diplomacy, Perform (oratory), and Sense Motive to her list of class skills and gains an insight bonus equal to half her druid level on such checks. This ability replaces wild empathy."
+          "summary": "An ancient guardian does not gain wild empathy at 1st level. Instead, at 2nd level, an ancient guardian adds Diplomacy, Perform (oratory), and Sense Motive to her list of class skills and gains an insight bonus equal to half her druid level on such checks. This ability replaces wild empathy.",
+          "progressionProfiles": [
+            {
+              "id": "ancient-guardian-patience",
+              "label": "Patience of Nature",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "bonus",
+                  "label": "Diplomacy, Perform (oratory), Sense Motive"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 2,
+                  "values": {
+                    "bonus": "+1 insight"
+                  }
+                },
+                {
+                  "level": 4,
+                  "values": {
+                    "bonus": "+2 insight"
+                  }
+                },
+                {
+                  "level": 6,
+                  "values": {
+                    "bonus": "+3 insight"
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "bonus": "+4 insight"
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "bonus": "+5 insight"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "bonus": "+6 insight"
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "bonus": "+7 insight"
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "bonus": "+8 insight"
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "bonus": "+9 insight"
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "bonus": "+10 insight"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-ancient-guardian-ancient-ways-ex-3",
           "name": "Ancient Ways (Ex)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, an ancient guardian increases any climb, fly, or swim speeds she has or gains via her wild shape ability by 10 feet. This ability replaces trackless step and woodland stride."
+          "summary": "At 3rd level, an ancient guardian increases any climb, fly, or swim speeds she has or gains via her wild shape ability by 10 feet. This ability replaces trackless step and woodland stride.",
+          "progressionProfiles": [
+            {
+              "id": "ancient-guardian-ancient-ways",
+              "label": "Ancient Ways",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "speed",
+                  "label": "Wild Shape movement"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 3,
+                  "values": {
+                    "speed": "+10 feet to climb, fly, and swim speeds"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-ancient-guardian-dispel-hostility-su-1",
           "name": "Dispel Hostility (Su)",
-          "level": 1,
+          "level": 3,
           "type": "archetype",
-          "summary": "An ancient guardian doesn’t gain spontaneous casting at 1st level. Instead, at 3rd level, she can channel stored spell energy into a spell capable of dispelling hostile thoughts and strong emotions. She can “lose” a prepared spell in order to cast calm emotions . Instead of the normal Will saving throw for that spell, the DC of a calm emotions spell cast with this ability is 10 + 1/2 the ancient guardian’s druid level + her Wisdom modifier. This ability replaces spontaneous casting."
+          "summary": "An ancient guardian doesn’t gain spontaneous casting at 1st level. Instead, at 3rd level, she can channel stored spell energy into a spell capable of dispelling hostile thoughts and strong emotions. She can “lose” a prepared spell in order to cast calm emotions . Instead of the normal Will saving throw for that spell, the DC of a calm emotions spell cast with this ability is 10 + 1/2 the ancient guardian’s druid level + her Wisdom modifier. This ability replaces spontaneous casting.",
+          "spellAutomation": {
+            "preparedKeywordConversion": {
+              "label": "Dispel Hostility",
+              "keyword": "calm emotions"
+            }
+          },
+          "progressionProfiles": [
+            {
+              "id": "ancient-guardian-dispel-hostility",
+              "label": "Dispel Hostility",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "rule",
+                  "label": "Prepared-spell conversion"
+                },
+                {
+                  "id": "dc",
+                  "label": "Save DC"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 3,
+                  "values": {
+                    "rule": "Lose a prepared spell of 2nd level or higher to cast calm emotions",
+                    "dc": "10 + half Druid level + Wisdom modifier"
+                  }
+                }
+              ],
+              "summary": "The spellbook spends the lowest legal prepared slot and applies the archetype's level-based save DC adjustment."
+            }
+          ]
         },
         {
           "id": "druid-ancient-guardian-unimpeachable-ex-4",
@@ -63,20 +252,272 @@
           "name": "Undo Artifice (Sp)",
           "level": 13,
           "type": "archetype",
-          "summary": "At 13th level, an ancient guardian gains the ability to reduce a nonliving item to its component raw materials. This acts as the spell polymorph any object , but works on magical or nonmagical nonliving objects. The duration is always permanent. Unlike polymorph any object , this ability can’t be used to mimic the effects of other spells. Items subject to this effect receive a Fortitude saving throw to negate the effect (DC = 10 + 1/2 the ancient guardian’s druid level + her Wisdom modifier). Magic items receive a circumstance bonus on this save equal to +1 for every 5,000 gp of the item’s value. An ancient guardian can use undo artifice a number of times per day equal to her Wisdom modifier. This ability replaces a thousand faces."
+          "summary": "At 13th level, an ancient guardian gains the ability to reduce a nonliving item to its component raw materials. This acts as the spell polymorph any object , but works on magical or nonmagical nonliving objects. The duration is always permanent. Unlike polymorph any object , this ability can’t be used to mimic the effects of other spells. Items subject to this effect receive a Fortitude saving throw to negate the effect (DC = 10 + 1/2 the ancient guardian’s druid level + her Wisdom modifier). Magic items receive a circumstance bonus on this save equal to +1 for every 5,000 gp of the item’s value. An ancient guardian can use undo artifice a number of times per day equal to her Wisdom modifier. This ability replaces a thousand faces.",
+          "numericCalculations": [
+            {
+              "id": "ancient-guardian-undo-artifice-dc",
+              "label": "Undo Artifice",
+              "inputLabel": "Wisdom modifier",
+              "inputMinimum": -5,
+              "inputMaximum": 20,
+              "inputDefault": 3,
+              "outputLabel": "Fortitude save DC",
+              "baseByLevel": [
+                {
+                  "level": 13,
+                  "value": 16
+                },
+                {
+                  "level": 14,
+                  "value": 17
+                },
+                {
+                  "level": 15,
+                  "value": 17
+                },
+                {
+                  "level": 16,
+                  "value": 18
+                },
+                {
+                  "level": 17,
+                  "value": 18
+                },
+                {
+                  "level": 18,
+                  "value": 19
+                },
+                {
+                  "level": 19,
+                  "value": 19
+                },
+                {
+                  "level": 20,
+                  "value": 20
+                }
+              ],
+              "inputMultiplierByLevel": [
+                {
+                  "level": 13,
+                  "multiplier": 1
+                }
+              ],
+              "classId": "druid",
+              "summary": "Magic items add +1 to this save for every 5,000 gp of value."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "ancient-guardian-undo-artifice",
+              "label": "Undo Artifice",
+              "classId": "druid",
+              "minimumLevel": 13,
+              "resourceId": "undoArtifice",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 13,
+                  "actionType": "standard"
+                }
+              ],
+              "savingThrow": {
+                "label": "Fortitude",
+                "ability": "wisdom",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "modeLabel": "Object type",
+              "modes": [
+                {
+                  "id": "nonmagical",
+                  "label": "Nonmagical object",
+                  "summary": "Permanently reduce a nonliving object to its component raw materials on a failed Fortitude save."
+                },
+                {
+                  "id": "magical",
+                  "label": "Magic item",
+                  "summary": "Permanently reduce a magic item to raw materials; add +1 to its Fortitude save per 5,000 gp of value."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "nonliving",
+                  "label": "The target is a nonliving object",
+                  "requiredForActivation": true
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "polymorph-any-object",
+                "spellName": "Polymorph Any Object — raw materials only, permanent",
+                "cadence": "day",
+                "kind": "spell-like"
+              },
+              "summary": "Spend one Wisdom-based daily use and resolve the object's Fortitude save; this cannot mimic another spell."
+            }
+          ]
         }
       ]
     }
   ],
-  "classSkillAdditions": ["Diplomacy","Perform","Sense Motive"],
-  "proficiencyAdjustments": [{"category":"weapon","operation":"replace","proficiencies":["Club","Dart","Quarterstaff","Shortspear","Sling","Spear","Natural attacks while wild shaped"]}],
+  "classSkillAdditions": [
+    "Diplomacy",
+    "Perform",
+    "Sense Motive"
+  ],
+  "proficiencyAdjustments": [
+    {
+      "category": "weapon",
+      "operation": "replace",
+      "proficiencies": [
+        "Club",
+        "Dart",
+        "Quarterstaff",
+        "Shortspear",
+        "Sling",
+        "Spear",
+        "Natural attacks while wild shaped"
+      ]
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Ancient%20Guardian"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Ancient Arms restrictions and suppression, Community Bond domains, all Patience of Nature skill scaling, Wild Shape movement, calm emotions conversion and save DC, enchantment saves, and Wisdom-based Undo Artifice uses, modes, saves, and restrictions are automated."
+  ],
+  "spellListAdditions": {
+    "calm-emotions": 2
+  },
+  "spellModifierAdjustments": [
+    {
+      "sourceFeatureId": "druid-ancient-guardian-dispel-hostility-su-1",
+      "label": "Dispel Hostility save DC",
+      "target": "saveDc",
+      "minimumLevel": 3,
+      "base": -1,
+      "spellIds": [
+        "calm-emotions"
+      ],
+      "bonusByLevel": [
+        {
+          "level": 3,
+          "bonus": -1
+        },
+        {
+          "level": 4,
+          "bonus": 0
+        },
+        {
+          "level": 6,
+          "bonus": 1
+        },
+        {
+          "level": 8,
+          "bonus": 2
+        },
+        {
+          "level": 10,
+          "bonus": 3
+        },
+        {
+          "level": 12,
+          "bonus": 4
+        },
+        {
+          "level": 14,
+          "bonus": 5
+        },
+        {
+          "level": 16,
+          "bonus": 6
+        },
+        {
+          "level": 18,
+          "bonus": 7
+        },
+        {
+          "level": 20,
+          "bonus": 8
+        }
+      ]
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-ancient-guardian-patience-of-nature-ex-1",
+      "label": "Patience of Nature — Diplomacy",
+      "condition": "Diplomacy checks",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelDivisor": 2,
+      "levelMultiplier": 1,
+      "minimum": 1,
+      "maximum": 10
+    },
+    {
+      "sourceFeatureId": "druid-ancient-guardian-patience-of-nature-ex-1",
+      "label": "Patience of Nature — Perform (oratory)",
+      "condition": "Perform (oratory) checks",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelDivisor": 2,
+      "levelMultiplier": 1,
+      "minimum": 1,
+      "maximum": 10
+    },
+    {
+      "sourceFeatureId": "druid-ancient-guardian-patience-of-nature-ex-1",
+      "label": "Patience of Nature — Sense Motive",
+      "condition": "Sense Motive checks",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelDivisor": 2,
+      "levelMultiplier": 1,
+      "minimum": 1,
+      "maximum": 10
+    },
+    {
+      "sourceFeatureId": "druid-ancient-guardian-ancient-ways-ex-3",
+      "label": "Ancient Ways",
+      "condition": "Climb, fly, and swim speeds possessed or gained through Wild Shape",
+      "minimumLevel": 3,
+      "base": 10
+    },
+    {
+      "sourceFeatureId": "druid-ancient-guardian-unimpeachable-ex-4",
+      "label": "Unimpeachable",
+      "condition": "Saving throws against enchantments",
+      "minimumLevel": 4,
+      "base": 4
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "sourceFeatureId": "druid-ancient-guardian-undo-artifice-sp-13",
+      "resourceId": "undoArtifice",
+      "label": "Undo Artifice",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 13,
+      "base": 0,
+      "abilityModifier": "wisdom",
+      "minimum": 0,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-domain"
+  ],
+  "druidDomainIds": [
+    "domain-community",
+    "domain-healing",
+    "domain-knowledge",
+    "domain-protection",
+    "domain-repose"
   ]
 }
