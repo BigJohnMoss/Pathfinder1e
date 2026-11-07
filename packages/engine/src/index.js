@@ -27,6 +27,7 @@ import { archetypeCombatModifierAdjustments, inferredArchetypeCombatModifierDeta
 import { archetypeSenseAdjustments, inferredArchetypeSenseDetails, inferArchetypeSenseAdjustments } from "./archetype-senses.js";
 import { archetypeLandSpeedAdjustments, inferredArchetypeLandSpeedDetails, inferArchetypeLandSpeedAdjustments } from "./archetype-movement.js";
 import { archetypeDefenseAdjustments, archetypeDefenses, inferredArchetypeDefenseDetails, inferArchetypeDefenseAdjustments } from "./archetype-defenses.js";
+import { archetypeArmorConditionedBenefits, inferredArchetypeArmorConditionedDefenseDetails } from "./archetype-armor-conditioned-defense.js";
 import { archetypeSkillCheckRules, inferredArchetypeSkillCheckDetails, inferArchetypeSkillCheckRules } from "./archetype-skill-checks.js";
 import { archetypeAbilityScoreAdjustments, inferredArchetypeAbilityScoreDetails, inferArchetypeAbilityScoreAdjustments } from "./archetype-abilities.js";
 import { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments, inferredArchetypeAlignmentDetails } from "./archetype-alignment.js";
@@ -69,7 +70,7 @@ export { archetypeSaveBonusAdjustments, inferArchetypeSaveBonusAdjustments };
 export { archetypeCombatModifierAdjustments, inferArchetypeCombatModifierAdjustments };
 export { archetypeSenseAdjustments, inferArchetypeSenseAdjustments };
 export { archetypeLandSpeedAdjustments, inferArchetypeLandSpeedAdjustments };
-export { archetypeDefenseAdjustments, archetypeDefenses, inferArchetypeDefenseAdjustments };
+export { archetypeArmorConditionedBenefits, archetypeDefenseAdjustments, archetypeDefenses, inferArchetypeDefenseAdjustments };
 export { archetypeSkillCheckRules, inferArchetypeSkillCheckRules };
 export { archetypeAbilityScoreAdjustments, inferArchetypeAbilityScoreAdjustments };
 export { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments };
@@ -2001,9 +2002,12 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (landSpeedAdjustments.length)
     automated.push(`${landSpeedAdjustments.length} level-aware land-speed adjustment${landSpeedAdjustments.length === 1 ? "" : "s"}`);
   const defenseDetails = inferredArchetypeDefenseDetails(archetype);
+  const armorConditionedDefenseDetails = inferredArchetypeArmorConditionedDefenseDetails(archetype);
   const defenseAdjustments = archetypeDefenseAdjustments(archetype);
   if (defenseAdjustments.length)
     automated.push(`${defenseAdjustments.length} level-aware special defense${defenseAdjustments.length === 1 ? "" : "s"}`);
+  if (armorConditionedDefenseDetails.fullyAutomatedFeatureIds.size)
+    automated.push(`${armorConditionedDefenseDetails.fullyAutomatedFeatureIds.size} equipment-aware armor feature${armorConditionedDefenseDetails.fullyAutomatedFeatureIds.size === 1 ? "" : "s"}`);
   const abilityScoreDetails = inferredArchetypeAbilityScoreDetails(archetype);
   const abilityScoreAdjustments = archetypeAbilityScoreAdjustments(archetype);
   if (abilityScoreAdjustments.length)
@@ -2148,6 +2152,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...landSpeedDetails.fullyAutomatedFeatureIds,
     ...(archetype.defenseAdjustments ?? []).filter(adjustment => !adjustment.partialFeature).map(adjustment => adjustment.sourceFeatureId),
     ...defenseDetails.fullyAutomatedFeatureIds,
+    ...armorConditionedDefenseDetails.fullyAutomatedFeatureIds,
     ...crossRuleFeatureIds,
     ...(archetype.abilityScoreAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
     ...abilityScoreDetails.fullyAutomatedFeatureIds,

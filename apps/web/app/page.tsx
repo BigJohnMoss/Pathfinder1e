@@ -32,6 +32,7 @@ import {
   equipmentCombatBonuses,
   equipmentEncumbrance,
   equippedArmorCategory,
+  equippedShieldBonus,
   equippedArcaneSpellFailureChance,
   equippedWeaponAttacks,
   unarmedStrikeAttack,
@@ -67,6 +68,7 @@ import {
   abilityBoostCount,
   abilityNames,
   apgClassResourceMaximums,
+  archetypeArmorConditionedBenefits,
   archetypeAbilityScoreBonuses,
   archetypeCombatBonuses,
   archetypeCompanionEffectiveLevel,
@@ -1053,9 +1055,20 @@ export default function Home() {
     () => archetypeSenses(allSelectedArchetypes, classLevelMap),
     [allSelectedArchetypes, classLevelMap],
   );
+  const selectedArchetypeArmorBenefits = useMemo(
+    () => archetypeArmorConditionedBenefits(allSelectedArchetypes, classLevelMap, {
+      armorCategory: equippedArmorCategory(inventory),
+      shieldBonus: equippedShieldBonus(inventory),
+      selectedOptions,
+    }),
+    [allSelectedArchetypes, classLevelMap, inventory, selectedOptions],
+  );
   const selectedArchetypeDefenses = useMemo(
-    () => archetypeDefenses(allSelectedArchetypes, classLevelMap),
-    [allSelectedArchetypes, classLevelMap],
+    () => [
+      ...archetypeDefenses(allSelectedArchetypes, classLevelMap).filter((defense) => !defense.sourceFeatureId || !selectedArchetypeArmorBenefits.handledFeatureIds.includes(defense.sourceFeatureId)),
+      ...selectedArchetypeArmorBenefits.defenses,
+    ],
+    [allSelectedArchetypes, classLevelMap, selectedArchetypeArmorBenefits.defenses, selectedArchetypeArmorBenefits.handledFeatureIds],
   );
   const selectedArchetypeSkillCheckRules = useMemo(
     () => archetypeSkillCheckRules(allSelectedArchetypes, classLevelMap),
@@ -1102,18 +1115,21 @@ export default function Home() {
         normal:
           baseCombat.armorClass.normal +
           selectedArchetypeCombatBonuses.armorClass.normal +
+          selectedArchetypeArmorBenefits.armorClass.normal +
           equipmentBonuses.armorClass.normal +
           selectedFeatBonuses.armorClass.normal +
           activeBonus("armorClass"),
         touch:
           baseCombat.armorClass.touch +
           selectedArchetypeCombatBonuses.armorClass.touch +
+          selectedArchetypeArmorBenefits.armorClass.touch +
           equipmentBonuses.armorClass.touch +
           selectedFeatBonuses.armorClass.touch +
           activeBonus("armorClass"),
         flatFooted:
           baseCombat.armorClass.flatFooted +
           selectedArchetypeCombatBonuses.armorClass.flatFooted +
+          selectedArchetypeArmorBenefits.armorClass.flatFooted +
           equipmentBonuses.armorClass.flatFooted +
           selectedFeatBonuses.armorClass.flatFooted +
           activeBonus("armorClass"),
@@ -1135,6 +1151,7 @@ export default function Home() {
     favoredClassHitPoints,
     inventory,
     selectedArchetypeInitiativeBonus,
+    selectedArchetypeArmorBenefits.armorClass,
     selectedArchetypeCombatBonuses,
     selectedArchetypeSavingThrowBonuses,
     selectedFeatBonuses,
@@ -1789,6 +1806,13 @@ export default function Home() {
               option.id === selectedOptions[feature.id] ||
               !Object.entries(selectedOptions).some(([featureId, optionId]) => featureId !== feature.id && optionId === option.id),
             )
+          : feature.optionGroupId === "molthuni-defender-maneuvers"
+            ? baseOptions.filter((option) =>
+                option.id === selectedOptions[feature.id] ||
+                !Object.entries(selectedOptions).some(([featureId, optionId]) =>
+                  featureId !== feature.id && featureId.startsWith("fighter-molthuni-defender-armored-defense-") && optionId === option.id,
+                ),
+              )
           : feature.requiredSpellLevel !== undefined
             ? baseOptions.filter((option) => (option as CharacterOption).spellLevel === feature.requiredSpellLevel)
             : baseOptions;
@@ -4475,7 +4499,10 @@ export default function Home() {
                 modifierSources={selectedFeatBonuses.sources}
                 conditionalModifiers={[
                   ...(selectedTraitBonuses.conditionalModifiers ?? []),
-                  ...selectedArchetypeConditionalModifiers,
+                  ...selectedArchetypeConditionalModifiers.filter((modifier) =>
+                    !selectedArchetypeArmorBenefits.suppressedConditionalModifierLabels.includes(`${modifier.source}:${modifier.label}`),
+                  ),
+                  ...selectedArchetypeArmorBenefits.conditionalModifiers,
                   ...selectedArchetypeSkillBonuses.conditionalModifiers,
                 ]}
               />
