@@ -171,6 +171,7 @@ export function inferArchetypeResourceDamageActions(archetype?: CharacterArchety
 export function inferArchetypeSaveEffectActions(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
 export function inferArchetypeTeamworkSharingActions(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
 export function inferArchetypePassiveTeamworkSharings(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; sharing: NonNullable<CharacterClass["features"][number]["teamworkFeatSharing"]> }>;
+export function inferArchetypeMartialFlexibilityActions(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
 export function inferArchetypeSpellcastingAbility(archetype?: CharacterArchetype): "intelligence" | "wisdom" | "charisma" | undefined;
 export function inferArchetypeGrantedFeats(archetype: CharacterArchetype, feats: CharacterFeat[]): Array<{ featureId: string; featId: string; level: number }>;
 export function inferArchetypeFeatChoices(archetype: CharacterArchetype, feats: CharacterFeat[], maximumLevel?: number): Array<CharacterClass["features"][number] & { classId: string }>;

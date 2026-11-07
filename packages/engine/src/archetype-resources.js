@@ -162,6 +162,20 @@ export function inferArchetypeResourceAdjustments(archetype) {
       break;
     }
     if (!foundResource) {
+      if (/^Martial Flexibility(?:\s*\([^)]+\))?$/i.test(String(feature.name ?? "").trim()) && /\bgains? (?:the brawler.s )?martial flexibility|\bgains martial flexibility\b/i.test(summary)) {
+        inferred.push({
+          sourceFeatureId: feature.id,
+          resourceId: resourceId(feature),
+          label: "Martial Flexibility",
+          unit: "use",
+          operation: "replace",
+          base: 3,
+          levelDivisor: 2,
+          minimum: 0,
+          minimumLevel,
+        });
+        continue;
+      }
       const metadataFormula = String(feature.uses ?? "").match(/^(.+?)\s+per day$/i);
       if (metadataFormula && /\b(?:Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\s+(?:modifier|bonus)\b/i.test(metadataFormula[1]) && !/\b(?:slot|bardic performance|ki|grit|panache|fervor|channel energy|smite evil)\b/i.test(metadataFormula[1])) {
         const adjustment = parseFormula(metadataFormula[1], minimumLevel);

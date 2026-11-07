@@ -1015,16 +1015,21 @@ export default function Home() {
     })),
     [archetypeFeatAlternatives, selectableProgressionFeatures, selectedOptions],
   );
+  const activeTemporaryFeatIds = useMemo(
+    () => [...new Set(activeEffects.flatMap((effect) => effect.grantedFeatIds ?? []))],
+    [activeEffects],
+  );
   const selectedFeatBonuses = useMemo(
     () =>
       featBonuses(
-        [...selectedFeatIds, ...selectedClassFeatIds],
+        [...selectedFeatIds, ...selectedClassFeatIds, ...activeTemporaryFeatIds],
         feats,
         { ...selectedFeatChoices, ...selectedClassFeatChoices },
         { level, skillRanks },
       ),
     [
       level,
+      activeTemporaryFeatIds,
       selectedClassFeatIds,
       selectedClassFeatChoices,
       selectedFeatChoices,
@@ -4637,7 +4642,9 @@ export default function Home() {
                 casterLevels={effectiveSpellcastingLevelMap}
                 selectedOptionIds={Object.values(selectedOptions)}
                 selectedOptions={selectedOptions}
-                selectedFeats={[...new Set([...selectedFeatIds, ...selectedClassFeatIds])].flatMap((id) => { const feat = feats.find((candidate) => candidate.id === id); return feat ? [{ id: feat.id, name: feat.name, type: feat.type }] : []; })}
+                selectedFeats={[...new Set([...selectedFeatIds, ...selectedClassFeatIds, ...activeTemporaryFeatIds])].flatMap((id) => { const feat = feats.find((candidate) => candidate.id === id); return feat ? [{ id: feat.id, name: feat.name, type: feat.type, types: feat.types }] : []; })}
+                featCatalogue={feats}
+                featEligibility={(featId, additionallySelectedIds) => { const feat = feats.find((candidate) => candidate.id === featId); return Boolean(feat && prerequisitesMet(feat.prerequisites, { ...featContext, candidateId: feat.id, selectedIds: [...selectedFeatIds, ...selectedClassFeatIds, ...additionallySelectedIds] })); }}
                 activeEffects={activeEffects}
                 equippedWeapons={combatAttacks.map(({ id, name }) => ({ id, name }))}
                 onAddEffect={addActiveEffect}
