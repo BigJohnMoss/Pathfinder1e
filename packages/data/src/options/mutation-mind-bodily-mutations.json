@@ -1,0 +1,18 @@
+{
+  "id": "mutation-mind-bodily-mutations",
+  "name": "Bodily Mutations",
+  "classIds": ["psychic"],
+  "optionDefaults": {"groupId": "mutation-mind-bodily-mutations", "classIds": ["psychic"], "minimumLevel": 3, "prerequisites": [], "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Psychic%20Mutation%20Mind"}},
+  "options": [
+    {"id": "mutation-mind-adhesive", "name": "Adhesive", "benefit": "+4 on disarm and grapple combat maneuver checks."},
+    {"id": "mutation-mind-bite", "name": "Bite Attack", "benefit": "Gain a primary bite attack dealing 1d4 damage (1d3 Small)."},
+    {"id": "mutation-mind-bulging-eyes", "name": "Bulging Eyes", "benefit": "Gain darkvision 60 feet."},
+    {"id": "mutation-mind-claws", "name": "Claws", "benefit": "Gain two primary claw attacks dealing 1d4 damage each (1d3 Small)."},
+    {"id": "mutation-mind-elongated-fingers", "name": "Elongated Fingers", "benefit": "Increase reach by 5 feet for melee touch attacks."},
+    {"id": "mutation-mind-elongated-legs", "name": "Elongated Legs", "benefit": "Increase base movement speed by 10 feet."},
+    {"id": "mutation-mind-energy-resistance", "name": "Energy Resistance", "benefit": "Gain energy resistance 5 to a selected energy type; this mutation can be selected repeatedly."},
+    {"id": "mutation-mind-enlarged-torso", "name": "Enlarged Torso", "benefit": "Gain +2 natural armor to AC."},
+    {"id": "mutation-mind-rubbery", "name": "Rubbery", "benefit": "Gain DR 2/-."},
+    {"id": "mutation-mind-slimy", "name": "Slimy", "benefit": "Gain +4 CMD."}
+  ]
+}
