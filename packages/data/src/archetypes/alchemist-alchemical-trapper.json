@@ -4,10 +4,6 @@
   "classId": "alchemist",
   "summary": "(Kobold Only) Because kobolds rely on traps to soften up enemies, kobold alchemists learn to turn bombs into traps.",
   "replacesText": "2nd and 4th-level Discoveries",
-  "mechanicalCoverage": "partial",
-  "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ],
   "replacements": [
     {
       "featureIds": [
@@ -20,7 +16,48 @@
           "name": "Bomb Trap (Su)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, an alchemical trapper can use one of her bombs to make a trap. Setting a bomb trap is a full-round action that provokes attacks of opportunity. A bomb trap fills a single 5-foot square and cannot be placed in the same area as any other trap. The alchemical trapper needs the same materials required for making a bomb. The DCs for Perception checks to notice the trap, Disable Device checks to disable it, and saving throws to avoid it are equal to the DC for the alchemical trapper’s bombs. All bomb traps have location triggers and do not reset. The alchemical trapper can use any one discovery that applies to a bomb when making a bomb trap. The bomb trap lasts 10 minutes for each alchemist level the trapper possesses. If the bomb trap is not disabled or exploded within that time frame, the trap becomes inert. Creating a bomb trap uses one of the alchemical trapper’s bombs per day. This ability replaces the discovery at 2nd level."
+          "summary": "At 2nd level, an alchemical trapper can use one of her bombs to make a trap. Setting a bomb trap is a full-round action that provokes attacks of opportunity. A bomb trap fills a single 5-foot square and cannot be placed in the same area as any other trap. The alchemical trapper needs the same materials required for making a bomb. The DCs for Perception checks to notice the trap, Disable Device checks to disable it, and saving throws to avoid it are equal to the DC for the alchemical trapper’s bombs. All bomb traps have location triggers and do not reset. The alchemical trapper can use any one discovery that applies to a bomb when making a bomb trap. The bomb trap lasts 10 minutes for each alchemist level the trapper possesses. If the bomb trap is not disabled or exploded within that time frame, the trap becomes inert. Creating a bomb trap uses one of the alchemical trapper’s bombs per day. This ability replaces the discovery at 2nd level.",
+          "resourceActions": [
+            {
+              "id": "alchemical-trapper-set-bomb-trap",
+              "label": "Set bomb trap",
+              "resourceId": "bombs",
+              "cost": 1,
+              "minimumLevel": 2,
+              "actionTypeByLevel": [{ "level": 2, "actionType": "full-round" }],
+              "savingThrow": { "label": "Reflex", "ability": "intelligence", "base": 10, "levelDivisor": 2, "classId": "alchemist" },
+              "combatRoll": {
+                "damage": {
+                  "type": "fire",
+                  "diceCountByLevel": [
+                    { "level": 2, "count": 1 }, { "level": 3, "count": 2 }, { "level": 5, "count": 3 }, { "level": 7, "count": 4 },
+                    { "level": 9, "count": 5 }, { "level": 11, "count": 6 }, { "level": 13, "count": 7 }, { "level": 15, "count": 8 },
+                    { "level": 17, "count": 9 }, { "level": 19, "count": 10 }
+                  ],
+                  "dieSidesByLevel": [{ "level": 2, "sides": 6 }],
+                  "abilityModifier": "intelligence"
+                },
+                "rangeByLevel": [{ "level": 2, "range": "single 5-foot square" }],
+                "targetSave": { "modifier": "reflex", "outcome": "half-damage" }
+              },
+              "activeEffect": {
+                "name": "Bomb Trap",
+                "targets": ["area"],
+                "bonus": 0,
+                "description": "A location-triggered, non-resetting bomb trap occupies one 5-foot square. Its Perception, Disable Device, and avoidance DCs equal the displayed bomb DC; select an applicable bomb discovery when placing it.",
+                "defaultRounds": 200,
+                "defaultRoundsByLevel": [
+                  { "level": 2, "rounds": 200 }, { "level": 3, "rounds": 300 }, { "level": 4, "rounds": 400 }, { "level": 5, "rounds": 500 },
+                  { "level": 6, "rounds": 600 }, { "level": 7, "rounds": 700 }, { "level": 8, "rounds": 800 }, { "level": 9, "rounds": 900 },
+                  { "level": 10, "rounds": 1000 }, { "level": 11, "rounds": 1100 }, { "level": 12, "rounds": 1200 }, { "level": 13, "rounds": 1300 },
+                  { "level": 14, "rounds": 1400 }, { "level": 15, "rounds": 1500 }, { "level": 16, "rounds": 1600 }, { "level": 17, "rounds": 1700 },
+                  { "level": 18, "rounds": 1800 }, { "level": 19, "rounds": 1900 }, { "level": 20, "rounds": 2000 }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": false
+              }
+            }
+          ]
         },
         {
           "id": "alchemist-alchemical-trapper-trapfinding-ex-4",
@@ -32,6 +69,24 @@
       ]
     }
   ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "alchemist-alchemical-trapper-trapfinding-ex-4",
+      "skill": "Perception",
+      "minimumLevel": 4,
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "to locate traps"
+    },
+    {
+      "sourceFeatureId": "alchemist-alchemical-trapper-trapfinding-ex-4",
+      "skill": "Disable Device",
+      "minimumLevel": 4,
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "against traps; may disarm magical traps"
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
@@ -39,5 +94,9 @@
   },
   "manualRequirements": [
     "Restricted to Kobold characters; that ancestry is not yet available in this builder."
+  ],
+  "mechanicalCoverage": "full",
+  "mechanicalNotes": [
+    "Bomb Trap spends one bomb, resolves the scaling bomb damage and Intelligence-based DC, creates its timed 5-foot location trigger, and exposes bomb-discovery guidance. Trapfinding applies its half-level Perception and Disable Device bonuses and magical-trap permission. Kobold eligibility remains advisory until that ancestry enters the builder."
   ]
 }
