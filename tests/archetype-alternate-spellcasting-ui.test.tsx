@@ -49,3 +49,22 @@ test("Living Grimoire exposes Warpriest-style prepared Inquisitor casting", asyn
   assert.ok(screen.getByRole("heading", { name: "Prepared spells" }));
   assert.match(screen.getByText(/Inquisitor \(Living Grimoire\) slots:/).textContent ?? "", /1st-level/);
 });
+
+for (const [classId, archetypeId, className, archetypeName, ability, spellName] of [
+  ["bard", "bard-speaker-of-the-palatine-eye", "Bard", "Speaker of the Palatine Eye", "charisma", "Aphasia"],
+  ["investigator", "investigator-questioner", "Investigator", "Questioner", "intelligence", "Daze"],
+  ["magus", "magus-eldritch-scion", "Magus", "Eldritch Scion", "charisma", "Shield"],
+  ["magus", "magus-mindblade", "Magus", "Mindblade", "intelligence", "Shield"],
+] as const) test(`${archetypeName} exposes its complete spontaneous spellcasting profile at 1st level`, async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), classId);
+  await user.selectOptions(screen.getByLabelText("Human +2"), ability);
+  await user.selectOptions(screen.getByLabelText("Archetype"), archetypeId);
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+
+  assert.ok(screen.getByRole("heading", { name: "Spontaneous spells" }));
+  assert.doesNotMatch(screen.getByText(new RegExp(`${className} \\(${archetypeName}\\) slots:`)).textContent ?? "", /no leveled spell slots available/);
+  await user.type(screen.getByPlaceholderText("Name or effect"), spellName);
+  assert.ok(screen.getByText(spellName));
+});

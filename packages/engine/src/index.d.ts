@@ -69,6 +69,7 @@ export function archetypeAbilityScoreBonuses(archetypes: CharacterArchetype[], c
 export function archetypeAbilityScoreAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["abilityScoreAdjustments"]>;
 export function inferArchetypeAbilityScoreAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["abilityScoreAdjustments"]>;
 export function inferArchetypeSpellcastingProgression(archetype: CharacterArchetype): { classId: string; minimumLevel: number; spellListClassId?: string } | undefined;
+export function inferArchetypeSpellcastingProfile(archetype: CharacterArchetype): { ability?: string; progressionClassId?: string; spellListClassId?: string; minimumLevel?: number; castingType?: "prepared" | "spontaneous"; tradition?: "arcane" | "divine" | "psychic" } | undefined;
 export function inferArchetypeRemovesSpellcasting(archetype?: CharacterArchetype): boolean;
 export function inferredArchetypeSpellcastingRemovalDetails(archetype?: CharacterArchetype): { rules: Array<{ sourceFeatureId: string; removesSpellcasting: true }>; fullyAutomatedFeatureIds: Set<string> };
 export function archetypeInitiativeBonus(archetypes: CharacterArchetype[], classLevels: Record<string, number>): number;
@@ -184,7 +185,7 @@ export function baseAttackBonus(progression: BabProgression, level: number): num
 export function savingThrow(progression: SaveProgression, level: number): number;
 export function classBaseAttackBonus(characterClass: CharacterClass, level: number): number;
 export function classSavingThrow(characterClass: CharacterClass, save: "fortitude" | "reflex" | "will", level: number): number;
-export function spellcastingTradition(characterClass: CharacterClass): "arcane" | "divine" | null;
+export function spellcastingTradition(characterClass: CharacterClass): "arcane" | "divine" | "psychic" | "alchemy" | null;
 export function effectiveSpellcastingLevels(classes: CharacterClass[], classLevels: Array<{ classId: string; level: number }>, prestigeTargets?: Record<string, string[]>): Record<string, number>;
 export function featSlotsAtLevel(level: number, options?: { bonusFeats?: number }): number;
 export function skillRanksThroughLevel(characterClass: CharacterClass, level: number, intelligenceScore: number, options?: { racialBonusPerLevel?: number }): number;

@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import archetypes from "../generated/pf1e-archetypes.mjs";
 import data from "../generated/pf1e-data.mjs";
-import { applyArchetype, archetypeAutomationSummary, inferArchetypeSpellcastingAbility, inferArchetypeSpellcastingProgression, spellcastingProgression } from "../packages/engine/src/index.js";
+import { applyArchetype, archetypeAutomationSummary, inferArchetypeSpellcastingAbility, inferArchetypeSpellcastingProfile, inferArchetypeSpellcastingProgression, spellcastingProgression, spellcastingTradition } from "../packages/engine/src/index.js";
 import { spontaneousSpellcastingProgression } from "../packages/engine/src/spontaneous-spellcasting.js";
 
 const archetype = (id) => archetypes.find((item) => item.id === id);
@@ -15,6 +15,10 @@ test("explicit archetype spellcasting substitutions use the published ability", 
     ["cleric-elder-mythos-cultist", "charisma"],
     ["druid-feyspeaker", "charisma"],
     ["inquisitor-living-grimoire", "intelligence"],
+    ["investigator-psychic-detective", "intelligence"],
+    ["investigator-questioner", "intelligence"],
+    ["magus-eldritch-scion", "charisma"],
+    ["magus-mindblade", "intelligence"],
     ["paladin-tortured-crusader", "wisdom"],
     ["ranger-dandy", "charisma"],
   ]);
@@ -45,6 +49,10 @@ test("the spellcasting substitution parser remains narrowly bounded across the c
     "cleric-elder-mythos-cultist",
     "druid-feyspeaker",
     "inquisitor-living-grimoire",
+    "investigator-psychic-detective",
+    "investigator-questioner",
+    "magus-eldritch-scion",
+    "magus-mindblade",
     "paladin-tortured-crusader",
     "ranger-dandy",
   ]);
@@ -77,18 +85,46 @@ test("Dandy uses gated Medium spontaneous progression with the Bard list", () =>
   );
 });
 
-test("Questioner uses gated Bard progression and list while retaining Intelligence casting", () => {
+test("Questioner uses Bard progression and list from 1st level while retaining Intelligence casting", () => {
   const selected = archetype("investigator-questioner");
-  assert.deepEqual(inferArchetypeSpellcastingProgression(selected), { classId: "bard", minimumLevel: 5, spellListClassId: "bard" });
+  assert.deepEqual(inferArchetypeSpellcastingProgression(selected), { classId: "bard", minimumLevel: 1, spellListClassId: "bard" });
   const applied = applyArchetype(characterClass("investigator"), selected, data.classes);
   assert.equal(applied.spellcasting?.ability, "intelligence");
   assert.equal(applied.spellcasting?.castingType, "spontaneous");
   assert.equal(applied.spellListClassId, "bard");
-  assert.deepEqual(spontaneousSpellcastingProgression(applied, 4, { abilityScore: 18 })?.slots, []);
   assert.deepEqual(
-    spontaneousSpellcastingProgression(applied, 5, { abilityScore: 18 })?.slots,
-    spontaneousSpellcastingProgression(characterClass("bard"), 5, { abilityScore: 18 })?.slots,
+    spontaneousSpellcastingProgression(applied, 1, { abilityScore: 18 })?.slots,
+    spontaneousSpellcastingProgression(characterClass("bard"), 1, { abilityScore: 18 })?.slots,
   );
+});
+
+test("complete alternate spellcasting profiles apply list, progression, ability, mode, and tradition", () => {
+  const expected = new Map([
+    ["bard-speaker-of-the-palatine-eye", { spellListClassId: "mesmerist", tradition: "psychic" }],
+    ["investigator-questioner", { ability: "intelligence", progressionClassId: "bard", spellListClassId: "bard", minimumLevel: 1, castingType: "spontaneous", tradition: "arcane" }],
+    ["magus-eldritch-scion", { ability: "charisma", progressionClassId: "bard", spellListClassId: "magus", minimumLevel: 1, castingType: "spontaneous", tradition: "arcane" }],
+    ["magus-mindblade", { ability: "intelligence", progressionClassId: "bard", spellListClassId: "magus", minimumLevel: 1, castingType: "spontaneous", tradition: "psychic" }],
+  ]);
+  for (const [id, profile] of expected) {
+    const selected = archetype(id);
+    assert.deepEqual(inferArchetypeSpellcastingProfile(selected), profile, id);
+    const applied = applyArchetype(characterClass(selected.classId), selected, data.classes, data.spells);
+    assert.equal(applied.spellListClassId, profile.spellListClassId, `${id} list`);
+    assert.equal(spellcastingTradition(applied), profile.tradition, `${id} tradition`);
+    if (profile.ability) assert.equal(applied.spellcasting?.ability, profile.ability, `${id} ability`);
+    if (profile.castingType) assert.equal(applied.spellcasting?.castingType, profile.castingType, `${id} mode`);
+    const spellFeature = selected.replacements.flatMap((replacement) => replacement.features).find((feature) => feature.name === "Spells");
+    assert.equal(archetypeAutomationSummary(selected, data.feats, data.spells).manual.includes(`Spells (level ${spellFeature.level})`), false, id);
+  }
+});
+
+test("partially covered spellcasting profiles retain unmodeled spell-table rules", () => {
+  const selected = archetype("investigator-psychic-detective");
+  const applied = applyArchetype(characterClass("investigator"), selected, data.classes, data.spells);
+  assert.equal(applied.spellcasting?.castingType, "spontaneous");
+  assert.equal(spellcastingTradition(applied), "psychic");
+  assert.equal(applied.spellListClassId, "psychic");
+  assert.equal(archetypeAutomationSummary(selected, data.feats, data.spells).manual.includes("Spells (level 5)"), true);
 });
 
 test("Ley Line Guardian uses Sorcerer spontaneous progression with Intelligence", () => {
@@ -107,7 +143,10 @@ test("Ley Line Guardian uses Sorcerer spontaneous progression with Intelligence"
 test("alternate spellcasting progression inference is bounded to exact catalogue rules", () => {
   assert.deepEqual(archetypes.filter((item) => inferArchetypeSpellcastingProgression(item)).map((item) => item.id), [
     "inquisitor-living-grimoire",
+    "investigator-psychic-detective",
     "investigator-questioner",
+    "magus-eldritch-scion",
+    "magus-mindblade",
     "ranger-dandy",
     "witch-ley-line-guardian",
   ]);
