@@ -18,14 +18,667 @@
           "name": "Animal Focus (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, as a swift action, a feral shifter can take on the aspect of an animal, gaining a bonus or special ability based on the type of animal emulated. This functions as the hunter’s animal focus class feature (see page 27). The feral shifter can use this ability for a number of minutes per day equal to her druid level. This duration does not need to be consecutive, but it must be spent in 1-minute increments. She can emulate only one animal at a time. This ability replaces nature bond."
+          "summary": "At 1st level, as a swift action, a feral shifter can take on the aspect of an animal, gaining a bonus or special ability based on the type of animal emulated. This functions as the hunter’s animal focus class feature (see page 27). The feral shifter can use this ability for a number of minutes per day equal to her druid level. This duration does not need to be consecutive, but it must be spent in 1-minute increments. She can emulate only one animal at a time. This ability replaces nature bond.",
+          "resourceActions": [
+            {
+              "id": "feral-shifter-animal-focus",
+              "label": "Activate Animal Focus",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "resourceId": "animalFocus",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "swift"
+                }
+              ],
+              "modeLabel": "Animal aspect",
+              "modes": [
+                {
+                  "id": "bat",
+                  "label": "Bat",
+                  "summary": "Darkvision 60 feet; 90 feet at level 8; add blindsense 10 feet at level 15.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Animal Focus Primary — Bat",
+                      "description": "Darkvision 60 feet (90 feet at level 8); blindsense 10 feet at level 15."
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "bear",
+                  "label": "Bear",
+                  "summary": "Enhancement bonus to Constitution.",
+                  "activeEffects": [
+                    {
+                      "target": "constitution",
+                      "bonus": 2,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 2
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 6
+                        }
+                      ],
+                      "label": "Animal Focus Primary — Bear",
+                      "description": "Level-scaled enhancement bonus to Constitution."
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "bull",
+                  "label": "Bull",
+                  "summary": "Enhancement bonus to Strength.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 2,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 2
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 6
+                        }
+                      ],
+                      "label": "Animal Focus Primary — Bull",
+                      "description": "Level-scaled enhancement bonus to Strength."
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "falcon",
+                  "label": "Falcon",
+                  "summary": "Competence bonus on Perception.",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 6
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 8
+                        }
+                      ],
+                      "label": "Animal Focus Primary — Falcon",
+                      "description": "Level-scaled competence bonus on Perception checks.",
+                      "skillIds": [
+                        "Perception"
+                      ]
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "frog",
+                  "label": "Frog",
+                  "summary": "Competence bonus on Swim and Acrobatics checks to jump.",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 6
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 8
+                        }
+                      ],
+                      "label": "Animal Focus Primary — Frog",
+                      "description": "Level-scaled competence bonus on Swim and Acrobatics checks to jump.",
+                      "skillIds": [
+                        "Swim",
+                        "Acrobatics"
+                      ]
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "monkey",
+                  "label": "Monkey",
+                  "summary": "Competence bonus on Climb.",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 6
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 8
+                        }
+                      ],
+                      "label": "Animal Focus Primary — Monkey",
+                      "description": "Level-scaled competence bonus on Climb checks.",
+                      "skillIds": [
+                        "Climb"
+                      ]
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "mouse",
+                  "label": "Mouse",
+                  "summary": "Evasion, improving to improved evasion at level 12.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Animal Focus Primary — Mouse",
+                      "description": "Evasion applies; it improves to improved evasion at Druid level 12."
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "owl",
+                  "label": "Owl",
+                  "summary": "Competence bonus on Stealth.",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 6
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 8
+                        }
+                      ],
+                      "label": "Animal Focus Primary — Owl",
+                      "description": "Level-scaled competence bonus on Stealth checks.",
+                      "skillIds": [
+                        "Stealth"
+                      ]
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "snake",
+                  "label": "Snake",
+                  "summary": "Level-scaled attack and dodge AC bonuses for attacks of opportunity.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Animal Focus Primary — Snake",
+                      "description": "+2 on attacks of opportunity and +2 dodge AC against attacks of opportunity; +4 at level 8 and +6 at level 15."
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "stag",
+                  "label": "Stag",
+                  "summary": "Enhancement bonus to land speed.",
+                  "activeEffects": [
+                    {
+                      "target": "landSpeed",
+                      "bonus": 5,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 5
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 10
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 20
+                        }
+                      ],
+                      "label": "Animal Focus Primary — Stag",
+                      "description": "Level-scaled enhancement bonus to base land speed."
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "tiger",
+                  "label": "Tiger",
+                  "summary": "Enhancement bonus to Dexterity.",
+                  "activeEffects": [
+                    {
+                      "target": "dexterity",
+                      "bonus": 2,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 2
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 6
+                        }
+                      ],
+                      "label": "Animal Focus Primary — Tiger",
+                      "description": "Level-scaled enhancement bonus to Dexterity."
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "wolf",
+                  "label": "Wolf",
+                  "summary": "Scent 10 feet; 20 feet at level 8; 30 feet at level 15.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Animal Focus Primary — Wolf",
+                      "description": "Scent 10 feet (20 feet at level 8, 30 feet at level 15); double upwind and half downwind."
+                    }
+                  ],
+                  "defaultRounds": 10
+                }
+              ],
+              "activeEffect": {
+                "name": "Primary Animal Focus",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The selected primary animal aspect is active for this 1-minute increment.",
+                "defaultRounds": 10,
+                "fixedRounds": true
+              },
+              "summary": "Spend 1 minute from the daily pool and apply one level-scaled Hunter animal aspect."
+            }
+          ]
         },
         {
           "id": "druid-feral-shifter-second-animal-focus-su-9",
           "name": "Second Animal Focus (Su)",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, when a feral shifter uses her animal focus ability, she selects two different animal aspects for herself instead of one. This ability replaces venom immunity, a thousand faces, and timeless body."
+          "summary": "At 9th level, when a feral shifter uses her animal focus ability, she selects two different animal aspects for herself instead of one. This ability replaces venom immunity, a thousand faces, and timeless body.",
+          "resourceActions": [
+            {
+              "id": "feral-shifter-second-animal-focus",
+              "label": "Add Second Animal Focus",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "resourceId": "animalFocus",
+              "cost": 0,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "different-aspect",
+                  "label": "This aspect differs from the active primary aspect",
+                  "requiredForActivation": true
+                }
+              ],
+              "modeLabel": "Second animal aspect",
+              "modes": [
+                {
+                  "id": "bat",
+                  "label": "Bat",
+                  "summary": "Darkvision 60 feet; 90 feet at level 8; add blindsense 10 feet at level 15.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Animal Focus Secondary — Bat",
+                      "description": "Darkvision 60 feet (90 feet at level 8); blindsense 10 feet at level 15."
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "bear",
+                  "label": "Bear",
+                  "summary": "Enhancement bonus to Constitution.",
+                  "activeEffects": [
+                    {
+                      "target": "constitution",
+                      "bonus": 2,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 2
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 6
+                        }
+                      ],
+                      "label": "Animal Focus Secondary — Bear",
+                      "description": "Level-scaled enhancement bonus to Constitution."
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "bull",
+                  "label": "Bull",
+                  "summary": "Enhancement bonus to Strength.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 2,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 2
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 6
+                        }
+                      ],
+                      "label": "Animal Focus Secondary — Bull",
+                      "description": "Level-scaled enhancement bonus to Strength."
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "falcon",
+                  "label": "Falcon",
+                  "summary": "Competence bonus on Perception.",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 6
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 8
+                        }
+                      ],
+                      "label": "Animal Focus Secondary — Falcon",
+                      "description": "Level-scaled competence bonus on Perception checks.",
+                      "skillIds": [
+                        "Perception"
+                      ]
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "frog",
+                  "label": "Frog",
+                  "summary": "Competence bonus on Swim and Acrobatics checks to jump.",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 6
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 8
+                        }
+                      ],
+                      "label": "Animal Focus Secondary — Frog",
+                      "description": "Level-scaled competence bonus on Swim and Acrobatics checks to jump.",
+                      "skillIds": [
+                        "Swim",
+                        "Acrobatics"
+                      ]
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "monkey",
+                  "label": "Monkey",
+                  "summary": "Competence bonus on Climb.",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 6
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 8
+                        }
+                      ],
+                      "label": "Animal Focus Secondary — Monkey",
+                      "description": "Level-scaled competence bonus on Climb checks.",
+                      "skillIds": [
+                        "Climb"
+                      ]
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "mouse",
+                  "label": "Mouse",
+                  "summary": "Evasion, improving to improved evasion at level 12.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Animal Focus Secondary — Mouse",
+                      "description": "Evasion applies; it improves to improved evasion at Druid level 12."
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "owl",
+                  "label": "Owl",
+                  "summary": "Competence bonus on Stealth.",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 6
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 8
+                        }
+                      ],
+                      "label": "Animal Focus Secondary — Owl",
+                      "description": "Level-scaled competence bonus on Stealth checks.",
+                      "skillIds": [
+                        "Stealth"
+                      ]
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "snake",
+                  "label": "Snake",
+                  "summary": "Level-scaled attack and dodge AC bonuses for attacks of opportunity.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Animal Focus Secondary — Snake",
+                      "description": "+2 on attacks of opportunity and +2 dodge AC against attacks of opportunity; +4 at level 8 and +6 at level 15."
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "stag",
+                  "label": "Stag",
+                  "summary": "Enhancement bonus to land speed.",
+                  "activeEffects": [
+                    {
+                      "target": "landSpeed",
+                      "bonus": 5,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 5
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 10
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 20
+                        }
+                      ],
+                      "label": "Animal Focus Secondary — Stag",
+                      "description": "Level-scaled enhancement bonus to base land speed."
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "tiger",
+                  "label": "Tiger",
+                  "summary": "Enhancement bonus to Dexterity.",
+                  "activeEffects": [
+                    {
+                      "target": "dexterity",
+                      "bonus": 2,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 2
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 6
+                        }
+                      ],
+                      "label": "Animal Focus Secondary — Tiger",
+                      "description": "Level-scaled enhancement bonus to Dexterity."
+                    }
+                  ],
+                  "defaultRounds": 10
+                },
+                {
+                  "id": "wolf",
+                  "label": "Wolf",
+                  "summary": "Scent 10 feet; 20 feet at level 8; 30 feet at level 15.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Animal Focus Secondary — Wolf",
+                      "description": "Scent 10 feet (20 feet at level 8, 30 feet at level 15); double upwind and half downwind."
+                    }
+                  ],
+                  "defaultRounds": 10
+                }
+              ],
+              "activeEffect": {
+                "name": "Secondary Animal Focus",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The selected secondary animal aspect shares the primary focus duration.",
+                "defaultRounds": 10,
+                "fixedRounds": true
+              },
+              "summary": "At 9th level, add a different second aspect without spending another minute from the pool."
+            }
+          ]
         }
       ]
     }
@@ -35,8 +688,22 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Feral%20Shifter"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The level-sized daily pool, all twelve level-scaled Hunter aspects, swift activation, and the distinct second aspect at 9th level are automated."
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "animalFocus",
+      "label": "Animal Focus",
+      "unit": "minute",
+      "operation": "add",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelMultiplier": 1,
+      "minimum": 0,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
   ]
 }

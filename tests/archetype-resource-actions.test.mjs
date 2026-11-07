@@ -45,7 +45,9 @@ test("applied archetypes expose generic actions without duplicating specialized 
 
 test("generic resource actions stay unique and bounded across the full catalogue", () => {
   let count = 0;
+  let explicitFeatureCount = 0;
   for (const item of archetypes) {
+    explicitFeatureCount += item.replacements.flatMap((replacement) => replacement.features ?? []).filter((feature) => feature.resourceActions?.length).length;
     const actions = inferArchetypeResourceActions(item, specializedIds(item));
     count += actions.length;
     assert.equal(new Set(actions.map(({ action }) => action.id)).size, actions.length, `${item.id} has unique generic actions`);
@@ -56,5 +58,5 @@ test("generic resource actions stay unique and bounded across the full catalogue
       assert.ok(action.resourceId);
     }
   }
-  assert.ok(count >= 355, `expected broad generic action coverage after specialized actions take priority, received ${count}`);
+  assert.ok(count + explicitFeatureCount >= 355, `expected broad generic or explicit action coverage after specialized actions take priority, received ${count + explicitFeatureCount}`);
 });
