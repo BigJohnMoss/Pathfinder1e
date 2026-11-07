@@ -216,7 +216,14 @@ export interface ClassFeatureOccurrence {
     cost?: number;
     minimumResourceRemaining?: number;
     costPerSelectedFeat?: boolean;
-    variableCost?: { label: string; minimum: number; maximum?: number; maximumLevelDivisor?: number };
+    variableCost?: {
+      label: string;
+      minimum: number;
+      maximum?: number;
+      maximumLevelDivisor?: number;
+      maximumByLevel?: Array<{ level: number; maximum: number }>;
+      multiplier?: number;
+    };
     costs?: Array<{ resourceId: string; cost: number }>;
     changes?: Array<{ resourceId: string; usedDelta: number }>;
     variableRecovery?: {
@@ -299,6 +306,9 @@ export interface ClassFeatureOccurrence {
       diceCountBonusOptionIds?: string[];
       abilityModifier?: AbilityName;
       modifierInputLabel?: string;
+      targetDcInputLabel?: string;
+      outcomesByMargin?: Array<{ minimumMargin: number; label: string }>;
+      failureLabel?: string;
       flatModifierByLevel?: Array<{ level: number; modifier: number }>;
       resultDivisorByMode?: Array<{ modeId: string; divisor: number }>;
       modeEffects?: Array<{
@@ -365,11 +375,18 @@ export interface ClassFeatureOccurrence {
         level: number;
         name: string;
         description: string;
+        activeEffects?: Array<{
+          target: ActiveEffectTarget;
+          bonus: number;
+          label: string;
+          description: string;
+        }>;
         duration:
           | { kind: "fixed-rounds"; rounds: number }
           | { kind: "dice-rounds"; count: number; sides: number }
           | { kind: "level-rounds" }
-          | { kind: "level-minutes" };
+          | { kind: "level-minutes"; multiplier?: number }
+          | { kind: "level-hours"; multiplier?: number };
       }>;
       successEffect?: { name: string; description: string; rounds: number };
       failureEffect?: { name: string; description: string; rounds: number };

@@ -22,16 +22,202 @@
         {
           "id": "bard-disciple-of-the-forked-tongue-bardic-performance-5",
           "name": "Bardic Performance",
-          "level": 5,
+          "level": 1,
           "type": "archetype",
-          "summary": "A disciple of the forked tongue gains the following bardic performances. Discordant Spiral (Su) : The disciple can disrupt the thought processes of enemies who hear his performance, causing them to take a –1 penalty on saves against mind-affecting and curse effects and a –2 penalty on concentration checks. These penalties increase by 1 at 5th level and every 6 levels thereafter. This replaces inspire courage. Venomous Whispers (Su) : At 9th level, a disciple of the forked tongue can use his performance to sow distrust into the mind of an enemy within 30 feet. An affected creature treats its allies as hostile for the purposes of their spells and abilities—it is never considered a willing target of spells and must attempt saving throws against them when possible, and it gains no benefit from allied bardic performances and other abilities that specifically target allies. For every 3 levels a disciple of the forked tongue has beyond 9th, he can target one additional enemy while using this performance (up to a maximum of four at 18th level). This replaces inspire greatness."
+          "summary": "A disciple of the forked tongue gains the following bardic performances. Discordant Spiral (Su) : The disciple can disrupt the thought processes of enemies who hear his performance, causing them to take a –1 penalty on saves against mind-affecting and curse effects and a –2 penalty on concentration checks. These penalties increase by 1 at 5th level and every 6 levels thereafter. This replaces inspire courage. Venomous Whispers (Su) : At 9th level, a disciple of the forked tongue can use his performance to sow distrust into the mind of an enemy within 30 feet. An affected creature treats its allies as hostile for the purposes of their spells and abilities—it is never considered a willing target of spells and must attempt saving throws against them when possible, and it gains no benefit from allied bardic performances and other abilities that specifically target allies. For every 3 levels a disciple of the forked tongue has beyond 9th, he can target one additional enemy while using this performance (up to a maximum of four at 18th level). This replaces inspire greatness.",
+          "resourceActions": [
+            {
+              "id": "forked-tongue-discordant-spiral",
+              "label": "Begin Discordant Spiral",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "modeLabel": "Penalty tier",
+              "modes": [
+                {
+                  "id": "tier-1",
+                  "label": "Levels 1–4",
+                  "maximumLevel": 4,
+                  "summary": "−1 on saves against mind-affecting and curse effects; −2 concentration.",
+                  "activeEffects": [
+                    {
+                      "target": "savingThrows",
+                      "bonus": -1,
+                      "label": "Discordant Spiral — saves",
+                      "description": "−1 on saves against mind-affecting and curse effects only."
+                    }
+                  ]
+                },
+                {
+                  "id": "tier-2",
+                  "label": "Levels 5–10",
+                  "minimumLevel": 5,
+                  "maximumLevel": 10,
+                  "summary": "−2 on saves against mind-affecting and curse effects; −3 concentration.",
+                  "activeEffects": [
+                    {
+                      "target": "savingThrows",
+                      "bonus": -2,
+                      "label": "Discordant Spiral — saves",
+                      "description": "−2 on saves against mind-affecting and curse effects only."
+                    }
+                  ]
+                },
+                {
+                  "id": "tier-3",
+                  "label": "Levels 11–16",
+                  "minimumLevel": 11,
+                  "maximumLevel": 16,
+                  "summary": "−3 on saves against mind-affecting and curse effects; −4 concentration.",
+                  "activeEffects": [
+                    {
+                      "target": "savingThrows",
+                      "bonus": -3,
+                      "label": "Discordant Spiral — saves",
+                      "description": "−3 on saves against mind-affecting and curse effects only."
+                    }
+                  ]
+                },
+                {
+                  "id": "tier-4",
+                  "label": "Levels 17–20",
+                  "minimumLevel": 17,
+                  "summary": "−4 on saves against mind-affecting and curse effects; −5 concentration.",
+                  "activeEffects": [
+                    {
+                      "target": "savingThrows",
+                      "bonus": -4,
+                      "label": "Discordant Spiral — saves",
+                      "description": "−4 on saves against mind-affecting and curse effects only."
+                    }
+                  ]
+                }
+              ],
+              "activeEffect": {
+                "name": "Discordant Spiral",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "Audible performance. Enemies that can hear take the selected save penalty and the concentration penalty shown by the tier.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend one performance round per round; the app selects the exact level-based save and concentration penalty tier."
+            },
+            {
+              "id": "forked-tongue-venomous-whispers",
+              "label": "Begin Venomous Whispers",
+              "minimumLevel": 9,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "targetCountByLevel": [
+                {
+                  "level": 9,
+                  "count": 1
+                },
+                {
+                  "level": 12,
+                  "count": 2
+                },
+                {
+                  "level": 15,
+                  "count": 3
+                },
+                {
+                  "level": 18,
+                  "count": 4
+                }
+              ],
+              "activeEffect": {
+                "name": "Venomous Whispers",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "Within 30 feet. The affected enemy treats its allies as hostile for spells and abilities, is never willing, attempts saves when possible, and gains no allied-performance or ally-specific benefits.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend one performance round per round and select up to the displayed number of enemies within 30 feet."
+            }
+          ]
         },
         {
-          "id": "bard-disciple-of-the-forked-tongue-serpent-of-the-mind-su-2",
-          "name": "Serpent of the Mind (Su)",
+          "id": "bard-disciple-of-the-forked-tongue-serpent-of-the-mind-2",
+          "name": "Serpent of the Mind",
           "level": 2,
-          "type": "archetype",
-          "summary": "A disciple of the forked tongue can add one spell with the curse descriptor from the spell list of any spellcasting class to his list of spells known at 2nd level and every 4 levels thereafter. This replaces versatile performance."
+          "type": "selectable",
+          "summary": "Choose one curse-descriptor spell of a level the Bard can cast and add it to spells known (1 of 5).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-serpent-mind-curse-spells",
+          "progressionKey": "bard-serpent-mind"
+        },
+        {
+          "id": "bard-disciple-of-the-forked-tongue-serpent-of-the-mind-6",
+          "name": "Serpent of the Mind 2",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Choose one curse-descriptor spell of a level the Bard can cast and add it to spells known (2 of 5).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-serpent-mind-curse-spells",
+          "progressionKey": "bard-serpent-mind"
+        },
+        {
+          "id": "bard-disciple-of-the-forked-tongue-serpent-of-the-mind-10",
+          "name": "Serpent of the Mind 3",
+          "level": 10,
+          "type": "selectable",
+          "summary": "Choose one curse-descriptor spell of a level the Bard can cast and add it to spells known (3 of 5).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-serpent-mind-curse-spells",
+          "progressionKey": "bard-serpent-mind"
+        },
+        {
+          "id": "bard-disciple-of-the-forked-tongue-serpent-of-the-mind-14",
+          "name": "Serpent of the Mind 4",
+          "level": 14,
+          "type": "selectable",
+          "summary": "Choose one curse-descriptor spell of a level the Bard can cast and add it to spells known (4 of 5).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-serpent-mind-curse-spells",
+          "progressionKey": "bard-serpent-mind"
+        },
+        {
+          "id": "bard-disciple-of-the-forked-tongue-serpent-of-the-mind-18",
+          "name": "Serpent of the Mind 5",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Choose one curse-descriptor spell of a level the Bard can cast and add it to spells known (5 of 5).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-serpent-mind-curse-spells",
+          "progressionKey": "bard-serpent-mind"
         }
       ]
     }
@@ -41,8 +227,14 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Disciple%20of%20the%20Forked%20Tongue"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Discordant Spiral penalties, Venomous Whispers target scaling, Vishkanya eligibility, and all five level-gated curse-spell-known selections are automated."
+  ],
+  "requirements": [
+    {
+      "type": "ancestry",
+      "id": "vishkanya"
+    }
   ]
 }
