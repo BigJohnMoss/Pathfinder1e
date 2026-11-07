@@ -1,0 +1,23 @@
+{
+  "id": "ward-speaker-fortunes",
+  "name": "Ward Speaker Fortune",
+  "classIds": ["samurai"],
+  "optionDefaults": {
+    "groupId": "ward-speaker-fortunes",
+    "classIds": ["samurai"],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Samurai%20Ward%20Speaker"
+    }
+  },
+  "options": [
+    { "id": "ward-speaker-fortune-jinushigami", "name": "Jinushigami", "benefit": "Increase your and your mount's speed; dismiss the fortune for earthquake at 17th level." },
+    { "id": "ward-speaker-fortune-kodama", "name": "Kodama", "benefit": "Use a distracting gaze to stagger a creature that fails its Will save." },
+    { "id": "ward-speaker-fortune-shikigami", "name": "Shikigami", "benefit": "Gain a level-scaled suite of improvised-weapon and pursuit feats." },
+    { "id": "ward-speaker-fortune-toshigami", "name": "Toshigami", "benefit": "Speak with plants; dismiss the fortune for haste or, at 17th level, temporal stasis." },
+    { "id": "ward-speaker-fortune-zuishin", "name": "Zuishin", "benefit": "Dismiss the fortune to invoke a level-scaled curative spell-like ability." }
+  ]
+}
