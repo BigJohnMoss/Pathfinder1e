@@ -4,10 +4,12 @@
   "classId": "psychic",
   "summary": "The amnesiac once possessed great psychic power, but mental blocks—resulting from either a traumatic event or intentional implantation—have caused her to forget what she knew before",
   "replacesText": "Spellcasting",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The two newest non-cantrip spell levels automatically retain half their normal spells known rounded up, older levels restore full recall, amnesia slots are calculated per class level, and Spell Recollection tracks its hourly limit, slot cost, combat d10, exact outcome table, chosen spell, and daily higher-level exception."
   ],
+  "recentSpellLevelsKnownCount": 2,
+  "recentSpellLevelsKnownDivisor": 2,
   "nestedReplacements": [
     "Spellcasting"
   ],
@@ -36,9 +38,1063 @@
           "name": "Spell Recollection (Ex)",
           "level": 1,
           "type": "archetype",
+          "resourceActions": [
+            {
+              "id": "amnesiac-recollect-1",
+              "label": "Recollect a 1st-level spell",
+              "classId": "psychic",
+              "minimumLevel": 1,
+              "maximumLevel": 5,
+              "costs": [
+                {
+                  "resourceId": "spellRecollectionHourly",
+                  "cost": 1
+                },
+                {
+                  "resourceId": "amnesiaSlot1",
+                  "cost": 1
+                }
+              ],
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "swift"
+                }
+              ],
+              "textInputLabel": "Spell to recall",
+              "modeLabel": "Situation",
+              "modes": [
+                {
+                  "id": "outside-combat",
+                  "label": "Outside combat",
+                  "summary": "Roll d% normally."
+                },
+                {
+                  "id": "in-combat",
+                  "label": "In combat",
+                  "summary": "Add 1d10 to the d% result."
+                }
+              ],
+              "diceRoll": {
+                "label": "Spell Recollection",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 100
+                  }
+                ],
+                "bonusDiceByMode": [
+                  {
+                    "modeId": "in-combat",
+                    "count": 1,
+                    "sides": 10
+                  }
+                ],
+                "outcomesByTotal": [
+                  {
+                    "minimumTotal": 1,
+                    "maximumTotal": 10,
+                    "label": "Mental block",
+                    "summary": "Unable to cast spells this round."
+                  },
+                  {
+                    "minimumTotal": 11,
+                    "maximumTotal": 35,
+                    "label": "No recollection",
+                    "summary": "The new spell is not remembered; other spells can still be cast this round."
+                  },
+                  {
+                    "minimumTotal": 36,
+                    "maximumTotal": 95,
+                    "label": "Spell remembered",
+                    "summary": "Cast it with this amnesia slot during this round; it remains known for the rest of the day."
+                  },
+                  {
+                    "minimumTotal": 96,
+                    "label": "Exceptional recollection",
+                    "summary": "Treat as spell remembered, or spend the daily higher-level recollection to recall a spell one level higher temporarily."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "amnesiac-recollect-2",
+              "label": "Recollect a 2nd-level spell",
+              "classId": "psychic",
+              "minimumLevel": 4,
+              "maximumLevel": 7,
+              "costs": [
+                {
+                  "resourceId": "spellRecollectionHourly",
+                  "cost": 1
+                },
+                {
+                  "resourceId": "amnesiaSlot2",
+                  "cost": 1
+                }
+              ],
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "swift"
+                }
+              ],
+              "textInputLabel": "Spell to recall",
+              "modeLabel": "Situation",
+              "modes": [
+                {
+                  "id": "outside-combat",
+                  "label": "Outside combat",
+                  "summary": "Roll d% normally."
+                },
+                {
+                  "id": "in-combat",
+                  "label": "In combat",
+                  "summary": "Add 1d10 to the d% result."
+                }
+              ],
+              "diceRoll": {
+                "label": "Spell Recollection",
+                "diceCountByLevel": [
+                  {
+                    "level": 4,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 4,
+                    "sides": 100
+                  }
+                ],
+                "bonusDiceByMode": [
+                  {
+                    "modeId": "in-combat",
+                    "count": 1,
+                    "sides": 10
+                  }
+                ],
+                "outcomesByTotal": [
+                  {
+                    "minimumTotal": 1,
+                    "maximumTotal": 10,
+                    "label": "Mental block",
+                    "summary": "Unable to cast spells this round."
+                  },
+                  {
+                    "minimumTotal": 11,
+                    "maximumTotal": 35,
+                    "label": "No recollection",
+                    "summary": "The new spell is not remembered; other spells can still be cast this round."
+                  },
+                  {
+                    "minimumTotal": 36,
+                    "maximumTotal": 95,
+                    "label": "Spell remembered",
+                    "summary": "Cast it with this amnesia slot during this round; it remains known for the rest of the day."
+                  },
+                  {
+                    "minimumTotal": 96,
+                    "label": "Exceptional recollection",
+                    "summary": "Treat as spell remembered, or spend the daily higher-level recollection to recall a spell one level higher temporarily."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "amnesiac-recollect-3",
+              "label": "Recollect a 3rd-level spell",
+              "classId": "psychic",
+              "minimumLevel": 6,
+              "maximumLevel": 9,
+              "costs": [
+                {
+                  "resourceId": "spellRecollectionHourly",
+                  "cost": 1
+                },
+                {
+                  "resourceId": "amnesiaSlot3",
+                  "cost": 1
+                }
+              ],
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "swift"
+                }
+              ],
+              "textInputLabel": "Spell to recall",
+              "modeLabel": "Situation",
+              "modes": [
+                {
+                  "id": "outside-combat",
+                  "label": "Outside combat",
+                  "summary": "Roll d% normally."
+                },
+                {
+                  "id": "in-combat",
+                  "label": "In combat",
+                  "summary": "Add 1d10 to the d% result."
+                }
+              ],
+              "diceRoll": {
+                "label": "Spell Recollection",
+                "diceCountByLevel": [
+                  {
+                    "level": 6,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 6,
+                    "sides": 100
+                  }
+                ],
+                "bonusDiceByMode": [
+                  {
+                    "modeId": "in-combat",
+                    "count": 1,
+                    "sides": 10
+                  }
+                ],
+                "outcomesByTotal": [
+                  {
+                    "minimumTotal": 1,
+                    "maximumTotal": 10,
+                    "label": "Mental block",
+                    "summary": "Unable to cast spells this round."
+                  },
+                  {
+                    "minimumTotal": 11,
+                    "maximumTotal": 35,
+                    "label": "No recollection",
+                    "summary": "The new spell is not remembered; other spells can still be cast this round."
+                  },
+                  {
+                    "minimumTotal": 36,
+                    "maximumTotal": 95,
+                    "label": "Spell remembered",
+                    "summary": "Cast it with this amnesia slot during this round; it remains known for the rest of the day."
+                  },
+                  {
+                    "minimumTotal": 96,
+                    "label": "Exceptional recollection",
+                    "summary": "Treat as spell remembered, or spend the daily higher-level recollection to recall a spell one level higher temporarily."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "amnesiac-recollect-4",
+              "label": "Recollect a 4th-level spell",
+              "classId": "psychic",
+              "minimumLevel": 8,
+              "maximumLevel": 11,
+              "costs": [
+                {
+                  "resourceId": "spellRecollectionHourly",
+                  "cost": 1
+                },
+                {
+                  "resourceId": "amnesiaSlot4",
+                  "cost": 1
+                }
+              ],
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "swift"
+                }
+              ],
+              "textInputLabel": "Spell to recall",
+              "modeLabel": "Situation",
+              "modes": [
+                {
+                  "id": "outside-combat",
+                  "label": "Outside combat",
+                  "summary": "Roll d% normally."
+                },
+                {
+                  "id": "in-combat",
+                  "label": "In combat",
+                  "summary": "Add 1d10 to the d% result."
+                }
+              ],
+              "diceRoll": {
+                "label": "Spell Recollection",
+                "diceCountByLevel": [
+                  {
+                    "level": 8,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 8,
+                    "sides": 100
+                  }
+                ],
+                "bonusDiceByMode": [
+                  {
+                    "modeId": "in-combat",
+                    "count": 1,
+                    "sides": 10
+                  }
+                ],
+                "outcomesByTotal": [
+                  {
+                    "minimumTotal": 1,
+                    "maximumTotal": 10,
+                    "label": "Mental block",
+                    "summary": "Unable to cast spells this round."
+                  },
+                  {
+                    "minimumTotal": 11,
+                    "maximumTotal": 35,
+                    "label": "No recollection",
+                    "summary": "The new spell is not remembered; other spells can still be cast this round."
+                  },
+                  {
+                    "minimumTotal": 36,
+                    "maximumTotal": 95,
+                    "label": "Spell remembered",
+                    "summary": "Cast it with this amnesia slot during this round; it remains known for the rest of the day."
+                  },
+                  {
+                    "minimumTotal": 96,
+                    "label": "Exceptional recollection",
+                    "summary": "Treat as spell remembered, or spend the daily higher-level recollection to recall a spell one level higher temporarily."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "amnesiac-recollect-5",
+              "label": "Recollect a 5th-level spell",
+              "classId": "psychic",
+              "minimumLevel": 10,
+              "maximumLevel": 13,
+              "costs": [
+                {
+                  "resourceId": "spellRecollectionHourly",
+                  "cost": 1
+                },
+                {
+                  "resourceId": "amnesiaSlot5",
+                  "cost": 1
+                }
+              ],
+              "actionTypeByLevel": [
+                {
+                  "level": 10,
+                  "actionType": "swift"
+                }
+              ],
+              "textInputLabel": "Spell to recall",
+              "modeLabel": "Situation",
+              "modes": [
+                {
+                  "id": "outside-combat",
+                  "label": "Outside combat",
+                  "summary": "Roll d% normally."
+                },
+                {
+                  "id": "in-combat",
+                  "label": "In combat",
+                  "summary": "Add 1d10 to the d% result."
+                }
+              ],
+              "diceRoll": {
+                "label": "Spell Recollection",
+                "diceCountByLevel": [
+                  {
+                    "level": 10,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 10,
+                    "sides": 100
+                  }
+                ],
+                "bonusDiceByMode": [
+                  {
+                    "modeId": "in-combat",
+                    "count": 1,
+                    "sides": 10
+                  }
+                ],
+                "outcomesByTotal": [
+                  {
+                    "minimumTotal": 1,
+                    "maximumTotal": 10,
+                    "label": "Mental block",
+                    "summary": "Unable to cast spells this round."
+                  },
+                  {
+                    "minimumTotal": 11,
+                    "maximumTotal": 35,
+                    "label": "No recollection",
+                    "summary": "The new spell is not remembered; other spells can still be cast this round."
+                  },
+                  {
+                    "minimumTotal": 36,
+                    "maximumTotal": 95,
+                    "label": "Spell remembered",
+                    "summary": "Cast it with this amnesia slot during this round; it remains known for the rest of the day."
+                  },
+                  {
+                    "minimumTotal": 96,
+                    "label": "Exceptional recollection",
+                    "summary": "Treat as spell remembered, or spend the daily higher-level recollection to recall a spell one level higher temporarily."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "amnesiac-recollect-6",
+              "label": "Recollect a 6th-level spell",
+              "classId": "psychic",
+              "minimumLevel": 12,
+              "maximumLevel": 15,
+              "costs": [
+                {
+                  "resourceId": "spellRecollectionHourly",
+                  "cost": 1
+                },
+                {
+                  "resourceId": "amnesiaSlot6",
+                  "cost": 1
+                }
+              ],
+              "actionTypeByLevel": [
+                {
+                  "level": 12,
+                  "actionType": "swift"
+                }
+              ],
+              "textInputLabel": "Spell to recall",
+              "modeLabel": "Situation",
+              "modes": [
+                {
+                  "id": "outside-combat",
+                  "label": "Outside combat",
+                  "summary": "Roll d% normally."
+                },
+                {
+                  "id": "in-combat",
+                  "label": "In combat",
+                  "summary": "Add 1d10 to the d% result."
+                }
+              ],
+              "diceRoll": {
+                "label": "Spell Recollection",
+                "diceCountByLevel": [
+                  {
+                    "level": 12,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 12,
+                    "sides": 100
+                  }
+                ],
+                "bonusDiceByMode": [
+                  {
+                    "modeId": "in-combat",
+                    "count": 1,
+                    "sides": 10
+                  }
+                ],
+                "outcomesByTotal": [
+                  {
+                    "minimumTotal": 1,
+                    "maximumTotal": 10,
+                    "label": "Mental block",
+                    "summary": "Unable to cast spells this round."
+                  },
+                  {
+                    "minimumTotal": 11,
+                    "maximumTotal": 35,
+                    "label": "No recollection",
+                    "summary": "The new spell is not remembered; other spells can still be cast this round."
+                  },
+                  {
+                    "minimumTotal": 36,
+                    "maximumTotal": 95,
+                    "label": "Spell remembered",
+                    "summary": "Cast it with this amnesia slot during this round; it remains known for the rest of the day."
+                  },
+                  {
+                    "minimumTotal": 96,
+                    "label": "Exceptional recollection",
+                    "summary": "Treat as spell remembered, or spend the daily higher-level recollection to recall a spell one level higher temporarily."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "amnesiac-recollect-7",
+              "label": "Recollect a 7th-level spell",
+              "classId": "psychic",
+              "minimumLevel": 14,
+              "maximumLevel": 17,
+              "costs": [
+                {
+                  "resourceId": "spellRecollectionHourly",
+                  "cost": 1
+                },
+                {
+                  "resourceId": "amnesiaSlot7",
+                  "cost": 1
+                }
+              ],
+              "actionTypeByLevel": [
+                {
+                  "level": 14,
+                  "actionType": "swift"
+                }
+              ],
+              "textInputLabel": "Spell to recall",
+              "modeLabel": "Situation",
+              "modes": [
+                {
+                  "id": "outside-combat",
+                  "label": "Outside combat",
+                  "summary": "Roll d% normally."
+                },
+                {
+                  "id": "in-combat",
+                  "label": "In combat",
+                  "summary": "Add 1d10 to the d% result."
+                }
+              ],
+              "diceRoll": {
+                "label": "Spell Recollection",
+                "diceCountByLevel": [
+                  {
+                    "level": 14,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 14,
+                    "sides": 100
+                  }
+                ],
+                "bonusDiceByMode": [
+                  {
+                    "modeId": "in-combat",
+                    "count": 1,
+                    "sides": 10
+                  }
+                ],
+                "outcomesByTotal": [
+                  {
+                    "minimumTotal": 1,
+                    "maximumTotal": 10,
+                    "label": "Mental block",
+                    "summary": "Unable to cast spells this round."
+                  },
+                  {
+                    "minimumTotal": 11,
+                    "maximumTotal": 35,
+                    "label": "No recollection",
+                    "summary": "The new spell is not remembered; other spells can still be cast this round."
+                  },
+                  {
+                    "minimumTotal": 36,
+                    "maximumTotal": 95,
+                    "label": "Spell remembered",
+                    "summary": "Cast it with this amnesia slot during this round; it remains known for the rest of the day."
+                  },
+                  {
+                    "minimumTotal": 96,
+                    "label": "Exceptional recollection",
+                    "summary": "Treat as spell remembered, or spend the daily higher-level recollection to recall a spell one level higher temporarily."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "amnesiac-recollect-8",
+              "label": "Recollect a 8th-level spell",
+              "classId": "psychic",
+              "minimumLevel": 16,
+              "maximumLevel": 20,
+              "costs": [
+                {
+                  "resourceId": "spellRecollectionHourly",
+                  "cost": 1
+                },
+                {
+                  "resourceId": "amnesiaSlot8",
+                  "cost": 1
+                }
+              ],
+              "actionTypeByLevel": [
+                {
+                  "level": 16,
+                  "actionType": "swift"
+                }
+              ],
+              "textInputLabel": "Spell to recall",
+              "modeLabel": "Situation",
+              "modes": [
+                {
+                  "id": "outside-combat",
+                  "label": "Outside combat",
+                  "summary": "Roll d% normally."
+                },
+                {
+                  "id": "in-combat",
+                  "label": "In combat",
+                  "summary": "Add 1d10 to the d% result."
+                }
+              ],
+              "diceRoll": {
+                "label": "Spell Recollection",
+                "diceCountByLevel": [
+                  {
+                    "level": 16,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 16,
+                    "sides": 100
+                  }
+                ],
+                "bonusDiceByMode": [
+                  {
+                    "modeId": "in-combat",
+                    "count": 1,
+                    "sides": 10
+                  }
+                ],
+                "outcomesByTotal": [
+                  {
+                    "minimumTotal": 1,
+                    "maximumTotal": 10,
+                    "label": "Mental block",
+                    "summary": "Unable to cast spells this round."
+                  },
+                  {
+                    "minimumTotal": 11,
+                    "maximumTotal": 35,
+                    "label": "No recollection",
+                    "summary": "The new spell is not remembered; other spells can still be cast this round."
+                  },
+                  {
+                    "minimumTotal": 36,
+                    "maximumTotal": 95,
+                    "label": "Spell remembered",
+                    "summary": "Cast it with this amnesia slot during this round; it remains known for the rest of the day."
+                  },
+                  {
+                    "minimumTotal": 96,
+                    "label": "Exceptional recollection",
+                    "summary": "Treat as spell remembered, or spend the daily higher-level recollection to recall a spell one level higher temporarily."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "amnesiac-recollect-9",
+              "label": "Recollect a 9th-level spell",
+              "classId": "psychic",
+              "minimumLevel": 18,
+              "maximumLevel": 20,
+              "costs": [
+                {
+                  "resourceId": "spellRecollectionHourly",
+                  "cost": 1
+                },
+                {
+                  "resourceId": "amnesiaSlot9",
+                  "cost": 1
+                }
+              ],
+              "actionTypeByLevel": [
+                {
+                  "level": 18,
+                  "actionType": "swift"
+                }
+              ],
+              "textInputLabel": "Spell to recall",
+              "modeLabel": "Situation",
+              "modes": [
+                {
+                  "id": "outside-combat",
+                  "label": "Outside combat",
+                  "summary": "Roll d% normally."
+                },
+                {
+                  "id": "in-combat",
+                  "label": "In combat",
+                  "summary": "Add 1d10 to the d% result."
+                }
+              ],
+              "diceRoll": {
+                "label": "Spell Recollection",
+                "diceCountByLevel": [
+                  {
+                    "level": 18,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 18,
+                    "sides": 100
+                  }
+                ],
+                "bonusDiceByMode": [
+                  {
+                    "modeId": "in-combat",
+                    "count": 1,
+                    "sides": 10
+                  }
+                ],
+                "outcomesByTotal": [
+                  {
+                    "minimumTotal": 1,
+                    "maximumTotal": 10,
+                    "label": "Mental block",
+                    "summary": "Unable to cast spells this round."
+                  },
+                  {
+                    "minimumTotal": 11,
+                    "maximumTotal": 35,
+                    "label": "No recollection",
+                    "summary": "The new spell is not remembered; other spells can still be cast this round."
+                  },
+                  {
+                    "minimumTotal": 36,
+                    "maximumTotal": 95,
+                    "label": "Spell remembered",
+                    "summary": "Cast it with this amnesia slot during this round; it remains known for the rest of the day."
+                  },
+                  {
+                    "minimumTotal": 96,
+                    "label": "Exceptional recollection",
+                    "summary": "Treat as spell remembered, or spend the daily higher-level recollection to recall a spell one level higher temporarily."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "amnesiac-use-higher-recall",
+              "label": "Spend higher-level recollection",
+              "classId": "psychic",
+              "minimumLevel": 1,
+              "resourceId": "amnesiacHigherRecall",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "free"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "exceptional-result",
+                  "label": "Spell Recollection result was 96 or higher",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Higher-level spell recollection",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Recall one psychic spell one level higher than the attempted spell, cast it at the minimum caster level, then forget it.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            }
+          ],
           "summary": "Once per hour as a swift action, an amnesiac can attempt to remember any spell from the psychic spell list of her choice from either of the 2 highest spell levels she can cast. When she does, she rolls on Table 2–1: Spell Recollection to determine the result. Because the mental stress of combat brings memories to the surface more easily, the amnesiac adds 1d10 to this roll’s result if she’s in combat when she attempts to recall a spell. Regardless of the result, the amnesiac expends an amnesia slot of the appropriate level for the spell she is attempting to remember; she must cast the spell remembered (if any) using that amnesia slot during the same round, or the spell slot is lost without effect. Once a spell has been remembered in this way, the amnesiac can cast it as one of her spells known for the rest of the day (even if she failed to cast the spell during the round in which she remembered it), unless spell recollection allowed her to cast a spell of a higher level than she would normally be able to cast. d%Result 1–10The amnesiac is unable to cast spells this round. 11–35The amnesiac can’t remember the new spell (but can still cast spells this round). 36–95The amnesiac remembers and can cast the new spell. 96+The amnesiac can choose to treat this result as 36–95. Alternatively, once per day, she can instead temporarily recall any spell from the psychic spell list that’s 1 level higher than the spell she’s attempting to remember. When she does, her caster level counts as the minimum caster level required to cast the higherlevel spell, and she forgets the spell after it’s cast."
         }
       ]
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "spellRecollectionHourly",
+      "label": "Spell Recollection",
+      "unit": "attempt",
+      "operation": "add",
+      "minimumLevel": 1,
+      "base": 1,
+      "maximum": 1,
+      "refreshCadence": "hour",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "amnesiacHigherRecall",
+      "label": "Higher-level recollection",
+      "unit": "use",
+      "operation": "add",
+      "minimumLevel": 1,
+      "base": 1,
+      "maximum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "amnesiaSlot1",
+      "label": "1st-level amnesia slots",
+      "unit": "slot",
+      "operation": "add",
+      "minimumLevel": 1,
+      "base": 0,
+      "maximumByLevel": [
+        {
+          "level": 1,
+          "maximum": 1
+        },
+        {
+          "level": 3,
+          "maximum": 2
+        },
+        {
+          "level": 6,
+          "maximum": 0
+        }
+      ],
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "amnesiaSlot2",
+      "label": "2nd-level amnesia slots",
+      "unit": "slot",
+      "operation": "add",
+      "minimumLevel": 1,
+      "base": 0,
+      "maximumByLevel": [
+        {
+          "level": 1,
+          "maximum": 0
+        },
+        {
+          "level": 4,
+          "maximum": 1
+        },
+        {
+          "level": 7,
+          "maximum": 2
+        },
+        {
+          "level": 8,
+          "maximum": 0
+        }
+      ],
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "amnesiaSlot3",
+      "label": "3rd-level amnesia slots",
+      "unit": "slot",
+      "operation": "add",
+      "minimumLevel": 1,
+      "base": 0,
+      "maximumByLevel": [
+        {
+          "level": 1,
+          "maximum": 0
+        },
+        {
+          "level": 6,
+          "maximum": 1
+        },
+        {
+          "level": 9,
+          "maximum": 2
+        },
+        {
+          "level": 10,
+          "maximum": 0
+        }
+      ],
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "amnesiaSlot4",
+      "label": "4th-level amnesia slots",
+      "unit": "slot",
+      "operation": "add",
+      "minimumLevel": 1,
+      "base": 0,
+      "maximumByLevel": [
+        {
+          "level": 1,
+          "maximum": 0
+        },
+        {
+          "level": 8,
+          "maximum": 1
+        },
+        {
+          "level": 11,
+          "maximum": 2
+        },
+        {
+          "level": 12,
+          "maximum": 0
+        }
+      ],
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "amnesiaSlot5",
+      "label": "5th-level amnesia slots",
+      "unit": "slot",
+      "operation": "add",
+      "minimumLevel": 1,
+      "base": 0,
+      "maximumByLevel": [
+        {
+          "level": 1,
+          "maximum": 0
+        },
+        {
+          "level": 10,
+          "maximum": 1
+        },
+        {
+          "level": 13,
+          "maximum": 2
+        },
+        {
+          "level": 14,
+          "maximum": 0
+        }
+      ],
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "amnesiaSlot6",
+      "label": "6th-level amnesia slots",
+      "unit": "slot",
+      "operation": "add",
+      "minimumLevel": 1,
+      "base": 0,
+      "maximumByLevel": [
+        {
+          "level": 1,
+          "maximum": 0
+        },
+        {
+          "level": 12,
+          "maximum": 1
+        },
+        {
+          "level": 15,
+          "maximum": 2
+        },
+        {
+          "level": 16,
+          "maximum": 0
+        }
+      ],
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "amnesiaSlot7",
+      "label": "7th-level amnesia slots",
+      "unit": "slot",
+      "operation": "add",
+      "minimumLevel": 1,
+      "base": 0,
+      "maximumByLevel": [
+        {
+          "level": 1,
+          "maximum": 0
+        },
+        {
+          "level": 14,
+          "maximum": 1
+        },
+        {
+          "level": 17,
+          "maximum": 2
+        },
+        {
+          "level": 18,
+          "maximum": 0
+        }
+      ],
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "amnesiaSlot8",
+      "label": "8th-level amnesia slots",
+      "unit": "slot",
+      "operation": "add",
+      "minimumLevel": 1,
+      "base": 0,
+      "maximumByLevel": [
+        {
+          "level": 1,
+          "maximum": 0
+        },
+        {
+          "level": 16,
+          "maximum": 1
+        },
+        {
+          "level": 19,
+          "maximum": 2
+        }
+      ],
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "amnesiaSlot9",
+      "label": "9th-level amnesia slots",
+      "unit": "slot",
+      "operation": "add",
+      "minimumLevel": 1,
+      "base": 0,
+      "maximumByLevel": [
+        {
+          "level": 1,
+          "maximum": 0
+        },
+        {
+          "level": 18,
+          "maximum": 1
+        },
+        {
+          "level": 20,
+          "maximum": 2
+        }
+      ],
+      "refreshCadence": "day",
+      "dedicatedAction": true
     }
   ],
   "source": {
