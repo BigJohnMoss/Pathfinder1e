@@ -4,10 +4,6 @@
   "classId": "alchemist",
   "summary": "(Ratfolk Only) The plague bringer sees disease as the ultimate weapon, and has worked tirelessly to master new diseases and disease-delivery systems.",
   "replacesText": "Mutagen; Poison Resistance; Poison Immunity",
-  "mechanicalCoverage": "partial",
-  "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ],
   "replacements": [
     {
       "featureIds": [
@@ -22,7 +18,54 @@
           "name": "Plague Vial (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a plague bringer can create a plague vial, an alchemically grown and concentrated disease sample. It takes 1 hour to prepare a plague vial, and once prepared, the vial remains potent until used. A plague bringer can only maintain 1 plague vial at a time—if he prepares a second vial, any existing plague vial becomes inert. A plague vial that is not in a plague bringer’s possession becomes inert until a plague bringer picks it up again. It’s a standard action to drink a plague vial. Upon being imbibed, the plague vial infects the plague bringer’s blood, sweat, tears, and other bodily fluids for 10 minutes per class level. Any creature that harms him with melee attacks (except with reach weapons) must make a Fortitude save (DC 10 + 1/2 the plague bringer’s level + the plague bringer’s Intelligence modifier) or become sickened for 1 round per plague bringer level. The plague bringer is immune to the effect of his own plague vial, but not that of another’s plague vial. The effects of multiple plague vials do not stack. As a standard action, the plague bringer can infect a weapon with this sickness (typically by licking it or wiping his blood or pus on it). The disease on the weapon works like a poisoned weapon, except the source is a disease instead of a poison (so a dwarf’s resistance to poison does not apply). Anyone other than a plague bringer (including another alchemist) who drinks a plague vial must make a saving throw against the vial’s DC or become nauseated for 1 hour. Unless he learns how to brew a mutagen by taking the mutagen discovery , he can never benefit from a mutagen and reacts to it as if he were a non-alchemist. At any particular time, a plague bringer can only be under the effect of either a plague vial or a mutagen (not both); drinking another immediately ends the effects of any ongoing plague vial or mutagen. All limitations to mutagens apply to plague vials as if they were the same substance. The infuse mutagen discovery and persistent mutagen class ability apply to plague vials. The sticky poison discovery applies to a weapon infected with a plague vial. The plague vial is a disease effect. This ability replaces mutagen."
+          "summary": "At 1st level, a plague bringer can create a plague vial, an alchemically grown and concentrated disease sample. It takes 1 hour to prepare a plague vial, and once prepared, the vial remains potent until used. A plague bringer can only maintain 1 plague vial at a time—if he prepares a second vial, any existing plague vial becomes inert. A plague vial that is not in a plague bringer’s possession becomes inert until a plague bringer picks it up again. It’s a standard action to drink a plague vial. Upon being imbibed, the plague vial infects the plague bringer’s blood, sweat, tears, and other bodily fluids for 10 minutes per class level. Any creature that harms him with melee attacks (except with reach weapons) must make a Fortitude save (DC 10 + 1/2 the plague bringer’s level + the plague bringer’s Intelligence modifier) or become sickened for 1 round per plague bringer level. The plague bringer is immune to the effect of his own plague vial, but not that of another’s plague vial. The effects of multiple plague vials do not stack. As a standard action, the plague bringer can infect a weapon with this sickness (typically by licking it or wiping his blood or pus on it). The disease on the weapon works like a poisoned weapon, except the source is a disease instead of a poison (so a dwarf’s resistance to poison does not apply). Anyone other than a plague bringer (including another alchemist) who drinks a plague vial must make a saving throw against the vial’s DC or become nauseated for 1 hour. Unless he learns how to brew a mutagen by taking the mutagen discovery , he can never benefit from a mutagen and reacts to it as if he were a non-alchemist. At any particular time, a plague bringer can only be under the effect of either a plague vial or a mutagen (not both); drinking another immediately ends the effects of any ongoing plague vial or mutagen. All limitations to mutagens apply to plague vials as if they were the same substance. The infuse mutagen discovery and persistent mutagen class ability apply to plague vials. The sticky poison discovery applies to a weapon infected with a plague vial. The plague vial is a disease effect. This ability replaces mutagen.",
+          "resourceActions": [
+            {
+              "id": "plague-bringer-drink-plague-vial",
+              "label": "Drink plague vial",
+              "actionTypeByLevel": [{ "level": 1, "actionType": "standard" }],
+              "savingThrow": { "label": "Fortitude", "ability": "intelligence", "base": 10, "levelDivisor": 2, "classId": "alchemist" },
+              "activeEffect": {
+                "name": "Plague Vial",
+                "targets": ["self"],
+                "bonus": 0,
+                "description": "For 10 minutes per alchemist level, adjacent melee attackers must save or become sickened for 1 round per alchemist level. The effect is a disease; a prepared vial takes 1 hour to create and only one may be maintained.",
+                "defaultRounds": 100,
+                "defaultRoundsByLevel": [
+                  { "level": 1, "rounds": 100 }, { "level": 2, "rounds": 200 }, { "level": 3, "rounds": 300 }, { "level": 4, "rounds": 400 },
+                  { "level": 5, "rounds": 500 }, { "level": 6, "rounds": 600 }, { "level": 7, "rounds": 700 }, { "level": 8, "rounds": 800 },
+                  { "level": 9, "rounds": 900 }, { "level": 10, "rounds": 1000 }, { "level": 11, "rounds": 1100 }, { "level": 12, "rounds": 1200 },
+                  { "level": 13, "rounds": 1300 }, { "level": 14, "rounds": 1400 }, { "level": 15, "rounds": 1500 }, { "level": 16, "rounds": 1600 },
+                  { "level": 17, "rounds": 1700 }, { "level": 18, "rounds": 1800 }, { "level": 19, "rounds": 1900 }, { "level": 20, "rounds": 2000 }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "plague-bringer-infect-weapon",
+              "label": "Infect weapon from plague vial",
+              "minimumLevel": 1,
+              "actionTypeByLevel": [{ "level": 1, "actionType": "standard" }],
+              "savingThrow": { "label": "Fortitude", "ability": "intelligence", "base": 10, "levelDivisor": 2, "classId": "alchemist" },
+              "activeEffect": {
+                "name": "Plague Vial — infected weapon",
+                "targets": ["enemy"],
+                "bonus": 0,
+                "description": "The next successful weapon delivery exposes the target to the plague vial disease, sickening it for 1 round per alchemist level on a failed save.",
+                "defaultRounds": 1,
+                "defaultRoundsByLevel": [
+                  { "level": 1, "rounds": 1 }, { "level": 2, "rounds": 2 }, { "level": 3, "rounds": 3 }, { "level": 4, "rounds": 4 },
+                  { "level": 5, "rounds": 5 }, { "level": 6, "rounds": 6 }, { "level": 7, "rounds": 7 }, { "level": 8, "rounds": 8 },
+                  { "level": 9, "rounds": 9 }, { "level": 10, "rounds": 10 }, { "level": 11, "rounds": 11 }, { "level": 12, "rounds": 12 },
+                  { "level": 13, "rounds": 13 }, { "level": 14, "rounds": 14 }, { "level": 15, "rounds": 15 }, { "level": 16, "rounds": 16 },
+                  { "level": 17, "rounds": 17 }, { "level": 18, "rounds": 18 }, { "level": 19, "rounds": 19 }, { "level": 20, "rounds": 20 }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            }
+          ]
         },
         {
           "id": "alchemist-plague-bringer-disease-resistance-ex-2",
@@ -41,6 +84,30 @@
       ]
     }
   ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "alchemist-plague-bringer-disease-resistance-ex-2",
+      "label": "Saving throws",
+      "condition": "against disease",
+      "minimumLevel": 2,
+      "base": 2,
+      "bonusByLevel": [
+        { "level": 2, "bonus": 2 },
+        { "level": 5, "bonus": 4 },
+        { "level": 8, "bonus": 6 }
+      ]
+    }
+  ],
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "alchemist-plague-bringer-disease-resistance-ex-2",
+      "kind": "immunity",
+      "label": "Disease Immunity",
+      "minimumLevel": 10,
+      "base": 0,
+      "qualifier": "disease, including magical disease"
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
@@ -48,5 +115,9 @@
   },
   "manualRequirements": [
     "Restricted to Ratfolk characters; that ancestry is not yet available in this builder."
+  ],
+  "mechanicalCoverage": "full",
+  "mechanicalNotes": [
+    "Plague vials expose their one-hour preparation restriction, standard-action drinking and weapon infection, scaling save DC, 10-minute-per-level active duration, sickened duration, disease resistance, and disease immunity. Ratfolk ancestry eligibility remains advisory until that ancestry enters the builder."
   ]
 }
