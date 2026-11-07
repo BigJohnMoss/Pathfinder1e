@@ -18,6 +18,7 @@ const aerochemist = JSON.parse(readFileSync(new URL("../packages/data/src/archet
 const oenopionResearcher = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-oenopion-researcher.json", import.meta.url), "utf8")) as CharacterArchetype;
 const royalAlchemist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-royal-alchemist.json", import.meta.url), "utf8")) as CharacterArchetype;
 const gloomChymist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-gloom-chymist.json", import.meta.url), "utf8")) as CharacterArchetype;
+const concocter = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-concocter.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -143,4 +144,45 @@ test("Gloom Chymist rolls scaling cold damage and tracks its light field", async
   assert.equal(effects[0]?.target, "area");
   assert.match(screen.getByLabelText("Throw gloom with light change result").textContent ?? "", /5d6.*\+ 4.*cold damage/i);
   assert.match(screen.getByRole("button", { name: "Create empowered umbral gloom" }).closest("div")?.textContent ?? "", /Spend 2/);
+});
+
+test("Concocter tracks mutagenic mixtures and resolves weighted extract-potion outcomes", async () => {
+  const effects: ActiveEffect[] = [];
+  const used: number[] = [];
+  const applied = applyArchetype(alchemist, concocter);
+  const properties = {
+    level: 6,
+    className: applied.name,
+    features: featuresThroughLevel(applied, 6),
+    classLevels: { alchemist: 6 },
+    dailyResources: [{ id: "mutagenicConcoctions", label: "Mutagenic Concoction", unit: "concoction", maximum: 2, used: 0, onUsedChange: (value: number) => used.push(value) }],
+    activeEffects: effects,
+    onAddEffect: (effect: ActiveEffect) => effects.push(effect),
+    onRemoveEffectByName: (name: string) => { for (let index = effects.length - 1; index >= 0; index -= 1) if (effects[index]?.name === name) effects.splice(index, 1); },
+  };
+  const view = render(<ClassFeatures {...properties} />);
+  const setup = userEvent.setup();
+  await setup.selectOptions(screen.getByLabelText("Drink mutagenic concoction mode"), "dexterity");
+  await setup.click(screen.getByRole("button", { name: "Drink mutagenic concoction" }));
+  assert.deepEqual(used, [1]);
+  assert.deepEqual(effects.map(({ target, bonus, roundsRemaining }) => ({ target, bonus, roundsRemaining })), [
+    { target: "armorClass", bonus: 2, roundsRemaining: 60 },
+    { target: "dexterity", bonus: 4, roundsRemaining: 60 },
+    { target: "wisdom", bonus: -2, roundsRemaining: 60 },
+  ]);
+
+  const drinkMixture = screen.getByRole("button", { name: "Drink extract-potion mixture" });
+  assert.equal(drinkMixture.hasAttribute("disabled"), true);
+  await setup.click(screen.getByRole("button", { name: "Combine extract and potion" }));
+  view.rerender(<ClassFeatures {...properties} activeEffects={[...effects]} />);
+  assert.equal(screen.getByRole("button", { name: "Drink extract-potion mixture" }).hasAttribute("disabled"), false);
+  const originalRandom = Math.random;
+  Math.random = () => 0;
+  try {
+    await setup.click(screen.getByRole("button", { name: "Drink extract-potion mixture" }));
+  } finally {
+    Math.random = originalRandom;
+  }
+  assert.match(screen.getByLabelText("Drink extract-potion mixture result").textContent ?? "", /Extract fails/);
+  assert.equal(effects.some((effect) => effect.name === "Fresh Extract-Potion Mixture"), false);
 });
