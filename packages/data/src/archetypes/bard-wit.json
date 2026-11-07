@@ -29,46 +29,411 @@
       ],
       "features": [
         {
-          "id": "bard-wit-way-with-words-ex-4",
+          "id": "bard-wit-way-with-words-ex-1",
           "name": "Way with Words (Ex)",
-          "level": 4,
+          "level": 1,
           "type": "archetype",
-          "summary": "A wit gains a +1 bonus on Bluff, Diplomacy, Intimidate, Linguistics, and Sense Motive checks. At 4th level, and every 4 bard levels thereafter, this bonus increases by 1, to a maximum of +6 at 20th level. He also gains a number of edges at the beginning of any verbal duel equal to this bonus. This ability replaces bardic knowledge."
+          "summary": "A wit gains a +1 bonus on Bluff, Diplomacy, Intimidate, Linguistics, and Sense Motive checks. At 4th level, and every 4 bard levels thereafter, this bonus increases by 1, to a maximum of +6 at 20th level. He also gains a number of edges at the beginning of any verbal duel equal to this bonus. This ability replaces bardic knowledge.",
+          "progressionProfiles": [
+            {
+              "id": "wit-verbal-duel-edges",
+              "label": "Way with Words edges",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "edges",
+                  "label": "Starting verbal-duel edges"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "edges": 1
+                  }
+                },
+                {
+                  "level": 4,
+                  "values": {
+                    "edges": 2
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "edges": 3
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "edges": 4
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "edges": 5
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "edges": 6
+                  }
+                }
+              ],
+              "summary": "The starting edge count equals the current Way with Words bonus."
+            }
+          ]
         },
         {
           "id": "bard-wit-counterargument-1",
           "name": "Counterargument",
           "level": 1,
           "type": "archetype",
-          "summary": "A wit can use only Perform (act, comedy, or oratory) to perform a countersong. This ability alters countersong."
+          "summary": "A wit can use only Perform (act, comedy, or oratory) to perform a countersong. This ability alters countersong.",
+          "performanceRules": [
+            {
+              "id": "wit-counterargument",
+              "name": "Counterargument",
+              "minimumLevel": 1,
+              "kind": "passive",
+              "summary": "Countersong must use Perform (act), Perform (comedy), or Perform (oratory).",
+              "condition": "Use one of the three permitted Perform skills"
+            }
+          ]
         },
         {
           "id": "bard-wit-bardic-performance-3",
           "name": "Bardic Performance",
           "level": 3,
           "type": "archetype",
-          "summary": "A wit gains the following bardic performance. Cutting Remark (Su) : At 3rd level, a wit can wound with his words. The wit can spend 1 round of bardic performance as a standard action to deal 1d4 points of nonlethal damage + the wit’s bard level to a creature within 30 feet. Damage reduction applies to this damage. At 8th level, a target who takes damage from cutting remark is also sickened for as long as it remains within 30 feet of the wit and for 1 round thereafter. Additionally, the nonlethal damage counts as magic for purposes such as overcoming damage reduction. At 14th level, a target who takes damage from cutting remark must also succeed at a Will save (DC = 10 + 1/2 the wit’s bard level + his Charisma modifier) or be dazed for 1 round. A creature that makes a successful save is immune to the dazing effect of the wit’s cutting remark for 24 hours. Cutting remark is a mind-affecting, language-dependent effect, and relies on audible components. This ability replaces inspire competence, dirge of doom, and frightening tune."
+          "summary": "A wit gains the following bardic performance. Cutting Remark (Su) : At 3rd level, a wit can wound with his words. The wit can spend 1 round of bardic performance as a standard action to deal 1d4 points of nonlethal damage + the wit’s bard level to a creature within 30 feet. Damage reduction applies to this damage. At 8th level, a target who takes damage from cutting remark is also sickened for as long as it remains within 30 feet of the wit and for 1 round thereafter. Additionally, the nonlethal damage counts as magic for purposes such as overcoming damage reduction. At 14th level, a target who takes damage from cutting remark must also succeed at a Will save (DC = 10 + 1/2 the wit’s bard level + his Charisma modifier) or be dazed for 1 round. A creature that makes a successful save is immune to the dazing effect of the wit’s cutting remark for 24 hours. Cutting remark is a mind-affecting, language-dependent effect, and relies on audible components. This ability replaces inspire competence, dirge of doom, and frightening tune.",
+          "resourceActions": [
+            {
+              "id": "wit-cutting-remark",
+              "label": "Deliver Cutting Remark",
+              "minimumLevel": 3,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "diceRoll": {
+                "label": "Nonlethal damage",
+                "diceCountByLevel": [
+                  {
+                    "level": 3,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 3,
+                    "sides": 4
+                  }
+                ],
+                "flatModifierByLevel": [
+                  {
+                    "level": 3,
+                    "modifier": 3
+                  },
+                  {
+                    "level": 4,
+                    "modifier": 4
+                  },
+                  {
+                    "level": 5,
+                    "modifier": 5
+                  },
+                  {
+                    "level": 6,
+                    "modifier": 6
+                  },
+                  {
+                    "level": 7,
+                    "modifier": 7
+                  },
+                  {
+                    "level": 8,
+                    "modifier": 8
+                  },
+                  {
+                    "level": 9,
+                    "modifier": 9
+                  },
+                  {
+                    "level": 10,
+                    "modifier": 10
+                  },
+                  {
+                    "level": 11,
+                    "modifier": 11
+                  },
+                  {
+                    "level": 12,
+                    "modifier": 12
+                  },
+                  {
+                    "level": 13,
+                    "modifier": 13
+                  },
+                  {
+                    "level": 14,
+                    "modifier": 14
+                  },
+                  {
+                    "level": 15,
+                    "modifier": 15
+                  },
+                  {
+                    "level": 16,
+                    "modifier": 16
+                  },
+                  {
+                    "level": 17,
+                    "modifier": 17
+                  },
+                  {
+                    "level": 18,
+                    "modifier": 18
+                  },
+                  {
+                    "level": 19,
+                    "modifier": 19
+                  },
+                  {
+                    "level": 20,
+                    "modifier": 20
+                  }
+                ]
+              },
+              "activeEffect": {
+                "name": "Cutting Remark",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "Mind-affecting, language-dependent magical nonlethal damage within 30 feet; damage reduction applies.",
+                "defaultRounds": 1,
+                "additionalEffectsByLevel": [
+                  {
+                    "minimumLevel": 8,
+                    "name": "Cutting Remark — Sickened",
+                    "target": "enemy",
+                    "bonus": 0,
+                    "description": "Sickened while within 30 feet and for 1 round thereafter."
+                  }
+                ]
+              },
+              "summary": "Spend 1 performance round, roll 1d4 + Bard level nonlethal damage, and track the level-8 sickened rider."
+            },
+            {
+              "id": "wit-cutting-remark-daze",
+              "label": "Resolve Cutting Remark Daze",
+              "minimumLevel": 14,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 0,
+              "minimumResourceRemaining": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 14,
+                  "actionType": "free"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "damaged",
+                  "label": "The target took damage from this Cutting Remark",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 14,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 14,
+                    "name": "Cutting Remark — Dazed",
+                    "description": "Dazed for 1 round.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 1
+                    }
+                  }
+                ],
+                "successEffect": {
+                  "name": "Cutting Remark daze immunity",
+                  "description": "Immune to this Wit's Cutting Remark daze for 24 hours.",
+                  "rounds": 999
+                }
+              },
+              "summary": "Resolve the level-14 Will save without spending another performance round; track daze or 24-hour immunity."
+            }
+          ]
         },
         {
           "id": "bard-wit-quick-witted-ex-2",
           "name": "Quick Witted (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a wit can always act in a surprise round (though he remains flat-footed until he acts). In addition, the wit adds half his bard level on initiative checks. This ability replaces versatile performance."
+          "summary": "At 2nd level, a wit can always act in a surprise round (though he remains flat-footed until he acts). In addition, the wit adds half his bard level on initiative checks. This ability replaces versatile performance.",
+          "progressionProfiles": [
+            {
+              "id": "wit-surprise-round",
+              "label": "Quick Witted surprise round",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "benefit",
+                  "label": "Benefit"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 2,
+                  "values": {
+                    "benefit": "Always act in a surprise round; remain flat-footed until acting"
+                  }
+                }
+              ],
+              "summary": "The surprise-round permission is always visible alongside the calculated initiative bonus."
+            }
+          ]
         },
         {
           "id": "bard-wit-on-the-ball-ex-5",
           "name": "On the Ball (Ex)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, rather than roll for initiative, the wit can treat his roll as if it was a 10 (adding any modifiers as usual). The wit can use this ability once per day at 5th level, and an additional time per day for every 6 bard levels thereafter. At 20th level, when the wit uses this ability, he can instead treat his roll as if it was a 20. This ability replaces lore master."
+          "summary": "At 5th level, rather than roll for initiative, the wit can treat his roll as if it was a 10 (adding any modifiers as usual). The wit can use this ability once per day at 5th level, and an additional time per day for every 6 bard levels thereafter. At 20th level, when the wit uses this ability, he can instead treat his roll as if it was a 20. This ability replaces lore master.",
+          "resourceActions": [
+            {
+              "id": "wit-on-the-ball",
+              "label": "Use On the Ball",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "onTheBall",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Skill",
+              "modes": [
+                {
+                  "id": "initiative",
+                  "label": "Initiative",
+                  "summary": "Replace the initiative d20 roll with the current fixed result."
+                }
+              ],
+              "fixedD20Result": {
+                "label": "Natural d20 result",
+                "result": 10,
+                "resultByLevel": [
+                  {
+                    "level": 5,
+                    "result": 10
+                  },
+                  {
+                    "level": 20,
+                    "result": 20
+                  }
+                ]
+              },
+              "summary": "Spend one daily use and treat the selected check's natural d20 result as 10."
+            }
+          ]
         },
         {
           "id": "bard-wit-duel-master-ex-10",
           "name": "Duel Master (Ex)",
           "level": 10,
           "type": "archetype",
-          "summary": "At 10th level, the wit does not lose any edges for being at an extreme disadvantage in a verbal duel and can either ask about one additional bias when successfully using Sense Motive to determine an audience’s biases or automatically seed one of the biases that he discovered. Once during a verbal duel, he can reassign an appropriate skill from one tactic to another tactic in which he didn’t assign any skills. The original tactic is treated as being unprepared for the rest of the duel. This ability replaces jack-of-all-trades."
+          "summary": "At 10th level, the wit does not lose any edges for being at an extreme disadvantage in a verbal duel and can either ask about one additional bias when successfully using Sense Motive to determine an audience’s biases or automatically seed one of the biases that he discovered. Once during a verbal duel, he can reassign an appropriate skill from one tactic to another tactic in which he didn’t assign any skills. The original tactic is treated as being unprepared for the rest of the duel. This ability replaces jack-of-all-trades.",
+          "progressionProfiles": [
+            {
+              "id": "wit-duel-master-rules",
+              "label": "Duel Master",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "benefit",
+                  "label": "Verbal-duel benefit"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 10,
+                  "values": {
+                    "benefit": "Ignore extreme-disadvantage edge loss; discover/seed one extra bias; reassign one tactic skill once per duel"
+                  }
+                }
+              ],
+              "summary": "All passive Duel Master permissions are recorded."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "wit-duel-master-reassignment",
+              "label": "Record Duel Master Reassignment",
+              "minimumLevel": 10,
+              "classId": "bard",
+              "actionTypeByLevel": [
+                {
+                  "level": 10,
+                  "actionType": "free"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "verbal-duel",
+                  "label": "A verbal duel is in progress and this is the once-per-duel reassignment",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Duel Master Reassignment Used",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "One appropriate skill was reassigned to an unassigned tactic; the original tactic is unprepared for the rest of this verbal duel.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Track the single skill reassignment allowed in each verbal duel."
+            }
+          ]
         }
       ]
     }
@@ -78,8 +443,194 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Wit"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Way with Words, verbal-duel edges, Counterargument restrictions, Cutting Remark damage/riders, initiative, On the Ball uses/results, and Duel Master tracking are automated."
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "bard-wit-way-with-words-ex-1",
+      "skill": "Bluff",
+      "minimumLevel": 1,
+      "base": 1,
+      "bonusByLevel": [
+        {
+          "level": 1,
+          "bonus": 1
+        },
+        {
+          "level": 4,
+          "bonus": 2
+        },
+        {
+          "level": 8,
+          "bonus": 3
+        },
+        {
+          "level": 12,
+          "bonus": 4
+        },
+        {
+          "level": 16,
+          "bonus": 5
+        },
+        {
+          "level": 20,
+          "bonus": 6
+        }
+      ]
+    },
+    {
+      "sourceFeatureId": "bard-wit-way-with-words-ex-1",
+      "skill": "Diplomacy",
+      "minimumLevel": 1,
+      "base": 1,
+      "bonusByLevel": [
+        {
+          "level": 1,
+          "bonus": 1
+        },
+        {
+          "level": 4,
+          "bonus": 2
+        },
+        {
+          "level": 8,
+          "bonus": 3
+        },
+        {
+          "level": 12,
+          "bonus": 4
+        },
+        {
+          "level": 16,
+          "bonus": 5
+        },
+        {
+          "level": 20,
+          "bonus": 6
+        }
+      ]
+    },
+    {
+      "sourceFeatureId": "bard-wit-way-with-words-ex-1",
+      "skill": "Intimidate",
+      "minimumLevel": 1,
+      "base": 1,
+      "bonusByLevel": [
+        {
+          "level": 1,
+          "bonus": 1
+        },
+        {
+          "level": 4,
+          "bonus": 2
+        },
+        {
+          "level": 8,
+          "bonus": 3
+        },
+        {
+          "level": 12,
+          "bonus": 4
+        },
+        {
+          "level": 16,
+          "bonus": 5
+        },
+        {
+          "level": 20,
+          "bonus": 6
+        }
+      ]
+    },
+    {
+      "sourceFeatureId": "bard-wit-way-with-words-ex-1",
+      "skill": "Linguistics",
+      "minimumLevel": 1,
+      "base": 1,
+      "bonusByLevel": [
+        {
+          "level": 1,
+          "bonus": 1
+        },
+        {
+          "level": 4,
+          "bonus": 2
+        },
+        {
+          "level": 8,
+          "bonus": 3
+        },
+        {
+          "level": 12,
+          "bonus": 4
+        },
+        {
+          "level": 16,
+          "bonus": 5
+        },
+        {
+          "level": 20,
+          "bonus": 6
+        }
+      ]
+    },
+    {
+      "sourceFeatureId": "bard-wit-way-with-words-ex-1",
+      "skill": "Sense Motive",
+      "minimumLevel": 1,
+      "base": 1,
+      "bonusByLevel": [
+        {
+          "level": 1,
+          "bonus": 1
+        },
+        {
+          "level": 4,
+          "bonus": 2
+        },
+        {
+          "level": 8,
+          "bonus": 3
+        },
+        {
+          "level": 12,
+          "bonus": 4
+        },
+        {
+          "level": 16,
+          "bonus": 5
+        },
+        {
+          "level": 20,
+          "bonus": 6
+        }
+      ]
+    }
+  ],
+  "initiativeAdjustments": [
+    {
+      "sourceFeatureId": "bard-wit-quick-witted-ex-2",
+      "label": "Quick Witted",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "onTheBall",
+      "label": "On the Ball",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 5,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 6,
+      "maximum": 3,
+      "refreshCadence": "day"
+    }
   ]
 }

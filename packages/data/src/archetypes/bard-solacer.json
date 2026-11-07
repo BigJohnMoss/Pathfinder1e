@@ -30,48 +30,261 @@
           "summary": "A solacer adds Heal to his list of class skills instead of Appraise. This alters the bard’s class skills."
         },
         {
-          "id": "bard-solacer-learned-physician-ex-5",
+          "id": "bard-solacer-learned-physician-ex-1",
           "name": "Learned Physician (Ex)",
-          "level": 5,
+          "level": 1,
           "type": "archetype",
-          "summary": "A solacer adds 1/2 his class level (minimum 1) on Heal checks and can attempt Knowledge checks untrained. At 5th level, a solacer can take 10 on checks with any Knowledge skill he has ranks in. The solacer can choose not to take 10 and can instead roll normally. In addition, once per day, the solacer can take 20 on any Heal check, though this does not affect the time it takes to perform the task attempted. He can use this ability one additional time per day for every 6 bard levels he has beyond 5th, to a maximum of three times per day at 17th level. This ability replaces bardic knowledge and lore master."
+          "summary": "A solacer adds 1/2 his class level (minimum 1) on Heal checks and can attempt Knowledge checks untrained. At 5th level, a solacer can take 10 on checks with any Knowledge skill he has ranks in. The solacer can choose not to take 10 and can instead roll normally. In addition, once per day, the solacer can take 20 on any Heal check, though this does not affect the time it takes to perform the task attempted. He can use this ability one additional time per day for every 6 bard levels he has beyond 5th, to a maximum of three times per day at 17th level. This ability replaces bardic knowledge and lore master.",
+          "progressionProfiles": [
+            {
+              "id": "solacer-knowledge-permissions",
+              "label": "Learned Physician knowledge",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "benefit",
+                  "label": "Benefit"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "benefit": "Attempt Knowledge checks untrained"
+                  }
+                },
+                {
+                  "level": 5,
+                  "values": {
+                    "benefit": "Take 10 on trained Knowledge checks, even when normal Take 10 is unavailable"
+                  }
+                }
+              ],
+              "summary": "Knowledge permissions unlock at their published levels."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "solacer-learned-physician",
+              "label": "Use Learned Physician Take 20",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "learnedPhysicianTake20",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Skill",
+              "modes": [
+                {
+                  "id": "heal",
+                  "label": "Heal",
+                  "summary": "Use the result for a Heal check without changing the task's normal time."
+                }
+              ],
+              "fixedD20Result": {
+                "label": "Natural d20 result",
+                "result": 20
+              },
+              "summary": "Spend one daily use and treat the selected check's natural d20 result as 20."
+            }
+          ]
         },
         {
           "id": "bard-solacer-inspire-tenacity-su-1",
           "name": "Inspire Tenacity (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a solacer can use his bardic performances to bolster his allies’ mental endurance when they need it most. All allies within 30 feet automatically stabilize if they are dying and gain a +2 morale bonus on saving throws against mind-affecting effects, poisons, and disease. This performance relies on audible components. This bardic performance replaces countersong."
+          "summary": "At 1st level, a solacer can use his bardic performances to bolster his allies’ mental endurance when they need it most. All allies within 30 feet automatically stabilize if they are dying and gain a +2 morale bonus on saving throws against mind-affecting effects, poisons, and disease. This performance relies on audible components. This bardic performance replaces countersong.",
+          "resourceActions": [
+            {
+              "id": "solacer-inspire-tenacity",
+              "label": "Begin Inspire Tenacity",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Inspire Tenacity",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "All allies within 30 feet who can hear the performance automatically stabilize while dying and gain +2 morale on saves against mind-affecting effects, poison, and disease.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend 1 performance round per round and track automatic stabilization plus the exact conditional save bonus."
+            }
+          ]
         },
         {
           "id": "bard-solacer-creative-treatment-su-2",
           "name": "Creative Treatment (Su)",
           "level": 2,
           "type": "archetype",
-          "summary": "Beginning at 2nd level, once per day when a solacer attempts a Heal check and fails, he can immediately reroll the check and take the better result. He can use this ability one additional time per day at 6th level and every 4 bard levels thereafter (to a maximum of five times per day at 18th level). Additionally, when acting as a confidante (or any other type of advisor) to reduce sanity damage with rest ( Pathfinder RPG Horror Adventures 13 ), the solacer can attempt a Charisma check instead of an Intelligence or Wisdom check and add his Charisma modifier to the amount of sanity damage removed instead of his Intelligence or Wisdom modifier. When acting as a confidante (or any other type of advisor) to reduce a madness’s DC with rest ( Horror Adventures 182 ), the solacer can attempt a Charisma check instead of an Intelligence or Wisdom check and reduce the madness’s DC by 1/2 his Charisma modifier instead of 1/2 his Intelligence or Wisdom modifier. This ability replaces versatile performance."
+          "summary": "Beginning at 2nd level, once per day when a solacer attempts a Heal check and fails, he can immediately reroll the check and take the better result. He can use this ability one additional time per day at 6th level and every 4 bard levels thereafter (to a maximum of five times per day at 18th level). Additionally, when acting as a confidante (or any other type of advisor) to reduce sanity damage with rest ( Pathfinder RPG Horror Adventures 13 ), the solacer can attempt a Charisma check instead of an Intelligence or Wisdom check and add his Charisma modifier to the amount of sanity damage removed instead of his Intelligence or Wisdom modifier. When acting as a confidante (or any other type of advisor) to reduce a madness’s DC with rest ( Horror Adventures 182 ), the solacer can attempt a Charisma check instead of an Intelligence or Wisdom check and reduce the madness’s DC by 1/2 his Charisma modifier instead of 1/2 his Intelligence or Wisdom modifier. This ability replaces versatile performance.",
+          "progressionProfiles": [
+            {
+              "id": "solacer-confidante",
+              "label": "Creative Treatment confidante substitutions",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "benefit",
+                  "label": "Benefit"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 2,
+                  "values": {
+                    "benefit": "Use Charisma instead of Intelligence or Wisdom; add Charisma to sanity damage removed or half Charisma to madness-DC reduction"
+                  }
+                }
+              ],
+              "summary": "The Horror Adventures advisor substitutions remain visible with the reroll control."
+            }
+          ]
         },
         {
           "id": "bard-solacer-invigorating-artistry-su-10",
           "name": "Invigorating Artistry (Su)",
           "level": 10,
           "type": "archetype",
-          "summary": "At 10th level, a solacer can use his performances to protect and heal a target’s soul. The solacer can perform for 1 hour (this requires no skill check) and grant several benefits for 24 hours to the creatures that can hear or see his performance, or both, depending on whether the performance has audible or visual components. Affected creatures gain a +3 bonus on saving throws against curses, possession spells and effects (such as magic jar ), and domination and mind control spells and effects (such as dominate person ). If the target is suffering any or multiple such effects, it immediately can attempt a new saving throw against each; the effect ends if the saving throw is successful. Only one such extra saving throw can be granted against each condition in any 24-hour period. If a creature benefits from the daily performance between saving throws against a corruption ( Horror Adventures 14 ) progressing, it gains a +3 bonus on the next saving throw against that corruption. The amount of this bonus increases by 1 at 16th and 19th levels (maximum +5 at 19th level). This ability replaces jack-of-all-trades."
+          "summary": "At 10th level, a solacer can use his performances to protect and heal a target’s soul. The solacer can perform for 1 hour (this requires no skill check) and grant several benefits for 24 hours to the creatures that can hear or see his performance, or both, depending on whether the performance has audible or visual components. Affected creatures gain a +3 bonus on saving throws against curses, possession spells and effects (such as magic jar ), and domination and mind control spells and effects (such as dominate person ). If the target is suffering any or multiple such effects, it immediately can attempt a new saving throw against each; the effect ends if the saving throw is successful. Only one such extra saving throw can be granted against each condition in any 24-hour period. If a creature benefits from the daily performance between saving throws against a corruption ( Horror Adventures 14 ) progressing, it gains a +3 bonus on the next saving throw against that corruption. The amount of this bonus increases by 1 at 16th and 19th levels (maximum +5 at 19th level). This ability replaces jack-of-all-trades.",
+          "resourceActions": [
+            {
+              "id": "solacer-invigorating-artistry",
+              "label": "Perform Invigorating Artistry",
+              "minimumLevel": 10,
+              "classId": "bard",
+              "actionTypeByLevel": [
+                {
+                  "level": 10,
+                  "actionType": "1-hour"
+                }
+              ],
+              "modeLabel": "Current protection bonus",
+              "modes": [
+                {
+                  "id": "plus-three",
+                  "label": "+3",
+                  "minimumLevel": 10,
+                  "maximumLevel": 15,
+                  "summary": "+3 on the listed saves for 24 hours."
+                },
+                {
+                  "id": "plus-four",
+                  "label": "+4",
+                  "minimumLevel": 16,
+                  "maximumLevel": 18,
+                  "summary": "+4 on the listed saves for 24 hours."
+                },
+                {
+                  "id": "plus-five",
+                  "label": "+5",
+                  "minimumLevel": 19,
+                  "summary": "+5 on the listed saves for 24 hours."
+                }
+              ],
+              "activeEffect": {
+                "name": "Invigorating Artistry",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "For 24 hours, apply the selected bonus against curses, possession, domination, mind control, and the next corruption progression save; each current listed effect receives one new save, at most once per condition per 24 hours.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Perform for 1 hour and track the exact level-scaled 24-hour protection, new saves, and corruption benefit."
+            }
+          ]
         }
       ]
     }
   ],
   "resourceAdjustments": [
-    { "resourceId": "creativeTreatment", "label": "Creative Treatment", "unit": "use", "operation": "replace", "minimumLevel": 2, "base": 1, "perInterval": 1, "interval": 4, "maximum": 5 }
+    {
+      "resourceId": "learnedPhysicianTake20",
+      "label": "Learned Physician take 20",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 5,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 6,
+      "maximum": 3,
+      "refreshCadence": "day"
+    },
+    {
+      "resourceId": "creativeTreatment",
+      "label": "Creative Treatment",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 2,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 4,
+      "maximum": 5,
+      "refreshCadence": "day"
+    }
   ],
-  "classSkillAdditions": ["Heal"],
-  "classSkillRemovals": ["Appraise"],
+  "classSkillAdditions": [
+    "Heal"
+  ],
+  "classSkillRemovals": [
+    "Appraise"
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Solacer"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Class skills, Heal scaling, Knowledge permissions, take 10/take 20, Inspire Tenacity, Creative Treatment and confidante rules, and Invigorating Artistry are automated."
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "bard-solacer-learned-physician-ex-1",
+      "skill": "Heal",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    }
+  ],
+  "skillCheckRules": [
+    {
+      "sourceFeatureId": "bard-solacer-learned-physician-ex-1",
+      "label": "Learned Physician",
+      "minimumLevel": 5,
+      "skills": [
+        "Knowledge (all)"
+      ],
+      "result": 10,
+      "allowsStress": true,
+      "trainedOnly": true
+    }
   ]
 }

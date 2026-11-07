@@ -34,11 +34,67 @@
       ],
       "features": [
         {
-          "id": "bard-brazen-deceiver-deceptive-tale-su-5",
+          "id": "bard-brazen-deceiver-deceptive-tale-su-1",
           "name": "Deceptive Tale (Su)",
-          "level": 5,
+          "level": 1,
           "type": "archetype",
-          "summary": "A brazen deceiver learns the deceptive tale bardic performance, allowing him to weave magic into his lies and imbue the most fantastic claims with the appearance of truth. While the brazen deceiver maintains this performance, he takes half the normal penalty on Bluff checks for unlikely lies (rounding down to –2). At 5th level, this effect also applies to Bluff checks for far-fetched lies, and at 11th level, it applies to Bluff checks for impossible lies. Deceptive tale relies on audible components. This replaces the countersong and distraction bardic performances."
+          "summary": "A brazen deceiver learns the deceptive tale bardic performance, allowing him to weave magic into his lies and imbue the most fantastic claims with the appearance of truth. While the brazen deceiver maintains this performance, he takes half the normal penalty on Bluff checks for unlikely lies (rounding down to –2). At 5th level, this effect also applies to Bluff checks for far-fetched lies, and at 11th level, it applies to Bluff checks for impossible lies. Deceptive tale relies on audible components. This replaces the countersong and distraction bardic performances.",
+          "resourceActions": [
+            {
+              "id": "brazen-deceptive-tale",
+              "label": "Begin Deceptive Tale",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "modeLabel": "Lie category",
+              "modes": [
+                {
+                  "id": "unlikely",
+                  "label": "Unlikely lie",
+                  "minimumLevel": 1,
+                  "summary": "Halve the normal penalty, rounding down to −2."
+                },
+                {
+                  "id": "far-fetched",
+                  "label": "Far-fetched lie",
+                  "minimumLevel": 5,
+                  "summary": "Halve the normal penalty for a far-fetched lie."
+                },
+                {
+                  "id": "impossible",
+                  "label": "Impossible lie",
+                  "minimumLevel": 11,
+                  "summary": "Halve the normal penalty for an impossible lie."
+                }
+              ],
+              "activeEffect": {
+                "name": "Deceptive Tale",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The selected Bluff lie-category penalty is halved while the audible performance continues.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend 1 performance round and select the exact lie category unlocked at the current level."
+            }
+          ]
         },
         {
           "id": "bard-brazen-deceiver-shameless-scoundrel-ex-1",
@@ -52,21 +108,229 @@
           "name": "Blatant Subtlety (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a brazen deceiver has mastered the art of using magic without being detected. The brazen deceiver gains Spellsong as a bonus feat. Observers do not automatically recognize his bardic performances as anything other than ordinary speech or performance. Those specifically looking for abnormal effects must succeed at a Sense Motive check (DC = 10 + half the brazen deceiver’s bard level + the brazen deceiver’s Charisma modifier) to detect his performances. This ability replaces well-versed."
+          "summary": "At 2nd level, a brazen deceiver has mastered the art of using magic without being detected. The brazen deceiver gains Spellsong as a bonus feat. Observers do not automatically recognize his bardic performances as anything other than ordinary speech or performance. Those specifically looking for abnormal effects must succeed at a Sense Motive check (DC = 10 + half the brazen deceiver’s bard level + the brazen deceiver’s Charisma modifier) to detect his performances. This ability replaces well-versed.",
+          "grantedFeatIds": [
+            "spellsong"
+          ],
+          "progressionProfiles": [
+            {
+              "id": "brazen-performance-detection",
+              "label": "Blatant Subtlety detection DC",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "base",
+                  "label": "Base DC before Charisma"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 2,
+                  "values": {
+                    "base": 11
+                  }
+                },
+                {
+                  "level": 3,
+                  "values": {
+                    "base": 11
+                  }
+                },
+                {
+                  "level": 4,
+                  "values": {
+                    "base": 12
+                  }
+                },
+                {
+                  "level": 5,
+                  "values": {
+                    "base": 12
+                  }
+                },
+                {
+                  "level": 6,
+                  "values": {
+                    "base": 13
+                  }
+                },
+                {
+                  "level": 7,
+                  "values": {
+                    "base": 13
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "base": 14
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "base": 14
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "base": 15
+                  }
+                },
+                {
+                  "level": 11,
+                  "values": {
+                    "base": 15
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "base": 16
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "base": 16
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "base": 17
+                  }
+                },
+                {
+                  "level": 15,
+                  "values": {
+                    "base": 17
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "base": 18
+                  }
+                },
+                {
+                  "level": 17,
+                  "values": {
+                    "base": 18
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "base": 19
+                  }
+                },
+                {
+                  "level": 19,
+                  "values": {
+                    "base": 19
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "base": 20
+                  }
+                }
+              ],
+              "summary": "Observers specifically looking for abnormal effects roll Sense Motive against this base DC + the Brazen Deceiver's Charisma modifier."
+            }
+          ]
         },
         {
           "id": "bard-brazen-deceiver-invoke-vyriavaxus-ex-2",
           "name": "Invoke Vyriavaxus (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "Westcrown suffered under the shadow curse for many years, and a brazen deceiver has a tiny piece of that darkness lodged in his soul; as his skills increase, he learns to command this shadowy power. A brazen deceiver adds the following spells to his bard spells known at the listed class levels. At 2nd level, the brazen deceiver adds bleed and touch of fatigue to his 0-level bard spells known. At 6th level, the brazen deceiver adds darkness and darkvision to his 2nd-level bard spells known. At 10th level, he adds shadow conjuration and shadow step to his 4th-level bard spells known. At 14th level, he adds shadow evocation and shadow walk to his 5th-level bard spells known. At 18th level, he adds shadow conjuration, greater and greater shadow evocation to his 6th-level bard spells known. This ability replaces versatile performance."
+          "summary": "Westcrown suffered under the shadow curse for many years, and a brazen deceiver has a tiny piece of that darkness lodged in his soul; as his skills increase, he learns to command this shadowy power. A brazen deceiver adds the following spells to his bard spells known at the listed class levels. At 2nd level, the brazen deceiver adds bleed and touch of fatigue to his 0-level bard spells known. At 6th level, the brazen deceiver adds darkness and darkvision to his 2nd-level bard spells known. At 10th level, he adds shadow conjuration and shadow step to his 4th-level bard spells known. At 14th level, he adds shadow evocation and shadow walk to his 5th-level bard spells known. At 18th level, he adds shadow conjuration, greater and greater shadow evocation to his 6th-level bard spells known. This ability replaces versatile performance.",
+          "progressionProfiles": [
+            {
+              "id": "brazen-shadow-spells",
+              "label": "Invoke Vyriavaxus spells known",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "spells",
+                  "label": "Spells added"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 2,
+                  "values": {
+                    "spells": "bleed; touch of fatigue"
+                  }
+                },
+                {
+                  "level": 6,
+                  "values": {
+                    "spells": "darkness; darkvision"
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "spells": "shadow conjuration; shadow step"
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "spells": "shadow evocation; shadow walk"
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "spells": "greater shadow conjuration; greater shadow evocation"
+                  }
+                }
+              ],
+              "summary": "Every fixed shadow spell is added automatically at its published Bard level."
+            }
+          ]
         },
         {
           "id": "bard-brazen-deceiver-devil-s-tongue-ex-5",
           "name": "Devil’s Tongue (Ex)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, a brazen deceiver beguiles others with astonishing skill. This functions as the lore master ability, but its effects apply to Bluff checks instead of Knowledge skill checks. This ability replaces lore master."
+          "summary": "At 5th level, a brazen deceiver beguiles others with astonishing skill. This functions as the lore master ability, but its effects apply to Bluff checks instead of Knowledge skill checks. This ability replaces lore master.",
+          "resourceActions": [
+            {
+              "id": "brazen-devils-tongue",
+              "label": "Use Devil's Tongue Take 20",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "devilsTongueTake20",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Skill",
+              "modes": [
+                {
+                  "id": "bluff",
+                  "label": "Bluff",
+                  "summary": "Use the result for a Bluff check."
+                }
+              ],
+              "fixedD20Result": {
+                "label": "Natural d20 result",
+                "result": 20
+              },
+              "summary": "Spend one daily use and treat the selected check's natural d20 result as 20."
+            }
+          ]
         }
       ]
     }
@@ -76,8 +340,60 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Brazen%20Deceiver"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Deceptive Tale tiers, Shameless Scoundrel bonuses, Spellsong and detection DCs, every shadow spell, and Devil's Tongue take 10/take 20 uses are automated."
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "bard-brazen-deceiver-shameless-scoundrel-ex-1",
+      "skill": "Bluff",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-brazen-deceiver-shameless-scoundrel-ex-1",
+      "skill": "Disguise",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-brazen-deceiver-shameless-scoundrel-ex-1",
+      "skill": "Stealth",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    }
+  ],
+  "skillCheckRules": [
+    {
+      "sourceFeatureId": "bard-brazen-deceiver-devil-s-tongue-ex-5",
+      "label": "Devil's Tongue",
+      "minimumLevel": 5,
+      "skills": [
+        "Bluff"
+      ],
+      "result": 10,
+      "allowsStress": true
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "devilsTongueTake20",
+      "label": "Devil's Tongue take 20",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 5,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 6,
+      "maximum": 3,
+      "refreshCadence": "day"
+    }
   ]
 }

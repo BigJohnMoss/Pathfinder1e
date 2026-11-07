@@ -307,7 +307,7 @@ export interface ClassFeatureOccurrence {
         kind: "d20" | "damage" | "lower-d20" | "higher-d20";
       label: string;
     };
-    fixedD20Result?: { label: string; result: 10 | 20 };
+    fixedD20Result?: { label: string; result: 10 | 20; resultByLevel?: Array<{ level: number; result: 10 | 20 }> };
     diceRoll?: {
       label: string;
       diceCountByLevel: Array<{ level: number; count: number }>;
