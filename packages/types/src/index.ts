@@ -266,7 +266,7 @@ export interface ClassFeatureOccurrence {
       enemySaveModifier: "fortitude" | "reflex" | "will";
     };
     modeLabel?: string;
-    modes?: Array<{ id: string; label: string; summary?: string; minimumLevel?: number; maximumLevel?: number; defaultRounds?: number; featCount?: number; variableFeatCount?: boolean; actionType?: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" | "1-hour"; requiredOptionId?: string; activeEffects?: Array<{ target: ActiveEffectTarget; bonus: number; bonusByLevel?: Array<{ level: number; bonus: number }>; label: string; description: string; fastHealing?: number; skillIds?: string[] }> }>;
+    modes?: Array<{ id: string; label: string; summary?: string; minimumLevel?: number; maximumLevel?: number; defaultRounds?: number; featCount?: number; variableFeatCount?: boolean; actionType?: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" | "1-hour" | "24-hour"; requiredOptionId?: string; activeEffects?: Array<{ target: ActiveEffectTarget; bonus: number; bonusByLevel?: Array<{ level: number; bonus: number }>; label: string; description: string; fastHealing?: number; skillIds?: string[] }> }>;
     featSelection?: {
       label: string;
       featType: string;
@@ -275,7 +275,7 @@ export interface ClassFeatureOccurrence {
       countByLevel: Array<{ level: number; count: number }>;
       minimumCount?: number;
     };
-    actionTypeByLevel?: Array<{ level: number; actionType: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" | "1-hour" }>;
+    actionTypeByLevel?: Array<{ level: number; actionType: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" | "1-hour" | "24-hour" }>;
     recipientLabel?: string;
     recipients?: Array<{ id: string; label: string }>;
     companionRosterFeatureId?: string;
@@ -415,7 +415,7 @@ export interface ClassFeatureOccurrence {
       };
     };
     targetEffectRoll?: {
-      modifier: "fortitude" | "reflex" | "will";
+      modifier: "fortitude" | "reflex" | "will" | "none";
       rangeByLevel?: Array<{ level: number; range: string }>;
       effectsByLevel: Array<{
         level: number;
@@ -432,7 +432,8 @@ export interface ClassFeatureOccurrence {
           | { kind: "dice-rounds"; count: number; sides: number }
           | { kind: "level-rounds" }
           | { kind: "level-minutes"; multiplier?: number }
-          | { kind: "level-hours"; multiplier?: number };
+          | { kind: "level-hours"; multiplier?: number }
+          | { kind: "until-ended" };
       }>;
       successEffect?: { name: string; description: string; rounds: number };
       failureEffect?: { name: string; description: string; rounds: number };
