@@ -118,7 +118,7 @@ export type ActiveEffectTarget =
   | "attackRolls" | "meleeAttackRolls" | "damageRolls" | "weaponDamageRolls" | "damageReduction" | "spellResistance"
   | "casterLevel" | "spellSaveDc" | "exploitEffectiveLevel"
   | "casterLevelChecks" | "savingThrows" | "savingThrowsAgainstCharmAndFear" | "savingThrowsAgainstParalysisAndSleep"
-  | "meleeDamageRolls" | "healingReceived" | "skillChecks"
+  | "meleeDamageRolls" | "healingReceived" | "skillChecks" | "performanceChecks" | "performanceSaveDc"
   | "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma"
   | "allies" | "self" | "area" | "enemy";
 export interface ActiveEffect {
@@ -291,12 +291,16 @@ export interface ClassFeatureOccurrence {
         kind: "d20" | "damage" | "lower-d20" | "higher-d20";
       label: string;
     };
+    fixedD20Result?: { label: string; result: 10 | 20 };
     diceRoll?: {
       label: string;
       diceCountByLevel: Array<{ level: number; count: number }>;
       dieSidesByLevel: Array<{ level: number; sides: number }>;
       diceCountBonusOptionIds?: string[];
       abilityModifier?: AbilityName;
+      modifierInputLabel?: string;
+      flatModifierByLevel?: Array<{ level: number; modifier: number }>;
+      resultDivisorByMode?: Array<{ modeId: string; divisor: number }>;
       modeEffects?: Array<{
         modeId: string;
         kind: "healing" | "damage";
