@@ -29,7 +29,7 @@ test("full archetypes never report manual effects", () => {
 });
 
 test("completed Alchemist archetypes expose no manual mechanics", () => {
-  for (const id of ["alchemist-aerochemist", "alchemist-oenopion-researcher", "alchemist-royal-alchemist", "alchemist-preservationist", "alchemist-gloom-chymist"]) {
+  for (const id of ["alchemist-aerochemist", "alchemist-oenopion-researcher", "alchemist-royal-alchemist", "alchemist-preservationist", "alchemist-gloom-chymist", "alchemist-concocter"]) {
     const archetype = catalogueArchetypes.find((candidate) => candidate.id === id);
     assert.ok(archetype, id);
     assert.deepEqual(archetypeAutomationSummary(archetype, [], catalogueSpells).manual, [], id);
