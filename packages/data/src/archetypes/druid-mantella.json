@@ -25,14 +25,107 @@
           "name": "Poison Affinity (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, if a form the mantella assumes with wild shape has any poison abilities, the mantella also gains those abilities. However, the mantilla can never use wild shape to take the form of an elemental. This alters wild shape."
+          "summary": "At 4th level, if a form the mantella assumes with wild shape has any poison abilities, the mantella also gains those abilities. However, the mantilla can never use wild shape to take the form of an elemental. This alters wild shape.",
+          "resourceActions": [
+            {
+              "id": "mantella-poisonous-wild-shape",
+              "label": "Assume Poisonous Wild Shape",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "poison-form",
+                  "label": "The selected non-elemental form has a poison ability",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Poisonous Wild Shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Gain every poison ability of the selected wild-shape form. Elemental forms are prohibited.",
+                "defaultRounds": 999,
+                "fixedRounds": true
+              },
+              "summary": "Spend 1 wild shape use, confirm a poisonous non-elemental form, and track its poison abilities."
+            }
+          ]
         },
         {
           "id": "druid-mantella-toxic-diet-ex-6",
           "name": "Toxic Diet (Ex)",
           "level": 6,
           "type": "archetype",
-          "summary": "At 6th level, both the mantella and her animal companion gain immunity to poison. Additionally, as an immediate action when exposed to a dose of poison, a mantella can absorb the toxin and store it internally for up to 1 day. As a swift action, a mantella can secrete this poison; this changes the poison’s type to injury and applies the dose of poison to all of the druid’s natural attacks. A mantella can use this ability three times per day, plus one additional time per day at 8th level and every 2 druid levels thereafter. This alters venom immunity and replaces spontaneous casting."
+          "summary": "At 6th level, both the mantella and her animal companion gain immunity to poison. Additionally, as an immediate action when exposed to a dose of poison, a mantella can absorb the toxin and store it internally for up to 1 day. As a swift action, a mantella can secrete this poison; this changes the poison’s type to injury and applies the dose of poison to all of the druid’s natural attacks. A mantella can use this ability three times per day, plus one additional time per day at 8th level and every 2 druid levels thereafter. This alters venom immunity and replaces spontaneous casting.",
+          "resourceActions": [
+            {
+              "id": "mantella-absorb-poison",
+              "label": "Absorb Exposed Poison",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "toxicDiet",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "immediate"
+                }
+              ],
+              "activeEffect": {
+                "name": "Stored Poison",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The absorbed poison is stored internally for up to 1 day and can be secreted onto all natural attacks.",
+                "defaultRounds": 999,
+                "fixedRounds": true
+              },
+              "summary": "Spend 1 daily use as an immediate action to absorb and store an encountered poison."
+            },
+            {
+              "id": "mantella-secrete-poison",
+              "label": "Secrete Stored Poison",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "toxicDiet",
+              "cost": 0,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "stored-poison",
+                  "label": "A dose of poison is currently stored",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Poisoned Natural Attacks",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The stored poison becomes injury poison and is applied to all natural attacks; remove this tracker when the dose is discharged.",
+                "defaultRounds": 999,
+                "fixedRounds": true
+              },
+              "summary": "As a swift action, convert the stored dose to injury poison on all natural attacks."
+            }
+          ]
         }
       ]
     }
@@ -42,8 +135,34 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Mantella"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Poison-bearing wild shape, elemental-form exclusion, the scaling Toxic Diet pool, poison storage and secretion, and poison immunity are automated."
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "toxicDiet",
+      "label": "Toxic Diet",
+      "unit": "use",
+      "operation": "add",
+      "minimumLevel": 6,
+      "base": 3,
+      "perInterval": 1,
+      "interval": 2,
+      "minimum": 3,
+      "maximum": 10,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
+  ],
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "druid-mantella-toxic-diet-ex-6",
+      "kind": "immunity",
+      "label": "Toxic Diet",
+      "minimumLevel": 6,
+      "base": 0,
+      "qualifier": "poison (self and animal companion)"
+    }
   ]
 }

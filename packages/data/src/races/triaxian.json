@@ -1,0 +1,50 @@
+{
+  "id": "triaxian",
+  "name": "Triaxian",
+  "size": "medium",
+  "speed": 30,
+  "type": "humanoid",
+  "subtypes": [
+    "triaxian"
+  ],
+  "abilityModifiers": {
+    "fixed": {
+      "constitution": 2,
+      "wisdom": 2,
+      "strength": -2
+    }
+  },
+  "languages": {
+    "automatic": [
+      "Triaxian"
+    ],
+    "bonus": "Any non-secret language"
+  },
+  "traits": [
+    {
+      "id": "triaxian-low-light-vision",
+      "name": "Low-Light Vision",
+      "summary": "See twice as far as a human in dim light."
+    },
+    {
+      "id": "triaxian-keen-senses",
+      "name": "Keen Senses",
+      "summary": "Gain a +2 racial bonus on Perception checks."
+    },
+    {
+      "id": "triaxian-bonus-feat",
+      "name": "Bonus Feat",
+      "summary": "Gain one additional feat at 1st level."
+    },
+    {
+      "id": "triaxian-seasoned",
+      "name": "Seasoned",
+      "summary": "Choose Summerborn or Winterborn environmental adaptation; Transitional Triaxians do not gain this benefit. In severe heat or cold, attempt Fortitude saves once per hour instead of once every 10 minutes."
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/RacesDisplay.aspx?ItemName=Triaxian"
+  }
+}
