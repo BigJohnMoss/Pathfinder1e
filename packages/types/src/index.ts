@@ -231,7 +231,7 @@ export interface ClassFeatureOccurrence {
   resourceActions?: Array<{
     id: string;
     label: string;
-    spellLikeAbility?: { spellId: string; spellName: string; cadence: "at-will" | "day" | "week"; kind?: "spell-like" | "spell-equivalent" };
+    spellLikeAbility?: { spellId: string; spellName: string; cadence: "at-will" | "day" | "week" | "month"; kind?: "spell-like" | "spell-equivalent" };
     resourceId?: string;
     cost?: number;
     minimumResourceRemaining?: number;
@@ -724,7 +724,7 @@ export interface CharacterArchetype {
     effectiveLevelClassIds?: string[];
     advancementOptionId?: string;
     requiredOptionId?: string;
-    refreshCadence?: "hour" | "day" | "week";
+    refreshCadence?: "hour" | "day" | "week" | "month";
     hidden?: boolean;
     dedicatedAction?: boolean;
   }>;
@@ -1000,7 +1000,7 @@ export interface SelectableOption {
   resourceActions?: Array<{
     id: string;
     label: string;
-    spellLikeAbility?: { spellId: string; spellName: string; cadence: "at-will" | "day" | "week"; kind?: "spell-like" | "spell-equivalent" };
+    spellLikeAbility?: { spellId: string; spellName: string; cadence: "at-will" | "day" | "week" | "month"; kind?: "spell-like" | "spell-equivalent" };
     resourceId: string;
     cost: number;
     variableCost?: { label: string; minimum: number; maximum?: number };
