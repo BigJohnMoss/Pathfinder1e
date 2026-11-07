@@ -229,6 +229,7 @@ export interface ClassFeatureOccurrence {
   requiredOptionMessage?: string;
   requiredSpellLevel?: number;
   maximumSpellLevel?: number;
+  spellChoiceClassId?: string;
   resourceActions?: Array<{
     id: string;
     label: string;
