@@ -1,0 +1,28 @@
+{
+  "id": "leshy-warden-tender-12",
+  "name": "Leshy Tender — 12th Level",
+  "classIds": ["druid"],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "leshy-warden-tender-12-reinforce",
+      "groupId": "leshy-warden-tender-12",
+      "name": "Reinforce Current Leshy",
+      "classIds": ["druid"],
+      "minimumLevel": 12,
+      "prerequisites": [],
+      "benefit": "Keep the current form and grant the familiar another +2 Strength and +2 Dexterity.",
+      "source": { "title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Leshy%20Warden" }
+    },
+    {
+      "id": "leshy-warden-tender-12-seaweed",
+      "groupId": "leshy-warden-tender-12",
+      "name": "Transform into Seaweed Leshy",
+      "classIds": ["druid"],
+      "minimumLevel": 12,
+      "prerequisites": [],
+      "benefit": "Transform the familiar into a seaweed leshy using that form's normal ability scores; earlier Leshy Tender increases do not carry over.",
+      "source": { "title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Leshy%20Warden" }
+    }
+  ]
+}

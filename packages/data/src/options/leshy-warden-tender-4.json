@@ -1,0 +1,28 @@
+{
+  "id": "leshy-warden-tender-4",
+  "name": "Leshy Tender — 4th Level",
+  "classIds": ["druid"],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "leshy-warden-tender-4-reinforce",
+      "groupId": "leshy-warden-tender-4",
+      "name": "Reinforce Leaf Leshy",
+      "classIds": ["druid"],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Keep the leaf leshy form and grant the familiar +2 Strength and +2 Dexterity.",
+      "source": { "title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Leshy%20Warden" }
+    },
+    {
+      "id": "leshy-warden-tender-4-gourd",
+      "groupId": "leshy-warden-tender-4",
+      "name": "Transform into Gourd Leshy",
+      "classIds": ["druid"],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Transform the familiar into a gourd leshy using that form's normal ability scores.",
+      "source": { "title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Leshy%20Warden" }
+    }
+  ]
+}
