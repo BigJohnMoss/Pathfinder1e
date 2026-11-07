@@ -35,14 +35,90 @@
           "name": "Fire Music",
           "level": 1,
           "type": "archetype",
-          "summary": "A flamesinger gains Fire Music as a bonus feat at 1st level (without needing the meet the normal prerequisites). At 4th level (when she gains access to 2nd-level spells), she adds summon monster I and summon monster II to her bard spells known; every 3 levels thereafter she gains the next level of summon monster , until she adds summon monster VI to her spells known at 16th level. The flamesinger must apply the Fire Music feat’s effect when casting these spells. This ability replaces bardic knowledge and lore master."
+          "summary": "A flamesinger gains Fire Music as a bonus feat at 1st level (without needing the meet the normal prerequisites). At 4th level (when she gains access to 2nd-level spells), she adds summon monster I and summon monster II to her bard spells known; every 3 levels thereafter she gains the next level of summon monster , until she adds summon monster VI to her spells known at 16th level. The flamesinger must apply the Fire Music feat’s effect when casting these spells. This ability replaces bardic knowledge and lore master.",
+          "grantedFeatId": "fire-music"
         },
         {
           "id": "bard-flamesinger-bardic-performance-5",
           "name": "Bardic Performance",
-          "level": 5,
+          "level": 1,
           "type": "archetype",
-          "summary": "A flamesinger gains the following bardic performance. Blazing Blades (Su) : The flamesinger’s song causes allies’ weapons to burst into flames. To be affected, an ally must be able to hear the bard perform and be within 30 feet. An affected creature’s successful attacks with manufactured or natural weapons deal 1d4 additional points of fire damage. These flames do not harm the weapon or its wielder. This damage stacks with other sources of fire damage, such as the flaming special weapon ability. At 5th level and every 6 bard levels thereafter, this bonus fire damage increases by 1d4 (to a maximum of 4d4 at 17th level). This is a fire effect that relies on audible components. This ability replaces inspire courage."
+          "summary": "A flamesinger gains the following bardic performance. Blazing Blades (Su) : The flamesinger’s song causes allies’ weapons to burst into flames. To be affected, an ally must be able to hear the bard perform and be within 30 feet. An affected creature’s successful attacks with manufactured or natural weapons deal 1d4 additional points of fire damage. These flames do not harm the weapon or its wielder. This damage stacks with other sources of fire damage, such as the flaming special weapon ability. At 5th level and every 6 bard levels thereafter, this bonus fire damage increases by 1d4 (to a maximum of 4d4 at 17th level). This is a fire effect that relies on audible components. This ability replaces inspire courage.",
+          "resourceActions": [
+            {
+              "id": "flamesinger-blazing-blades",
+              "label": "Begin Blazing Blades",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "diceRoll": {
+                "label": "Bonus fire damage on a successful weapon attack",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  },
+                  {
+                    "level": 5,
+                    "count": 2
+                  },
+                  {
+                    "level": 11,
+                    "count": 3
+                  },
+                  {
+                    "level": 17,
+                    "count": 4
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 4
+                  }
+                ],
+                "modeEffects": [
+                  {
+                    "modeId": "damage",
+                    "kind": "damage"
+                  }
+                ]
+              },
+              "modes": [
+                {
+                  "id": "damage",
+                  "label": "Roll bonus fire damage",
+                  "summary": "Roll the extra fire damage for one successful affected weapon attack."
+                }
+              ],
+              "activeEffect": {
+                "name": "Blazing Blades",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "Audible fire effect within 30 feet. Manufactured and natural weapon hits deal the rolled bonus fire damage; it stacks with other fire damage.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend one bardic performance round per round; the damage increases to 2d4 at 5th, 3d4 at 11th, and 4d4 at 17th level."
+            }
+          ]
         },
         {
           "id": "bard-flamesinger-wildfire-ex-2",
@@ -59,8 +135,40 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Flamesinger"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Fire Music, exact summon-monster grants, Blazing Blades activation and 1d4–4d4 scaling, and every Wildfire speed increase are automated."
+  ],
+  "landSpeedAdjustments": [
+    {
+      "sourceFeatureId": "bard-flamesinger-wildfire-ex-2",
+      "label": "Wildfire",
+      "minimumLevel": 2,
+      "bonus": 5,
+      "bonusType": "enhancement",
+      "bonusByLevel": [
+        {
+          "level": 2,
+          "bonus": 5
+        },
+        {
+          "level": 6,
+          "bonus": 10
+        },
+        {
+          "level": 10,
+          "bonus": 15
+        },
+        {
+          "level": 14,
+          "bonus": 20
+        },
+        {
+          "level": 18,
+          "bonus": 25
+        }
+      ],
+      "timing": "beforeReduction"
+    }
   ]
 }

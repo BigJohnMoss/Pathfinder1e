@@ -295,18 +295,23 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
             setActionResults((current) => ({ ...current, [action.id]: `${action.rerollAction!.label}: original ${rerollInput.original}; reroll ${roll.natural}${rerollInput.modifier === 0 ? "" : ` ${rerollInput.modifier >= 0 ? "+" : "−"} ${Math.abs(rerollInput.modifier)}`} = ${roll.total}. Use ${Math.max(rerollInput.original, roll.total)}.` }));
           }
           if (action.combatRoll && combatDiceCount && combatDieSides) {
-            const attack = action.combatRoll.attack ? rollD20Check(combatAttackModifier) : undefined;
-            const hit = !attack || (attack.natural !== 1 && (attack.natural === 20 || attack.total >= combatInput.touchArmorClass));
             const parts = [selectedRecipient ? `Recipient ${selectedRecipient.label}.` : "", combatRange ? `Range ${combatRange}.` : ""];
-            if (attack) parts.push(`${action.combatRoll.attack!.label}: ${attack.natural}${combatAttackModifier === 0 ? "" : ` ${combatAttackModifier >= 0 ? "+" : "−"} ${Math.abs(combatAttackModifier)}`} = ${attack.total} vs touch AC ${combatInput.touchArmorClass} — ${hit ? "hit" : "miss"}.`);
-            if (hit) {
-              const damage = rollDice(combatDiceCount, combatDieSides, combatDamageModifier);
+            const attackCount = action.combatRoll.attackCountFromVariableCost ? Math.max(1, variableCost ?? 1) : 1;
+            for (let attackIndex = 0; attackIndex < attackCount; attackIndex += 1) {
+              const attack = action.combatRoll.attack ? rollD20Check(combatAttackModifier) : undefined;
+              const hit = !attack || (attack.natural !== 1 && (attack.natural === 20 || attack.total >= combatInput.touchArmorClass));
+              const attackPrefix = attackCount > 1 ? `Word ${attackIndex + 1}: ` : "";
+              if (attack) parts.push(`${attackPrefix}${action.combatRoll.attack!.label}: ${attack.natural}${combatAttackModifier === 0 ? "" : ` ${combatAttackModifier >= 0 ? "+" : "−"} ${Math.abs(combatAttackModifier)}`} = ${attack.total} vs touch AC ${combatInput.touchArmorClass} — ${hit ? "hit" : "miss"}.`);
+              if (!hit) continue;
+              const applyAbilityModifier = attackIndex === 0 || !action.combatRoll.abilityModifierOnceModeIds?.includes(selectedMode?.id ?? "");
+              const attackDamageModifier = combatDamageModifier - (!applyAbilityModifier && action.combatRoll.damage.abilityModifier ? abilityModifiers[action.combatRoll.damage.abilityModifier] ?? 0 : 0);
+              const damage = rollDice(combatDiceCount, combatDieSides, attackDamageModifier);
               const targetSaveEnabled = Boolean(action.combatRoll.targetSave && (!action.combatRoll.targetSave.requiredConfirmationId || confirmationChecked(action.combatRoll.targetSave.requiredConfirmationId)));
               const targetSave = targetSaveEnabled && saveDc !== undefined ? rollD20Check(combatTargetSaveModifier) : undefined;
               const saveSucceeded = Boolean(targetSave && saveDc !== undefined && targetSave.total >= saveDc);
               const halvesDamage = saveSucceeded && ["half-damage", "half-and-negates-riders"].includes(action.combatRoll.targetSave?.outcome ?? "");
               const appliedDamage = halvesDamage ? Math.floor(damage.total / 2) : damage.total;
-              parts.push(`${combatDiceCount}d${combatDieSides}${combatDamageModifier === 0 ? "" : combatDamageModifier > 0 ? ` + ${combatDamageModifier}` : ` − ${Math.abs(combatDamageModifier)}`} ${combatDamageType} damage: ${damage.rolls.join(" + ")}${combatDamageModifier === 0 ? "" : combatDamageModifier > 0 ? ` + ${combatDamageModifier}` : ` − ${Math.abs(combatDamageModifier)}`} = ${damage.total}${halvesDamage ? `; save halves to ${appliedDamage}` : ""}.`);
+              parts.push(`${attackPrefix}${combatDiceCount}d${combatDieSides}${attackDamageModifier === 0 ? "" : attackDamageModifier > 0 ? ` + ${attackDamageModifier}` : ` − ${Math.abs(attackDamageModifier)}`} ${combatDamageType} damage: ${damage.rolls.join(" + ")}${attackDamageModifier === 0 ? "" : attackDamageModifier > 0 ? ` + ${attackDamageModifier}` : ` − ${Math.abs(attackDamageModifier)}`} = ${damage.total}${halvesDamage ? `; save halves to ${appliedDamage}` : ""}.`);
               if (targetSave && saveDc !== undefined) parts.push(`${action.combatRoll.targetSave!.modifier[0].toUpperCase()}${action.combatRoll.targetSave!.modifier.slice(1)} save: ${targetSave.natural}${combatTargetSaveModifier === 0 ? "" : ` ${combatTargetSaveModifier >= 0 ? "+" : "−"} ${Math.abs(combatTargetSaveModifier)}`} = ${targetSave.total} vs DC ${saveDc} — ${saveSucceeded ? "success" : "failure"}.`);
               const ridersNegated = saveSucceeded && ["negates-riders", "half-and-negates-riders"].includes(action.combatRoll.targetSave?.outcome ?? "");
               if (!ridersNegated) action.combatRoll.riders?.filter((rider) =>

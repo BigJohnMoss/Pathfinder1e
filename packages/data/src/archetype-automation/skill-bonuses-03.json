@@ -83,10 +83,10 @@
     {
       "archetypeId": "bard-voice-of-brigh",
       "skillBonusAdjustments": [
-        { "skill": "Knowledge (arcana)", "base": 0, "levelDivisor": 2, "minimum": 1 },
-        { "skill": "Knowledge (dungeoneering)", "base": 0, "levelDivisor": 2, "minimum": 1 },
-        { "skill": "Knowledge (engineering)", "base": 0, "levelDivisor": 2, "minimum": 1 },
-        { "skill": "Knowledge (religion)", "base": 0, "levelDivisor": 2, "minimum": 1 }
+        { "sourceFeatureId": "bard-voice-of-brigh-brigh-s-knowledge-ex-1", "skill": "Knowledge (arcana)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+        { "sourceFeatureId": "bard-voice-of-brigh-brigh-s-knowledge-ex-1", "skill": "Knowledge (dungeoneering)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+        { "sourceFeatureId": "bard-voice-of-brigh-brigh-s-knowledge-ex-1", "skill": "Knowledge (engineering)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+        { "sourceFeatureId": "bard-voice-of-brigh-brigh-s-knowledge-ex-1", "skill": "Knowledge (religion)", "base": 0, "levelDivisor": 2, "minimum": 1 }
       ]
     },
     {
