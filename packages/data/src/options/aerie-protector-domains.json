@@ -1,0 +1,17 @@
+{
+  "id": "aerie-protector-domains",
+  "name": "Aerie Protector Domains",
+  "classIds": ["druid"],
+  "options": [
+    {
+      "id": "domain-mountain",
+      "groupId": "aerie-protector-domains",
+      "name": "Mountain Domain",
+      "classIds": ["druid"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Gain Foothold, Thin Air, and the Mountain domain spell list.",
+      "source": { "title": "Ultimate Magic", "page": null, "url": "https://legacy.aonprd.com/ultimatemagic/spellcastingClassOptions/druid.html#mountain-domain" }
+    }
+  ]
+}

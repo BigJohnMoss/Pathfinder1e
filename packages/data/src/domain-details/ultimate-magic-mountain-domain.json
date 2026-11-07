@@ -1,0 +1,17 @@
+{
+  "source": { "title": "Ultimate Magic", "page": null, "url": "https://legacy.aonprd.com/ultimatemagic/spellcastingClassOptions/druid.html#mountain-domain" },
+  "domains": [
+    {
+      "id": "domain-mountain",
+      "powers": [
+        { "name": "Foothold", "level": 1, "summary": "As a standard action, alter an adjacent stone surface up to 10 feet square for 1 hour. Horizontal stone becomes difficult terrain and gives Medium or smaller creatures a -2 penalty on Acrobatics and CMD; vertical stone grants +10 on Climb checks. Uses per day equal 3 + Wisdom modifier." },
+        { "name": "Thin Air", "level": 8, "summary": "As a free action, create a 5-foot aura for rounds per day equal to druid level. Breathing creatures starting adjacent save or become fatigued; already-fatigued creatures save or take 1 ability damage to every ability score from altitude sickness. The aura expands to 10 feet at level 16." }
+      ],
+      "domainSpells": [
+        { "level": 1, "name": "fist of stone" }, { "level": 2, "name": "stone call" }, { "level": 3, "name": "cloak of winds" },
+        { "level": 4, "name": "stoneskin" }, { "level": 5, "name": "geyser" }, { "level": 6, "name": "suffocate" },
+        { "level": 7, "name": "flesh to stone" }, { "level": 8, "name": "reverse gravity" }, { "level": 9, "name": "clashing rocks" }
+      ]
+    }
+  ]
+}
