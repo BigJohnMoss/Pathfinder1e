@@ -75,7 +75,7 @@ const optionGroups=rawOptionGroups.map(group=>{
     spell.levelByClass?.[source.classId]!==undefined&&
     (!source.descriptors?.length||source.descriptors.every(descriptor=>spell.descriptors?.includes(descriptor)))
   );
-  const matchesSchool=spell=>!filter.school||spell.school===filter.school||spell.schools?.includes(filter.school);
+  const matchesSchool=spell=>!filter.school&&!filter.schools?.length||Boolean(filter.school&&(spell.school===filter.school||spell.schools?.includes(filter.school)))||Boolean(filter.schools?.some(school=>spell.school===school||spell.schools?.includes(school)));
   const matchesName=spell=>!filter.nameIncludes||spell.name.toLowerCase().includes(filter.nameIncludes.toLowerCase());
   const generated=spells.filter(spell=>additionalIds.has(spell.id)||(
     (!spellIds.size||spellIds.has(spell.id))&&
@@ -86,8 +86,9 @@ const optionGroups=rawOptionGroups.map(group=>{
   )).map(spell=>{
     const publishedLevels=Object.values(spell.levelByClass??{}).filter(Number.isInteger);
     const sourceLevels=matchingSources(spell).map(source=>spell.levelByClass[source.classId]);
-    const spellLevel=filter.additionalSpellLevels?.[spell.id]??(filter.anyClassList?Math.min(...publishedLevels):Math.min(...sourceLevels))??0;
-    if((filter.minimumSpellLevel!==undefined&&spellLevel<filter.minimumSpellLevel)||(filter.maximumSpellLevel!==undefined&&spellLevel>filter.maximumSpellLevel)) return null;
+    const sourceSpellLevel=filter.additionalSpellLevels?.[spell.id]??(filter.anyClassList?Math.min(...publishedLevels):Math.min(...sourceLevels))??0;
+    if((filter.minimumSpellLevel!==undefined&&sourceSpellLevel<filter.minimumSpellLevel)||(filter.maximumSpellLevel!==undefined&&sourceSpellLevel>filter.maximumSpellLevel)) return null;
+    const spellLevel=sourceSpellLevel+(filter.spellLevelAdjustment??0);
     const targetClassId=filter.targetClassId??filter.classId;
     const minimumLevel=filter.minimumClassLevelBySpellLevel?.[spellLevel]??classLevelForSpellLevel(targetClassId,spellLevel);
     return {
@@ -97,7 +98,9 @@ const optionGroups=rawOptionGroups.map(group=>{
       classIds:group.classIds,
       minimumLevel,
       prerequisites:[],
-      benefit:`Add ${spell.name} to your spells known as a bonus spell.`,
+      benefit:filter.benefitMode==="spell-list"
+        ? `Add ${spell.name} to your ${targetClassId} spell list as a ${spellLevel}${spellLevel===1?"st":spellLevel===2?"nd":spellLevel===3?"rd":"th"}-level spell.`
+        : `Add ${spell.name} to your spells known as a bonus spell.`,
       spellId:spell.id,
       spellLevel,
       castsAsPrepared:filter.castsAsPrepared??false,

@@ -1869,6 +1869,8 @@ export default function Home() {
               )
           : feature.requiredSpellLevel !== undefined
             ? baseOptions.filter((option) => (option as CharacterOption).spellLevel === feature.requiredSpellLevel)
+          : feature.maximumSpellLevel !== undefined
+            ? baseOptions.filter((option) => ((option as CharacterOption).spellLevel ?? 0) <= feature.maximumSpellLevel!)
             : feature.optionGroupId === "witch-hexes"
               ? baseOptions.filter((option) => (option as CharacterOption).repeatable || option.id === selectedOptions[feature.id] || !Object.entries(selectedOptions).some(([featureId, optionId]) => featureId !== feature.id && optionId === option.id))
               : baseOptions;

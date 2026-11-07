@@ -25,7 +25,74 @@
           "name": "Fey Magic",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a feyspeaker allows the strange idylls of the fey to guide her magic. The feyspeaker uses her Charisma score instead of her Wisdom score as her key spellcasting ability score (to determine her spell DCs, bonus spells per day, concentration checks, and so on). At 4th, 6th, 8th, 10th, 12th, 14th, 16th, and 18th levels, a feyspeaker adds one enchantment or illusion spell from the sorcerer/wizard spell list to her druid spell list as a spell of 1 level higher (for instance, at 4th level, she could add color spray as a 2nd-level druid spell). In order to select a spell, she must be of a level high enough (including the increased spell level) to cast it. Once selected, the spell cannot be changed. A feyspeaker loses the ability to spontaneously cast summon nature’s ally spells. She gains the wild shape ability at 6th level and gains all benefits related to wild shape 2 druid levels later than usual. She can never use wild shape to transform into an elemental. This ability alters wild shape and spellcasting."
+          "summary": "At 1st level, a feyspeaker allows the strange idylls of the fey to guide her magic. The feyspeaker uses her Charisma score instead of her Wisdom score as her key spellcasting ability score (to determine her spell DCs, bonus spells per day, concentration checks, and so on). At 4th, 6th, 8th, 10th, 12th, 14th, 16th, and 18th levels, a feyspeaker adds one enchantment or illusion spell from the sorcerer/wizard spell list to her druid spell list as a spell of 1 level higher (for instance, at 4th level, she could add color spray as a 2nd-level druid spell). In order to select a spell, she must be of a level high enough (including the increased spell level) to cast it. Once selected, the spell cannot be changed. A feyspeaker loses the ability to spontaneously cast summon nature’s ally spells. She gains the wild shape ability at 6th level and gains all benefits related to wild shape 2 druid levels later than usual. She can never use wild shape to transform into an elemental. This ability alters wild shape and spellcasting.",
+          "resourceActions": [
+            {
+              "id": "feyspeaker-wild-shape",
+              "label": "Assume Feyspeaker Wild Shape",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Non-elemental form",
+              "modes": [
+                {
+                  "id": "beast-shape-i",
+                  "label": "Small or Medium animal",
+                  "minimumLevel": 6,
+                  "summary": "Use beast shape I."
+                },
+                {
+                  "id": "beast-shape-ii",
+                  "label": "Tiny or Large animal",
+                  "minimumLevel": 8,
+                  "summary": "Use beast shape II."
+                },
+                {
+                  "id": "beast-shape-iii",
+                  "label": "Diminutive or Huge animal",
+                  "minimumLevel": 10,
+                  "summary": "Use beast shape III."
+                },
+                {
+                  "id": "plant-shape-i",
+                  "label": "Small or Medium plant",
+                  "minimumLevel": 10,
+                  "summary": "Use plant shape I."
+                },
+                {
+                  "id": "plant-shape-ii",
+                  "label": "Tiny or Large plant",
+                  "minimumLevel": 12,
+                  "summary": "Use plant shape II."
+                },
+                {
+                  "id": "plant-shape-iii",
+                  "label": "Huge plant",
+                  "minimumLevel": 14,
+                  "summary": "Use plant shape III. Elemental forms are never available."
+                }
+              ],
+              "activeEffect": {
+                "name": "Feyspeaker Wild Shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Use the selected legal non-elemental Wild Shape form for 1 hour per Druid level.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend one delayed Wild Shape use; elemental forms are excluded at every level."
+            }
+          ]
         },
         {
           "id": "druid-feyspeaker-fey-speech-ex-1",
@@ -39,21 +106,190 @@
           "name": "Wild Mischief (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a feyspeaker can fool an animal into thinking there is food, a potential mate, or a predator nearby. This ability functions just like a Bluff check to deceive a character. To determine the result of the wild mischief check, the feyspeaker rolls 1d20 and adds her druid level and her Charisma modifier. As with Bluff checks, wild mischief checks are modified depending on the believability of the false information. A typical domestic animal is not particularly suspicious of the feyspeaker (no circumstance modifier), whereas wild animals are usually suspicious (–5 penalty on the check). To use wild mischief, the feyspeaker and the animal must be able to study each other, which means they must be within 30 feet of one another under normal conditions. Generally, influencing an animal in this way takes 1 minute, but as when influencing people, it could take more or less time. A feyspeaker can also use this ability to influence a magical beast with an Intelligence score of 1 or 2, but she takes a –4 penalty on the check. This ability replaces the druid’s proficiency with medium armor."
+          "summary": "At 1st level, a feyspeaker can fool an animal into thinking there is food, a potential mate, or a predator nearby. This ability functions just like a Bluff check to deceive a character. To determine the result of the wild mischief check, the feyspeaker rolls 1d20 and adds her druid level and her Charisma modifier. As with Bluff checks, wild mischief checks are modified depending on the believability of the false information. A typical domestic animal is not particularly suspicious of the feyspeaker (no circumstance modifier), whereas wild animals are usually suspicious (–5 penalty on the check). To use wild mischief, the feyspeaker and the animal must be able to study each other, which means they must be within 30 feet of one another under normal conditions. Generally, influencing an animal in this way takes 1 minute, but as when influencing people, it could take more or less time. A feyspeaker can also use this ability to influence a magical beast with an Intelligence score of 1 or 2, but she takes a –4 penalty on the check. This ability replaces the druid’s proficiency with medium armor.",
+          "resourceActions": [
+            {
+              "id": "feyspeaker-wild-mischief",
+              "label": "Resolve Wild Mischief",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "1-minute"
+                }
+              ],
+              "modeLabel": "Target",
+              "modes": [
+                {
+                  "id": "domestic-animal",
+                  "label": "Domestic animal",
+                  "summary": "No default circumstance penalty."
+                },
+                {
+                  "id": "wild-animal",
+                  "label": "Wild animal",
+                  "summary": "Usually apply a −5 circumstance penalty."
+                },
+                {
+                  "id": "magical-beast",
+                  "label": "Intelligence 1–2 magical beast",
+                  "summary": "Apply the required −4 penalty."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "mutual-study",
+                  "label": "Feyspeaker and target can study each other within 30 feet",
+                  "requiredForActivation": true
+                }
+              ],
+              "diceRoll": {
+                "label": "Wild Mischief",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Druid level + Charisma modifier + circumstance modifier",
+                "targetDcInputLabel": "Target Sense Motive DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "deception succeeds"
+                  }
+                ],
+                "failureLabel": "deception fails"
+              },
+              "summary": "Roll the Bluff-like check with the selected target category's circumstance modifier."
+            }
+          ]
+        },
+        {
+          "id": "feyspeaker-generated-fey-magic-4",
+          "name": "Fey Magic Spell 1",
+          "level": 4,
+          "type": "selectable",
+          "summary": "Permanently add one eligible Wizard enchantment or illusion spell to the Druid list at one spell level higher, up to Druid spell level 2.",
+          "choiceRequired": true,
+          "optionGroupId": "feyspeaker-fey-magic-spells",
+          "maximumSpellLevel": 2,
+          "progressionKey": "feyspeaker-fey-magic"
+        },
+        {
+          "id": "feyspeaker-generated-fey-magic-6",
+          "name": "Fey Magic Spell 2",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Permanently add one eligible Wizard enchantment or illusion spell to the Druid list at one spell level higher, up to Druid spell level 3.",
+          "choiceRequired": true,
+          "optionGroupId": "feyspeaker-fey-magic-spells",
+          "maximumSpellLevel": 3,
+          "progressionKey": "feyspeaker-fey-magic"
+        },
+        {
+          "id": "feyspeaker-generated-fey-magic-8",
+          "name": "Fey Magic Spell 3",
+          "level": 8,
+          "type": "selectable",
+          "summary": "Permanently add one eligible Wizard enchantment or illusion spell to the Druid list at one spell level higher, up to Druid spell level 4.",
+          "choiceRequired": true,
+          "optionGroupId": "feyspeaker-fey-magic-spells",
+          "maximumSpellLevel": 4,
+          "progressionKey": "feyspeaker-fey-magic"
+        },
+        {
+          "id": "feyspeaker-generated-fey-magic-10",
+          "name": "Fey Magic Spell 4",
+          "level": 10,
+          "type": "selectable",
+          "summary": "Permanently add one eligible Wizard enchantment or illusion spell to the Druid list at one spell level higher, up to Druid spell level 5.",
+          "choiceRequired": true,
+          "optionGroupId": "feyspeaker-fey-magic-spells",
+          "maximumSpellLevel": 5,
+          "progressionKey": "feyspeaker-fey-magic"
+        },
+        {
+          "id": "feyspeaker-generated-fey-magic-12",
+          "name": "Fey Magic Spell 5",
+          "level": 12,
+          "type": "selectable",
+          "summary": "Permanently add one eligible Wizard enchantment or illusion spell to the Druid list at one spell level higher, up to Druid spell level 6.",
+          "choiceRequired": true,
+          "optionGroupId": "feyspeaker-fey-magic-spells",
+          "maximumSpellLevel": 6,
+          "progressionKey": "feyspeaker-fey-magic"
+        },
+        {
+          "id": "feyspeaker-generated-fey-magic-14",
+          "name": "Fey Magic Spell 6",
+          "level": 14,
+          "type": "selectable",
+          "summary": "Permanently add one eligible Wizard enchantment or illusion spell to the Druid list at one spell level higher, up to Druid spell level 7.",
+          "choiceRequired": true,
+          "optionGroupId": "feyspeaker-fey-magic-spells",
+          "maximumSpellLevel": 7,
+          "progressionKey": "feyspeaker-fey-magic"
+        },
+        {
+          "id": "feyspeaker-generated-fey-magic-16",
+          "name": "Fey Magic Spell 7",
+          "level": 16,
+          "type": "selectable",
+          "summary": "Permanently add one eligible Wizard enchantment or illusion spell to the Druid list at one spell level higher, up to Druid spell level 8.",
+          "choiceRequired": true,
+          "optionGroupId": "feyspeaker-fey-magic-spells",
+          "maximumSpellLevel": 8,
+          "progressionKey": "feyspeaker-fey-magic"
+        },
+        {
+          "id": "feyspeaker-generated-fey-magic-18",
+          "name": "Fey Magic Spell 8",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Permanently add one eligible Wizard enchantment or illusion spell to the Druid list at one spell level higher, up to Druid spell level 9.",
+          "choiceRequired": true,
+          "optionGroupId": "feyspeaker-fey-magic-spells",
+          "maximumSpellLevel": 9,
+          "progressionKey": "feyspeaker-fey-magic"
         }
       ]
     }
   ],
   "babProgression": "half",
   "skillRanksPerLevel": 6,
-  "classSkillAdditions": ["Bluff","Diplomacy","Disguise","Sense Motive"],
+  "classSkillAdditions": [
+    "Bluff",
+    "Diplomacy",
+    "Disguise",
+    "Sense Motive"
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Feyspeaker"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Charisma spellcasting, half BAB, six skill ranks, class skills, medium-armor loss, eight unique catalogue-driven Fey Magic spell selections at +1 spell level, delayed non-elemental Wild Shape, and Wild Mischief checks are automated."
+  ],
+  "spellcastingAbility": "charisma",
+  "wildShapeLevelAdjustment": -2,
+  "proficiencyAdjustments": [
+    {
+      "sourceFeatureId": "druid-feyspeaker-wild-mischief-ex-1",
+      "category": "armor",
+      "operation": "remove",
+      "proficiencies": [
+        "Medium armor"
+      ]
+    }
   ]
 }
