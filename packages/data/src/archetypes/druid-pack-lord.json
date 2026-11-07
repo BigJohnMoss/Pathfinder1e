@@ -15,15 +15,80 @@
           "id": "druid-pack-lord-pack-bond-ex-1",
           "name": "Pack Bond (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "A pack lord druid may not select a domain and must choose an animal companion. The druid gains a +2 bonus on wild empathy and Handle Animal checks made regarding her animal companion. The pack lord may have more than one animal companion, but she must divide up her effective druid level between her companions to determine the abilities of each companion. For example, a 4th-level pack lord can have one 4th-level companion, two 2nd-level companions, or one 1st-level and one 3rd-level companion. Each time a pack lord’s druid level increases, she must decide how to allocate the increase among her animal companions (including the option of adding a new 1st-level companion). Once a druid level is allocated to a particular companion, it cannot be redistributed while that companion is in the pack lord’s service (she must release the companion or wait until the companion dies to allocate its levels to another companion, which she can do the next time she prepares spells). The share spells animal companion ability only applies to one animal companion at a time—the pack lord cannot use it to cast a one-target spell and have it affect all of her animal companions. This ability replaces nature bond."
+          "type": "selectable",
+          "summary": "A pack lord druid may not select a domain and must choose an animal companion. The druid gains a +2 bonus on wild empathy and Handle Animal checks made regarding her animal companion. The pack lord may have more than one animal companion, but she must divide up her effective druid level between her companions to determine the abilities of each companion. For example, a 4th-level pack lord can have one 4th-level companion, two 2nd-level companions, or one 1st-level and one 3rd-level companion. Each time a pack lord’s druid level increases, she must decide how to allocate the increase among her animal companions (including the option of adding a new 1st-level companion). Once a druid level is allocated to a particular companion, it cannot be redistributed while that companion is in the pack lord’s service (she must release the companion or wait until the companion dies to allocate its levels to another companion, which she can do the next time she prepares spells). The share spells animal companion ability only applies to one animal companion at a time—the pack lord cannot use it to cast a one-target spell and have it affect all of her animal companions. This ability replaces nature bond.",
+          "choiceRequired": true,
+          "optionGroupId": "ranger-animal-companions",
+          "companionRoster": {
+            "label": "Pack Lord",
+            "budgetBase": 0,
+            "levelMultiplier": 1,
+            "minimumBudget": 1,
+            "lockAllocatedLevels": true
+          },
+          "resourceActions": [
+            {
+              "id": "pack-lord-share-spells-companion",
+              "label": "Set Share Spells Companion",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "companionRosterFeatureId": "druid-pack-lord-pack-bond-ex-1",
+              "recipientLabel": "Companion receiving Share Spells",
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "free"
+                }
+              ],
+              "activeEffect": {
+                "name": "Pack Lord Share Spells Companion",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Only the selected pack companion receives Share Spells; choosing another replaces this selection.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Choose the one pack companion that can currently receive a one-target Share Spells effect."
+            }
+          ]
         },
         {
           "id": "druid-pack-lord-improved-empathic-link-su-1",
           "name": "Improved Empathic Link (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "The pack lord gains an empathic link with all of her animal companions. This functions like an empathic link with a familiar. In addition, as a swift action the pack lord can shift her perception to one of her companions, allowing her to experience what it sees, hears, and so on. She can maintain this connection as long as she likes (as long as the companion is within 1 mile) and end it as a free action. The druid can only use this ability on one companion at a time, and cannot see, hear, or smell with her own body while maintaining this connection. This ability replaces the 6th-level additional use of wild shape."
+          "summary": "The pack lord gains an empathic link with all of her animal companions. This functions like an empathic link with a familiar. In addition, as a swift action the pack lord can shift her perception to one of her companions, allowing her to experience what it sees, hears, and so on. She can maintain this connection as long as she likes (as long as the companion is within 1 mile) and end it as a free action. The druid can only use this ability on one companion at a time, and cannot see, hear, or smell with her own body while maintaining this connection. This ability replaces the 6th-level additional use of wild shape.",
+          "resourceActions": [
+            {
+              "id": "pack-lord-shift-perception",
+              "label": "Shift Perception",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "companionRosterFeatureId": "druid-pack-lord-pack-bond-ex-1",
+              "recipientLabel": "Viewed companion",
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Pack Lord Perception Link",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Experience the selected companion's senses within 1 mile; your own sight, hearing, and scent are unavailable until this link ends.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Shift your senses to one selected pack companion within 1 mile; activating this for another companion replaces the current link."
+            }
+          ]
         }
       ]
     }
@@ -33,8 +98,28 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Pack%20Lord"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The full-level companion allocation budget, permanent per-companion allocations, companion sheets, +2 Pack Bond checks, exclusive Share Spells recipient, and switchable one-mile perception link are automated."
+  ],
+  "wildEmpathyAdjustments": [
+    {
+      "sourceFeatureId": "druid-pack-lord-pack-bond-ex-1",
+      "label": "Pack Bond",
+      "classId": "druid",
+      "minimumLevel": 1,
+      "bonus": 2,
+      "targets": "the Pack Lord's animal companions",
+      "condition": "regarding one of your pack companions"
+    }
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "druid-pack-lord-pack-bond-ex-1",
+      "skill": "Handle Animal",
+      "minimumLevel": 1,
+      "base": 2,
+      "condition": "regarding one of your pack companions"
+    }
   ]
 }

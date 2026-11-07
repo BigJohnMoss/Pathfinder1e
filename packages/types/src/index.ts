@@ -172,6 +172,14 @@ export interface ClassFeatureOccurrence {
   channelEnergyDiceAdvancementOptionIds?: string[];
   channelEnergyPolarityOptionIds?: { positive: string; negative: string };
   favoredTerrainBaseBonus?: number;
+  companionRoster?: {
+    label: string;
+    budgetBase?: number;
+    levelMultiplier?: number;
+    levelAdjustment?: number;
+    minimumBudget?: number;
+    lockAllocatedLevels?: boolean;
+  };
   grantsAllOptions?: boolean;
   featChoiceIds?: string[];
   featChoiceTypes?: string[];
@@ -267,6 +275,7 @@ export interface ClassFeatureOccurrence {
     actionTypeByLevel?: Array<{ level: number; actionType: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" | "1-hour" }>;
     recipientLabel?: string;
     recipients?: Array<{ id: string; label: string }>;
+    companionRosterFeatureId?: string;
     confirmations?: Array<{ id: string; label: string; requiredForActivation?: boolean }>;
     classId?: string;
     minimumLevel?: number;
