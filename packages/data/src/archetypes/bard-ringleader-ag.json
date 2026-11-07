@@ -34,7 +34,159 @@
           "name": "Cunning Plan (Su)",
           "level": 7,
           "type": "archetype",
-          "summary": "By spending 1 minute laying out a plan, a ringleader can impart inspiring instructions to a number of allies equal to her bard level + her Charisma bonus. Upon concluding the plan, the ringleader chooses one of her bardic performances and expends a number of rounds of bardic performance equal to up to double her bard level. Thereafter, as a move action, the ringleader or any of the instructed allies can trigger the implanted instructions, causing that creature to immediately gain the benefits of the ringleader’s implanted bardic performance (each creature can trigger the instructions for itself separately). This effect lasts for a number of rounds equal to the rounds of bardic performance the ringleader expended while creating the plan, though the effect also ends if the ringleader dismisses it as a free action or activates a different plan or bardic performance. For the purpose of this ability, the ringleader attempts any skill checks associated with the bardic performance once a creature triggers the plan. A ringleader’s cunning plans all expire each time she regains her daily spell slots or after 24 hours (whichever comes first). At 7th level, the ringleader (but not an ally) can trigger a cunning plan as a swift action instead of as a move action. At 13th level, the ringleader can trigger a cunning plan as an immediate action. A ringleader is less capable of improvising, and when she uses bardic performance without creating a cunning plan, she must expend 1 additional round of bardic performance to begin the performance. This ability alters bardic performance."
+          "summary": "By spending 1 minute laying out a plan, a ringleader can impart inspiring instructions to a number of allies equal to her bard level + her Charisma bonus. Upon concluding the plan, the ringleader chooses one of her bardic performances and expends a number of rounds of bardic performance equal to up to double her bard level. Thereafter, as a move action, the ringleader or any of the instructed allies can trigger the implanted instructions, causing that creature to immediately gain the benefits of the ringleader’s implanted bardic performance (each creature can trigger the instructions for itself separately). This effect lasts for a number of rounds equal to the rounds of bardic performance the ringleader expended while creating the plan, though the effect also ends if the ringleader dismisses it as a free action or activates a different plan or bardic performance. For the purpose of this ability, the ringleader attempts any skill checks associated with the bardic performance once a creature triggers the plan. A ringleader’s cunning plans all expire each time she regains her daily spell slots or after 24 hours (whichever comes first). At 7th level, the ringleader (but not an ally) can trigger a cunning plan as a swift action instead of as a move action. At 13th level, the ringleader can trigger a cunning plan as an immediate action. A ringleader is less capable of improvising, and when she uses bardic performance without creating a cunning plan, she must expend 1 additional round of bardic performance to begin the performance. This ability alters bardic performance.",
+          "performanceRules": [
+            {
+              "id": "ringleader-ag-cunning-plan",
+              "name": "Cunning Plan",
+              "minimumLevel": 1,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "ringleader-ag-cunning-plan"
+              ],
+              "summary": "Prepare a performance for the Ringleader and instructed allies to trigger later; improvising without a plan costs 1 extra round."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "ringleader-ag-cunning-plan",
+              "label": "Prepare a Cunning Plan",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "variableCost": {
+                "label": "Performance rounds invested (maximum twice Bard level)",
+                "minimum": 1,
+                "maximum": 40
+              },
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "1-minute"
+                }
+              ],
+              "modeLabel": "Prepared performance",
+              "modes": [
+                {
+                  "id": "countersong",
+                  "label": "Countersong",
+                  "summary": "Prepare Countersong for later activation."
+                },
+                {
+                  "id": "distraction",
+                  "label": "Distraction",
+                  "summary": "Prepare Distraction for later activation."
+                },
+                {
+                  "id": "fascinate",
+                  "label": "Fascinate",
+                  "summary": "Prepare Fascinate for later activation."
+                },
+                {
+                  "id": "inspire-courage",
+                  "label": "Inspire Courage",
+                  "summary": "Prepare Inspire Courage for later activation."
+                },
+                {
+                  "id": "inspire-competence",
+                  "label": "Inspire Competence",
+                  "summary": "Prepare Inspire Competence for later activation."
+                },
+                {
+                  "id": "suggestion",
+                  "label": "Suggestion",
+                  "summary": "Prepare Suggestion for later activation."
+                },
+                {
+                  "id": "dirge-of-doom",
+                  "label": "Dirge of Doom",
+                  "summary": "Prepare Dirge of Doom for later activation."
+                },
+                {
+                  "id": "inspire-greatness",
+                  "label": "Inspire Greatness",
+                  "summary": "Prepare Inspire Greatness for later activation."
+                },
+                {
+                  "id": "soothing-performance",
+                  "label": "Soothing Performance",
+                  "summary": "Prepare Soothing Performance for later activation."
+                },
+                {
+                  "id": "frightening-tune",
+                  "label": "Frightening Tune",
+                  "summary": "Prepare Frightening Tune for later activation."
+                },
+                {
+                  "id": "inspire-heroics",
+                  "label": "Inspire Heroics",
+                  "summary": "Prepare Inspire Heroics for later activation."
+                },
+                {
+                  "id": "mass-suggestion",
+                  "label": "Mass Suggestion",
+                  "summary": "Prepare Mass Suggestion for later activation."
+                },
+                {
+                  "id": "deadly-performance",
+                  "label": "Deadly Performance",
+                  "summary": "Prepare Deadly Performance for later activation."
+                }
+              ],
+              "activeEffect": {
+                "name": "Cunning Plan prepared",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Up to Bard level + Charisma bonus instructed allies may separately trigger the prepared performance. Its duration equals the invested rounds and it expires on daily spell recovery or after 24 hours.",
+                "defaultRounds": 999,
+                "replaceExisting": true,
+                "fixedRounds": true
+              },
+              "summary": "Spend the chosen rounds and record the prepared performance and instructed allies."
+            },
+            {
+              "id": "ringleader-ag-trigger-plan",
+              "label": "Trigger a Cunning Plan",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "move"
+                },
+                {
+                  "level": 7,
+                  "actionType": "swift"
+                },
+                {
+                  "level": 13,
+                  "actionType": "immediate"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "prepared",
+                  "label": "This creature was instructed when the plan was prepared",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Cunning Plan active",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Apply the prepared performance for the number of Bardic Performance rounds invested in the plan.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Use the level-correct trigger action and begin the implanted performance."
+            }
+          ]
         },
         {
           "id": "bard-ringleader-ag-never-lose-face-ex-2",
@@ -48,14 +200,182 @@
           "name": "Sinister Mien (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a ringleader can use her Intimidate bonus in place of her Perform bonus when using her bardic performance class ability. When the ringleader uses Intimidate to improve a creature’s attitude, the creature’s attitude remains friendly for 10 additional minutes per point by which the ringleader exceeded the check’s DC. At 6th level, the ringleader gains Dazzling Display as a bonus feat and does not need a weapon in her hand to use the feat. At 10th level, the ringleader can activate Dazzling Display as a standard action. At 14th level, she can affect all enemies within 60 feet with Dazzling Display. At 18th level, the range increases to 120 feet. This ability replaces versatile performance."
+          "summary": "At 2nd level, a ringleader can use her Intimidate bonus in place of her Perform bonus when using her bardic performance class ability. When the ringleader uses Intimidate to improve a creature’s attitude, the creature’s attitude remains friendly for 10 additional minutes per point by which the ringleader exceeded the check’s DC. At 6th level, the ringleader gains Dazzling Display as a bonus feat and does not need a weapon in her hand to use the feat. At 10th level, the ringleader can activate Dazzling Display as a standard action. At 14th level, she can affect all enemies within 60 feet with Dazzling Display. At 18th level, the range increases to 120 feet. This ability replaces versatile performance.",
+          "resourceActions": [
+            {
+              "id": "ringleader-ag-intimidating-performance",
+              "label": "Roll a performance using Intimidate",
+              "minimumLevel": 2,
+              "classId": "bard",
+              "diceRoll": {
+                "label": "Performance check using Intimidate",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Intimidate modifier",
+                "targetDcInputLabel": "Performance DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "Success"
+                  }
+                ],
+                "failureLabel": "Failure"
+              },
+              "summary": "Substitute the complete Intimidate bonus for Perform."
+            },
+            {
+              "id": "ringleader-ag-improve-attitude",
+              "label": "Extend an intimidated creature's friendly attitude",
+              "minimumLevel": 2,
+              "classId": "bard",
+              "variableCost": {
+                "label": "Points by which Intimidate exceeded the DC",
+                "minimum": 1,
+                "maximum": 100
+              },
+              "activeEffect": {
+                "name": "Extended friendly attitude",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The friendly attitude lasts 10 additional minutes for each point by which the Intimidate check exceeded its DC.",
+                "defaultRounds": 100,
+                "replaceExisting": true,
+                "fixedRounds": false
+              },
+              "summary": "Record the check margin and resulting ten-minutes-per-point extension."
+            },
+            {
+              "id": "ringleader-ag-dazzling-display",
+              "label": "Use unrestricted Dazzling Display",
+              "minimumLevel": 6,
+              "classId": "bard",
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "full-round"
+                },
+                {
+                  "level": 10,
+                  "actionType": "standard"
+                }
+              ],
+              "modes": [
+                {
+                  "id": "normal",
+                  "label": "Normal range",
+                  "maximumLevel": 13,
+                  "summary": "Use Dazzling Display without holding a weapon."
+                },
+                {
+                  "id": "60-feet",
+                  "label": "60-foot radius",
+                  "minimumLevel": 14,
+                  "maximumLevel": 17,
+                  "summary": "Affect all enemies within 60 feet."
+                },
+                {
+                  "id": "120-feet",
+                  "label": "120-foot radius",
+                  "minimumLevel": 18,
+                  "summary": "Affect all enemies within 120 feet."
+                }
+              ],
+              "activeEffect": {
+                "name": "Dazzling Display",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Gain Dazzling Display as a bonus feat, without its held-weapon requirement, using the level-appropriate action and range.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Resolve the special Dazzling Display progression."
+            }
+          ]
         },
         {
           "id": "bard-ringleader-ag-countless-contingencies-su-6",
           "name": "Countless Contingencies (Su)",
           "level": 6,
           "type": "archetype",
-          "summary": "At 6th level, whenever a ringleader creates a plan using her cunning plan ability, she can choose two different bardic performances. When she triggers the plan, she chooses which of the two performances takes effect. At 12th level, a ringleader can spend a standard action and 2 rounds of bardic performance to extend the duration of a triggered plan by 1d4 rounds. At 18th level, the ringleader can choose three different bardic performances when using her cunning plan ability. This ability replaces suggestion, mass suggestion, and soothing performance."
+          "summary": "At 6th level, whenever a ringleader creates a plan using her cunning plan ability, she can choose two different bardic performances. When she triggers the plan, she chooses which of the two performances takes effect. At 12th level, a ringleader can spend a standard action and 2 rounds of bardic performance to extend the duration of a triggered plan by 1d4 rounds. At 18th level, the ringleader can choose three different bardic performances when using her cunning plan ability. This ability replaces suggestion, mass suggestion, and soothing performance.",
+          "resourceActions": [
+            {
+              "id": "ringleader-ag-countless-contingencies",
+              "label": "Add contingencies to a Cunning Plan",
+              "minimumLevel": 6,
+              "classId": "bard",
+              "modes": [
+                {
+                  "id": "two",
+                  "label": "Prepare two performances",
+                  "minimumLevel": 6,
+                  "maximumLevel": 17,
+                  "summary": "Choose between two performances when triggered."
+                },
+                {
+                  "id": "three",
+                  "label": "Prepare three performances",
+                  "minimumLevel": 18,
+                  "summary": "Choose among three performances when triggered."
+                }
+              ],
+              "activeEffect": {
+                "name": "Countless Contingencies",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The triggering creature chooses which prepared performance takes effect.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Track the level-correct number of alternative performances in the plan."
+            },
+            {
+              "id": "ringleader-ag-extend-plan",
+              "label": "Extend a triggered plan",
+              "minimumLevel": 12,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 12,
+                  "actionType": "standard"
+                }
+              ],
+              "diceRoll": {
+                "label": "Additional plan rounds",
+                "diceCountByLevel": [
+                  {
+                    "level": 12,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 12,
+                    "sides": 4
+                  }
+                ]
+              },
+              "summary": "Spend 2 rounds and add the rolled 1d4 rounds to the triggered plan."
+            }
+          ]
         }
       ]
     }
@@ -65,8 +385,17 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Ringleader%20(AG)"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Cunning Plan preparation and trigger timing, contingencies, Sinister Mien's substitutions and Dazzling Display progression, and Never Lose Face are automated."
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "bard-ringleader-ag-never-lose-face-ex-2",
+      "label": "Never Lose Face",
+      "condition": "saving throws against effects that also target one or more allies",
+      "minimumLevel": 2,
+      "base": 2
+    }
   ]
 }

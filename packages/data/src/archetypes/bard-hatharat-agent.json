@@ -17,7 +17,91 @@
           "name": "Called Favor (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a Hatharat agent can use his contacts to ask for a favor from various individuals who have benefited from Hatharat aid in the past. The agent must spend 1d4 hours in an urban area with a population of at least 200 people to use this ability, and must succeed at a DC 20 Diplomacy check to secure the favor. Once an attempt to call in a favor has been made, whether or not the Diplomacy check was successful, the Hatharat agent must wait 2d6 days before attempting to call in a new favor, so as to not overtax the favors owed the society as a whole. The Hatharat agent can use a successful called favor to secure an introduction to an important NPC, either to learn an important piece of information (something that would otherwise require a successful DC 20 Knowledge check to know) or to secure a pardon for a minor crime of which an ally has been convicted. Similar favors could be granted at the GM’s discretion. At 7th level, an agent need only wait 1d6 days between uses of called favors. In addition to the favors above, he can now ask for a favor that supplies the aid of a single 5th-level specialist for 24 hours. This specialist is treated as a short-term cohort for the agent, but should remain under the control of the GM. The exact statistics for the specialist (who can be of any class) should also be calculated by the GM. The maximum level of the specialist the agent can secure increases by 1 for every 2 bard levels the Hatharat agent has above 7th, to a maximum of an 11th-level specialist at 19th level. The Pathfinder RPG NPC Codex contains numerous pregenerated NPCs that can be used as these specialists. This ability replaces bardic knowledge."
+          "summary": "At 1st level, a Hatharat agent can use his contacts to ask for a favor from various individuals who have benefited from Hatharat aid in the past. The agent must spend 1d4 hours in an urban area with a population of at least 200 people to use this ability, and must succeed at a DC 20 Diplomacy check to secure the favor. Once an attempt to call in a favor has been made, whether or not the Diplomacy check was successful, the Hatharat agent must wait 2d6 days before attempting to call in a new favor, so as to not overtax the favors owed the society as a whole. The Hatharat agent can use a successful called favor to secure an introduction to an important NPC, either to learn an important piece of information (something that would otherwise require a successful DC 20 Knowledge check to know) or to secure a pardon for a minor crime of which an ally has been convicted. Similar favors could be granted at the GM’s discretion. At 7th level, an agent need only wait 1d6 days between uses of called favors. In addition to the favors above, he can now ask for a favor that supplies the aid of a single 5th-level specialist for 24 hours. This specialist is treated as a short-term cohort for the agent, but should remain under the control of the GM. The exact statistics for the specialist (who can be of any class) should also be calculated by the GM. The maximum level of the specialist the agent can secure increases by 1 for every 2 bard levels the Hatharat agent has above 7th, to a maximum of an 11th-level specialist at 19th level. The Pathfinder RPG NPC Codex contains numerous pregenerated NPCs that can be used as these specialists. This ability replaces bardic knowledge.",
+          "resourceActions": [
+            {
+              "id": "hatharat-called-favor",
+              "label": "Call in a Hatharat favor",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "1-hour"
+                }
+              ],
+              "modes": [
+                {
+                  "id": "introduction",
+                  "label": "Important introduction",
+                  "summary": "Secure an introduction to an important NPC."
+                },
+                {
+                  "id": "information",
+                  "label": "DC 20 information",
+                  "summary": "Learn information that otherwise requires a DC 20 Knowledge check."
+                },
+                {
+                  "id": "pardon",
+                  "label": "Minor-crime pardon",
+                  "summary": "Secure a pardon for an ally convicted of a minor crime."
+                },
+                {
+                  "id": "specialist",
+                  "label": "24-hour specialist",
+                  "minimumLevel": 7,
+                  "summary": "Secure a GM-controlled 5th-level specialist, +1 level per 2 Bard levels beyond 7th, maximum 11th at level 19."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "urban",
+                  "label": "In an urban area with at least 200 people after spending 1d4 hours",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "cooldown",
+                  "label": "The prior cooldown has expired (2d6 days; 1d6 days from level 7)",
+                  "requiredForActivation": true
+                }
+              ],
+              "diceRoll": {
+                "label": "Diplomacy check to secure favor",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Diplomacy modifier",
+                "targetDcInputLabel": "Favor DC (normally 20)",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "Favor secured"
+                  }
+                ],
+                "failureLabel": "Favor refused; cooldown still begins"
+              },
+              "activeEffect": {
+                "name": "Called Favor cooldown",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Wait 2d6 days before another attempt, or 1d6 days from level 7. Record the rolled cooldown externally.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Resolve the exact Diplomacy check, favor tier, prerequisites, and cooldown."
+            }
+          ]
         },
         {
           "id": "bard-hatharat-agent-informed-persuasion-ex-2",
@@ -31,7 +115,52 @@
           "name": "Bardic Performance",
           "level": 8,
           "type": "archetype",
-          "summary": "A Hatharat agent gains the bardic performance listed below. Master of Manipulation (Su) : At 8th level, a Hatharat agent gains a reputation of being able to sense lies. When using bardic performance, his very presence can often draw the truth out of others. This ability affects all creatures selected by the bard within a 20-foot-radius emanation from the bard. Any affected creature can’t speak any deliberate or intentional lies, but is aware of the effect and can choose to avoid answering a question to which it would normally respond with a lie, or may be evasive as long as it remains within the boundaries of the truth. This is a mind-affecting compulsion effect. This performance replaces dirge of doom."
+          "summary": "A Hatharat agent gains the bardic performance listed below. Master of Manipulation (Su) : At 8th level, a Hatharat agent gains a reputation of being able to sense lies. When using bardic performance, his very presence can often draw the truth out of others. This ability affects all creatures selected by the bard within a 20-foot-radius emanation from the bard. Any affected creature can’t speak any deliberate or intentional lies, but is aware of the effect and can choose to avoid answering a question to which it would normally respond with a lie, or may be evasive as long as it remains within the boundaries of the truth. This is a mind-affecting compulsion effect. This performance replaces dirge of doom.",
+          "performanceRules": [
+            {
+              "id": "hatharat-master-of-manipulation",
+              "name": "Master of Manipulation",
+              "minimumLevel": 8,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "hatharat-master-of-manipulation"
+              ],
+              "summary": "Selected creatures in a 20-foot emanation cannot deliberately or intentionally lie while the performance continues."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "hatharat-master-of-manipulation",
+              "label": "Begin Master of Manipulation",
+              "minimumLevel": 8,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Master of Manipulation",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Selected creatures within the 20-foot emanation cannot speak deliberate or intentional lies, but know the effect and may remain silent or evasive within the truth.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Track the mind-affecting compulsion emanation and selected creatures."
+            }
+          ]
         }
       ]
     }
@@ -41,8 +170,130 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hatharat%20Agent"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Called Favor prerequisites, checks, tiers, specialist scaling and cooldown, all 15 Informed Persuasion conditions, and Master of Manipulation are automated."
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "bard-hatharat-agent-informed-persuasion-ex-2",
+      "label": "Informed Persuasion — Bluff",
+      "condition": "Bluff checks against spellcasters when at least 1 rank is invested in Knowledge (arcana)",
+      "minimumLevel": 2,
+      "base": 0,
+      "abilityModifier": "intelligence"
+    },
+    {
+      "sourceFeatureId": "bard-hatharat-agent-informed-persuasion-ex-2",
+      "label": "Informed Persuasion — Diplomacy",
+      "condition": "Diplomacy checks against spellcasters when at least 1 rank is invested in Knowledge (arcana)",
+      "minimumLevel": 2,
+      "base": 0,
+      "abilityModifier": "intelligence"
+    },
+    {
+      "sourceFeatureId": "bard-hatharat-agent-informed-persuasion-ex-2",
+      "label": "Informed Persuasion — Intimidate",
+      "condition": "Intimidate checks against spellcasters when at least 1 rank is invested in Knowledge (arcana)",
+      "minimumLevel": 2,
+      "base": 0,
+      "abilityModifier": "intelligence"
+    },
+    {
+      "sourceFeatureId": "bard-hatharat-agent-informed-persuasion-ex-2",
+      "label": "Informed Persuasion — Bluff",
+      "condition": "Bluff checks against tribal citizens when at least 1 rank is invested in Knowledge (geography)",
+      "minimumLevel": 2,
+      "base": 0,
+      "abilityModifier": "intelligence"
+    },
+    {
+      "sourceFeatureId": "bard-hatharat-agent-informed-persuasion-ex-2",
+      "label": "Informed Persuasion — Diplomacy",
+      "condition": "Diplomacy checks against tribal citizens when at least 1 rank is invested in Knowledge (geography)",
+      "minimumLevel": 2,
+      "base": 0,
+      "abilityModifier": "intelligence"
+    },
+    {
+      "sourceFeatureId": "bard-hatharat-agent-informed-persuasion-ex-2",
+      "label": "Informed Persuasion — Intimidate",
+      "condition": "Intimidate checks against tribal citizens when at least 1 rank is invested in Knowledge (geography)",
+      "minimumLevel": 2,
+      "base": 0,
+      "abilityModifier": "intelligence"
+    },
+    {
+      "sourceFeatureId": "bard-hatharat-agent-informed-persuasion-ex-2",
+      "label": "Informed Persuasion — Bluff",
+      "condition": "Bluff checks against urban citizens when at least 1 rank is invested in Knowledge (local)",
+      "minimumLevel": 2,
+      "base": 0,
+      "abilityModifier": "intelligence"
+    },
+    {
+      "sourceFeatureId": "bard-hatharat-agent-informed-persuasion-ex-2",
+      "label": "Informed Persuasion — Diplomacy",
+      "condition": "Diplomacy checks against urban citizens when at least 1 rank is invested in Knowledge (local)",
+      "minimumLevel": 2,
+      "base": 0,
+      "abilityModifier": "intelligence"
+    },
+    {
+      "sourceFeatureId": "bard-hatharat-agent-informed-persuasion-ex-2",
+      "label": "Informed Persuasion — Intimidate",
+      "condition": "Intimidate checks against urban citizens when at least 1 rank is invested in Knowledge (local)",
+      "minimumLevel": 2,
+      "base": 0,
+      "abilityModifier": "intelligence"
+    },
+    {
+      "sourceFeatureId": "bard-hatharat-agent-informed-persuasion-ex-2",
+      "label": "Informed Persuasion — Bluff",
+      "condition": "Bluff checks against politicians and nobles when at least 1 rank is invested in Knowledge (nobility)",
+      "minimumLevel": 2,
+      "base": 0,
+      "abilityModifier": "intelligence"
+    },
+    {
+      "sourceFeatureId": "bard-hatharat-agent-informed-persuasion-ex-2",
+      "label": "Informed Persuasion — Diplomacy",
+      "condition": "Diplomacy checks against politicians and nobles when at least 1 rank is invested in Knowledge (nobility)",
+      "minimumLevel": 2,
+      "base": 0,
+      "abilityModifier": "intelligence"
+    },
+    {
+      "sourceFeatureId": "bard-hatharat-agent-informed-persuasion-ex-2",
+      "label": "Informed Persuasion — Intimidate",
+      "condition": "Intimidate checks against politicians and nobles when at least 1 rank is invested in Knowledge (nobility)",
+      "minimumLevel": 2,
+      "base": 0,
+      "abilityModifier": "intelligence"
+    },
+    {
+      "sourceFeatureId": "bard-hatharat-agent-informed-persuasion-ex-2",
+      "label": "Informed Persuasion — Bluff",
+      "condition": "Bluff checks against worshipers of a recognized faith when at least 1 rank is invested in Knowledge (religion)",
+      "minimumLevel": 2,
+      "base": 0,
+      "abilityModifier": "intelligence"
+    },
+    {
+      "sourceFeatureId": "bard-hatharat-agent-informed-persuasion-ex-2",
+      "label": "Informed Persuasion — Diplomacy",
+      "condition": "Diplomacy checks against worshipers of a recognized faith when at least 1 rank is invested in Knowledge (religion)",
+      "minimumLevel": 2,
+      "base": 0,
+      "abilityModifier": "intelligence"
+    },
+    {
+      "sourceFeatureId": "bard-hatharat-agent-informed-persuasion-ex-2",
+      "label": "Informed Persuasion — Intimidate",
+      "condition": "Intimidate checks against worshipers of a recognized faith when at least 1 rank is invested in Knowledge (religion)",
+      "minimumLevel": 2,
+      "base": 0,
+      "abilityModifier": "intelligence"
+    }
   ]
 }
