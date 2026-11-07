@@ -534,6 +534,10 @@ export interface ClassFeatureOccurrence {
       spellIds?: string[];
       requiresTargetPrepared?: boolean;
     };
+    preparedOptionSpellConversion?: {
+      label: string;
+      spellIdsByOption: Record<string, string[]>;
+    };
     preparedArmamentConversion?: {
       label: string;
       spells: Array<{

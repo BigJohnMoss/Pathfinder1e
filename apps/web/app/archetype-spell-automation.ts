@@ -92,6 +92,13 @@ export function classSpellAutomation(
     (feature) => feature.spellAutomation?.preparedKeywordConversion,
   );
   const conversion = conversionFeature?.spellAutomation?.preparedKeywordConversion;
+  const optionConversionFeature = availableFeatures.find(
+    (feature) => feature.spellAutomation?.preparedOptionSpellConversion,
+  );
+  const optionConversion = optionConversionFeature?.spellAutomation?.preparedOptionSpellConversion;
+  const optionConversionSpellIds = optionConversion
+    ? [...new Set(selectedOptionIds.flatMap((optionId) => optionConversion.spellIdsByOption[optionId] ?? []))]
+    : [];
   const armamentFeature = availableFeatures.find(
     (feature) => feature.spellAutomation?.preparedArmamentConversion,
   );
@@ -106,7 +113,7 @@ export function classSpellAutomation(
   const descriptorBoost = descriptorBoostFeature?.spellAutomation?.descriptorReservoirBoost;
   const spellstrike = selectedOptionIds.includes("blade-adept-spell-strike");
   const criticalStrike = selectedOptionIds.includes("blade-adept-magus-arcana-critical-strike");
-  if (!share && !extend && !conversion && !armament && !fastHealing && !descriptorBoost && !spellstrike && !criticalStrike) return undefined;
+  if (!share && !extend && !conversion && optionConversionSpellIds.length === 0 && !armament && !fastHealing && !descriptorBoost && !spellstrike && !criticalStrike) return undefined;
 
   return {
     ...(spellstrike ? { spellstrike: { label: "Spellstrike", closeRange: selectedOptionIds.includes("blade-adept-magus-arcana-close-range") } } : {}),
@@ -139,6 +146,9 @@ export function classSpellAutomation(
           spellIds: conversion.spellIds,
           requiresTargetPrepared: Boolean(conversion.requiresTargetPrepared),
         } }
+      : {}),
+    ...(!conversion && optionConversion && optionConversionSpellIds.length > 0
+      ? { preparedKeywordConversion: { label: optionConversion.label, spellIds: optionConversionSpellIds, requiresTargetPrepared: false } }
       : {}),
     ...(armament ? { preparedArmamentConversion: armament } : {}),
     ...(fastHealing
