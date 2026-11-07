@@ -21,6 +21,7 @@ const gloomChymist = JSON.parse(readFileSync(new URL("../packages/data/src/arche
 const concocter = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-concocter.json", import.meta.url), "utf8")) as CharacterArchetype;
 const dragonbloodChymist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-dragonblood-chymist.json", import.meta.url), "utf8")) as CharacterArchetype;
 const plagueBringer = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-plague-bringer.json", import.meta.url), "utf8")) as CharacterArchetype;
+const alchemicalTrapper = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-alchemical-trapper.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -140,7 +141,13 @@ test("Gloom Chymist rolls scaling cold damage and tracks its light field", async
     activeEffects={effects}
     onAddEffect={(effect) => effects.push(effect)}
   />);
-  await userEvent.setup().click(screen.getByRole("button", { name: "Throw gloom with light change" }));
+  const originalRandom = Math.random;
+  Math.random = () => 0.99;
+  try {
+    await userEvent.setup().click(screen.getByRole("button", { name: "Throw gloom with light change" }));
+  } finally {
+    Math.random = originalRandom;
+  }
   assert.deepEqual(used, [1]);
   assert.equal(effects[0]?.roundsRemaining, 4);
   assert.equal(effects[0]?.target, "area");
@@ -237,4 +244,26 @@ test("Plague Bringer exposes the disease DC, duration, and weapon-delivery workf
   assert.equal(effects.at(-1)?.target, "enemy");
   assert.equal(effects.at(-1)?.roundsRemaining, 10);
   assert.match(screen.getByLabelText("Infect weapon from plague vial result").textContent ?? "", /Fortitude DC 19/i);
+});
+
+test("Alchemical Trapper spends a bomb and creates a level-scaled trap", async () => {
+  const effects: ActiveEffect[] = [];
+  const used: number[] = [];
+  const applied = applyArchetype(alchemist, alchemicalTrapper);
+  render(<ClassFeatures
+    level={9}
+    className={applied.name}
+    features={featuresThroughLevel(applied, 9)}
+    classLevels={{ alchemist: 9 }}
+    abilityModifiers={{ intelligence: 4 }}
+    dailyResources={[{ id: "bombs", label: "Bomb", unit: "use", maximum: 13, used: 0, onUsedChange: (value) => used.push(value) }]}
+    activeEffects={effects}
+    onAddEffect={(effect) => effects.push(effect)}
+  />);
+  await userEvent.setup().click(screen.getByRole("button", { name: "Set bomb trap" }));
+  assert.deepEqual(used, [1]);
+  assert.equal(effects[0]?.target, "area");
+  assert.equal(effects[0]?.roundsRemaining, 900);
+  assert.match(screen.getByLabelText("Set bomb trap result").textContent ?? "", /5d6.*\+ 4.*fire damage/i);
+  assert.match(screen.getByLabelText("Set bomb trap result").textContent ?? "", /Reflex save:.*vs DC 18/i);
 });
