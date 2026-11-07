@@ -4,9 +4,9 @@
   "classId": "skald",
   "summary": "Wyrm singers spin fragments of the story of the ongoing struggle between noble Apsu and wicked Dahak.",
   "replacesText": "Inspired Rage; Song of the Fallen; 12th-level rage power",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Draconic Rage scaling, melee-only bonuses, special-save rules, Armor Class penalty, Wyrm Saga targeting and cost, and the existing breath weapon are automated."
   ],
   "replacements": [
     {
@@ -22,7 +22,289 @@
           "name": "Wyrm Song (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "A wyrm singer gains the following raging songs. Draconic Rage (Su) : At 1st level, a wyrm singer can kindle an echo of ancient rage felt between warring dragon clans in his allies. This ability acts as inspired rage, except those affected gain a +2 morale bonus on melee attack and damage rolls and a +2 morale bonus on saving throws against paralysis and sleep effects (but they still take a –1 penalty to their AC), rather than inspired rage’s normal bonuses. At 4th level and every 4 skald levels thereafter, the song’s bonuses on saves against paralysis and sleep effects increase by 1. At 8th and 16th levels, the song’s bonus on melee attack and damage rolls increases by 1. This ability replaces inspired rage. Wyrm Saga (Su) : At 14th level, a wyrm singer embraces the essence of the draconic histories, allowing his allies to manifest aspects of a dragon in their physical forms. The wyrm singer selects a single ally within 60 feet to take on a draconic aspect (as per form of the dragon I ) of a type of the wyrm singer’s choice. The ally cannot use the breath weapon attack provided by form of the dragon . The wyrm singer must expend 1 round of raging song each round to maintain wyrm saga, and can affect only a single ally at a time. This ability replaces song of the fallen."
+          "summary": "A wyrm singer gains the following raging songs. Draconic Rage (Su) : At 1st level, a wyrm singer can kindle an echo of ancient rage felt between warring dragon clans in his allies. This ability acts as inspired rage, except those affected gain a +2 morale bonus on melee attack and damage rolls and a +2 morale bonus on saving throws against paralysis and sleep effects (but they still take a –1 penalty to their AC), rather than inspired rage’s normal bonuses. At 4th level and every 4 skald levels thereafter, the song’s bonuses on saves against paralysis and sleep effects increase by 1. At 8th and 16th levels, the song’s bonus on melee attack and damage rolls increases by 1. This ability replaces inspired rage. Wyrm Saga (Su) : At 14th level, a wyrm singer embraces the essence of the draconic histories, allowing his allies to manifest aspects of a dragon in their physical forms. The wyrm singer selects a single ally within 60 feet to take on a draconic aspect (as per form of the dragon I ) of a type of the wyrm singer’s choice. The ally cannot use the breath weapon attack provided by form of the dragon . The wyrm singer must expend 1 round of raging song each round to maintain wyrm saga, and can affect only a single ally at a time. This ability replaces song of the fallen.",
+          "performanceRules": [
+            {
+              "id": "wyrm-singer-draconic-rage",
+              "name": "Draconic Rage",
+              "minimumLevel": 1,
+              "kind": "active",
+              "summary": "Grant scaling morale bonuses on melee attacks, melee damage, and saves against paralysis and sleep, while imposing –1 Armor Class.",
+              "resourceId": "ragingSongRounds",
+              "cost": 1,
+              "actionIds": [
+                "wyrm-singer-draconic-rage"
+              ]
+            },
+            {
+              "id": "wyrm-singer-wyrm-saga",
+              "name": "Wyrm Saga",
+              "minimumLevel": 14,
+              "kind": "active",
+              "summary": "One ally within 60 feet assumes a form of the dragon I aspect without its breath weapon while the song is maintained.",
+              "resourceId": "ragingSongRounds",
+              "cost": 1,
+              "actionIds": [
+                "wyrm-singer-wyrm-saga"
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "wyrm-singer-draconic-rage",
+              "label": "Begin Draconic Rage",
+              "minimumLevel": 1,
+              "classId": "skald",
+              "resourceId": "ragingSongRounds",
+              "cost": 1,
+              "modeLabel": "Current progression",
+              "modes": [
+                {
+                  "id": "level-1",
+                  "label": "+2 melee / +2 special saves",
+                  "minimumLevel": 1,
+                  "maximumLevel": 3,
+                  "defaultRounds": 1,
+                  "summary": "Grant +2 morale on melee attack and damage rolls, +2 morale on saves against paralysis and sleep, and –1 Armor Class.",
+                  "activeEffects": [
+                    {
+                      "target": "meleeAttackRolls",
+                      "bonus": 2,
+                      "label": "Draconic Rage — melee attacks",
+                      "description": "+2 morale bonus on melee attack rolls."
+                    },
+                    {
+                      "target": "meleeDamageRolls",
+                      "bonus": 2,
+                      "label": "Draconic Rage — melee damage",
+                      "description": "+2 morale bonus on melee damage rolls."
+                    },
+                    {
+                      "target": "savingThrowsAgainstParalysisAndSleep",
+                      "bonus": 2,
+                      "label": "Draconic Rage — special saves",
+                      "description": "+2 morale bonus on saves against paralysis and sleep effects."
+                    },
+                    {
+                      "target": "armorClass",
+                      "bonus": -1,
+                      "label": "Draconic Rage — Armor Class",
+                      "description": "–1 penalty to Armor Class."
+                    }
+                  ]
+                },
+                {
+                  "id": "level-4",
+                  "label": "+2 melee / +3 special saves",
+                  "minimumLevel": 4,
+                  "maximumLevel": 7,
+                  "defaultRounds": 1,
+                  "summary": "Grant +2 morale on melee attack and damage rolls, +3 morale on saves against paralysis and sleep, and –1 Armor Class.",
+                  "activeEffects": [
+                    {
+                      "target": "meleeAttackRolls",
+                      "bonus": 2,
+                      "label": "Draconic Rage — melee attacks",
+                      "description": "+2 morale bonus on melee attack rolls."
+                    },
+                    {
+                      "target": "meleeDamageRolls",
+                      "bonus": 2,
+                      "label": "Draconic Rage — melee damage",
+                      "description": "+2 morale bonus on melee damage rolls."
+                    },
+                    {
+                      "target": "savingThrowsAgainstParalysisAndSleep",
+                      "bonus": 3,
+                      "label": "Draconic Rage — special saves",
+                      "description": "+3 morale bonus on saves against paralysis and sleep effects."
+                    },
+                    {
+                      "target": "armorClass",
+                      "bonus": -1,
+                      "label": "Draconic Rage — Armor Class",
+                      "description": "–1 penalty to Armor Class."
+                    }
+                  ]
+                },
+                {
+                  "id": "level-8",
+                  "label": "+3 melee / +4 special saves",
+                  "minimumLevel": 8,
+                  "maximumLevel": 11,
+                  "defaultRounds": 1,
+                  "summary": "Grant +3 morale on melee attack and damage rolls, +4 morale on saves against paralysis and sleep, and –1 Armor Class.",
+                  "activeEffects": [
+                    {
+                      "target": "meleeAttackRolls",
+                      "bonus": 3,
+                      "label": "Draconic Rage — melee attacks",
+                      "description": "+3 morale bonus on melee attack rolls."
+                    },
+                    {
+                      "target": "meleeDamageRolls",
+                      "bonus": 3,
+                      "label": "Draconic Rage — melee damage",
+                      "description": "+3 morale bonus on melee damage rolls."
+                    },
+                    {
+                      "target": "savingThrowsAgainstParalysisAndSleep",
+                      "bonus": 4,
+                      "label": "Draconic Rage — special saves",
+                      "description": "+4 morale bonus on saves against paralysis and sleep effects."
+                    },
+                    {
+                      "target": "armorClass",
+                      "bonus": -1,
+                      "label": "Draconic Rage — Armor Class",
+                      "description": "–1 penalty to Armor Class."
+                    }
+                  ]
+                },
+                {
+                  "id": "level-12",
+                  "label": "+3 melee / +5 special saves",
+                  "minimumLevel": 12,
+                  "maximumLevel": 15,
+                  "defaultRounds": 1,
+                  "summary": "Grant +3 morale on melee attack and damage rolls, +5 morale on saves against paralysis and sleep, and –1 Armor Class.",
+                  "activeEffects": [
+                    {
+                      "target": "meleeAttackRolls",
+                      "bonus": 3,
+                      "label": "Draconic Rage — melee attacks",
+                      "description": "+3 morale bonus on melee attack rolls."
+                    },
+                    {
+                      "target": "meleeDamageRolls",
+                      "bonus": 3,
+                      "label": "Draconic Rage — melee damage",
+                      "description": "+3 morale bonus on melee damage rolls."
+                    },
+                    {
+                      "target": "savingThrowsAgainstParalysisAndSleep",
+                      "bonus": 5,
+                      "label": "Draconic Rage — special saves",
+                      "description": "+5 morale bonus on saves against paralysis and sleep effects."
+                    },
+                    {
+                      "target": "armorClass",
+                      "bonus": -1,
+                      "label": "Draconic Rage — Armor Class",
+                      "description": "–1 penalty to Armor Class."
+                    }
+                  ]
+                },
+                {
+                  "id": "level-16",
+                  "label": "+4 melee / +6 special saves",
+                  "minimumLevel": 16,
+                  "maximumLevel": 19,
+                  "defaultRounds": 1,
+                  "summary": "Grant +4 morale on melee attack and damage rolls, +6 morale on saves against paralysis and sleep, and –1 Armor Class.",
+                  "activeEffects": [
+                    {
+                      "target": "meleeAttackRolls",
+                      "bonus": 4,
+                      "label": "Draconic Rage — melee attacks",
+                      "description": "+4 morale bonus on melee attack rolls."
+                    },
+                    {
+                      "target": "meleeDamageRolls",
+                      "bonus": 4,
+                      "label": "Draconic Rage — melee damage",
+                      "description": "+4 morale bonus on melee damage rolls."
+                    },
+                    {
+                      "target": "savingThrowsAgainstParalysisAndSleep",
+                      "bonus": 6,
+                      "label": "Draconic Rage — special saves",
+                      "description": "+6 morale bonus on saves against paralysis and sleep effects."
+                    },
+                    {
+                      "target": "armorClass",
+                      "bonus": -1,
+                      "label": "Draconic Rage — Armor Class",
+                      "description": "–1 penalty to Armor Class."
+                    }
+                  ]
+                },
+                {
+                  "id": "level-20",
+                  "label": "+4 melee / +7 special saves",
+                  "minimumLevel": 20,
+                  "maximumLevel": 20,
+                  "defaultRounds": 1,
+                  "summary": "Grant +4 morale on melee attack and damage rolls, +7 morale on saves against paralysis and sleep, and –1 Armor Class.",
+                  "activeEffects": [
+                    {
+                      "target": "meleeAttackRolls",
+                      "bonus": 4,
+                      "label": "Draconic Rage — melee attacks",
+                      "description": "+4 morale bonus on melee attack rolls."
+                    },
+                    {
+                      "target": "meleeDamageRolls",
+                      "bonus": 4,
+                      "label": "Draconic Rage — melee damage",
+                      "description": "+4 morale bonus on melee damage rolls."
+                    },
+                    {
+                      "target": "savingThrowsAgainstParalysisAndSleep",
+                      "bonus": 7,
+                      "label": "Draconic Rage — special saves",
+                      "description": "+7 morale bonus on saves against paralysis and sleep effects."
+                    },
+                    {
+                      "target": "armorClass",
+                      "bonus": -1,
+                      "label": "Draconic Rage — Armor Class",
+                      "description": "–1 penalty to Armor Class."
+                    }
+                  ]
+                }
+              ],
+              "activeEffect": {
+                "name": "Draconic Rage",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "replaceExisting": true,
+                "defaultRounds": 1,
+                "description": "The selected progression also grants its listed morale bonus on saves against paralysis and sleep effects."
+              },
+              "summary": "Spend one raging song round to begin or maintain Draconic Rage."
+            },
+            {
+              "id": "wyrm-singer-wyrm-saga",
+              "label": "Begin Wyrm Saga",
+              "minimumLevel": 14,
+              "classId": "skald",
+              "resourceId": "ragingSongRounds",
+              "cost": 1,
+              "spellLikeAbility": {
+                "spellId": "form-of-the-dragon-i",
+                "spellName": "Form of the Dragon I (no breath weapon)",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "actionTypeByLevel": [
+                {
+                  "level": 14,
+                  "actionType": "standard"
+                }
+              ],
+              "recipientLabel": "Target",
+              "recipients": [
+                {
+                  "id": "single-ally",
+                  "label": "One ally within 60 feet"
+                }
+              ],
+              "summary": "Maintain the draconic form on one ally; the ally cannot use the spell's breath weapon."
+            }
+          ]
         },
         {
           "id": "skald-wyrm-singer-breath-weapon-su-12",

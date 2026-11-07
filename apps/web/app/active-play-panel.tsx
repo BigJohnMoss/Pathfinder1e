@@ -35,7 +35,9 @@ const targets: Array<{ id: ActiveEffectTarget; name: string }> = [
   { id: "reflex", name: "Reflex" },
   { id: "will", name: "Will" },
   { id: "attackRolls", name: "Attack rolls" },
+  { id: "meleeAttackRolls", name: "Melee attack rolls" },
   { id: "damageRolls", name: "Damage rolls" },
+  { id: "weaponDamageRolls", name: "Weapon damage rolls" },
   { id: "damageReduction", name: "Damage reduction" },
   { id: "spellResistance", name: "Spell resistance" },
   { id: "casterLevel", name: "Caster level" },
@@ -43,6 +45,8 @@ const targets: Array<{ id: ActiveEffectTarget; name: string }> = [
   { id: "exploitEffectiveLevel", name: "Exploit effective level" },
   { id: "casterLevelChecks", name: "Caster level checks" },
   { id: "savingThrows", name: "Saving throws" },
+  { id: "savingThrowsAgainstCharmAndFear", name: "Saves against charm and fear" },
+  { id: "savingThrowsAgainstParalysisAndSleep", name: "Saves against paralysis and sleep" },
   { id: "meleeDamageRolls", name: "Melee damage rolls" },
   { id: "healingReceived", name: "Magical healing received" },
   { id: "skillChecks", name: "Skill checks" },
@@ -82,8 +86,8 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   const appliesToAttack = (effect: ActiveEffect, attack: EquipmentAttack) => !effect.weaponIds?.length || effect.weaponIds.includes(attack.id);
   const attackEffectBonus = (effect: ActiveEffect, attack: EquipmentAttack) => effect.weaponEnhancementBonus ? Math.max(0, effect.bonus - (attack.enhancementBonus ?? 0)) : effect.bonus;
   const activeAttacks = attacks.map((attack) => {
-    const attackRollBonus = effects.filter((effect) => effect.target === "attackRolls" && appliesToAttack(effect, attack)).reduce((total, effect) => total + attackEffectBonus(effect, attack), 0);
-    const damageEffects = effects.filter((effect) => effect.target === "damageRolls" && appliesToAttack(effect, attack));
+    const attackRollBonus = effects.filter((effect) => !effect.consumeOnUse && (effect.target === "attackRolls" || (effect.target === "meleeAttackRolls" && !attack.range)) && appliesToAttack(effect, attack)).reduce((total, effect) => total + attackEffectBonus(effect, attack), 0);
+    const damageEffects = effects.filter((effect) => !effect.consumeOnUse && (effect.target === "damageRolls" || effect.target === "weaponDamageRolls" || (effect.target === "meleeDamageRolls" && !attack.range)) && appliesToAttack(effect, attack));
     const damageRollBonus = damageEffects.reduce((total, effect) => total + attackEffectBonus(effect, attack), 0);
     return { ...attack, attack: attack.attack + attackRollBonus, damageBonus: attack.damageBonus + damageRollBonus, damageType: damageEffects.findLast((effect) => effect.damageType)?.damageType };
   });
