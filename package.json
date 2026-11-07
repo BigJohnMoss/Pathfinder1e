@@ -26,6 +26,7 @@
     "import:later-spell-lists": "node tools/scripts/import-later-spell-lists.mjs",
     "coverage:archetypes": "node tools/scripts/annotate-archetype-coverage.mjs",
     "coverage:archetype-gaps": "node tools/scripts/classify-archetype-gaps.mjs",
+    "coverage:archetype-batches": "node tools/scripts/plan-archetype-batches.mjs",
     "coverage:archetype-skills": "node tools/scripts/analyze-archetype-skill-inference.mjs",
     "coverage:archetype-skill-checks": "node tools/scripts/analyze-archetype-skill-check-inference.mjs",
     "coverage:archetype-initiative": "node tools/scripts/analyze-archetype-initiative-inference.mjs",

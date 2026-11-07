@@ -2025,6 +2025,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ["spell access", inferredSpellAccess.sentenceCoverage ?? []],
     ["spell additions", inferredSpellAdditions.sentenceCoverage ?? []],
     ["spell modifiers", inferredSpellModifiers.sentenceCoverage ?? []],
+    ["spellcasting profile", inferredSpellcastingAbility?.sentenceCoverage ?? []],
     ["spell-like abilities", spellLikeAbilityDetails.sentenceCoverage ?? []],
     ["resource-powered spells", resourceSpellActionDetails.sentenceCoverage ?? []],
     ["Wild Empathy", inferredWildEmpathy.sentenceCoverage ?? []],

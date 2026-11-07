@@ -68,3 +68,18 @@ for (const [classId, archetypeId, className, archetypeName, ability, spellName] 
   await user.type(screen.getByPlaceholderText("Name or effect"), spellName);
   assert.ok(screen.getByText(spellName));
 });
+
+test("Pearl Seeker exposes gated Bloodrager slots and level-gated bonus spells", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "paladin");
+  await user.selectOptions(screen.getByLabelText("Human +2"), "charisma");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "paladin-pearl-seeker");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "7" } });
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+
+  assert.ok(screen.getByRole("heading", { name: "Spontaneous spells" }));
+  assert.doesNotMatch(screen.getByText(/Paladin \(Pearl Seeker\) slots:/).textContent ?? "", /no leveled spell slots available/);
+  await user.type(screen.getByPlaceholderText("Name or effect"), "Slipstream");
+  assert.ok(screen.getByText("Slipstream"));
+});
