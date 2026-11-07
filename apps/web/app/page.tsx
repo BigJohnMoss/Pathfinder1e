@@ -3350,7 +3350,16 @@ export default function Home() {
     ? bladeAdeptAdvancementLevel >= 17 ? 5 : bladeAdeptAdvancementLevel >= 13 ? 4 : bladeAdeptAdvancementLevel >= 9 ? 3 : bladeAdeptAdvancementLevel >= 5 ? 2 : 1
     : 0;
   const intrinsicWeaponEnhancements = bladeAdeptWeaponKey && bladeAdeptEnhancement ? { [bladeAdeptWeaponKey]: bladeAdeptEnhancement } : {};
-  const unarmedAttack = unarmedStrikeAttack(progression.baseAttackBonus, combat.abilityModifiers.strength, ancestry.size, classLevelMap.monk ?? 0, selectedFeatBonuses.weaponBonuses);
+  const archetypeUnarmedDamageLevel = Math.max(
+    0,
+    ...progressionClasses.flatMap((entry) =>
+      (entry.unarmedDamageProgressions ?? [])
+        .filter((rule) => (classLevelMap[rule.classId] ?? 0) >= (rule.minimumLevel ?? 1))
+        .filter((rule) => !rule.requiredActiveEffectName || activeEffects.some((effect) => effect.name === rule.requiredActiveEffectName))
+        .map((rule) => Math.max(0, (classLevelMap[rule.classId] ?? 0) + (rule.levelAdjustment ?? 0))),
+    ),
+  );
+  const unarmedAttack = unarmedStrikeAttack(progression.baseAttackBonus, combat.abilityModifiers.strength, ancestry.size, Math.max(classLevelMap.monk ?? 0, archetypeUnarmedDamageLevel), selectedFeatBonuses.weaponBonuses);
   const combatAttacks = [...equippedWeaponAttacks(
     inventory,
     progression.baseAttackBonus,

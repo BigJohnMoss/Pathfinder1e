@@ -1150,7 +1150,7 @@ export function normalizeCharacterDraft(
             name: effect.name.trim().slice(0, 80),
             target: effect.target,
             bonus: effect.bonus,
-            roundsRemaining: Math.min(999, effect.roundsRemaining),
+            roundsRemaining: Math.min(99999, effect.roundsRemaining),
             ...(typeof effect.description === "string" && effect.description.trim()
               ? { description: effect.description.trim().slice(0, 240) }
               : {}),
@@ -1468,6 +1468,10 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     companionProgressionAdjustments: [
       ...(characterClass.companionProgressionAdjustments ?? []),
       ...(archetype.companionProgressionAdjustments ?? []),
+    ],
+    unarmedDamageProgressions: [
+      ...(characterClass.unarmedDamageProgressions ?? []),
+      ...(archetype.unarmedDamageProgressions ?? []),
     ],
     wildShapeLevelAdjustment:
       archetype.wildShapeLevelAdjustment ??
