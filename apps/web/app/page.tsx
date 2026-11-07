@@ -143,6 +143,7 @@ import {
 import { mysteryBonusSpells } from "../../../packages/engine/src/oracle-mysteries.js";
 import type {
   ActiveEffect,
+  AbilityName,
   Alignment,
   CharacterClassLevel,
   CharacterDraftV1,
@@ -975,7 +976,13 @@ export default function Home() {
   ]);
   const baseCombat = useMemo(() => {
     const base = characterCombatStats(characterClass, level, abilities);
-    if (additionalCharacterClasses.length === 0) return base;
+    const willAbility = allSelectedArchetypes
+      .map((archetype) => archetype.saveAbilityOverrides?.will)
+      .find((ability): ability is AbilityName => Boolean(ability));
+    const willModifier = willAbility ? base.abilityModifiers[willAbility] : base.abilityModifiers.wisdom;
+    if (additionalCharacterClasses.length === 0) return willAbility
+      ? { ...base, saves: { ...base.saves, will: base.saves.will - base.abilityModifiers.wisdom + willModifier } }
+      : base;
     const saves = progression.saves;
     return {
       ...base,
@@ -983,7 +990,7 @@ export default function Home() {
       saves: {
         fortitude: saves.fortitude + base.abilityModifiers.constitution,
         reflex: saves.reflex + base.abilityModifiers.dexterity,
-        will: saves.will + base.abilityModifiers.wisdom,
+        will: saves.will + willModifier,
       },
       combatManeuverBonus:
         progression.baseAttackBonus + base.abilityModifiers.strength,
@@ -1000,6 +1007,7 @@ export default function Home() {
     };
   }, [
     abilities,
+    allSelectedArchetypes,
     additionalCharacterClasses.length,
     characterClass,
     classLevels,

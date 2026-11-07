@@ -4,9 +4,9 @@
   "classId": "psychic",
   "summary": "The psychic marauder’s powers come hand in hand with madness, either from exposure to alien psyches or from terrifying glimpses into the cosmos that the psychic can’t suppress.",
   "replacesText": "Alignment; Detect Thoughts; 3rd, 11th, 19th-level Phrenic Amplification; Telepathic Bond; Remade Self",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Nonlawful alignment is enforced, Charisma replaces Wisdom in the calculated Will save, Aura of Insanity tracks phrenic costs, DC, radius, exclusions, duration, confusion, and both higher-level outcome controls, and the level-9 and level-20 immunities are applied."
   ],
   "replacements": [
     {
@@ -21,7 +21,17 @@
           "name": "Alignment",
           "level": 1,
           "type": "archetype",
-          "summary": "A psychic marauder must be of nonlawful alignment. A psychic marauder that becomes lawful loses her aura of insanity. However, she retains all other benefits of this archetype."
+          "summary": "Choose any nonlawful alignment. A lawful character cannot activate Aura of Insanity.",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-alignments",
+          "optionChoiceIds": [
+            "alignment-neutral-good",
+            "alignment-chaotic-good",
+            "alignment-neutral",
+            "alignment-chaotic-neutral",
+            "alignment-neutral-evil",
+            "alignment-chaotic-evil"
+          ]
         },
         {
           "id": "psychic-psychic-marauder-skewed-mentality-ex-2",
@@ -35,7 +45,164 @@
           "name": "Aura of Insanity (Su)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, a psychic marauder’s madness begins to leak out. As a standard action, the psychic marauder can spend 1 point from her phrenic pool to manifest an aura of insanity, letting bits of her psyche penetrate the minds of those around her. The aura is centered on the psychic marauder and has a radius of 10 feet, increasing by 5 feet for every 3 class levels beyond 3rd. Any creature starting its turn within the aura must succeed at a Will save (DC = 10 + half the psychic marauder’s level + the psychic marauder’s Charisma modifier) or be confused for 1 round. The psychic marauder can exclude a number of targets inside the radius equal to 1 + 1 for every 3 class levels beyond 3rd, shielding them from her madness. The aura of insanity lasts for a number of rounds equal to the psychic marauder’s Charisma modifier. This is a mind-affecting effect. At 11th level, when a creature rolls to determine the effects of a confusion effect while within the aura of insanity, the psychic marauder can spend 1 point from her phrenic pool to force the affected creature to roll twice. The psychic marauder selects which result is used. At 19th level, when a creature would roll to determine the effects of a confusion effect while within the aura of insanity, the psychic marauder can spend 2 points from her phrenic pool to select the result of the affected creature’s confused condition without rolling. This does not allow the psychic marauder to control how that result is applied. This ability replaces the phrenic amplifications gained at 3rd, 11th, and 19th levels."
+          "summary": "Spend phrenic points to create the scaling confusion aura and use its level-11 roll-twice or level-19 choose-result controls.",
+          "resourceActions": [
+            {
+              "id": "psychic-marauder-aura",
+              "label": "Activate Aura of Insanity",
+              "classId": "psychic",
+              "minimumLevel": 3,
+              "resourceId": "phrenicPool",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "standard"
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "psychic"
+              },
+              "targetCountByLevel": [
+                {
+                  "level": 3,
+                  "count": 1
+                },
+                {
+                  "level": 6,
+                  "count": 2
+                },
+                {
+                  "level": 9,
+                  "count": 3
+                },
+                {
+                  "level": 12,
+                  "count": 4
+                },
+                {
+                  "level": 15,
+                  "count": 5
+                },
+                {
+                  "level": 18,
+                  "count": 6
+                }
+              ],
+              "activeEffect": {
+                "name": "Aura of Insanity",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Creatures starting their turns in the aura must save or become confused for 1 round. The displayed target count is the number of creatures that can be excluded.",
+                "defaultRounds": 1,
+                "durationAbilityModifier": "charisma",
+                "rangeByLevel": [
+                  {
+                    "level": 3,
+                    "feet": 10
+                  },
+                  {
+                    "level": 6,
+                    "feet": 15
+                  },
+                  {
+                    "level": 9,
+                    "feet": 20
+                  },
+                  {
+                    "level": 12,
+                    "feet": 25
+                  },
+                  {
+                    "level": 15,
+                    "feet": 30
+                  },
+                  {
+                    "level": 18,
+                    "feet": 35
+                  }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "psychic-marauder-roll-twice",
+              "label": "Roll confusion twice and choose",
+              "classId": "psychic",
+              "minimumLevel": 11,
+              "resourceId": "phrenicPool",
+              "cost": 1,
+              "requiredActiveEffectName": "Aura of Insanity",
+              "actionTypeByLevel": [
+                {
+                  "level": 11,
+                  "actionType": "immediate"
+                }
+              ],
+              "diceRoll": {
+                "label": "Confusion percentile rolls",
+                "diceCountByLevel": [
+                  {
+                    "level": 11,
+                    "count": 2
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 11,
+                    "sides": 100
+                  }
+                ],
+                "takeHighest": false
+              },
+              "summary": "Roll twice and manually choose either displayed confusion result."
+            },
+            {
+              "id": "psychic-marauder-choose-confusion",
+              "label": "Choose confusion result",
+              "classId": "psychic",
+              "minimumLevel": 19,
+              "resourceId": "phrenicPool",
+              "cost": 2,
+              "requiredActiveEffectName": "Aura of Insanity",
+              "actionTypeByLevel": [
+                {
+                  "level": 19,
+                  "actionType": "immediate"
+                }
+              ],
+              "modeLabel": "Result",
+              "modes": [
+                {
+                  "id": "act-normally",
+                  "label": "Act normally",
+                  "summary": "The confused creature acts normally."
+                },
+                {
+                  "id": "babble",
+                  "label": "Babble incoherently",
+                  "summary": "The confused creature does nothing but babble."
+                },
+                {
+                  "id": "self-harm",
+                  "label": "Deal self-harm",
+                  "summary": "The confused creature deals damage to itself."
+                },
+                {
+                  "id": "attack-nearest",
+                  "label": "Attack nearest creature",
+                  "summary": "The confused creature attacks the nearest creature."
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "psychic-psychic-marauder-cracked-perspectives-ex-9",
@@ -52,6 +219,27 @@
           "summary": "At 20th level, a psychic marauder’s mindset becomes completely aberrant, to the point that no outside force can penetrate her psyche. Because of this, the psychic marauder becomes immune to all mind-affecting effects. This ability replaces remade self."
         }
       ]
+    }
+  ],
+  "saveAbilityOverrides": {
+    "will": "charisma"
+  },
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "psychic-psychic-marauder-cracked-perspectives-ex-9",
+      "kind": "immunity",
+      "label": "Cracked Perspectives",
+      "minimumLevel": 9,
+      "base": 1,
+      "qualifier": "confusion and insanity effects"
+    },
+    {
+      "sourceFeatureId": "psychic-psychic-marauder-unreal-understanding-ex-20",
+      "kind": "immunity",
+      "label": "Unreal Understanding",
+      "minimumLevel": 20,
+      "base": 1,
+      "qualifier": "all mind-affecting effects"
     }
   ],
   "source": {

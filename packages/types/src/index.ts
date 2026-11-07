@@ -735,6 +735,7 @@ export interface CharacterArchetype {
   classSkillRemovals?: string[];
   babProgression?: Progression;
   saveProgressionOverrides?: Partial<Record<"fortitude" | "reflex" | "will", SaveProgression>>;
+  saveAbilityOverrides?: Partial<Record<"fortitude" | "reflex" | "will", AbilityName>>;
   skillRanksPerLevel?: number;
   hitDie?: 6 | 8 | 10 | 12;
   proficiencyAdjustments?: ProficiencyAdjustment[];
