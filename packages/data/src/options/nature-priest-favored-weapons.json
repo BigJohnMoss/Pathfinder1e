@@ -1,0 +1,23 @@
+{
+  "id": "nature-priest-favored-weapons",
+  "name": "Nature Priest Favored Weapon",
+  "classIds": ["druid"],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "nature-priest-favored-weapon",
+      "groupId": "nature-priest-favored-weapons",
+      "name": "Deity's favored weapon",
+      "classIds": ["druid"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Record the selected deity's favored weapon; the Nature Priest is proficient with it.",
+      "choice": { "key": "weapon", "label": "Favored weapon", "allowCustom": true },
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Nature%20Priest"
+      }
+    }
+  ]
+}

@@ -499,6 +499,7 @@ export interface ClassFeatureOccurrence {
     outputLabel: string;
     baseByLevel: Array<{ level: number; value: number }>;
     inputMultiplierByLevel?: Array<{ level: number; multiplier: number }>;
+    outputDivisor?: number;
     classId?: string;
     maximumClassLevel?: boolean;
     summary?: string;
