@@ -146,6 +146,17 @@ export function inferArchetypeFeatChoices(archetype, feats, maximumLevel = 20) {
   for (const feature of (archetype?.replacements ?? []).flatMap(item => item.features ?? [])) {
     if (feature.optionGroupId) continue;
     const text = String(feature.summary ?? "").replace(/\s+/g, " ");
+    const recurringIntersection = text.match(/^At\s+(\d+)(?:st|nd|rd|th)?\s+level and every\s+(\d+|three|four|five|six)\s+levels? thereafter,[^.]{0,160}?\bbonus\s+(teamwork|combat|item creation|metamagic)\s+feat\s*\./i);
+    const requiredSecondType = text.match(/\bThis\s+(?:teamwork|combat|item creation|metamagic)\s+feat must also be an?\s+(teamwork|combat|item creation|metamagic)\s+feat\b/i);
+    if (recurringIntersection && requiredSecondType) {
+      const type = (value) => value.toLowerCase().replace(/\s+/g, "-");
+      const base = Number(recurringIntersection[1]);
+      const interval = choiceNumber(recurringIntersection[2]);
+      addChoices(feature, Array.from({ length: 20 }, (_, index) => base + index * interval), {
+        featChoiceAllTypes: [...new Set([type(recurringIntersection[3]), type(requiredSecondType[1])])],
+      });
+      continue;
+    }
     const either = text.match(/\bgains? either ([A-Z][A-Za-z' -]+?) or ([A-Z][A-Za-z' -]+?) as (?:a )?bonus feat/i);
     if (either) {
       const ids = [either[1], either[2]].map(name => featIdByName.get(normalizeName(name)));
@@ -228,8 +239,9 @@ export function inferArchetypeFeatChoices(archetype, feats, maximumLevel = 20) {
   return choices;
 }
 
-const featChoiceSelectionSentence = /\b(?:(?:gains?|receives?|selects?|can select|may (?:also )?choose|can (?:also )?choose|adds?)\b[^.]{0,220}\b(?:bonus )?feats?\b|(?:bonus )?feats? must be chosen from the following|following feats? (?:are|is) added to (?:the|this) list)\b/i;
+const featChoiceSelectionSentence = /\b(?:(?:gains?|receives?|selects?|can (?:select|take)|may (?:also )?choose|can (?:also )?choose|adds?)\b[^.]{0,220}\b(?:bonus )?feats?\b|(?:bonus )?feats? must be chosen from the following|following feats? (?:are|is) added to (?:the|this) list)\b/i;
 const featChoiceQualificationSentence = /\b(?:must meet|need not meet|does not need to meet|doesn't need to meet|can choose[^.]+even if[^.]+does not meet)\b[^.]*\bprerequisites?\b|\bmust include [^.]+ as a prerequisite or be selected from\b/i;
+const featChoiceTypeConstraintSentence = /\b(?:this|these)\s+(?:teamwork|combat|item creation|metamagic)\s+feats? must also be an?\s+(?:teamwork|combat|item creation|metamagic)\s+feats?\b/i;
 const featChoiceUnsupportedSentence = /\b(?:animal companion|both the|grant(?:s|ed)? (?:this|one of these|any two) feats? to|only to craft|as a standard action|fighter levels?|favou?red weapon|most recent bonus feat|change (?:her|his|their) bonus feat|functions? like|limitations? on armor|increased base weapon damage|use these feats? only)\b/i;
 
 export function inferredArchetypeFeatChoiceDetails(archetype, feats, maximumLevel = 20) {
@@ -244,7 +256,7 @@ export function inferredArchetypeFeatChoiceDetails(archetype, feats, maximumLeve
     const covered = new Set();
     for (const [sentenceIndex, sentence] of sentences.entries()) {
       if (featChoiceUnsupportedSentence.test(sentence)) continue;
-      if (featChoiceSelectionSentence.test(sentence) || featChoiceQualificationSentence.test(sentence)) {
+      if (featChoiceSelectionSentence.test(sentence) || featChoiceQualificationSentence.test(sentence) || featChoiceTypeConstraintSentence.test(sentence)) {
         covered.add(sentenceIndex);
         sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
       }

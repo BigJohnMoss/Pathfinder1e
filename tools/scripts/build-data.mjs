@@ -112,13 +112,16 @@ const optionGroups=rawOptionGroups.map(group=>{
   return {...group,options:[...group.options,...generated.filter(option=>!group.options.some(existing=>existing.id===option.id))]};
 });
 let feats=await loadDir('feats');
+const featCategoryFiles=await loadDir('feat-categories').catch(()=>[]);
+const featCategoriesById=Object.assign({},...featCategoryFiles.map(file=>file.categoriesByFeatId??{}));
 const featDetailFiles=await loadDir('feat-details').catch(()=>[]);
 const featDetailsById=new Map(featDetailFiles.flatMap(file=>file.feats??[]).map(detail=>[detail.id,detail]));
 feats=feats.map(feat=>{
+  const types=[...new Set([feat.type,...(feat.types??[]),...(featCategoriesById[feat.id]??[])])];
   const detail=featDetailsById.get(feat.id);
-  if(!detail) return feat;
+  if(!detail) return {...feat,types};
   const fullBenefit=detail.sections?.find(section=>section.label.toLowerCase()==="benefit")?.text??feat.benefit;
-  return {...feat,benefit:fullBenefit,description:detail.description,rulesSections:detail.sections};
+  return {...feat,types,benefit:fullBenefit,description:detail.description,rulesSections:detail.sections};
 });
 const archetypes=mergeArchetypeAutomation(await loadDir('archetypes'),await loadDir('archetype-automation').catch(()=>[]));
 const bundle={generatedAt:new Date().toISOString(),classes:await loadDir('classes'),archetypes,races:await loadDir('races'),optionGroups,feats,traits:await loadDir('traits'),spells};

@@ -1550,16 +1550,18 @@ export default function Home() {
       if (feature.optionGroupId === "archetype-feats") return {
         ids: feature.featChoiceIds ?? [],
         types: feature.featChoiceTypes ?? [],
+        allTypes: feature.featChoiceAllTypes ?? [],
         prerequisiteIds: feature.featChoicePrerequisiteIds ?? [],
         ignorePrerequisites: Boolean(feature.ignoreFeatPrerequisites),
       };
       if (feature.optionGroupId === "monk-bonus-feats") return {
         ids: [...monkBonusFeatIds, ...(feature.level >= 6 ? monkBonusFeatIdsAt6 : []), ...(feature.level >= 10 ? monkBonusFeatIdsAt10 : [])],
         types: [],
+        allTypes: [],
         prerequisiteIds: [],
         ignorePrerequisites: true,
       };
-      if (feature.optionGroupId === "warpriest-weapon-focus") return { ids: ["weapon-focus"], types: [], prerequisiteIds: [], ignorePrerequisites: true };
+      if (feature.optionGroupId === "warpriest-weapon-focus") return { ids: ["weapon-focus"], types: [], allTypes: [], prerequisiteIds: [], ignorePrerequisites: true };
       if (feature.optionGroupId === "bloodrager-bloodline-feats") {
         const selectedBloodlineIds = [
           selectedOptions["bloodrager-bloodline-1"],
@@ -1568,9 +1570,9 @@ export default function Home() {
         ].filter((id): id is string => Boolean(id));
         const bloodlineOptions = optionGroups.find((group) => group.id === "bloodrager-bloodlines")?.options ?? [];
         const bloodlineFeatIds = [...new Set(selectedBloodlineIds.flatMap((id) => bloodlineOptions.find((option) => option.id === id)?.featIds ?? []))];
-        return { ids: bloodlineFeatIds.length ? bloodlineFeatIds : ["bloodline-selection-required"], types: [], prerequisiteIds: [], ignorePrerequisites: false };
+        return { ids: bloodlineFeatIds.length ? bloodlineFeatIds : ["bloodline-selection-required"], types: [], allTypes: [], prerequisiteIds: [], ignorePrerequisites: false };
       }
-      if (feature.optionGroupId === "warpriest-bonus-feats" || feature.optionGroupId === "swashbuckler-bonus-feats" || feature.optionGroupId === "brawler-bonus-feats") return { ids: [], types: ["combat"], prerequisiteIds: [], ignorePrerequisites: false };
+      if (feature.optionGroupId === "warpriest-bonus-feats" || feature.optionGroupId === "swashbuckler-bonus-feats" || feature.optionGroupId === "brawler-bonus-feats") return { ids: [], types: ["combat"], allTypes: [], prerequisiteIds: [], ignorePrerequisites: false };
       return null;
     })();
     const generatedFeatGroup: (typeof optionGroups)[number] | undefined = generatedFeatConfig
@@ -1582,11 +1584,14 @@ export default function Home() {
             .filter((feat) => {
               const allowedIds = generatedFeatConfig.ids;
               const allowedTypes = generatedFeatConfig.types;
+              const requiredTypes = generatedFeatConfig.allTypes;
               const prerequisiteIds = generatedFeatConfig.prerequisiteIds;
+              const featTypes = new Set([feat.type, ...(feat.types ?? [])]);
               return (
-                (allowedIds.length === 0 && allowedTypes.length === 0 && prerequisiteIds.length === 0) ||
+                (requiredTypes.length > 0 && requiredTypes.every((type) => featTypes.has(type))) ||
+                (requiredTypes.length === 0 && allowedIds.length === 0 && allowedTypes.length === 0 && prerequisiteIds.length === 0) ||
                 allowedIds.includes(feat.id) ||
-                allowedTypes.includes(feat.type) ||
+                allowedTypes.some((type) => featTypes.has(type)) ||
                 prerequisiteIncludesFeat(feat.prerequisites, prerequisiteIds)
               );
             })
