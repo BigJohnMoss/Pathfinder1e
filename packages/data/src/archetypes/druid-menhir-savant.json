@@ -19,28 +19,177 @@
           "name": "Spirit Sense (Sp)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a menhir savant can detect the presence of undead; fey; outsiders; and astral, ethereal, or incorporeal creatures. This ability functions like detect undead , and the druid detects all of these creatures rather than trying to detect one kind. This ability replaces nature sense and wild empathy."
+          "summary": "At 1st level, a menhir savant can detect the presence of undead; fey; outsiders; and astral, ethereal, or incorporeal creatures. This ability functions like detect undead , and the druid detects all of these creatures rather than trying to detect one kind. This ability replaces nature sense and wild empathy.",
+          "resourceActions": [
+            {
+              "id": "menhir-spirit-sense",
+              "label": "Begin Spirit Sense",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "spellLikeAbility": {
+                "spellId": "detect-undead",
+                "spellName": "Spirit Sense",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                }
+              ],
+              "activeEffect": {
+                "name": "Spirit Sense",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Detect undead, fey, outsiders, and astral, ethereal, or incorporeal creatures using the detect undead procedure.",
+                "defaultRounds": 10,
+                "replaceExisting": true
+              },
+              "summary": "Track the concentration duration and the feature's complete expanded creature list."
+            }
+          ],
+          "progressionProfiles": [
+            {
+              "id": "menhir-spirit-sense-targets",
+              "label": "Spirit Sense targets",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "creatures",
+                  "label": "Detected creatures"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "creatures": "Undead; fey; outsiders; astral, ethereal, and incorporeal creatures"
+                  }
+                }
+              ],
+              "summary": "All listed creature categories are detected simultaneously rather than selecting one category."
+            }
+          ]
         },
         {
           "id": "druid-menhir-savant-place-magic-su-2",
           "name": "Place Magic (Su)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a menhir savant learns to identify and tap into ley lines in different types of terrain. As a free action, she can tap into the magic of a nearby ley line and increase her caster level by +1 for 1 round. She can use this ability a number of times per day equal to 3 + her Wisdom bonus. This ability replaces woodland stride and trackless step."
+          "summary": "At 2nd level, a menhir savant learns to identify and tap into ley lines in different types of terrain. As a free action, she can tap into the magic of a nearby ley line and increase her caster level by +1 for 1 round. She can use this ability a number of times per day equal to 3 + her Wisdom bonus. This ability replaces woodland stride and trackless step.",
+          "resourceActions": [
+            {
+              "id": "menhir-place-magic",
+              "label": "Tap nearby ley line",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "resourceId": "menhirPlaceMagic",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "free"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "ley-line",
+                  "label": "A ley line is nearby",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Place Magic",
+                "targets": [
+                  "casterLevel"
+                ],
+                "bonus": 1,
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "description": "+1 caster level for 1 round after tapping the nearby ley line."
+              },
+              "summary": "Spend one of 3 + Wisdom modifier daily uses and apply the exact 1-round caster-level increase."
+            }
+          ]
         },
         {
           "id": "druid-menhir-savant-walk-the-lines-su-9",
           "name": "Walk the Lines (Su)",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, a menhir savant can use her connection to ley lines to cast transport via plants a number of times per day equal to her Wisdom bonus."
+          "summary": "At 9th level, a menhir savant can use her connection to ley lines to cast transport via plants a number of times per day equal to her Wisdom bonus.",
+          "resourceActions": [
+            {
+              "id": "menhir-walk-the-lines",
+              "label": "Walk the Lines",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "resourceId": "menhirWalkLines",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "standard"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "transport-via-plants",
+                "spellName": "Transport via Plants",
+                "cadence": "day",
+                "kind": "spell-like"
+              },
+              "summary": "Spend one Wisdom-based daily use and cast transport via plants."
+            }
+          ]
         },
         {
           "id": "druid-menhir-savant-empty-body-su-13",
           "name": "Empty Body (Su)",
           "level": 13,
           "type": "archetype",
-          "summary": "At 13th level, a menhir savant can become ethereal as a standard action, as if using ethereal jaunt . She can remain ethereal for a number of rounds per day equal to her druid level. These rounds do not need to be consecutive. This ability replaces a thousand faces."
+          "summary": "At 13th level, a menhir savant can become ethereal as a standard action, as if using ethereal jaunt . She can remain ethereal for a number of rounds per day equal to her druid level. These rounds do not need to be consecutive. This ability replaces a thousand faces.",
+          "resourceActions": [
+            {
+              "id": "menhir-empty-body",
+              "label": "Become ethereal",
+              "classId": "druid",
+              "minimumLevel": 13,
+              "resourceId": "menhirEmptyBodyRounds",
+              "variableCost": {
+                "label": "Rounds",
+                "minimum": 1,
+                "maximumLevelDivisor": 1
+              },
+              "actionTypeByLevel": [
+                {
+                  "level": 13,
+                  "actionType": "standard"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "ethereal-jaunt",
+                "spellName": "Ethereal Jaunt",
+                "cadence": "day",
+                "kind": "spell-equivalent"
+              },
+              "activeEffect": {
+                "name": "Empty Body",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Become ethereal as ethereal jaunt for the selected number of rounds. The selected amount is deducted from the daily Druid-level pool.",
+                "defaultRounds": 1,
+                "durationFromVariableCost": true,
+                "replaceExisting": true
+              },
+              "summary": "Choose and spend any legal number of rounds from the level-sized daily pool in one activation."
+            }
+          ]
         }
       ]
     }
@@ -50,8 +199,49 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Menhir%20Savant"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Spirit Sense's full detection list, Place Magic uses and caster-level effect, Wisdom-based Walk the Lines uses, and variable-cost Empty Body duration are automated."
+  ],
+  "resourceAdjustments": [
+    {
+      "sourceFeatureId": "druid-menhir-savant-place-magic-su-2",
+      "resourceId": "menhirPlaceMagic",
+      "label": "Place Magic",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 2,
+      "base": 3,
+      "abilityModifier": "wisdom",
+      "minimum": 0,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "sourceFeatureId": "druid-menhir-savant-walk-the-lines-su-9",
+      "resourceId": "menhirWalkLines",
+      "label": "Walk the Lines",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 9,
+      "base": 0,
+      "abilityModifier": "wisdom",
+      "minimum": 0,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "sourceFeatureId": "druid-menhir-savant-empty-body-su-13",
+      "resourceId": "menhirEmptyBodyRounds",
+      "label": "Empty Body",
+      "unit": "round",
+      "operation": "replace",
+      "minimumLevel": 13,
+      "base": 0,
+      "levelMultiplier": 1,
+      "maximum": 20,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
   ]
 }
