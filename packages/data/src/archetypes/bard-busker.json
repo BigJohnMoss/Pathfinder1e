@@ -28,21 +28,679 @@
           "name": "Bardic Performance",
           "level": 1,
           "type": "archetype",
-          "summary": "Buskers do not gain the bardic performance ability or any of its performance types, except as noted below."
+          "summary": "Buskers do not gain the bardic performance ability or any of its performance types, except as noted below.",
+          "progressionProfiles": [
+            {
+              "id": "busker-performance-replacement",
+              "label": "Performance replacement",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "benefit",
+                  "label": "Rule"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "benefit": "No Bardic Performance pool or standard performances; use Busker Stunts below."
+                  }
+                }
+              ],
+              "summary": "Busker Stunts count as bardic performance for interactions but use their own 4 + Charisma rounds per day."
+            }
+          ]
         },
         {
           "id": "bard-busker-busker-stunts-su-1",
           "name": "Busker Stunts (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "A busker knows how to magically enhance the effectiveness of his physical stunts. He can use this ability for a number of rounds per day equal to 4 + his Charisma modifier. Maintaining a stunt is a free action, but it ends immediately if the busker is killed, paralyzed, stunned, knocked unconscious, or otherwise prevented from taking a free action to maintain it each round. This ability is treated as bardic performance for the purposes of feats, abilities, and other effects that affect bardic performance. Like a bardic performance, a busker stunt cannot be maintained at the same time as other performance abilities. Quick Hands (Su) : At 1st level as a swift action, a busker can call on his stunts to gain a +1 competence bonus on Acrobatics checks, a +1 dodge bonus to AC and on Reflex saves, and a +1 bonus on attack rolls as if from haste . This bonus increases to +2 at 5th level, +3 at 11th level, and +4 at 17th level. At 5th level, while maintaining this stunt the busker also gains an extra attack at his highest base attack bonus as if from haste . Patter (Su) : A busker can engage in brisk conversation that seems innocuous, but actually encourages creatures to reveal secrets to the busker. Each round while maintaining this stunt, the busker can force one creature within 30 feet that is able to see and hear the busker and has an attitude of indifferent or better towards him to attempt a Will save (DC = 10 + 1/2 the busker’s bard level + the busker’s Charisma modifier). On a failed save, the target must answer one yes/no question the busker asks to the best of its ability. Anyone observing this (including the creature asked, even if it succeeds at its save) must succeed at a Sense Motive check (opposed by the busker’s Bluff check) to realize the question was asked or answered. A target that feels threatened or is in combat is immune to this ability. This is a language-dependent, mind-affecting enchantment effect. Living Statue (Su) : At 3rd level, a busker can use this stunt to hold perfectly still. While maintaining this stunt the busker can attempt a Bluff check (opposed by all observers’ Sense Motive checks) to appear paralyzed, dead, or as a statue (this requires that the busker be disguised to look as though he were made of stone or metal, which is aided with a statue disguise kit ). Even magical means of determining the true nature of the busker do not function for an observer that fails this check. If the busker takes any physical actions, this stunt ends. Fascinate (Su) : At 6th level, the busker can fascinate creatures with his stunts, as per the bardic performance ability. Suggestion (Sp) : At 8th level, the busker can implant a suggestion in a creature with his stunts, as per the bardic performance ability of the same name. Inventive Juggler (Ex) : At 9th level, a busker masters unconventionally dangerous juggling techniques. While maintaining this stunt, the busker can use a thrown weapon (even an improvised one) to threaten spaces as though he were using a reach weapon. At 12th level and every 3 levels thereafter, the busker threatens squares up to 10 feet farther away with thrown weapons. Impossible Sleight of Hand (Su) : At 15th level, a busker can store items in or retrieve them from a personal extradimensional space with a maximum capacity of 8,000 cubic feet and 8,000 pounds as a busker stunt. The item may be sent from or called to his hand or any place it fits on his person. He can access the extradimensional space only to store or retrieve a single object at a time; to retrieve or store an object larger than Fine size, the busker must expend 1 additional round of busker stunts for each size category larger than Fine. This stunt is instantaneous and must be activated again each time the busker wishes to use it. The extradimensional space empties its contents within the busker’s space if he dies."
+          "summary": "A busker knows how to magically enhance the effectiveness of his physical stunts. He can use this ability for a number of rounds per day equal to 4 + his Charisma modifier. Maintaining a stunt is a free action, but it ends immediately if the busker is killed, paralyzed, stunned, knocked unconscious, or otherwise prevented from taking a free action to maintain it each round. This ability is treated as bardic performance for the purposes of feats, abilities, and other effects that affect bardic performance. Like a bardic performance, a busker stunt cannot be maintained at the same time as other performance abilities. Quick Hands (Su) : At 1st level as a swift action, a busker can call on his stunts to gain a +1 competence bonus on Acrobatics checks, a +1 dodge bonus to AC and on Reflex saves, and a +1 bonus on attack rolls as if from haste . This bonus increases to +2 at 5th level, +3 at 11th level, and +4 at 17th level. At 5th level, while maintaining this stunt the busker also gains an extra attack at his highest base attack bonus as if from haste . Patter (Su) : A busker can engage in brisk conversation that seems innocuous, but actually encourages creatures to reveal secrets to the busker. Each round while maintaining this stunt, the busker can force one creature within 30 feet that is able to see and hear the busker and has an attitude of indifferent or better towards him to attempt a Will save (DC = 10 + 1/2 the busker’s bard level + the busker’s Charisma modifier). On a failed save, the target must answer one yes/no question the busker asks to the best of its ability. Anyone observing this (including the creature asked, even if it succeeds at its save) must succeed at a Sense Motive check (opposed by the busker’s Bluff check) to realize the question was asked or answered. A target that feels threatened or is in combat is immune to this ability. This is a language-dependent, mind-affecting enchantment effect. Living Statue (Su) : At 3rd level, a busker can use this stunt to hold perfectly still. While maintaining this stunt the busker can attempt a Bluff check (opposed by all observers’ Sense Motive checks) to appear paralyzed, dead, or as a statue (this requires that the busker be disguised to look as though he were made of stone or metal, which is aided with a statue disguise kit ). Even magical means of determining the true nature of the busker do not function for an observer that fails this check. If the busker takes any physical actions, this stunt ends. Fascinate (Su) : At 6th level, the busker can fascinate creatures with his stunts, as per the bardic performance ability. Suggestion (Sp) : At 8th level, the busker can implant a suggestion in a creature with his stunts, as per the bardic performance ability of the same name. Inventive Juggler (Ex) : At 9th level, a busker masters unconventionally dangerous juggling techniques. While maintaining this stunt, the busker can use a thrown weapon (even an improvised one) to threaten spaces as though he were using a reach weapon. At 12th level and every 3 levels thereafter, the busker threatens squares up to 10 feet farther away with thrown weapons. Impossible Sleight of Hand (Su) : At 15th level, a busker can store items in or retrieve them from a personal extradimensional space with a maximum capacity of 8,000 cubic feet and 8,000 pounds as a busker stunt. The item may be sent from or called to his hand or any place it fits on his person. He can access the extradimensional space only to store or retrieve a single object at a time; to retrieve or store an object larger than Fine size, the busker must expend 1 additional round of busker stunts for each size category larger than Fine. This stunt is instantaneous and must be activated again each time the busker wishes to use it. The extradimensional space empties its contents within the busker’s space if he dies.",
+          "performanceRules": [
+            {
+              "id": "busker-quick-hands",
+              "name": "Quick Hands",
+              "minimumLevel": 1,
+              "kind": "active",
+              "resourceId": "buskerStunts",
+              "cost": 1,
+              "actionIds": [
+                "busker-quick-hands"
+              ],
+              "summary": "Gain scaling haste-like bonuses and, from level 5, an extra full-attack attack."
+            },
+            {
+              "id": "busker-patter",
+              "name": "Patter",
+              "minimumLevel": 1,
+              "kind": "active",
+              "resourceId": "buskerStunts",
+              "cost": 1,
+              "actionIds": [
+                "busker-patter"
+              ],
+              "summary": "Ask one eligible creature within 30 feet a yes/no question each round; Will negates."
+            },
+            {
+              "id": "busker-living-statue",
+              "name": "Living Statue",
+              "minimumLevel": 3,
+              "kind": "active",
+              "resourceId": "buskerStunts",
+              "cost": 1,
+              "actionIds": [
+                "busker-living-statue"
+              ],
+              "summary": "Oppose observers' Sense Motive with Bluff to appear paralyzed, dead, or a statue."
+            },
+            {
+              "id": "busker-fascinate",
+              "name": "Fascinate",
+              "minimumLevel": 6,
+              "kind": "active",
+              "resourceId": "buskerStunts",
+              "cost": 1,
+              "actionIds": [
+                "busker-fascinate"
+              ],
+              "summary": "Fascinate creatures as the Bard performance."
+            },
+            {
+              "id": "busker-suggestion",
+              "name": "Suggestion",
+              "minimumLevel": 8,
+              "kind": "active",
+              "resourceId": "buskerStunts",
+              "cost": 1,
+              "actionIds": [
+                "busker-suggestion"
+              ],
+              "summary": "Implant a suggestion in a creature fascinated by the stunt."
+            },
+            {
+              "id": "busker-inventive-juggler",
+              "name": "Inventive Juggler",
+              "minimumLevel": 9,
+              "kind": "active",
+              "resourceId": "buskerStunts",
+              "cost": 1,
+              "actionIds": [
+                "busker-inventive-juggler"
+              ],
+              "summary": "Threaten with thrown weapons at scaling reach."
+            },
+            {
+              "id": "busker-impossible-sleight",
+              "name": "Impossible Sleight of Hand",
+              "minimumLevel": 15,
+              "kind": "active",
+              "resourceId": "buskerStunts",
+              "cost": 1,
+              "actionIds": [
+                "busker-impossible-sleight"
+              ],
+              "summary": "Store or retrieve one object from the 8,000-cubic-foot, 8,000-pound personal space."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "busker-quick-hands",
+              "label": "Begin Quick Hands",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "buskerStunts",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Quick Hands",
+                "targets": [
+                  "skillChecks"
+                ],
+                "bonus": 1,
+                "bonusByLevel": [
+                  {
+                    "level": 1,
+                    "bonus": 1
+                  },
+                  {
+                    "level": 5,
+                    "bonus": 2
+                  },
+                  {
+                    "level": 11,
+                    "bonus": 3
+                  },
+                  {
+                    "level": 17,
+                    "bonus": 4
+                  }
+                ],
+                "skillOptions": [
+                  "Acrobatics"
+                ],
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "description": "Competence bonus on Acrobatics; from level 5, gain one extra highest-bonus attack during a full attack as haste.",
+                "additionalEffectsByLevel": [
+                  {
+                    "minimumLevel": 1,
+                    "name": "Quick Hands — Armor Class",
+                    "target": "armorClass",
+                    "bonus": 1,
+                    "bonusByLevel": [
+                      {
+                        "level": 1,
+                        "bonus": 1
+                      },
+                      {
+                        "level": 5,
+                        "bonus": 2
+                      },
+                      {
+                        "level": 11,
+                        "bonus": 3
+                      },
+                      {
+                        "level": 17,
+                        "bonus": 4
+                      }
+                    ],
+                    "description": "Scaling dodge bonus to Armor Class."
+                  },
+                  {
+                    "minimumLevel": 1,
+                    "name": "Quick Hands — Reflex",
+                    "target": "reflex",
+                    "bonus": 1,
+                    "bonusByLevel": [
+                      {
+                        "level": 1,
+                        "bonus": 1
+                      },
+                      {
+                        "level": 5,
+                        "bonus": 2
+                      },
+                      {
+                        "level": 11,
+                        "bonus": 3
+                      },
+                      {
+                        "level": 17,
+                        "bonus": 4
+                      }
+                    ],
+                    "description": "Scaling dodge bonus on Reflex saves."
+                  },
+                  {
+                    "minimumLevel": 1,
+                    "name": "Quick Hands — attacks",
+                    "target": "attackRolls",
+                    "bonus": 1,
+                    "bonusByLevel": [
+                      {
+                        "level": 1,
+                        "bonus": 1
+                      },
+                      {
+                        "level": 5,
+                        "bonus": 2
+                      },
+                      {
+                        "level": 11,
+                        "bonus": 3
+                      },
+                      {
+                        "level": 17,
+                        "bonus": 4
+                      }
+                    ],
+                    "description": "Scaling haste-like bonus on attack rolls."
+                  }
+                ]
+              },
+              "summary": "Spend one stunt round and apply all four exact level-scaled bonuses."
+            },
+            {
+              "id": "busker-patter",
+              "label": "Use Patter",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "buskerStunts",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "eligible",
+                  "label": "Target is within 30 feet, sees and hears you, is indifferent or better, and is not threatened or in combat",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 1,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 1,
+                    "name": "Patter answer",
+                    "description": "The target must truthfully answer one yes/no question to the best of its ability; this is language-dependent and mind-affecting.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 1
+                    }
+                  }
+                ]
+              },
+              "summary": "Resolve the exact Will save for the round's question."
+            },
+            {
+              "id": "busker-patter-observer",
+              "label": "Conceal Patter from an observer",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "diceRoll": {
+                "label": "Bluff opposed by Sense Motive",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Busker Bluff modifier",
+                "targetDcInputLabel": "Observer Sense Motive result",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "Observer does not notice"
+                  }
+                ],
+                "failureLabel": "Observer notices the exchange"
+              },
+              "summary": "Roll separately for each observer, including the questioned creature even after a successful Will save."
+            },
+            {
+              "id": "busker-living-statue",
+              "label": "Begin Living Statue",
+              "minimumLevel": 3,
+              "classId": "bard",
+              "resourceId": "buskerStunts",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "standard"
+                }
+              ],
+              "diceRoll": {
+                "label": "Bluff opposed by Sense Motive",
+                "diceCountByLevel": [
+                  {
+                    "level": 3,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 3,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Busker Bluff modifier",
+                "targetDcInputLabel": "Observer Sense Motive result",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "Observer is fooled"
+                  }
+                ],
+                "failureLabel": "Observer sees through the stunt"
+              },
+              "activeEffect": {
+                "name": "Living Statue",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Appear paralyzed, dead, or—as appropriate to the disguise—a statue. Magical detection also fails for fooled observers; any physical action ends the stunt.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend one round, roll the opposed check, and track the motionless state."
+            },
+            {
+              "id": "busker-fascinate",
+              "label": "Begin Busker Fascinate",
+              "minimumLevel": 6,
+              "classId": "bard",
+              "resourceId": "buskerStunts",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "targetCountByLevel": [
+                {
+                  "level": 6,
+                  "count": 2
+                },
+                {
+                  "level": 7,
+                  "count": 3
+                },
+                {
+                  "level": 10,
+                  "count": 4
+                },
+                {
+                  "level": 13,
+                  "count": 5
+                },
+                {
+                  "level": 16,
+                  "count": 6
+                },
+                {
+                  "level": 19,
+                  "count": 7
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 6,
+                    "range": "90 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 6,
+                    "name": "Fascinated",
+                    "description": "The attentive target is fascinated while the stunt continues, following normal Bard fascinate restrictions.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 1
+                    }
+                  }
+                ]
+              },
+              "summary": "Resolve Fascinate with the Busker's stunt pool and level-aware target count."
+            },
+            {
+              "id": "busker-suggestion",
+              "label": "Use Busker Suggestion",
+              "minimumLevel": 8,
+              "classId": "bard",
+              "resourceId": "buskerStunts",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "fascinated",
+                  "label": "Target is currently fascinated by this Busker",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 8,
+                    "range": "90 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 8,
+                    "name": "Busker Suggestion",
+                    "description": "Target follows the implanted reasonable suggestion under the normal spell and Bard performance rules.",
+                    "duration": {
+                      "kind": "level-hours"
+                    }
+                  }
+                ]
+              },
+              "summary": "Spend one stunt round and resolve the exact Will DC."
+            },
+            {
+              "id": "busker-inventive-juggler",
+              "label": "Begin Inventive Juggler",
+              "minimumLevel": 9,
+              "classId": "bard",
+              "resourceId": "buskerStunts",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 13,
+                  "actionType": "move"
+                }
+              ],
+              "modes": [
+                {
+                  "id": "reach",
+                  "label": "Reach weapon distance",
+                  "summary": "Threaten with thrown weapons as a reach weapon."
+                },
+                {
+                  "id": "plus-10",
+                  "label": "+10 feet",
+                  "minimumLevel": 12,
+                  "maximumLevel": 14,
+                  "summary": "Threaten 10 feet farther than the base reach-weapon distance."
+                },
+                {
+                  "id": "plus-20",
+                  "label": "+20 feet",
+                  "minimumLevel": 15,
+                  "maximumLevel": 17,
+                  "summary": "Threaten 20 feet farther than the base reach-weapon distance."
+                },
+                {
+                  "id": "plus-30",
+                  "label": "+30 feet",
+                  "minimumLevel": 18,
+                  "summary": "Threaten 30 feet farther than the base reach-weapon distance."
+                }
+              ],
+              "activeEffect": {
+                "name": "Inventive Juggler",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Thrown weapons, including improvised thrown weapons, threaten at the selected reach tier while the stunt is maintained.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Select and track the exact level-gated thrown-weapon reach tier."
+            },
+            {
+              "id": "busker-impossible-sleight",
+              "label": "Store or retrieve an object",
+              "minimumLevel": 15,
+              "classId": "bard",
+              "resourceId": "buskerStunts",
+              "variableCost": {
+                "label": "Stunt rounds (Fine 1 through Colossal 9)",
+                "minimum": 1,
+                "maximum": 9
+              },
+              "actionTypeByLevel": [
+                {
+                  "level": 15,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "capacity",
+                  "label": "The space remains within 8,000 cubic feet and 8,000 pounds",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Impossible Sleight of Hand access",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Instantly store or retrieve one object. Cost is 1 round for Fine plus 1 per size category; all contents spill into your space on death.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Choose the exact size-based cost and record one access to the personal extradimensional space."
+            }
+          ]
         },
         {
           "id": "bard-busker-flexible-performer-ex-1",
           "name": "Flexible Performer (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A busker can attempt Acrobatics, Disguise, Sleight of Hand, and Stealth checks to earn money instead of Perform checks. He can use his Bluff modifier in place of his Diplomacy modifier on Diplomacy checks."
+          "summary": "A busker can attempt Acrobatics, Disguise, Sleight of Hand, and Stealth checks to earn money instead of Perform checks. He can use his Bluff modifier in place of his Diplomacy modifier on Diplomacy checks.",
+          "resourceActions": [
+            {
+              "id": "busker-earn-money",
+              "label": "Roll a Flexible Performer day job",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "modeLabel": "Skill",
+              "modes": [
+                {
+                  "id": "acrobatics",
+                  "label": "Acrobatics",
+                  "summary": "Use Acrobatics instead of Perform to earn money."
+                },
+                {
+                  "id": "disguise",
+                  "label": "Disguise",
+                  "summary": "Use Disguise instead of Perform to earn money."
+                },
+                {
+                  "id": "sleight-of-hand",
+                  "label": "Sleight of Hand",
+                  "summary": "Use Sleight of Hand instead of Perform to earn money."
+                },
+                {
+                  "id": "stealth",
+                  "label": "Stealth",
+                  "summary": "Use Stealth instead of Perform to earn money."
+                }
+              ],
+              "diceRoll": {
+                "label": "Day job check",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Selected skill modifier",
+                "targetDcInputLabel": "Earning DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "Success"
+                  }
+                ],
+                "failureLabel": "Failure"
+              },
+              "summary": "Choose one of the four legal skills and resolve the earning check."
+            },
+            {
+              "id": "busker-bluff-diplomacy",
+              "label": "Roll Diplomacy using Bluff",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "diceRoll": {
+                "label": "Diplomacy check using Bluff",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Bluff modifier",
+                "targetDcInputLabel": "Diplomacy DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "Success"
+                  }
+                ],
+                "failureLabel": "Failure"
+              },
+              "summary": "Enter the Bluff modifier in place of Diplomacy and resolve the check."
+            }
+          ]
         }
       ]
     }
@@ -52,8 +710,23 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Busker"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The standard performance pool is removed; 4 + Charisma Busker Stunts, all seven stunt workflows, exact DCs and scaling, and both Flexible Performer substitutions are automated."
+  ],
+  "removesBardicPerformance": true,
+  "resourceAdjustments": [
+    {
+      "resourceId": "buskerStunts",
+      "label": "Busker Stunts",
+      "unit": "round",
+      "operation": "replace",
+      "minimumLevel": 1,
+      "base": 4,
+      "abilityModifier": "charisma",
+      "minimum": 0,
+      "refreshCadence": "day",
+      "sourceFeatureId": "bard-busker-busker-stunts-su-1"
+    }
   ]
 }

@@ -1,0 +1,26 @@
+{
+  "id": "bard-dawnflower-deity",
+  "name": "Dawnflower Dervish Deity",
+  "classIds": [
+    "bard"
+  ],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "bard-dawnflower-deity-sarenrae",
+      "groupId": "bard-dawnflower-deity",
+      "name": "Sarenrae",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Worship Sarenrae. Abandoning or betraying this faith reverts the character to a standard Bard.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dawnflower%20Dervish"
+      }
+    }
+  ]
+}
