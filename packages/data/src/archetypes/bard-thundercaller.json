@@ -31,7 +31,207 @@
           "name": "Bardic Performance",
           "level": 3,
           "type": "archetype",
-          "summary": "A thundercaller gains the following types of bardic performance. Thunder Call (Su) : At 3rd level, the thundercaller can start a performance to unleash a deafening peal of thunder. This allows the thundercaller to spend a round of performance to create an effect similar to the spell sound burst (having the same range and area and allowing the same saving throw). At 7th level, the sonic damage dealt by this blast of sound increases to 3d8. This damage further increases by 2d8 at 11th level, and every 4 levels thereafter. A creature that succeeds at its saving throw against thunder call is immune to the stunning effect but still takes sonic damage. Beginning this performance is always a standard action. This performance replaces inspire competence. Incite Rage (Su) : At 6th level, the thundercaller can induce a furious rage in one creature within 30 feet. This effect functions as the rage spell and lasts as long as the target can hear the thundercaller’s performance. Any unwilling creature targeted is affected if it fails a Will saving throw (DC = 10 + half the thundercaller’s level + the thundercaller’s Charisma modifier). A target that succeeds at its saving throw is immune to this power for 24 hours. The thundercaller cannot target herself with this ability. If the target has the rage class feature, it can instead immediately rage and stay in this rage without consuming rounds of rage per day as long as the thundercaller continues performing. This performance is a mind-affecting effect and relies on audible components. This replaces suggestion and mass suggestion. Call Lightning (Su) : At 8th level, the thundercaller can use her performance to summon bolts of lightning, as per the spell call lightning . The lightning storm lasts for as long as she continues her performance, calling down one bolt of lightning per round as a standard action. The damage of these lightning bolts can be increased in stormy areas or can be limited as call lightning describes. This performance replaces dirge of doom. Call Lightning Storm (Su) : At 14th level, the thundercaller can use her performance to summon bolts of lightning, as per the spell call lightning storm . The lightning storm lasts for as long as she continues her performance, calling down one bolt of lightning per round as a standard action. The damage of these lightning bolts can be increased in stormy areas or can be limited as call lightning describes. This performance replaces frightening tune."
+          "summary": "A thundercaller gains the following types of bardic performance. Thunder Call (Su) : At 3rd level, the thundercaller can start a performance to unleash a deafening peal of thunder. This allows the thundercaller to spend a round of performance to create an effect similar to the spell sound burst (having the same range and area and allowing the same saving throw). At 7th level, the sonic damage dealt by this blast of sound increases to 3d8. This damage further increases by 2d8 at 11th level, and every 4 levels thereafter. A creature that succeeds at its saving throw against thunder call is immune to the stunning effect but still takes sonic damage. Beginning this performance is always a standard action. This performance replaces inspire competence. Incite Rage (Su) : At 6th level, the thundercaller can induce a furious rage in one creature within 30 feet. This effect functions as the rage spell and lasts as long as the target can hear the thundercaller’s performance. Any unwilling creature targeted is affected if it fails a Will saving throw (DC = 10 + half the thundercaller’s level + the thundercaller’s Charisma modifier). A target that succeeds at its saving throw is immune to this power for 24 hours. The thundercaller cannot target herself with this ability. If the target has the rage class feature, it can instead immediately rage and stay in this rage without consuming rounds of rage per day as long as the thundercaller continues performing. This performance is a mind-affecting effect and relies on audible components. This replaces suggestion and mass suggestion. Call Lightning (Su) : At 8th level, the thundercaller can use her performance to summon bolts of lightning, as per the spell call lightning . The lightning storm lasts for as long as she continues her performance, calling down one bolt of lightning per round as a standard action. The damage of these lightning bolts can be increased in stormy areas or can be limited as call lightning describes. This performance replaces dirge of doom. Call Lightning Storm (Su) : At 14th level, the thundercaller can use her performance to summon bolts of lightning, as per the spell call lightning storm . The lightning storm lasts for as long as she continues her performance, calling down one bolt of lightning per round as a standard action. The damage of these lightning bolts can be increased in stormy areas or can be limited as call lightning describes. This performance replaces frightening tune.",
+          "performanceRules": [
+            {
+              "id": "thunder-call",
+              "name": "Thunder Call",
+              "minimumLevel": 3,
+              "kind": "active",
+              "summary": "Spend one performance round as a standard action for scaling sonic damage; Fortitude negates only the 1-round stun.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "thundercaller-thunder-call"
+              ]
+            },
+            {
+              "id": "incite-rage",
+              "name": "Incite Rage",
+              "minimumLevel": 6,
+              "kind": "active",
+              "summary": "One creature within 30 feet rages while it hears the performance; an unwilling target can negate and gain 24-hour immunity.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "thundercaller-incite-rage"
+              ]
+            },
+            {
+              "id": "call-lightning",
+              "name": "Call Lightning",
+              "minimumLevel": 8,
+              "kind": "active",
+              "summary": "Maintain a call lightning storm and call one bolt per round as a standard action.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "thundercaller-call-lightning"
+              ]
+            },
+            {
+              "id": "call-lightning-storm",
+              "name": "Call Lightning Storm",
+              "minimumLevel": 14,
+              "kind": "active",
+              "summary": "Maintain a call lightning storm effect and call one bolt per round as a standard action.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "thundercaller-call-lightning-storm"
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "thundercaller-thunder-call",
+              "label": "Use Thunder Call",
+              "minimumLevel": 3,
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "standard"
+                }
+              ],
+              "savingThrow": {
+                "label": "Fortitude",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "combatRoll": {
+                "damage": {
+                  "type": "sonic",
+                  "diceCountByLevel": [
+                    {
+                      "level": 3,
+                      "count": 1
+                    },
+                    {
+                      "level": 7,
+                      "count": 3
+                    },
+                    {
+                      "level": 11,
+                      "count": 5
+                    },
+                    {
+                      "level": 15,
+                      "count": 7
+                    },
+                    {
+                      "level": 19,
+                      "count": 9
+                    }
+                  ],
+                  "dieSidesByLevel": [
+                    {
+                      "level": 3,
+                      "sides": 8
+                    }
+                  ]
+                },
+                "rangeByLevel": [
+                  {
+                    "level": 3,
+                    "range": "Sound burst range and 10-foot-radius spread"
+                  }
+                ],
+                "targetSave": {
+                  "modifier": "fortitude",
+                  "outcome": "negates-riders"
+                },
+                "riders": [
+                  {
+                    "name": "Thunder Call stunned",
+                    "description": "Stunned for 1 round after failing the Fortitude save.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 1
+                    }
+                  }
+                ]
+              },
+              "summary": "Deal scaling sonic damage in a sound-burst area. A successful Fortitude save negates stunning but not damage."
+            },
+            {
+              "id": "thundercaller-incite-rage",
+              "label": "Begin Incite Rage",
+              "minimumLevel": 6,
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 6,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 6,
+                    "name": "Incited Rage",
+                    "description": "Affected as rage while the target can hear the performance. A target with rage may rage without consuming its own rounds.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 999
+                    }
+                  }
+                ],
+                "successEffect": {
+                  "name": "Incite Rage immunity",
+                  "description": "Immune to this character's Incite Rage for 24 hours.",
+                  "rounds": 999
+                }
+              },
+              "summary": "An unwilling target within 30 feet attempts a Will save; a willing target may accept the rage."
+            },
+            {
+              "id": "thundercaller-call-lightning",
+              "label": "Begin Call Lightning",
+              "minimumLevel": 8,
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "spellLikeAbility": {
+                "spellId": "call-lightning",
+                "spellName": "Call Lightning",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "summary": "The storm persists while performing; spend one performance round for each maintained round and call one bolt as a standard action."
+            },
+            {
+              "id": "thundercaller-call-lightning-storm",
+              "label": "Begin Call Lightning Storm",
+              "minimumLevel": 14,
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "spellLikeAbility": {
+                "spellId": "call-lightning-storm",
+                "spellName": "Call Lightning Storm",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "summary": "The storm persists while performing; spend one performance round for each maintained round and call one bolt as a standard action."
+            }
+          ]
         }
       ]
     }

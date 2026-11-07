@@ -54,9 +54,9 @@ These rule-text signals are multi-label: one archetype can contribute to several
 |---|---:|
 | Resources and limited uses | 624 |
 | Companions, mounts, familiars, and eidolons | 239 |
-| Spell lists, slots, and casting | 621 |
+| Spell lists, slots, and casting | 622 |
 | Selectable progressions and dependent choices | 751 |
-| Combat statistics and proficiencies | 848 |
+| Combat statistics and proficiencies | 849 |
 | Skills | 650 |
 | Feats | 476 |
 | Narrative or uncategorized effects | 2 |

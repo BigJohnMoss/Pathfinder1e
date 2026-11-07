@@ -26,7 +26,95 @@
           "name": "Bardic Performance",
           "level": 1,
           "type": "archetype",
-          "summary": "An Averaka arbiter gains the following types of bardic performance. Inspire Teamwork (Ex) : A 3rd-level Averaka arbiter can use his performance to treat his allies as if they possessed the same teamwork feats as the bard for the purpose of determining whether the bard receives a bonus from his teamwork feats. His allies do not receive any bonuses from these feats unless they actually possess the feats themselves. The allies’ positioning and actions must still meet the prerequisites listed in the teamwork feat for the bard to receive the listed bonus. This performance replaces inspire competence. Ritual of Reconciliation (Su) : An Averaka arbiter of 8th level or higher can use his performance to improve the attitudes of nearby creatures by two steps. To be affected, a creature must be within 30 feet and able to hear the bard. Creatures whose attitude toward the bard becomes indifferent or better immediately cease attacking the bard and his allies, but may otherwise act as they please. The effect persists for as long as the creature is within 30 feet and the bard continues his performance. The effect ends if one of the bard’s allies attacks the creature. A successful Will saving throw (DC 10 + 1/2 the bard’s level + the bard’s Charisma modifier) negates the effect. Ritual of reconciliation relies on audible components. This performance replaces dirge of doom."
+          "summary": "An Averaka arbiter gains the following types of bardic performance. Inspire Teamwork (Ex) : A 3rd-level Averaka arbiter can use his performance to treat his allies as if they possessed the same teamwork feats as the bard for the purpose of determining whether the bard receives a bonus from his teamwork feats. His allies do not receive any bonuses from these feats unless they actually possess the feats themselves. The allies’ positioning and actions must still meet the prerequisites listed in the teamwork feat for the bard to receive the listed bonus. This performance replaces inspire competence. Ritual of Reconciliation (Su) : An Averaka arbiter of 8th level or higher can use his performance to improve the attitudes of nearby creatures by two steps. To be affected, a creature must be within 30 feet and able to hear the bard. Creatures whose attitude toward the bard becomes indifferent or better immediately cease attacking the bard and his allies, but may otherwise act as they please. The effect persists for as long as the creature is within 30 feet and the bard continues his performance. The effect ends if one of the bard’s allies attacks the creature. A successful Will saving throw (DC 10 + 1/2 the bard’s level + the bard’s Charisma modifier) negates the effect. Ritual of reconciliation relies on audible components. This performance replaces dirge of doom.",
+          "performanceRules": [
+            {
+              "id": "inspire-teamwork",
+              "name": "Inspire Teamwork",
+              "minimumLevel": 3,
+              "kind": "active",
+              "summary": "Treat allies as possessing your teamwork feats only when deciding whether you receive their bonuses; positioning and actions must still qualify.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "averaka-inspire-teamwork"
+              ]
+            },
+            {
+              "id": "ritual-of-reconciliation",
+              "name": "Ritual of Reconciliation",
+              "minimumLevel": 8,
+              "kind": "active",
+              "summary": "Creatures within 30 feet that can hear you attempt a Will save; on failure their attitude improves two steps while the performance and proximity continue.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "averaka-ritual-reconciliation"
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "averaka-inspire-teamwork",
+              "label": "Begin Inspire Teamwork",
+              "minimumLevel": 3,
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "activeEffect": {
+                "name": "Begin Inspire Teamwork",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Your qualifying allies count as possessing your teamwork feats for bonuses granted to you.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Your qualifying allies count as possessing your teamwork feats for bonuses granted to you."
+            },
+            {
+              "id": "averaka-ritual-reconciliation",
+              "label": "Begin Ritual of Reconciliation",
+              "minimumLevel": 8,
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "standard"
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 8,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 8,
+                    "name": "Reconciled",
+                    "description": "Attitude improves two steps; if it becomes indifferent or better, the creature stops attacking the bard and allies. Remove if it leaves 30 feet, the performance ends, or an ally attacks it.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 999
+                    }
+                  }
+                ]
+              },
+              "summary": "Improve the attitudes of audible creatures within 30 feet by two steps on a failed Will save."
+            }
+          ]
         },
         {
           "id": "bard-averaka-arbiter-versatile-teamwork-ex-2",

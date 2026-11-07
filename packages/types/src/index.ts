@@ -182,6 +182,17 @@ export interface ClassFeatureOccurrence {
     actionIds?: string[];
     grantedFeatIds?: string[];
   }>;
+  performanceRules?: Array<{
+    id: string;
+    name: string;
+    minimumLevel: number;
+    kind: "active" | "passive";
+    summary: string;
+    condition?: string;
+    resourceId?: string;
+    cost?: number;
+    actionIds?: string[];
+  }>;
   teamworkFeatSharing?: {
     featType: string;
     target: "animal-companion" | "eidolon" | "aide-de-camp" | "summoned-animals" | "vermin-companion";
@@ -201,7 +212,7 @@ export interface ClassFeatureOccurrence {
     cost?: number;
     minimumResourceRemaining?: number;
     costPerSelectedFeat?: boolean;
-    variableCost?: { label: string; minimum: number; maximum?: number };
+    variableCost?: { label: string; minimum: number; maximum?: number; maximumLevelDivisor?: number };
     costs?: Array<{ resourceId: string; cost: number }>;
     changes?: Array<{ resourceId: string; usedDelta: number }>;
     variableRecovery?: {
