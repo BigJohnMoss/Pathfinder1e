@@ -16,7 +16,7 @@ type Choice = { id: string; name: string; level: number; classLevel?: number; fa
 type ChoiceChangeRule = { locked: boolean; preventClear?: boolean; message: string };
 
 const slug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const domainSpellLevel = (choice: Choice) => Number(choice.id.match(/^(?:cleric|druid|sacred-servant)-domain-spell-(\d+)$/)?.[1] ?? 0);
+const domainSpellLevel = (choice: Choice) => Number(choice.id.match(/^(?:cleric|druid|sacred-servant|faith-singer)-domain-spell-(\d+)$/)?.[1] ?? 0);
 const specialistSpellLevel = (choice: Choice) => Number(choice.id.match(/^(?:wizard|school-savant)-specialist-spell-(\d+)$/)?.[1] ?? 0);
 const isArcaneSchoolChoice = (choice: Choice) => choice.id === "wizard-arcane-school-1" || choice.id === "school-savant-school-focus-1";
 const isWizardOpposition = (choice: Choice) => choice.id.startsWith("wizard-opposition-school-") || choice.id.startsWith("school-savant-opposition-school-");
@@ -25,14 +25,14 @@ const isOracleRevelation = (choice: Choice) => choice.id.startsWith("oracle-reve
 const choiceOrder = (choice: Choice) => {
   if (choice.id === "wizard-arcane-bond-1") return 5;
   if (choice.id === "wizard-familiar-1" || choice.id === "wizard-bonded-object-1") return 6;
-  if (choice.id === "cleric-deity-1" || choice.id === "sacred-servant-deity-1" || isArcaneSchoolChoice(choice) || choice.id === "sorcerer-bloodline-1") return 10;
+  if (choice.id === "cleric-deity-1" || choice.id === "sacred-servant-deity-1" || choice.id === "faith-singer-deity-1" || isArcaneSchoolChoice(choice) || choice.id === "sorcerer-bloodline-1") return 10;
   if (choice.id === "paladin-divine-bond-5") return 11;
-  if (choice.id === "cleric-alignment-1" || choice.id.endsWith("opposition-school-1-first")) return 20;
+  if (choice.id === "cleric-alignment-1" || choice.id === "faith-singer-alignment-1" || choice.id.endsWith("opposition-school-1-first")) return 20;
   if (choice.id.endsWith("opposition-school-1-second")) return 21;
   const specialistLevel = specialistSpellLevel(choice);
   if (specialistLevel) return 30 + specialistLevel;
   if (choice.id === "cleric-channel-energy-type-1") return 30;
-  if (choice.id === "cleric-domain-1-first" || choice.id === "sacred-servant-domain-4") return 40;
+  if (choice.id === "cleric-domain-1-first" || choice.id === "sacred-servant-domain-4" || choice.id === "faith-singer-domain-2") return 40;
   if (choice.id === "cleric-domain-1-second") return 41;
   const domainLevel = domainSpellLevel(choice);
   return domainLevel ? 50 + domainLevel : 100;
@@ -144,8 +144,8 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
   const [actionAmounts, setActionAmounts] = useState<Record<string, number>>({});
   const [actionResults, setActionResults] = useState<Record<string, string>>({});
   const orderedChoices = [...choices].sort((left, right) => choiceOrder(left) - choiceOrder(right));
-  const selectedDeity = orderedChoices.find((choice) => choice.id === "cleric-deity-1" || choice.id === "sacred-servant-deity-1")?.selected;
-  const selectedAlignment = orderedChoices.find((choice) => choice.id === "cleric-alignment-1")?.selected;
+  const selectedDeity = orderedChoices.find((choice) => choice.id === "cleric-deity-1" || choice.id === "sacred-servant-deity-1" || choice.id === "faith-singer-deity-1")?.selected;
+  const selectedAlignment = orderedChoices.find((choice) => choice.id === "cleric-alignment-1" || choice.id === "faith-singer-alignment-1")?.selected;
   const selectedArcaneBond = orderedChoices.find((choice) => choice.id === "wizard-arcane-bond-1")?.selected;
   const selectedHuntersBond = orderedChoices.find((choice) => choice.id === "ranger-hunters-bond-4")?.selected;
   const selectedNatureBond = orderedChoices.find((choice) => choice.id === "druid-nature-bond-1")?.selected;
@@ -153,7 +153,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
   const selectedSorcererBloodline = orderedChoices.find((choice) => choice.id === "sorcerer-bloodline-1")?.selected;
   const selectedBloodArcanistBloodline = orderedChoices.find((choice) => choice.id === "blood-arcanist-bloodline-1")?.selected;
   const selectedOracleMystery = orderedChoices.find((choice) => choice.id === "oracle-mystery-1")?.selected;
-  const selectedDomains = orderedChoices.filter((choice) => choice.id === "cleric-domain-1-first" || choice.id === "cleric-domain-1-second" || choice.id === "druid-domain-1" || choice.id === "sacred-servant-domain-4").flatMap((choice) => choice.selected ? [choice.selected] : []);
+  const selectedDomains = orderedChoices.filter((choice) => choice.id === "cleric-domain-1-first" || choice.id === "cleric-domain-1-second" || choice.id === "druid-domain-1" || choice.id === "sacred-servant-domain-4" || choice.id === "faith-singer-domain-2").flatMap((choice) => choice.selected ? [choice.selected] : []);
   const domainSlotChoices = orderedChoices.filter((choice) => domainSpellLevel(choice) > 0);
   const specialistSlotChoices = orderedChoices.filter((choice) => specialistSpellLevel(choice) > 0);
   const bloodlineSkillKey = "sorcerer-bloodline-class-skill";
@@ -183,7 +183,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
   const optionsFor = (choice: Choice) => {
     if (choice.id === "blood-arcanist-bloodline-1" && selectedSorcererBloodline) return choice.options.filter((option) => (option.familyId ?? option.id) === selectedSorcererBloodline.id && (!selectedBloodlineVariant || option.selectedVariant?.id === selectedBloodlineVariant.id));
     if (choice.id === "sorcerer-bloodline-1" && selectedBloodArcanistBloodline) return choice.options.filter((option) => option.id === (selectedBloodArcanistBloodline.familyId ?? selectedBloodArcanistBloodline.id));
-    if (choice.id === "cleric-alignment-1") return alignmentsWithinOneStep(choice.options, selectedDeity?.alignment);
+    if (choice.id === "cleric-alignment-1" || choice.id === "faith-singer-alignment-1") return alignmentsWithinOneStep(choice.options, selectedDeity?.alignment);
     if (choice.id === "cleric-channel-energy-type-1") return channelEnergyChoices(choice.options, selectedAlignment?.alignment, selectedDeity?.alignment);
     if (choice.id === "wizard-familiar-1") return arcaneBondDetailOptions(choice.options, selectedArcaneBond, "wizard-arcane-bond-familiar");
     if (choice.id === "wizard-bonded-object-1") return arcaneBondDetailOptions(choice.options, selectedArcaneBond, "wizard-arcane-bond-object");
@@ -216,7 +216,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     const domainLevel = domainSpellLevel(choice);
     if (domainLevel) return domainSpellOptions(domainLevel);
     if (choice.id === "druid-domain-1") return choice.options;
-    if (choice.id === "sacred-servant-domain-4") return optionsGrantedBySelection(choice.options, selectedDeity);
+    if (choice.id === "sacred-servant-domain-4" || choice.id === "faith-singer-domain-2") return optionsGrantedBySelection(choice.options, selectedDeity);
     if (!choice.id.startsWith("cleric-domain-")) return choice.options;
     return optionsGrantedBySelection(choice.options, selectedDeity);
   };
@@ -320,7 +320,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     const needsNatureBond = (druidCompanionChoice || druidDomainChoice || druidDomainSlot) && !selectedNatureBond;
     const hasDomainNatureBond = selectedNatureBond?.id?.endsWith("nature-bond-domain") ?? false;
     const wrongNatureBond = (druidCompanionChoice && selectedNatureBond?.id !== "druid-nature-bond-animal") || ((druidDomainChoice || druidDomainSlot) && !hasDomainNatureBond);
-    const needsDeity = (choice.id === "cleric-alignment-1" || choice.id === "sacred-servant-domain-4" || (!domainLevel && choice.id.startsWith("cleric-domain-"))) && !selectedDeity;
+    const needsDeity = (choice.id === "cleric-alignment-1" || choice.id === "faith-singer-alignment-1" || choice.id === "sacred-servant-domain-4" || choice.id === "faith-singer-domain-2" || (!domainLevel && choice.id.startsWith("cleric-domain-"))) && !selectedDeity;
     const needsAlignment = choice.id === "cleric-channel-energy-type-1" && !selectedAlignment;
     const needsDomains = Boolean(domainLevel) && selectedDomains.length === 0;
     const needsOracleMystery = isOracleRevelation(choice) && !selectedOracleMystery;
@@ -334,7 +334,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     const placeholder = needsRequiredOption ? choice.requiredOptionMessage ?? "Choose the prerequisite option first" : needsArcaneBond ? "Choose an arcane bond first" : wrongArcaneBond ? familiarChoice ? "Familiar bond not selected" : "Bonded object not selected" : needsHuntersBond ? "Choose Hunter's Bond first" : wrongHuntersBond ? "Animal Companion bond not selected" : needsNatureBond ? "Choose Nature Bond first" : wrongNatureBond ? druidCompanionChoice ? "Animal Companion bond not selected" : "Nature Domain bond not selected" : needsWizardSchool ? "Choose an arcane school first" : specialistUniversalist ? "Universalists have no specialist slots" : wizardUniversalist ? "Universalists have no opposition schools" : elementalSecondOpposition ? "Elementalists choose one opposition element" : needsOracleMystery ? "Choose a mystery first" : needsDeity ? "Choose a deity first" : needsAlignment ? "Choose alignment first" : needsDomains ? "Choose domains first" : unavailableDomainDetails ? "Domain spell details unavailable" : unavailableSpecialistSpells ? "No matching specialist spells available" : options.length === 1 && choice.id === "cleric-channel-energy-type-1" ? "Determined by alignment" : "Choose an option";
     const disabled = needsRequiredOption || needsArcaneBond || wrongArcaneBond || needsHuntersBond || wrongHuntersBond || needsNatureBond || wrongNatureBond || needsWizardSchool || specialistUniversalist || wizardUniversalist || elementalSecondOpposition || needsOracleMystery || needsDeity || needsAlignment || needsDomains || unavailableDomainDetails || unavailableSpecialistSpells || (choice.id === "cleric-channel-energy-type-1" && options.length === 1) || Boolean(selected && changeRule?.locked);
     const domainEquivalent = (option: Option) => option.parentDomainId ?? option.id;
-    const domainSelection = choice.id.startsWith("cleric-domain-") || choice.id === "druid-domain-1" || choice.id === "sacred-servant-domain-4";
+    const domainSelection = choice.id.startsWith("cleric-domain-") || choice.id === "druid-domain-1" || choice.id === "sacred-servant-domain-4" || choice.id === "faith-singer-domain-2";
     const detailKey = selected?.choice ? `${choice.id}-${selected.choice.key}` : "";
     const usedDetailValues = selected?.choice?.uniqueAcrossSelections ? orderedChoices.filter((other) => other.id !== choice.id && other.selected?.id === selected.id).map((other) => selectedOptions[`${other.id}-${selected.choice!.key}`]).filter(Boolean) : [];
     return <article className="choice-card" key={choice.id}><label>{choice.name} <small>level {choice.level}</small><select value={selectedOptions[choice.id] ?? ""} onChange={(event) => { if (selected?.choice) onOptionChange(detailKey, ""); onOptionChange(choice.id, event.target.value); if (trackedSpellSlot) onOptionChange(usedKey, ""); }} disabled={disabled}><option value="" disabled={Boolean(selected && changeRule?.preventClear)}>{placeholder}</option>{options.map((option) => <option key={option.id} value={option.id} disabled={!trackedSpellSlot && (domainSelection ? orderedChoices.some((other) => other.id !== choice.id && other.selected && domainEquivalent(other.selected) === domainEquivalent(option)) : conflictsWithSelectedFamily(choice, option) || selectedByOtherChoices(choice, option) >= optionSelectionLimit(option))}>{option.name}</option>)}</select></label>{changeRule && <small className="field-help">{changeRule.message}</small>}{selected && <OptionDetails option={selected} archetypeReplacesText={archetypeReplacesText} />}{selected?.resourceActions?.map((action) => {

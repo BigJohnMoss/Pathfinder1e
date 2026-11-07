@@ -20,21 +20,136 @@
           "name": "Bardic Performance",
           "level": 9,
           "type": "archetype",
-          "summary": "Plant speakers gain the following bardic performance. Leshy Speaker (Su) : At 9th level, the plant speaker can speak to its disembodied brethren, the spirits of nature that become leshys. He performs for 10 minutes and spends 7 rounds of bardic performance to gain the effects of commune with nature . This replaces inspire greatness."
+          "summary": "Plant speakers gain the following bardic performance. Leshy Speaker (Su) : At 9th level, the plant speaker can speak to its disembodied brethren, the spirits of nature that become leshys. He performs for 10 minutes and spends 7 rounds of bardic performance to gain the effects of commune with nature . This replaces inspire greatness.",
+          "resourceActions": [
+            {
+              "id": "plant-speaker-leshy-speaker",
+              "label": "Perform Leshy Speaker",
+              "minimumLevel": 9,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 7,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "10-minute"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "commune-with-nature",
+                "spellName": "Commune with Nature",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "summary": "Perform for 10 minutes, spend 7 performance rounds, and gain commune with nature at Bard caster level."
+            }
+          ]
         },
         {
           "id": "bard-plant-speaker-plant-speech-2",
           "name": "Plant Speech",
           "level": 2,
           "type": "archetype",
-          "summary": "A plant speaker’s mind-affecting bard spells and class abilities also affect plants, ignoring plants’ immunity to mind-affecting effects. At 2nd level, a plant speaker’s racial plantspeech allows him to communicate with all plants, not just plants that match his alternate form. This replaces bardic knowledge and well-versed."
+          "summary": "A plant speaker’s mind-affecting bard spells and class abilities also affect plants, ignoring plants’ immunity to mind-affecting effects. At 2nd level, a plant speaker’s racial plantspeech allows him to communicate with all plants, not just plants that match his alternate form. This replaces bardic knowledge and well-versed.",
+          "progressionProfiles": [
+            {
+              "id": "plant-speaker-plant-speech",
+              "label": "Plant Speech rules",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "mindAffecting",
+                  "label": "Mind-affecting effects"
+                },
+                {
+                  "id": "communication",
+                  "label": "Communication"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 2,
+                  "values": {
+                    "mindAffecting": "Bard spells and class abilities affect plants and ignore their mind-affecting immunity",
+                    "communication": "Racial plantspeech communicates with all plants"
+                  }
+                }
+              ],
+              "summary": "These passive targeting and communication rules are always active from level 2."
+            }
+          ]
         },
         {
           "id": "bard-plant-speaker-mystical-allegory-su-5",
           "name": "Mystical Allegory (Su)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, the plant speaker can tell a story that matches some of the themes of the current situation in order to gain insight, gaining the effects of augury by performing for 1 minute and spending 4 rounds of bardic performance. At 11th level, he can perform for 10 minutes and spend 7 rounds of bardic performance to gain the effects of divination . At 17th level, he can perform for 1 hour and spend 10 rounds of bardic performance to gain the effects of legend lore , but the information is always vague and incomplete. This replaces lore master."
+          "summary": "At 5th level, the plant speaker can tell a story that matches some of the themes of the current situation in order to gain insight, gaining the effects of augury by performing for 1 minute and spending 4 rounds of bardic performance. At 11th level, he can perform for 10 minutes and spend 7 rounds of bardic performance to gain the effects of divination . At 17th level, he can perform for 1 hour and spend 10 rounds of bardic performance to gain the effects of legend lore , but the information is always vague and incomplete. This replaces lore master.",
+          "resourceActions": [
+            {
+              "id": "plant-speaker-augury",
+              "label": "Perform Mystical Allegory — Augury",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 4,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "1-minute"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "augury",
+                "spellName": "Augury",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "summary": "Perform for 1 minute and spend 4 performance rounds to gain augury."
+            },
+            {
+              "id": "plant-speaker-divination",
+              "label": "Perform Mystical Allegory — Divination",
+              "minimumLevel": 11,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 7,
+              "actionTypeByLevel": [
+                {
+                  "level": 11,
+                  "actionType": "10-minute"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "divination",
+                "spellName": "Divination",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "summary": "Perform for 10 minutes and spend 7 performance rounds to gain divination."
+            },
+            {
+              "id": "plant-speaker-legend-lore",
+              "label": "Perform Mystical Allegory — Legend Lore",
+              "minimumLevel": 17,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 10,
+              "actionTypeByLevel": [
+                {
+                  "level": 17,
+                  "actionType": "1-hour"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "legend-lore",
+                "spellName": "Legend Lore",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "summary": "Perform for 1 hour and spend 10 performance rounds to gain legend lore; its information is always vague and incomplete."
+            }
+          ]
         }
       ]
     }
@@ -44,9 +159,9 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Plant%20Speaker"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Plant immunity bypass and universal plantspeech are displayed as always-on rules; every Leshy Speaker and Mystical Allegory spell-equivalent effect has exact unlock level, performance cost, casting time, and caster-level guidance."
   ],
   "manualRequirements": [
     "Restricted to Vine Leshy characters; that ancestry is not yet available in this builder."

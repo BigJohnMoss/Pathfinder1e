@@ -19,16 +19,129 @@
         {
           "id": "bard-dragon-yapper-bardic-performance-5",
           "name": "Bardic Performance",
-          "level": 5,
+          "level": 1,
           "type": "archetype",
-          "summary": "A dragon yapper gains the following types of bardic performance. Yapping Song (Su) : A dragon yapper can use performance to annoy those that hear it, causing them to take a –1 penalty on attack and damage rolls (minimum 1) and a –1 penalty on saves against fear effects and charm effects as long as the dragon yapper continues performing. This penalty increases by 1 at 5th level and every 6 levels thereafter. Yapping song is a mind-affecting ability that uses audible components, but is not language-dependent. This performance replaces fascinate. Frightful Song (Su) : A dragon yapper of 8th level or higher can amplify his voice to sound like an actual dragon. Enemies within 30 feet become shaken unless they succeed at a Will save (DC 10 +1/2 the dragon yapper’s level + the dragon yapper’s Charisma modifier). A successful save renders targets immune to this ability for 24 hours. Frightful song is a mind-affecting ability, and a fear effect that uses audible components. This performance replaces dirge of doom."
+          "summary": "A dragon yapper gains the following types of bardic performance. Yapping Song (Su) : A dragon yapper can use performance to annoy those that hear it, causing them to take a –1 penalty on attack and damage rolls (minimum 1) and a –1 penalty on saves against fear effects and charm effects as long as the dragon yapper continues performing. This penalty increases by 1 at 5th level and every 6 levels thereafter. Yapping song is a mind-affecting ability that uses audible components, but is not language-dependent. This performance replaces fascinate. Frightful Song (Su) : A dragon yapper of 8th level or higher can amplify his voice to sound like an actual dragon. Enemies within 30 feet become shaken unless they succeed at a Will save (DC 10 +1/2 the dragon yapper’s level + the dragon yapper’s Charisma modifier). A successful save renders targets immune to this ability for 24 hours. Frightful song is a mind-affecting ability, and a fear effect that uses audible components. This performance replaces dirge of doom.",
+          "resourceActions": [
+            {
+              "id": "dragon-yapper-yapping-song",
+              "label": "Begin Yapping Song",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Yapping Song",
+                "targets": [
+                  "attackRolls",
+                  "damageRolls",
+                  "savingThrows"
+                ],
+                "bonus": -1,
+                "bonusByLevel": [
+                  {
+                    "level": 1,
+                    "bonus": -1
+                  },
+                  {
+                    "level": 5,
+                    "bonus": -2
+                  },
+                  {
+                    "level": 11,
+                    "bonus": -3
+                  },
+                  {
+                    "level": 17,
+                    "bonus": -4
+                  }
+                ],
+                "applyToAllTargets": true,
+                "defaultRounds": 1,
+                "replaceExisting": true,
+                "description": "Enemies that hear the audible, non-language-dependent mind-affecting performance take this penalty on attack and damage rolls (damage remains at least 1) and on saves against fear and charm effects."
+              },
+              "summary": "Spend one performance round per round; the penalty increases automatically at levels 5, 11, and 17."
+            },
+            {
+              "id": "dragon-yapper-frightful-song",
+              "label": "Resolve Frightful Song",
+              "minimumLevel": 8,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 8,
+                    "range": "30 feet; enemies that can hear"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 8,
+                    "name": "Frightful Song — Shaken",
+                    "description": "The enemy is shaken by this audible, mind-affecting fear effect while the performance continues.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 999
+                    }
+                  }
+                ],
+                "successEffect": {
+                  "name": "Frightful Song immunity",
+                  "description": "Immune to this Dragon Yapper's Frightful Song for 24 hours.",
+                  "rounds": 999
+                }
+              },
+              "summary": "Spend one performance round per round and resolve the exact Will DC; success records 24-hour immunity."
+            }
+          ]
         },
         {
           "id": "bard-dragon-yapper-versatile-performance-ex-2",
           "name": "Versatile Performance (Ex)",
           "level": 2,
-          "type": "archetype",
-          "summary": "A dragon yapper must choose sing at 2nd level."
+          "type": "selectable",
+          "summary": "A dragon yapper must choose sing at 2nd level.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-versatile-performances",
+          "optionChoiceIds": [
+            "bard-versatile-performance-sing"
+          ],
+          "progressionKey": "bard-versatile-performance"
         }
       ]
     }
@@ -38,9 +151,9 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dragon%20Yapper"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The mandatory Perform (sing) versatile performance, level-scaled Yapping Song penalties, Frightful Song DC/range/condition, performance costs, and 24-hour immunity are automated."
   ],
   "manualRequirements": [
     "Restricted to Kobold characters; that ancestry is not yet available in this builder."

@@ -23,7 +23,146 @@
           "name": "Bardic Performance",
           "level": 1,
           "type": "archetype",
-          "summary": "A shadow puppeteer gains the following types of bardic performance. The character must be able to perform shadow puppetry in order to activate any of these abilities. Shadow puppetry uses Perform (act), and requires a light source. These abilities replace all levels of inspire courage and inspire competence. Shadow Servant (Sp) : At 1st level, the puppeteer can create a shadow servant to perform simple tasks. The shadow servant is identical to an unseen servant (caster level equal to the shadow puppeteer’s bard level), except it appears as a formless shadow. Shadow servant relies on visual components. Shadow Puppets (Sp) : At 1st level, a shadow puppeteer can use bardic performance to create one quasi-real shadowy creature resembling a monster from the summon monster I list. These shadowy creatures otherwise work like shadow conjuration , and targets interacting with them get a Will saving throw (DC 10 + 1/2 your bard level + your Charisma bonus) to treat them as only 20% real. At 4th level and every three levels thereafter, this ability acts like the next higher version of summon monster ( summon monster II at 4th level and so on)."
+          "summary": "A shadow puppeteer gains the following types of bardic performance. The character must be able to perform shadow puppetry in order to activate any of these abilities. Shadow puppetry uses Perform (act), and requires a light source. These abilities replace all levels of inspire courage and inspire competence. Shadow Servant (Sp) : At 1st level, the puppeteer can create a shadow servant to perform simple tasks. The shadow servant is identical to an unseen servant (caster level equal to the shadow puppeteer’s bard level), except it appears as a formless shadow. Shadow servant relies on visual components. Shadow Puppets (Sp) : At 1st level, a shadow puppeteer can use bardic performance to create one quasi-real shadowy creature resembling a monster from the summon monster I list. These shadowy creatures otherwise work like shadow conjuration , and targets interacting with them get a Will saving throw (DC 10 + 1/2 your bard level + your Charisma bonus) to treat them as only 20% real. At 4th level and every three levels thereafter, this ability acts like the next higher version of summon monster ( summon monster II at 4th level and so on).",
+          "resourceActions": [
+            {
+              "id": "shadow-puppeteer-shadow-servant",
+              "label": "Begin Shadow Servant",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "unseen-servant",
+                "spellName": "Unseen Servant",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "activeEffect": {
+                "name": "Shadow Servant",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "A formless shadow functions as unseen servant at caster level equal to Bard level. The performance relies on visual components and shadow puppetry using Perform (act) with a light source.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend one performance round per round to direct the level-scaled shadow servant."
+            },
+            {
+              "id": "shadow-puppeteer-shadow-puppets",
+              "label": "Begin Shadow Puppets",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "summon-monster-1",
+                "spellName": "Summon Monster",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "modeLabel": "Summon tier",
+              "modes": [
+                {
+                  "id": "tier-i",
+                  "label": "Summon Monster I",
+                  "minimumLevel": 1,
+                  "maximumLevel": 3,
+                  "summary": "Summon Monster I list; the quasi-real creature is 20% real to a creature that succeeds at the displayed Will save."
+                },
+                {
+                  "id": "tier-ii",
+                  "label": "Summon Monster II",
+                  "minimumLevel": 4,
+                  "maximumLevel": 6,
+                  "summary": "Summon Monster II list; the quasi-real creature is 20% real to a creature that succeeds at the displayed Will save."
+                },
+                {
+                  "id": "tier-iii",
+                  "label": "Summon Monster III",
+                  "minimumLevel": 7,
+                  "maximumLevel": 9,
+                  "summary": "Summon Monster III list; the quasi-real creature is 20% real to a creature that succeeds at the displayed Will save."
+                },
+                {
+                  "id": "tier-iv",
+                  "label": "Summon Monster IV",
+                  "minimumLevel": 10,
+                  "maximumLevel": 12,
+                  "summary": "Summon Monster IV list; the quasi-real creature is 20% real to a creature that succeeds at the displayed Will save."
+                },
+                {
+                  "id": "tier-v",
+                  "label": "Summon Monster V",
+                  "minimumLevel": 13,
+                  "maximumLevel": 15,
+                  "summary": "Summon Monster V list; the quasi-real creature is 20% real to a creature that succeeds at the displayed Will save."
+                },
+                {
+                  "id": "tier-vi",
+                  "label": "Summon Monster VI",
+                  "minimumLevel": 16,
+                  "maximumLevel": 18,
+                  "summary": "Summon Monster VI list; the quasi-real creature is 20% real to a creature that succeeds at the displayed Will save."
+                },
+                {
+                  "id": "tier-vii",
+                  "label": "Summon Monster VII",
+                  "minimumLevel": 19,
+                  "maximumLevel": 20,
+                  "summary": "Summon Monster VII list; the quasi-real creature is 20% real to a creature that succeeds at the displayed Will save."
+                }
+              ],
+              "activeEffect": {
+                "name": "Shadow Puppets",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "One selected quasi-real shadow creature is active. It follows shadow conjuration's 20% reality rules; objects automatically disbelieve. Replace this tracker when a new shadow puppet is created.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend one performance round per round; the summon tier and disbelief DC are calculated from Bard level and Charisma."
+            }
+          ]
         }
       ]
     }
@@ -33,9 +172,9 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Shadow%20Puppeteer"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Shadow Servant and every level-gated Shadow Puppets summon tier have tracked performance costs, action speeds, caster-level guidance, disbelief DC, visual requirements, and replacement state."
   ],
   "manualRequirements": [
     "Restricted to Wayang characters; that ancestry is not yet available in this builder."
