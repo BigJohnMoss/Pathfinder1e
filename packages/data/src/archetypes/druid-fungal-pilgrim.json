@@ -24,29 +24,281 @@
           "id": "druid-fungal-pilgrim-devotion-to-ascension-ex-1",
           "name": "Devotion to Ascension (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "A fungal pilgrim must select the Plant domain for her nature bond if she does not select an animal companion. This alters nature bond."
+          "type": "selectable",
+          "summary": "A fungal pilgrim must select the Plant domain for her nature bond if she does not select an animal companion. This alters nature bond.",
+          "choiceRequired": true,
+          "optionGroupId": "druid-nature-bonds",
+          "optionChoiceIds": [
+            "druid-nature-bond-animal",
+            "druid-nature-bond-domain"
+          ],
+          "progressionKey": "druid-nature-bond",
+          "progressionProfiles": [
+            {
+              "id": "fungal-pilgrim-bond-restriction",
+              "label": "Devotion to Ascension",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "bond",
+                  "label": "Legal bond"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "bond": "Animal Companion, or Plant domain only"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-fungal-pilgrim-spore-spawning-4",
           "name": "Spore Spawning",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a fungal pilgrim who selected the Plant domain for her nature bond gains the ability to grow fungal creatures from the spores of her body. Once per day, when casting a summon nature’s ally spell to summon a single creature, the fungal pilgrim can infuse her fungal connection into the casting. The creature summoned must be selected from the summon nature’s ally list for 1 spell level lower than the spell cast. For example, if the fungal pilgrim casts summon nature’s ally III , she must choose a creature from the list in summon nature’s ally II . Creatures summoned in this manner gain the fungal creature template ( Pathfinder RPG Bestiary 4 116 ), except they do not gain the create spawn and poison spore cloud special attacks. A creature summoned in this manner cannot be harvested for its poison. A druid can use this ability an additional time per day at 6th level and every 2 levels thereafter, for a total of eight times at 18th level. At 20th level, it can be used any number of times per day. This ability replaces wild shape if the fungal pilgrim selected the Plant domain as her nature bond."
+          "summary": "At 4th level, a fungal pilgrim who selected the Plant domain for her nature bond gains the ability to grow fungal creatures from the spores of her body. Once per day, when casting a summon nature’s ally spell to summon a single creature, the fungal pilgrim can infuse her fungal connection into the casting. The creature summoned must be selected from the summon nature’s ally list for 1 spell level lower than the spell cast. For example, if the fungal pilgrim casts summon nature’s ally III , she must choose a creature from the list in summon nature’s ally II . Creatures summoned in this manner gain the fungal creature template ( Pathfinder RPG Bestiary 4 116 ), except they do not gain the create spawn and poison spore cloud special attacks. A creature summoned in this manner cannot be harvested for its poison. A druid can use this ability an additional time per day at 6th level and every 2 levels thereafter, for a total of eight times at 18th level. At 20th level, it can be used any number of times per day. This ability replaces wild shape if the fungal pilgrim selected the Plant domain as her nature bond.",
+          "requiredOptionId": "druid-nature-bond-domain",
+          "requiredOptionMessage": "Select the Plant domain Nature Bond to use Spore Spawning.",
+          "resourceActions": [
+            {
+              "id": "fungal-pilgrim-spore-spawning",
+              "label": "Infuse Fungal Summon",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "requiredOptionId": "druid-nature-bond-domain",
+              "resourceId": "fungalSporeSpawning",
+              "cost": 1,
+              "confirmations": [
+                {
+                  "id": "single-creature",
+                  "label": "The summon nature's ally spell summons exactly one creature",
+                  "requiredForActivation": true
+                }
+              ],
+              "modeLabel": "Spell and creature-list tier",
+              "modes": [
+                {
+                  "id": "sna-2",
+                  "label": "SNA II → SNA I creature",
+                  "minimumLevel": 4,
+                  "summary": "Cast summon nature's ally II and select one creature from the SNA I list."
+                },
+                {
+                  "id": "sna-3",
+                  "label": "SNA III → SNA II creature",
+                  "minimumLevel": 5,
+                  "summary": "Cast summon nature's ally III and select one creature from the SNA II list."
+                },
+                {
+                  "id": "sna-4",
+                  "label": "SNA IV → SNA III creature",
+                  "minimumLevel": 7,
+                  "summary": "Cast summon nature's ally IV and select one creature from the SNA III list."
+                },
+                {
+                  "id": "sna-5",
+                  "label": "SNA V → SNA IV creature",
+                  "minimumLevel": 9,
+                  "summary": "Cast summon nature's ally V and select one creature from the SNA IV list."
+                },
+                {
+                  "id": "sna-6",
+                  "label": "SNA VI → SNA V creature",
+                  "minimumLevel": 11,
+                  "summary": "Cast summon nature's ally VI and select one creature from the SNA V list."
+                },
+                {
+                  "id": "sna-7",
+                  "label": "SNA VII → SNA VI creature",
+                  "minimumLevel": 13,
+                  "summary": "Cast summon nature's ally VII and select one creature from the SNA VI list."
+                },
+                {
+                  "id": "sna-8",
+                  "label": "SNA VIII → SNA VII creature",
+                  "minimumLevel": 15,
+                  "summary": "Cast summon nature's ally VIII and select one creature from the SNA VII list."
+                },
+                {
+                  "id": "sna-9",
+                  "label": "SNA IX → SNA VIII creature",
+                  "minimumLevel": 17,
+                  "summary": "Cast summon nature's ally IX and select one creature from the SNA VIII list."
+                }
+              ],
+              "activeEffect": {
+                "name": "Fungal Creature Summon",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "The single summoned creature has the fungal creature template, except it gains neither create spawn nor poison spore cloud and cannot be harvested for poison.",
+                "defaultRounds": 4,
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 4
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 5
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 6
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 7
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 8
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 9
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 10
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 11
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 12
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 13
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 14
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 15
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 16
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 17
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 18
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 19
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 20
+                  }
+                ],
+                "fixedRounds": true
+              },
+              "summary": "Spend a use, enforce the one-lower creature list, and track the exact round-per-level fungal summon duration."
+            }
+          ]
         },
         {
           "id": "druid-fungal-pilgrim-fungal-companion-4",
           "name": "Fungal Companion",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a fungal pilgrim who selected an animal companion for her nature bond initiates a transformation in her companion. The animal companion gains the fungal creature template ( Bestiary 4 116 ), but does not gain the create spawn, poison spore cloud, and poisonous blood special attacks. At 10th level, the animal companion gains the poisonous blood special attack. At 14th level, the animal companion gains the poison spore cloud special attack. At 20th level, the animal companion gains the create spawn special attack; created spawn are under the control of the fungal pilgrim. Spawn created in this way last for only 48 hours before rotting away. This ability replaces wild shape if the fungal pilgrim selected an animal companion as her nature bond."
+          "summary": "At 4th level, a fungal pilgrim who selected an animal companion for her nature bond initiates a transformation in her companion. The animal companion gains the fungal creature template ( Bestiary 4 116 ), but does not gain the create spawn, poison spore cloud, and poisonous blood special attacks. At 10th level, the animal companion gains the poisonous blood special attack. At 14th level, the animal companion gains the poison spore cloud special attack. At 20th level, the animal companion gains the create spawn special attack; created spawn are under the control of the fungal pilgrim. Spawn created in this way last for only 48 hours before rotting away. This ability replaces wild shape if the fungal pilgrim selected an animal companion as her nature bond.",
+          "requiredOptionId": "druid-nature-bond-animal",
+          "requiredOptionMessage": "Select Animal Companion as Nature Bond to use Fungal Companion.",
+          "progressionProfiles": [
+            {
+              "id": "fungal-pilgrim-companion-template",
+              "label": "Fungal Companion progression",
+              "classId": "druid",
+              "requiredOptionId": "druid-nature-bond-animal",
+              "columns": [
+                {
+                  "id": "abilities",
+                  "label": "Fungal-template abilities"
+                },
+                {
+                  "id": "excluded",
+                  "label": "Excluded abilities"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "abilities": "Fungal creature template",
+                    "excluded": "Create spawn, poison spore cloud, poisonous blood"
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "abilities": "Add poisonous blood",
+                    "excluded": "Create spawn, poison spore cloud"
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "abilities": "Add poison spore cloud",
+                    "excluded": "Create spawn"
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "abilities": "Add create spawn; spawn obey the pilgrim and rot after 48 hours",
+                    "excluded": "None"
+                  }
+                }
+              ],
+              "summary": "The companion retains normal animal-companion advancement while the fungal template unlocks exactly on schedule."
+            }
+          ]
         },
         {
           "id": "druid-fungal-pilgrim-mycological-transformation-ex-15",
           "name": "Mycological Transformation (Ex)",
           "level": 15,
           "type": "archetype",
-          "summary": "Fungal spores become fully integrated into the druid’s body, inside and out. At 15th level, she gains all immunities granted by the plant creature type as well as the light sensitivity universal monster rule. She counts as a plant for the purposes of effects that would negatively affect or damage plants. In addition, she no longer needs to eat or sleep in the typical manner, and instead gains the fungal creature’s rejuvenation ability. She can perform her daily meditation during her rejuvenation. This ability replaces timeless body."
+          "summary": "Fungal spores become fully integrated into the druid’s body, inside and out. At 15th level, she gains all immunities granted by the plant creature type as well as the light sensitivity universal monster rule. She counts as a plant for the purposes of effects that would negatively affect or damage plants. In addition, she no longer needs to eat or sleep in the typical manner, and instead gains the fungal creature’s rejuvenation ability. She can perform her daily meditation during her rejuvenation. This ability replaces timeless body.",
+          "progressionProfiles": [
+            {
+              "id": "fungal-pilgrim-transformation",
+              "label": "Mycological Transformation",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "traits",
+                  "label": "Permanent traits"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 15,
+                  "values": {
+                    "traits": "Plant immunities; light sensitivity; counts as plant for harmful effects; no normal food or sleep; fungal rejuvenation; meditation allowed during rejuvenation"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -56,8 +308,99 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Fungal%20Pilgrim"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Nature Bond restrictions, option-dependent replacement of Wild Shape, all Spore Spawning uses and summon tiers, every Fungal Companion template milestone, plant immunities, light sensitivity, plant typing, and rejuvenation are automated."
+  ],
+  "resourceAdjustments": [
+    {
+      "sourceFeatureId": "druid-fungal-pilgrim-spore-spawning-4",
+      "resourceId": "fungalSporeSpawning",
+      "label": "Spore Spawning",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 4,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 2,
+      "maximum": 8,
+      "atWillAtLevel": 20,
+      "requiredOptionId": "druid-nature-bond-domain",
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
+  ],
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "druid-fungal-pilgrim-mycological-transformation-ex-15",
+      "kind": "immunity",
+      "label": "Plant immunity — mind-affecting effects",
+      "minimumLevel": 15,
+      "base": 0,
+      "qualifier": "mind-affecting effects"
+    },
+    {
+      "sourceFeatureId": "druid-fungal-pilgrim-mycological-transformation-ex-15",
+      "kind": "immunity",
+      "label": "Plant immunity — paralysis",
+      "minimumLevel": 15,
+      "base": 0,
+      "qualifier": "paralysis"
+    },
+    {
+      "sourceFeatureId": "druid-fungal-pilgrim-mycological-transformation-ex-15",
+      "kind": "immunity",
+      "label": "Plant immunity — poison",
+      "minimumLevel": 15,
+      "base": 0,
+      "qualifier": "poison"
+    },
+    {
+      "sourceFeatureId": "druid-fungal-pilgrim-mycological-transformation-ex-15",
+      "kind": "immunity",
+      "label": "Plant immunity — polymorph",
+      "minimumLevel": 15,
+      "base": 0,
+      "qualifier": "polymorph"
+    },
+    {
+      "sourceFeatureId": "druid-fungal-pilgrim-mycological-transformation-ex-15",
+      "kind": "immunity",
+      "label": "Plant immunity — sleep",
+      "minimumLevel": 15,
+      "base": 0,
+      "qualifier": "sleep"
+    },
+    {
+      "sourceFeatureId": "druid-fungal-pilgrim-mycological-transformation-ex-15",
+      "kind": "immunity",
+      "label": "Plant immunity — stunning",
+      "minimumLevel": 15,
+      "base": 0,
+      "qualifier": "stunning"
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-fungal-pilgrim-mycological-transformation-ex-15",
+      "label": "Light sensitivity — attacks",
+      "condition": "Attack rolls in bright sunlight or within daylight",
+      "minimumLevel": 15,
+      "base": -1
+    },
+    {
+      "sourceFeatureId": "druid-fungal-pilgrim-mycological-transformation-ex-15",
+      "label": "Light sensitivity — sight-based Perception",
+      "condition": "Sight-based Perception checks in bright sunlight or within daylight",
+      "minimumLevel": 15,
+      "base": -1
+    }
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-animal",
+    "druid-nature-bond-domain"
+  ],
+  "druidDomainIds": [
+    "domain-plant"
   ]
 }
