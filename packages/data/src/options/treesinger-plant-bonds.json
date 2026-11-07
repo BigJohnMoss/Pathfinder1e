@@ -1,0 +1,9 @@
+{
+  "id": "treesinger-plant-bonds",
+  "name": "Treesinger Plant Bonds",
+  "classIds": ["druid"],
+  "options": [
+    {"id":"treesinger-nature-bond-domain","groupId":"treesinger-plant-bonds","name":"Plant Domain","classIds":["druid"],"minimumLevel":1,"prerequisites":[],"benefit":"Choose Plant, Growth, Jungle, or Swamp and gain dedicated domain spell slots.","source":{"title":"Advanced Race Guide","page":25,"url":"https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Treesinger"}},
+    {"id":"druid-nature-bond-plant","groupId":"treesinger-plant-bonds","name":"Plant Companion","classIds":["druid"],"minimumLevel":1,"prerequisites":[],"benefit":"Gain a plant companion that advances as an animal companion using full druid level.","source":{"title":"Advanced Race Guide","page":25,"url":"https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Treesinger"}}
+  ]
+}

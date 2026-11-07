@@ -47,7 +47,7 @@
           "type": "selectable",
           "summary": "A supernaturalist can affect plants with mind-affecting effects she creates and with spells that normally affect animals. Any such spell that allows a Will save can instead be negated by the target plant with a successful Fortitude save at the same DC. She also can choose plant bond and green empathy, as a treesinger druid ( Advanced Race Guide 25), in place of nature bond and wild empathy.",
           "choiceRequired": true,
-          "optionGroupId": "druid-nature-bonds",
+          "optionGroupId": "treesinger-plant-bonds",
           "resourceActions": [
             {
               "id": "supernaturalist-green-empathy",
@@ -621,6 +621,17 @@
           ]
         },
         {
+          "id": "supernaturalist-plant-companion-1",
+          "name": "Plant Companion Choice",
+          "level": 1,
+          "type": "selectable",
+          "summary": "Choose the plant companion granted by Plant Bond.",
+          "choiceRequired": true,
+          "optionGroupId": "treesinger-plant-companions",
+          "requiredOptionId": "druid-nature-bond-plant",
+          "requiredOptionMessage": "Choose Plant Companion for Plant Bond first."
+        },
+        {
           "id": "druid-supernaturalist-paranormal-scholar-6",
           "name": "Paranormal Scholar",
           "level": 6,
@@ -678,10 +689,9 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Supernaturalist"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Armor loss, Psychic Sensitivity, class skills, six unique Psychic-list spell additions, Green Empathy, effective medium progression, influence, taboo surges, spirit surge, totem choices, Pack Leader, Wildstrike, Wild Heart defenses, and the daily slot-free summon are automated.",
-    "Plant Bond still depends on the incomplete Treesinger plant-domain and plant-companion catalogue, so this archetype remains partial rather than being overstated as fully automated."
+    "Armor loss, Plant Bond domains and companions, Psychic Sensitivity, class skills, six unique Psychic-list spell additions, Green Empathy, effective medium progression, influence, taboo surges, spirit surge, totem choices, Pack Leader, Wildstrike, Wild Heart defenses, and the daily slot-free summon are automated."
   ],
   "classSkillAdditions": [
     "Diplomacy",
@@ -812,6 +822,32 @@
       "condition": "saving throws against enchantment and mind-affecting effects",
       "minimumLevel": 20,
       "base": 4
+    }
+  ],
+  "druidNatureBondOptionIds": [
+    "treesinger-nature-bond-domain",
+    "druid-nature-bond-plant"
+  ],
+  "druidDomainIds": [
+    "domain-plant",
+    "subdomain-growth",
+    "domain-jungle",
+    "domain-swamp"
+  ],
+  "companionGrants": [
+    {
+      "id": "supernaturalist-plant-companion",
+      "kind": "animal",
+      "label": "Plant companion",
+      "optionFeatureId": "supernaturalist-plant-companion-1",
+      "sourceFeatureId": "druid-supernaturalist-eldritch-botanist-ex-1",
+      "minimumLevel": 1,
+      "effectiveLevelAdjustment": 0,
+      "rules": [
+        "Plant type",
+        "Cannot gain armor or weapon proficiency feats",
+        "Cannot use manufactured weapons unless its description says otherwise"
+      ]
     }
   ]
 }
