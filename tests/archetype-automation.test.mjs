@@ -28,6 +28,18 @@ test("full archetypes never report manual effects", () => {
   assert.deepEqual(archetypeAutomationSummary({ mechanicalCoverage: "full", replacements: [{ features: [{ name: "Feature", level: 1 }] }] }).manual, []);
 });
 
+test("completed single-gap Alchemist archetypes expose no manual mechanics", () => {
+  for (const id of ["alchemist-aerochemist", "alchemist-oenopion-researcher", "alchemist-royal-alchemist", "alchemist-preservationist"]) {
+    const archetype = catalogueArchetypes.find((candidate) => candidate.id === id);
+    assert.ok(archetype, id);
+    assert.deepEqual(archetypeAutomationSummary(archetype, [], catalogueSpells).manual, [], id);
+  }
+  const preservationist = catalogueArchetypes.find((candidate) => candidate.id === "alchemist-preservationist");
+  const bottledAllySix = preservationist.replacements.flatMap((replacement) => replacement.features ?? []).find((feature) => feature.name === "Bottled Ally VI");
+  assert.equal(bottledAllySix?.level, 18);
+  assert.equal(preservationist.spellListAdditions["summon-natures-ally-9"], 6);
+});
+
 test("static archetype alignment rules expose exact builder eligibility", () => {
   const automated = catalogueArchetypes.filter((archetype) => inferArchetypeAllowedAlignments(archetype).length);
   assert.equal(automated.length, 38);

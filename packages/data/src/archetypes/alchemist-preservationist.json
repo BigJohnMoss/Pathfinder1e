@@ -4,10 +4,6 @@
   "classId": "alchemist",
   "summary": "Some alchemists are obsessed with collecting and preserving exotic creatures.",
   "replacesText": "Poison Use; Poison Resistance +4; Poison Resistance +6; Poison Immunity; Persistant Mutagen; 18th-level Discovery",
-  "mechanicalCoverage": "partial",
-  "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ],
   "replacements": [
     {
       "featureIds": [
@@ -54,9 +50,9 @@
           "summary": "At 14th level, a preservationist adds summon nature's ally VII to his formula book as a 5th-level extract. This ability replaces persistent mutagen."
         },
         {
-          "id": "alchemist-preservationist-bottled-ally-vi-1",
+          "id": "alchemist-preservationist-bottled-ally-vi-18",
           "name": "Bottled Ally VI",
-          "level": 1,
+          "level": 18,
           "type": "archetype",
           "summary": "At 18 level, a preservationist adds summon nature's ally IX to his formula book as a 6th-level extract. This ability replaces his 18th-level discovery."
         },
@@ -71,9 +67,21 @@
     }
   ],
   "classSkillAdditions": ["Handle Animal"],
+  "spellListAdditions": {
+    "summon-natures-ally-1": 1,
+    "summon-natures-ally-2": 2,
+    "summon-natures-ally-4": 3,
+    "summon-natures-ally-5": 4,
+    "summon-natures-ally-7": 5,
+    "summon-natures-ally-9": 6
+  },
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Preservationist"
-  }
+  },
+  "mechanicalCoverage": "full",
+  "mechanicalNotes": [
+    "Handle Animal is added as a class skill. Each Bottled Ally extract is added at its archetype-specific formula level, uses the normal prepared-extract workflow, and remains compatible with Infusion and Augment Summoning."
+  ]
 }

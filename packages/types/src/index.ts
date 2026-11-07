@@ -474,6 +474,8 @@ export interface ClassFeatureOccurrence {
       name: string;
       targets: ActiveEffectTarget[];
       bonus: number;
+      bonusFromVariableCost?: boolean;
+      bonusFromVariableCostDivisor?: number;
       bonusAbilityModifier?: AbilityName;
       minimumBonus?: number;
       maximumBonusClassLevel?: boolean;
@@ -484,6 +486,8 @@ export interface ClassFeatureOccurrence {
       defaultRounds?: number;
       defaultRoundsByLevel?: Array<{ level: number; rounds: number }>;
       durationAbilityModifier?: AbilityName;
+      durationAbilityModifierMultiplier?: number;
+      minimumDurationRounds?: number;
       durationFromVariableCost?: boolean;
       durationFromVariableCostMultiplier?: number;
       durationDice?: { count: number; sides: number };
