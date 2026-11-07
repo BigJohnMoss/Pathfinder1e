@@ -30,21 +30,350 @@
           "name": "Totem Transformation (Su)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a lion shaman may adopt an aspect of the lion while retaining her normal form. This ability functions as the bear shaman ability, but the druid may select from the following bonuses: movement (+20 enhancement bonus to land speed), senses (low-light vision, scent), or natural weapons (bite [1d4], 2 claws [1d4] for a Medium druid, rake, +2 CMB to grapple). While using totem transformation, the lion shaman may speak normally and can cast speak with animals (felines only) at will."
+          "summary": "At 2nd level, a lion shaman may adopt an aspect of the lion while retaining her normal form. This ability functions as the bear shaman ability, but the druid may select from the following bonuses: movement (+20 enhancement bonus to land speed), senses (low-light vision, scent), or natural weapons (bite [1d4], 2 claws [1d4] for a Medium druid, rake, +2 CMB to grapple). While using totem transformation, the lion shaman may speak normally and can cast speak with animals (felines only) at will.",
+          "resourceActions": [
+            {
+              "id": "lion-shaman-totem-transformation",
+              "label": "Activate Totem Transformation",
+              "resourceId": "totemTransformation",
+              "cost": 1,
+              "classId": "druid",
+              "minimumLevel": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 12,
+                  "actionType": "swift"
+                }
+              ],
+              "modeLabel": "Aspect",
+              "modes": [
+                {
+                  "id": "movement",
+                  "label": "Movement",
+                  "summary": "+20 enhancement bonus to land speed.",
+                  "defaultRounds": 10,
+                  "activeEffects": [
+                    {
+                      "target": "landSpeed",
+                      "bonus": 20,
+                      "label": "Land speed",
+                      "description": "+20 enhancement bonus to land speed."
+                    }
+                  ]
+                },
+                {
+                  "id": "senses",
+                  "label": "Senses",
+                  "summary": "Gain low-light vision and scent.",
+                  "defaultRounds": 10,
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Lion senses",
+                      "description": "Gain low-light vision and scent."
+                    }
+                  ]
+                },
+                {
+                  "id": "natural-weapons",
+                  "label": "Natural weapons",
+                  "summary": "Gain a bite, two claws, rake, and +2 CMB to grapple.",
+                  "defaultRounds": 10,
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Lion natural weapons",
+                      "description": "Gain a bite, two claws, rake, and +2 CMB to grapple."
+                    }
+                  ]
+                }
+              ],
+              "summary": "Spend 1 minute of Totem Transformation and apply the selected aspect for 10 rounds."
+            },
+            {
+              "id": "lion-shaman-speak-with-animals",
+              "label": "Speak with felines",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "standard"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "speak-with-animals",
+                "spellName": "Speak with Animals",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "confirmations": [
+                {
+                  "id": "totem-creature",
+                  "label": "The target is one of the permitted felines",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "At-will speak with animals, restricted to felines."
+            }
+          ]
         },
         {
           "id": "druid-lion-shaman-totemic-summons-su-5",
           "name": "Totemic Summons (Su)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, a lion shaman may cast summon nature’s ally as a standard action when summoning felines, and these summoned creatures gain temporary hit points equal to her druid level. This ability otherwise functions as the bear shaman ability."
+          "summary": "At 5th level, a lion shaman may cast summon nature’s ally as a standard action when summoning felines, and these summoned creatures gain temporary hit points equal to her druid level. This ability otherwise functions as the bear shaman ability.",
+          "resourceActions": [
+            {
+              "id": "lion-shaman-totemic-summons",
+              "label": "Resolve Totemic Summons",
+              "classId": "druid",
+              "minimumLevel": 5,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "totem-summon",
+                  "label": "The summon creates felines",
+                  "requiredForActivation": true
+                }
+              ],
+              "modeLabel": "Template adjustment",
+              "modes": [
+                {
+                  "id": "young",
+                  "label": "Young (spell level -1)",
+                  "summary": "Apply the young template and reduce the required summon spell level by 1."
+                },
+                {
+                  "id": "normal",
+                  "label": "Normal",
+                  "summary": "Use the normal summon spell level."
+                },
+                {
+                  "id": "advanced",
+                  "label": "Advanced (spell level +1)",
+                  "summary": "Apply the advanced template and increase the required summon spell level by 1."
+                },
+                {
+                  "id": "giant",
+                  "label": "Giant (spell level +1)",
+                  "summary": "Apply the giant template and increase the required summon spell level by 1."
+                },
+                {
+                  "id": "advanced-giant",
+                  "label": "Advanced + giant (spell level +2)",
+                  "summary": "Apply both templates and increase the required summon spell level by 2."
+                }
+              ],
+              "activeEffect": {
+                "name": "Lion Shaman Totemic Summons",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "description": "Summoned felines gain temporary hit points equal to your druid level; track their summon duration separately."
+              },
+              "summary": "Cast summon nature's ally as a standard action for felines; summoned creatures gain temporary hit points equal to druid level."
+            }
+          ]
         },
         {
           "id": "druid-lion-shaman-wild-shape-su-6",
           "name": "Wild Shape (Su)",
           "level": 6,
           "type": "archetype",
-          "summary": "At 6th level, a lion shaman’s wild shape ability functions at her druid level – 2. If she takes on the form of a feline, she instead uses her druid level + 2. This ability replaces wild shape."
+          "summary": "At 6th level, a lion shaman’s wild shape ability functions at her druid level – 2. If she takes on the form of a feline, she instead uses her druid level + 2. This ability replaces wild shape.",
+          "resourceActions": [
+            {
+              "id": "lion-shaman-wild-shape",
+              "label": "Assume Shaman Wild Shape",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Form type",
+              "modes": [
+                {
+                  "id": "totem-form",
+                  "label": "Favored feline form",
+                  "summary": "Use druid level +2.",
+                  "defaultRounds": 999,
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Favored wild shape",
+                      "description": "Resolve wild shape at druid level +2."
+                    }
+                  ]
+                },
+                {
+                  "id": "other-form",
+                  "label": "Other permitted form",
+                  "summary": "Use druid level -2.",
+                  "defaultRounds": 999,
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Adjusted wild shape",
+                      "description": "Resolve wild shape at druid level -2."
+                    }
+                  ]
+                }
+              ],
+              "summary": "Spend 1 wild shape use and track the correct effective druid level for the selected form."
+            }
+          ],
+          "progressionProfiles": [
+            {
+              "id": "lion-shaman-wild-shape-levels",
+              "label": "Wild Shape Effective Level",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "other",
+                  "label": "Other forms"
+                },
+                {
+                  "id": "favored",
+                  "label": "Favored feline"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 6,
+                  "values": {
+                    "other": 4,
+                    "favored": 8
+                  }
+                },
+                {
+                  "level": 7,
+                  "values": {
+                    "other": 5,
+                    "favored": 9
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "other": 6,
+                    "favored": 10
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "other": 7,
+                    "favored": 11
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "other": 8,
+                    "favored": 12
+                  }
+                },
+                {
+                  "level": 11,
+                  "values": {
+                    "other": 9,
+                    "favored": 13
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "other": 10,
+                    "favored": 14
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "other": 11,
+                    "favored": 15
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "other": 12,
+                    "favored": 16
+                  }
+                },
+                {
+                  "level": 15,
+                  "values": {
+                    "other": 13,
+                    "favored": 17
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "other": 14,
+                    "favored": 18
+                  }
+                },
+                {
+                  "level": 17,
+                  "values": {
+                    "other": 15,
+                    "favored": 19
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "other": 16,
+                    "favored": 20
+                  }
+                },
+                {
+                  "level": 19,
+                  "values": {
+                    "other": 17,
+                    "favored": 21
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "other": 18,
+                    "favored": 22
+                  }
+                }
+              ],
+              "summary": "Effective druid levels used by normal and totem-favored wild shape forms."
+            }
+          ]
         },
         {
           "id": "druid-lion-shaman-bonus-feat-9",
@@ -61,8 +390,36 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Lion%20Shaman"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Nature Bond restrictions, Wild Empathy, daily transformation minutes, aspect modes, at-will animal speech, template-aware summons, effective wild-shape levels, and all bonus-feat slots are automated."
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-animal",
+    "druid-nature-bond-domain"
+  ],
+  "druidAnimalCompanionIds": [
+    "ranger-animal-companion-big-cat"
+  ],
+  "druidDomainIds": [
+    "domain-animal",
+    "domain-glory",
+    "domain-nobility",
+    "domain-sun"
+  ],
+  "wildShapeLevelAdjustment": -2,
+  "resourceAdjustments": [
+    {
+      "resourceId": "totemTransformation",
+      "label": "Totem Transformation",
+      "unit": "minute",
+      "operation": "add",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelMultiplier": 1,
+      "minimum": 0,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
   ]
 }

@@ -31,28 +31,429 @@
           "name": "Totem Transformation (Su)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a dragon shaman may adopt an aspect of the dragon while retaining her normal form. She gains one of the following bonuses: movement (fly speed 30 feet [average], the druid must be 5th level to select this bonus), senses (low-light vision, +4 racial bonus to Perception), toughness (+2 natural armor bonus to AC, Endurance feat), or natural weapons (bite [1d6] and 2 claws [1d4] for a Medium shaman, +2 bonus on CMB on grapple checks). While using totem transformation, the dragon shaman may speak normally and can cast speak with animals (lizards only) at will. Using this ability is a standard action at 2nd level, a move action at 7th level, and a swift action at 12th level. The dragon shaman can use this ability for a number of minutes per day equal to her druid level. These minutes do not need to be consecutive, but they must be used in 1-minute increments. This is a polymorph effect and cannot be used while the druid is using another polymorph effect, such as wild shape."
+          "summary": "At 2nd level, a dragon shaman may adopt an aspect of the dragon while retaining her normal form. She gains one of the following bonuses: movement (fly speed 30 feet [average], the druid must be 5th level to select this bonus), senses (low-light vision, +4 racial bonus to Perception), toughness (+2 natural armor bonus to AC, Endurance feat), or natural weapons (bite [1d6] and 2 claws [1d4] for a Medium shaman, +2 bonus on CMB on grapple checks). While using totem transformation, the dragon shaman may speak normally and can cast speak with animals (lizards only) at will. Using this ability is a standard action at 2nd level, a move action at 7th level, and a swift action at 12th level. The dragon shaman can use this ability for a number of minutes per day equal to her druid level. These minutes do not need to be consecutive, but they must be used in 1-minute increments. This is a polymorph effect and cannot be used while the druid is using another polymorph effect, such as wild shape.",
+          "resourceActions": [
+            {
+              "id": "dragon-shaman-totem-transformation",
+              "label": "Activate Totem Transformation",
+              "resourceId": "totemTransformation",
+              "cost": 1,
+              "classId": "druid",
+              "minimumLevel": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 12,
+                  "actionType": "swift"
+                }
+              ],
+              "modeLabel": "Aspect",
+              "modes": [
+                {
+                  "id": "flight",
+                  "label": "Flight",
+                  "summary": "Gain a 30-foot fly speed with average maneuverability.",
+                  "minimumLevel": 5,
+                  "defaultRounds": 10,
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Dragon flight",
+                      "description": "Gain a 30-foot fly speed with average maneuverability."
+                    }
+                  ]
+                },
+                {
+                  "id": "senses",
+                  "label": "Senses",
+                  "summary": "Gain low-light vision and +4 racial bonus on Perception checks. +4 racial bonus on Perception checks.",
+                  "defaultRounds": 10,
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Dragon senses",
+                      "description": "Gain low-light vision and +4 racial bonus on Perception checks."
+                    },
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "label": "Perception",
+                      "description": "+4 racial bonus on Perception checks."
+                    }
+                  ]
+                },
+                {
+                  "id": "toughness",
+                  "label": "Toughness",
+                  "summary": "+2 natural armor bonus to AC. Gain Endurance while this aspect is active.",
+                  "defaultRounds": 10,
+                  "activeEffects": [
+                    {
+                      "target": "armorClass",
+                      "bonus": 2,
+                      "label": "Natural armor",
+                      "description": "+2 natural armor bonus to AC."
+                    },
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Endurance",
+                      "description": "Gain Endurance while this aspect is active."
+                    }
+                  ]
+                },
+                {
+                  "id": "natural-weapons",
+                  "label": "Natural weapons",
+                  "summary": "Gain a bite (1d6), two claws (1d4), and +2 CMB to grapple.",
+                  "defaultRounds": 10,
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Dragon natural weapons",
+                      "description": "Gain a bite (1d6), two claws (1d4), and +2 CMB to grapple."
+                    }
+                  ]
+                }
+              ],
+              "summary": "Spend 1 minute of Totem Transformation and apply the selected aspect for 10 rounds."
+            },
+            {
+              "id": "dragon-shaman-speak-with-animals",
+              "label": "Speak with lizards",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "standard"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "speak-with-animals",
+                "spellName": "Speak with Animals",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "confirmations": [
+                {
+                  "id": "totem-creature",
+                  "label": "The target is one of the permitted lizards",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "At-will speak with animals, restricted to lizards."
+            }
+          ]
         },
         {
           "id": "druid-dragon-shaman-totemic-summons-su-5",
           "name": "Totemic Summons (Su)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, a dragon shaman may cast summon nature’s ally as a standard action when summoning lizards, and summoned lizards gain temporary hit points equal to her druid level. She can apply the young template to any lizard to reduce the level of the summoning spell required by one. She can also increase the level of summoning required by one in order to apply either the advanced or the giant template, or increase it by two to apply both the advanced and giant templates. This ability replaces a thousand faces."
+          "summary": "At 5th level, a dragon shaman may cast summon nature’s ally as a standard action when summoning lizards, and summoned lizards gain temporary hit points equal to her druid level. She can apply the young template to any lizard to reduce the level of the summoning spell required by one. She can also increase the level of summoning required by one in order to apply either the advanced or the giant template, or increase it by two to apply both the advanced and giant templates. This ability replaces a thousand faces.",
+          "resourceActions": [
+            {
+              "id": "dragon-shaman-totemic-summons",
+              "label": "Resolve Totemic Summons",
+              "classId": "druid",
+              "minimumLevel": 5,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "totem-summon",
+                  "label": "The summon creates lizards",
+                  "requiredForActivation": true
+                }
+              ],
+              "modeLabel": "Template adjustment",
+              "modes": [
+                {
+                  "id": "young",
+                  "label": "Young (spell level -1)",
+                  "summary": "Apply the young template and reduce the required summon spell level by 1."
+                },
+                {
+                  "id": "normal",
+                  "label": "Normal",
+                  "summary": "Use the normal summon spell level."
+                },
+                {
+                  "id": "advanced",
+                  "label": "Advanced (spell level +1)",
+                  "summary": "Apply the advanced template and increase the required summon spell level by 1."
+                },
+                {
+                  "id": "giant",
+                  "label": "Giant (spell level +1)",
+                  "summary": "Apply the giant template and increase the required summon spell level by 1."
+                },
+                {
+                  "id": "advanced-giant",
+                  "label": "Advanced + giant (spell level +2)",
+                  "summary": "Apply both templates and increase the required summon spell level by 2."
+                }
+              ],
+              "activeEffect": {
+                "name": "Dragon Shaman Totemic Summons",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "description": "Summoned lizards gain temporary hit points equal to your druid level; track their summon duration separately."
+              },
+              "summary": "Cast summon nature's ally as a standard action for lizards; summoned creatures gain temporary hit points equal to druid level."
+            }
+          ]
         },
         {
           "id": "druid-dragon-shaman-wild-shape-su-6",
           "name": "Wild Shape (Su)",
           "level": 6,
           "type": "archetype",
-          "summary": "At 6th level, a dragon shaman’s wild shape ability functions at her druid level – 4. If she takes on the form of a lizard, she instead uses her unmodified druid level. This ability replaces wild shape."
+          "summary": "At 6th level, a dragon shaman’s wild shape ability functions at her druid level – 4. If she takes on the form of a lizard, she instead uses her unmodified druid level. This ability replaces wild shape.",
+          "resourceActions": [
+            {
+              "id": "dragon-shaman-wild-shape",
+              "label": "Assume Shaman Wild Shape",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Form type",
+              "modes": [
+                {
+                  "id": "totem-form",
+                  "label": "Favored lizard form",
+                  "summary": "Use druid level +0.",
+                  "defaultRounds": 999,
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Favored wild shape",
+                      "description": "Resolve wild shape at druid level +0."
+                    }
+                  ]
+                },
+                {
+                  "id": "other-form",
+                  "label": "Other permitted form",
+                  "summary": "Use druid level -4.",
+                  "defaultRounds": 999,
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Adjusted wild shape",
+                      "description": "Resolve wild shape at druid level -4."
+                    }
+                  ]
+                }
+              ],
+              "summary": "Spend 1 wild shape use and track the correct effective druid level for the selected form."
+            }
+          ],
+          "progressionProfiles": [
+            {
+              "id": "dragon-shaman-wild-shape-levels",
+              "label": "Wild Shape Effective Level",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "other",
+                  "label": "Other forms"
+                },
+                {
+                  "id": "favored",
+                  "label": "Favored lizard"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 6,
+                  "values": {
+                    "other": 2,
+                    "favored": 6
+                  }
+                },
+                {
+                  "level": 7,
+                  "values": {
+                    "other": 3,
+                    "favored": 7
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "other": 4,
+                    "favored": 8
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "other": 5,
+                    "favored": 9
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "other": 6,
+                    "favored": 10
+                  }
+                },
+                {
+                  "level": 11,
+                  "values": {
+                    "other": 7,
+                    "favored": 11
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "other": 8,
+                    "favored": 12
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "other": 9,
+                    "favored": 13
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "other": 10,
+                    "favored": 14
+                  }
+                },
+                {
+                  "level": 15,
+                  "values": {
+                    "other": 11,
+                    "favored": 15
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "other": 12,
+                    "favored": 16
+                  }
+                },
+                {
+                  "level": 17,
+                  "values": {
+                    "other": 13,
+                    "favored": 17
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "other": 14,
+                    "favored": 18
+                  }
+                },
+                {
+                  "level": 19,
+                  "values": {
+                    "other": 15,
+                    "favored": 19
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "other": 16,
+                    "favored": 20
+                  }
+                }
+              ],
+              "summary": "Effective druid levels used by normal and totem-favored wild shape forms."
+            }
+          ]
         },
         {
           "id": "druid-dragon-shaman-dragon-bite-su-8",
           "name": "Dragon Bite (Su)",
           "level": 8,
           "type": "archetype",
-          "summary": "At 8th level, a dragon shaman’s bite attack (whether using totem transformation or wild shape to take the form of a lizard) deals +1d6 points of energy damage (acid, cold, electricity, or fire). She chooses what kind of energy damage that she deals each time she bites. This ability replaces the additional use of wild shape at 8th level."
+          "summary": "At 8th level, a dragon shaman’s bite attack (whether using totem transformation or wild shape to take the form of a lizard) deals +1d6 points of energy damage (acid, cold, electricity, or fire). She chooses what kind of energy damage that she deals each time she bites. This ability replaces the additional use of wild shape at 8th level.",
+          "resourceActions": [
+            {
+              "id": "dragon-shaman-dragon-bite",
+              "label": "Apply Dragon Bite Energy",
+              "classId": "druid",
+              "minimumLevel": 8,
+              "modeLabel": "Energy type",
+              "modes": [
+                {
+                  "id": "acid",
+                  "label": "Acid",
+                  "summary": "Add 1d6 acid damage to bite attacks.",
+                  "defaultRounds": 999
+                },
+                {
+                  "id": "cold",
+                  "label": "Cold",
+                  "summary": "Add 1d6 cold damage to bite attacks.",
+                  "defaultRounds": 999
+                },
+                {
+                  "id": "electricity",
+                  "label": "Electricity",
+                  "summary": "Add 1d6 electricity damage to bite attacks.",
+                  "defaultRounds": 999
+                },
+                {
+                  "id": "fire",
+                  "label": "Fire",
+                  "summary": "Add 1d6 fire damage to bite attacks.",
+                  "defaultRounds": 999
+                }
+              ],
+              "activeEffect": {
+                "name": "Dragon Bite",
+                "targets": [
+                  "weaponDamageRolls"
+                ],
+                "bonus": 0,
+                "defaultRounds": 999,
+                "description": "The bite deals +1d6 damage of the selected energy type; roll the extra die with each bite hit."
+              },
+              "summary": "Choose the energy type and track the +1d6 energy damage on bite attacks."
+            }
+          ]
         },
         {
           "id": "druid-dragon-shaman-bonus-feat-9",
@@ -69,8 +470,40 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Dragon%20Shaman"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Nature Bond restrictions, Wild Empathy, daily transformation minutes, aspect modes, at-will animal speech, template-aware summons, effective wild-shape levels, and all bonus-feat slots are automated."
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-animal",
+    "druid-nature-bond-domain"
+  ],
+  "druidAnimalCompanionIds": [
+    "ranger-animal-companion-crocodile",
+    "ranger-animal-companion-monitor-lizard"
+  ],
+  "druidDomainIds": [
+    "domain-air",
+    "domain-animal",
+    "domain-destruction",
+    "domain-earth",
+    "domain-fire",
+    "domain-war",
+    "domain-water"
+  ],
+  "wildShapeLevelAdjustment": -4,
+  "resourceAdjustments": [
+    {
+      "resourceId": "totemTransformation",
+      "label": "Totem Transformation",
+      "unit": "minute",
+      "operation": "add",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelMultiplier": 1,
+      "minimum": 0,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
   ]
 }
