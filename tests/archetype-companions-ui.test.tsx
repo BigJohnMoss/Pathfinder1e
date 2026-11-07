@@ -91,3 +91,35 @@ test("Oceanrider filters aquatic mounts by rider size and shows the selected mou
   await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.deepEqual(within(screen.getByLabelText(/Aquatic Mount/)).getAllByRole("option").map((option) => option.textContent), ["Choose an option", "Dolphin"]);
 });
+
+test("Wave Rider creates its full-level hippocampus mount automatically", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "cavalier");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "12" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "cavalier-wave-rider");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  const manager = screen.getByRole("heading", { name: "Companion sheets" }).closest("section");
+  assert.ok(manager);
+  const card = within(manager).getByText("Hippocampus mount").closest("article");
+  assert.match(card?.textContent ?? "", /mount.*effective level 12/i);
+  assert.match(card?.textContent ?? "", /restricted to a hippocampus/i);
+});
+
+test("Drake Warden displays only its two young-drake powers and one size increase", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "ranger");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "ranger-drake-warden");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  const manager = screen.getByRole("heading", { name: "Companion sheets" }).closest("section");
+  assert.ok(manager);
+  const card = within(manager).getByText("Young drake").closest("article");
+  assert.match(card?.textContent ?? "", /drake.*effective level 17/i);
+  assert.match(card?.textContent ?? "", /2 drake powers/i);
+  assert.match(card?.textContent ?? "", /1 size increase/i);
+  assert.doesNotMatch(card?.textContent ?? "", /4 drake powers|4 size increases/i);
+});

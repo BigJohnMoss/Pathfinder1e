@@ -2,7 +2,7 @@ import { animalCompanionProgression, drakeCompanionProgression, eidolonProgressi
 import type { CharacterDraftV1 } from "../../../packages/types/src/index.js";
 
 type CompanionState = NonNullable<CharacterDraftV1["companions"]>[string];
-export type CompanionDescriptor = { id: string; kind: CompanionState["kind"]; optionId: string; label: string; effectiveLevel: number; bonusHitPoints?: number; bonusSkillRanks?: number; rules?: string[] };
+export type CompanionDescriptor = { id: string; kind: CompanionState["kind"]; optionId: string; label: string; effectiveLevel: number; bonusHitPoints?: number; bonusSkillRanks?: number; drakePowerLevels?: number[]; drakeSizeLevels?: number[]; rules?: string[] };
 
 export function CompanionManager({ companions, states, masterHitPoints, onChange }: { companions: CompanionDescriptor[]; states: Record<string, CompanionState>; masterHitPoints: number; onChange: (states: Record<string, CompanionState>) => void }) {
   if (!companions.length) return null;
@@ -25,7 +25,7 @@ export function CompanionManager({ companions, states, masterHitPoints, onChange
       const animal = descriptor.kind === "animal" || descriptor.kind === "mount" ? animalCompanionProgression(descriptor.effectiveLevel) : null;
       const familiar = descriptor.kind === "familiar" ? familiarProgression(descriptor.effectiveLevel, masterHitPoints) : null;
       const eidolon = descriptor.kind === "eidolon" ? eidolonProgression(descriptor.effectiveLevel) : null;
-      const drake = descriptor.kind === "drake" ? drakeCompanionProgression(descriptor.effectiveLevel) : null;
+      const drake = descriptor.kind === "drake" ? drakeCompanionProgression(descriptor.effectiveLevel, { powerLevels: descriptor.drakePowerLevels, sizeLevels: descriptor.drakeSizeLevels }) : null;
       const phantom = descriptor.kind === "phantom" ? phantomProgression(descriptor.effectiveLevel, descriptor.optionId) : null;
       const suggestedHp = familiar ? familiar.hitPoints + (descriptor.bonusHitPoints ?? 0) : descriptor.bonusHitPoints ?? null;
       return <article className="companion-card" key={descriptor.id}>

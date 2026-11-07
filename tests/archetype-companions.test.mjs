@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import archetypes from "../generated/pf1e-archetypes.mjs";
 import data from "../generated/pf1e-data.mjs";
-import { applyArchetype, applyArchetypeResourceAdjustments, archetypeAutomationSummary, archetypeCompanionEffectiveLevel, availableOptions, inferArchetypeCompanionGrants, inferredArchetypeCompanionGrantDetails, phantomFocusDetails, phantomProgression, resolvedArchetypeCompanionGrants } from "../packages/engine/src/index.js";
+import { applyArchetype, applyArchetypeResourceAdjustments, archetypeAutomationSummary, archetypeCompanionEffectiveLevel, availableOptions, drakeCompanionProgression, inferArchetypeCompanionGrants, inferredArchetypeCompanionGrantDetails, phantomFocusDetails, phantomProgression, resolvedArchetypeCompanionGrants } from "../packages/engine/src/index.js";
 
 const archetype = (id) => archetypes.find((item) => item.id === id);
 const characterClass = (id) => data.classes.find((item) => item.id === id);
@@ -122,4 +122,27 @@ test("Oceanrider automates size-legal aquatic mounts at full Cavalier level", ()
   assert.deepEqual(availableOptions(group, "cavalier", 1, [], { size: "small" }).map((option) => option.name), ["Dolphin"]);
   assert.match(group.options.find((option) => option.id === "oceanrider-mount-orca").companionRules.join(" "), /starts at size Large.*before level 7/i);
   assert.deepEqual(archetypeAutomationSummary(oceanrider, data.feats, data.spells).manual, []);
+});
+
+test("Wave Rider grants its restricted hippocampus feat and full-level mount", () => {
+  const waveRider = archetype("cavalier-wave-rider");
+  const applied = applyArchetype(characterClass("cavalier"), waveRider);
+  const feature = applied.features.find((item) => item.id === "cavalier-wave-rider-seafaring-companion-1");
+  const [grant] = resolvedArchetypeCompanionGrants(waveRider);
+  assert.equal(feature.grantedFeatId, "monstrous-mount");
+  assert.deepEqual([grant.kind, grant.optionId, grant.minimumLevel], ["mount", "wave-rider-hippocampus", 1]);
+  assert.equal(archetypeCompanionEffectiveLevel(grant, 20), 20);
+  assert.deepEqual(archetypeAutomationSummary(waveRider, data.feats, data.spells).manual, []);
+});
+
+test("Drake Warden enforces the young drake's restricted power and size schedules", () => {
+  const drakeWarden = archetype("ranger-drake-warden");
+  const [grant] = resolvedArchetypeCompanionGrants(drakeWarden);
+  assert.deepEqual([grant.effectiveLevelAdjustment, grant.drakePowerLevels, grant.drakeSizeLevels], [-3, [3, 7], [5]]);
+  assert.equal(archetypeCompanionEffectiveLevel(grant, 10), 7);
+  const level7 = drakeCompanionProgression(7, { powerLevels: grant.drakePowerLevels, sizeLevels: grant.drakeSizeLevels });
+  const level20 = drakeCompanionProgression(20, { powerLevels: grant.drakePowerLevels, sizeLevels: grant.drakeSizeLevels });
+  assert.deepEqual([level7.drakePowers, level7.sizeIncreases], [2, 1]);
+  assert.deepEqual([level20.drakePowers, level20.sizeIncreases], [2, 1]);
+  assert.deepEqual(archetypeAutomationSummary(drakeWarden, data.feats, data.spells).manual, []);
 });

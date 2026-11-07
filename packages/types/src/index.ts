@@ -812,6 +812,8 @@ export interface ArchetypeCompanionGrant {
   effectiveLevelMultiplier?: number;
   stacksWithExisting?: boolean;
   usesCharacterLevel?: boolean;
+  drakePowerLevels?: number[];
+  drakeSizeLevels?: number[];
   rules?: string[];
 }
 export interface CompanionProgressionAdjustment {
