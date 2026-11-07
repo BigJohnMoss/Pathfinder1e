@@ -1,0 +1,11 @@
+{
+  "id": "command",
+  "name": "Command",
+  "school": "enchantment",
+  "levelByClass": {"cleric": 1, "oracle": 1, "inquisitor": 1},
+  "components": ["V"],
+  "castingTime": "1 standard action",
+  "range": "close",
+  "summary": "Issue a one-word order that the subject obeys for 1 round if it fails a Will save.",
+  "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Command"}
+}

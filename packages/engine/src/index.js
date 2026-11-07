@@ -1311,10 +1311,10 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     ...(inferredResourceActions.has(feature.id) ? { resourceActions: [...(feature.resourceActions ?? []), ...inferredResourceActions.get(feature.id)] } : {}),
     ...(inferredPassiveTeamworkSharings.has(feature.id) ? { teamworkFeatSharing: inferredPassiveTeamworkSharings.get(feature.id) } : {}),
   }));
-  const adjustTable = (table, adjustment) =>
+  const adjustTable = (table, adjustment, minimumSpellLevel = 0) =>
     adjustment === undefined
       ? table
-      : table?.map((row) => row.map((value) => Math.max(0, value + adjustment)));
+      : table?.map((row) => row.map((value, spellLevel) => Math.max(0, value + (spellLevel >= minimumSpellLevel ? adjustment : 0))));
   const removesSpellcasting = archetype.removesSpellcasting ?? inferArchetypeRemovesSpellcasting(archetype);
   const characterSpellcasting = removesSpellcasting
     ? undefined
@@ -1449,7 +1449,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
           ability: spellcastingAbility ?? characterSpellcasting?.ability ?? baseSpellcasting.ability,
           castingType: inferredSpellcastingAbility?.castingType ?? baseSpellcasting.castingType,
           tradition: inferredSpellcastingAbility?.tradition ?? spellcastingTradition(characterClass) ?? baseSpellcasting.tradition,
-          slotsByLevel: gateTable(adjustTable(baseSpellcasting.slotsByLevel, archetype.spellSlotAdjustmentPerLevel)),
+          slotsByLevel: gateTable(adjustTable(baseSpellcasting.slotsByLevel, archetype.spellSlotAdjustmentPerLevel, archetype.spellSlotAdjustmentMinimumSpellLevel)),
           preparedByLevel: gateTable(adjustTable(baseSpellcasting.preparedByLevel, preparedAdjustment)),
           knownByLevel: gateTable(adjustTable(baseSpellcasting.knownByLevel, archetype.spellsKnownAdjustmentPerLevel)),
           spellLevelUnlocks: (baseSpellcasting.spellLevelUnlocks ?? inferredSpellLevelUnlocks)?.map(
@@ -1459,6 +1459,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
         }
       : undefined,
     spellSlotAdjustmentPerLevel: archetype.spellSlotAdjustmentPerLevel,
+    spellSlotAdjustmentMinimumSpellLevel: archetype.spellSlotAdjustmentMinimumSpellLevel,
     preparedSpellAdjustmentPerLevel: archetype.preparedSpellAdjustmentPerLevel,
     spellsKnownAdjustmentPerLevel: archetype.spellsKnownAdjustmentPerLevel,
     companionGrants: [

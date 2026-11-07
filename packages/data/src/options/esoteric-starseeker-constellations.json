@@ -1,0 +1,21 @@
+{
+  "id": "esoteric-starseeker-constellations",
+  "name": "Cosmic Caravan Constellations",
+  "classIds": ["psychic"],
+  "optionDefaults": {"groupId": "esoteric-starseeker-constellations", "classIds": ["psychic"], "minimumLevel": 1, "prerequisites": [], "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Psychic%20Esoteric%20Starseeker"}},
+  "options": [
+    {"id": "starseeker-thrush", "name": "The Thrush", "benefit": "Comprehend languages, magic mouth, tiny hut, dream, remote viewing, battlemind link, phase door, discern location, and wish."},
+    {"id": "starseeker-lantern-bearer", "name": "The Lantern Bearer", "benefit": "Liberating command, glitterdust, guiding star, wandering star motes, true seeing, sonic form, prismatic spray, sunburst, and meteor swarm."},
+    {"id": "starseeker-newlyweds", "name": "The Newlyweds", "benefit": "Charm person, enthrall, synesthesia, break enchantment, reincarnate, joyful rapture, mass synesthesia, bilocation, and overwhelming presence."},
+    {"id": "starseeker-bridge", "name": "The Bridge", "benefit": "Endure elements, resist energy, daylight, fire shield, wall of force, contagious flame, reverse gravity, create demiplane, and world wave."},
+    {"id": "starseeker-daughter", "name": "The Daughter", "benefit": "Bless, hypnotic pattern, heroism, freedom of movement, hostile juxtaposition, cloak of dreams, greater hostile juxtaposition, irresistible dance, and freedom."},
+    {"id": "starseeker-rider", "name": "The Rider", "benefit": "Anticipate peril, acute senses, ablative barrier, dimensional anchor, echolocation, blade barrier, grasping hand, frightful aspect, and ride the lightning."},
+    {"id": "starseeker-patriarch", "name": "The Patriarch", "benefit": "Command, spiritual weapon, dispel magic, telekinetic charge, contact other plane, find the path, mage's sword, brilliant inspiration, and gate."},
+    {"id": "starseeker-wagon", "name": "The Wagon", "benefit": "Expeditious retreat, twisted space, haste, mirror transport, teleport, fluid form, walk through space, etherealness, and time stop."},
+    {"id": "starseeker-pack", "name": "The Pack", "benefit": "Calm animals, animal aspect, rage, greater animal aspect, summon monster V, mass bear's endurance, summon monster VII, animal shapes, and shapechange."},
+    {"id": "starseeker-mother", "name": "The Mother", "benefit": "Identify, aid, invisibility purge, stoneskin, spell resistance, contingency, mind blank, refuge, and wall of suppression."},
+    {"id": "starseeker-stargazer", "name": "The Stargazer", "benefit": "Know the enemy, augury, arcane sight, locate creature, feeblemind, geas/quest, greater arcane sight, moment of prescience, and dream voyage."},
+    {"id": "starseeker-stranger", "name": "The Stranger", "benefit": "Disguise self, invisibility, displacement, riding possession, prying eyes, veil, project image, maze, and divide mind."},
+    {"id": "starseeker-follower", "name": "The Follower", "benefit": "Forced quiet, darkness, vision of hell, enervation, waves of fatigue, shadow walk, simulacrum, destruction, and energy drain."}
+  ]
+}

@@ -635,6 +635,7 @@ export interface CharacterClass {
   wildEmpathyAdjustments?: ArchetypeWildEmpathyAdjustment[];
   precisionDamageAdjustments?: PrecisionDamageAdjustment[];
   spellSlotAdjustmentPerLevel?: number;
+  spellSlotAdjustmentMinimumSpellLevel?: number;
   preparedSpellAdjustmentPerLevel?: number;
   spellsKnownAdjustmentPerLevel?: number;
   companionGrants?: ArchetypeCompanionGrant[];
@@ -707,6 +708,7 @@ export interface CharacterArchetype {
   wildEmpathyAdjustments?: ArchetypeWildEmpathyAdjustment[];
   precisionDamageAdjustments?: PrecisionDamageAdjustment[];
   spellSlotAdjustmentPerLevel?: number;
+  spellSlotAdjustmentMinimumSpellLevel?: number;
   preparedSpellAdjustmentPerLevel?: number;
   spellsKnownAdjustmentPerLevel?: number;
   companionGrants?: ArchetypeCompanionGrant[];
@@ -902,6 +904,7 @@ export interface ArchetypeSpellGrant {
   mode: "list" | "known";
   sourceFeatureId?: string;
   requiredActiveEffectName?: string;
+  requiredOptionId?: string;
 }
 export interface ArchetypeSpellModifierAdjustment {
   sourceFeatureId?: string;

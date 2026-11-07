@@ -1,0 +1,11 @@
+{
+  "id": "destruction",
+  "name": "Destruction",
+  "school": "necromancy",
+  "levelByClass": {"cleric": 7, "oracle": 7},
+  "components": ["V", "S", "F"],
+  "castingTime": "1 standard action",
+  "range": "close",
+  "summary": "Slay one creature on a failed Fortitude save, or deal heavy divine damage on a successful save.",
+  "source": {"title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Destruction"}
+}
