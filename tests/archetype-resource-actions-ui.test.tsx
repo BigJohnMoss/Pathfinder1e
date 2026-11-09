@@ -30,6 +30,7 @@ const blazingTorchbearer = JSON.parse(readFileSync(new URL("../packages/data/src
 const iceChemist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-ice-chemist.json", import.meta.url), "utf8")) as CharacterArchetype;
 const deepBomber = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-deep-bomber.json", import.meta.url), "utf8")) as CharacterArchetype;
 const sanctifiedRogue = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/rogue-sanctified-rogue.json", import.meta.url), "utf8")) as CharacterArchetype;
+const makeshiftScrapper = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/rogue-makeshift-scrapper.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -506,4 +507,27 @@ test("Sanctified Rogue tracks its daily Divine Epiphany augury", async () => {
   await userEvent.setup().click(screen.getByRole("button", { name: "Use Divine Epiphany" }));
   assert.deepEqual(used, [1]);
   assert.equal(screen.getByLabelText("Use Divine Epiphany result").textContent, "Augury activated as a spell-equivalent effect.");
+});
+
+test("Makeshift Scrapper spends daily rounds and scales both weapon bonuses", async () => {
+  const used: number[] = [];
+  const effects: ActiveEffect[] = [];
+  const feature = makeshiftScrapper.replacements.flatMap((replacement) => replacement.features)
+    .find((candidate) => candidate.id === "rogue-makeshift-scrapper-supernatural-improvisation-su-3");
+  assert.ok(feature);
+  render(<ClassFeatures
+    level={11}
+    className="Makeshift Scrapper"
+    features={[feature]}
+    classLevels={{ rogue: 11 }}
+    dailyResources={[{ id: "supernaturalImprovisation", label: "Supernatural Improvisation", unit: "round", maximum: 11, used: 0, onUsedChange: (value) => used.push(value) }]}
+    activeEffects={effects}
+    onAddEffect={(effect) => effects.push(effect)}
+  />);
+  await userEvent.setup().click(screen.getByRole("button", { name: "Use Supernatural Improvisation" }));
+  assert.deepEqual(used, [1]);
+  assert.deepEqual(effects.filter((effect) => ["attackRolls", "weaponDamageRolls"].includes(effect.target)).map((effect) => [effect.target, effect.bonus, effect.roundsRemaining]), [
+    ["attackRolls", 3, 1],
+    ["weaponDamageRolls", 3, 1]
+  ]);
 });
