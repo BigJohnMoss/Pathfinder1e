@@ -25,6 +25,7 @@ const alchemicalTrapper = JSON.parse(readFileSync(new URL("../packages/data/src/
 const cloneMaster = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-clone-master.json", import.meta.url), "utf8")) as CharacterArchetype;
 const wingedMarauder = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-winged-marauder.json", import.meta.url), "utf8")) as CharacterArchetype;
 const bogbornAlchemist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-bogborn-alchemist.json", import.meta.url), "utf8")) as CharacterArchetype;
+const crimsonChymist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-crimson-chymist.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -351,4 +352,34 @@ test("Bogborn Alchemist tracks its confirmed amphibious mutagen duration", async
   assert.equal(effects[0]?.name, "Amphibious Mutagen");
   assert.equal(effects[0]?.roundsRemaining, 700);
   assert.match(effects[0]?.description ?? "", /15-foot swim speed/i);
+});
+
+test("Crimson Chymist applies mantis mutagen and gates its discovery workflows", async () => {
+  const effects: ActiveEffect[] = [];
+  const applied = applyArchetype(alchemist, crimsonChymist);
+  const properties = {
+    level: 10,
+    className: applied.name,
+    features: featuresThroughLevel(applied, 10),
+    classLevels: { alchemist: 10 },
+    selectedOptionIds: ["crimson-arms-of-achaekek", "crimson-improved-arms-of-achaekek"],
+    activeEffects: effects,
+    onAddEffect: (effect: ActiveEffect) => effects.push(effect),
+  };
+  const view = render(<ClassFeatures {...properties} />);
+  const setup = userEvent.setup();
+  await setup.click(screen.getByRole("button", { name: "Brew and consume mantis mutagen" }));
+  assert.deepEqual(effects.map(({ target, bonus, roundsRemaining }) => ({ target, bonus, roundsRemaining })), [
+    { target: "dexterity", bonus: 4, roundsRemaining: 1000 },
+    { target: "armorClass", bonus: 2, roundsRemaining: 1000 },
+    { target: "charisma", bonus: -2, roundsRemaining: 1000 },
+  ]);
+  view.rerender(<ClassFeatures {...properties} activeEffects={[...effects]} />);
+  const arms = screen.getByRole("button", { name: "Manifest Arms of Achaekek" });
+  assert.equal(arms.hasAttribute("disabled"), true);
+  await setup.click(screen.getByLabelText("No armor or wrist-slot item is worn"));
+  await setup.click(arms);
+  assert.equal(effects.at(-1)?.name, "Arms of Achaekek");
+  view.rerender(<ClassFeatures {...properties} activeEffects={[...effects]} />);
+  assert.equal(screen.getByRole("button", { name: "Apply Improved Arms of Achaekek" }).hasAttribute("disabled"), false);
 });

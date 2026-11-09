@@ -4,10 +4,6 @@
   "classId": "alchemist",
   "summary": "Crimson chymists turn to the alchemical arts, infusing their bodies with the mutagenic essence of the Mantis God.",
   "replacesText": "Mutagen",
-  "mechanicalCoverage": "partial",
-  "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ],
   "replacements": [
     {
       "featureIds": [
@@ -20,21 +16,146 @@
           "name": "Crimson Discoveries (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "A crimson chymist gains access to several additional unique discoveries, as detailed below. This alters discovery. Arms of Achaekek : The small barbs that grow on the crimson chymist’s arms when she drinks her mantis mutagen grow significantly in size, granting her two claw attacks as natural weapons. These claws deal damage as appropriate for her size (1d4 for Medium crimson chymists) and function as secondary attacks. These claws do not replace the chymist’s hands, and she can still use her hands to wield weapons, attack, hold objects, and otherwise use her hands with ease, but she cannot be wearing any item in the wrists slot or any armor—if she dons magic items that occupy the wrists slot or any armor, her claws shrink back to cosmetic barbs that can’t be used in combat as long as the armor or wrist items are worn. A crimson chymist must be at least 6th level before selecting this discovery. Blood Sight : When the crimson chymist is under the effects of her mantis mutagen, her eyes transform, becoming red and multifaceted. This change grants her darkvision to a range of 60 feet and the effects of deathwatch for the duration of her mutagen’s effects. If the crimson chymist already has darkvision as a benefit of her race, the range of her darkvision increases by 30 feet while using blood sight. Improved Arms of Achaekek : The claws granted by the arms of Achaekek discovery now function as primary weapons when the crimson chymist makes no attacks with manufactured weapons (the claws function as secondary weapons if the chymist attacks with a manufactured weapon). The damage die of the claws increases by one size category (to 1d6 for Medium crimson chymists), and attacks deal 1d4 points of bleed damage on a hit. A crimson chymist must be at least 10th level and have the arms of Achaekek discovery before selecting this discovery. Ingest Venom : Once per day as a standard action, the crimson chymist can ingest one dose of any poison without harming herself. The next time she imbibes her mutagen and uses her arms of Achaekek discovery, both claws are envenomed with a dose of the poison she ingested. An ingested venom remains latent in the alchemist’s system until she activates her arms of Achaekek discovery or until 24 hours have passed, whichever comes first. Additional doses of venom ingested during that time affect the alchemist normally. A crimson chymist must have the arms of Achaekek discovery before selecting this discovery."
+          "summary": "A crimson chymist gains access to several additional unique discoveries, as detailed below. This alters discovery. Arms of Achaekek : The small barbs that grow on the crimson chymist’s arms when she drinks her mantis mutagen grow significantly in size, granting her two claw attacks as natural weapons. These claws deal damage as appropriate for her size (1d4 for Medium crimson chymists) and function as secondary attacks. These claws do not replace the chymist’s hands, and she can still use her hands to wield weapons, attack, hold objects, and otherwise use her hands with ease, but she cannot be wearing any item in the wrists slot or any armor—if she dons magic items that occupy the wrists slot or any armor, her claws shrink back to cosmetic barbs that can’t be used in combat as long as the armor or wrist items are worn. A crimson chymist must be at least 6th level before selecting this discovery. Blood Sight : When the crimson chymist is under the effects of her mantis mutagen, her eyes transform, becoming red and multifaceted. This change grants her darkvision to a range of 60 feet and the effects of deathwatch for the duration of her mutagen’s effects. If the crimson chymist already has darkvision as a benefit of her race, the range of her darkvision increases by 30 feet while using blood sight. Improved Arms of Achaekek : The claws granted by the arms of Achaekek discovery now function as primary weapons when the crimson chymist makes no attacks with manufactured weapons (the claws function as secondary weapons if the chymist attacks with a manufactured weapon). The damage die of the claws increases by one size category (to 1d6 for Medium crimson chymists), and attacks deal 1d4 points of bleed damage on a hit. A crimson chymist must be at least 10th level and have the arms of Achaekek discovery before selecting this discovery. Ingest Venom : Once per day as a standard action, the crimson chymist can ingest one dose of any poison without harming herself. The next time she imbibes her mutagen and uses her arms of Achaekek discovery, both claws are envenomed with a dose of the poison she ingested. An ingested venom remains latent in the alchemist’s system until she activates her arms of Achaekek discovery or until 24 hours have passed, whichever comes first. Additional doses of venom ingested during that time affect the alchemist normally. A crimson chymist must have the arms of Achaekek discovery before selecting this discovery.",
+          "resourceActions": [
+            {
+              "id": "crimson-arms-of-achaekek",
+              "label": "Manifest Arms of Achaekek",
+              "minimumLevel": 6,
+              "requiredOptionId": "crimson-arms-of-achaekek",
+              "requiredActiveEffectName": "Mantis Mutagen",
+              "confirmations": [{ "id": "unarmored-wrists-free", "label": "No armor or wrist-slot item is worn", "requiredForActivation": true }],
+              "activeEffect": {
+                "name": "Arms of Achaekek",
+                "targets": ["self"],
+                "bonus": 0,
+                "description": "Gain two 1d4 secondary claw attacks without losing use of your hands. Remove this tracker when Mantis Mutagen ends or armor or wrist-slot items are donned.",
+                "defaultRounds": 600,
+                "fixedRounds": false,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "crimson-blood-sight",
+              "label": "Activate Blood Sight",
+              "minimumLevel": 2,
+              "requiredOptionId": "crimson-blood-sight",
+              "requiredActiveEffectName": "Mantis Mutagen",
+              "activeEffect": {
+                "name": "Blood Sight",
+                "targets": ["self"],
+                "bonus": 0,
+                "description": "Gain darkvision 60 feet and deathwatch. If racial darkvision already exists, increase its range by 30 feet instead.",
+                "defaultRounds": 200,
+                "fixedRounds": false,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "crimson-improved-arms-of-achaekek",
+              "label": "Apply Improved Arms of Achaekek",
+              "minimumLevel": 10,
+              "requiredOptionId": "crimson-improved-arms-of-achaekek",
+              "requiredActiveEffectName": "Arms of Achaekek",
+              "activeEffect": {
+                "name": "Improved Arms of Achaekek",
+                "targets": ["self"],
+                "bonus": 0,
+                "description": "Claws deal 1d6 damage and 1d4 bleed; they are primary when no manufactured-weapon attacks are made and secondary otherwise.",
+                "defaultRounds": 1000,
+                "fixedRounds": false,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "crimson-ingest-venom",
+              "label": "Ingest venom",
+              "minimumLevel": 6,
+              "requiredOptionId": "crimson-ingest-venom",
+              "resourceId": "crimsonVenomIngestion",
+              "cost": 1,
+              "actionTypeByLevel": [{ "level": 6, "actionType": "standard" }],
+              "confirmations": [{ "id": "poison-dose", "label": "One poison dose is available and consumed", "requiredForActivation": true }],
+              "activeEffect": {
+                "name": "Latent Ingested Venom",
+                "targets": ["self"],
+                "bonus": 0,
+                "description": "One poison dose is safely stored for the next activation of Arms of Achaekek.",
+                "defaultRounds": 14400,
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "crimson-envenom-claws",
+              "label": "Apply ingested venom to claws",
+              "minimumLevel": 6,
+              "requiredOptionId": "crimson-ingest-venom",
+              "requiredActiveEffectName": "Latent Ingested Venom",
+              "removeActiveEffectName": "Latent Ingested Venom",
+              "confirmations": [{ "id": "arms-active", "label": "Mantis Mutagen and Arms of Achaekek are active", "requiredForActivation": true }],
+              "activeEffect": {
+                "name": "Envenomed Arms of Achaekek",
+                "targets": ["self"],
+                "bonus": 0,
+                "description": "Both claw attacks carry the stored poison dose. Remove this tracker after resolving the poisoned claw attacks.",
+                "defaultRounds": 999,
+                "fixedRounds": false,
+                "replaceExisting": true
+              }
+            }
+          ]
         },
         {
           "id": "alchemist-crimson-chymist-mantis-mutagen-su-1",
           "name": "Mantis Mutagen (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a crimson chymist discovers how to create a specialized mutagen that grants her aspects of a praying mantis. A mantis mutagen functions as an alchemist mutagen, save that it always enhances Dexterity and applies a penalty to Charisma. When imbibed, the mutagen causes the crimson chymist’s flesh to grow red chitinous plates on her body as natural armor and a row of small, cosmetic barbed hooks along her arms. This alters mutagen."
+          "summary": "At 1st level, a crimson chymist discovers how to create a specialized mutagen that grants her aspects of a praying mantis. A mantis mutagen functions as an alchemist mutagen, save that it always enhances Dexterity and applies a penalty to Charisma. When imbibed, the mutagen causes the crimson chymist’s flesh to grow red chitinous plates on her body as natural armor and a row of small, cosmetic barbed hooks along her arms. This alters mutagen.",
+          "resourceActions": [
+            {
+              "id": "crimson-mantis-mutagen",
+              "label": "Brew and consume mantis mutagen",
+              "actionTypeByLevel": [{ "level": 1, "actionType": "1-hour" }],
+              "activeEffect": {
+                "name": "Mantis Mutagen",
+                "targets": ["dexterity"],
+                "bonus": 4,
+                "description": "Gain +4 alchemical Dexterity, +2 natural armor, and −2 Charisma for 10 minutes per alchemist level.",
+                "defaultRounds": 100,
+                "defaultRoundsByLevel": [
+                  { "level": 1, "rounds": 100 }, { "level": 2, "rounds": 200 }, { "level": 3, "rounds": 300 }, { "level": 4, "rounds": 400 },
+                  { "level": 5, "rounds": 500 }, { "level": 6, "rounds": 600 }, { "level": 7, "rounds": 700 }, { "level": 8, "rounds": 800 },
+                  { "level": 9, "rounds": 900 }, { "level": 10, "rounds": 1000 }, { "level": 11, "rounds": 1100 }, { "level": 12, "rounds": 1200 },
+                  { "level": 13, "rounds": 1300 }, { "level": 14, "rounds": 1400 }, { "level": 15, "rounds": 1500 }, { "level": 16, "rounds": 1600 },
+                  { "level": 17, "rounds": 1700 }, { "level": 18, "rounds": 1800 }, { "level": 19, "rounds": 1900 }, { "level": 20, "rounds": 2000 }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "additionalEffectsByLevel": [
+                  { "minimumLevel": 1, "name": "Mantis Mutagen — natural armor", "target": "armorClass", "bonus": 2, "description": "Natural armor from Mantis Mutagen." },
+                  { "minimumLevel": 1, "name": "Mantis Mutagen — Charisma penalty", "target": "charisma", "bonus": -2, "description": "Charisma penalty from Mantis Mutagen." }
+                ]
+              }
+            }
+          ]
         }
       ]
     }
+  ],
+  "resourceAdjustments": [
+    { "resourceId": "crimsonVenomIngestion", "label": "Ingest Venom", "unit": "use", "operation": "replace", "minimumLevel": 6, "base": 1, "maximum": 1, "refreshCadence": "day", "requiredOptionId": "crimson-ingest-venom" }
+  ],
+  "optionGroupAugmentations": [
+    { "targetGroupId": "alchemist-discoveries", "sourceGroupId": "crimson-chymist-discoveries", "minimumFeatureLevel": 2 }
   ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Crimson%20Chymist"
-  }
+  },
+  "mechanicalCoverage": "full",
+  "mechanicalNotes": [
+    "Mantis Mutagen applies its Dexterity, natural armor, Charisma penalty, and 10-minute-per-level duration. Four archetype-only discoveries augment normal discovery slots with published level and dependency requirements. Their claw, Blood Sight, stored-venom, and envenomed-claw workflows are option-gated, stateful, and persistent."
+  ]
 }

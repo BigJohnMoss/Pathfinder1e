@@ -1,0 +1,42 @@
+{
+  "id": "crimson-chymist-discoveries",
+  "name": "Crimson Chymist Discoveries",
+  "classIds": ["alchemist"],
+  "optionDefaults": {
+    "groupId": "crimson-chymist-discoveries",
+    "classIds": ["alchemist"],
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Crimson%20Chymist"
+    }
+  },
+  "options": [
+    {
+      "id": "crimson-arms-of-achaekek",
+      "name": "Arms of Achaekek",
+      "minimumLevel": 6,
+      "benefit": "While using mantis mutagen without armor or wrist-slot items, gain two 1d4 secondary claw attacks."
+    },
+    {
+      "id": "crimson-blood-sight",
+      "name": "Blood Sight",
+      "minimumLevel": 2,
+      "benefit": "While using mantis mutagen, gain darkvision 60 feet and deathwatch; existing racial darkvision increases by 30 feet."
+    },
+    {
+      "id": "crimson-improved-arms-of-achaekek",
+      "name": "Improved Arms of Achaekek",
+      "minimumLevel": 10,
+      "prerequisites": [{ "type": "feature", "id": "crimson-arms-of-achaekek" }],
+      "benefit": "Arms of Achaekek claws become 1d6 primary natural weapons when not using manufactured weapons and deal 1d4 bleed."
+    },
+    {
+      "id": "crimson-ingest-venom",
+      "name": "Ingest Venom",
+      "minimumLevel": 6,
+      "prerequisites": [{ "type": "feature", "id": "crimson-arms-of-achaekek" }],
+      "benefit": "Once per day, safely store one ingested poison for up to 24 hours and apply it to both Arms of Achaekek claws when the mutagen is used."
+    }
+  ]
+}
