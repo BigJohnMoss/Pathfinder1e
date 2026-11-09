@@ -1,0 +1,22 @@
+{
+  "id": "bogborn-alchemist-discoveries",
+  "name": "Bogborn Alchemist Discoveries",
+  "classIds": ["alchemist"],
+  "optionDefaults": {
+    "groupId": "bogborn-alchemist-discoveries",
+    "classIds": ["alchemist"],
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Bogborn%20Alchemist"
+    }
+  },
+  "options": [
+    {
+      "id": "bogborn-toxic-skin",
+      "name": "Toxic Skin",
+      "minimumLevel": 2,
+      "benefit": "Select the Grippli toxic skin racial trait in place of an alchemical discovery."
+    }
+  ]
+}

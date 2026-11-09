@@ -4,10 +4,6 @@
   "classId": "alchemist",
   "summary": "(Grippli Only) Some grippli alchemists are particularly attuned to the swamps and the dangerous creatures that inhabit them; these serve as their laboratories and research subjects, respectively.",
   "replacesText": "Class Skills; Throw Anything",
-  "mechanicalCoverage": "partial",
-  "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ],
   "replacements": [
     {
       "featureIds": [
@@ -26,7 +22,33 @@
           "name": "Amphibious Mutagen (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, when a bogborn alchemist uses a mutagen, he may choose to have his mutagen form enhanced for aquatic movement. This gives him the amphibious special quality, his feet elongate, and the webbing between his fingers and toes expands, granting a swim speed of 15 feet. This replaces throw anything."
+          "summary": "At 1st level, when a bogborn alchemist uses a mutagen, he may choose to have his mutagen form enhanced for aquatic movement. This gives him the amphibious special quality, his feet elongate, and the webbing between his fingers and toes expands, granting a swim speed of 15 feet. This replaces throw anything.",
+          "resourceActions": [
+            {
+              "id": "bogborn-amphibious-mutagen",
+              "label": "Use amphibious mutagen form",
+              "actionTypeByLevel": [{ "level": 1, "actionType": "standard" }],
+              "confirmations": [
+                { "id": "mutagen-available", "label": "A prepared mutagen is available and consumed", "requiredForActivation": true }
+              ],
+              "activeEffect": {
+                "name": "Amphibious Mutagen",
+                "targets": ["self"],
+                "bonus": 0,
+                "description": "Gain the amphibious special quality and a 15-foot swim speed in addition to the selected mutagen's normal effects.",
+                "defaultRounds": 100,
+                "defaultRoundsByLevel": [
+                  { "level": 1, "rounds": 100 }, { "level": 2, "rounds": 200 }, { "level": 3, "rounds": 300 }, { "level": 4, "rounds": 400 },
+                  { "level": 5, "rounds": 500 }, { "level": 6, "rounds": 600 }, { "level": 7, "rounds": 700 }, { "level": 8, "rounds": 800 },
+                  { "level": 9, "rounds": 900 }, { "level": 10, "rounds": 1000 }, { "level": 11, "rounds": 1100 }, { "level": 12, "rounds": 1200 },
+                  { "level": 13, "rounds": 1300 }, { "level": 14, "rounds": 1400 }, { "level": 15, "rounds": 1500 }, { "level": 16, "rounds": 1600 },
+                  { "level": 17, "rounds": 1700 }, { "level": 18, "rounds": 1800 }, { "level": 19, "rounds": 1900 }, { "level": 20, "rounds": 2000 }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            }
+          ]
         },
         {
           "id": "alchemist-bogborn-alchemist-discovery-options-1",
@@ -46,6 +68,9 @@
     }
   ],
   "classSkillAdditions": ["Swim"],
+  "optionGroupAugmentations": [
+    { "targetGroupId": "alchemist-discoveries", "sourceGroupId": "bogborn-alchemist-discoveries", "minimumFeatureLevel": 2 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
@@ -53,5 +78,9 @@
   },
   "manualRequirements": [
     "Restricted to Grippli characters; that ancestry is not yet available in this builder."
+  ],
+  "mechanicalCoverage": "full",
+  "mechanicalNotes": [
+    "Amphibious Mutagen tracks mutagen consumption, its normal 10-minute-per-level duration, the amphibious quality, and 15-foot swim speed. Toxic Skin is available as an archetype-only augmentation to normal discovery slots. Grippli eligibility remains advisory until that ancestry enters the builder."
   ]
 }
