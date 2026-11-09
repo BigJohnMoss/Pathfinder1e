@@ -23,7 +23,26 @@
           "name": "Divine Epiphany (Su)",
           "level": 8,
           "type": "archetype",
-          "summary": "At 8th level, once per day, a sanctified rogue can peer into the immediate future and predict the results of a specific action as if she had cast an augury spell. The caster level of this spell is equal to the sanctified rogue’s rogue class level. This ability replaces improved uncanny dodge."
+          "summary": "At 8th level, once per day, a sanctified rogue can peer into the immediate future and predict the results of a specific action as if she had cast an augury spell. The caster level of this spell is equal to the sanctified rogue’s rogue class level. This ability replaces improved uncanny dodge.",
+          "resourceActions": [
+            {
+              "id": "sanctified-rogue-divine-epiphany",
+              "label": "Use Divine Epiphany",
+              "spellLikeAbility": {
+                "spellId": "augury",
+                "spellName": "Augury",
+                "cadence": "day",
+                "kind": "spell-equivalent"
+              },
+              "resourceId": "divineEpiphany",
+              "cost": 1,
+              "minimumLevel": 8,
+              "actionTypeByLevel": [
+                { "level": 8, "actionType": "1-minute" }
+              ],
+              "summary": "Predict whether a specific action in the near future will bring good or bad results, as augury, using rogue level as caster level."
+            }
+          ]
         },
         {
           "id": "rogue-sanctified-rogue-rogue-talents-1",
@@ -47,8 +66,21 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Sanctified%20Rogue"
   },
-  "mechanicalCoverage": "partial",
+  "resourceAdjustments": [
+    {
+      "resourceId": "divineEpiphany",
+      "label": "Divine Epiphany",
+      "unit": "use",
+      "operation": "add",
+      "minimumLevel": 8,
+      "base": 1,
+      "minimum": 0,
+      "maximum": 1,
+      "refreshCadence": "day"
+    }
+  ],
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Divine Purpose applies its sacred Fortitude and Will bonuses automatically. Divine Epiphany exposes its one-minute augury-equivalent action at level 8, tracks the once-per-day use, and uses rogue level as the published caster level."
   ]
 }
