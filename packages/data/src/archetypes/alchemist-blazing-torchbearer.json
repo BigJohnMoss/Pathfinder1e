@@ -4,10 +4,6 @@
   "classId": "alchemist",
   "summary": "The blazing torchbearer is especially adept at manipulating flames of all kinds.",
   "replacesText": "Brew Potion; Poison Use; 4th-level Discovery",
-  "mechanicalCoverage": "partial",
-  "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ],
   "replacements": [
     {
       "featureIds": [
@@ -20,28 +16,92 @@
           "name": "Everburning Flame (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "Any torch held by a blazing torchbearer is considered to be an everburning torch , although it still sheds heat and can be used as a weapon. In addition, a blazing torchbearer can cast spark as a spell-like ability at will. This ability replaces Brew Potion."
+          "summary": "Any torch held by a blazing torchbearer is considered to be an everburning torch , although it still sheds heat and can be used as a weapon. In addition, a blazing torchbearer can cast spark as a spell-like ability at will. This ability replaces Brew Potion.",
+          "resourceActions": [
+            {
+              "id": "blazing-torchbearer-hold-everburning-torch",
+              "label": "Hold everburning torch",
+              "activeEffect": {
+                "name": "Everburning Held Torch",
+                "targets": ["area"],
+                "bonus": 0,
+                "description": "The held torch functions as an everburning torch while retaining heat and remaining usable as a weapon.",
+                "defaultRounds": 999999,
+                "fixedRounds": false,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "blazing-torchbearer-spark",
+              "label": "Cast Spark",
+              "actionTypeByLevel": [{ "level": 1, "actionType": "standard" }],
+              "spellLikeAbility": { "spellId": "spark", "spellName": "Spark", "cadence": "at-will", "kind": "spell-like" },
+              "summary": "Cast spark as an at-will spell-like ability using Alchemist level as caster level."
+            }
+          ]
         },
         {
           "id": "alchemist-blazing-torchbearer-intense-light-ex-2",
           "name": "Intense Light (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a blazing torchbearer has mastered lighting and holding a torch to the point that it sheds more light than those carried by his peers. The radius of normal and increased illumination of any torch held by a blazing torchbearer increases by 10 feet. Once per day as a standard action, the blazing torchbearer can create a brilliant flash of light that blinds everyone within 10 feet (including the torchbearer) for 1 round. This ability replaces poison use."
+          "summary": "At 2nd level, a blazing torchbearer has mastered lighting and holding a torch to the point that it sheds more light than those carried by his peers. The radius of normal and increased illumination of any torch held by a blazing torchbearer increases by 10 feet. Once per day as a standard action, the blazing torchbearer can create a brilliant flash of light that blinds everyone within 10 feet (including the torchbearer) for 1 round. This ability replaces poison use.",
+          "resourceActions": [
+            {
+              "id": "blazing-torchbearer-brilliant-flash",
+              "label": "Create brilliant flash",
+              "resourceId": "brilliantFlash",
+              "cost": 1,
+              "actionTypeByLevel": [{ "level": 2, "actionType": "standard" }],
+              "activeEffect": {
+                "name": "Brilliant Flash Blindness",
+                "targets": ["self", "allies", "enemy"],
+                "bonus": 0,
+                "description": "Blinded by the brilliant flash within 10 feet for 1 round, including the torchbearer.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "applyToAllTargets": true,
+                "replaceExisting": true
+              }
+            }
+          ]
         },
         {
           "id": "alchemist-blazing-torchbearer-explosive-torch-ex-4",
           "name": "Explosive Torch (Ex)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, as a standard action, a blazing torchbearer can drop a special blend of explosive powders onto his torch before using it as a weapon. His next successful melee attack with the torch deals an additional 2d6 points of fire damage and sets the target on fire. This attack must be made within 1d4 rounds or the torch prematurely explodes at the end of the blazing torchbearer’s turn, dealing damage to the blazing torchbearer and setting him on fire. This ability replaces the alchemist’s 4th-level discovery."
+          "summary": "At 4th level, as a standard action, a blazing torchbearer can drop a special blend of explosive powders onto his torch before using it as a weapon. His next successful melee attack with the torch deals an additional 2d6 points of fire damage and sets the target on fire. This attack must be made within 1d4 rounds or the torch prematurely explodes at the end of the blazing torchbearer’s turn, dealing damage to the blazing torchbearer and setting him on fire. This ability replaces the alchemist’s 4th-level discovery.",
+          "resourceActions": [
+            {
+              "id": "blazing-torchbearer-prime-explosive-torch",
+              "label": "Prime explosive torch",
+              "actionTypeByLevel": [{ "level": 4, "actionType": "standard" }],
+              "confirmations": [{ "id": "torch-held", "label": "A lit torch is held and the explosive powders are available", "requiredForActivation": true }],
+              "activeEffect": {
+                "name": "Primed Explosive Torch",
+                "targets": ["self"],
+                "bonus": 0,
+                "description": "The next successful melee torch attack deals +2d6 fire damage and sets the target on fire. If unused when this countdown expires, the torchbearer takes the 2d6 fire damage and catches fire.",
+                "durationDice": { "count": 1, "sides": 4 },
+                "replaceExisting": true
+              }
+            }
+          ]
         }
       ]
     }
+  ],
+  "resourceAdjustments": [
+    { "resourceId": "brilliantFlash", "label": "Brilliant Flash", "unit": "use", "operation": "replace", "minimumLevel": 2, "base": 1, "maximum": 1, "refreshCadence": "day" }
   ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Blazing%20Torchbearer"
-  }
+  },
+  "mechanicalCoverage": "full",
+  "mechanicalNotes": [
+    "Held torches track their everburning illumination and weapon status, and Spark is an at-will spell-like action. Intense Light adds 10 feet to torch illumination and tracks its once-daily all-target blindness. Explosive Torch rolls its 1d4-round countdown and records both the successful-hit and premature-explosion outcomes."
+  ]
 }
