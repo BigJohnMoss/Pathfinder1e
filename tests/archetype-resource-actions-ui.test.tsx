@@ -27,6 +27,7 @@ const wingedMarauder = JSON.parse(readFileSync(new URL("../packages/data/src/arc
 const bogbornAlchemist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-bogborn-alchemist.json", import.meta.url), "utf8")) as CharacterArchetype;
 const crimsonChymist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-crimson-chymist.json", import.meta.url), "utf8")) as CharacterArchetype;
 const blazingTorchbearer = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-blazing-torchbearer.json", import.meta.url), "utf8")) as CharacterArchetype;
+const iceChemist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-ice-chemist.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -415,4 +416,40 @@ test("Blazing Torchbearer tracks its flash and randomized explosive-torch countd
   assert.equal(effects.at(-1)?.name, "Primed Explosive Torch");
   assert.equal(effects.at(-1)?.roundsRemaining, 1);
   assert.match(effects.at(-1)?.description ?? "", /\+2d6 fire damage/i);
+});
+
+test("Ice Chemist resolves icy and frost bombs and gates its learned fire bombs", async () => {
+  const used: number[] = [];
+  const applied = applyArchetype(alchemist, iceChemist);
+  const properties = {
+    level: 9,
+    className: applied.name,
+    features: featuresThroughLevel(applied, 9),
+    classLevels: { alchemist: 9 },
+    abilityModifiers: { dexterity: 3, intelligence: 4 },
+    baseAttackBonus: 6,
+    dailyResources: [{ id: "bombs", label: "Bomb", unit: "use", maximum: 13, used: 0, onUsedChange: (value: number) => used.push(value) }],
+  };
+  const view = render(<ClassFeatures {...properties} />);
+  assert.equal(screen.queryByRole("button", { name: "Throw learned fire bomb" }), null);
+  const setup = userEvent.setup();
+  const originalRandom = Math.random;
+  Math.random = () => 0.99;
+  try {
+    await setup.click(screen.getByRole("button", { name: "Throw icy bomb" }));
+  } finally {
+    Math.random = originalRandom;
+  }
+  let frostRoll = 0;
+  Math.random = () => frostRoll++ < 6 ? 0.99 : 0;
+  try {
+    await setup.click(screen.getByRole("button", { name: "Throw frost bomb" }));
+  } finally {
+    Math.random = originalRandom;
+  }
+  assert.deepEqual(used, [1, 1]);
+  assert.match(screen.getByLabelText("Throw icy bomb result").textContent ?? "", /5d6.*\+ 4.*cold damage/i);
+  assert.match(screen.getByLabelText("Throw frost bomb result").textContent ?? "", /Frost Bomb Staggered applied for 1 round/i);
+  view.rerender(<ClassFeatures {...properties} selectedOptionIds={["ice-chemist-fire-bombs"]} />);
+  assert.ok(screen.getByRole("button", { name: "Throw learned fire bomb" }));
 });
