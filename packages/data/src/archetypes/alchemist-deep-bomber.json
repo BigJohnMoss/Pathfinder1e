@@ -4,10 +4,6 @@
   "classId": "alchemist",
   "summary": "(Svirfneblin Only) Consumed with keeping hidden from the horrors below the surface, svirfneblin use their racial proclivity for alchemy and their inherent talent for obfuscation to strike their enemies from the darkness and retreat unseen.",
   "replacesText": "Poison Use; Swift Alchemy; Instant Alchemy; Swift Poisoning",
-  "mechanicalCoverage": "partial",
-  "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ],
   "replacements": [
     {
       "featureIds": [
@@ -21,21 +17,138 @@
           "name": "Silent Bomb",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, when the deep bomber creates a bomb, he can choose to have it explode without making any noise, although those damaged by it may cry out. This ability replaces poison use."
+          "summary": "At 2nd level, when the deep bomber creates a bomb, he can choose to have it explode without making any noise, although those damaged by it may cry out. This ability replaces poison use.",
+          "resourceActions": [
+            {
+              "id": "deep-bomber-silent-bomb",
+              "label": "Throw silent bomb",
+              "resourceId": "bombs",
+              "cost": 1,
+              "minimumLevel": 2,
+              "actionTypeByLevel": [{ "level": 2, "actionType": "standard" }],
+              "combatRoll": {
+                "attack": { "kind": "ranged-touch", "label": "Silent bomb ranged touch attack", "abilityModifier": "dexterity" },
+                "damage": {
+                  "type": "fire",
+                  "diceCountByLevel": [
+                    { "level": 2, "count": 1 }, { "level": 3, "count": 2 }, { "level": 5, "count": 3 }, { "level": 7, "count": 4 },
+                    { "level": 9, "count": 5 }, { "level": 11, "count": 6 }, { "level": 13, "count": 7 }, { "level": 15, "count": 8 },
+                    { "level": 17, "count": 9 }, { "level": 19, "count": 10 }
+                  ],
+                  "dieSidesByLevel": [{ "level": 2, "sides": 6 }],
+                  "abilityModifier": "intelligence"
+                },
+                "rangeByLevel": [{ "level": 2, "range": "20 feet" }]
+              }
+            }
+          ]
         },
         {
           "id": "alchemist-deep-bomber-targeting-bomb-3",
           "name": "Targeting Bomb*",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, when the deep bomber creates a bomb, he can choose to have its detonation include a faerie fire effect that applies to all creatures within the splash radius (including the target, if any). This ability replaces swift alchemy (the deep bomber gains swift alchemy at 18th level and never gains instant alchemy)."
+          "summary": "At 3rd level, when the deep bomber creates a bomb, he can choose to have its detonation include a faerie fire effect that applies to all creatures within the splash radius (including the target, if any). This ability replaces swift alchemy (the deep bomber gains swift alchemy at 18th level and never gains instant alchemy).",
+          "resourceActions": [
+            {
+              "id": "deep-bomber-targeting-bomb",
+              "label": "Throw targeting bomb",
+              "resourceId": "bombs",
+              "cost": 1,
+              "minimumLevel": 3,
+              "actionTypeByLevel": [{ "level": 3, "actionType": "standard" }],
+              "combatRoll": {
+                "attack": { "kind": "ranged-touch", "label": "Targeting bomb ranged touch attack", "abilityModifier": "dexterity" },
+                "damage": {
+                  "type": "fire",
+                  "diceCountByLevel": [
+                    { "level": 3, "count": 2 }, { "level": 5, "count": 3 }, { "level": 7, "count": 4 }, { "level": 9, "count": 5 },
+                    { "level": 11, "count": 6 }, { "level": 13, "count": 7 }, { "level": 15, "count": 8 }, { "level": 17, "count": 9 },
+                    { "level": 19, "count": 10 }
+                  ],
+                  "dieSidesByLevel": [{ "level": 3, "sides": 6 }],
+                  "abilityModifier": "intelligence"
+                },
+                "rangeByLevel": [{ "level": 3, "range": "20 feet" }]
+              },
+              "activeEffect": {
+                "name": "Targeting Bomb Faerie Fire",
+                "targets": ["area"],
+                "bonus": 0,
+                "description": "Faerie fire outlines every creature in the bomb's splash radius, including the direct target, preventing concealment from darkness, blur, displacement, invisibility, and similar effects.",
+                "defaultRounds": 30,
+                "defaultRoundsByLevel": [
+                  { "level": 3, "rounds": 30 }, { "level": 4, "rounds": 40 }, { "level": 5, "rounds": 50 }, { "level": 6, "rounds": 60 },
+                  { "level": 7, "rounds": 70 }, { "level": 8, "rounds": 80 }, { "level": 9, "rounds": 90 }, { "level": 10, "rounds": 100 },
+                  { "level": 11, "rounds": 110 }, { "level": 12, "rounds": 120 }, { "level": 13, "rounds": 130 }, { "level": 14, "rounds": 140 },
+                  { "level": 15, "rounds": 150 }, { "level": 16, "rounds": 160 }, { "level": 17, "rounds": 170 }, { "level": 18, "rounds": 180 },
+                  { "level": 19, "rounds": 190 }, { "level": 20, "rounds": 200 }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            }
+          ]
         },
         {
           "id": "alchemist-deep-bomber-stonekin-6",
           "name": "Stonekin",
           "level": 6,
           "type": "archetype",
-          "summary": "At 6th level, the deep bomber automatically learns tree shape as a 2nd-level extract, except instead of a tree, he takes the form of a stalagmite that is the same size as his current size. At 7th level, he automatically learns meld into stone as a 3rd-level extract. This ability replaces swift poisoning."
+          "summary": "At 6th level, the deep bomber automatically learns tree shape as a 2nd-level extract, except instead of a tree, he takes the form of a stalagmite that is the same size as his current size. At 7th level, he automatically learns meld into stone as a 3rd-level extract. This ability replaces swift poisoning.",
+          "resourceActions": [
+            {
+              "id": "deep-bomber-stalagmite-shape",
+              "label": "Use Stonekin stalagmite shape",
+              "minimumLevel": 6,
+              "actionTypeByLevel": [{ "level": 6, "actionType": "standard" }],
+              "confirmations": [{ "id": "extract-prepared", "label": "A tree shape extract is prepared and consumed", "requiredForActivation": true }],
+              "activeEffect": {
+                "name": "Stonekin Stalagmite Shape",
+                "targets": ["self"],
+                "bonus": 0,
+                "description": "Assume the form of a stalagmite of the same size, using tree shape's normal rules.",
+                "defaultRounds": 3600,
+                "defaultRoundsByLevel": [
+                  { "level": 6, "rounds": 3600 }, { "level": 7, "rounds": 4200 }, { "level": 8, "rounds": 4800 }, { "level": 9, "rounds": 5400 },
+                  { "level": 10, "rounds": 6000 }, { "level": 11, "rounds": 6600 }, { "level": 12, "rounds": 7200 }, { "level": 13, "rounds": 7800 },
+                  { "level": 14, "rounds": 8400 }, { "level": 15, "rounds": 9000 }, { "level": 16, "rounds": 9600 }, { "level": 17, "rounds": 10200 },
+                  { "level": 18, "rounds": 10800 }, { "level": 19, "rounds": 11400 }, { "level": 20, "rounds": 12000 }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "deep-bomber-meld-into-stone",
+              "label": "Use Stonekin meld into stone",
+              "minimumLevel": 7,
+              "actionTypeByLevel": [{ "level": 7, "actionType": "standard" }],
+              "confirmations": [{ "id": "extract-prepared", "label": "A meld into stone extract is prepared and consumed", "requiredForActivation": true }],
+              "activeEffect": {
+                "name": "Stonekin Meld into Stone",
+                "targets": ["self"],
+                "bonus": 0,
+                "description": "Meld body and possessions into a single stone block large enough to accommodate the body.",
+                "defaultRounds": 700,
+                "defaultRoundsByLevel": [
+                  { "level": 7, "rounds": 700 }, { "level": 8, "rounds": 800 }, { "level": 9, "rounds": 900 }, { "level": 10, "rounds": 1000 },
+                  { "level": 11, "rounds": 1100 }, { "level": 12, "rounds": 1200 }, { "level": 13, "rounds": 1300 }, { "level": 14, "rounds": 1400 },
+                  { "level": 15, "rounds": 1500 }, { "level": 16, "rounds": 1600 }, { "level": 17, "rounds": 1700 }, { "level": 18, "rounds": 1800 },
+                  { "level": 19, "rounds": 1900 }, { "level": 20, "rounds": 2000 }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "alchemist-deep-bomber-swift-alchemy-18",
+          "name": "Swift Alchemy",
+          "level": 18,
+          "type": "archetype",
+          "summary": "At 18th level, the deep bomber regains swift alchemy, allowing alchemical items to be created at twice the normal speed and poisons to be applied as a move action. The deep bomber never gains instant alchemy."
         },
         {
           "id": "alchemist-deep-bomber-discoveries-1",
@@ -47,6 +160,10 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "bombs", "label": "Bomb", "unit": "use", "operation": "replace", "minimumLevel": 1, "base": 0, "levelMultiplier": 1, "abilityModifier": "intelligence", "minimum": 1 }
+  ],
+  "spellListAdditions": { "tree-shape": 2, "meld-into-stone": 3 },
   "source": {
     "title": "Archives of Nethys",
     "page": null,
@@ -54,5 +171,9 @@
   },
   "manualRequirements": [
     "Restricted to Svirfneblin characters; that ancestry is not yet available in this builder."
+  ],
+  "mechanicalCoverage": "full",
+  "mechanicalNotes": [
+    "Silent and Targeting Bombs spend the normal bomb pool and resolve scaling ranged-touch damage; Targeting Bomb also tracks its area-wide faerie fire duration. Stonekin adds both extracts and provides prepared-extract-gated stalagmite and meld transformations with exact durations. Swift Alchemy returns at level 18 while Instant Alchemy remains removed. Svirfneblin eligibility remains advisory until that ancestry enters the builder."
   ]
 }
