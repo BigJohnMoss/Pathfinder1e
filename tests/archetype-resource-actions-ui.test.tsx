@@ -26,6 +26,7 @@ const cloneMaster = JSON.parse(readFileSync(new URL("../packages/data/src/archet
 const wingedMarauder = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-winged-marauder.json", import.meta.url), "utf8")) as CharacterArchetype;
 const bogbornAlchemist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-bogborn-alchemist.json", import.meta.url), "utf8")) as CharacterArchetype;
 const crimsonChymist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-crimson-chymist.json", import.meta.url), "utf8")) as CharacterArchetype;
+const blazingTorchbearer = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-blazing-torchbearer.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -382,4 +383,36 @@ test("Crimson Chymist applies mantis mutagen and gates its discovery workflows",
   assert.equal(effects.at(-1)?.name, "Arms of Achaekek");
   view.rerender(<ClassFeatures {...properties} activeEffects={[...effects]} />);
   assert.equal(screen.getByRole("button", { name: "Apply Improved Arms of Achaekek" }).hasAttribute("disabled"), false);
+});
+
+test("Blazing Torchbearer tracks its flash and randomized explosive-torch countdown", async () => {
+  const effects: ActiveEffect[] = [];
+  const used: number[] = [];
+  const applied = applyArchetype(alchemist, blazingTorchbearer);
+  render(<ClassFeatures
+    level={6}
+    className={applied.name}
+    features={featuresThroughLevel(applied, 6)}
+    classLevels={{ alchemist: 6 }}
+    dailyResources={[{ id: "brilliantFlash", label: "Brilliant Flash", unit: "use", maximum: 1, used: 0, onUsedChange: (value) => used.push(value) }]}
+    activeEffects={effects}
+    onAddEffect={(effect) => effects.push(effect)}
+  />);
+  const setup = userEvent.setup();
+  await setup.click(screen.getByRole("button", { name: "Create brilliant flash" }));
+  assert.deepEqual(used, [1]);
+  assert.deepEqual(effects.slice(0, 3).map((effect) => effect.target), ["self", "allies", "enemy"]);
+  const prime = screen.getByRole("button", { name: "Prime explosive torch" });
+  assert.equal(prime.hasAttribute("disabled"), true);
+  await setup.click(screen.getByLabelText("A lit torch is held and the explosive powders are available"));
+  const originalRandom = Math.random;
+  Math.random = () => 0;
+  try {
+    await setup.click(prime);
+  } finally {
+    Math.random = originalRandom;
+  }
+  assert.equal(effects.at(-1)?.name, "Primed Explosive Torch");
+  assert.equal(effects.at(-1)?.roundsRemaining, 1);
+  assert.match(effects.at(-1)?.description ?? "", /\+2d6 fire damage/i);
 });
