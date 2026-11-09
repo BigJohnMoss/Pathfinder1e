@@ -270,7 +270,7 @@ export interface ClassFeatureOccurrence {
     };
     modeLabel?: string;
     textInputLabel?: string;
-    modes?: Array<{ id: string; label: string; summary?: string; minimumLevel?: number; maximumLevel?: number; defaultRounds?: number; featCount?: number; variableFeatCount?: boolean; actionType?: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" | "1-hour" | "24-hour"; requiredOptionId?: string; activeEffects?: Array<{ target: ActiveEffectTarget; bonus: number; bonusByLevel?: Array<{ level: number; bonus: number }>; label: string; description: string; fastHealing?: number; skillIds?: string[] }> }>;
+    modes?: Array<{ id: string; label: string; summary?: string; minimumLevel?: number; maximumLevel?: number; defaultRounds?: number; featCount?: number; variableFeatCount?: boolean; actionType?: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" | "1-hour" | "24-hour" | "1-week"; requiredOptionId?: string; activeEffects?: Array<{ target: ActiveEffectTarget; bonus: number; bonusByLevel?: Array<{ level: number; bonus: number }>; label: string; description: string; fastHealing?: number; skillIds?: string[] }> }>;
     featSelection?: {
       label: string;
       featType: string;
@@ -279,7 +279,7 @@ export interface ClassFeatureOccurrence {
       countByLevel: Array<{ level: number; count: number }>;
       minimumCount?: number;
     };
-    actionTypeByLevel?: Array<{ level: number; actionType: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" | "1-hour" | "24-hour" }>;
+    actionTypeByLevel?: Array<{ level: number; actionType: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" | "1-hour" | "24-hour" | "1-week" }>;
     recipientLabel?: string;
     recipients?: Array<{ id: string; label: string }>;
     companionRosterFeatureId?: string;

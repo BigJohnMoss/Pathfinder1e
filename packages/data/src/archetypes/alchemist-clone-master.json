@@ -4,10 +4,6 @@
   "classId": "alchemist",
   "summary": "Clone masters practice duplicating existing creatures in order to better understand how to create new life.",
   "replacesText": "Bomb; Poison Resistance +6; Poison Immunity",
-  "mechanicalCoverage": "partial",
-  "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ],
   "replacements": [
     {
       "featureIds": [
@@ -21,7 +17,30 @@
           "name": "Bomb",
           "level": 1,
           "type": "archetype",
-          "summary": "A clone master’s bombs deal damage one die step lower than normal (regular bombs deal d4s, concussive bombs deal 1d3s, and so on). This otherwise functions as and replaces the standard alchemist bomb class feature."
+          "summary": "A clone master’s bombs deal damage one die step lower than normal (regular bombs deal d4s, concussive bombs deal 1d3s, and so on). This otherwise functions as and replaces the standard alchemist bomb class feature.",
+          "resourceActions": [
+            {
+              "id": "clone-master-throw-bomb",
+              "label": "Throw reduced-die bomb",
+              "resourceId": "bombs",
+              "cost": 1,
+              "actionTypeByLevel": [{ "level": 1, "actionType": "standard" }],
+              "combatRoll": {
+                "attack": { "kind": "ranged-touch", "label": "Bomb ranged touch attack", "abilityModifier": "dexterity" },
+                "damage": {
+                  "type": "fire",
+                  "diceCountByLevel": [
+                    { "level": 1, "count": 1 }, { "level": 3, "count": 2 }, { "level": 5, "count": 3 }, { "level": 7, "count": 4 },
+                    { "level": 9, "count": 5 }, { "level": 11, "count": 6 }, { "level": 13, "count": 7 }, { "level": 15, "count": 8 },
+                    { "level": 17, "count": 9 }, { "level": 19, "count": 10 }
+                  ],
+                  "dieSidesByLevel": [{ "level": 1, "sides": 4 }],
+                  "abilityModifier": "intelligence"
+                },
+                "rangeByLevel": [{ "level": 1, "range": "20 feet" }]
+              }
+            }
+          ]
         },
         {
           "id": "alchemist-clone-master-lesser-simulacrum-7",
@@ -35,7 +54,35 @@
           "name": "Rebirth",
           "level": 8,
           "type": "archetype",
-          "summary": "At 8th level, a clone master can prepare a clone of himself that awakens if he is slain. Creating the clone costs 5,000 gp, takes 1 week of work, and requires 3 additional weeks for the clone to grow to maturity. If he dies, the clone awakens as if the alchemist had used the clone spell on himself. He can have one inert of himself at a time. Unused clones created by a clone master do not rot. This ability replaces poison resistance +6 and poison immunity."
+          "summary": "At 8th level, a clone master can prepare a clone of himself that awakens if he is slain. Creating the clone costs 5,000 gp, takes 1 week of work, and requires 3 additional weeks for the clone to grow to maturity. If he dies, the clone awakens as if the alchemist had used the clone spell on himself. He can have one inert of himself at a time. Unused clones created by a clone master do not rot. This ability replaces poison resistance +6 and poison immunity.",
+          "resourceActions": [
+            {
+              "id": "clone-master-prepare-rebirth-clone",
+              "label": "Record mature rebirth clone",
+              "actionTypeByLevel": [{ "level": 8, "actionType": "1-week" }],
+              "confirmations": [
+                { "id": "paid-cost", "label": "5,000 gp creation cost has been paid", "requiredForActivation": true },
+                { "id": "completed-growth", "label": "1 week of work and 3 weeks of growth are complete", "requiredForActivation": true }
+              ],
+              "activeEffect": {
+                "name": "Mature Rebirth Clone",
+                "targets": ["self"],
+                "bonus": 0,
+                "description": "One inert clone is mature and will awaken if the clone master dies, functioning as clone. Recording another replaces this one; unused clones do not rot.",
+                "defaultRounds": 999999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            },
+            {
+              "id": "clone-master-awaken-rebirth-clone",
+              "label": "Awaken rebirth clone after death",
+              "minimumLevel": 8,
+              "requiredActiveEffectName": "Mature Rebirth Clone",
+              "removeActiveEffectName": "Mature Rebirth Clone",
+              "summary": "Consume the prepared clone and resolve rebirth as the clone spell."
+            }
+          ]
         },
         {
           "id": "alchemist-clone-master-simulacrum-13",
@@ -61,9 +108,30 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "bombs",
+      "label": "Bomb",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelMultiplier": 1,
+      "abilityModifier": "intelligence",
+      "minimum": 1
+    }
+  ],
+  "spellListAdditions": {
+    "simulacrum": 5,
+    "clone": 6
+  },
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Clone%20Master"
-  }
+  },
+  "mechanicalCoverage": "full",
+  "mechanicalNotes": [
+    "Clone Master bombs spend the level-plus-Intelligence bomb pool and use the published d4 damage progression. Rebirth records its cost and four-week completion prerequisites, persists one mature clone, replaces older clones, and consumes the state when death awakens it. Catalogued simulacrum and clone extracts are added at their published levels; lesser simulacrum remains visible in the feature text because it is not present in the spell catalog."
+  ]
 }

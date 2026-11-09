@@ -22,6 +22,7 @@ const concocter = JSON.parse(readFileSync(new URL("../packages/data/src/archetyp
 const dragonbloodChymist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-dragonblood-chymist.json", import.meta.url), "utf8")) as CharacterArchetype;
 const plagueBringer = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-plague-bringer.json", import.meta.url), "utf8")) as CharacterArchetype;
 const alchemicalTrapper = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-alchemical-trapper.json", import.meta.url), "utf8")) as CharacterArchetype;
+const cloneMaster = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-clone-master.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -266,4 +267,43 @@ test("Alchemical Trapper spends a bomb and creates a level-scaled trap", async (
   assert.equal(effects[0]?.roundsRemaining, 900);
   assert.match(screen.getByLabelText("Set bomb trap result").textContent ?? "", /5d6.*\+ 4.*fire damage/i);
   assert.match(screen.getByLabelText("Set bomb trap result").textContent ?? "", /Reflex save:.*vs DC 18/i);
+});
+
+test("Clone Master uses reduced bomb dice and persists one confirmed rebirth clone", async () => {
+  const effects: ActiveEffect[] = [];
+  const used: number[] = [];
+  const applied = applyArchetype(alchemist, cloneMaster);
+  const properties = {
+    level: 9,
+    className: applied.name,
+    features: featuresThroughLevel(applied, 9),
+    classLevels: { alchemist: 9 },
+    abilityModifiers: { dexterity: 3, intelligence: 4 },
+    baseAttackBonus: 6,
+    dailyResources: [{ id: "bombs", label: "Bomb", unit: "use", maximum: 13, used: 0, onUsedChange: (value: number) => used.push(value) }],
+    activeEffects: effects,
+    onAddEffect: (effect: ActiveEffect) => effects.push(effect),
+    onRemoveEffectByName: (name: string) => { for (let index = effects.length - 1; index >= 0; index -= 1) if (effects[index]?.name === name) effects.splice(index, 1); },
+  };
+  const view = render(<ClassFeatures {...properties} />);
+  const setup = userEvent.setup();
+  const originalRandom = Math.random;
+  Math.random = () => 0.99;
+  try {
+    await setup.click(screen.getByRole("button", { name: "Throw reduced-die bomb" }));
+  } finally {
+    Math.random = originalRandom;
+  }
+  assert.deepEqual(used, [1]);
+  assert.match(screen.getByLabelText("Throw reduced-die bomb result").textContent ?? "", /5d4.*\+ 4.*fire damage/i);
+
+  const recordClone = screen.getByRole("button", { name: "Record mature rebirth clone" });
+  assert.equal(recordClone.hasAttribute("disabled"), true);
+  await setup.click(screen.getByLabelText("5,000 gp creation cost has been paid"));
+  await setup.click(screen.getByLabelText("1 week of work and 3 weeks of growth are complete"));
+  await setup.click(recordClone);
+  assert.equal(effects.at(-1)?.name, "Mature Rebirth Clone");
+  view.rerender(<ClassFeatures {...properties} activeEffects={[...effects]} />);
+  await setup.click(screen.getByRole("button", { name: "Awaken rebirth clone after death" }));
+  assert.equal(effects.some((effect) => effect.name === "Mature Rebirth Clone"), false);
 });
