@@ -24,6 +24,7 @@ const plagueBringer = JSON.parse(readFileSync(new URL("../packages/data/src/arch
 const alchemicalTrapper = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-alchemical-trapper.json", import.meta.url), "utf8")) as CharacterArchetype;
 const cloneMaster = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-clone-master.json", import.meta.url), "utf8")) as CharacterArchetype;
 const wingedMarauder = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-winged-marauder.json", import.meta.url), "utf8")) as CharacterArchetype;
+const bogbornAlchemist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-bogborn-alchemist.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -329,4 +330,25 @@ test("Winged Marauder gates Sipping Pet behind its discovery and usage requireme
   await setup.selectOptions(screen.getByLabelText("Administer liquid with Sipping Pet mode"), "potion");
   await setup.click(action);
   assert.match(screen.getByLabelText("Administer liquid with Sipping Pet result").textContent ?? "", /selected liquid has been administered/i);
+});
+
+test("Bogborn Alchemist tracks its confirmed amphibious mutagen duration", async () => {
+  const effects: ActiveEffect[] = [];
+  const applied = applyArchetype(alchemist, bogbornAlchemist);
+  render(<ClassFeatures
+    level={7}
+    className={applied.name}
+    features={featuresThroughLevel(applied, 7)}
+    classLevels={{ alchemist: 7 }}
+    activeEffects={effects}
+    onAddEffect={(effect) => effects.push(effect)}
+  />);
+  const action = screen.getByRole("button", { name: "Use amphibious mutagen form" });
+  assert.equal(action.hasAttribute("disabled"), true);
+  const setup = userEvent.setup();
+  await setup.click(screen.getByLabelText("A prepared mutagen is available and consumed"));
+  await setup.click(action);
+  assert.equal(effects[0]?.name, "Amphibious Mutagen");
+  assert.equal(effects[0]?.roundsRemaining, 700);
+  assert.match(effects[0]?.description ?? "", /15-foot swim speed/i);
 });
