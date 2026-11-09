@@ -4,10 +4,6 @@
   "classId": "alchemist",
   "summary": "Reclusive alchemists who dwell in the highest mountains or on the frozen tundra devote their skills to mastering the cold.",
   "replacesText": "Bomb; Poison Resistance; Poison Immunity; 2nd-level Discovery",
-  "mechanicalCoverage": "partial",
-  "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ],
   "replacements": [
     {
       "featureIds": [
@@ -22,7 +18,53 @@
           "name": "Icy Bombs (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "An ice chemist’s bombs deal cold damage instead of fire damage. In place of an alchemist discovery, she can learn to create bombs that deal fire damage like normal alchemist bombs do, though she can’t apply discoveries that modify bombs to such fire bombs that she creates. An ice alchemist’s icy bombs can still be poisonous or create thick vapors similar to smoke, but she cannot apply the explosive or inferno bomb discoveries to them. This alters the bomb class feature."
+          "summary": "An ice chemist’s bombs deal cold damage instead of fire damage. In place of an alchemist discovery, she can learn to create bombs that deal fire damage like normal alchemist bombs do, though she can’t apply discoveries that modify bombs to such fire bombs that she creates. An ice alchemist’s icy bombs can still be poisonous or create thick vapors similar to smoke, but she cannot apply the explosive or inferno bomb discoveries to them. This alters the bomb class feature.",
+          "resourceActions": [
+            {
+              "id": "ice-chemist-icy-bomb",
+              "label": "Throw icy bomb",
+              "resourceId": "bombs",
+              "cost": 1,
+              "actionTypeByLevel": [{ "level": 1, "actionType": "standard" }],
+              "combatRoll": {
+                "attack": { "kind": "ranged-touch", "label": "Icy bomb ranged touch attack", "abilityModifier": "dexterity" },
+                "damage": {
+                  "type": "cold",
+                  "diceCountByLevel": [
+                    { "level": 1, "count": 1 }, { "level": 3, "count": 2 }, { "level": 5, "count": 3 }, { "level": 7, "count": 4 },
+                    { "level": 9, "count": 5 }, { "level": 11, "count": 6 }, { "level": 13, "count": 7 }, { "level": 15, "count": 8 },
+                    { "level": 17, "count": 9 }, { "level": 19, "count": 10 }
+                  ],
+                  "dieSidesByLevel": [{ "level": 1, "sides": 6 }],
+                  "abilityModifier": "intelligence"
+                },
+                "rangeByLevel": [{ "level": 1, "range": "20 feet" }]
+              }
+            },
+            {
+              "id": "ice-chemist-fire-bomb",
+              "label": "Throw learned fire bomb",
+              "resourceId": "bombs",
+              "cost": 1,
+              "minimumLevel": 2,
+              "requiredOptionId": "ice-chemist-fire-bombs",
+              "actionTypeByLevel": [{ "level": 2, "actionType": "standard" }],
+              "combatRoll": {
+                "attack": { "kind": "ranged-touch", "label": "Fire bomb ranged touch attack", "abilityModifier": "dexterity" },
+                "damage": {
+                  "type": "fire",
+                  "diceCountByLevel": [
+                    { "level": 2, "count": 1 }, { "level": 3, "count": 2 }, { "level": 5, "count": 3 }, { "level": 7, "count": 4 },
+                    { "level": 9, "count": 5 }, { "level": 11, "count": 6 }, { "level": 13, "count": 7 }, { "level": 15, "count": 8 },
+                    { "level": 17, "count": 9 }, { "level": 19, "count": 10 }
+                  ],
+                  "dieSidesByLevel": [{ "level": 2, "sides": 6 }],
+                  "abilityModifier": "intelligence"
+                },
+                "rangeByLevel": [{ "level": 2, "range": "20 feet" }]
+              }
+            }
+          ]
         },
         {
           "id": "alchemist-ice-chemist-cold-sweat-su-2",
@@ -36,14 +78,57 @@
           "name": "Frost Bomb (Su)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, an ice chemist gains the frost bomb discovery. This replaces the discovery that the alchemist normally gains at 2nd level."
+          "summary": "At 2nd level, an ice chemist gains the frost bomb discovery. This replaces the discovery that the alchemist normally gains at 2nd level.",
+          "resourceActions": [
+            {
+              "id": "ice-chemist-frost-bomb",
+              "label": "Throw frost bomb",
+              "resourceId": "bombs",
+              "cost": 1,
+              "minimumLevel": 2,
+              "actionTypeByLevel": [{ "level": 2, "actionType": "standard" }],
+              "savingThrow": { "label": "Fortitude", "ability": "intelligence", "base": 10, "levelDivisor": 2, "classId": "alchemist" },
+              "combatRoll": {
+                "attack": { "kind": "ranged-touch", "label": "Frost bomb ranged touch attack", "abilityModifier": "dexterity" },
+                "damage": {
+                  "type": "cold",
+                  "diceCountByLevel": [
+                    { "level": 2, "count": 1 }, { "level": 3, "count": 2 }, { "level": 5, "count": 3 }, { "level": 7, "count": 4 },
+                    { "level": 9, "count": 5 }, { "level": 11, "count": 6 }, { "level": 13, "count": 7 }, { "level": 15, "count": 8 },
+                    { "level": 17, "count": 9 }, { "level": 19, "count": 10 }
+                  ],
+                  "dieSidesByLevel": [{ "level": 2, "sides": 6 }],
+                  "abilityModifier": "intelligence"
+                },
+                "rangeByLevel": [{ "level": 2, "range": "20 feet" }],
+                "targetSave": { "modifier": "fortitude", "outcome": "negates-riders" },
+                "riders": [{ "name": "Frost Bomb Staggered", "description": "Staggered by a direct hit from Frost Bomb.", "duration": { "kind": "fixed-rounds", "rounds": 1 } }]
+              }
+            }
+          ]
         }
       ]
     }
+  ],
+  "resourceAdjustments": [
+    { "resourceId": "bombs", "label": "Bomb", "unit": "use", "operation": "replace", "minimumLevel": 1, "base": 0, "levelMultiplier": 1, "abilityModifier": "intelligence", "minimum": 1 }
+  ],
+  "defenseAdjustments": [
+    { "sourceFeatureId": "alchemist-ice-chemist-cold-sweat-su-2", "kind": "energyResistance", "label": "Cold Sweat", "minimumLevel": 2, "base": 0, "levelMultiplier": 1, "qualifier": "cold" }
+  ],
+  "optionGroupAugmentations": [
+    { "targetGroupId": "alchemist-discoveries", "sourceGroupId": "ice-chemist-discoveries", "minimumFeatureLevel": 2 }
+  ],
+  "fixedOptionGrants": [
+    { "sourceFeatureId": "alchemist-ice-chemist-frost-bomb-su-2", "optionGroupId": "alchemist-discoveries", "optionId": "frost-bomb", "minimumLevel": 2, "label": "Frost Bomb" }
   ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Ice%20Chemist"
-  }
+  },
+  "mechanicalCoverage": "full",
+  "mechanicalNotes": [
+    "Icy bombs spend the level-plus-Intelligence bomb pool and resolve scaling ranged-touch cold damage. Fire Bombs augments normal discovery slots and gates the separate unmodified fire-bomb action. Cold Sweat applies cold resistance equal to Alchemist level and records extreme-cold comfort. Frost Bomb is granted at level 2 and resolves its published Fortitude-negated stagger rider."
+  ]
 }

@@ -1,0 +1,22 @@
+{
+  "id": "ice-chemist-discoveries",
+  "name": "Ice Chemist Discoveries",
+  "classIds": ["alchemist"],
+  "optionDefaults": {
+    "groupId": "ice-chemist-discoveries",
+    "classIds": ["alchemist"],
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Ice%20Chemist"
+    }
+  },
+  "options": [
+    {
+      "id": "ice-chemist-fire-bombs",
+      "name": "Fire Bombs",
+      "minimumLevel": 2,
+      "benefit": "Create normal fire bombs, but bomb-modifying discoveries cannot be applied to them."
+    }
+  ]
+}
