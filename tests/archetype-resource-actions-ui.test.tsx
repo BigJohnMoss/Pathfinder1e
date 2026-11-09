@@ -29,6 +29,7 @@ const crimsonChymist = JSON.parse(readFileSync(new URL("../packages/data/src/arc
 const blazingTorchbearer = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-blazing-torchbearer.json", import.meta.url), "utf8")) as CharacterArchetype;
 const iceChemist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-ice-chemist.json", import.meta.url), "utf8")) as CharacterArchetype;
 const deepBomber = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-deep-bomber.json", import.meta.url), "utf8")) as CharacterArchetype;
+const sanctifiedRogue = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/rogue-sanctified-rogue.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -488,4 +489,21 @@ test("Deep Bomber combines targeting-bomb damage with faerie fire and tracks Sto
   await setup.click(stonekin);
   assert.equal(effects.at(-1)?.name, "Stonekin Stalagmite Shape");
   assert.equal(effects.at(-1)?.roundsRemaining, 4200);
+});
+
+test("Sanctified Rogue tracks its daily Divine Epiphany augury", async () => {
+  const used: number[] = [];
+  const feature = sanctifiedRogue.replacements.flatMap((replacement) => replacement.features)
+    .find((candidate) => candidate.id === "rogue-sanctified-rogue-divine-epiphany-su-8");
+  assert.ok(feature);
+  render(<ClassFeatures
+    level={8}
+    className="Sanctified Rogue"
+    features={[feature]}
+    classLevels={{ rogue: 8 }}
+    dailyResources={[{ id: "divineEpiphany", label: "Divine Epiphany", unit: "use", maximum: 1, used: 0, onUsedChange: (value) => used.push(value) }]}
+  />);
+  await userEvent.setup().click(screen.getByRole("button", { name: "Use Divine Epiphany" }));
+  assert.deepEqual(used, [1]);
+  assert.equal(screen.getByLabelText("Use Divine Epiphany result").textContent, "Augury activated as a spell-equivalent effect.");
 });
