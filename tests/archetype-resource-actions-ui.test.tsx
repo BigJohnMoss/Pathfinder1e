@@ -28,6 +28,7 @@ const bogbornAlchemist = JSON.parse(readFileSync(new URL("../packages/data/src/a
 const crimsonChymist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-crimson-chymist.json", import.meta.url), "utf8")) as CharacterArchetype;
 const blazingTorchbearer = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-blazing-torchbearer.json", import.meta.url), "utf8")) as CharacterArchetype;
 const iceChemist = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-ice-chemist.json", import.meta.url), "utf8")) as CharacterArchetype;
+const deepBomber = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-deep-bomber.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -452,4 +453,39 @@ test("Ice Chemist resolves icy and frost bombs and gates its learned fire bombs"
   assert.match(screen.getByLabelText("Throw frost bomb result").textContent ?? "", /Frost Bomb Staggered applied for 1 round/i);
   view.rerender(<ClassFeatures {...properties} selectedOptionIds={["ice-chemist-fire-bombs"]} />);
   assert.ok(screen.getByRole("button", { name: "Throw learned fire bomb" }));
+});
+
+test("Deep Bomber combines targeting-bomb damage with faerie fire and tracks Stonekin", async () => {
+  const effects: ActiveEffect[] = [];
+  const used: number[] = [];
+  const applied = applyArchetype(alchemist, deepBomber);
+  render(<ClassFeatures
+    level={7}
+    className={applied.name}
+    features={featuresThroughLevel(applied, 7)}
+    classLevels={{ alchemist: 7 }}
+    abilityModifiers={{ dexterity: 3, intelligence: 4 }}
+    baseAttackBonus={5}
+    dailyResources={[{ id: "bombs", label: "Bomb", unit: "use", maximum: 11, used: 0, onUsedChange: (value) => used.push(value) }]}
+    activeEffects={effects}
+    onAddEffect={(effect) => effects.push(effect)}
+  />);
+  const setup = userEvent.setup();
+  const originalRandom = Math.random;
+  Math.random = () => 0.99;
+  try {
+    await setup.click(screen.getByRole("button", { name: "Throw targeting bomb" }));
+  } finally {
+    Math.random = originalRandom;
+  }
+  assert.deepEqual(used, [1]);
+  assert.match(screen.getByLabelText("Throw targeting bomb result").textContent ?? "", /4d6.*\+ 4.*fire damage/i);
+  assert.equal(effects[0]?.name, "Targeting Bomb Faerie Fire");
+  assert.equal(effects[0]?.roundsRemaining, 70);
+  const stonekin = screen.getByRole("button", { name: "Use Stonekin stalagmite shape" });
+  assert.equal(stonekin.hasAttribute("disabled"), true);
+  await setup.click(screen.getByLabelText("A tree shape extract is prepared and consumed"));
+  await setup.click(stonekin);
+  assert.equal(effects.at(-1)?.name, "Stonekin Stalagmite Shape");
+  assert.equal(effects.at(-1)?.roundsRemaining, 4200);
 });
