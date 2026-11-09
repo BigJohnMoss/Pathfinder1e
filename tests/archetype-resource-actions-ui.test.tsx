@@ -23,6 +23,7 @@ const dragonbloodChymist = JSON.parse(readFileSync(new URL("../packages/data/src
 const plagueBringer = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-plague-bringer.json", import.meta.url), "utf8")) as CharacterArchetype;
 const alchemicalTrapper = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-alchemical-trapper.json", import.meta.url), "utf8")) as CharacterArchetype;
 const cloneMaster = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-clone-master.json", import.meta.url), "utf8")) as CharacterArchetype;
+const wingedMarauder = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-winged-marauder.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -306,4 +307,26 @@ test("Clone Master uses reduced bomb dice and persists one confirmed rebirth clo
   view.rerender(<ClassFeatures {...properties} activeEffects={[...effects]} />);
   await setup.click(screen.getByRole("button", { name: "Awaken rebirth clone after death" }));
   assert.equal(effects.some((effect) => effect.name === "Mature Rebirth Clone"), false);
+});
+
+test("Winged Marauder gates Sipping Pet behind its discovery and usage requirements", async () => {
+  const applied = applyArchetype(alchemist, wingedMarauder);
+  const properties = {
+    level: 6,
+    className: applied.name,
+    features: featuresThroughLevel(applied, 6),
+    classLevels: { alchemist: 6 },
+  };
+  const view = render(<ClassFeatures {...properties} />);
+  assert.equal(screen.queryByRole("button", { name: "Administer liquid with Sipping Pet" }), null);
+  view.rerender(<ClassFeatures {...properties} selectedOptionIds={["winged-marauder-sipping-pet"]} />);
+  const action = screen.getByRole("button", { name: "Administer liquid with Sipping Pet" });
+  assert.equal(action.hasAttribute("disabled"), true);
+  const setup = userEvent.setup();
+  await setup.click(screen.getByLabelText("The selected liquid is available and expended"));
+  await setup.click(screen.getByLabelText("The mount is adjacent or being ridden"));
+  assert.equal(action.hasAttribute("disabled"), false);
+  await setup.selectOptions(screen.getByLabelText("Administer liquid with Sipping Pet mode"), "potion");
+  await setup.click(action);
+  assert.match(screen.getByLabelText("Administer liquid with Sipping Pet result").textContent ?? "", /selected liquid has been administered/i);
 });
