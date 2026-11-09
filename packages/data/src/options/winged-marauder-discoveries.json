@@ -1,0 +1,23 @@
+{
+  "id": "winged-marauder-discoveries",
+  "name": "Winged Marauder Discoveries",
+  "classIds": ["alchemist"],
+  "optionDefaults": {
+    "groupId": "winged-marauder-discoveries",
+    "classIds": ["alchemist"],
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Winged%20Marauder"
+    }
+  },
+  "options": [
+    {
+      "id": "winged-marauder-sipping-pet",
+      "name": "Sipping Pet",
+      "minimumLevel": 2,
+      "prerequisites": [{ "type": "feature", "id": "infusion" }],
+      "benefit": "As a standard action, administer an eligible liquid to your adjacent or ridden animal companion, even while it is unconscious."
+    }
+  ]
+}

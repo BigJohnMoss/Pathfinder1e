@@ -1,0 +1,18 @@
+{
+  "id": "winged-marauder-mounts",
+  "name": "Winged Marauder Flying Mounts",
+  "classIds": ["alchemist"],
+  "optionDefaults": {
+    "groupId": "winged-marauder-mounts",
+    "classIds": ["alchemist"],
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Winged%20Marauder"
+    }
+  },
+  "options": [
+    { "id": "winged-marauder-dire-bat", "name": "Dire Bat", "minimumLevel": 1, "benefit": "Gain a dire bat as a full-level flying animal companion mount without share spells." },
+    { "id": "winged-marauder-giant-vulture", "name": "Giant Vulture", "minimumLevel": 1, "benefit": "Gain a giant vulture as a full-level flying animal companion mount without share spells." }
+  ]
+}

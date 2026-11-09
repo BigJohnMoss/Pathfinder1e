@@ -2,13 +2,21 @@
   "id": "alchemist-winged-marauder",
   "name": "Winged Marauder",
   "classId": "alchemist",
-  "companionGrants": [{ "id": "flying-mount", "kind": "mount", "label": "Flying mount (dire bat or giant vulture)", "optionId": "flying-mount", "minimumLevel": 1 }],
+  "companionGrants": [{
+    "id": "flying-mount",
+    "kind": "mount",
+    "label": "Flying mount (dire bat or giant vulture)",
+    "optionFeatureId": "alchemist-winged-marauder-flying-beast-tamer-ex-1",
+    "sourceFeatureId": "alchemist-winged-marauder-flying-beast-tamer-ex-1",
+    "minimumLevel": 1,
+    "rules": [
+      "Choose a dire bat or giant vulture.",
+      "The mount advances at the Winged Marauder's full Alchemist level.",
+      "The Winged Marauder and mount do not gain share spells."
+    ]
+  }],
   "summary": "(Goblin Only) Goblin alchemists have created a mixture of pheromones that they use to manipulate and entice giant vultures or dire bats to do their bidding.",
   "replacesText": "Class Skills; Mutagen; Persistent Mutagen",
-  "mechanicalCoverage": "partial",
-  "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ],
   "replacements": [
     {
       "featureIds": [
@@ -27,18 +35,54 @@
           "id": "alchemist-winged-marauder-flying-beast-tamer-ex-1",
           "name": "Flying Beast Tamer (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "At 1st level, a winged marauder acquires a flying mount as an animal companion. This works as the druid animal companion class feature , except the marauder must select a dire bat or giant vulture . The marauder’s effective druid level is equal to his alchemist level. A marauder and his companion don’t gain the share spells ability. This ability replaces the mutagen and persistent mutagen class features."
+          "type": "selectable",
+          "summary": "At 1st level, a winged marauder acquires a flying mount as an animal companion. This works as the druid animal companion class feature , except the marauder must select a dire bat or giant vulture . The marauder’s effective druid level is equal to his alchemist level. A marauder and his companion don’t gain the share spells ability. This ability replaces the mutagen and persistent mutagen class features.",
+          "choiceRequired": true,
+          "optionGroupId": "winged-marauder-mounts"
         },
         {
           "id": "alchemist-winged-marauder-discovery-1",
           "name": "Discovery",
           "level": 1,
           "type": "archetype",
-          "summary": "A winged marauder can select the following additional discovery. Sipping Pet (Ex) : As a standard action, the marauder can administer a dose of a liquid (such as an extract, infusion, potion, or an alchemical liquid like antitoxin) to his animal companion, even if the companion is unconscious. The alchemist must be adjacent to or riding the companion to use this ability. An alchemist must have the infusion discovery to select this discovery."
+          "summary": "A winged marauder can select the following additional discovery. Sipping Pet (Ex) : As a standard action, the marauder can administer a dose of a liquid (such as an extract, infusion, potion, or an alchemical liquid like antitoxin) to his animal companion, even if the companion is unconscious. The alchemist must be adjacent to or riding the companion to use this ability. An alchemist must have the infusion discovery to select this discovery.",
+          "resourceActions": [
+            {
+              "id": "winged-marauder-sipping-pet",
+              "label": "Administer liquid with Sipping Pet",
+              "minimumLevel": 2,
+              "requiredOptionId": "winged-marauder-sipping-pet",
+              "actionTypeByLevel": [{ "level": 2, "actionType": "standard" }],
+              "modeLabel": "Liquid",
+              "modes": [
+                { "id": "extract", "label": "Extract or infusion", "summary": "Administer an available extract or infusion to the mount." },
+                { "id": "potion", "label": "Potion", "summary": "Administer an available potion to the mount." },
+                { "id": "alchemical-liquid", "label": "Alchemical liquid", "summary": "Administer an available alchemical liquid, such as antitoxin, to the mount." }
+              ],
+              "confirmations": [
+                { "id": "liquid-available", "label": "The selected liquid is available and expended", "requiredForActivation": true },
+                { "id": "mount-in-reach", "label": "The mount is adjacent or being ridden", "requiredForActivation": true }
+              ],
+              "activeEffect": {
+                "name": "Sipping Pet — administered liquid",
+                "targets": ["allies"],
+                "bonus": 0,
+                "description": "The selected liquid has been administered to the flying mount, even if it is unconscious. Apply the chosen item's normal effects to the companion.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Administer the selected liquid to the flying mount, even if it is unconscious."
+            }
+          ]
         }
       ]
     }
+  ],
+  "classSkillAdditions": ["Acrobatics", "Handle Animal", "Ride"],
+  "classSkillRemovals": ["Disable Device", "Sleight of Hand", "Use Magic Device"],
+  "optionGroupAugmentations": [
+    { "targetGroupId": "alchemist-discoveries", "sourceGroupId": "winged-marauder-discoveries", "minimumFeatureLevel": 2 }
   ],
   "source": {
     "title": "Archives of Nethys",
@@ -47,5 +91,9 @@
   },
   "manualRequirements": [
     "Restricted to Goblin characters; that ancestry is not yet available in this builder."
+  ],
+  "mechanicalCoverage": "full",
+  "mechanicalNotes": [
+    "Flying Beast Tamer requires a dire bat or giant vulture choice, grants a full-Alchemist-level mount, and records the loss of share spells. Class-skill replacements are explicit. Sipping Pet augments normal discovery slots, enforces Infusion through its option prerequisite, and exposes a standard-action liquid workflow gated by item expenditure and mount proximity. Goblin eligibility remains advisory until that ancestry enters the builder."
   ]
 }
