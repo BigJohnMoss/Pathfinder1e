@@ -120,6 +120,22 @@ test("automatic companion teamwork sharing is inferred and removed from the manu
   }
 });
 
+test("Eldritch Guardian shares every selected combat feat with its familiar", () => {
+  const source = archetype("fighter-eldritch-guardian");
+  const applied = applyArchetype(characterClass("fighter"), source, data.classes, data.spells);
+  const sharing = applied.features.find((feature) => feature.id === "fighter-eldritch-guardian-share-training-ex-2")?.teamworkFeatSharing;
+  assert.deepEqual(sharing, {
+    featType: "combat",
+    target: "familiar",
+    targetLabel: "Familiar",
+    ignorePrerequisites: true,
+    summary: "While it can see and hear the Eldritch Guardian, the familiar can use every selected combat feat that its physical form permits.",
+  });
+  assert.equal(source.companionGrants[0].effectiveLevelAdjustment, 0);
+  assert.equal(source.companionGrants[0].sourceFeatureId, "fighter-eldritch-guardian-familiar-ex-1");
+  assert.deepEqual(archetypeAutomationSummary(source, data.feats, data.spells).manual, []);
+});
+
 test("Strategist Drill Instructor spends challenge, tracks recipients, and scales its training duration", () => {
   const source = archetype("cavalier-strategist");
   const action = inferArchetypeTeamworkSharingActions(source).find(({ sourceFeatureId }) => sourceFeatureId.includes("drill-instructor"))?.action;
