@@ -45,6 +45,37 @@ test("completed Alchemist archetypes expose no manual mechanics", () => {
   assert.equal(applyArchetypeResourceAdjustments({}, [dragonbloodChymist], 9, { intelligence: 4 }).bombs, 13);
 });
 
+test("Naturalist automates focus guidance and both nature spell-like abilities", () => {
+  const naturalist = catalogueArchetypes.find((candidate) => candidate.id === "occultist-naturalist");
+  assert.ok(naturalist);
+  assert.deepEqual(archetypeAutomationSummary(naturalist, [], catalogueSpells).manual, []);
+
+  const features = naturalist.replacements.flatMap((replacement) => replacement.features ?? []);
+  const naturalFocus = features.find((feature) => feature.id === "occultist-naturalist-natural-focus-su-8")
+    ?.resourceActions?.find((action) => action.id === "naturalist-natural-focus");
+  assert.equal(naturalFocus?.resourceId, "mentalFocus");
+  assert.deepEqual(naturalFocus?.diceRoll?.dieSidesByLevel, [
+    { level: 8, sides: 8 },
+    { level: 16, sides: 10 },
+  ]);
+  assert.equal(naturalFocus?.confirmations?.filter((confirmation) => confirmation.requiredForActivation).length, 3);
+
+  const treeTalker = features.find((feature) => feature.id === "occultist-naturalist-tree-talker-sp-8")
+    ?.resourceActions?.find((action) => action.id === "naturalist-tree-talker");
+  const reflect = features.find((feature) => feature.id === "occultist-naturalist-reflect-on-the-land-sp-12")
+    ?.resourceActions?.find((action) => action.id === "naturalist-reflect-on-the-land");
+  assert.equal(treeTalker?.spellLikeAbility?.spellId, "speak-with-plants");
+  assert.equal(reflect?.spellLikeAbility?.spellId, "commune-with-nature");
+  assert.deepEqual(applyArchetypeResourceAdjustments({}, [naturalist], 12, {}), {
+    naturalistTreeTalker: 3,
+    naturalistReflectOnLand: 1,
+  });
+
+  const applied = applyArchetype({ id: "occultist", name: "Occultist", classSkills: ["Knowledge (planes)"], features: [] }, naturalist);
+  assert.ok(applied.classSkills.includes("Knowledge (nature)"));
+  assert.ok(!applied.classSkills.includes("Knowledge (planes)"));
+});
+
 test("static archetype alignment rules expose exact builder eligibility", () => {
   const automated = catalogueArchetypes.filter((archetype) => inferArchetypeAllowedAlignments(archetype).length);
   assert.equal(automated.length, 38);

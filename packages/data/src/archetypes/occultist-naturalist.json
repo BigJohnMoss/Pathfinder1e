@@ -4,9 +4,9 @@
   "classId": "occultist",
   "summary": "A naturalist eschews the contact with outsiders that other occultists use as the core of their work. Instead, he attunes his mind to the natural spirits that exist everywhere, just out of sight for the unawakened mind.",
   "replacesText": "Class Skills; Mental Focus; Magic Circles; Fast Circles; Outside Contact; Binding Circles",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Class-skill replacement, Natural Focus expenditure and scaling die, and both daily spell-like abilities are automated. The Natural Focus action records its once-per-round and no-metal restrictions."
   ],
   "replacements": [
     {
@@ -30,23 +30,149 @@
           "name": "Natural Focus (Su)",
           "level": 8,
           "type": "archetype",
-          "summary": "A naturalist can always hear the spirits of nature whispering in his ears, and sometimes those whispers contain helpful advice. As a free action, a naturalist can expend 1 point of generic mental focus before rolling an ability check, saving throw, or skill check to add 1d6 to the result. The naturalist must be conscious and aware to use this ability, and he can use this ability at most once per round. At 8th level, the naturalist’s natural focus die increases to 1d8, and at 16th level it increases to 1d10. This ability doesn’t function while the naturalist is wearing metal armor or using a metal shield (although he can wear a suit of armor or use a shield altered by the ironwood spell). This restriction is similar to the druid’s armor restriction. This alters mental focus and replaces magic circles and fast circles."
+          "summary": "A naturalist can always hear the spirits of nature whispering in his ears, and sometimes those whispers contain helpful advice. As a free action, a naturalist can expend 1 point of generic mental focus before rolling an ability check, saving throw, or skill check to add 1d6 to the result. The naturalist must be conscious and aware to use this ability, and he can use this ability at most once per round. At 8th level, the naturalist’s natural focus die increases to 1d8, and at 16th level it increases to 1d10. This ability doesn’t function while the naturalist is wearing metal armor or using a metal shield (although he can wear a suit of armor or use a shield altered by the ironwood spell). This restriction is similar to the druid’s armor restriction. This alters mental focus and replaces magic circles and fast circles.",
+          "resourceActions": [
+            {
+              "id": "naturalist-natural-focus",
+              "label": "Roll Natural Focus",
+              "classId": "occultist",
+              "minimumLevel": 8,
+              "resourceId": "mentalFocus",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "free"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "naturalist-conscious-aware",
+                  "label": "I am conscious and aware",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "naturalist-no-metal-armor-shield",
+                  "label": "I am not using metal armor or a metal shield (unless affected by ironwood)",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "naturalist-once-this-round",
+                  "label": "I have not used Natural Focus this round",
+                  "requiredForActivation": true
+                }
+              ],
+              "diceRoll": {
+                "label": "Natural Focus check bonus",
+                "diceCountByLevel": [
+                  {
+                    "level": 8,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 8,
+                    "sides": 8
+                  },
+                  {
+                    "level": 16,
+                    "sides": 10
+                  }
+                ]
+              },
+              "summary": "Before an ability check, saving throw, or skill check, spend 1 generic mental focus and add the rolled die. Usable once per round while conscious, aware, and not using prohibited metal armor or a metal shield."
+            }
+          ]
         },
         {
           "id": "occultist-naturalist-tree-talker-sp-8",
           "name": "Tree Talker (Sp)",
           "level": 8,
           "type": "archetype",
-          "summary": "At 8th level, a naturalist can cast speak with plants three times per day as a spell-like ability with a caster level equal to his occultist level. In addition, when the naturalist uses this power, he can whisper a message of 25 or fewer words to the surrounding plant life and designate a creature with which he is familiar. The next time that creature is on the same plane of existence and in an area of similar vegetation, it receives the message. This replaces outside contact."
+          "summary": "At 8th level, a naturalist can cast speak with plants three times per day as a spell-like ability with a caster level equal to his occultist level. In addition, when the naturalist uses this power, he can whisper a message of 25 or fewer words to the surrounding plant life and designate a creature with which he is familiar. The next time that creature is on the same plane of existence and in an area of similar vegetation, it receives the message. This replaces outside contact.",
+          "resourceActions": [
+            {
+              "id": "naturalist-tree-talker",
+              "label": "Use Tree Talker",
+              "classId": "occultist",
+              "minimumLevel": 8,
+              "resourceId": "naturalistTreeTalker",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "standard"
+                }
+              ],
+              "textInputLabel": "Optional message (25 words or fewer) and familiar recipient",
+              "spellLikeAbility": {
+                "spellId": "speak-with-plants",
+                "spellName": "Speak with Plants",
+                "cadence": "day"
+              },
+              "summary": "Spend one of three daily uses to cast speak with plants at Occultist caster level, optionally leaving a message of no more than 25 words for a familiar creature."
+            }
+          ]
         },
         {
           "id": "occultist-naturalist-reflect-on-the-land-sp-12",
           "name": "Reflect on the Land (Sp)",
           "level": 12,
           "type": "archetype",
-          "summary": "At 12th level, a naturalist can cast commune with nature once per day as a spell-like ability with a caster level equal to his occultist level. This replaces binding circles."
+          "summary": "At 12th level, a naturalist can cast commune with nature once per day as a spell-like ability with a caster level equal to his occultist level. This replaces binding circles.",
+          "resourceActions": [
+            {
+              "id": "naturalist-reflect-on-the-land",
+              "label": "Reflect on the Land",
+              "classId": "occultist",
+              "minimumLevel": 12,
+              "resourceId": "naturalistReflectOnLand",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 12,
+                  "actionType": "10-minute"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "commune-with-nature",
+                "spellName": "Commune with Nature",
+                "cadence": "day"
+              },
+              "summary": "Spend the once-daily use to cast commune with nature at Occultist caster level."
+            }
+          ]
         }
       ]
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "sourceFeatureId": "occultist-naturalist-tree-talker-sp-8",
+      "resourceId": "naturalistTreeTalker",
+      "label": "Tree Talker",
+      "unit": "cast",
+      "operation": "replace",
+      "minimumLevel": 8,
+      "base": 3,
+      "minimum": 0,
+      "maximum": 3,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "sourceFeatureId": "occultist-naturalist-reflect-on-the-land-sp-12",
+      "resourceId": "naturalistReflectOnLand",
+      "label": "Reflect on the Land",
+      "unit": "cast",
+      "operation": "replace",
+      "minimumLevel": 12,
+      "base": 1,
+      "minimum": 0,
+      "maximum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
     }
   ],
   "source": {
