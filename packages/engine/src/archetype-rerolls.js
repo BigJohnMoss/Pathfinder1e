@@ -19,7 +19,7 @@ function rerollLabel(sentence, feature) {
   if (/stabili[sz]ation check/i.test(sentence)) return "Reroll stabilization check";
   if (/saving throw|\bsave\b/i.test(sentence)) return "Reroll saving throw";
   if (/attack roll/i.test(sentence)) return "Reroll attack roll";
-  const namedSkill = sentence.match(/\b(Heal|Bluff|Diplomacy|Intimidate|Perception|Stealth|Survival|Acrobatics) check\b/i)?.[1];
+  const namedSkill = sentence.match(/\b(Acrobatics|Appraise|Bluff|Climb|Diplomacy|Disable Device|Disguise|Escape Artist|Fly|Handle Animal|Heal|Intimidate|Knowledge(?: \\([^)]+\\))?|Linguistics|Perception|Perform(?: \\([^)]+\\))?|Profession(?: \\([^)]+\\))?|Ride|Sense Motive|Sleight of Hand|Spellcraft|Stealth|Survival|Swim|Use Magic Device|Craft(?: \\([^)]+\\))?) check\b/i)?.[1];
   if (namedSkill) return `Reroll ${namedSkill} check`;
   if (/skill check/i.test(sentence)) return "Reroll skill check";
   return `Use ${featureLabel(feature)} reroll`;
