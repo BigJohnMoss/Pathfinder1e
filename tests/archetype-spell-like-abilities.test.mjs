@@ -19,8 +19,8 @@ test("fixed spell-like abilities become cast actions with the published cadence"
     ["transport-via-plants", "day", 9],
     ["legend-lore", "week", 10],
   ]);
-  const atWill = inferArchetypeSpellLikeAbilityActions(archetype("alchemist-blazing-torchbearer"))[0].action;
-  assert.equal(atWill.label, "Cast spark");
+  const atWill = spellLikeActions(archetype("alchemist-blazing-torchbearer"))[0].action;
+  assert.equal(atWill.label, "Cast Spark");
   assert.equal(atWill.resourceId, undefined);
 });
 
