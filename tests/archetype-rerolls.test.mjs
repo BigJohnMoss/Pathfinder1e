@@ -96,3 +96,19 @@ test("stabilization rerolls keep their specific action label", () => {
   });
   assert.equal(result.actions[0].action.label, "Reroll stabilization check");
 });
+
+test("archetype reroll action labels name standard compound and trained skills", () => {
+  for (const skill of ["Disable Device", "Sense Motive", "Use Magic Device", "Knowledge (arcana)", "Craft (alchemy)", "Profession (sailor)"]) {
+    const result = inferredArchetypeRerollActionDetails({
+      classId: "rogue",
+      replacements: [{ features: [{
+        id: `test-${skill.toLowerCase().replace(/[^a-z]+/g, "-")}`,
+        name: "Second Chance (Ex)",
+        level: 4,
+        summary: `She may reroll a ${skill} check.`,
+      }] }],
+    });
+    assert.equal(result.actions.length, 1, skill);
+    assert.equal(result.actions[0].action.label, `Reroll ${skill} check`);
+  }
+});
