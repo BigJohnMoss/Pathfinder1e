@@ -32,6 +32,7 @@ const deepBomber = JSON.parse(readFileSync(new URL("../packages/data/src/archety
 const sanctifiedRogue = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/rogue-sanctified-rogue.json", import.meta.url), "utf8")) as CharacterArchetype;
 const makeshiftScrapper = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/rogue-makeshift-scrapper.json", import.meta.url), "utf8")) as CharacterArchetype;
 const smuggler = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/rogue-smuggler.json", import.meta.url), "utf8")) as CharacterArchetype;
+const cloisteredCleric = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/cleric-cloistered-cleric.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -550,4 +551,28 @@ test("Smuggler gates and rolls its exact bribe cost", async () => {
     Math.random = originalRandom;
   }
   assert.match(screen.getByLabelText("Roll successful bribe cost result").textContent ?? "", /Bribe cost in gp: 4 \+ 4 \+ 4 \+ 4 \+ 4 = 20/);
+});
+
+test("Cloistered Cleric gates its level-scaled Verbal Instruction aid", async () => {
+  const effects: ActiveEffect[] = [];
+  const feature = cloisteredCleric.replacements.flatMap((replacement) => replacement.features)
+    .find((candidate) => candidate.id === "cleric-cloistered-cleric-verbal-instruction-ex-3");
+  assert.ok(feature);
+  render(<ClassFeatures
+    level={9}
+    className="Cloistered Cleric"
+    features={[feature]}
+    classLevels={{ cleric: 9 }}
+    activeEffects={effects}
+    onAddEffect={(effect) => effects.push(effect)}
+  />);
+  const button = screen.getByRole("button", { name: "Give Verbal Instruction" });
+  assert.equal(button.hasAttribute("disabled"), true);
+  const setup = userEvent.setup();
+  await setup.click(screen.getByLabelText("The aid another check succeeded and the allies can hear and understand"));
+  await setup.click(button);
+  assert.equal(effects.at(-1)?.name, "Verbal Instruction");
+  assert.equal(effects.at(-1)?.target, "allies");
+  assert.equal(effects.at(-1)?.bonus, 2);
+  assert.equal(effects.at(-1)?.roundsRemaining, 1);
 });
