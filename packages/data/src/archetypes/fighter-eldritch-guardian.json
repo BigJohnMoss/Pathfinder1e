@@ -35,7 +35,14 @@
           "name": "Share Training (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, when the familiar can see and hear its master, it can use any combat feat possessed by the eldritch guardian. The familiar doesn’t have to meet the feat’s prerequisites, but at the GM’s discretion may be precluded from using certain combat feats due to its physical form. For example, an eldritch guardian’s pig familiar with access to Exotic Weapon Proficiency (spiked chain) would not gain the ability to use spiked chains, since it doesn’t have any limbs capable of properly handling them. This ability replaces the bonus feat gained at 2nd level."
+          "summary": "At 2nd level, when the familiar can see and hear its master, it can use any combat feat possessed by the eldritch guardian. The familiar doesn’t have to meet the feat’s prerequisites, but at the GM’s discretion may be precluded from using certain combat feats due to its physical form. For example, an eldritch guardian’s pig familiar with access to Exotic Weapon Proficiency (spiked chain) would not gain the ability to use spiked chains, since it doesn’t have any limbs capable of properly handling them. This ability replaces the bonus feat gained at 2nd level.",
+          "teamworkFeatSharing": {
+            "featType": "combat",
+            "target": "familiar",
+            "targetLabel": "Familiar",
+            "ignorePrerequisites": true,
+            "summary": "While it can see and hear the Eldritch Guardian, the familiar can use every selected combat feat that its physical form permits."
+          }
         },
         {
           "id": "fighter-eldritch-guardian-steel-will-ex-2",
@@ -47,14 +54,28 @@
       ]
     }
   ],
-  "companionGrants": [{"id":"eldritch-guardian-familiar","kind":"familiar","label":"Eldritch guardian familiar","optionId":"eldritch-guardian-familiar","minimumLevel":1,"stacksWithExisting":true}],
+  "companionGrants": [
+    {
+      "id": "eldritch-guardian-familiar",
+      "kind": "familiar",
+      "label": "Eldritch Guardian familiar",
+      "optionId": "eldritch-guardian-familiar",
+      "sourceFeatureId": "fighter-eldritch-guardian-familiar-ex-1",
+      "minimumLevel": 1,
+      "effectiveLevelAdjustment": 0,
+      "stacksWithExisting": true,
+      "rules": [
+        "Treat Fighter level as Wizard level for familiar advancement."
+      ]
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Eldritch%20Guardian"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Class-skill changes, full Fighter-level familiar progression, live sharing of every selected combat feat, and the scaling Will bonus against fear and mind-affecting effects are automated."
   ]
 }
