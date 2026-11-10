@@ -18,16 +18,138 @@
           "name": "False Arcanist (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a hidden priest is able to disguise his cleric spellcasting, presenting it as arcane magic of some kind. Typically, this is as alchemist, bard, sorcerer, or wizard magic, and the cleric disguises the words and gestures of the cleric spell with accoutrements appropriate to his apparent profession. He must make a skill check (DC 10 + twice the level of the spell) to disguise his casting and successfully cast the spell. The type of skill check depends on the type of caster he pretends to be: Craft (alchemy) for alchemist, Perform for bard, Knowledge (arcana) for sorcerer or wizard. Using Spellcraft to identify the spell works normally, though unless the observer beats the DC by 10 or more, she doesn’t suspect the source of the magic is divine. For example, a hidden priest pretending to be an alchemist wants to cast cure light wounds on a wounded townsperson. If he makes a DC 12 Craft (alchemy) check, he disguises his spellcasting as the mixing of an alchemical extract or potion (perhaps with the words disguised as reciting an obscure formula or talking herself through the list of ingredients), which he gives to the target. An observer making a DC 16 Spellcraft check can identify his spell as cure light wounds , but doesn’t realize his “alchemical” methods are a sham unless her check result is 26 or higher. When the hidden priest uses this ability, he must still provide any divine focus components for the spells he casts. However, the divine focus doesn’t need to be an obvious symbol of his faith. It could be a small coin, tattoo, or garment bearing the symbol, whether presented openly, disguised, or hidden within a larger picture. For example, a hidden priest of Sarenrae may use a coin with an ankh or sunburst, a complex tattoo or scar that has an ankh shape hidden within it, a glove with an ankh stitched on the inside of the palm, and so on. He must use this replacement divine focus just as he would his true one (for example, he couldn’t leave the coin in his shoe). If a spell requires a divine focus with a specific or minimum cost, the replacement divine focus must be of similar value to be used as the divine focus. A hidden priest adds half his class level (minimum +1) on all Bluff skill checks to send secret messages about religious matters, and on all Sense Motive checks to recognize similar messages. He also adds this bonus on Perception and Sense Motive checks relating to agents of the laws against his religion (including city guards in lands where these laws are in effect). This ability replaces one of the cleric’s two 1st-level domain powers (her choice)."
+          "summary": "At 1st level, a hidden priest is able to disguise his cleric spellcasting, presenting it as arcane magic of some kind. Typically, this is as alchemist, bard, sorcerer, or wizard magic, and the cleric disguises the words and gestures of the cleric spell with accoutrements appropriate to his apparent profession. He must make a skill check (DC 10 + twice the level of the spell) to disguise his casting and successfully cast the spell. The type of skill check depends on the type of caster he pretends to be: Craft (alchemy) for alchemist, Perform for bard, Knowledge (arcana) for sorcerer or wizard. Using Spellcraft to identify the spell works normally, though unless the observer beats the DC by 10 or more, she doesn’t suspect the source of the magic is divine. For example, a hidden priest pretending to be an alchemist wants to cast cure light wounds on a wounded townsperson. If he makes a DC 12 Craft (alchemy) check, he disguises his spellcasting as the mixing of an alchemical extract or potion (perhaps with the words disguised as reciting an obscure formula or talking herself through the list of ingredients), which he gives to the target. An observer making a DC 16 Spellcraft check can identify his spell as cure light wounds , but doesn’t realize his “alchemical” methods are a sham unless her check result is 26 or higher. When the hidden priest uses this ability, he must still provide any divine focus components for the spells he casts. However, the divine focus doesn’t need to be an obvious symbol of his faith. It could be a small coin, tattoo, or garment bearing the symbol, whether presented openly, disguised, or hidden within a larger picture. For example, a hidden priest of Sarenrae may use a coin with an ankh or sunburst, a complex tattoo or scar that has an ankh shape hidden within it, a glove with an ankh stitched on the inside of the palm, and so on. He must use this replacement divine focus just as he would his true one (for example, he couldn’t leave the coin in his shoe). If a spell requires a divine focus with a specific or minimum cost, the replacement divine focus must be of similar value to be used as the divine focus. A hidden priest adds half his class level (minimum +1) on all Bluff skill checks to send secret messages about religious matters, and on all Sense Motive checks to recognize similar messages. He also adds this bonus on Perception and Sense Motive checks relating to agents of the laws against his religion (including city guards in lands where these laws are in effect). This ability replaces one of the cleric’s two 1st-level domain powers (her choice).",
+          "resourceActions": [
+            {
+              "id": "hidden-priest-false-arcanist",
+              "label": "Disguise Cleric Spellcasting",
+              "classId": "cleric",
+              "minimumLevel": 1,
+              "modeLabel": "Apparent caster",
+              "modes": [
+                {
+                  "id": "alchemist",
+                  "label": "Alchemist — Craft (alchemy)",
+                  "summary": "Present the spell as an alchemical extract or preparation."
+                },
+                {
+                  "id": "bard",
+                  "label": "Bard — Perform",
+                  "summary": "Present the spell through an appropriate performance."
+                },
+                {
+                  "id": "arcane-caster",
+                  "label": "Sorcerer or Wizard — Knowledge (arcana)",
+                  "summary": "Present the spell as arcane spellcasting."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "hidden-priest-divine-focus",
+                  "label": "I am providing the required divine focus or an equal-value disguised replacement",
+                  "requiredForActivation": true
+                }
+              ],
+              "diceRoll": {
+                "label": "False Arcanist skill check",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Selected skill modifier",
+                "targetDcInputLabel": "Disguise DC (10 + twice the spell level)",
+                "failureLabel": "The spell is not successfully disguised or cast"
+              },
+              "summary": "Choose the apparent caster, enter that skill's total modifier and DC 10 + twice the spell level, then roll the required check."
+            }
+          ]
         },
         {
           "id": "cleric-hidden-priest-unseen-devotion-su-8",
           "name": "Unseen Devotion (Su)",
           "level": 8,
           "type": "archetype",
-          "summary": "At 8th level, a hidden priest can apply the Silent Spell and Still Spell feats to a spell he is about to cast. This does not alter the level of the spell or the casting time. He can use this ability once per day at 8th level and one additional time per day for every four additional cleric levels beyond 8th. Even though this ability does not modify the spell’s actual level, he cannot use this ability to cast a spell whose modified spell level would be above the level of the highest-level spell that he is capable of casting. This ability always applies both feats (the cleric cannot use it to just apply one or the other). This ability replaces one of the cleric’s two 8th-level domain powers (his choice)."
+          "summary": "At 8th level, a hidden priest can apply the Silent Spell and Still Spell feats to a spell he is about to cast. This does not alter the level of the spell or the casting time. He can use this ability once per day at 8th level and one additional time per day for every four additional cleric levels beyond 8th. Even though this ability does not modify the spell’s actual level, he cannot use this ability to cast a spell whose modified spell level would be above the level of the highest-level spell that he is capable of casting. This ability always applies both feats (the cleric cannot use it to just apply one or the other). This ability replaces one of the cleric’s two 8th-level domain powers (his choice).",
+          "resourceActions": [
+            {
+              "id": "hidden-priest-unseen-devotion",
+              "label": "Apply Unseen Devotion",
+              "classId": "cleric",
+              "minimumLevel": 8,
+              "resourceId": "hiddenPriestUnseenDevotion",
+              "cost": 1,
+              "textInputLabel": "Spell and its Still + Silent modified level",
+              "confirmations": [
+                {
+                  "id": "hidden-priest-unseen-both-feats",
+                  "label": "Apply both Still Spell and Silent Spell",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "hidden-priest-unseen-level-legal",
+                  "label": "The modified spell level does not exceed my highest castable spell level",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Spend one daily use to apply both Still Spell and Silent Spell without changing the slot level or casting time."
+            }
+          ]
         }
       ]
+    }
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "cleric-hidden-priest-false-arcanist-ex-1",
+      "skill": "Bluff",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1,
+      "condition": "sending secret messages about religious matters"
+    },
+    {
+      "sourceFeatureId": "cleric-hidden-priest-false-arcanist-ex-1",
+      "skill": "Sense Motive",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1,
+      "condition": "recognizing secret religious messages or dealing with agents enforcing laws against the hidden priest's religion"
+    },
+    {
+      "sourceFeatureId": "cleric-hidden-priest-false-arcanist-ex-1",
+      "skill": "Perception",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1,
+      "condition": "dealing with agents enforcing laws against the hidden priest's religion"
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "sourceFeatureId": "cleric-hidden-priest-unseen-devotion-su-8",
+      "resourceId": "hiddenPriestUnseenDevotion",
+      "label": "Unseen Devotion",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 8,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 4,
+      "minimum": 0,
+      "maximum": 4,
+      "refreshCadence": "day",
+      "dedicatedAction": true
     }
   ],
   "source": {
@@ -35,8 +157,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Hidden%20Priest"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "False Arcanist's caster-mode skill check, disguised-focus confirmation, and three conditional half-level skill bonuses are automated. Unseen Devotion tracks its level-scaled daily uses and enforces both metamagic and modified-level confirmations."
   ]
 }
