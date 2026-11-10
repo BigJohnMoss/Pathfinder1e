@@ -69,13 +69,24 @@
     }
   ],
   "proficiencyAdjustments": [{"category":"armor","operation":"add","proficiencies":["Heavy armor"]}],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "cleric-mendevian-priest-demonic-knowledge-ex-1",
+      "skill": "Knowledge (planes)",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1,
+      "condition": "regarding demons, demonic cults, and their magic"
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Mendevian%20Priest"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The reduced domain, heavy-armor proficiency, both restricted bonus-feat choices, and the minimum +1 half-level Knowledge (planes) bonus against demons are automated. Knowledge checks remain available in the builder with zero ranks, satisfying Demonic Knowledge's untrained-check permission."
   ]
 }
