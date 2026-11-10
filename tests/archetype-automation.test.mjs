@@ -730,6 +730,10 @@ test("exact skill-bonus scaling language produces published milestone tables", (
 
 test("exact conditional skill bonuses retain their published trigger", () => {
   const archetype = (id) => catalogueArchetypes.find((item) => item.id === id);
+  assert.deepEqual(archetypeSkillBonuses([archetype("cleric-mendevian-priest")], { cleric: 1 }).conditionalModifiers, [
+    { label: "Knowledge (planes) checks", condition: "regarding demons, demonic cults, and their magic", bonus: 1, source: "Mendevian Priest" },
+  ]);
+  assert.equal(archetypeSkillBonuses([archetype("cleric-mendevian-priest")], { cleric: 10 }).conditionalModifiers[0].bonus, 5);
   assert.deepEqual(archetypeSkillBonuses([archetype("druid-tempest-druid")], { druid: 1 }).conditionalModifiers, [
     { label: "Knowledge (nature) checks", condition: "in coastal or marshy lands", bonus: 4, source: "Tempest Druid" },
     { label: "Survival checks", condition: "in coastal or marshy lands", bonus: 4, source: "Tempest Druid" },
