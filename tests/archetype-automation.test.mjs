@@ -76,6 +76,34 @@ test("Naturalist automates focus guidance and both nature spell-like abilities",
   assert.ok(!applied.classSkills.includes("Knowledge (planes)"));
 });
 
+test("Hidden Priest automates disguised casting and level-scaled Unseen Devotion", () => {
+  const hiddenPriest = catalogueArchetypes.find((candidate) => candidate.id === "cleric-hidden-priest");
+  assert.ok(hiddenPriest);
+  assert.deepEqual(archetypeAutomationSummary(hiddenPriest, [], catalogueSpells).manual, []);
+
+  const features = hiddenPriest.replacements.flatMap((replacement) => replacement.features ?? []);
+  const falseArcanist = features.find((feature) => feature.id === "cleric-hidden-priest-false-arcanist-ex-1")
+    ?.resourceActions?.find((action) => action.id === "hidden-priest-false-arcanist");
+  assert.deepEqual(falseArcanist?.modes?.map((mode) => mode.id), ["alchemist", "bard", "arcane-caster"]);
+  assert.equal(falseArcanist?.diceRoll?.modifierInputLabel, "Selected skill modifier");
+  assert.match(falseArcanist?.diceRoll?.targetDcInputLabel ?? "", /10 \+ twice/);
+
+  const unseenDevotion = features.find((feature) => feature.id === "cleric-hidden-priest-unseen-devotion-su-8")
+    ?.resourceActions?.find((action) => action.id === "hidden-priest-unseen-devotion");
+  assert.equal(unseenDevotion?.confirmations?.filter((confirmation) => confirmation.requiredForActivation).length, 2);
+  assert.equal(applyArchetypeResourceAdjustments({}, [hiddenPriest], 8, {}).hiddenPriestUnseenDevotion, 1);
+  assert.equal(applyArchetypeResourceAdjustments({}, [hiddenPriest], 12, {}).hiddenPriestUnseenDevotion, 2);
+  assert.equal(applyArchetypeResourceAdjustments({}, [hiddenPriest], 20, {}).hiddenPriestUnseenDevotion, 4);
+
+  const skillBonuses = archetypeSkillBonuses([hiddenPriest], { cleric: 10 }).conditionalModifiers;
+  assert.deepEqual(skillBonuses.map((bonus) => [bonus.label, bonus.bonus]), [
+    ["Bluff checks", 5],
+    ["Sense Motive checks", 5],
+    ["Perception checks", 5],
+  ]);
+  assert.ok(skillBonuses.every((bonus) => bonus.condition));
+});
+
 test("static archetype alignment rules expose exact builder eligibility", () => {
   const automated = catalogueArchetypes.filter((archetype) => inferArchetypeAllowedAlignments(archetype).length);
   assert.equal(automated.length, 38);
