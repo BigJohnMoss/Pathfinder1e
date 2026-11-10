@@ -16,9 +16,9 @@ function playerOwnedReroll(sentence) {
 }
 
 function rerollLabel(sentence, feature) {
+  if (/stabili[sz]ation check/i.test(sentence)) return "Reroll stabilization check";
   if (/saving throw|\bsave\b/i.test(sentence)) return "Reroll saving throw";
   if (/attack roll/i.test(sentence)) return "Reroll attack roll";
-  if (/stabili[sz]ation check/i.test(sentence)) return "Reroll save or stabilization check";
   const namedSkill = sentence.match(/\b(Heal|Bluff|Diplomacy|Intimidate|Perception|Stealth|Survival|Acrobatics) check\b/i)?.[1];
   if (namedSkill) return `Reroll ${namedSkill} check`;
   if (/skill check/i.test(sentence)) return "Reroll skill check";
@@ -27,9 +27,9 @@ function rerollLabel(sentence, feature) {
 
 function referencedResource(sentence, resources) {
   const explicit = [
-    [/\b(?:spend|expend)\s+(?:one|two|three|four|five|six|\d+)\s+grit points?\b/i, { resourceId: "grit", label: "Grit" }],
+    [/\b(?:spend|expend)\s+(?:one|two|three|four|five|six|\d+)\s+(?:grit points?|points?\s+(?:from|of)\s+(?:(?:his|her|their|the)\s+)?grit pool)\b/i, { resourceId: "grit", label: "Grit" }],
     [/\b(?:spend|expend)\s+(?:one|two|three|four|five|six|\d+)\s+(?:(?:uses? of )(?:his|her|their) )?inspiration\b/i, { resourceId: "inspiration", label: "Inspiration" }],
-    [/\b(?:spend|expend)\s+(?:one|two|three|four|five|six|\d+)\s+panache points?\b/i, { resourceId: "panache", label: "Panache" }],
+    [/\b(?:spend|expend)\s+(?:one|two|three|four|five|six|\d+)\s+(?:panache points?|points?\s+(?:from|of)\s+(?:(?:his|her|their|the)\s+)?panache pool)\b/i, { resourceId: "panache", label: "Panache" }],
     [/\b(?:spend|expend)\s+(?:one|two|three|four|five|six|\d+)\s+rounds? of raging song\b/i, { resourceId: "ragingSongRounds", label: "Raging Song" }],
   ].find(([pattern]) => pattern.test(sentence));
   if (explicit) return explicit[1];
