@@ -59,7 +59,30 @@
           "name": "Verbal Instruction (Ex)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, a cloistered cleric can use the aid another action to assist an ally within 30 feet on a skill or ability check. The ally must be able to hear and understand the cleric’s instructions. For every three class levels beyond 3rd, the cloistered cleric can instruct one additional ally. If all allies are not engaged in the same task, using this ability is a full-round action rather than a standard action."
+          "summary": "At 3rd level, a cloistered cleric can use the aid another action to assist an ally within 30 feet on a skill or ability check. The ally must be able to hear and understand the cleric’s instructions. For every three class levels beyond 3rd, the cloistered cleric can instruct one additional ally. If all allies are not engaged in the same task, using this ability is a full-round action rather than a standard action.",
+          "resourceActions": [
+            {
+              "id": "cloistered-cleric-verbal-instruction",
+              "label": "Give Verbal Instruction",
+              "minimumLevel": 3,
+              "modeLabel": "Ally task",
+              "modes": [
+                { "id": "same-task", "label": "All allies on the same task", "summary": "Use Verbal Instruction as a standard action.", "actionType": "standard" },
+                { "id": "different-tasks", "label": "Allies on different tasks", "summary": "Use Verbal Instruction as a full-round action.", "actionType": "full-round" }
+              ],
+              "targetCountByLevel": [{ "level": 3, "count": 1 }, { "level": 6, "count": 2 }, { "level": 9, "count": 3 }, { "level": 12, "count": 4 }, { "level": 15, "count": 5 }, { "level": 18, "count": 6 }],
+              "confirmations": [{ "id": "aid-another-succeeded", "label": "The aid another check succeeded and the allies can hear and understand", "requiredForActivation": true }],
+              "activeEffect": {
+                "name": "Verbal Instruction",
+                "targets": ["allies"],
+                "bonus": 2,
+                "description": "Aid another grants the instructed allies a +2 bonus on the selected skill or ability check.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              }
+            }
+          ]
         },
         {
           "id": "cleric-cloistered-cleric-scribe-scroll-su-4",
@@ -72,13 +95,25 @@
     }
   ],
   "proficiencyAdjustments": [{"category":"weapon","operation":"replace","proficiencies":["Club","Heavy mace","Light mace","Quarterstaff","Sling"]},{"category":"armor","operation":"replace","proficiencies":["Light armor"]},{"category":"shield","operation":"remove","proficiencies":["All shields"]}],
+  "skillBonusAdjustments": [
+    { "sourceFeatureId": "cleric-cloistered-cleric-breadth-of-knowledge-1", "skill": "Knowledge (arcana)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+    { "sourceFeatureId": "cleric-cloistered-cleric-breadth-of-knowledge-1", "skill": "Knowledge (dungeoneering)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+    { "sourceFeatureId": "cleric-cloistered-cleric-breadth-of-knowledge-1", "skill": "Knowledge (engineering)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+    { "sourceFeatureId": "cleric-cloistered-cleric-breadth-of-knowledge-1", "skill": "Knowledge (geography)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+    { "sourceFeatureId": "cleric-cloistered-cleric-breadth-of-knowledge-1", "skill": "Knowledge (history)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+    { "sourceFeatureId": "cleric-cloistered-cleric-breadth-of-knowledge-1", "skill": "Knowledge (local)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+    { "sourceFeatureId": "cleric-cloistered-cleric-breadth-of-knowledge-1", "skill": "Knowledge (nature)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+    { "sourceFeatureId": "cleric-cloistered-cleric-breadth-of-knowledge-1", "skill": "Knowledge (nobility)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+    { "sourceFeatureId": "cleric-cloistered-cleric-breadth-of-knowledge-1", "skill": "Knowledge (planes)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+    { "sourceFeatureId": "cleric-cloistered-cleric-breadth-of-knowledge-1", "skill": "Knowledge (religion)", "base": 0, "levelDivisor": 2, "minimum": 1 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Cloistered%20Cleric"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The proficiency, class-skill, rank, single-domain, diminished-spellcasting, Well-Read, and Scribe Scroll rules are automated. Breadth of Knowledge applies its minimum +1 half-level bonus to all ten Knowledge skills, and Verbal Instruction tracks the successful aid check, action timing, +2 benefit, and one-to-six ally progression."
   ]
 }
