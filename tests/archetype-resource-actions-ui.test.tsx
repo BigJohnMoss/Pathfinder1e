@@ -31,6 +31,7 @@ const iceChemist = JSON.parse(readFileSync(new URL("../packages/data/src/archety
 const deepBomber = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-deep-bomber.json", import.meta.url), "utf8")) as CharacterArchetype;
 const sanctifiedRogue = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/rogue-sanctified-rogue.json", import.meta.url), "utf8")) as CharacterArchetype;
 const makeshiftScrapper = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/rogue-makeshift-scrapper.json", import.meta.url), "utf8")) as CharacterArchetype;
+const smuggler = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/rogue-smuggler.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -530,4 +531,23 @@ test("Makeshift Scrapper spends daily rounds and scales both weapon bonuses", as
     ["attackRolls", 3, 1],
     ["weaponDamageRolls", 3, 1]
   ]);
+});
+
+test("Smuggler gates and rolls its exact bribe cost", async () => {
+  const bribery = smuggler.replacements.flatMap((replacement) => replacement.features)
+    .find((candidate) => candidate.id === "rogue-smuggler-bribery-3");
+  assert.ok(bribery);
+  render(<ClassFeatures level={6} className="Smuggler" features={[bribery]} classLevels={{ rogue: 6 }} />);
+  const button = screen.getByRole("button", { name: "Roll successful bribe cost" });
+  assert.equal(button.hasAttribute("disabled"), true);
+  const setup = userEvent.setup();
+  await setup.click(screen.getByLabelText("The opposed Diplomacy check succeeded"));
+  const originalRandom = Math.random;
+  Math.random = () => 0.99;
+  try {
+    await setup.click(button);
+  } finally {
+    Math.random = originalRandom;
+  }
+  assert.match(screen.getByLabelText("Roll successful bribe cost result").textContent ?? "", /Bribe cost in gp: 4 \+ 4 \+ 4 \+ 4 \+ 4 = 20/);
 });
