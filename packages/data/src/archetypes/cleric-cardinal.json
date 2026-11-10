@@ -47,8 +47,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Cardinal"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Political Skill's four class skills, six skill ranks per level, half base-attack progression, single-domain limit, and spontaneous-casting replacement are automated. The Cardinal's light-armor-only and no-shield proficiencies also replace the Cleric defaults."
   ]
 }

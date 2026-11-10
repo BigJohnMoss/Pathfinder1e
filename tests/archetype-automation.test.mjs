@@ -1792,6 +1792,8 @@ test("archetype combat-statistic and proficiency replacements alter the calculat
   const cardinal = applyArchetype(cleric, source("cleric-cardinal"));
   assert.equal(cardinal.babProgression, "half");
   assert.equal(cardinal.skillRanksPerLevel, 6);
+  for (const skill of ["Bluff", "Intimidate", "Knowledge (geography)", "Knowledge (local)"]) assert.ok(cardinal.classSkills.includes(skill));
+  assert.deepEqual(archetypeAutomationSummary(source("cleric-cardinal")).manual, []);
   assert.deepEqual(cardinal.proficiencyAdjustments, [
     { category: "armor", operation: "replace", proficiencies: ["Light armor"] },
     { category: "shield", operation: "remove", proficiencies: ["All shields"] },
