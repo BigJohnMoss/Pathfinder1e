@@ -34,6 +34,7 @@
             {
               "id": "blazing-torchbearer-spark",
               "label": "Cast Spark",
+              "minimumLevel": 1,
               "actionTypeByLevel": [{ "level": 1, "actionType": "standard" }],
               "spellLikeAbility": { "spellId": "spark", "spellName": "Spark", "cadence": "at-will", "kind": "spell-like" },
               "summary": "Cast spark as an at-will spell-like ability using Alchemist level as caster level."

@@ -33,8 +33,8 @@ test("tracked archetype resources gain a matching activation action", () => {
 test("applied archetypes expose generic actions without duplicating specialized actions", () => {
   const alchemist = data.classes.find((item) => item.id === "alchemist");
   const torchbearer = applyArchetype(alchemist, archetype("alchemist-blazing-torchbearer"));
-  assert.deepEqual(torchbearer.features.find((feature) => feature.name.startsWith("Intense Light")).resourceActions.map((action) => action.label), ["Use Intense Light"]);
-  assert.deepEqual(torchbearer.features.find((feature) => feature.name.startsWith("Everburning Flame")).resourceActions.map((action) => action.label), ["Cast spark"]);
+  assert.deepEqual(torchbearer.features.find((feature) => feature.name.startsWith("Intense Light")).resourceActions.map((action) => action.label), ["Create brilliant flash"]);
+  assert.deepEqual(torchbearer.features.find((feature) => feature.name.startsWith("Everburning Flame")).resourceActions.map((action) => action.label), ["Hold everburning torch", "Cast Spark"]);
 
   const siegebreaker = applyArchetype(data.classes.find((item) => item.id === "fighter"), archetype("fighter-siegebreaker"));
   assert.deepEqual(siegebreaker.features.find((feature) => feature.name.startsWith("Armored Vigor")).resourceActions.map((action) => action.label), ["Gain Armored Vigor temporary HP"]);

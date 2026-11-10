@@ -65,3 +65,34 @@ test("reroll inference stays unique and resource costs remain positive", () => {
     assert.ok(actions.every(({ action }) => !action.resourceId || Number.isInteger(action.cost) && action.cost > 0), item.id);
   }
 });
+
+test("reroll costs stated as points from a grit or panache pool are tracked", () => {
+  for (const [pool, pronoun, amount] of [["grit", "her", "two"], ["panache", "his", "3"]]) {
+    const feature = {
+      id: `test-${pool}-reroll`,
+      name: "Second Chance (Ex)",
+      level: 5,
+      summary: `She may spend ${amount} points from ${pronoun} ${pool} pool to reroll an attack roll.`,
+    };
+    const result = inferredArchetypeRerollActionDetails({
+      classId: "gunslinger",
+      replacements: [{ features: [feature] }],
+    });
+    assert.equal(result.actions.length, 1, pool);
+    assert.equal(result.actions[0].action.resourceId, pool);
+    assert.equal(result.actions[0].action.cost, amount === "two" ? 2 : 3);
+  }
+});
+
+test("stabilization rerolls keep their specific action label", () => {
+  const result = inferredArchetypeRerollActionDetails({
+    classId: "rogue",
+    replacements: [{ features: [{
+      id: "test-stabilization",
+      name: "Last Chance (Ex)",
+      level: 3,
+      summary: "She may reroll a stabilization check.",
+    }] }],
+  });
+  assert.equal(result.actions[0].action.label, "Reroll stabilization check");
+});
