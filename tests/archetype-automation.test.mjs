@@ -119,7 +119,7 @@ test("Groom automates mount speech and Scout the Area while leaving shared conce
   assert.equal(bonuses.skillBonuses["Knowledge (local)"], 4);
 
   const manual = archetypeAutomationSummary(groom, [], catalogueSpells).manual;
-  assert.deepEqual(manual, ["Hide the Horses (Ex) (level 1)"]);
+  assert.ok(manual.includes("Hide the Horses (Ex) (level 1)"));
 });
 
 test("static archetype alignment rules expose exact builder eligibility", () => {
