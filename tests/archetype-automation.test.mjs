@@ -115,8 +115,8 @@ test("Groom automates mount speech and Scout the Area while leaving shared conce
   assert.equal(horseWhisperer?.spellLikeAbility?.cadence, "at-will");
   assert.equal(horseWhisperer?.confirmations?.filter((confirmation) => confirmation.requiredForActivation).length, 1);
 
-  const bonuses = archetypeSkillBonuses([groom], { ranger: 3 }).conditionalModifiers;
-  assert.ok(bonuses.some((bonus) => bonus.skill === "Knowledge (local)" && bonus.bonus === 4));
+  const bonuses = archetypeSkillBonuses([groom], { ranger: 3 });
+  assert.equal(bonuses.skillBonuses["Knowledge (local)"], 4);
 
   const manual = archetypeAutomationSummary(groom, [], catalogueSpells).manual;
   assert.deepEqual(manual, ["Hide the Horses (Ex) (level 1)"]);
