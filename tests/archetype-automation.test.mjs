@@ -104,6 +104,24 @@ test("Hidden Priest automates disguised casting and level-scaled Unseen Devotion
   assert.ok(skillBonuses.every((bonus) => bonus.condition));
 });
 
+test("Groom automates mount speech and Scout the Area while leaving shared concealment explicit", () => {
+  const groom = catalogueArchetypes.find((candidate) => candidate.id === "ranger-groom");
+  assert.ok(groom);
+
+  const features = groom.replacements.flatMap((replacement) => replacement.features ?? []);
+  const horseWhisperer = features.find((feature) => feature.id === "ranger-groom-horse-whisperer-su-3")
+    ?.resourceActions?.find((action) => action.id === "groom-horse-whisperer");
+  assert.equal(horseWhisperer?.spellLikeAbility?.spellId, "speak-with-animals");
+  assert.equal(horseWhisperer?.spellLikeAbility?.cadence, "at-will");
+  assert.equal(horseWhisperer?.confirmations?.filter((confirmation) => confirmation.requiredForActivation).length, 1);
+
+  const bonuses = archetypeSkillBonuses([groom], { ranger: 3 });
+  assert.equal(bonuses.skillBonuses["Knowledge (local)"], 4);
+
+  const manual = archetypeAutomationSummary(groom, [], catalogueSpells).manual;
+  assert.ok(manual.includes("Hide the Horses (Ex) (level 1)"));
+});
+
 test("static archetype alignment rules expose exact builder eligibility", () => {
   const automated = catalogueArchetypes.filter((archetype) => inferArchetypeAllowedAlignments(archetype).length);
   assert.equal(automated.length, 38);

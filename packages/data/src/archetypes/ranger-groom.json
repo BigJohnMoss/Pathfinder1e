@@ -24,7 +24,31 @@
           "name": "Horse Whisperer (Su)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, a groom can use speak with animals at will, but can use this power only on horses, riding dogs, and other mounts of the animal type. This ability replaces Endurance."
+          "summary": "At 3rd level, a groom can use speak with animals at will, but can use this power only on horses, riding dogs, and other mounts of the animal type. This ability replaces Endurance.",
+          "resourceActions": [
+            {
+              "id": "groom-horse-whisperer",
+              "label": "Speak with animal mount",
+              "minimumLevel": 3,
+              "actionTypeByLevel": [
+                { "level": 3, "actionType": "standard" }
+              ],
+              "spellLikeAbility": {
+                "spellId": "speak-with-animals",
+                "spellName": "Speak with Animals (animal mounts only)",
+                "cadence": "at-will",
+                "kind": "spell-like"
+              },
+              "confirmations": [
+                {
+                  "id": "animal-mount",
+                  "label": "The target is a horse, riding dog, or other mount of the animal type",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Use speak with animals at will, limited to animal mounts."
+            }
+          ]
         },
         {
           "id": "ranger-groom-scout-the-area-ex-3",
@@ -36,6 +60,14 @@
       ]
     }
   ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "ranger-groom-scout-the-area-ex-3",
+      "skill": "Knowledge (local)",
+      "minimumLevel": 3,
+      "base": 4
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
@@ -43,6 +75,6 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Horse Whisperer is exposed as an at-will speak with animals action restricted to animal mounts, and Scout the Area applies its +4 Knowledge (local) bonus. Hide the Horses' shared half-level Stealth bonus for both the ranger and concealed mounts remains manual until companion and party-mount skill checks share one tracked effect."
   ]
 }
