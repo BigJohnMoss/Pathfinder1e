@@ -919,6 +919,12 @@ export function normalizeCharacterDraft(
     draft.classResourceUsesByClass,
     validClassIds,
   );
+  const inquisitorResources = classResourceUsesByClass.inquisitor;
+  const legacyTacticianId = "archetype-inquisitor-tactical-leader-tactician-ex-3";
+  if (inquisitorResources?.[legacyTacticianId] !== undefined) {
+    inquisitorResources.tacticalLeaderTactician ??= inquisitorResources[legacyTacticianId];
+    delete inquisitorResources[legacyTacticianId];
+  }
   const prestigeSpellcastingTargets = Object.fromEntries(
     Object.entries(
       isStringArrayRecord(draft.prestigeSpellcastingTargets, validClassIds),
