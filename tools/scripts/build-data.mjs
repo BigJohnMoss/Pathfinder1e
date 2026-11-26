@@ -143,4 +143,29 @@ await writeFile(new URL('pf1e-spells.mjs',out),`const spells = JSON.parse(${JSON
 await writeFile(new URL('pf1e-spells.d.mts',out),'import type { CharacterSpell } from "../packages/types/src/index.js";\ndeclare const spells: CharacterSpell[];\nexport default spells;\n');
 await writeFile(new URL('pf1e-archetypes.mjs',out),`const archetypes = JSON.parse(${JSON.stringify(JSON.stringify(bundle.archetypes))});\nexport default archetypes;\n`);
 await writeFile(new URL('pf1e-archetypes.d.mts',out),'import type { CharacterArchetype } from "../packages/types/src/index.js";\ndeclare const archetypes: CharacterArchetype[];\nexport default archetypes;\n');
+
+// Keep each lazy browser download below the client chunk budget as the catalogue grows.
+const archetypeChunkTargetBytes = 2_500_000;
+const archetypeChunks = [[]];
+let currentChunkBytes = 0;
+for (const archetype of bundle.archetypes) {
+  const bytes = Buffer.byteLength(JSON.stringify(JSON.stringify(archetype))) + 1;
+  if (currentChunkBytes > 0 && currentChunkBytes + bytes > archetypeChunkTargetBytes) {
+    archetypeChunks.push([]);
+    currentChunkBytes = 0;
+  }
+  archetypeChunks.at(-1).push(archetype);
+  currentChunkBytes += bytes;
+}
+const archetypeChunkFiles = archetypeChunks.map((_, index) => `pf1e-archetypes-browser-${index + 1}.mjs`);
+await Promise.all(archetypeChunks.map((records, index) => writeFile(
+  new URL(archetypeChunkFiles[index], out),
+  `export default JSON.parse(${JSON.stringify(JSON.stringify(records))});\n`,
+)));
+const archetypeLoaders = archetypeChunkFiles.map((file) => `  () => import("./${file}"),`).join("\n");
+await writeFile(new URL("pf1e-archetype-loaders.mjs", out), `export default [\n${archetypeLoaders}\n];\n`);
+await writeFile(new URL("pf1e-archetype-loaders.d.mts", out),
+  'import type { CharacterArchetype } from "../packages/types/src/index.js";\ndeclare const loaders: Array<() => Promise<{ default: CharacterArchetype[] }>>;\nexport default loaders;\n',
+);
+
 console.log(`Generated bundle with ${bundle.classes.length} classes, ${bundle.feats.length} feats, ${bundle.traits.length} traits, and ${bundle.spells.length} spells.`);

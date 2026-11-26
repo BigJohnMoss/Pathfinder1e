@@ -28,5 +28,6 @@ jobs:
           name: check-failure-${{ github.run_id }}
           path: check.log
       - run: npm run build
+      - run: npm run performance:check
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
