@@ -33,10 +33,10 @@ test.afterEach(() => cleanup());
 test("at-will spell-like abilities remain clickable without a resource", async () => {
   const applied = applyArchetype(alchemist, torchbearer);
   render(<ClassFeatures level={1} className={applied.name} features={featuresThroughLevel(applied, 1)} classLevels={{ alchemist: 1 }} />);
-  const button = screen.getByRole("button", { name: "Cast spark" });
+  const button = screen.getByRole("button", { name: "Cast Spark" });
   assert.equal(button.hasAttribute("disabled"), false);
   await userEvent.setup().click(button);
-  assert.equal(screen.getByLabelText("Cast spark result").textContent, "spark cast as a spell-like ability.");
+  assert.equal(screen.getByLabelText("Cast Spark result").textContent, "Spark cast as a spell-like ability.");
 });
 
 test("limited spell-like abilities spend their matching tracked resource", async () => {
