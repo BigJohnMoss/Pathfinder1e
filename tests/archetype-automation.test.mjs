@@ -29,6 +29,23 @@ test("full archetypes never report manual effects", () => {
   assert.deepEqual(archetypeAutomationSummary({ mechanicalCoverage: "full", replacements: [{ features: [{ name: "Feature", level: 1 }] }] }).manual, []);
 });
 
+test("Metamagic Rager spends scaled bloodrage rounds and exposes metamagic bloodline feats", () => {
+  const source = catalogueArchetypes.find(({ id }) => id === "bloodrager-metamagic-rager");
+  const action = source.replacements.flatMap(({ features }) => features)
+    .find(({ id }) => id === "bloodrager-metamagic-rager-meta-rage-su-5")
+    .resourceActions[0];
+  assert.equal(action.resourceId, "bloodrageRounds");
+  assert.deepEqual(action.variableCost, { label: "Adjusted spell level", minimum: 1, multiplier: 2 });
+  assert.deepEqual(action.featSelection, {
+    label: "Known metamagic feat",
+    featType: "metamagic",
+    source: "known",
+    countByLevel: [{ level: 5, count: 1 }],
+  });
+  assert.deepEqual(action.confirmations.map(({ id }) => id), ["meta-rage-eligible-spell", "meta-rage-casting-time"]);
+  assert.deepEqual(archetypeAutomationSummary(source, [], []).manual, []);
+});
+
 test("completed Alchemist archetypes expose no manual mechanics", () => {
   for (const id of ["alchemist-aerochemist", "alchemist-oenopion-researcher", "alchemist-royal-alchemist", "alchemist-preservationist", "alchemist-gloom-chymist", "alchemist-concocter", "alchemist-dragonblood-chymist", "alchemist-plague-bringer", "alchemist-alchemical-trapper", "alchemist-clone-master", "alchemist-winged-marauder", "alchemist-bogborn-alchemist", "alchemist-crimson-chymist", "alchemist-blazing-torchbearer", "alchemist-ice-chemist", "alchemist-deep-bomber"]) {
     const archetype = catalogueArchetypes.find((candidate) => candidate.id === id);
@@ -1204,6 +1221,9 @@ test("archetype feat alternatives augment existing class choice slots without gr
   assert.deepEqual(inferArchetypeFeatAlternatives(archetype("alchemist-fire-bomber"), feats)[0].featChoiceIds, ["burn-burn-burn", "fire-tamer", "flame-heart"]);
   assert.deepEqual(inferArchetypeFeatAlternatives(archetype("investigator-steel-hound"), feats)[0].featChoiceIds, ["extra-grit", "rapid-reload"]);
   assert.deepEqual(inferArchetypeFeatAlternatives(archetype("barbarian-pack-hunter"), feats)[0].featChoiceTypes, ["teamwork"]);
+  const metamagicRager = inferArchetypeFeatAlternatives(archetype("bloodrager-metamagic-rager"), feats)[0];
+  assert.equal(metamagicRager.optionGroupId, "bloodrager-bloodline-feats");
+  assert.deepEqual(metamagicRager.featChoiceTypes, ["metamagic"]);
   const skulking = inferArchetypeFeatAlternatives(archetype("rogue-skulking-slayer"), feats);
   assert.deepEqual(skulking.map(item => [item.minimumLevel, item.featChoiceIds]), [
     [2, ["surprise-follow-through"]],
