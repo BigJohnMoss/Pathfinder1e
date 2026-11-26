@@ -2004,3 +2004,42 @@ main#character-builder-main {
   margin: 0;
   white-space: pre-line;
 }
+
+.shared-skill-check {
+  border: 1px solid #e3ddd0;
+  border-radius: 10px;
+  margin: 0 0 14px;
+  min-width: 0;
+  padding: 10px 12px;
+}
+
+.shared-skill-check legend {
+  font-weight: 800;
+}
+
+.shared-skill-check p {
+  color: #5b584f;
+  font-size: .84rem;
+  margin: 0 0 8px;
+}
+
+.shared-skill-check .skill-roll {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 10px 0 0;
+}
+
+.shared-skill-check .skill-roll input {
+  background: #fff;
+  border: 1px solid #b7ac99;
+  border-radius: 8px;
+  color: #252018;
+  font: inherit;
+  min-width: 0;
+  padding: 9px;
+  width: 100%;
+}
+
+.shared-skill-check .skill-roll button {
+  grid-column: 1 / -1;
+  justify-self: start;
+}

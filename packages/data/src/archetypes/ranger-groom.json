@@ -8,8 +8,8 @@
     {
       "featureIds": [
         "ranger-track-1",
-        "ranger-swift-tracker-8",
-        "ranger-endurance-3"
+        "ranger-endurance-3",
+        "ranger-favored-terrain-3"
       ],
       "features": [
         {
@@ -62,6 +62,19 @@
   ],
   "skillBonusAdjustments": [
     {
+      "sourceFeatureId": "ranger-groom-hide-the-horses-ex-1",
+      "skill": "Stealth",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1,
+      "condition": "While concealing the party’s mounts.",
+      "sharedCheck": {
+        "label": "Hide the Horses",
+        "recipient": "Concealed mount"
+      }
+    },
+    {
       "sourceFeatureId": "ranger-groom-scout-the-area-ex-3",
       "skill": "Knowledge (local)",
       "minimumLevel": 3,
@@ -73,8 +86,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Groom"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Horse Whisperer is exposed as an at-will speak with animals action restricted to animal mounts, and Scout the Area applies its +4 Knowledge (local) bonus. Hide the Horses' shared half-level Stealth bonus for both the ranger and concealed mounts remains manual until companion and party-mount skill checks share one tracked effect."
+    "Hide the Horses rolls Stealth for the ranger and each concealed mount with the same level-based bonus. Horse Whisperer and Scout the Area apply their at-will mount speech and Knowledge (local) check mechanics. Scout the Area's nearest service-provider information comes from the GM."
   ]
 }

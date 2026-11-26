@@ -97,7 +97,14 @@ export function inferArchetypeDefenseAdjustments(archetype: CharacterArchetype):
 export function archetypeDefenses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): Array<NonNullable<CharacterArchetype["defenseAdjustments"]>[number] & { value: number; source: string }>;
 export function inferArchetypeSkillCheckRules(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillCheckRules"]>;
 export function archetypeSkillCheckRules(archetypes: CharacterArchetype[], classLevels: Record<string, number>): Array<NonNullable<CharacterArchetype["skillCheckRules"]>[number] & { source: string }>;
-export function archetypeSkillBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>, abilityModifiers?: Partial<Record<AbilityName, number>>): { skillBonuses: Record<string, number>; conditionalModifiers: Array<{ label: string; bonus: number; condition: string; source: string }> };
+export type ConditionalSkillModifier = {
+  label: string;
+  bonus: number;
+  condition: string;
+  source: string;
+  sharedCheck?: { id: string; skill: string; label: string; recipient: string };
+};
+export function archetypeSkillBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>, abilityModifiers?: Partial<Record<AbilityName, number>>): { skillBonuses: Record<string, number>; conditionalModifiers: ConditionalSkillModifier[] };
 export function inferArchetypeSkillAbilityOverrides(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillAbilityOverrides"]>;
 export function archetypeSkillAbilityOverrides(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillAbilityOverrides"]>;
 export function effectiveArchetypeSkillAbility(archetypes: CharacterArchetype[], classLevels: Record<string, number>, skill: string, defaultAbility: AbilityName): AbilityName;
