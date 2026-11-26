@@ -358,6 +358,10 @@ export function inferArchetypeFeatAlternatives(archetype, feats) {
       add(feature, "rage-powers", 2, { featChoiceTypes: ["teamwork"] });
       continue;
     }
+    if (/takes? a bloodline feat,[^.]+choose to take a metamagic feat instead/i.test(text)) {
+      add(feature, "bloodrager-bloodline-feats", 6, { featChoiceTypes: ["metamagic"] });
+      continue;
+    }
     const slayerList = text.match(/would gain a slayer talent,[^.]+instead select a feat from the following list\s*:\s*([^.]+)/i);
     if (slayerList) {
       const ids = featIdsFromList(slayerList[1], featIdByName);
@@ -375,7 +379,7 @@ export function inferArchetypeFeatAlternatives(archetype, feats) {
 const alternativeReplacementSentence = /(?:replaces? (?:the )?(?:normal )?(?:monk )?bonus feats? with|selects? bonus feats? from) the following(?: list)?\s*:/i;
 const alternativeExpansionSentence = /^At\s+\d+(?:st|nd|rd|th)?\s+level,\s*(?:the )?following feats? (?:are (?:also available|added(?: to (?:the|this) list)?)|is added to (?:the|this) list)\s*:/i;
 const alternativeExactSentence = /\bcan select (?:the )?.+? feats?(?:\s*\([^)]*\))? in place of (?:an? )?(?:advanced )?(?:discovery|investigator talent|rogue talent)/i;
-const alternativeClassChoiceSentence = /\bwould gain (?:a new rage power|a slayer talent),[^.]+instead select/i;
+const alternativeClassChoiceSentence = /\b(?:would gain (?:a new rage power|a slayer talent),[^.]+instead select|takes? a bloodline feat,[^.]+(?:choose|select)[^.]+instead)/i;
 const alternativeQualifierSentence = /^(?:She|He|The [^.]+) (?:must still|must|does not need to|doesn't need to|need not) meet[^.]+prerequisites?|^This (?:ability )?(?:alters?|modifies|replaces?)/i;
 
 export function inferredArchetypeFeatAlternativeDetails(archetype, feats) {
