@@ -18,7 +18,7 @@ const characterClass = (id) => data.classes.find((candidate) => candidate.id ===
 
 test("teamwork-sharing archetypes receive tracked feat actions", () => {
   const tactical = inferArchetypeTeamworkSharingActions(archetype("inquisitor-tactical-leader"))[0].action;
-  assert.equal(tactical.resourceId, "archetype-inquisitor-tactical-leader-tactician-ex-3");
+  assert.equal(tactical.resourceId, "tacticalLeaderTactician");
   assert.deepEqual(tactical.featSelection.countByLevel, [{ level: 3, count: 1 }, { level: 18, count: 2 }]);
   assert.deepEqual(tactical.actionTypeByLevel, [{ level: 3, actionType: "standard" }, { level: 12, actionType: "swift" }]);
   assert.deepEqual(tactical.activeEffect.defaultRoundsByLevel.filter(({ level }) => [3, 4, 18].includes(level)), [
@@ -38,7 +38,7 @@ test("teamwork-sharing archetypes receive tracked feat actions", () => {
 
 test("tactician resources scale at named levels and stack Cavalier levels", () => {
   const tacticalLeader = archetype("inquisitor-tactical-leader");
-  const resource = resolvedArchetypeResourceAdjustments(tacticalLeader).find(({ resourceId }) => resourceId.endsWith("tactician-ex-3"));
+  const resource = resolvedArchetypeResourceAdjustments(tacticalLeader).find(({ resourceId }) => resourceId === "tacticalLeaderTactician");
   assert.deepEqual(resource.maximumByLevel, [
     { level: 3, maximum: 1 }, { level: 6, maximum: 2 }, { level: 9, maximum: 3 }, { level: 15, maximum: 4 }, { level: 18, maximum: 5 },
   ]);
@@ -49,6 +49,25 @@ test("tactician resources scale at named levels and stack Cavalier levels", () =
   const commanderResource = resolvedArchetypeResourceAdjustments(divineCommander).find(({ resourceId }) => resourceId.endsWith("battle-tactician-ex-3"));
   assert.deepEqual(commanderResource.maximumByLevel, [{ level: 3, maximum: 1 }, { level: 9, maximum: 2 }, { level: 15, maximum: 3 }]);
   assert.deepEqual(apgClassResourceMaximums("paladin", 20), { smiteEvil: 7 });
+});
+
+test("Tactical Leader Battle Acumen tracks its Wisdom pool and judgment handoff", () => {
+  const source = archetype("inquisitor-tactical-leader");
+  const feature = source.replacements.flatMap(({ features }) => features)
+    .find(({ id }) => id === "inquisitor-tactical-leader-battle-acumen-ex-14");
+  const action = feature?.resourceActions?.find(({ id }) => id === "tactical-leader-battle-acumen");
+  assert.ok(action);
+  assert.equal(action.resourceId, "tacticalLeaderBattleAcumen");
+  assert.deepEqual(action.actionTypeByLevel, [{ level: 14, actionType: "immediate" }]);
+  assert.equal(action.activeEffect.defaultRounds, 1);
+  assert.deepEqual(action.activeEffect.targets, ["allies"]);
+  assert.deepEqual(action.confirmations.map(({ id }) => id), [
+    "tactical-leader-judgment-active",
+    "tactical-leader-ally-visible-audible",
+  ]);
+  assert.equal(applyArchetypeResourceAdjustments({}, [source], 14, { wisdom: 0 }).tacticalLeaderBattleAcumen, 1);
+  assert.equal(applyArchetypeResourceAdjustments({}, [source], 14, { wisdom: 5 }).tacticalLeaderBattleAcumen, 5);
+  assert.deepEqual(archetypeAutomationSummary(source, data.feats, data.spells).manual, []);
 });
 
 test("teamwork sharing is attached to features and removed from the manual audit", () => {
