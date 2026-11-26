@@ -4,9 +4,9 @@
   "classId": "inquisitor",
   "summary": "Rather than pursuing their holy missions alone, some inquisitors see the inherent value of working with like-minded allies to accomplish mutual goals.",
   "replacesText": "Stern Gaze; Solo Tactics; Teamwork Feats; Exploit Weakness",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Leader's Words, all Tactician feat selections, uses, recipients, durations, action scaling, and Cavalier stacking are automated. Battle Acumen tracks its Wisdom-scaled daily uses, active judgment requirement, ally recipient, immediate action, and one-round duration."
   ],
   "replacements": [
     {
@@ -41,9 +41,102 @@
           "name": "Battle Acumen (Ex)",
           "level": 14,
           "type": "archetype",
-          "summary": "At 14th level, a tactical leader can grant his judgment benefits to a single other ally within 30 feet who can see and hear the tactical leader as an immediate action. These benefits last until the beginning of the tactical leader’s next turn. A tactical leader must have a judgment active to use this ability and the benefits granted are the same as those selected by his judgment. A tactical leader can use this ability a number of times per day equal to his Wisdom modifier (minimum 1). This ability replaces exploit weakness."
+          "summary": "At 14th level, a tactical leader can grant his judgment benefits to a single other ally within 30 feet who can see and hear the tactical leader as an immediate action. These benefits last until the beginning of the tactical leader’s next turn. A tactical leader must have a judgment active to use this ability and the benefits granted are the same as those selected by his judgment. A tactical leader can use this ability a number of times per day equal to his Wisdom modifier (minimum 1). This ability replaces exploit weakness.",
+          "resourceActions": [
+            {
+              "id": "tactical-leader-battle-acumen",
+              "label": "Grant Battle Acumen",
+              "classId": "inquisitor",
+              "minimumLevel": 14,
+              "resourceId": "tacticalLeaderBattleAcumen",
+              "cost": 1,
+              "recipientLabel": "Visible and hearing ally within 30 feet",
+              "textInputLabel": "Active judgment benefits granted",
+              "actionTypeByLevel": [
+                {
+                  "level": 14,
+                  "actionType": "immediate"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "tactical-leader-judgment-active",
+                  "label": "I have an active judgment",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "tactical-leader-ally-visible-audible",
+                  "label": "The ally is within 30 feet and can see and hear me",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Battle Acumen",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "The chosen ally gains the same benefits as the Tactical Leader's currently selected judgments until the beginning of the Tactical Leader's next turn.",
+                "defaultRounds": 1,
+                "fixedRounds": true
+              },
+              "summary": "Spend one daily use as an immediate action to grant one visible and hearing ally within 30 feet the benefits of every currently selected judgment for 1 round."
+            }
+          ]
         }
       ]
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "sourceFeatureId": "inquisitor-tactical-leader-tactician-ex-3",
+      "resourceId": "tacticalLeaderTactician",
+      "label": "Tactician",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 3,
+      "base": 1,
+      "minimum": 0,
+      "maximumByLevel": [
+        {
+          "level": 3,
+          "maximum": 1
+        },
+        {
+          "level": 6,
+          "maximum": 2
+        },
+        {
+          "level": 9,
+          "maximum": 3
+        },
+        {
+          "level": 15,
+          "maximum": 4
+        },
+        {
+          "level": 18,
+          "maximum": 5
+        }
+      ],
+      "effectiveLevelClassIds": [
+        "inquisitor",
+        "cavalier"
+      ],
+      "dedicatedAction": true
+    },
+    {
+      "sourceFeatureId": "inquisitor-tactical-leader-battle-acumen-ex-14",
+      "resourceId": "tacticalLeaderBattleAcumen",
+      "label": "Battle Acumen",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 14,
+      "base": 0,
+      "abilityModifier": "wisdom",
+      "minimum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
     }
   ],
   "source": {
