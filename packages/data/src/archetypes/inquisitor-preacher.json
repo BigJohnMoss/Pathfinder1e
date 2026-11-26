@@ -4,9 +4,9 @@
   "classId": "inquisitor",
   "summary": "Some inquisitors wander the land to spread the true word of their faith.",
   "replacesText": "Solo Tactics",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Determination shares one daily pool across Aggression, Defense, and Warning. Each teamwork feat slot can be traded for one extra daily use."
   ],
   "replacements": [
     {
@@ -19,8 +19,114 @@
           "name": "Determination (Ex)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, the preacher is a person of few words on the battlefield, but those words hold great power and authority. Once per day, the inquisitor can use this ability to create one of the following effects. Each is a free action to use. Aggression : The preacher may reroll an attack roll that she just made before the results of the roll are revealed. She must take the result of the reroll, even if it’s worse than the original roll. Defense : When the inquisitor would be hit by a melee or ranged attack, as an immediate action she may add a +4 insight bonus to her Armor Class against that attack, and if this makes the inquisitor’s AC higher than the opponent’s attack roll, the attack misses. Warning : When a preacher’s ally within line of sight would be hit by a melee or ranged attack, she may call out a warning to that ally, and the attacker must reroll the attack and use the results of the second roll. The ally must be able to hear the preacher and must not be helpless for this ability to have any effect. Whenever the preacher could select a bonus teamwork feat (at 3rd, 6th, 9th, 12th, 15th, and 18th level), she can instead choose to increase her number of uses per day of this ability by one. This ability replaces solo tactics."
+          "summary": "Determination grants one use per day starting at 3rd level. Aggression rerolls your own attack before the outcome is announced. Warning makes an attacker reroll a melee or ranged attack that would hit an ally who can hear you, is in sight, and is not helpless. Both are free actions and the new roll stands. Defense is an immediate action that gives you a +4 insight bonus to AC against one melee or ranged attack that would hit you. Each bonus teamwork feat slot can instead grant one more daily use. Determination replaces Solo Tactics.",
+          "resourceActions": [
+            {
+              "minimumLevel": 3,
+              "resourceId": "preacherDetermination",
+              "cost": 1,
+              "id": "preacher-determination-aggression",
+              "label": "Determination — Aggression",
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "free"
+                }
+              ],
+              "rerollAction": {
+                "kind": "d20",
+                "label": "Your attack reroll"
+              },
+              "confirmations": [
+                {
+                  "id": "before-result",
+                  "label": "You just made an attack roll and its result has yet to be revealed",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Reroll your attack with the original attack modifier and use the second result."
+            },
+            {
+              "minimumLevel": 3,
+              "resourceId": "preacherDetermination",
+              "cost": 1,
+              "id": "preacher-determination-defense",
+              "label": "Determination — Defense",
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "immediate"
+                }
+              ],
+              "incomingAttackDefense": {
+                "armorClassBonus": 4,
+                "bonusType": "insight"
+              },
+              "confirmations": [
+                {
+                  "id": "eligible-attack",
+                  "label": "The incoming attack is melee or ranged",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Apply a +4 insight bonus to AC against this attack only. Include any existing insight bonus in the current AC."
+            },
+            {
+              "minimumLevel": 3,
+              "resourceId": "preacherDetermination",
+              "cost": 1,
+              "id": "preacher-determination-warning",
+              "label": "Determination — Warning",
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "free"
+                }
+              ],
+              "rerollAction": {
+                "kind": "d20",
+                "label": "Attacker's reroll against your ally"
+              },
+              "confirmations": [
+                {
+                  "id": "ally-would-be-hit",
+                  "label": "A melee or ranged attack would hit an ally in your line of sight",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "ally-can-hear",
+                  "label": "The ally can hear you and is able to defend themselves",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Reroll the incoming attack with the attacker's original modifier. The attacker uses the second result."
+            }
+          ]
         }
+      ]
+    }
+  ],
+  "optionGroupAugmentations": [
+    {
+      "targetGroupId": "inquisitor-teamwork-feats",
+      "sourceGroupId": "preacher-determination-advancements",
+      "matchOptionLevel": true
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "preacherDetermination",
+      "label": "Determination",
+      "unit": "use",
+      "minimumLevel": 3,
+      "base": 1,
+      "bonusUseOptionIds": [
+        "preacher-determination-use-3",
+        "preacher-determination-use-6",
+        "preacher-determination-use-9",
+        "preacher-determination-use-12",
+        "preacher-determination-use-15",
+        "preacher-determination-use-18"
       ]
     }
   ],

@@ -346,9 +346,10 @@ export interface ClassFeatureOccurrence {
       }>;
     }>;
     rerollAction?: {
-        kind: "d20" | "damage" | "lower-d20" | "higher-d20";
+      kind: "d20" | "damage" | "lower-d20" | "higher-d20";
       label: string;
     };
+    incomingAttackDefense?: { armorClassBonus: number; bonusType?: "insight" };
     fixedD20Result?: { label: string; result: 10 | 20; resultByLevel?: Array<{ level: number; result: 10 | 20 }> };
     diceRoll?: {
       label: string;
@@ -774,6 +775,7 @@ export interface CharacterArchetype {
   arcaneSpellFailure?: ArcaneSpellFailureRules;
   resourceAdjustments?: Array<{
     resourceId: string;
+    bonusUseOptionIds?: string[];
     label: string;
     unit: string;
     operation?: "add" | "replace";
@@ -951,6 +953,7 @@ export interface OptionGroupAugmentation {
   targetGroupId: string;
   sourceGroupId: string;
   minimumFeatureLevel?: number;
+  matchOptionLevel?: boolean;
 }
 export interface FixedOptionGrant {
   sourceFeatureId: string;

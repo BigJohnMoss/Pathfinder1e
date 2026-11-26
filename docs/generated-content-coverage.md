@@ -9,7 +9,7 @@ This report is generated from the application's source data by `npm run coverage
 | Classes | 46 |
 | Archetypes | 1195 |
 | Ancestries | 10 |
-| Option groups | 178 |
+| Option groups | 179 |
 | Feats | 3447 |
 | Traits | 40 |
 | Spells | 2772 |
@@ -29,15 +29,15 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 
 | Coverage | Count |
 |---|---:|
-| Fully automated | 273 |
-| Partially automated | 922 |
+| Fully automated | 274 |
+| Partially automated | 921 |
 | Rules reference only | 0 |
 
 ### Structured automation
 
 | Reusable subsystem | Archetypes |
 |---|---:|
-| Resources and limited uses | 120 |
+| Resources and limited uses | 121 |
 | Companions and effective levels | 41 |
 | Spell lists, slots, and casting | 60 |
 | Class skills and skill-rank progressions | 60 |
@@ -52,13 +52,13 @@ These rule-text signals are multi-label: one archetype can contribute to several
 
 | Candidate subsystem | Partial archetypes |
 |---|---:|
-| Resources and limited uses | 530 |
+| Resources and limited uses | 529 |
 | Companions, mounts, familiars, and eidolons | 184 |
 | Spell lists, slots, and casting | 512 |
-| Selectable progressions and dependent choices | 638 |
-| Combat statistics and proficiencies | 730 |
+| Selectable progressions and dependent choices | 637 |
+| Combat statistics and proficiencies | 729 |
 | Skills | 535 |
-| Feats | 420 |
+| Feats | 419 |
 | Narrative or uncategorized effects | 2 |
 
 ## Spell details

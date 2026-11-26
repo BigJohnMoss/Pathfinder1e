@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { rollD20Check, rollDice } from "../../../packages/engine/src/index.js";
+import { resolveAttackRoll, rollD20Check, rollDice } from "../../../packages/engine/src/index.js";
 import type { AbilityName, ActiveEffect, ActiveEffectTarget, CharacterFeat, ClassFeatureOccurrence as Feature } from "../../../packages/types/src/index.js";
 
 export type DailyResource = {
@@ -16,6 +16,11 @@ export type DailyResource = {
 
 const effectTargetLabel = (target: ActiveEffectTarget) => target.replace(/([A-Z])/g, " $1").replace(/^./, (letter) => letter.toUpperCase());
 const abilityEffectTargets = new Set<ActiveEffectTarget>(["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]);
+const defenseInputs = [
+  { id: "natural", label: "Natural attack roll", min: 1, max: 20 },
+  { id: "total", label: "Attack total", min: -999, max: 999 },
+  { id: "armorClass", label: "Current applicable AC", min: 1, max: 999 },
+] as const;
 
 export function ClassFeatures({ level, className, features, dailyResources = [], abilityModifiers = {}, saveModifiers = {}, baseAttackBonus = 0, classLevels = {}, casterLevels = {}, selectedOptions = {}, selectedOptionIds = [], selectedFeats = [], featCatalogue = [], featEligibility, activeEffects = [], equippedWeapons = [], onAddEffect, onRemoveEffectByName, onTemporaryHitPointsChange }: {
   level: number;
@@ -54,6 +59,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
   const [targetHitDice, setTargetHitDice] = useState<Record<string, number>>({});
   const [rerollInputs, setRerollInputs] = useState<Record<string, { original: number; modifier: number; count: number; sides: number }>>({});
   const [combatInputs, setCombatInputs] = useState<Record<string, { touchArmorClass: number; saveModifier: number; secondarySaveModifier: number }>>({});
+  const [incomingAttacks, setIncomingAttacks] = useState<Record<string, Partial<Record<"natural" | "total" | "armorClass" | "existingBonus", string>>>>({});
   const [actionTargetNames, setActionTargetNames] = useState<Record<string, string>>({});
   const selectedOptionSet = new Set(selectedOptionIds);
 
@@ -187,7 +193,21 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           : [];
         const availableRecipients = action.companionRosterFeatureId ? rosterRecipients : action.recipients ?? [];
         const selectedEffectWeaponId = effectWeaponIds[action.id] ?? weaponChoices[0]?.id;
-        const unavailable = unavailableResource || unavailableCost || unavailableMinimumResource || unavailableRecovery || blockedByActorCondition || missingRequiredActiveEffect || blockedByActiveEffect || activeEffectLimitReached || Boolean(action.modes?.length && !availableModes?.length) || Boolean(action.companionRosterFeatureId && !availableRecipients.length) || (Boolean(action.activeEffect?.selectEquippedWeapon) && !selectedEffectWeaponId);
+        const defense = action.incomingAttackDefense;
+        const defenseFields = defense?.bonusType
+          ? [...defenseInputs, { id: "existingBonus" as const, label: `Existing ${defense.bonusType} bonus to AC`, min: 0, max: 99 }]
+          : defenseInputs;
+        const incomingAttack = incomingAttacks[action.id] ?? {};
+        const attackNatural = Number(incomingAttack.natural);
+        const attackTotal = Number(incomingAttack.total);
+        const targetArmorClass = Number(incomingAttack.armorClass);
+        const validDefenseInputs = defense && defenseFields.every(({ id, min, max }) => {
+          const raw = incomingAttack[id];
+          const value = Number(raw);
+          return id === "existingBonus" && !raw || Boolean(raw) && Number.isInteger(value) && value >= min && value <= max;
+        });
+        const incomingHit = validDefenseInputs && resolveAttackRoll({ natural: attackNatural, total: attackTotal }, targetArmorClass).hit;
+        const unavailable = unavailableResource || unavailableCost || unavailableMinimumResource || unavailableRecovery || blockedByActorCondition || missingRequiredActiveEffect || blockedByActiveEffect || activeEffectLimitReached || Boolean(action.modes?.length && !availableModes?.length) || Boolean(action.companionRosterFeatureId && !availableRecipients.length) || (Boolean(action.activeEffect?.selectEquippedWeapon) && !selectedEffectWeaponId) || Boolean(defense && !incomingHit);
         const useCount = Math.max(0, resources[0]?.resource?.used ?? 0);
         const label = action.labelsByUseCount?.[Math.min(useCount, action.labelsByUseCount.length - 1)] ?? action.label;
         const result = actionResults[action.id];
@@ -312,6 +332,16 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
             setActionResults((current) => ({ ...current, [action.id]: `Will save ${roll} ${modifier >= 0 ? "+" : "−"} ${Math.abs(modifier)} = ${total}; succeeded against DC ${saveDc}.` }));
           }
           resources.forEach(({ usedDelta, resource }) => resource?.onUsedChange(resource.used + usedDelta));
+          if (defense) {
+            const existingBonus = defense.bonusType ? Number(incomingAttack.existingBonus || 0) : 0;
+            const improvedArmorClass = targetArmorClass + Math.max(0, defense.armorClassBonus - existingBonus);
+            const remainsHit = attackNatural === 20 || attackTotal >= improvedArmorClass;
+            setActionResults((current) => ({
+              ...current,
+              [action.id]: `AC ${targetArmorClass} → ${improvedArmorClass}. ${attackNatural === 20 ? "Natural 20 still hits." : remainsHit ? `Attack total ${attackTotal} still hits.` : `Attack total ${attackTotal} now misses.`}`,
+            }));
+            return;
+          }
           if (temporaryHitPoints !== undefined) {
             onTemporaryHitPointsChange?.(temporaryHitPoints);
             if (temporaryHitPointsDurationRounds) onAddEffect?.({ id: `${action.id}-temporary-hit-points-${Date.now()}-${Math.random()}`, name: action.label, target: "self", bonus: 0, description: `${temporaryHitPoints} temporary hit points expire when this duration ends if they have not already been spent.`, roundsRemaining: temporaryHitPointsDurationRounds, temporaryHitPointsGranted: temporaryHitPoints });
@@ -546,6 +576,19 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           {action.featSelection && Array.from({ length: featSelectionCount }, (_, index) => <label key={`${action.id}-feat-${index}`}>{action.featSelection!.label}{featSelectionCount > 1 ? ` ${index + 1}` : ""}<select aria-label={`${action.label} ${action.featSelection!.label.toLowerCase()}${featSelectionCount > 1 ? ` ${index + 1}` : ""}`} value={selectedActionFeatIds[index]} onChange={(event) => setActionFeatSelections((current) => { const next = [...(current[action.id] ?? selectedActionFeatIds)]; next[index] = event.target.value; next.splice(index + 1); return { ...current, [action.id]: next }; })}><option value="">Choose {action.featSelection!.source === "catalogue" ? "an eligible" : "a selected"} {action.featSelection!.featType} feat</option>{availableFeatsForIndex(index).map((feat) => <option key={feat.id} value={feat.id} disabled={selectedActionFeatIds.some((id, selectedIndex) => selectedIndex !== index && id === feat.id)}>{feat.name}</option>)}</select></label>)}
           {actionType && <small>Activation: {actionType} action.</small>}
           {allConfirmations.map((confirmation) => <label key={confirmation.id}><input aria-label={`${action.label} ${confirmation.label}`} type="checkbox" checked={confirmationChecked(confirmation.id)} onChange={(event) => setActionConfirmations((current) => ({ ...current, [`${action.id}:${confirmation.id}`]: event.target.checked }))} />{confirmation.label}</label>)}
+          {defense && defenseFields.map(({ id, label: fieldLabel, min, max }) => (
+            <label key={id}>{fieldLabel}<input
+              aria-label={`${action.label} ${fieldLabel}`}
+              type="number"
+              min={min}
+              max={max}
+              step="1"
+              placeholder={id === "existingBonus" ? "0" : undefined}
+              value={incomingAttack[id] ?? ""}
+              onChange={(event) => setIncomingAttacks((current) => ({ ...current, [action.id]: { ...incomingAttack, [id]: event.target.value } }))}
+            /></label>
+          ))}
+          {defense && validDefenseInputs && !incomingHit && <small>The original attack misses at the current AC.</small>}
           {action.randomOutcomeTarget && <label>{action.randomOutcomeTarget.label}<input aria-label={`${action.label} ${action.randomOutcomeTarget.label.toLowerCase()}`} value={actionTargetName} maxLength={80} onChange={(event) => setActionTargetNames((current) => ({ ...current, [action.id]: event.target.value }))} /></label>}
           {action.randomOutcomeTarget && selectedMode?.id === action.randomOutcomeTarget.enemyModeId && <label>Target {action.randomOutcomeTarget.enemySaveModifier} modifier<input aria-label={`${action.label} target ${action.randomOutcomeTarget.enemySaveModifier} modifier`} type="number" min="-999" max="999" value={combatInput.saveModifier} onChange={(event) => setCombatInputs((current) => ({ ...current, [action.id]: { ...combatInput, saveModifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}
           {action.savingThrow && <output aria-label={`${action.label} save DC`}>{action.savingThrow.label} save DC {saveDc}</output>}
@@ -566,7 +609,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           {action.blockedByActiveEffectName && <small>Unavailable while active: {action.blockedByActiveEffectName}.</small>}
           {action.blockedByActiveEffectNames?.length ? <small>Unavailable while active: {action.blockedByActiveEffectNames.join(" or ")}.</small> : null}
           {action.activeEffect && <>{action.activeEffect.targets.length > 1 && !action.activeEffect.applyToAllTargets && <label>{effectTargetChoiceLabel}<select aria-label={`${action.label} ${effectTargetChoiceLabel.toLowerCase()}`} value={effectTarget} onChange={(event) => setEffectTargets((current) => ({ ...current, [action.id]: event.target.value as ActiveEffectTarget }))}>{action.activeEffect.targets.map((target) => <option key={target} value={target}>{effectTargetLabel(target)}</option>)}</select></label>}{action.activeEffect.skillOptions && action.activeEffect.skillOptions.length > 1 && <label>Affected skill<select aria-label={`${action.label} affected skill`} value={effectSkill} onChange={(event) => setEffectSkills((current) => ({ ...current, [action.id]: event.target.value }))}>{action.activeEffect.skillOptions.map((skill) => <option key={skill} value={skill}>{skill}</option>)}</select></label>}{effectRange && <small>Range: {effectRange} feet.</small>}{action.activeEffect.durationDice ? <small>Duration: {action.activeEffect.durationDice.count}d{action.activeEffect.durationDice.sides} rounds (rolled on activation)</small> : action.activeEffect.fixedRounds || action.activeEffect.durationFromVariableCost ? <small>Duration: {rounds} round{rounds === 1 ? "" : "s"}</small> : <label>Rounds<input aria-label={`${action.label} rounds`} type="number" min="1" max="999999" value={rounds} onChange={(event) => setEffectRounds((current) => ({ ...current, [action.id]: Math.max(1, Math.min(999999, Number(event.target.value) || 1)) }))} /></label>}</>}
-          <button type="button" disabled={(!action.activeEffect && !action.removeActiveEffectName && !action.numericInputEffect && temporaryHitPoints === undefined && appliedChanges.length === 0 && !action.rerollAction && !action.fixedD20Result && !action.spellLikeAbility && !action.diceRoll && !action.combatRoll && !action.targetEffectRoll) || unavailable || !targetEligible || targetHasSaveEffectImmunity || missingRequiredConfirmation || missingFeatSelection} title={blockedByActorCondition ? `Unavailable while ${action.actorSavingThrow?.blockedByActiveEffectName}.` : missingRequiredActiveEffect ? `Requires ${action.requiredActiveEffectName}.` : blockedByActiveEffect ? `Unavailable while ${blockingActiveEffectName}.` : activeEffectLimitReached ? `Maximum of ${maximumActiveEffects} active ${action.maximumActiveEffects?.name ?? "effects"}.` : targetHasSaveEffectImmunity ? `${saveEffectTargetName} is immune to this ability.` : missingRequiredConfirmation ? "Confirm the required targeting conditions first." : missingFeatSelection ? `Select at least ${requiredFeatSelectionCount} eligible ${action.featSelection?.featType ?? "qualifying"} feat${requiredFeatSelectionCount === 1 ? "" : "s"} first.` : undefined} onClick={activate}>{label}</button>
+          <button type="button" disabled={(!action.activeEffect && !action.removeActiveEffectName && !action.numericInputEffect && temporaryHitPoints === undefined && appliedChanges.length === 0 && !action.rerollAction && !action.fixedD20Result && !action.spellLikeAbility && !action.diceRoll && !action.combatRoll && !action.targetEffectRoll && !defense) || unavailable || !targetEligible || targetHasSaveEffectImmunity || missingRequiredConfirmation || missingFeatSelection} title={blockedByActorCondition ? `Unavailable while ${action.actorSavingThrow?.blockedByActiveEffectName}.` : missingRequiredActiveEffect ? `Requires ${action.requiredActiveEffectName}.` : blockedByActiveEffect ? `Unavailable while ${blockingActiveEffectName}.` : activeEffectLimitReached ? `Maximum of ${maximumActiveEffects} active ${action.maximumActiveEffects?.name ?? "effects"}.` : targetHasSaveEffectImmunity ? `${saveEffectTargetName} is immune to this ability.` : missingRequiredConfirmation ? "Confirm the required targeting conditions first." : missingFeatSelection ? `Select at least ${requiredFeatSelectionCount} eligible ${action.featSelection?.featType ?? "qualifying"} feat${requiredFeatSelectionCount === 1 ? "" : "s"} first.` : undefined} onClick={activate}>{label}</button>
           <small>{action.summary ?? costs.map(({ cost }) => `Spend ${cost}`).join(" and ")}</small>
           {result && <output aria-label={`${action.label} result`}>{result}</output>}
         </div>;
