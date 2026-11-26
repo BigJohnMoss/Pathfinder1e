@@ -46,6 +46,19 @@ test("Metamagic Rager spends scaled bloodrage rounds and exposes metamagic blood
   assert.deepEqual(archetypeAutomationSummary(source, [], []).manual, []);
 });
 
+test("Pack Hunter tracks Sympathetic Rage through the normal rage pool", () => {
+  const source = catalogueArchetypes.find(({ id }) => id === "barbarian-pack-hunter");
+  const action = source.replacements.flatMap(({ features }) => features)
+    .find(({ id }) => id === "barbarian-pack-hunter-sympathetic-rage-ex-6")
+    .resourceActions[0];
+  assert.equal(action.resourceId, "rageRounds");
+  assert.equal(action.cost, 1);
+  assert.deepEqual(action.confirmations.map(({ id }) => id), ["sympathetic-rage-nearby-ally", "sympathetic-rage-already-raging"]);
+  assert.equal(action.activeEffect.defaultRounds, 1);
+  assert.deepEqual(action.activeEffect.targets, ["self"]);
+  assert.deepEqual(archetypeAutomationSummary(source, [], []).manual, []);
+});
+
 test("completed Alchemist archetypes expose no manual mechanics", () => {
   for (const id of ["alchemist-aerochemist", "alchemist-oenopion-researcher", "alchemist-royal-alchemist", "alchemist-preservationist", "alchemist-gloom-chymist", "alchemist-concocter", "alchemist-dragonblood-chymist", "alchemist-plague-bringer", "alchemist-alchemical-trapper", "alchemist-clone-master", "alchemist-winged-marauder", "alchemist-bogborn-alchemist", "alchemist-crimson-chymist", "alchemist-blazing-torchbearer", "alchemist-ice-chemist", "alchemist-deep-bomber"]) {
     const archetype = catalogueArchetypes.find((candidate) => candidate.id === id);

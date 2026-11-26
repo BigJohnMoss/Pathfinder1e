@@ -40,7 +40,42 @@
           "name": "Sympathetic Rage (Ex)",
           "level": 6,
           "type": "archetype",
-          "summary": "At 6th level, if an ally within 30 feet is bloodraging or raging, a pack hunter counts as raging even if knocked unconscious. She has to have been raging when incapacitated to maintain her rage, and she ceases raging normally if she depletes her maximum number of rounds of rage in a day. This replaces the rage power normally gained at 6th level."
+          "summary": "At 6th level, if an ally within 30 feet is bloodraging or raging, a pack hunter counts as raging even if knocked unconscious. She has to have been raging when incapacitated to maintain her rage, and she ceases raging normally if she depletes her maximum number of rounds of rage in a day. This replaces the rage power normally gained at 6th level.",
+          "resourceActions": [
+            {
+              "id": "pack-hunter-sympathetic-rage",
+              "label": "Continue Sympathetic Rage",
+              "classId": "barbarian",
+              "minimumLevel": 6,
+              "resourceId": "rageRounds",
+              "cost": 1,
+              "actionTypeByLevel": [],
+              "confirmations": [
+                {
+                  "id": "sympathetic-rage-nearby-ally",
+                  "label": "An ally within 30 feet is raging or bloodraging",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "sympathetic-rage-already-raging",
+                  "label": "I was raging when I became incapacitated",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Sympathetic Rage",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Continue counting as raging for this round despite unconsciousness while a raging or bloodraging ally remains within 30 feet.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend 1 normal rage round to continue counting as raging for 1 round while the required nearby ally and prior-rage conditions remain true."
+            }
+          ]
         },
         {
           "id": "barbarian-pack-hunter-rage-powers-1",
@@ -57,8 +92,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Pack%20Hunter"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Teamwork feats augment normal rage-power choices, In and Out scales its dodge bonus, and Sympathetic Rage spends normal rage rounds while tracking both eligibility conditions and its one-round continuation."
   ]
 }
