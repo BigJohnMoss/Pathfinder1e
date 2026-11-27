@@ -56,6 +56,7 @@ export function ClassSpellbook({
   classLevel,
   earnedClassLevel = classLevel,
   hauntedSpellAdditions,
+  silentCasting = false,
   abilities,
   selectedOptions,
   spellTraitBonuses = {},
@@ -78,6 +79,7 @@ export function ClassSpellbook({
   classLevel: number;
   earnedClassLevel?: number;
   hauntedSpellAdditions?: Record<string, number>;
+  silentCasting?: boolean;
   abilities: AbilityScores;
   selectedOptions: Record<string, string>;
   spellTraitBonuses?: SpellTraitBonuses;
@@ -221,6 +223,7 @@ export function ClassSpellbook({
     knownSpellIds={selectedSpellIds} grantedSpellIds={grantedSpellIds} onKnownSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))}
     slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} onRefreshDay={refreshDay}
     arcaneSpellFailureChance={arcaneSpellFailureChance}
+    silentCasting={silentCasting}
   />;
   return <Spellbook
     key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} spellArchetypeBonuses={spellArchetypeBonuses}
@@ -235,5 +238,6 @@ export function ClassSpellbook({
     criticalStrikeResource={criticalStrikeResource} bondedObjectCastResource={bondedObjectCastResource}
     abilityModifiers={calculateAbilityModifiers(abilities)} activeEffects={activeEffects} onAddEffect={onAddEffect} onRemoveEffectByName={onRemoveEffectByName}
     arcaneSpellFailureChance={arcaneSpellFailureChance}
+    silentCasting={silentCasting}
   />;
 }

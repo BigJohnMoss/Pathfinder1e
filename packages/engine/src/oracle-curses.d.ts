@@ -9,10 +9,11 @@ export function oracleCurseBenefits(
 ): {
   senses: ReturnType<typeof archetypeSenses>;
   defenses: Array<{ kind: "immunity" | "uncannyDodge" | "improvedUncannyDodge"; qualifier: string; value: number; source: string; condition?: string }>;
-  conditionalModifiers: Array<{ label: string; bonus: number; condition: string; source: string }>;
+  conditionalModifiers: Array<{ label: string; bonus?: number; condition: string; source: string }>;
   initiative: number;
   lame: number;
   charismaSkillPenalty: number;
+  silentCasting: boolean;
   hauntedSpellAdditions: Record<string, number>;
 };
 

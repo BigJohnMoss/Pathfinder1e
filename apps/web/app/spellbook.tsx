@@ -93,6 +93,7 @@ export function Spellbook({
   onAddEffect,
   onRemoveEffectByName,
   arcaneSpellFailureChance = 0,
+  silentCasting = false,
 }: {
   spells: Spell[];
   sourceBook?: {
@@ -135,6 +136,7 @@ export function Spellbook({
   onAddEffect?: (effect: ActiveEffect) => void;
   onRemoveEffectByName?: (name: string) => void;
   arcaneSpellFailureChance?: number;
+  silentCasting?: boolean;
 }) {
   const [query, setQuery] = useState("");
   const [sourceQuery, setSourceQuery] = useState("");
@@ -1077,6 +1079,7 @@ export function Spellbook({
                       </div>
                       <SpellDetails
                         spell={spell}
+                        silentCasting={silentCasting}
                         derivedDuration={automaticDuration ? {
                           label: spellAutomation!.automaticExtendDuration!.label,
                           value: automaticDuration,

@@ -3195,6 +3195,7 @@ export default function Home() {
   const primarySpellbook = spontaneousCasting ? (
     <SpontaneousSpellbook
       key={characterClass.id}
+      silentCasting={oracleCurse.silentCasting}
       spells={availableSpells}
       spellTraitBonuses={selectedTraitBonuses.spellBonuses}
       spellArchetypeBonuses={primaryArchetypeSpellBonuses}
@@ -3222,6 +3223,7 @@ export default function Home() {
   ) : preparedCasting ? (
     <Spellbook
       key={characterClass.id}
+      silentCasting={oracleCurse.silentCasting}
       spells={primaryPreparedCatalogue}
       sourceBook={primarySourceBook}
       spellTraitBonuses={selectedTraitBonuses.spellBonuses}
@@ -3263,6 +3265,7 @@ export default function Home() {
     secondaryCharacterClass && secondarySpontaneousCasting ? (
       <SpontaneousSpellbook
         key={secondaryCharacterClass.id}
+        silentCasting={oracleCurse.silentCasting}
         spells={secondaryAvailableSpells}
         spellTraitBonuses={selectedTraitBonuses.spellBonuses}
         spellArchetypeBonuses={secondaryArchetypeSpellBonuses}
@@ -3292,6 +3295,7 @@ export default function Home() {
     ) : secondaryCharacterClass && secondaryPreparedCasting ? (
       <Spellbook
         key={secondaryCharacterClass.id}
+        silentCasting={oracleCurse.silentCasting}
         spells={secondaryPreparedCatalogue}
         sourceBook={secondarySourceBook}
         spellTraitBonuses={selectedTraitBonuses.spellBonuses}
@@ -3349,6 +3353,7 @@ export default function Home() {
         spells={spells}
         earnedClassLevel={extraActiveClassLevel.level}
         hauntedSpellAdditions={oracleCurse.hauntedSpellAdditions}
+        silentCasting={oracleCurse.silentCasting}
         classLevel={
           effectiveSpellcastingLevelMap[extraActiveClass.id] ??
           extraActiveClassLevel.level
