@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { loadFullArchetypeCatalogue } from "./archetype-catalogue";
 import { archetypes as compactArchetypes } from "./character-catalogue";
 
 const preloadedArchetypes = (globalThis as typeof globalThis & { __PF1E_ARCHETYPES__?: typeof compactArchetypes }).__PF1E_ARCHETYPES__;
@@ -13,12 +14,15 @@ export function useArchetypeCatalogue(active: boolean) {
     if (!active || loaded) return;
     let mounted = true;
     setLoading(true);
-    void import("./archetype-catalogue")
-      .then(({ fullArchetypeCatalogue }) => {
+    void loadFullArchetypeCatalogue()
+      .then((fullArchetypeCatalogue) => {
         if (mounted) {
           setArchetypes(fullArchetypeCatalogue);
           setLoaded(true);
         }
+      })
+      .catch(() => {
+        // The compact catalogue stays available when downloads fail offline.
       })
       .finally(() => {
         if (mounted) setLoading(false);

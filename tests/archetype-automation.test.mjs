@@ -5,10 +5,16 @@ import { adjustedCompanionLevel, applyArchetype, archetypeAdvisoryFeatureIds, ar
 import { archetypeAbilityScoreAdjustments, archetypeAbilityScoreBonuses, inferArchetypeAbilityScoreAdjustments } from "../packages/engine/src/index.js";
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
+import loadArchetypeChunks from "../generated/pf1e-archetype-loaders.mjs";
 import catalogueSpells from "../generated/pf1e-spells.mjs";
 import ranger from "../packages/data/src/classes/ranger.json" with { type: "json" };
 import { inferArchetypeAllowedAlignments } from "../packages/engine/src/index.js";
 import { applyArchetypeResourceAdjustments } from "../packages/engine/src/index.js";
+
+test("lazy browser chunks contain the same rules as the full archetype catalogue", async () => {
+  const chunks = await Promise.all(loadArchetypeChunks.map((loadChunk) => loadChunk()));
+  assert.deepEqual(chunks.flatMap((chunk) => chunk.default), catalogueArchetypes);
+});
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
