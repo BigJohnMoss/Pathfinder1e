@@ -181,7 +181,81 @@
           "name": "Assume Fate (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "As an immediate action when targeted by an effect that requires a saving throw, you can choose another creature within line of sight that is attempting a save against the same effect. The target takes a penalty on its saving throw equal to 1d4 + 1 for every 4 levels you possess. You gain the value of their penalty as a luck bonus on your saving throw. You can use this ability a number of times per day equal to your Charisma bonus. This replaces the revelation gained at 1st level."
+          "summary": "As an immediate action when targeted by an effect that requires a saving throw, you can choose another creature within line of sight that is attempting a save against the same effect. The target takes a penalty on its saving throw equal to 1d4 + 1 for every 4 levels you possess. You gain the value of their penalty as a luck bonus on your saving throw. You can use this ability a number of times per day equal to your Charisma bonus. This replaces the revelation gained at 1st level.",
+          "resourceActions": [
+            {
+              "id": "cyclopean-assume-fate",
+              "label": "Roll Assume Fate",
+              "minimumLevel": 1,
+              "resourceId": "cyclopeanAssumeFate",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "immediate"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "same-effect",
+                  "label": "Another creature I can see is saving against the same effect",
+                  "requiredForActivation": true
+                }
+              ],
+              "textInputLabel": "Other creature",
+              "diceRoll": {
+                "label": "Assume Fate transfer",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 4
+                  }
+                ],
+                "flatModifierByLevel": [
+                  {
+                    "level": 1,
+                    "modifier": 0
+                  },
+                  {
+                    "level": 4,
+                    "modifier": 1
+                  },
+                  {
+                    "level": 8,
+                    "modifier": 2
+                  },
+                  {
+                    "level": 12,
+                    "modifier": 3
+                  },
+                  {
+                    "level": 16,
+                    "modifier": 4
+                  },
+                  {
+                    "level": 20,
+                    "modifier": 5
+                  }
+                ],
+                "appliedEffect": {
+                  "name": "Assume Fate",
+                  "target": "savingThrows",
+                  "operation": "bonus",
+                  "description": "Apply a +{amount} luck bonus to your save against this effect. The other creature takes a penalty of the same size.",
+                  "rounds": 1,
+                  "consumeOnUse": true,
+                  "replaceExisting": true
+                }
+              },
+              "summary": "Roll the penalty and apply the matching luck bonus to your next saving throw against the effect."
+            }
+          ]
         },
         {
           "id": "oracle-cyclopean-seer-brutal-trance-su-7",
@@ -298,11 +372,110 @@
           ]
         },
         {
-          "id": "oracle-cyclopean-seer-revelations-5",
-          "name": "Revelations",
-          "level": 5,
+          "id": "oracle-cyclopean-seer-doomsaying-1",
+          "name": "Doomsaying (Su)",
+          "level": 1,
           "type": "archetype",
-          "summary": "All cyclopean seers have access to the following revelations, regardless of their chosen mysteries. Doomsaying (Su) : As a standard action, you can pronounce doom on a creature within 30 feet. The target takes a penalty equal to your oracle level on either all skill checks, all savings throws, or all attack rolls (your choice) for 1 minute or until he fails one such roll. You can use this ability a number of times per day equal to your Charisma bonus. This is a curse effect ( Ultimate Magic 137). Flash of Insight (Su) : You gain the cyclops racial ability of the same name ( Bestiary 52). If you already possess this ability, you gain an additional daily use. Prescience (Ex) : You gain a +2 bonus to your Armor Class against attacks of opportunity and a +2 bonus on concentration checks. At 5th level and every 5 levels thereafter, these bonuses increase by 1. This ability alters the revelation class feature."
+          "requiredOptionId": "oracle-revelation-cyclopean-doomsaying",
+          "summary": "Curse a creature within 30 feet. Choose attacks, saving throws, or skill checks. The penalty equals your oracle level and ends on its first failed roll of that kind or after 1 minute.",
+          "resourceActions": [
+            {
+              "id": "cyclopean-doomsaying",
+              "label": "Pronounce Doomsaying",
+              "classId": "oracle",
+              "minimumLevel": 1,
+              "requiredOptionId": "oracle-revelation-cyclopean-doomsaying",
+              "resourceId": "cyclopeanDoomsaying",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Rolls to penalize",
+              "modes": [
+                {
+                  "id": "attacks",
+                  "label": "Attack rolls",
+                  "summary": "The creature takes a −{classLevel} penalty on attack rolls until it fails one or the curse expires."
+                },
+                {
+                  "id": "saves",
+                  "label": "Saving throws",
+                  "summary": "The creature takes a −{classLevel} penalty on saving throws until it fails one or the curse expires."
+                },
+                {
+                  "id": "skills",
+                  "label": "Skill checks",
+                  "summary": "The creature takes a −{classLevel} penalty on skill checks until it fails one or the curse expires."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "range",
+                  "label": "The target is within 30 feet and can be affected by a curse",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Doomsaying",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "defaultRounds": 10,
+                "fixedRounds": true,
+                "description": "Dismiss this effect when the target fails one of the penalized rolls."
+              },
+              "summary": "Track the chosen penalty and end it when the condition is met."
+            }
+          ]
+        },
+        {
+          "id": "oracle-cyclopean-seer-flash-of-insight-1",
+          "name": "Flash of Insight (Su)",
+          "level": 1,
+          "type": "archetype",
+          "requiredOptionId": "oracle-revelation-cyclopean-flash-of-insight",
+          "summary": "Before rolling one of your own dice, choose its exact result as an immediate action. Gain one daily use, or an additional use if you already have the cyclops racial ability.",
+          "resourceActions": [
+            {
+              "id": "cyclopean-flash-of-insight",
+              "label": "Choose a Flash of Insight result",
+              "classId": "oracle",
+              "minimumLevel": 1,
+              "requiredOptionId": "oracle-revelation-cyclopean-flash-of-insight",
+              "resourceId": "cyclopeanFlashOfInsight",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "immediate"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "before-roll",
+                  "label": "This is my own die and I have not rolled it",
+                  "requiredForActivation": true
+                }
+              ],
+              "chosenDieResult": {
+                "freeD20AtLevel": 20,
+                "abilityModifier": "charisma"
+              },
+              "summary": "Declare the result before rolling. At 20th oracle level a d20 result at or below your Charisma modifier costs no daily use."
+            }
+          ]
+        },
+        {
+          "id": "oracle-cyclopean-seer-prescience-1",
+          "name": "Prescience (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "requiredOptionId": "oracle-revelation-cyclopean-prescience",
+          "summary": "Your concentration modifier and AC against attacks of opportunity each increase by 2, then by 1 at oracle levels 5, 10, 15, and 20."
         },
         {
           "id": "oracle-cyclopean-seer-final-revelation-20",
@@ -365,7 +538,7 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "The four curse choices, divination spell progression, retained revelation slots, trance tracker, and capstone spells are available. Individual curse effects, the extra revelation effects, and adjudicating trance answers remain table rules."
+    "Assume Fate, Doomsaying, Flash of Insight, and Prescience use selectable or tracked mechanics. Apply the other creature’s save penalty, dismiss Doomsaying on its first failed roll, use a declared Flash of Insight result at the table, and adjudicate curse effects and Commune answers separately."
   ],
   "modifiedFeatureIds": [
     "oracle-mystery-1",
@@ -436,6 +609,75 @@
       "minimumLevel": 20,
       "base": 1,
       "dedicatedAction": true
+    },
+    {
+      "resourceId": "cyclopeanAssumeFate",
+      "label": "Assume Fate",
+      "unit": "use",
+      "minimumLevel": 1,
+      "base": 0,
+      "abilityModifier": "charisma",
+      "minimum": 0,
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "cyclopeanDoomsaying",
+      "label": "Doomsaying",
+      "unit": "use",
+      "minimumLevel": 1,
+      "base": 0,
+      "abilityModifier": "charisma",
+      "minimum": 0,
+      "requiredOptionId": "oracle-revelation-cyclopean-doomsaying",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "cyclopeanFlashOfInsight",
+      "label": "Flash of Insight",
+      "unit": "use",
+      "minimumLevel": 1,
+      "base": 1,
+      "requiredOptionId": "oracle-revelation-cyclopean-flash-of-insight",
+      "dedicatedAction": true
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "oracle-cyclopean-seer-prescience-1",
+      "label": "Prescience AC",
+      "condition": "Against attacks of opportunity",
+      "minimumLevel": 1,
+      "base": 2,
+      "levelDivisor": 5,
+      "requiredOptionId": "oracle-revelation-cyclopean-prescience"
+    }
+  ],
+  "spellModifierAdjustments": [
+    {
+      "sourceFeatureId": "oracle-cyclopean-seer-prescience-1",
+      "label": "Prescience",
+      "target": "concentration",
+      "minimumLevel": 1,
+      "base": 2,
+      "bonusByLevel": [
+        {
+          "level": 5,
+          "bonus": 3
+        },
+        {
+          "level": 10,
+          "bonus": 4
+        },
+        {
+          "level": 15,
+          "bonus": 5
+        },
+        {
+          "level": 20,
+          "bonus": 6
+        }
+      ],
+      "requiredOptionId": "oracle-revelation-cyclopean-prescience"
     }
   ]
 }

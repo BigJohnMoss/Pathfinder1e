@@ -272,6 +272,13 @@ for (const [index, url] of archetypeUrls.entries()) {
         if (action.diceRoll?.targetDcInputLabel !== undefined && (typeof action.diceRoll.targetDcInputLabel !== "string" || !action.diceRoll.targetDcInputLabel.trim())) errors.push(`${file}: ${feature.id} ${action.id} has an invalid dice target DC input label`);
         if (action.diceRoll?.trainedSkill !== undefined && (typeof action.diceRoll.trainedSkill !== "string" || !action.diceRoll.trainedSkill.trim())) errors.push(`${file}: ${feature.id} ${action.id} has an invalid trained skill`);
         if (action.diceRoll?.healsSelf !== undefined && typeof action.diceRoll.healsSelf !== "boolean") errors.push(`${file}: ${feature.id} ${action.id} has an invalid healsSelf flag`);
+        if (action.chosenDieResult !== undefined) {
+          const choice = action.chosenDieResult;
+          if (!choice || !action.resourceId || action.cost !== 1 || !Number.isInteger(choice.freeD20AtLevel) || choice.freeD20AtLevel < (action.minimumLevel ?? feature.level) || choice.freeD20AtLevel > 20 || !abilities.has(choice.abilityModifier)) errors.push(`${file}: ${feature.id} ${action.id} has an invalid chosen die result`);
+        }
+        for (const key of ["consumeOnUse", "replaceExisting"]) {
+          if (action.diceRoll?.appliedEffect?.[key] !== undefined && typeof action.diceRoll.appliedEffect[key] !== "boolean") errors.push(`${file}: ${feature.id} ${action.id} has an invalid dice effect ${key}`);
+        }
         if (action.diceRoll?.targetDcByMode !== undefined) {
           const dcs = action.diceRoll.targetDcByMode;
           if (!dcs || typeof dcs !== "object" || Array.isArray(dcs) || !action.modes?.length || Object.keys(dcs).length !== action.modes.length || action.modes.some((mode) => !Number.isInteger(dcs[mode.id]) || dcs[mode.id] < 0 || dcs[mode.id] > 999)) errors.push(`${file}: ${feature.id} ${action.id} requires one valid DC per mode`);
@@ -665,6 +672,9 @@ for (const [index, url] of archetypeUrls.entries()) {
   }
   for (const adjustment of archetype.defenseAdjustments ?? []) {
     if (adjustment?.requiredOptionId !== undefined && !optionIds.has(adjustment.requiredOptionId)) errors.push(`${file}: defense adjustment references missing option ${adjustment.requiredOptionId}`);
+  }
+  for (const modifier of [...(archetype.conditionalModifiers ?? []), ...(archetype.spellModifierAdjustments ?? [])]) {
+    if (modifier?.requiredOptionId !== undefined && !optionIds.has(modifier.requiredOptionId)) errors.push(`${file}: modifier references missing option ${modifier.requiredOptionId}`);
   }
   for (const augmentation of archetype.optionGroupAugmentations ?? []) {
     if (!groupIds.has(augmentation.targetGroupId)) errors.push(`${file}: option group augmentation references missing target group ${augmentation.targetGroupId}`);

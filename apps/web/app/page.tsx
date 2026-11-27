@@ -1239,8 +1239,8 @@ export default function Home() {
       : calculated;
   }, [abilities.strength, activeEffects, allSelectedArchetypes, ancestry.speed, classLevelMap, inventory]);
   const selectedArchetypeConditionalModifiers = useMemo(
-    () => archetypeConditionalModifiers(allSelectedArchetypes, classLevelMap, combat.abilityModifiers),
-    [allSelectedArchetypes, classLevelMap, combat.abilityModifiers],
+    () => archetypeConditionalModifiers(allSelectedArchetypes, classLevelMap, combat.abilityModifiers, effectiveSelectedOptionIds),
+    [allSelectedArchetypes, classLevelMap, combat.abilityModifiers, effectiveSelectedOptionIds],
   );
   const selectedArchetypeSkillBonuses = useMemo(
     () => archetypeSkillBonuses(allSelectedArchetypes, classLevelMap, combat.abilityModifiers),
@@ -2271,8 +2271,8 @@ export default function Home() {
     [baseAvailableSpells, grantedSpells, selectedOptionSpells],
   );
   const primaryArchetypeSpellBonuses = useMemo(
-    () => Object.fromEntries(availableSpells.map((spell) => [spell.id, archetypeSpellModifiers(characterClass, primaryClassLevel, spell)])),
-    [availableSpells, characterClass, primaryClassLevel],
+    () => Object.fromEntries(availableSpells.map((spell) => [spell.id, archetypeSpellModifiers(characterClass, primaryClassLevel, spell, effectiveSelectedOptionIds)])),
+    [availableSpells, characterClass, effectiveSelectedOptionIds, primaryClassLevel],
   );
   const grantedSpellIds = useMemo(
     () => grantedSpells.map((spell) => spell.id),
@@ -2554,9 +2554,9 @@ export default function Home() {
   );
   const secondaryArchetypeSpellBonuses = useMemo(
     () => secondaryCharacterClass
-      ? Object.fromEntries(secondaryAvailableSpells.map((spell) => [spell.id, archetypeSpellModifiers(secondaryCharacterClass, secondaryClassLevel, spell)]))
+      ? Object.fromEntries(secondaryAvailableSpells.map((spell) => [spell.id, archetypeSpellModifiers(secondaryCharacterClass, secondaryClassLevel, spell, effectiveSelectedOptionIds)]))
       : {},
-    [secondaryAvailableSpells, secondaryCharacterClass, secondaryClassLevel],
+    [effectiveSelectedOptionIds, secondaryAvailableSpells, secondaryCharacterClass, secondaryClassLevel],
   );
   const secondaryGrantedSpellIds = useMemo(
     () => secondaryGrantedSpells.map((spell) => spell.id),

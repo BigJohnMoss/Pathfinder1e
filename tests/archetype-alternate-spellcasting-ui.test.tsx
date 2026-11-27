@@ -153,6 +153,64 @@ test("Cyclopean Seer tracks Brutal Trance and level-20 spell-like abilities", as
   }
 });
 
+test("Cyclopean Seer resolves Assume Fate, Doomsaying and Flash of Insight and applies selected Prescience", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "oracle");
+  fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "18" } });
+  const level = screen.getByLabelText("Level");
+  fireEvent.change(level, { target: { value: "11" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "oracle-cyclopean-seer");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  await user.selectOptions(screen.getByLabelText("Mystery level 1"), "oracle-mystery-lore");
+  assert.equal(screen.queryByRole("button", { name: "Choose a Flash of Insight result" }), null);
+  await user.selectOptions(screen.getByLabelText("Revelation level 3"), "oracle-revelation-cyclopean-flash-of-insight");
+  await user.selectOptions(screen.getByLabelText("Revelation level 11"), "oracle-revelation-cyclopean-prescience");
+
+  const flash = screen.getByRole<HTMLButtonElement>("button", { name: "Choose a Flash of Insight result" });
+  const result = screen.getByLabelText("Choose a Flash of Insight result result to use");
+  const sides = screen.getByLabelText("Choose a Flash of Insight result die sides");
+  await user.click(screen.getByLabelText("This is my own die and I have not rolled it"));
+  fireEvent.change(result, { target: { value: "4" } });
+  await user.click(flash);
+  assert.match(screen.getByLabelText("Choose a Flash of Insight result result").textContent ?? "", /Use 4 as the result of your d20/);
+  assert.ok(flash.disabled);
+
+  fireEvent.change(level, { target: { value: "20" } });
+  fireEvent.change(sides, { target: { value: "6" } });
+  assert.ok(flash.disabled);
+  fireEvent.change(sides, { target: { value: "20" } });
+  await user.click(flash);
+  assert.match(screen.getByLabelText("Choose a Flash of Insight result result").textContent ?? "", /spends no daily use/);
+  fireEvent.change(result, { target: { value: "5" } });
+  assert.ok(flash.disabled);
+
+  await user.selectOptions(screen.getByLabelText("Revelation level 15"), "oracle-revelation-cyclopean-doomsaying");
+  await user.selectOptions(screen.getByLabelText("Pronounce Doomsaying mode"), "saves");
+  await user.click(screen.getByLabelText("The target is within 30 feet and can be affected by a curse"));
+  await user.click(screen.getByRole("button", { name: "Pronounce Doomsaying" }));
+  assert.match(screen.getByLabelText("Pronounce Doomsaying result").textContent ?? "", /−20 penalty on saving throws.*10 rounds/);
+
+  await user.click(screen.getByLabelText("Another creature I can see is saving against the same effect"));
+  const previousRandom = Math.random;
+  Math.random = () => 0;
+  try {
+    await user.click(screen.getByRole("button", { name: "Roll Assume Fate" }));
+    assert.match(screen.getByLabelText("Roll Assume Fate result").textContent ?? "", /1 \+ 5 = 6/);
+    await user.click(screen.getByRole("tab", { name: "Actions" }));
+    assert.ok(screen.getByText("+6 Prescience AC"));
+    assert.ok(screen.getByText(/Apply a \+6 luck bonus to your save/));
+    await user.click(screen.getByRole("button", { name: /^Will roll, modifier/ }));
+    assert.equal(screen.queryByText(/Apply a \+6 luck bonus to your save/), null);
+  } finally {
+    Math.random = previousRandom;
+  }
+
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  await user.type(screen.getByPlaceholderText("Name or effect"), "Detect Magic");
+  assert.match(screen.getByText("Detect Magic", { exact: true }).closest("article")?.textContent ?? "", /Prescience: \+6 concentration/);
+});
+
 test("an imported multiclass Lorekeeper only grants legally earned Oracle spells", async () => {
   const user = userEvent.setup();
   render(<Home />);

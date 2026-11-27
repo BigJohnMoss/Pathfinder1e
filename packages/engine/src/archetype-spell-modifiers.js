@@ -155,9 +155,10 @@ export function inferArchetypeSpellModifiers(archetype, spells = []) {
 const spellSchools = (spell) => (spell?.schools?.length ? spell.schools : [spell?.school]).filter(Boolean).map((value) => String(value).toLowerCase());
 const spellDescriptors = (spell) => (spell?.descriptors ?? []).map((value) => String(value).toLowerCase());
 
-export function archetypeSpellModifiers(characterClass, classLevel, spell) {
+export function archetypeSpellModifiers(characterClass, classLevel, spell, selectedOptionIds = []) {
   const matches = (characterClass?.spellModifierAdjustments ?? [])
     .filter((rule) => classLevel >= (rule.minimumLevel ?? 1) && classLevel <= (rule.maximumLevel ?? 20))
+    .filter((rule) => !rule.requiredOptionId || selectedOptionIds.includes(rule.requiredOptionId))
     .filter((rule) => !rule.spellIds?.length || rule.spellIds.includes(spell?.baseSpellId ?? spell?.id))
     .filter((rule) => !rule.schools?.length || spellSchools(spell).some((school) => rule.schools.includes(school)))
     .filter((rule) => !rule.descriptors?.length || spellDescriptors(spell).some((descriptor) => rule.descriptors.includes(descriptor)));
