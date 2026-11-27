@@ -7,7 +7,6 @@
   "replacements": [
     {
       "featureIds": [
-        "oracle-mystery-1",
         "oracle-revelation-1",
         "oracle-revelation-3",
         "oracle-revelation-15"
@@ -273,6 +272,14 @@
           "summary": "Ancestor UM , heavens, life, lore, nature, time UM , waves, wind."
         }
       ]
+    }
+  ],
+  "modifiedFeatureIds": ["oracle-mystery-1"],
+  "optionClassSkillExclusions": ["oracle-mysteries"],
+  "featureOverrides": [
+    {
+      "featureId": "oracle-mystery-1",
+      "summary": "Choose a mystery for its remaining bonus spells, revelations, and final revelation. Ocean’s Echo supplies its own additional class skills."
     }
   ],
   "source": {

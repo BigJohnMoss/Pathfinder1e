@@ -65,6 +65,29 @@ test("Keleshite Prophet automates its replacement mystery skills without grantin
   assert.ok(!archetypeAutomationSummary(source, [], catalogueSpells).manual.includes("Class Skills (level 1)"));
 });
 
+test("Oracle archetypes keep the mystery chooser when they trade its class skills", () => {
+  const base = JSON.parse(readFileSync(new URL("../packages/data/src/classes/oracle.json", import.meta.url), "utf8"));
+  const cases = [
+    ["oracle-community-guardian", [2, 4, 6, 10, 12], [1, 3]],
+    ["oracle-ocean-s-echo", [4, 8, 10, 12, 14], [1, 3, 15]],
+    ["oracle-pei-zin-practitioner", [], [1, 7]],
+  ];
+  for (const [id, replacedSpellLevels, replacedRevelations] of cases) {
+    const source = catalogueArchetypes.find((archetype) => archetype.id === id);
+    const applied = applyArchetype(base, source, [], catalogueSpells);
+    assert.ok(applied.features.some((feature) => feature.id === "oracle-mystery-1"), id);
+    assert.ok(applied.features.some((feature) => feature.id === "oracle-final-revelation-20"), id);
+    assert.deepEqual(applied.optionClassSkillExclusions, ["oracle-mysteries"], id);
+    assert.deepEqual(applied.bonusSpellReplacementClassLevels, replacedSpellLevels, id);
+    assert.deepEqual(applied.spellGrants.map(({ minimumClassLevel }) => minimumClassLevel), replacedSpellLevels, id);
+    assert.deepEqual(
+      applied.features.filter(({ id }) => /^oracle-revelation-\d+$/.test(id)).map(({ level }) => level),
+      [1, 3, 7, 11, 15, 19].filter((level) => !replacedRevelations.includes(level)),
+      id,
+    );
+  }
+});
+
 test("Metamagic Rager spends scaled bloodrage rounds and exposes metamagic bloodline feats", () => {
   const source = catalogueArchetypes.find(({ id }) => id === "bloodrager-metamagic-rager");
   const action = source.replacements.flatMap(({ features }) => features)

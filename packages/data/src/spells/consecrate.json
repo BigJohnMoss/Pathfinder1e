@@ -1,0 +1,21 @@
+{
+  "id": "consecrate",
+  "name": "Consecrate",
+  "school": "evocation",
+  "descriptors": ["good"],
+  "levelByClass": { "cleric": 2, "inquisitor": 2, "oracle": 2, "warpriest": 2 },
+  "components": ["V", "S", "M (holy water and silver dust worth 25 gp)", "DF"],
+  "castingTime": "1 standard action",
+  "range": "close (25 ft. + 5 ft./2 levels)",
+  "area": "20-ft.-radius emanation",
+  "duration": "2 hours/level",
+  "savingThrow": "none",
+  "spellResistance": "no",
+  "summary": "Bless an area to strengthen positive channel energy and disrupt undead.",
+  "description": "Positive channel energy gains a +3 sacred bonus to its save DC in the area. Undead there take a –1 penalty on attack rolls, damage rolls, and saves, and cannot be created or summoned there. A permanent shrine to your religion doubles these modifiers. If the area has a permanent shrine to another patron, the spell instead severs the shrine’s connection to its patron and applies neither modifier. Consecrate counters and dispels desecrate.",
+  "source": {
+    "title": "PRPG Core Rulebook",
+    "page": 258,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Consecrate"
+  }
+}

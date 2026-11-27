@@ -7,7 +7,6 @@
   "replacements": [
     {
       "featureIds": [
-        "oracle-mystery-1",
         "oracle-revelation-1",
         "oracle-revelation-7"
       ],
@@ -41,6 +40,14 @@
           "summary": "Life APG , nature APG , succor."
         }
       ]
+    }
+  ],
+  "modifiedFeatureIds": ["oracle-mystery-1"],
+  "optionClassSkillExclusions": ["oracle-mysteries"],
+  "featureOverrides": [
+    {
+      "featureId": "oracle-mystery-1",
+      "summary": "Choose a mystery for its bonus spells, revelations, and final revelation. Master Herbalist replaces the mystery’s class skills."
     }
   ],
   "resourceAdjustments": [

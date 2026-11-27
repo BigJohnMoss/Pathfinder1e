@@ -93,11 +93,25 @@ for (const scenario of [
     classSkill: "Perform (dance)",
     otherSkill: "Handle Animal",
   },
+  {
+    archetype: "oracle-community-guardian",
+    ancestry: "halfling",
+    alignment: "neutral-good",
+    mystery: "life",
+    revelation: "oracle-revelation-lifesense",
+    keptSpell: "restoration",
+    replacedSpell: "lesser restoration",
+    archetypeSpell: "Consecrate",
+    classSkill: "Linguistics",
+    otherSkill: "Handle Animal",
+  },
 ]) {
   test(`${scenario.archetype} preserves its mystery while applying its specific swaps`, async () => {
     const user = userEvent.setup();
     render(<Home />);
     await user.selectOptions(screen.getByLabelText("Class"), "oracle");
+    if (scenario.ancestry) await user.selectOptions(screen.getByLabelText("Ancestry"), scenario.ancestry);
+    if (scenario.alignment) await user.selectOptions(screen.getByLabelText("Alignment"), scenario.alignment);
     await user.clear(screen.getByLabelText("Charisma base score"));
     await user.type(screen.getByLabelText("Charisma base score"), "18");
     await user.clear(screen.getByLabelText("Level"));
