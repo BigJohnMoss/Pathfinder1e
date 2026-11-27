@@ -187,6 +187,55 @@ test("Wasting updates eligible skill checks and its defenses when the curse chan
   assert.ok(screen.getByText("Blindsight 15 ft."));
 });
 
+test("Haunted grants castable spells through the normal Oracle spellbook and removes later spells as levels drop", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "oracle");
+  fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "18" } });
+  const level = screen.getByLabelText("Level");
+  fireEvent.change(level, { target: { value: "15" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  await user.selectOptions(screen.getByLabelText("Oracle's Curse level 1"), "oracle-curse-haunted");
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  const search = screen.getByPlaceholderText("Name or effect");
+  for (const spell of ["mage hand", "ghost sound", "levitate", "minor image", "telekinesis", "reverse gravity"]) {
+    fireEvent.change(search, { target: { value: spell } });
+    assert.equal(screen.getByLabelText(new RegExp(`^${spell} known$`, "i")).textContent, "Haunted Curse");
+  }
+  const cast = screen.getByRole<HTMLButtonElement>("button", { name: /^cast reverse gravity$/i });
+  assert.equal(cast.disabled, false);
+  const slots = screen.getByText(/^Oracle slots:/);
+  const before = slots.textContent;
+  await user.click(cast);
+  assert.notEqual(slots.textContent, before);
+  fireEvent.change(level, { target: { value: "14" } });
+  assert.equal(screen.queryByLabelText(/^reverse gravity known$/i), null);
+});
+
+test("Haunted advances and loads with Oracle as a third class", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "18" } });
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "6" } });
+  await user.selectOptions(screen.getByLabelText("Additional class"), "rogue");
+  await user.click(screen.getByRole("button", { name: "Add another class" }));
+  await user.selectOptions(screen.getByLabelText("Additional class 2"), "oracle");
+  fireEvent.change(screen.getByLabelText("Additional class 2 levels"), { target: { value: "4" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  await user.selectOptions(screen.getByLabelText("Oracle's Curse level 1"), "oracle-curse-haunted");
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  fireEvent.change(screen.getByPlaceholderText("Name or effect"), { target: { value: "levitate" } });
+  assert.equal(screen.getByLabelText(/^levitate known$/i).textContent, "Haunted Curse");
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.selectOptions(screen.getByLabelText("Class"), "wizard");
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  await waitFor(() => assert.equal((screen.getByLabelText("Class") as HTMLSelectElement).value, "fighter"));
+  const search = screen.getByPlaceholderText("Name or effect");
+  fireEvent.change(search, { target: { value: "levitate" } });
+  assert.equal(screen.getByLabelText(/^levitate known$/i).textContent, "Haunted Curse");
+});
+
 test("Possessed Oracle casts its replacement spells and rerolls a failed Will save once", async () => {
   const user = userEvent.setup();
   render(<Home />);

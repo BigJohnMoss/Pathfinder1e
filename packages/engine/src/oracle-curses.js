@@ -1,5 +1,14 @@
 const fixedCurseFeatureId = "oracle-dual-cursed-oracle-fixed-curse-1";
 
+const hauntedSpells = [
+  { id: "mage-hand", spellLevel: 0, curseLevel: 1 },
+  { id: "ghost-sound", spellLevel: 0, curseLevel: 1 },
+  { id: "levitate", spellLevel: 2, curseLevel: 5 },
+  { id: "minor-image", spellLevel: 2, curseLevel: 5 },
+  { id: "telekinesis", spellLevel: 5, curseLevel: 10 },
+  { id: "reverse-gravity", spellLevel: 7, curseLevel: 15 },
+];
+
 export function oracleCurseBenefits(characterClasses, classLevels, selections, optionGroups) {
   const oracle = characterClasses.find(({ id }) => id === "oracle");
   const oracleLevel = classLevels.oracle ?? 0;
@@ -78,5 +87,21 @@ export function oracleCurseBenefits(characterClasses, classLevels, selections, o
     initiative: powerlessProphecy >= 5 ? 4 : 0,
     lame,
     charismaSkillPenalty: wasting ? -4 : 0,
+    hauntedSpellAdditions: Object.fromEntries(hauntedSpells
+      .filter(({ curseLevel }) => curseLevel <= (activeCurses.get("oracle-curse-haunted") ?? 0))
+      .map(({ id, spellLevel }) => [id, spellLevel])),
   };
+}
+
+export function hauntedCurseSpells(catalogue, additions, classId, maximumSpellLevel) {
+  if (classId !== "oracle") return [];
+  return Object.entries(additions ?? {}).flatMap(([spellId, spellLevel]) => {
+    if (spellLevel > maximumSpellLevel) return [];
+    const spell = catalogue.find(({ id }) => id === spellId);
+    return spell ? [{
+      ...spell,
+      levelByClass: { ...spell.levelByClass, oracle: spellLevel },
+      bonusSpellSource: "Haunted Curse",
+    }] : [];
+  });
 }

@@ -1,4 +1,4 @@
-import type { CharacterClass, CharacterOptionGroup } from "../../types/src/index.js";
+import type { CharacterClass, CharacterOptionGroup, CharacterSpell } from "../../types/src/index.js";
 import type { archetypeSenses } from "./index.js";
 
 export function oracleCurseBenefits(
@@ -13,4 +13,12 @@ export function oracleCurseBenefits(
   initiative: number;
   lame: number;
   charismaSkillPenalty: number;
+  hauntedSpellAdditions: Record<string, number>;
 };
+
+export function hauntedCurseSpells<T extends Pick<CharacterSpell, "id" | "levelByClass">>(
+  catalogue: T[],
+  additions: Record<string, number> | undefined,
+  classId: string,
+  maximumSpellLevel: number,
+): Array<T & { bonusSpellSource: string }>;

@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { applyArchetype, characterLandSpeed } from "../packages/engine/src/index.js";
-import { oracleCurseBenefits } from "../packages/engine/src/oracle-curses.js";
+import { hauntedCurseSpells, oracleCurseBenefits } from "../packages/engine/src/oracle-curses.js";
 
 const readData = async (path) => JSON.parse(await readFile(new URL(`../packages/data/src/${path}.json`, import.meta.url), "utf8"));
 const [oracle, dualCursed, cyclopeanSeer, coreCurses, cyclopeanCurses] = await Promise.all([
@@ -59,4 +59,27 @@ test("Lame adjusts base speed and bypasses load and armor reductions at the corr
   assert.equal(speed(30, "heavy", "heavy", 9), 15);
   assert.equal(speed(30, "heavy", "heavy", 10), 20);
   assert.equal(speed(30, "heavy", "overloaded", 15), 0);
+});
+
+test("Haunted grants its staged spells at Oracle spell levels and fixed Haunted only grants its cantrips", () => {
+  const haunted = "oracle-curse-haunted";
+  const benefits = (oracleLevel, fighter = 0) => oracleCurseBenefits(
+    [oracle], { oracle: oracleLevel, fighter }, { "oracle-curse-1": haunted }, options,
+  ).hauntedSpellAdditions;
+  const cantrips = { "mage-hand": 0, "ghost-sound": 0 };
+  assert.deepEqual(benefits(4), cantrips);
+  assert.deepEqual(benefits(4, 2), { ...cantrips, levitate: 2, "minor-image": 2 });
+  assert.equal(benefits(10).telekinesis, 5);
+  assert.equal(benefits(14)["reverse-gravity"], undefined);
+  assert.equal(benefits(15)["reverse-gravity"], 7);
+
+  const fixed = oracleCurseBenefits([applyArchetype(oracle, dualCursed)], { oracle: 20 }, {
+    "oracle-dual-cursed-oracle-fixed-curse-1": haunted,
+  }, options);
+  assert.deepEqual(fixed.hauntedSpellAdditions, cantrips);
+  const catalogue = Object.keys(benefits(15)).map((id) => ({ id, levelByClass: { wizard: benefits(15)[id] } }));
+  const spells = hauntedCurseSpells(catalogue, benefits(15), "oracle", 2);
+  assert.equal(spells.length, 4);
+  assert.equal(spells.find(({ id }) => id === "minor-image").levelByClass.oracle, 2);
+  assert.deepEqual(hauntedCurseSpells(catalogue, benefits(15), "wizard", 9), []);
 });
