@@ -353,6 +353,7 @@ export interface ClassFeatureOccurrence {
     };
     incomingAttackDefense?: { armorClassBonus: number; bonusType?: "insight" };
     fixedD20Result?: { label: string; result: 10 | 20; resultByLevel?: Array<{ level: number; result: 10 | 20 }> };
+    chosenDieResult?: { freeD20AtLevel: number; abilityModifier: AbilityName };
     diceRoll?: {
       label: string;
       diceCountByLevel: Array<{ level: number; count: number }>;
@@ -368,6 +369,8 @@ export interface ClassFeatureOccurrence {
         operation: "bonus" | "penalty";
         description: string;
         rounds?: number;
+        consumeOnUse?: boolean;
+        replaceExisting?: boolean;
       };
       diceCountBonusOptionIds?: string[];
       abilityModifier?: AbilityName;
@@ -820,6 +823,7 @@ export interface CharacterArchetype {
     minimum?: number;
     maximum?: number;
     abilityModifier?: AbilityName;
+    requiredOptionId?: string;
     bonusByLevel?: Array<{ level: number; bonus: number }>;
   }>;
   saveBonusAdjustments?: Array<{
@@ -954,6 +958,7 @@ export interface ArchetypeSpellModifierAdjustment {
   schools?: string[];
   descriptors?: string[];
   condition?: string;
+  requiredOptionId?: string;
 }
 export interface ArchetypeWildEmpathyAdjustment {
   sourceFeatureId?: string;

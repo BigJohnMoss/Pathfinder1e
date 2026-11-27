@@ -145,7 +145,10 @@ export function ClassSpellbook({
       : [];
   }), [characterClass.id, excludedSpellIds, maximumSpellLevel, spellOptions, spells]);
   const availableSpells = useMemo(() => mergeSpellLists(baseSpells, [...allowedGrantedSpells, ...optionSpells]), [allowedGrantedSpells, baseSpells, optionSpells]);
-  const spellArchetypeBonuses = useMemo(() => Object.fromEntries(availableSpells.map((spell) => [spell.id, archetypeSpellModifiers(characterClass, classLevel, spell)])), [availableSpells, characterClass, classLevel]);
+  const spellArchetypeBonuses = useMemo(() => {
+    const optionIds = Object.values(selectedOptions);
+    return Object.fromEntries(availableSpells.map((spell) => [spell.id, archetypeSpellModifiers(characterClass, earnedClassLevel, spell, optionIds)]));
+  }, [availableSpells, characterClass, earnedClassLevel, selectedOptions]);
   const onDemandSpellCosts = useMemo(() => Object.fromEntries(spellOptions.flatMap((option) => {
     if (!option?.castsAsPrepared || !option.spellId || excludedSpellIds.has(option.spellId) || !option.classIds.includes(characterClass.id)) return [];
     const resource = option.resourceCost;

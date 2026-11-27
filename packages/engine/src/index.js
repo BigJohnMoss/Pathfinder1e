@@ -426,7 +426,8 @@ const adjustmentBonusAtLevel = (adjustment, level) => {
   );
 };
 
-export function archetypeConditionalModifiers(archetypes = [], classLevels = {}, abilityModifiers = {}) {
+export function archetypeConditionalModifiers(archetypes = [], classLevels = {}, abilityModifiers = {}, selectedOptionIds = []) {
+  const selections = new Set(selectedOptionIds);
   return (archetypes ?? []).flatMap((archetype) => {
     const level = archetypeLevel(archetype, classLevels);
     return [
@@ -437,7 +438,7 @@ export function archetypeConditionalModifiers(archetypes = [], classLevels = {},
       ...archetypeLandSpeedAdjustments(archetype).filter((modifier) => modifier.condition).map((modifier) => ({ ...modifier, base: modifier.bonus, label: "Land speed" })),
       ...archetypeAbilityScoreAdjustments(archetype).filter((modifier) => modifier.condition),
     ].flatMap((modifier) => {
-      if (!adjustmentAppliesAtLevel(modifier, level)) return [];
+      if (!adjustmentAppliesAtLevel(modifier, level) || (modifier.requiredOptionId && !selections.has(modifier.requiredOptionId))) return [];
       const bonus = adjustmentBonusAtLevel(modifier, level) + (modifier.abilityModifier ? abilityModifiers[modifier.abilityModifier] ?? 0 : 0);
       return [{
         label: modifier.label,

@@ -116,6 +116,11 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const actionLevel = action.advancementOptionId && selectedOptionSet.has(action.advancementOptionId)
           ? casterLevels[action.classId ?? ""] ?? actionClassLevel
           : actionClassLevel;
+        const dieChoice = action.chosenDieResult;
+        const rerollInput = rerollInputs[action.id] ?? { original: 10, modifier: 0, count: 1, sides: dieChoice ? 20 : 6 };
+        const chosenResult = Math.max(1, Math.min(rerollInput.sides, rerollInput.original));
+        const freeDieResult = dieChoice && actionLevel >= dieChoice.freeD20AtLevel && rerollInput.sides === 20 &&
+          chosenResult <= (abilityModifiers[dieChoice.abilityModifier] ?? 0);
         const availableModes = action.modes?.filter((mode) => actionLevel >= (mode.minimumLevel ?? 1) && actionLevel <= (mode.maximumLevel ?? 20) && (!mode.requiredOptionId || selectedOptionSet.has(mode.requiredOptionId)));
         const selectedMode = availableModes?.find((mode) => mode.id === actionModes[action.id]) ?? availableModes?.[0];
         const fixedFeatSelectionCount = selectedMode?.featCount ?? action.featSelection?.countByLevel.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.count ?? 0;
@@ -132,7 +137,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           : 0;
         const enteredVariableCost = variableAmounts[action.id];
         const selectedVariableAmount = action.variableCost ? Math.max(action.variableCost.minimum, Math.min(typeof enteredVariableCost === "number" ? enteredVariableCost : action.variableCost.minimum, variableCostMaximum)) : undefined;
-        const variableCost = action.costPerSelectedFeat ? selectedFeatCost : selectedVariableAmount !== undefined ? selectedVariableAmount * variableCostMultiplier : action.cost;
+        const variableCost = freeDieResult ? 0 : action.costPerSelectedFeat ? selectedFeatCost : selectedVariableAmount !== undefined ? selectedVariableAmount * variableCostMultiplier : action.cost;
         const variableCostInput = enteredVariableCost ?? action.variableCost?.minimum;
         const costs = action.costs ?? (action.resourceId && variableCost !== undefined ? [{ resourceId: action.resourceId, cost: variableCost }] : []);
         const changes = action.changes ?? costs.map(({ resourceId, cost }) => ({ resourceId, usedDelta: cost }));
@@ -216,7 +221,6 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const useCount = Math.max(0, resources[0]?.resource?.used ?? 0);
         const label = action.labelsByUseCount?.[Math.min(useCount, action.labelsByUseCount.length - 1)] ?? action.label;
         const result = actionResults[action.id];
-        const rerollInput = rerollInputs[action.id] ?? { original: 10, modifier: 0, count: 1, sides: 6 };
         const combatInput = combatInputs[action.id] ?? { touchArmorClass: 10, saveModifier: 0, secondarySaveModifier: 0 };
         const conditionStep = action.conditionEffectsByUseCount?.[Math.min(useCount, action.conditionEffectsByUseCount.length - 1)];
         const selectedRecipient = availableRecipients.find((recipient) => recipient.id === actionRecipients[action.id]) ?? availableRecipients[0];
@@ -477,6 +481,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
             } else setActionResults((current) => ({ ...current, [action.id]: `${saveEffectTargetName}: ${targetEffectRange ? `range ${targetEffectRange}; ` : ""}${action.targetEffectRoll!.modifier[0].toUpperCase()}${action.targetEffectRoll!.modifier.slice(1)} save ${save!.natural}${combatInput.saveModifier === 0 ? "" : ` ${combatInput.saveModifier >= 0 ? "+" : "−"} ${Math.abs(combatInput.saveModifier)}`} = ${save!.total} vs DC ${saveDc} — success; effect negated${action.targetEffectRoll!.successEffect ? " and immunity tracked" : ""}.` }));
           }
           if (action.fixedD20Result && fixedD20Result) setActionResults((current) => ({ ...current, [action.id]: `${action.fixedD20Result!.label}: treat the d20 result as ${fixedD20Result}.` }));
+          if (dieChoice) setActionResults((current) => ({ ...current, [action.id]: `Use ${chosenResult} as the result of your d${rerollInput.sides}.${freeDieResult ? " This choice spends no daily use." : ""}` }));
           if (action.diceRoll && diceCount && dieSides) {
             const roll = rollDice(diceCount, dieSides, diceModifier);
             const bonusRoll = diceBonus ? rollDice(diceBonus.count, diceBonus.sides, 0) : undefined;
@@ -485,6 +490,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
             if (action.diceRoll.healsSelf) onHealSelf?.(resolvedTotal);
             if (action.diceRoll.appliedEffect && onAddEffect) {
               const applied = action.diceRoll.appliedEffect;
+              if (applied.replaceExisting) onRemoveEffectByName?.(applied.name);
               onAddEffect({
                 id: `${action.id}-rolled-effect-${Date.now()}-${Math.random()}`,
                 name: applied.name,
@@ -492,6 +498,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
                 bonus: applied.operation === "penalty" ? -resolvedTotal : resolvedTotal,
                 description: applied.description.replaceAll("{amount}", String(resolvedTotal)),
                 roundsRemaining: applied.rounds ?? 999999,
+                ...(applied.consumeOnUse ? { consumeOnUse: true } : {}),
               });
             }
             const mode = selectedMode?.label ?? action.diceRoll.label;
@@ -572,7 +579,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
               : `${effectDescription || action.activeEffect!.name} Active for ${activatedEffectRounds} round${activatedEffectRounds === 1 ? "" : "s"}.`,
           }));
           else if (temporaryHitPoints !== undefined) setActionResults((current) => ({ ...current, [action.id]: `Gained ${temporaryHitPoints} temporary hit points.` }));
-          else if (!action.actorSavingThrow && !action.rerollAction && !action.fixedD20Result && !action.combatRoll && !action.diceRoll && !action.targetEffectRoll) setActionResults((current) => ({ ...current, [action.id]: action.spellLikeAbility ? action.spellLikeAbility.kind === "spell-equivalent" ? `${action.spellLikeAbility.spellName} activated as a spell-equivalent effect.` : `${action.spellLikeAbility.spellName} cast as a spell-like ability.` : "Ability used." }));
+          else if (!action.actorSavingThrow && !action.rerollAction && !action.fixedD20Result && !dieChoice && !action.combatRoll && !action.diceRoll && !action.targetEffectRoll) setActionResults((current) => ({ ...current, [action.id]: action.spellLikeAbility ? action.spellLikeAbility.kind === "spell-equivalent" ? `${action.spellLikeAbility.spellName} activated as a spell-equivalent effect.` : `${action.spellLikeAbility.spellName} cast as a spell-like ability.` : "Ability used." }));
         };
         return <div className="feature-resource-action" key={action.id}>
           {action.variableCost && <label>{action.variableCost.label}<input aria-label={`${action.label} ${action.variableCost.label.toLowerCase()}`} type="number" min={action.variableCost.minimum} max={variableCostMaximum} value={variableCostInput} onChange={(event) => setVariableAmounts((current) => ({ ...current, [action.id]: event.target.value === "" ? "" : Math.max(action.variableCost!.minimum, Math.min(Number(event.target.value), variableCostMaximum)) }))} /></label>}
@@ -607,6 +614,17 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           {maximumTargets !== undefined && !action.targetEffectRoll && <output aria-label={`${action.label} maximum targets`}>Up to {maximumTargets} target{maximumTargets === 1 ? "" : "s"}</output>}
           {maximumActiveEffects !== undefined && <output aria-label={`${action.label} active limit`}>{activeEffectCount}/{maximumActiveEffects} active</output>}
           {action.fixedD20Result && <output aria-label={`${action.label} fixed d20 result`}>{action.fixedD20Result.label}: {fixedD20Result}</output>}
+          {dieChoice && <>
+            <label>Die sides<input aria-label={`${action.label} die sides`} type="number" min="2" max="1000" value={rerollInput.sides} onChange={(event) => {
+              const sides = Math.max(2, Math.min(1000, Math.trunc(Number(event.target.value)) || 2));
+              setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, sides, original: Math.min(chosenResult, sides) } }));
+            }} /></label>
+            <label>Chosen result<input aria-label={`${action.label} result to use`} type="number" min="1" max={rerollInput.sides} value={chosenResult} onChange={(event) => {
+              const original = Math.max(1, Math.min(rerollInput.sides, Math.trunc(Number(event.target.value)) || 1));
+              setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, original } }));
+            }} /></label>
+            <small>{freeDieResult ? "This result costs no daily use." : "This result costs one daily use."}</small>
+          </>}
           {action.numericInputEffect && <label>{action.numericInputEffect.label}<input aria-label={`${action.label} ${action.numericInputEffect.label.toLowerCase()}`} type="number" min={action.numericInputEffect.minimum} max={action.numericInputEffect.maximum} value={numericEffectInput} onChange={(event) => setNumericEffectInputs((current) => ({ ...current, [action.id]: Math.max(action.numericInputEffect!.minimum, Math.min(action.numericInputEffect!.maximum, Number(event.target.value) || action.numericInputEffect!.minimum)) }))} /><output>{numericEffectAmount}</output></label>}
           {action.diceRoll && diceCount && dieSides && <><output aria-label={`${action.label} roll profile`}>{diceCount}d{dieSides}{action.diceRoll.takeHighest ? " keep highest" : ""}{diceModifier === 0 ? "" : diceModifier > 0 ? `+${diceModifier}` : diceModifier}{diceResultDivisor > 1 ? ` ÷ ${diceResultDivisor}` : ""}</output>{action.diceRoll.modifierInputLabel && <label>{action.diceRoll.modifierInputLabel}<input aria-label={`${action.label} ${action.diceRoll.modifierInputLabel.toLowerCase()}`} type="number" min="-999" max="999" value={rerollInput.modifier} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, modifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}{action.diceRoll.targetDcInputLabel && <label>{action.diceRoll.targetDcInputLabel}<input aria-label={`${action.label} ${action.diceRoll.targetDcInputLabel.toLowerCase()}`} type="number" min="0" max="999" value={rerollInput.original} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, original: Math.max(0, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}{diceModeEffect?.targetSave && <label>Target {diceModeEffect.targetSave.modifier} modifier<input aria-label={`${action.label} target ${diceModeEffect.targetSave.modifier} modifier`} type="number" min="-999" max="999" value={combatInput.saveModifier} onChange={(event) => setCombatInputs((current) => ({ ...current, [action.id]: { ...combatInput, saveModifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}{diceModeEffect?.riders?.some((rider) => rider.targetHitDice) && <label>Target Hit Dice<input aria-label={`${action.label} target Hit Dice`} type="number" min="0" max="999" value={Math.max(0, targetHitDice[action.id] ?? actionLevel)} onChange={(event) => setTargetHitDice((current) => ({ ...current, [action.id]: Math.max(0, Math.min(999, Number(event.target.value) || 0)) }))} /></label>}</>}
           {action.activeEffect?.selectEquippedWeapon && <label>Affected weapon<select aria-label={`${action.label} affected weapon`} value={selectedEffectWeaponId} onChange={(event) => setEffectWeaponIds((current) => ({ ...current, [action.id]: event.target.value }))}>{weaponChoices.map((weapon) => <option key={weapon.id} value={weapon.id}>{weapon.name}</option>)}</select></label>}
