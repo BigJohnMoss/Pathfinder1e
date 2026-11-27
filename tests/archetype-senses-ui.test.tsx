@@ -138,21 +138,26 @@ test("fortification displays its current level milestone", async () => {
   assert.ok(within(defenses).getByText("Fortification 50% (critical hits and sneak attacks)"));
 });
 
-test("concealment displays its current level milestone and trigger", async () => {
+test("Hermit concealment displays its activated level and expires next round", async () => {
   const user = userEvent.setup();
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "oracle");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "7" } });
   await user.selectOptions(screen.getByLabelText("Archetype"), "oracle-hermit");
-  await user.click(screen.getByRole("tab", { name: "Actions" }));
-
-  const defenses = screen.getByRole("heading", { name: "Special defenses" }).closest("section");
-  assert.ok(defenses);
-  assert.ok(within(defenses).getByText("Concealment 20%"));
-  assert.match(defenses.textContent ?? "", /no creatures within 10 feet/i);
-
-  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "14" } });
-  assert.ok(within(defenses).getByText("Concealment 50%"));
+  for (const [level, concealment] of [[7, "Concealment 20%"], [14, "Concealment 50%"]] as const) {
+    fireEvent.change(screen.getByLabelText("Level"), { target: { value: String(level) } });
+    await user.click(screen.getByRole("tab", { name: "Actions" }));
+    assert.equal(screen.queryByText(concealment), null);
+    await user.click(screen.getByRole("tab", { name: "Features" }));
+    const action = screen.getByRole<HTMLButtonElement>("button", { name: "Activate Fade from Memory" });
+    assert.ok(action.disabled);
+    await user.click(screen.getByLabelText("No creature is within 10 feet at the end of my turn"));
+    await user.click(action);
+    await user.click(screen.getByRole("tab", { name: "Actions" }));
+    assert.ok(screen.getByText(concealment));
+    await user.click(screen.getByRole("button", { name: "Next round" }));
+    assert.equal(screen.queryByText(concealment), null);
+  }
 });
 
 test("miss chance displays its armor and load restrictions", async () => {
