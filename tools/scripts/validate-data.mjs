@@ -305,6 +305,10 @@ for (const [index, url] of archetypeUrls.entries()) {
         }
         if (action.conditionEffectsByUseCount !== undefined && (!Array.isArray(action.conditionEffectsByUseCount) || action.conditionEffectsByUseCount.length === 0 || new Set(action.conditionEffectsByUseCount.map(step => step?.name)).size !== action.conditionEffectsByUseCount.length || action.conditionEffectsByUseCount.some(step => !step || typeof step.name !== "string" || !step.name.trim() || !Array.isArray(step.effects) || step.effects.length === 0 || step.effects.some(effect => !effect || !activeEffectTargets.has(effect.target) || !Number.isInteger(effect.bonus) || effect.bonus < -20 || effect.bonus > 20 || typeof effect.description !== "string" || !effect.description.trim())))) errors.push(`${file}: ${feature.id} ${action.id} has invalid conditionEffectsByUseCount`);
         if (action.rerollAction !== undefined && (!action.rerollAction || !["d20", "damage", "lower-d20", "higher-d20"].includes(action.rerollAction.kind) || typeof action.rerollAction.label !== "string" || !action.rerollAction.label.trim())) errors.push(`${file}: ${feature.id} ${action.id} has an invalid rerollAction`);
+        if (action.incomingAttackDefense !== undefined) {
+          const defense = action.incomingAttackDefense;
+          if (!Number.isInteger(defense?.armorClassBonus) || defense.armorClassBonus < 1 || defense.armorClassBonus > 20 || (defense.bonusType !== undefined && defense.bonusType !== "insight")) errors.push(`${file}: ${feature.id} ${action.id} has an invalid incomingAttackDefense`);
+        }
         if (action.combatRoll !== undefined) {
           const roll = action.combatRoll;
           const combatMinimumLevel = action.minimumLevel ?? feature.level;
@@ -376,6 +380,7 @@ for (const [index, url] of archetypeUrls.entries()) {
   for (const augmentation of archetype.optionGroupAugmentations ?? []) {
     if (!augmentation || typeof augmentation.targetGroupId !== "string" || typeof augmentation.sourceGroupId !== "string") errors.push(`${file}: option group augmentation is missing a target or source group`);
     if (augmentation?.minimumFeatureLevel !== undefined && (!Number.isInteger(augmentation.minimumFeatureLevel) || augmentation.minimumFeatureLevel < 1 || augmentation.minimumFeatureLevel > 20)) errors.push(`${file}: option group augmentation has an invalid minimumFeatureLevel`);
+    if (augmentation?.matchOptionLevel !== undefined && typeof augmentation.matchOptionLevel !== "boolean") errors.push(`${file}: option group augmentation has an invalid matchOptionLevel`);
   }
   if (archetype.spellListAdditions !== undefined) {
     if (!archetype.spellListAdditions || typeof archetype.spellListAdditions !== "object" || Array.isArray(archetype.spellListAdditions) || Object.keys(archetype.spellListAdditions).length === 0) errors.push(`${file}: spellListAdditions must be a non-empty record`);
@@ -600,6 +605,11 @@ for (const [index, url] of archetypeUrls.entries()) {
     if (adjustment?.requiredOptionId !== undefined) {
       if (typeof adjustment.requiredOptionId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(adjustment.requiredOptionId)) errors.push(`${prefix} has an invalid requiredOptionId`);
       else resourceAdvancementOptionRefs.push({ prefix, optionId: adjustment.requiredOptionId });
+    }
+    if (adjustment?.bonusUseOptionIds !== undefined) {
+      const ids = adjustment.bonusUseOptionIds;
+      if (!Array.isArray(ids) || !ids.length || new Set(ids).size !== ids.length || ids.some((id) => typeof id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id))) errors.push(`${prefix} has invalid bonusUseOptionIds`);
+      else for (const optionId of ids) resourceAdvancementOptionRefs.push({ prefix, optionId });
     }
   }
 }

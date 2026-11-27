@@ -1735,7 +1735,8 @@ export default function Home() {
         feature.level >= (augmentation.minimumFeatureLevel ?? 1),
       )
       .flatMap((augmentation) =>
-        optionGroups.find((group) => group.id === augmentation.sourceGroupId)?.options ?? [],
+        (optionGroups.find((group) => group.id === augmentation.sourceGroupId)?.options ?? [])
+          .filter((option) => !augmentation.matchOptionLevel || option.minimumLevel === feature.level),
       )
       .map((option) => ({ ...option, groupId: feature.optionGroupId! }));
     const baseGroup = rawBaseGroup && augmentationOptions.length

@@ -1,0 +1,57 @@
+{
+  "id": "preacher-determination-advancements",
+  "name": "Determination Advancements",
+  "classIds": [
+    "inquisitor"
+  ],
+  "optionDefaults": {
+    "groupId": "preacher-determination-advancements",
+    "classIds": [
+      "inquisitor"
+    ],
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Inquisitor%20Preacher"
+    }
+  },
+  "options": [
+    {
+      "id": "preacher-determination-use-3",
+      "name": "Extra Determination use (level 3)",
+      "minimumLevel": 3,
+      "benefit": "Trade this teamwork-feat slot for one extra daily use of Determination."
+    },
+    {
+      "id": "preacher-determination-use-6",
+      "name": "Extra Determination use (level 6)",
+      "minimumLevel": 6,
+      "benefit": "Trade this teamwork-feat slot for one extra daily use of Determination."
+    },
+    {
+      "id": "preacher-determination-use-9",
+      "name": "Extra Determination use (level 9)",
+      "minimumLevel": 9,
+      "benefit": "Trade this teamwork-feat slot for one extra daily use of Determination."
+    },
+    {
+      "id": "preacher-determination-use-12",
+      "name": "Extra Determination use (level 12)",
+      "minimumLevel": 12,
+      "benefit": "Trade this teamwork-feat slot for one extra daily use of Determination."
+    },
+    {
+      "id": "preacher-determination-use-15",
+      "name": "Extra Determination use (level 15)",
+      "minimumLevel": 15,
+      "benefit": "Trade this teamwork-feat slot for one extra daily use of Determination."
+    },
+    {
+      "id": "preacher-determination-use-18",
+      "name": "Extra Determination use (level 18)",
+      "minimumLevel": 18,
+      "benefit": "Trade this teamwork-feat slot for one extra daily use of Determination."
+    }
+  ]
+}

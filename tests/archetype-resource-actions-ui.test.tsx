@@ -9,6 +9,8 @@ import type { ActiveEffect, CharacterArchetype, CharacterClass } from "../packag
 let render: typeof import("@testing-library/react").render;
 let screen: typeof import("@testing-library/react").screen;
 let cleanup: typeof import("@testing-library/react").cleanup;
+let fireEvent: typeof import("@testing-library/react").fireEvent;
+let Home: typeof import("../apps/web/app/page").default;
 let userEvent: typeof import("@testing-library/user-event").default;
 let ClassFeatures: typeof import("../apps/web/app/class-features").ClassFeatures;
 
@@ -38,8 +40,9 @@ test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
   Object.assign(globalThis, { window: dom.window, document: dom.window.document, HTMLElement: dom.window.HTMLElement, localStorage: dom.window.localStorage, React });
   Object.defineProperty(globalThis, "navigator", { configurable: true, value: dom.window.navigator });
-  ({ render, screen, cleanup } = await import("@testing-library/react"));
+  ({ render, screen, cleanup, fireEvent } = await import("@testing-library/react"));
   userEvent = (await import("@testing-library/user-event")).default;
+  Home = (await import("../apps/web/app/page")).default;
   ClassFeatures = (await import("../apps/web/app/class-features")).ClassFeatures;
 });
 
@@ -575,4 +578,58 @@ test("Cloistered Cleric gates its level-scaled Verbal Instruction aid", async ()
   assert.equal(effects.at(-1)?.target, "allies");
   assert.equal(effects.at(-1)?.bonus, 2);
   assert.equal(effects.at(-1)?.roundsRemaining, 1);
+});
+
+test("Preacher trades teamwork choices for shared uses and resolves Defense against one attack", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "inquisitor");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "6" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "inquisitor-preacher");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  const levelThree = screen.getByLabelText<HTMLSelectElement>("Teamwork Feat level 3");
+  const levelSix = screen.getByLabelText<HTMLSelectElement>("Teamwork Feat level 6");
+  assert.equal([...levelThree.options].some((option) => option.value === "preacher-determination-use-6"), false);
+  const remaining = screen.getByLabelText("Inquisitor Determination remaining");
+  assert.equal(remaining.textContent, "1/1 use remaining");
+  await user.selectOptions(levelThree, "preacher-determination-use-3");
+  await user.selectOptions(levelSix, "preacher-determination-use-6");
+  assert.equal(remaining.textContent, "3/3 use remaining");
+
+  const defense = "Determination — Defense";
+  const defend = screen.getByRole<HTMLButtonElement>("button", { name: defense });
+  await user.click(screen.getByLabelText(`${defense} The incoming attack is melee or ranged`));
+  const naturalAttackRoll = screen.getByLabelText(`${defense} Natural attack roll`);
+  await user.type(naturalAttackRoll, "15");
+  const attackTotal = screen.getByLabelText(`${defense} Attack total`);
+  await user.type(attackTotal, "16");
+  await user.type(screen.getByLabelText(`${defense} Current applicable AC`), "17");
+  assert.ok(defend.disabled);
+  await user.clear(attackTotal);
+  await user.type(attackTotal, "18");
+  await user.type(screen.getByLabelText(`${defense} Existing insight bonus to AC`), "2");
+  await user.click(defend);
+  assert.equal(screen.getByLabelText(`${defense} result`).textContent, "AC 17 → 19. Attack total 18 now misses.");
+  assert.equal(remaining.textContent, "2/3 use remaining");
+
+  const aggression = "Determination — Aggression";
+  await user.click(screen.getByLabelText(`${aggression} You just made an attack roll and its result has yet to be revealed`));
+  await user.click(screen.getByRole("button", { name: aggression }));
+  assert.match(screen.getByLabelText(`${aggression} result`).textContent ?? "", /You must keep this result/);
+  assert.equal(remaining.textContent, "1/3 use remaining");
+  const warning = "Determination — Warning";
+  await user.click(screen.getByLabelText(`${warning} A melee or ranged attack would hit an ally in your line of sight`));
+  await user.click(screen.getByLabelText(`${warning} The ally can hear you and is able to defend themselves`));
+  const warn = screen.getByRole<HTMLButtonElement>("button", { name: warning });
+  await user.click(warn);
+  assert.match(screen.getByLabelText(`${warning} result`).textContent ?? "", /You must keep this result/);
+  assert.equal(remaining.textContent, "0/3 use remaining");
+  assert.ok(warn.disabled);
+
+  await user.click(screen.getByRole("button", { name: "Refresh inquisitor determination" }));
+  await user.clear(naturalAttackRoll);
+  await user.type(naturalAttackRoll, "20");
+  await user.click(defend);
+  assert.match(screen.getByLabelText(`${defense} result`).textContent ?? "", /Natural 20 still hits/);
 });

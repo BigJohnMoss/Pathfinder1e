@@ -91,13 +91,14 @@ export function applyArchetypeResourceAdjustments(maximums, archetypes, level, a
       ? nonNegativeModifier(abilityModifiers[adjustment.abilityModifier]) * (adjustment.abilityMultiplier ?? 1)
       : 0;
     const tableMaximum = adjustment.maximumByLevel?.filter(entry => entry.level <= progressionLevel).sort((left, right) => left.level - right.level).at(-1)?.maximum;
+    const bonusUses = (adjustment.bonusUseOptionIds ?? []).filter((id) => context.selectedOptionIds?.includes(id)).length;
     const calculated = Math.max(
       adjustment.minimum ?? 0,
       Math.min(
         adjustment.maximum ?? Number.MAX_SAFE_INTEGER,
-        tableMaximum ?? (adjustment.base +
+        (tableMaximum ?? (adjustment.base +
           (adjustment.levelDivisor ? Math.floor(progressionLevel / adjustment.levelDivisor) : adjustment.levelMultiplier ? progressionLevel * adjustment.levelMultiplier : intervals * (adjustment.perInterval ?? 0)) +
-          abilityBonus),
+          abilityBonus)) + bonusUses,
       ),
     );
     const previous = current[adjustment.resourceId] ?? 0;

@@ -60,6 +60,21 @@ test("Pack Hunter tracks Sympathetic Rage through the normal rage pool", () => {
   assert.deepEqual(archetypeAutomationSummary(source, [], []).manual, []);
 });
 
+test("Preacher shares one Determination pool and gains a use per traded teamwork feat", () => {
+  const source = catalogueArchetypes.find(({ id }) => id === "inquisitor-preacher");
+  const actions = source.replacements.flatMap(({ features }) => features)
+    .flatMap(({ resourceActions }) => resourceActions);
+  assert.equal(actions.length, 3);
+  assert.ok(actions.every(({ resourceId, cost }) => resourceId === "preacherDetermination" && cost === 1));
+  const maximum = (level, selectedOptionIds = []) =>
+    applyArchetypeResourceAdjustments({}, [source], level, {}, { selectedOptionIds }).preacherDetermination;
+  assert.equal(maximum(2), undefined);
+  assert.equal(maximum(3), 1);
+  assert.equal(maximum(6, ["preacher-determination-use-3", "preacher-determination-use-6", "preacher-determination-use-6"]), 3);
+  assert.equal(maximum(20, source.resourceAdjustments[0].bonusUseOptionIds), 7);
+  assert.deepEqual(archetypeAutomationSummary(source, [], catalogueSpells).manual, []);
+});
+
 test("completed Alchemist archetypes expose no manual mechanics", () => {
   for (const id of ["alchemist-aerochemist", "alchemist-oenopion-researcher", "alchemist-royal-alchemist", "alchemist-preservationist", "alchemist-gloom-chymist", "alchemist-concocter", "alchemist-dragonblood-chymist", "alchemist-plague-bringer", "alchemist-alchemical-trapper", "alchemist-clone-master", "alchemist-winged-marauder", "alchemist-bogborn-alchemist", "alchemist-crimson-chymist", "alchemist-blazing-torchbearer", "alchemist-ice-chemist", "alchemist-deep-bomber"]) {
     const archetype = catalogueArchetypes.find((candidate) => candidate.id === id);
