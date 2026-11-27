@@ -9,6 +9,18 @@ const spellNameKeys = (name) => {
   return [normalized];
 };
 
+export function restrictOracleMysterySelection(characterClasses, selections) {
+  const featureId = "oracle-mystery-1";
+  const selectedId = selections[featureId];
+  if (!selectedId) return selections;
+  const allowedIds = characterClasses.find(({ id }) => id === "oracle")?.features
+    .find(({ id }) => id === featureId)?.optionChoiceIds;
+  if (!allowedIds || allowedIds.includes(selectedId)) return selections;
+  const filtered = { ...selections };
+  delete filtered[featureId];
+  return filtered;
+}
+
 export function mysteryBonusSpells(spells, selectedMystery, oracleLevel, classId = "oracle", replacedClassLevels = []) {
   if (!Array.isArray(spells) || !Array.isArray(selectedMystery?.mysterySpells) || !Number.isInteger(oracleLevel) || oracleLevel < 1) return [];
   const byName = new Map();

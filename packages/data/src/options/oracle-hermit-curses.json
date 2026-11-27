@@ -1,0 +1,27 @@
+{
+  "id": "oracle-hermit-curses",
+  "name": "Hermit Curse",
+  "classIds": [
+    "oracle"
+  ],
+  "optionDefaults": {
+    "groupId": "oracle-hermit-curses",
+    "classIds": [
+      "oracle"
+    ],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Legacy of the First World",
+      "page": 22,
+      "url": "https://www.aonprd.com/OracleCurses.aspx"
+    }
+  },
+  "options": [
+    {
+      "id": "oracle-hermit-curse-reclusive",
+      "name": "Reclusive",
+      "benefit": "Incoming spells are harder for allies to land in combat. Self-only spells gain unique benefits. The curse eventually grants charm immunity and spell resistance."
+    }
+  ]
+}

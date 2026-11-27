@@ -119,7 +119,7 @@ export type ActiveEffectTarget =
   | "casterLevel" | "spellSaveDc" | "exploitEffectiveLevel"
   | "casterLevelChecks" | "savingThrows" | "savingThrowsAgainstCharmAndFear" | "savingThrowsAgainstParalysisAndSleep"
   | "meleeDamageRolls" | "healingReceived" | "skillChecks" | "performanceChecks" | "performanceSaveDc"
-  | "landSpeed"
+  | "landSpeed" | "concealment"
   | "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma"
   | "allies" | "self" | "area" | "enemy";
 export interface ActiveEffect {
@@ -711,7 +711,7 @@ export interface CharacterArchetype {
     progressionKeys?: string[];
     features: ClassFeatureOccurrence[];
   }>;
-  featureOverrides?: Array<{ featureId: string; summary: string }>;
+  featureOverrides?: Array<{ featureId: string; summary: string; optionChoiceIds?: string[] }>;
   modifiedFeatureIds?: string[];
   optionClassSkillExclusions?: string[];
   spellListAdditions?: Record<string, number>;

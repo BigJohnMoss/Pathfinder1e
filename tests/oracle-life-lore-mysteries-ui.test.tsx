@@ -183,6 +183,75 @@ test("Possessed Oracle casts its replacement spells and rerolls a failed Will sa
   assert.ok(screen.getByRole("button", { name: "Cast Sleepwalk" }));
 });
 
+test("Hermit applies its restricted mystery, fixed curse, timed concealment, and spell resistance", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "oracle");
+  fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "18" } });
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "14" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  await user.selectOptions(screen.getByLabelText("Mystery level 1"), "oracle-mystery-lore");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "oracle-hermit");
+  const mystery = screen.getByLabelText<HTMLSelectElement>("Mystery level 1");
+  assert.equal(mystery.value, "");
+  assert.deepEqual([...mystery.options].map(({ value }) => value).filter(Boolean), [
+    "oracle-mystery-heavens", "oracle-mystery-life", "oracle-mystery-nature", "oracle-mystery-stone",
+  ]);
+  assert.equal(screen.queryByLabelText("Oracle's Curse level 1"), null);
+  assert.ok(screen.getByText("Reclusive Curse"));
+  await user.selectOptions(mystery, "oracle-mystery-life");
+  assert.ok(screen.getByText("detect undead"));
+  assert.equal(screen.queryByText("lesser restoration"), null);
+  await user.selectOptions(screen.getByLabelText("Revelation level 3"), "oracle-revelation-healing-hands");
+
+  await user.click(screen.getByLabelText("No other creature is within 10 feet of me or my destination"));
+  await user.click(screen.getByRole("button", { name: "Teleport with Recluse’s Stride" }));
+  assert.ok(screen.getByText(/Recluse’s Stride activated as a spell-equivalent effect/));
+  await user.click(screen.getByLabelText("No creature is within 10 feet at the end of my turn"));
+  await user.click(screen.getByRole("button", { name: "Activate Fade from Memory" }));
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.ok(screen.getByText("Concealment 50%"));
+  assert.ok(screen.getByText("Immune to charm spells and spell-like abilities"));
+  assert.equal(screen.queryByText("Spell resistance 25"), null);
+  assert.match(screen.getByLabelText("Land speed calculation").textContent ?? "", /Recluse’s Stride/);
+
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.ok(screen.getByText("Concealment 50%"));
+  await user.click(screen.getByRole("button", { name: "Next round" }));
+  assert.equal(screen.queryByText("Concealment 50%"), null);
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "15" } });
+  assert.ok(screen.getByText("Spell resistance 25"));
+});
+
+test("Hermit clears an ineligible mystery from imported multiclass drafts", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  const draft = {
+    version: 1,
+    classId: "fighter",
+    level: 5,
+    classLevels: [{ classId: "fighter", level: 1 }, { classId: "oracle", level: 4 }],
+    archetypeIdsByClass: { oracle: "oracle-hermit" },
+    ancestryId: "human",
+    baseAbilities: { strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 10, charisma: 18 },
+    selectedOptions: { "oracle-mystery-1": "oracle-mystery-lore" },
+  };
+  fireEvent.change(screen.getByLabelText("Import character file"), {
+    target: { files: [{ size: 1000, text: async () => JSON.stringify(draft) }] },
+  });
+  await screen.findByText("Imported character");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const mystery = screen.getByLabelText<HTMLSelectElement>("Mystery level 1");
+  assert.equal(mystery.value, "");
+  assert.ok(![...mystery.options].some(({ value }) => value === "oracle-mystery-lore"));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  await user.type(screen.getByPlaceholderText("Name or effect"), "Identify");
+  assert.equal(screen.queryByLabelText("identify known"), null);
+});
+
 for (const scenario of [
   {
     archetype: "oracle-seer",

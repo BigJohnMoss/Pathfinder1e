@@ -17,7 +17,7 @@ const favoredTerrainOptionRefs = [];
 const bloodlineDetailIds = new Set();
 const spellDescriptors = new Set(["acid", "air", "chaotic", "cold", "curse", "darkness", "death", "disease", "earth", "electricity", "emotion", "evil", "fear", "fire", "force", "good", "language-dependent", "lawful", "light", "meditative", "mind-affecting", "pain", "poison", "ruse", "shadow", "sonic", "water"]);
 const abilities = new Set(["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]);
-const activeEffectTargets = new Set(["initiative", "armorClass", "fortitude", "reflex", "will", "attackRolls", "meleeAttackRolls", "damageRolls", "weaponDamageRolls", "spellResistance", "casterLevel", "spellSaveDc", "exploitEffectiveLevel", "casterLevelChecks", "savingThrows", "savingThrowsAgainstCharmAndFear", "savingThrowsAgainstParalysisAndSleep", "meleeDamageRolls", "healingReceived", "skillChecks", "performanceChecks", "performanceSaveDc", "landSpeed", ...abilities, "allies", "self", "area", "enemy"]);
+const activeEffectTargets = new Set(["initiative", "armorClass", "fortitude", "reflex", "will", "attackRolls", "meleeAttackRolls", "damageRolls", "weaponDamageRolls", "spellResistance", "concealment", "casterLevel", "spellSaveDc", "exploitEffectiveLevel", "casterLevelChecks", "savingThrows", "savingThrowsAgainstCharmAndFear", "savingThrowsAgainstParalysisAndSleep", "meleeDamageRolls", "healingReceived", "skillChecks", "performanceChecks", "performanceSaveDc", "landSpeed", ...abilities, "allies", "self", "area", "enemy"]);
 const invalidModeEffect = (effect) => !effect || !activeEffectTargets.has(effect.target) || !Number.isInteger(effect.bonus) || effect.bonus < -20 || effect.bonus > 20 || typeof effect.label !== "string" || !effect.label.trim() || typeof effect.description !== "string" || !effect.description.trim() || (effect.fastHealing !== undefined && (!Number.isInteger(effect.fastHealing) || effect.fastHealing < 1 || effect.fastHealing > 999)) || (effect.bonusByLevel !== undefined && (!Array.isArray(effect.bonusByLevel) || effect.bonusByLevel.length === 0 || effect.bonusByLevel.some((step, index) => !Number.isInteger(step?.level) || step.level < 1 || step.level > 20 || !Number.isInteger(step.bonus) || step.bonus < -20 || step.bonus > 20 || (index > 0 && step.level <= effect.bonusByLevel[index - 1].level)))) || (effect.skillIds !== undefined && (!Array.isArray(effect.skillIds) || effect.skillIds.length === 0 || new Set(effect.skillIds).size !== effect.skillIds.length || effect.skillIds.some((skill) => typeof skill !== "string" || !skill.trim())));
 const archetypeOverlayFiles = await Promise.all((await jsonFiles("archetype-automation/").catch(() => [])).map(load));
 const archetypeOverlays = archetypeOverlayFiles.flatMap(file => file.overlays ?? []);
@@ -650,6 +650,11 @@ for (const [index, url] of archetypeUrls.entries()) {
   if (archetype.optionClassSkillExclusions !== undefined) {
     const groups = archetype.optionClassSkillExclusions;
     if (!Array.isArray(groups) || !groups.length || new Set(groups).size !== groups.length || groups.some((group) => !groupIds.has(group))) errors.push(`${file}: optionClassSkillExclusions must contain distinct existing option groups`);
+  }
+  for (const override of archetype.featureOverrides ?? []) {
+    if (override?.optionChoiceIds === undefined) continue;
+    const ids = override.optionChoiceIds;
+    if (!Array.isArray(ids) || !ids.length || new Set(ids).size !== ids.length || ids.some(id => !optionIds.has(id))) errors.push(`${file}: feature override ${override.featureId} must list distinct existing options`);
   }
   for (const adjustment of archetype.defenseAdjustments ?? []) {
     if (adjustment?.requiredOptionId !== undefined && !optionIds.has(adjustment.requiredOptionId)) errors.push(`${file}: defense adjustment references missing option ${adjustment.requiredOptionId}`);

@@ -7,26 +7,24 @@
   "replacements": [
     {
       "featureIds": [
-        "oracle-mystery-1",
-        "oracle-mystery-spell-2",
         "oracle-curse-1",
         "oracle-revelation-1",
         "oracle-revelation-7"
       ],
       "features": [
         {
-          "id": "oracle-hermit-mystery-1",
-          "name": "Mystery",
+          "id": "oracle-hermit-oracle-s-curse-1",
+          "name": "Reclusive Curse",
           "level": 1,
           "type": "archetype",
-          "summary": "A hermit must choose a mystery that adds Survival to his list of class skills, such as nature or stone."
+          "summary": "The Hermit gains the Reclusive curse at 1st level."
         },
         {
-          "id": "oracle-hermit-oracle-s-curse-1",
-          "name": "Oracle’s Curse",
+          "id": "oracle-hermit-reclusive-spellcasting-1",
+          "name": "Reclusive Spellcasting",
           "level": 1,
           "type": "archetype",
-          "summary": "A hermit must choose the reclusive curse (below) at 1st level."
+          "summary": "In combat, allies must hit with a melee touch attack to affect you with touch spells, and you attempt saves against spells cast by anyone else. Instantaneous spells you cast solely on yourself resolve at +1 caster level. At curse level 5, self-only casts gain Extend Spell without spending a higher slot or taking longer to cast."
         },
         {
           "id": "oracle-hermit-bonus-spells-1",
@@ -37,10 +35,106 @@
         },
         {
           "id": "oracle-hermit-revelations-5",
-          "name": "Revelations",
+          "name": "Recluse’s Stride (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Your base speed increases by 10 feet. At 10th level, teleport a distance equal to your base land speed as a move action while isolated, up to 3 + Charisma modifier times per day.",
+          "resourceActions": [
+            {
+              "id": "hermit-recluse-stride-teleport",
+              "label": "Teleport with Recluse’s Stride",
+              "classId": "oracle",
+              "minimumLevel": 10,
+              "resourceId": "hermitStride",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 10,
+                  "actionType": "move"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "dimension-door",
+                "spellName": "Recluse’s Stride",
+                "cadence": "day",
+                "kind": "spell-equivalent"
+              },
+              "confirmations": [
+                {
+                  "id": "isolated",
+                  "label": "No other creature is within 10 feet of me or my destination",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Teleport a distance equal to your base land speed as with dimension door."
+            }
+          ]
+        },
+        {
+          "id": "oracle-hermit-unthreatened-step-5",
+          "name": "Recluse’s Stride — Unthreatened Step",
           "level": 5,
           "type": "archetype",
-          "summary": "A hermit must take the following revelations at the listed levels. Recluse’s Stride (Su) : Your base speed increases by 10 feet. At 5th level, once per round when leaving a square, you can treat the square as though it isn’t threatened by any opponents that you can see. At 10th level, you can teleport a distance equal to your base land speed (as per dimension door ) as a move action, provided that there are no other creatures within 10 feet of you when you use this ability and no other creatures within 10 feet of your destination. You can teleport a number of times per day equal to 3 + your Charisma modifier. You must take this revelation at 1st level. Fade from Memory (Su) At 7th level, whenever there are no creatures within 10 feet of you at the end of your turn, you gain 20% concealment until the beginning of your next turn as a free action. At 14th level, you instead gain 50% concealment until the beginning of your next turn. You can use this ability a number of times per day equal to your oracle level. You must take this revelation at 7th level."
+          "summary": "Once per round when leaving a square, treat it as unthreatened by opponents you can see."
+        },
+        {
+          "id": "oracle-hermit-fade-from-memory-7",
+          "name": "Fade from Memory (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "If no creatures are within 10 feet at the end of your turn, activate Fade from Memory as a free action. Attacks against you have a 20% miss chance until your next turn, rising to 50% at 14th oracle level. Daily uses equal your oracle level.",
+          "resourceActions": [
+            {
+              "id": "hermit-fade-from-memory",
+              "label": "Activate Fade from Memory",
+              "classId": "oracle",
+              "minimumLevel": 7,
+              "resourceId": "hermitFadeFromMemory",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 7,
+                  "actionType": "free"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "isolated",
+                  "label": "No creature is within 10 feet at the end of my turn",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Fade from Memory",
+                "targets": [
+                  "concealment"
+                ],
+                "bonus": 20,
+                "bonusByLevel": [
+                  {
+                    "level": 7,
+                    "bonus": 20
+                  },
+                  {
+                    "level": 14,
+                    "bonus": 50
+                  }
+                ],
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "description": "Concealment until the beginning of your next turn."
+              },
+              "summary": "Apply concealment until the start of your next turn."
+            }
+          ]
+        },
+        {
+          "id": "oracle-hermit-reclusive-defenses-10",
+          "name": "Reclusive Defenses",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At curse level 10, charm spells and spell-like abilities cannot affect you. At curse level 15, spell resistance is 10 plus your oracle level."
         },
         {
           "id": "oracle-hermit-recommended-mysteries-1",
@@ -57,8 +151,81 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Hermit"
   },
+  "modifiedFeatureIds": [
+    "oracle-mystery-1"
+  ],
+  "featureOverrides": [
+    {
+      "featureId": "oracle-mystery-1",
+      "summary": "Choose a mystery that grants Survival as a class skill.",
+      "optionChoiceIds": [
+        "oracle-mystery-heavens",
+        "oracle-mystery-life",
+        "oracle-mystery-nature",
+        "oracle-mystery-stone"
+      ]
+    }
+  ],
+  "fixedOptionGrants": [
+    {
+      "sourceFeatureId": "oracle-hermit-oracle-s-curse-1",
+      "optionGroupId": "oracle-hermit-curses",
+      "optionId": "oracle-hermit-curse-reclusive",
+      "minimumLevel": 1,
+      "label": "Reclusive"
+    }
+  ],
+  "landSpeedAdjustments": [
+    {
+      "sourceFeatureId": "oracle-hermit-revelations-5",
+      "label": "Recluse’s Stride",
+      "minimumLevel": 1,
+      "bonus": 10,
+      "timing": "beforeReduction"
+    }
+  ],
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "oracle-hermit-reclusive-defenses-10",
+      "kind": "immunity",
+      "label": "Reclusive Defenses",
+      "minimumLevel": 10,
+      "base": 0,
+      "qualifier": "charm spells and spell-like abilities"
+    },
+    {
+      "sourceFeatureId": "oracle-hermit-reclusive-defenses-10",
+      "kind": "spellResistance",
+      "label": "Reclusive Defenses",
+      "minimumLevel": 15,
+      "base": 10,
+      "levelMultiplier": 1,
+      "qualifier": "spell resistance"
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "hermitStride",
+      "label": "Recluse’s Stride teleport",
+      "unit": "use",
+      "minimumLevel": 10,
+      "base": 3,
+      "abilityModifier": "charisma",
+      "minimum": 0,
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "hermitFadeFromMemory",
+      "label": "Fade from Memory",
+      "unit": "use",
+      "minimumLevel": 7,
+      "base": 0,
+      "levelMultiplier": 1,
+      "dedicatedAction": true
+    }
+  ],
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The Reclusive curse is fixed, legal mysteries are selectable, and Fade from Memory and Recluse’s Stride uses are tracked. Individual spell targets, the curse’s self-cast modifiers, and threatened squares are adjudicated at the table."
   ]
 }
