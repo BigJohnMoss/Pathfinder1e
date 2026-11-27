@@ -236,6 +236,45 @@ test("Haunted advances and loads with Oracle as a third class", async () => {
   assert.equal(screen.getByLabelText(/^levitate known$/i).textContent, "Haunted Curse");
 });
 
+test("Deaf applies initiative, hearing guidance, and silent casting in the builder", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "oracle");
+  fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "18" } });
+  const level = screen.getByLabelText("Level");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  const initiative = () => Number(screen.getByText("Initiative", { selector: "dt" }).nextElementSibling?.textContent);
+  const baseline = initiative();
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  await user.selectOptions(screen.getByLabelText("Oracle's Curse level 1"), "oracle-curse-deaf");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.equal(initiative(), baseline - 4);
+  assert.ok(screen.getByText("Perception check automatically fails"));
+  fireEvent.change(level, { target: { value: "5" } });
+  assert.equal(initiative(), baseline - 2);
+  assert.ok(screen.getByText("+3 competence bonus on Perception"));
+  fireEvent.change(level, { target: { value: "15" } });
+  assert.equal(initiative(), baseline);
+  assert.ok(screen.getByText("Scent", { selector: "strong" }));
+  assert.ok(screen.getByText("Tremorsense 30 ft."));
+
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  const assertComponents = async (spell: string, expected: string) => {
+    fireEvent.change(screen.getByPlaceholderText("Name or effect"), { target: { value: spell } });
+    await waitFor(() => {
+      const card = screen.getByRole("button", { name: `Cast ${spell}` }).closest("article");
+      const components = Array.from(card?.querySelectorAll("dt") ?? []).find(({ textContent }) => textContent === "Components");
+      assert.equal(components?.nextElementSibling?.textContent, expected);
+    });
+  };
+  await assertComponents("Guidance", "S");
+  await assertComponents("Touch of Blindness", "None");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  await user.selectOptions(screen.getByLabelText("Oracle's Curse level 1"), "oracle-curse-wasting");
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  await assertComponents("Guidance", "V, S");
+});
+
 test("Possessed Oracle casts its replacement spells and rerolls a failed Will save once", async () => {
   const user = userEvent.setup();
   render(<Home />);

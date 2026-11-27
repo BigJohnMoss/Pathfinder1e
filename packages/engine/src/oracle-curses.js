@@ -48,6 +48,18 @@ export function oracleCurseBenefits(characterClasses, classLevels, selections, o
     if (cloudedVision >= 10) senses.push({ sense: "blindsense", label: "Blindsense", operation: "grant", range: 30, source });
     if (cloudedVision >= 15) senses.push({ sense: "blindsight", label: "Blindsight", operation: "grant", range: 15, source });
   }
+  const deaf = activeCurses.get("oracle-curse-deaf") ?? 0;
+  if (deaf) {
+    const source = "Deaf";
+    conditionalModifiers.push(
+      { label: "Perception check automatically fails", condition: "When the check relies on sound", source },
+      { label: "Perception", bonus: -4, condition: "Opposed checks", source },
+    );
+    if (deaf >= 5) conditionalModifiers.push({ label: "competence bonus on Perception", bonus: 3, condition: "Checks that do not rely on hearing", source });
+    if (deaf >= 10) senses.push({ sense: "scent", label: "Scent", operation: "grant", source });
+    if (deaf >= 15) senses.push({ sense: "tremorsense", label: "Tremorsense", operation: "grant", range: 30, source });
+  }
+  const deafInitiativePenalty = deaf > 0 && deaf < 10 ? (deaf >= 5 ? -2 : -4) : 0;
   const lame = activeCurses.get("oracle-curse-lame") ?? 0;
   if (lame >= 5) defenses.push({ kind: "immunity", qualifier: "fatigue", value: 0, source: "Lame" });
   if (lame >= 15) defenses.push({ kind: "immunity", qualifier: "exhaustion", value: 0, source: "Lame" });
@@ -84,9 +96,10 @@ export function oracleCurseBenefits(characterClasses, classLevels, selections, o
     senses,
     defenses,
     conditionalModifiers,
-    initiative: powerlessProphecy >= 5 ? 4 : 0,
+    initiative: (powerlessProphecy >= 5 ? 4 : 0) + deafInitiativePenalty,
     lame,
     charismaSkillPenalty: wasting ? -4 : 0,
+    silentCasting: deaf > 0,
     hauntedSpellAdditions: Object.fromEntries(hauntedSpells
       .filter(({ curseLevel }) => curseLevel <= (activeCurses.get("oracle-curse-haunted") ?? 0))
       .map(({ id, spellLevel }) => [id, spellLevel])),

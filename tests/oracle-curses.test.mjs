@@ -83,3 +83,17 @@ test("Haunted grants its staged spells at Oracle spell levels and fixed Haunted 
   assert.equal(spells.find(({ id }) => id === "minor-image").levelByClass.oracle, 2);
   assert.deepEqual(hauntedCurseSpells(catalogue, benefits(15), "wizard", 9), []);
 });
+
+test("Deaf removes its initiative penalty in stages and grants non-hearing senses", () => {
+  const selections = { "oracle-curse-1": "oracle-curse-deaf" };
+  const benefits = (level) => oracleCurseBenefits([oracle], { oracle: level }, selections, options);
+  assert.equal(benefits(1).silentCasting, true);
+  assert.equal(benefits(4).initiative, -4);
+  assert.equal(benefits(5).initiative, -2);
+  assert.equal(benefits(5).conditionalModifiers.find(({ bonus }) => bonus === 3).source, "Deaf");
+  assert.equal(benefits(9).initiative, -2);
+  assert.equal(benefits(10).initiative, 0);
+  assert.deepEqual(benefits(14).senses.map(({ sense }) => sense), ["scent"]);
+  assert.deepEqual(benefits(15).senses.map(({ sense, range }) => [sense, range]), [["scent", undefined], ["tremorsense", 30]]);
+  assert.equal(oracleCurseBenefits([oracle], { oracle: 1 }, {}, options).silentCasting, false);
+});

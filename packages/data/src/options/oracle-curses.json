@@ -16,7 +16,7 @@
   },
   "options": [
     {"id":"oracle-curse-clouded-vision","name":"Clouded Vision","benefit":"Vision is limited to 30 feet, but functions as darkvision. The range and supernatural senses improve at 5th, 10th, and 15th level."},
-    {"id":"oracle-curse-deaf","name":"Deaf","benefit":"You are deaf, but cast spells as though modified by Silent Spell without increasing their level or casting time. Other senses improve at 5th, 10th, and 15th level."},
+    {"id":"oracle-curse-deaf","name":"Deaf","benefit":"You are deafened and cast spells without verbal components or increases to spell level or casting time. Your initiative penalty starts at −4, drops to −2 at curse level 5, and ends at 10. You gain +3 competence on Perception checks that do not rely on hearing at 5, scent at 10, and tremorsense 30 feet at 15."},
     {"id":"oracle-curse-haunted","name":"Haunted","benefit":"Retrieving stored gear takes at least a standard action. Dropped items land 10 feet away in a random direction. Learn mage hand and ghost sound, then levitate and minor image at curse level 5, telekinesis at 10, and reverse gravity at 15."},
     {"id":"oracle-curse-lame","name":"Lame","benefit":"Your land speed is reduced, but encumbrance never reduces it. You gain protections against fatigue, armor speed reduction, and exhaustion as your curse advances."},
     {"id":"oracle-curse-tongues","name":"Tongues","benefit":"In combat you can speak and understand only a chosen supernatural language. You gain more languages and eventually universal understanding as your curse advances."},
