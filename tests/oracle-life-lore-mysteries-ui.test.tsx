@@ -252,6 +252,67 @@ test("Hermit clears an ineligible mystery from imported multiclass drafts", asyn
   assert.equal(screen.queryByLabelText("identify known"), null);
 });
 
+test("Pei Zin Practitioner heals its own HP and rolls trained Herbalist checks at the published DCs", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "oracle");
+  fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "18" } });
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "7" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "oracle-pei-zin-practitioner");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  fireEvent.change(screen.getByLabelText("Current HP"), { target: { value: "10" } });
+  fireEvent.change(screen.getByLabelText("Nonlethal damage"), { target: { value: "10" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  const check = screen.getByRole<HTMLButtonElement>("button", { name: "Use Master Healing Technique" });
+  assert.ok(check.disabled);
+  assert.ok(screen.getAllByText("Train Profession (herbalist) before using this action.").length > 0);
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
+  const skill = screen.getByText("Profession (herbalist)", { exact: true }).closest("label");
+  const ranks = skill?.querySelector<HTMLInputElement>('input[type="number"]');
+  assert.ok(ranks);
+  fireEvent.change(ranks, { target: { value: "1" } });
+  assert.equal(skill?.querySelector(".skill-total strong")?.textContent, "+11 class");
+
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const heal = screen.getByRole<HTMLButtonElement>("button", { name: "Use Healer’s Way on yourself" });
+  assert.equal(screen.getByLabelText("Use Healer’s Way on yourself roll profile").textContent, "3d6");
+  assert.ok(heal.disabled);
+  await user.click(screen.getByLabelText("I have one free hand and can receive positive-energy healing"));
+  const previousRandom = Math.random;
+  try {
+    Math.random = () => 0.49;
+    await user.click(heal);
+    assert.match(screen.getByLabelText("Use Healer’s Way on yourself result").textContent ?? "", /Hit points healed: 3 \+ 3 \+ 3 = 9/);
+    assert.match(screen.getByLabelText("Oracle Healer's Way remaining").textContent ?? "", /4\/5/);
+
+    await user.click(screen.getByLabelText("I just used Healer’s Way on this living target and it can be sickened and nauseated"));
+    const mode = screen.getByLabelText("Use Master Healing Technique mode");
+    const technique = screen.getByRole<HTMLButtonElement>("button", { name: "Use Master Healing Technique" });
+    const healOther = screen.getByRole("button", { name: "Use Healer’s Way on another creature" });
+    await user.click(screen.getByLabelText("I have one free hand and can touch an eligible living target"));
+    const result = () => screen.getByLabelText("Use Master Healing Technique result").textContent ?? "";
+    assert.equal(screen.getByLabelText("Use Master Healing Technique roll profile").textContent, "1d20+11");
+    for (const [condition, expected] of [
+      ["sickened", /vs DC 20.*remove the selected condition/],
+      ["exhausted", /vs DC 30.*target is sickened/],
+      ["stunned", /vs DC 35.*target is nauseated/],
+    ] as const) {
+      if (technique.disabled) await user.click(healOther);
+      await user.selectOptions(mode, condition);
+      await user.click(technique);
+      assert.match(result(), expected);
+      assert.ok(technique.disabled);
+    }
+  } finally {
+    Math.random = previousRandom;
+  }
+
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.equal(screen.getByLabelText<HTMLInputElement>("Current HP").value, "19");
+  assert.equal(screen.getByLabelText<HTMLInputElement>("Nonlethal damage").value, "1");
+});
+
 for (const scenario of [
   {
     archetype: "oracle-seer",

@@ -22,13 +22,14 @@ const defenseInputs = [
   { id: "armorClass", label: "Current applicable AC", min: 1, max: 999 },
 ] as const;
 
-export function ClassFeatures({ level, className, features, dailyResources = [], abilityModifiers = {}, saveModifiers = {}, baseAttackBonus = 0, classLevels = {}, casterLevels = {}, selectedOptions = {}, selectedOptionIds = [], selectedFeats = [], featCatalogue = [], featEligibility, activeEffects = [], equippedWeapons = [], onAddEffect, onRemoveEffectByName, onTemporaryHitPointsChange }: {
+export function ClassFeatures({ level, className, features, dailyResources = [], abilityModifiers = {}, saveModifiers = {}, skills = {}, baseAttackBonus = 0, classLevels = {}, casterLevels = {}, selectedOptions = {}, selectedOptionIds = [], selectedFeats = [], featCatalogue = [], featEligibility, activeEffects = [], equippedWeapons = [], onAddEffect, onRemoveEffectByName, onTemporaryHitPointsChange, onHealSelf }: {
   level: number;
   className: string;
   features: Feature[];
   dailyResources?: DailyResource[];
   abilityModifiers?: Partial<Record<AbilityName, number>>;
   saveModifiers?: Partial<Record<"fortitude" | "reflex" | "will", number>>;
+  skills?: Record<string, { total: number; ranks: number }>;
   baseAttackBonus?: number;
   classLevels?: Record<string, number>;
   casterLevels?: Record<string, number>;
@@ -42,6 +43,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
   onAddEffect?: (effect: ActiveEffect) => void;
   onRemoveEffectByName?: (name: string) => void;
   onTemporaryHitPointsChange?: (amount: number) => void;
+  onHealSelf?: (amount: number) => void;
 }) {
   const [variableAmounts, setVariableAmounts] = useState<Record<string, number | "">>({});
   const [actionResults, setActionResults] = useState<Record<string, string>>({});
@@ -207,7 +209,10 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           return id === "existingBonus" && !raw || Boolean(raw) && Number.isInteger(value) && value >= min && value <= max;
         });
         const incomingHit = validDefenseInputs && resolveAttackRoll({ natural: attackNatural, total: attackTotal }, targetArmorClass).hit;
-        const unavailable = unavailableResource || unavailableCost || unavailableMinimumResource || unavailableRecovery || blockedByActorCondition || missingRequiredActiveEffect || blockedByActiveEffect || activeEffectLimitReached || Boolean(action.modes?.length && !availableModes?.length) || Boolean(action.companionRosterFeatureId && !availableRecipients.length) || (Boolean(action.activeEffect?.selectEquippedWeapon) && !selectedEffectWeaponId) || Boolean(defense && !incomingHit);
+        const trainedSkill = action.diceRoll?.trainedSkill;
+        const skill = trainedSkill ? skills[trainedSkill] : undefined;
+        const needsTraining = Boolean(trainedSkill && !skill?.ranks);
+        const unavailable = needsTraining || unavailableResource || unavailableCost || unavailableMinimumResource || unavailableRecovery || blockedByActorCondition || missingRequiredActiveEffect || blockedByActiveEffect || activeEffectLimitReached || Boolean(action.modes?.length && !availableModes?.length) || Boolean(action.companionRosterFeatureId && !availableRecipients.length) || (Boolean(action.activeEffect?.selectEquippedWeapon) && !selectedEffectWeaponId) || Boolean(defense && !incomingHit);
         const useCount = Math.max(0, resources[0]?.resource?.used ?? 0);
         const label = action.labelsByUseCount?.[Math.min(useCount, action.labelsByUseCount.length - 1)] ?? action.label;
         const result = actionResults[action.id];
@@ -293,7 +298,8 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const dieSides = action.diceRoll?.dieSidesByLevel.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.sides;
         const diceFlatModifier = action.diceRoll?.flatModifierByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.modifier ?? 0;
         const diceEnteredModifier = action.diceRoll?.modifierInputLabel ? rerollInput.modifier : 0;
-        const diceModifier = (action.diceRoll?.abilityModifier ? abilityModifiers[action.diceRoll.abilityModifier] ?? 0 : 0) + diceFlatModifier + diceEnteredModifier;
+        const diceModifier = (skill?.total ?? (action.diceRoll?.abilityModifier ? abilityModifiers[action.diceRoll.abilityModifier] ?? 0 : 0)) + diceFlatModifier + diceEnteredModifier;
+        const modeDc = selectedMode ? action.diceRoll?.targetDcByMode?.[selectedMode.id] : undefined;
         const diceResultDivisor = action.diceRoll?.resultDivisorByMode?.find((step) => step.modeId === selectedMode?.id)?.divisor ?? 1;
         const numericEffectInput = action.numericInputEffect ? Math.max(action.numericInputEffect.minimum, Math.min(action.numericInputEffect.maximum, numericEffectInputs[action.id] ?? action.numericInputEffect.minimum)) : 0;
         const numericEffectAmount = action.numericInputEffect ? Math.min(action.numericInputEffect.maximumClassLevel ? actionLevel : Number.POSITIVE_INFINITY, Math.floor(numericEffectInput / (action.numericInputEffect.divisor ?? 1))) : 0;
@@ -476,6 +482,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
             const bonusRoll = diceBonus ? rollDice(diceBonus.count, diceBonus.sides, 0) : undefined;
             const rolledTotal = (action.diceRoll.takeHighest ? Math.max(...roll.rolls) + diceModifier : roll.total) + (bonusRoll?.total ?? 0);
             const resolvedTotal = Math.floor(rolledTotal / diceResultDivisor);
+            if (action.diceRoll.healsSelf) onHealSelf?.(resolvedTotal);
             if (action.diceRoll.appliedEffect && onAddEffect) {
               const applied = action.diceRoll.appliedEffect;
               onAddEffect({
@@ -488,11 +495,12 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
               });
             }
             const mode = selectedMode?.label ?? action.diceRoll.label;
-            const targetDc = rerollInput.original;
+            const targetDc = modeDc ?? rerollInput.original;
             const targetMargin = resolvedTotal - targetDc;
             const targetOutcome = action.diceRoll.outcomesByMargin?.filter((outcome) => targetMargin >= outcome.minimumMargin).sort((left, right) => right.minimumMargin - left.minimumMargin)[0]?.label ?? action.diceRoll.failureLabel;
             const tableOutcome = action.diceRoll.outcomesByTotal?.find((outcome) => resolvedTotal >= outcome.minimumTotal && (outcome.maximumTotal === undefined || resolvedTotal <= outcome.maximumTotal));
-            const targetText = action.diceRoll.targetDcInputLabel ? ` vs ${action.diceRoll.targetDcInputLabel} ${targetDc}${targetOutcome ? ` — ${targetOutcome}` : ""}` : "";
+            const targetDcLabel = action.diceRoll.targetDcInputLabel ?? (modeDc === undefined ? undefined : "DC");
+            const targetText = targetDcLabel ? ` vs ${targetDcLabel} ${targetDc}${targetOutcome ? ` — ${targetOutcome}` : ""}` : "";
             const tableText = tableOutcome ? ` — ${tableOutcome.label}${tableOutcome.summary ? `: ${tableOutcome.summary}` : ""}` : "";
             const diceExpression = action.diceRoll.takeHighest ? `${roll.rolls.join(" and ")} (keep ${Math.max(...roll.rolls)})` : roll.rolls.join(" + ");
             const bonusExpression = bonusRoll ? ` + ${bonusRoll.rolls.join(" + ")} bonus` : "";
@@ -575,6 +583,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           {Boolean(availableRecipients.length) && <label>{action.recipientLabel ?? "Recipient"}<select aria-label={`${action.label} recipient`} value={selectedRecipient?.id} onChange={(event) => setActionRecipients((current) => ({ ...current, [action.id]: event.target.value }))}>{availableRecipients.map((recipient) => <option key={recipient.id} value={recipient.id}>{recipient.label}</option>)}</select></label>}
           {action.featSelection && Array.from({ length: featSelectionCount }, (_, index) => <label key={`${action.id}-feat-${index}`}>{action.featSelection!.label}{featSelectionCount > 1 ? ` ${index + 1}` : ""}<select aria-label={`${action.label} ${action.featSelection!.label.toLowerCase()}${featSelectionCount > 1 ? ` ${index + 1}` : ""}`} value={selectedActionFeatIds[index]} onChange={(event) => setActionFeatSelections((current) => { const next = [...(current[action.id] ?? selectedActionFeatIds)]; next[index] = event.target.value; next.splice(index + 1); return { ...current, [action.id]: next }; })}><option value="">Choose {action.featSelection!.source === "catalogue" ? "an eligible" : "a selected"} {action.featSelection!.featType} feat</option>{availableFeatsForIndex(index).map((feat) => <option key={feat.id} value={feat.id} disabled={selectedActionFeatIds.some((id, selectedIndex) => selectedIndex !== index && id === feat.id)}>{feat.name}</option>)}</select></label>)}
           {actionType && <small>Activation: {actionType} action.</small>}
+          {needsTraining && <small>Train {trainedSkill} before using this action.</small>}
           {allConfirmations.map((confirmation) => <label key={confirmation.id}><input aria-label={`${action.label} ${confirmation.label}`} type="checkbox" checked={confirmationChecked(confirmation.id)} onChange={(event) => setActionConfirmations((current) => ({ ...current, [`${action.id}:${confirmation.id}`]: event.target.checked }))} />{confirmation.label}</label>)}
           {defense && defenseFields.map(({ id, label: fieldLabel, min, max }) => (
             <label key={id}>{fieldLabel}<input

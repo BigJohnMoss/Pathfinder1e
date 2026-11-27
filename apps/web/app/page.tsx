@@ -4876,6 +4876,7 @@ export default function Home() {
                 dailyResources={classDailyResources}
                 abilityModifiers={combat.abilityModifiers}
                 saveModifiers={combat.saves}
+                skills={Object.fromEntries(skillEntries.map((skill) => [skill.name, { total: skill.total, ranks: skill.ranks }]))}
                 baseAttackBonus={progression.baseAttackBonus}
                 classLevels={classLevelMap}
                 casterLevels={effectiveSpellcastingLevelMap}
@@ -4889,6 +4890,13 @@ export default function Home() {
                 onAddEffect={addActiveEffect}
                 onRemoveEffectByName={(name) => setActiveEffects((current) => current.filter((effect) => effect.name !== name))}
                 onTemporaryHitPointsChange={setTemporaryHitPoints}
+                onHealSelf={(rolledAmount) => {
+                  const modifiers = activeEffects.filter((effect) => effect.consumeOnUse && effect.target === "healingReceived");
+                  const amount = Math.max(0, rolledAmount + modifiers.reduce((total, effect) => total + effect.bonus, 0));
+                  setCurrentHitPoints((current) => Math.min(combat.averageHitPoints, (current ?? combat.averageHitPoints) + amount));
+                  setNonlethalDamage((current) => Math.max(0, current - amount));
+                  if (modifiers.length) setActiveEffects((current) => current.filter((effect) => !modifiers.includes(effect)));
+                }}
               />
               {progression.features.some((feature) => feature.id === "arcanist-twilight-sage-consume-life-su-1") && reservoir && <TwilightSageControls
                 characterLevel={level}
