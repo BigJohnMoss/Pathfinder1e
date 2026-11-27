@@ -10,6 +10,7 @@ import catalogueSpells from "../generated/pf1e-spells.mjs";
 import ranger from "../packages/data/src/classes/ranger.json" with { type: "json" };
 import { inferArchetypeAllowedAlignments } from "../packages/engine/src/index.js";
 import { applyArchetypeResourceAdjustments } from "../packages/engine/src/index.js";
+import { archetypeConflictReasons } from "../packages/engine/src/index.js";
 
 test("lazy browser chunks contain the same rules as the full archetype catalogue", async () => {
   const chunks = await Promise.all(loadArchetypeChunks.map((loadChunk) => loadChunk()));
@@ -44,6 +45,8 @@ test("Ancient Lorekeeper replaces mystery grants without removing its mystery or
   assert.ok(applied.features.some((feature) => feature.id === "oracle-revelation-1"));
   assert.ok(!applied.features.some((feature) => feature.id === "oracle-mystery-spell-2"));
   assert.deepEqual(applied.optionClassSkillExclusions, ["oracle-mysteries"]);
+  const seer = catalogueArchetypes.find(({ id }) => id === "oracle-seer");
+  assert.ok(archetypeConflictReasons(source, seer, base).includes("Both replace oracle mystery 1."));
   assert.deepEqual(applied.features.filter((feature) => feature.spellChoiceLevelIncrease).map((feature) => [feature.level, feature.maximumSpellLevel]),
     [[2, 1], [4, 2], [6, 3], [8, 4], [10, 5], [12, 6], [14, 7], [16, 8], [18, 9]]);
   assert.deepEqual(applied.bonusSpellReplacementClassLevels, [2, 4, 6, 8, 10, 12, 14, 16, 18]);

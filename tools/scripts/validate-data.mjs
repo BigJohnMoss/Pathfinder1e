@@ -631,6 +631,10 @@ for (const url of await jsonFiles("spell-class-levels/")) { const overlay=await 
 for (const url of await jsonFiles("classes/")) { const c=await load(url); for (const f of c.features??[]) if(f.optionGroupId && !groupIds.has(f.optionGroupId)) errors.push(`${c.id}:${f.id} references missing option group ${f.optionGroupId}`); }
 for (const [index, url] of archetypeUrls.entries()) {
   const archetype=mergedArchetypes[index]; const file=url.pathname.split('/').pop();
+  if (archetype.modifiedFeatureIds !== undefined) {
+    const modified = archetype.modifiedFeatureIds;
+    if (!Array.isArray(modified) || !modified.length || new Set(modified).size !== modified.length || modified.some((id) => typeof id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id))) errors.push(`${file}: modifiedFeatureIds must contain distinct feature IDs`);
+  }
   if (archetype.optionClassSkillExclusions !== undefined) {
     const groups = archetype.optionClassSkillExclusions;
     if (!Array.isArray(groups) || !groups.length || new Set(groups).size !== groups.length || groups.some((group) => !groupIds.has(group))) errors.push(`${file}: optionClassSkillExclusions must contain distinct existing option groups`);

@@ -1837,6 +1837,7 @@ function archetypeReplacementKeys(archetype, characterClass) {
           (key) => `progression:${key}`,
         ),
       ]) ?? []),
+      ...(archetype?.modifiedFeatureIds ?? []).map((id) => `feature:${id}`),
       ...(characterClass ? inferArchetypeReplacementFeatureIds(characterClass, archetype).map((id) => `feature:${id}`) : []),
     ].filter((key) => !key.startsWith("feature:nested-")),
   );

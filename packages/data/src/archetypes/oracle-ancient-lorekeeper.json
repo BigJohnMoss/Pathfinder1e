@@ -141,6 +141,7 @@
       "summary": "Choose a mystery for its revelations and final revelation. The Ancient Lorekeeper receives class skills and bonus spells from its archetype features."
     }
   ],
+  "modifiedFeatureIds": ["oracle-mystery-1"],
   "optionClassSkillExclusions": ["oracle-mysteries"],
   "classSkillAdditions": ["Knowledge (arcana)", "Knowledge (local)"],
   "skillBonusAdjustments": [

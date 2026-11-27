@@ -712,6 +712,7 @@ export interface CharacterArchetype {
     features: ClassFeatureOccurrence[];
   }>;
   featureOverrides?: Array<{ featureId: string; summary: string }>;
+  modifiedFeatureIds?: string[];
   optionClassSkillExclusions?: string[];
   spellListAdditions?: Record<string, number>;
   spellListExclusions?: string[];
