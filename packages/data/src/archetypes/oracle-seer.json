@@ -7,7 +7,6 @@
   "replacements": [
     {
       "featureIds": [
-        "oracle-mystery-1",
         "oracle-revelation-1",
         "oracle-revelation-3"
       ],
@@ -87,6 +86,7 @@
       ]
     }
   ],
+  "modifiedFeatureIds": ["oracle-mystery-1"],
   "fixedOptionGrants": [
     { "sourceFeatureId": "oracle-seer-revelations-1", "optionGroupId": "oracle-revelations", "optionId": "oracle-revelation-natural-divination", "minimumLevel": 1, "label": "Natural Divination" },
     { "sourceFeatureId": "oracle-seer-revelations-1", "optionGroupId": "oracle-revelations", "optionId": "oracle-revelation-gift-of-prophecy", "minimumLevel": 3, "label": "Gift of Prophecy" }

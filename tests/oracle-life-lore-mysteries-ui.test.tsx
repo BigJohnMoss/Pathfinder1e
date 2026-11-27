@@ -61,3 +61,80 @@ test("Life and Lore expose grants, level gates, switching, and persistence", asy
   assert.equal(selectFor("Mystery").value, "oracle-mystery-lore");
   assert.equal(selectFor("Revelation", 0).value, "oracle-revelation-arcane-archivist");
 });
+
+for (const scenario of [
+  {
+    archetype: "oracle-seer",
+    mystery: "life",
+    revelation: "oracle-revelation-lifesense",
+    keptSpell: "detect undead",
+    replacedSpell: "lesser restoration",
+    archetypeSpell: "Detect Thoughts",
+    classSkill: "Handle Animal",
+    otherSkill: "Appraise",
+  },
+  {
+    archetype: "oracle-stargazer",
+    mystery: "lore",
+    revelation: "oracle-revelation-arcane-archivist",
+    keptSpell: "contact other plane",
+    replacedSpell: "identify",
+    archetypeSpell: "Faerie Fire",
+    classSkill: "Knowledge (nature)",
+    otherSkill: "Appraise",
+  },
+  {
+    archetype: "oracle-keleshite-prophet",
+    mystery: "life",
+    revelation: "oracle-revelation-lifesense",
+    keptSpell: "detect undead",
+    replacedSpell: "neutralize poison",
+    archetypeSpell: "Clairaudience/Clairvoyance",
+    classSkill: "Perform (dance)",
+    otherSkill: "Handle Animal",
+  },
+  {
+    archetype: "oracle-community-guardian",
+    ancestry: "halfling",
+    alignment: "neutral-good",
+    mystery: "life",
+    revelation: "oracle-revelation-lifesense",
+    keptSpell: "restoration",
+    replacedSpell: "lesser restoration",
+    archetypeSpell: "Consecrate",
+    classSkill: "Linguistics",
+    otherSkill: "Handle Animal",
+  },
+]) {
+  test(`${scenario.archetype} preserves its mystery while applying its specific swaps`, async () => {
+    const user = userEvent.setup();
+    render(<Home />);
+    await user.selectOptions(screen.getByLabelText("Class"), "oracle");
+    if (scenario.ancestry) await user.selectOptions(screen.getByLabelText("Ancestry"), scenario.ancestry);
+    if (scenario.alignment) await user.selectOptions(screen.getByLabelText("Alignment"), scenario.alignment);
+    await user.clear(screen.getByLabelText("Charisma base score"));
+    await user.type(screen.getByLabelText("Charisma base score"), "18");
+    await user.clear(screen.getByLabelText("Level"));
+    await user.type(screen.getByLabelText("Level"), "11");
+    await user.selectOptions(screen.getByLabelText("Archetype"), scenario.archetype);
+    await user.click(screen.getByRole("tab", { name: "Features" }));
+    await user.selectOptions(screen.getByLabelText("Mystery level 1"), `oracle-mystery-${scenario.mystery}`);
+    const revelation = screen.getByLabelText<HTMLSelectElement>("Revelation level 11");
+    await user.selectOptions(revelation, scenario.revelation);
+    assert.equal(revelation.value, scenario.revelation);
+    assert.ok(screen.getByText(scenario.keptSpell));
+    assert.equal(screen.queryByText(scenario.replacedSpell), null);
+
+    await user.click(screen.getByRole("tab", { name: "Skills" }));
+    assert.match(screen.getByText(scenario.classSkill).closest("label")?.textContent ?? "", /Class skill/);
+    assert.doesNotMatch(screen.getByText(scenario.otherSkill).closest("label")?.textContent ?? "", /Class skill/);
+
+    await user.click(screen.getByRole("tab", { name: "Spells" }));
+    const search = screen.getByPlaceholderText("Name or effect");
+    await user.type(search, scenario.keptSpell);
+    assert.equal(screen.getByLabelText(`${scenario.keptSpell} known`).textContent, "Mystery");
+    await user.clear(search);
+    await user.type(search, scenario.archetypeSpell);
+    assert.ok(screen.getByLabelText(`${scenario.archetypeSpell} known`, { exact: false }));
+  });
+}

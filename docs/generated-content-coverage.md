@@ -12,7 +12,7 @@ This report is generated from the application's source data by `npm run coverage
 | Option groups | 179 |
 | Feats | 3447 |
 | Traits | 40 |
-| Spells | 2772 |
+| Spells | 2773 |
 | Equipment | 80 |
 
 ## Feat prerequisites
@@ -40,7 +40,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Resources and limited uses | 121 |
 | Companions and effective levels | 41 |
 | Spell lists, slots, and casting | 60 |
-| Class skills and skill-rank progressions | 61 |
+| Class skills and skill-rank progressions | 62 |
 | Combat statistics and proficiencies | 67 |
 | Deterministic Take 10 and Take 20 skill checks | 17 |
 
@@ -65,9 +65,9 @@ These rule-text signals are multi-label: one archetype can contribute to several
 
 | Coverage | Count |
 |---|---:|
-| Full rules descriptions | 2772 |
-| Rules source links | 2772 |
-| Core casting statistics | 2772 |
+| Full rules descriptions | 2773 |
+| Rules source links | 2773 |
+| Core casting statistics | 2773 |
 
 ## Class progression
 

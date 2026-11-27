@@ -7,7 +7,6 @@
   "replacements": [
     {
       "featureIds": [
-        "oracle-mystery-1",
         "oracle-revelation-1",
         "oracle-revelation-3"
       ],
@@ -48,6 +47,14 @@
           "summary": "A community guardian must take the following revelations at the listed levels. Spirit of Community (Ex) : As a move action, you call upon the spirits of community. For the next round, you grant every ally within 30 feet a +1 competence bonus on a single skill check (of the ally’s choice) that it makes before the end of this revelation’s duration. Furthermore, allies within 30 feet can, as a free action, choose to forgo this bonus, and instead grant a single ally a +1 increase to its competence bonus granted by this ability (maximum +5). You can use this ability a number of times per day equal to 3 + your Charisma modifier. You must take this revelation at 1st level. Renewing Radiance (Su) : Once per day you can produce a burst of swirling white light that provides a measure of protection and renewal to allies within 30 feet for 1 round. On their turn, the allies can choose either to gain a +1 sacred bonus to AC for 1 round or to heal a number of hit points equal to 1d6 + your Charisma bonus (their choice). If an ally is dying, it is stabilized instead. At 7th level, the bonus to AC increases to +2, and the healing increases to 2d6 + your Charisma bonus hit points, and at 14th level the bonus to AC increases to +3, and the healing increases to 3d6 + your Charisma bonus hit points. You must take this revelation at 3rd level."
         }
       ]
+    }
+  ],
+  "modifiedFeatureIds": ["oracle-mystery-1"],
+  "optionClassSkillExclusions": ["oracle-mysteries"],
+  "featureOverrides": [
+    {
+      "featureId": "oracle-mystery-1",
+      "summary": "Choose a mystery for its remaining bonus spells, revelations, and final revelation. Community Guardian supplies its own additional class skills."
     }
   ],
   "source": {
