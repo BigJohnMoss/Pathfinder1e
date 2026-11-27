@@ -33,13 +33,15 @@ test("level 18 Tactical Leader grants two selected teamwork feats with scaled du
     features={featuresThroughLevel(applied, 18)}
     classLevels={{ inquisitor: 18 }}
     selectedFeats={[{ id: "outflank", name: "Outflank", type: "teamwork" }, { id: "precise-strike", name: "Precise Strike", type: "teamwork" }]}
-    dailyResources={[{ id: "archetype-inquisitor-tactical-leader-tactician-ex-3", label: "Tactician", unit: "use", maximum: 5, used, onUsedChange: (next) => { used = next; } }]}
+    dailyResources={[{ id: "tacticalLeaderTactician", label: "Tactician", unit: "use", maximum: 5, used, onUsedChange: (next) => { used = next; } }]}
     onAddEffect={(effect) => effects.push(effect)}
   />);
   assert.equal((screen.getByLabelText("Grant Tactician teamwork feat 1") as HTMLSelectElement).value, "outflank");
   assert.equal((screen.getByLabelText("Grant Tactician teamwork feat 2") as HTMLSelectElement).value, "precise-strike");
   fireEvent.click(screen.getByLabelText("Grant Tactician Recipients can see and hear you, and you remain conscious"));
-  fireEvent.click(screen.getByRole("button", { name: "Grant Tactician" }));
+  const grantTactician = screen.getByRole("button", { name: "Grant Tactician" });
+  assert.equal(grantTactician.hasAttribute("disabled"), false);
+  fireEvent.click(grantTactician);
   assert.equal(used, 1);
   assert.equal(effects[0].roundsRemaining, 12);
   assert.match(effects[0].description ?? "", /Outflank, Precise Strike/);

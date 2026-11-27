@@ -566,6 +566,13 @@ export function archetypeSkillBonuses(archetypes = [], classLevels = {}, ability
         condition: adjustment.condition,
         bonus,
         source: archetype.name,
+        ...(adjustment.sharedCheck ? {
+          sharedCheck: {
+            id: `${archetype.id}:${adjustment.sourceFeatureId}:${adjustment.skill}`,
+            skill: adjustment.skill,
+            ...adjustment.sharedCheck,
+          },
+        } : {}),
       });
       else result.skillBonuses[adjustment.skill] = (result.skillBonuses[adjustment.skill] ?? 0) + bonus;
     }

@@ -82,6 +82,8 @@ function ChannelEnergyTracker({ level, charismaModifier, used, onUsedChange }: {
   </div>;
 }
 
+const isCompanionRoster = (choice: Choice) => Boolean(choice.companionRoster || choice.id === "beast-master-companion-roster-4");
+
 function CompanionRoster({ choice, selectedOptions, classLevel, onOptionChange }: { choice: Choice; selectedOptions: Record<string, string>; classLevel: number; onOptionChange: (featureId: string, optionId: string) => void }) {
   const config = choice.companionRoster;
   const budget = config
@@ -266,6 +268,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     const seenMercies = new Set<string>();
     const seenUniqueDetails = new Set<string>();
     for (const choice of orderedChoices) {
+      if (isCompanionRoster(choice)) continue;
       const selectedId = selectedOptions[choice.id];
       if ((isPaladinMercy(choice) || isOracleRevelation(choice)) && selectedId) {
         if (seenMercies.has(selectedId)) {
@@ -311,7 +314,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
   const refreshSpecialistSlots = () => specialistSlotChoices.forEach((choice) => onOptionChange(`${choice.id}-used`, ""));
 
   return <section className="choice-panel"><div><p className="eyebrow">FEATURE CHOICES</p><h2>Configure class features</h2><p>Dependent choices are ordered so each selection unlocks the next legal options.</p></div>{favoredTerrainBonuses.length > 0 && <aside className="favored-terrain-summary" aria-label="Favored terrain bonuses"><strong>Favored terrain bonuses</strong><ul>{favoredTerrainBonuses.map((terrain) => <li key={terrain.id}><span>{terrain.name}</span><b>+{terrain.bonus}</b></li>)}</ul></aside>}{domainSlotChoices.length > 0 && <button type="button" className="domain-slot-refresh" onClick={refreshDomainSlots}>Refresh domain spell slots</button>}{specialistSlotChoices.length > 0 && <button type="button" className="domain-slot-refresh" onClick={refreshSpecialistSlots}>Refresh specialist school slots</button>}{orderedChoices.map((choice) => {
-    if (choice.companionRoster || choice.id === "beast-master-companion-roster-4") return <CompanionRoster key={choice.id} choice={choice} selectedOptions={selectedOptions} classLevel={choice.classLevel ?? classLevel} onOptionChange={onOptionChange} />;
+    if (isCompanionRoster(choice)) return <CompanionRoster key={choice.id} choice={choice} selectedOptions={selectedOptions} classLevel={choice.classLevel ?? classLevel} onOptionChange={onOptionChange} />;
     const options = eligibleOptionsFor(choice);
     const domainLevel = domainSpellLevel(choice);
     const specialistLevel = specialistSpellLevel(choice);

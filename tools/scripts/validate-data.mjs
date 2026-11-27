@@ -524,6 +524,10 @@ for (const [index, url] of archetypeUrls.entries()) {
     if (adjustment?.maximum !== undefined && !Number.isInteger(adjustment.maximum)) errors.push(`${prefix} maximum must be an integer`);
     if (adjustment?.bonusByLevel !== undefined && (!Array.isArray(adjustment.bonusByLevel) || adjustment.bonusByLevel.length === 0 || adjustment.bonusByLevel.some((step, index) => !Number.isInteger(step?.level) || step.level < 1 || step.level > 20 || !Number.isInteger(step?.bonus) || (index > 0 && step.level <= adjustment.bonusByLevel[index - 1].level)))) errors.push(`${prefix} has invalid bonusByLevel`);
     if (adjustment?.condition !== undefined && (typeof adjustment.condition !== "string" || !adjustment.condition.trim())) errors.push(`${prefix} has an invalid condition`);
+    if (adjustment?.sharedCheck !== undefined) {
+      const { label, recipient } = adjustment.sharedCheck ?? {};
+      if (!adjustment.sourceFeatureId || !adjustment.condition || typeof label !== "string" || !label.trim() || typeof recipient !== "string" || !recipient.trim()) errors.push(`${prefix} sharedCheck requires a source feature, condition, label, and recipient`);
+    }
   }
   if (archetype.landSpeedAdjustments !== undefined && (!Array.isArray(archetype.landSpeedAdjustments) || archetype.landSpeedAdjustments.length === 0)) errors.push(`${file}: landSpeedAdjustments must be a non-empty array`);
   for (const adjustment of archetype.landSpeedAdjustments ?? []) {

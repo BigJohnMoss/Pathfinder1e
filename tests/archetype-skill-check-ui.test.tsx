@@ -62,3 +62,43 @@ test("timed skill bonuses apply only to their selected skill", async () => {
   await user.click(screen.getByRole("button", { name: "Roll selected skill" }));
   assert.match(screen.getByLabelText("Stealth total").closest("li")?.textContent ?? "", /1d20 \+ 9/);
 });
+
+test("Groom rolls its own and each concealed mount's Stealth with the shared bonus", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "ranger");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "ranger-groom");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const concealment = screen.getByRole("group", { name: "Hide the Horses" });
+  assert.match(concealment.textContent ?? "", /Stealth bonus \+2/);
+  await user.selectOptions(screen.getByLabelText("Skill to roll"), "Stealth");
+  await user.click(screen.getByRole("button", { name: "Roll selected skill" }));
+  await user.click(screen.getByRole("button", { name: "Roll own Stealth" }));
+
+  const normalTotal = screen.getByLabelText("Stealth total");
+  const concealmentTotal = screen.getByLabelText("Stealth — Hide the Horses total");
+  const modifierFromRoll = (output: HTMLElement) => {
+    const natural = output.closest("li")?.textContent?.match(/dice \[(\d+)\]/)?.[1];
+    assert.ok(natural);
+    return Number(output.textContent) - Number(natural);
+  };
+  assert.equal(modifierFromRoll(concealmentTotal), modifierFromRoll(normalTotal) + 2);
+
+  const rollMount = screen.getByRole<HTMLButtonElement>("button", { name: "Roll concealed mount Stealth" });
+  assert.ok(rollMount.disabled);
+  const nameInput = screen.getByLabelText("Concealed mount name");
+  const modifierInput = screen.getByLabelText("Concealed mount base Stealth modifier");
+  await user.type(nameInput, "Pony");
+  await user.type(modifierInput, "-1");
+  await user.click(rollMount);
+  assert.equal(modifierFromRoll(screen.getByLabelText("Pony Stealth — Hide the Horses total")), 1);
+
+  await user.clear(nameInput);
+  await user.type(nameInput, "Riding dog");
+  await user.clear(modifierInput);
+  await user.type(modifierInput, "0");
+  await user.click(rollMount);
+  assert.equal(modifierFromRoll(screen.getByLabelText("Riding dog Stealth — Hide the Horses total")), 2);
+});

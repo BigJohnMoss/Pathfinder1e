@@ -4691,6 +4691,7 @@ export default function Home() {
                 ]}
                 skills={skillEntries.map(skill => ({ id: skill.name, name: skill.name, modifier: skill.total, ranks: skill.ranks }))}
                 effects={activeEffects}
+                conditionalSkillModifiers={selectedArchetypeSkillBonuses.conditionalModifiers}
                 recurringHealing={selectedArchetypeDefenses.filter((defense) => defense.kind === "fastHealing" || defense.kind === "regeneration").map((defense, index) => ({
                   id: defense.sourceFeatureId ?? `${defense.source}-${defense.kind}-${index}`,
                   kind: defense.kind as "fastHealing" | "regeneration",

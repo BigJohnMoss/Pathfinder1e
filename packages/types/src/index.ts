@@ -840,6 +840,7 @@ export interface CharacterArchetype {
     abilityModifier?: AbilityName;
     bonusByLevel?: Array<{ level: number; bonus: number }>;
     condition?: string;
+    sharedCheck?: { label: string; recipient: string };
   }>;
   skillAbilityOverrides?: Array<{
     sourceFeatureId?: string;

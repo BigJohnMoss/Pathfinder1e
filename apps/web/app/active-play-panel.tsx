@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { ActiveEffect, ActiveEffectTarget } from "../../../packages/types/src/index.js";
 import { confirmCriticalThreat, resolveAttackRoll, rollD20Check, rollDice } from "../../../packages/engine/src/index.js";
+import type { ConditionalSkillModifier } from "../../../packages/engine/src/index.js";
 import type { EquipmentAttack } from "./equipment-panel";
 
 type CheckRoll = { id: string; name: string; modifier: number; ranks?: number; description?: string };
@@ -65,7 +66,32 @@ const effectTargetName = (target: ActiveEffectTarget) =>
         : target === "enemy" ? "Enemy"
         : targets.find(item => item.id === target)?.name;
 
-export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryHitPoints, nonlethalDamage = 0, attacks, checks, skills, effects, recurringHealing = [], skillCheckRules = [], precisionDamageRules = [], craftingOppositionSchools = [], onCurrentHitPointsChange, onTemporaryHitPointsChange, onNonlethalDamageChange = () => {}, onEffectsChange }: {
+function SharedSkillCheck({ rule, bonus, condition, onRollSelf, onRollRecipient }: {
+  rule: NonNullable<ConditionalSkillModifier["sharedCheck"]>;
+  bonus: number;
+  condition: string;
+  onRollSelf: () => void;
+  onRollRecipient: (name: string, modifier: number) => void;
+}) {
+  const [recipientName, setRecipientName] = useState("");
+  const [baseModifier, setBaseModifier] = useState("");
+  const modifier = Number(baseModifier);
+  const validModifier = baseModifier !== "" && Number.isInteger(modifier) && Math.abs(modifier) <= 999;
+  return <fieldset className="shared-skill-check">
+    <legend>{rule.label}</legend>
+    <p>{condition} {rule.skill} bonus {bonus >= 0 ? "+" : "−"}{Math.abs(bonus)}.</p>
+    <button type="button" onClick={onRollSelf}>Roll own {rule.skill}</button>
+    <div className="skill-roll">
+      <label>{rule.recipient} name<input value={recipientName} maxLength={80} onChange={event => setRecipientName(event.target.value)} /></label>
+      <label>{rule.recipient} base {rule.skill} modifier<input type="number" min="-999" max="999" step="1" value={baseModifier} onChange={event => setBaseModifier(event.target.value)} /></label>
+      <button type="button" disabled={!recipientName.trim() || !validModifier} onClick={() => onRollRecipient(recipientName.trim(), modifier)}>
+        Roll {rule.recipient.toLowerCase()} {rule.skill}
+      </button>
+    </div>
+  </fieldset>;
+}
+
+export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryHitPoints, nonlethalDamage = 0, attacks, checks, skills, effects, recurringHealing = [], skillCheckRules = [], conditionalSkillModifiers = [], precisionDamageRules = [], craftingOppositionSchools = [], onCurrentHitPointsChange, onTemporaryHitPointsChange, onNonlethalDamageChange = () => {}, onEffectsChange }: {
   maximumHitPoints: number;
   currentHitPoints: number;
   temporaryHitPoints: number;
@@ -76,6 +102,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   effects: ActiveEffect[];
   recurringHealing?: RecurringHealingRule[];
   skillCheckRules?: SkillCheckRule[];
+  conditionalSkillModifiers?: ConditionalSkillModifier[];
   precisionDamageRules?: PrecisionDamageRule[];
   craftingOppositionSchools?: CraftingOppositionSchool[];
   onCurrentHitPointsChange: (value: number) => void;
@@ -376,6 +403,15 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
         <label>Skill<select aria-label="Skill to roll" value={selectedSkill} onChange={event => setSelectedSkill(event.target.value)}>{skills.map(skill => <option key={skill.id} value={skill.id}>{skill.name} ({skill.modifier >= 0 ? "+" : ""}{skill.modifier})</option>)}</select></label>
         <button type="button" disabled={!selectedSkill} onClick={() => { const skill = skills.find(item => item.id === selectedSkill); if (skill) rollCheck(skill, "skill"); }}>Roll selected skill</button>
       </div>
+      {conditionalSkillModifiers.map(({ sharedCheck, bonus, condition }) => {
+        if (!sharedCheck) return null;
+        const skill = skills.find((check) => check.id === sharedCheck.skill);
+        if (!skill) return null;
+        return <SharedSkillCheck key={sharedCheck.id} rule={sharedCheck} bonus={bonus} condition={condition}
+          onRollSelf={() => rollCheck({ ...skill, name: `${skill.name} — ${sharedCheck.label}`, modifier: skill.modifier + bonus }, "skill")}
+          onRollRecipient={(name, modifier) => rollCheck({ id: sharedCheck.skill, name: `${name} ${sharedCheck.skill} — ${sharedCheck.label}`, modifier: modifier + bonus })}
+        />;
+      })}
       {selectedSkill && skillCheckRules.some((rule) => rule.skills.includes(selectedSkill)) && <div className="skill-check-rules" aria-label="Archetype skill check options">
         {skillCheckRules.filter((rule) => rule.skills.includes(selectedSkill)).map((rule) => {
           const skill = skills.find((item) => item.id === selectedSkill);

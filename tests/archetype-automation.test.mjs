@@ -6,6 +6,7 @@ import { archetypeAbilityScoreAdjustments, archetypeAbilityScoreBonuses, inferAr
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
 import catalogueSpells from "../generated/pf1e-spells.mjs";
+import ranger from "../packages/data/src/classes/ranger.json" with { type: "json" };
 import { inferArchetypeAllowedAlignments } from "../packages/engine/src/index.js";
 import { applyArchetypeResourceAdjustments } from "../packages/engine/src/index.js";
 
@@ -134,7 +135,7 @@ test("Hidden Priest automates disguised casting and level-scaled Unseen Devotion
   assert.ok(skillBonuses.every((bonus) => bonus.condition));
 });
 
-test("Groom automates mount speech and Scout the Area while leaving shared concealment explicit", () => {
+test("Groom automates mount speech, Scout the Area, and shared concealment", () => {
   const groom = catalogueArchetypes.find((candidate) => candidate.id === "ranger-groom");
   assert.ok(groom);
 
@@ -147,9 +148,22 @@ test("Groom automates mount speech and Scout the Area while leaving shared conce
 
   const bonuses = archetypeSkillBonuses([groom], { ranger: 3 });
   assert.equal(bonuses.skillBonuses["Knowledge (local)"], 4);
+  assert.equal(bonuses.skillBonuses.Stealth, undefined);
+  assert.equal(archetypeSkillBonuses([groom], { fighter: 8 }).conditionalModifiers.length, 0);
+  for (const [rangerLevel, expected] of [[1, 1], [3, 1], [5, 2], [20, 10]]) {
+    const concealment = archetypeSkillBonuses([groom], { ranger: rangerLevel, fighter: 3 })
+      .conditionalModifiers.find((modifier) => modifier.sharedCheck?.label === "Hide the Horses");
+    assert.equal(concealment?.bonus, expected);
+    assert.equal(concealment?.sharedCheck.skill, "Stealth");
+    assert.equal(concealment?.sharedCheck.recipient, "Concealed mount");
+  }
 
-  const manual = archetypeAutomationSummary(groom, [], catalogueSpells).manual;
-  assert.ok(manual.includes("Hide the Horses (Ex) (level 1)"));
+  const featureIds = applyArchetype(ranger, groom).features.map((feature) => feature.id);
+  assert.ok(!featureIds.includes("ranger-favored-terrain-3"));
+  assert.ok(featureIds.includes("ranger-favored-terrain-8"));
+  assert.ok(featureIds.includes("ranger-swift-tracker-8"));
+
+  assert.deepEqual(archetypeAutomationSummary(groom, [], catalogueSpells).manual, []);
 });
 
 test("static archetype alignment rules expose exact builder eligibility", () => {
