@@ -55,6 +55,16 @@ test("Ancient Lorekeeper replaces mystery grants without removing its mystery or
   assert.deepEqual(bonuses.skillBonuses, {});
 });
 
+test("Keleshite Prophet automates its replacement mystery skills without granting all Perform specialties", () => {
+  const source = catalogueArchetypes.find(({ id }) => id === "oracle-keleshite-prophet");
+  const base = JSON.parse(readFileSync(new URL("../packages/data/src/classes/oracle.json", import.meta.url), "utf8"));
+  const applied = applyArchetype(base, source, [], catalogueSpells);
+  assert.ok(applied.classSkills.includes("Perform (dance)"));
+  assert.ok(!applied.classSkills.includes("Perform"));
+  assert.deepEqual(applied.optionClassSkillExclusions, ["oracle-mysteries"]);
+  assert.ok(!archetypeAutomationSummary(source, [], catalogueSpells).manual.includes("Class Skills (level 1)"));
+});
+
 test("Metamagic Rager spends scaled bloodrage rounds and exposes metamagic bloodline feats", () => {
   const source = catalogueArchetypes.find(({ id }) => id === "bloodrager-metamagic-rager");
   const action = source.replacements.flatMap(({ features }) => features)

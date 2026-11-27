@@ -1536,8 +1536,9 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
 const archetypeKnowledgeSkills = ["Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)"];
 const archetypeSkillPattern = /(?<![A-Za-z])(?:all Knowledge skills|Knowledge \((?:all|arcane|arcana|dungeoneering|engineering|geography|history|local|nature|nobility|planes|religion)\)|Use Magic Device|Sl(?:ei|i)ght of Hand|Sense Motive|Handle Animal|Disable Device|Escape Artist|Acrobatics|Appraise|Bluff|Climb|Craft(?: \([^)]+\))?|Diplomacy|Disguise|Fly|Healing|Heal|Intimidate|Linguistics|Perception|Perform(?: \([^)]+\))?|Profession(?: \([^)]+\))?|Ride|Spellcraft|Stealth|Survival|Swim)(?![A-Za-z])/gi;
 
-function namedArchetypeSkills(text) {
+function namedArchetypeSkills(text, exactSkills) {
   return [...String(text).matchAll(archetypeSkillPattern)].flatMap(match => {
+    if (exactSkills?.has(match[0])) return [match[0]];
     const skill = match[0]
       .replace(/^Healing$/i, "Heal")
       .replace(/^Knowledge \(arcane\)$/i, "Knowledge (arcana)")
@@ -1598,7 +1599,7 @@ function inferArchetypeClassSkillDetails(archetype) {
     ? [...(archetype.classSkillAdditions ?? []), ...(archetype.classSkillRemovals ?? [])]
     : [...inferred.additions, ...inferred.removals, ...inferred.replacement]);
   const sentenceCoverage = sentenceRecords.flatMap(({ feature, sentence, sentenceIndex, classSkillFeature }) => {
-    const mentionedSkills = [...new Set(namedArchetypeSkills(sentence))];
+    const mentionedSkills = [...new Set(namedArchetypeSkills(sentence, appliedSkills))];
     if (!mentionedSkills.length || !mentionedSkills.every(skill => appliedSkills.has(skill))) return [];
     if (!classSkillFeature && !/class skills?/i.test(sentence)) return [];
     const singleSentenceFeature = String(feature.summary ?? "").split(/(?<=[.!?])\s+/).filter(Boolean).length === 1;
