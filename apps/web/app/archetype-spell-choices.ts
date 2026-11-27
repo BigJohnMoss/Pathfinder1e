@@ -2,12 +2,26 @@ import type { CharacterClass, CharacterOption, CharacterSpell, ClassFeatureOccur
 
 const choicePrefix = (classId: string) => `archetype-adjusted-spell-${classId}-`;
 
+export function isAdjustedSpellChoice(feature: ClassFeatureOccurrence) {
+  return feature.optionGroupId === "archetype-spell-choices" &&
+    Boolean(feature.schoolSpellChoice || (feature.spellChoiceClassId && feature.spellChoiceLevelIncrease));
+}
+
 function adjustedSpellLevel(feature: ClassFeatureOccurrence, spell: CharacterSpell, maximumSpellLevel: number) {
-  if (feature.optionGroupId !== "archetype-spell-choices" || !feature.spellChoiceClassId || !feature.spellChoiceLevelIncrease) return undefined;
+  const limit = Math.min(maximumSpellLevel, feature.maximumSpellLevel ?? 9);
+  const restriction = feature.schoolSpellChoice;
+  if (restriction) {
+    if (spell.school !== restriction.school) return undefined;
+    const preferredLevel = spell.levelByClass[restriction.preferredClassId];
+    if (preferredLevel !== undefined) return preferredLevel <= limit ? preferredLevel : undefined;
+    const eligibleLevels = Object.values(spell.levelByClass).filter((level) => level <= limit - restriction.otherListsBelowMaximum);
+    return eligibleLevels.length ? Math.min(...eligibleLevels) : undefined;
+  }
+  if (!feature.spellChoiceClassId || !feature.spellChoiceLevelIncrease) return undefined;
   const sourceLevel = spell.levelByClass[feature.spellChoiceClassId];
   if (sourceLevel === undefined) return undefined;
   const level = sourceLevel + feature.spellChoiceLevelIncrease;
-  return level <= Math.min(maximumSpellLevel, feature.maximumSpellLevel ?? 9) ? level : undefined;
+  return level <= limit ? level : undefined;
 }
 
 export function adjustedSpellChoiceOptions(spells: CharacterSpell[], feature: ClassFeatureOccurrence, characterClass: CharacterClass, maximumSpellLevel: number): CharacterOption[] {
@@ -19,7 +33,7 @@ export function adjustedSpellChoiceOptions(spells: CharacterSpell[], feature: Cl
     if (spellLevel === undefined) return [];
     return [{
       id: `${choicePrefix(classId)}${spell.id}`,
-      name: spell.name,
+      name: feature.schoolSpellChoice ? `${spell.name} (level ${spellLevel})` : spell.name,
       groupId: "archetype-spell-choices",
       classIds: [classId],
       minimumLevel: feature.level,
@@ -44,7 +58,7 @@ export function spellsFromAdjustedChoices(
   const prefix = choicePrefix(classId);
   const chosen = new Map<string, CharacterSpell>();
   for (const feature of features) {
-    if (!feature.spellChoiceLevelIncrease || feature.level > classLevel) continue;
+    if (!isAdjustedSpellChoice(feature) || feature.level > classLevel) continue;
     const choiceId = selectedOptions[feature.id];
     if (!choiceId?.startsWith(prefix)) continue;
     const baseSpellId = choiceId.slice(prefix.length);
@@ -53,12 +67,14 @@ export function spellsFromAdjustedChoices(
     const level = adjustedSpellLevel(feature, spell, maximumSpellLevel);
     if (level === undefined) continue;
     const source = feature.name.replace(/\s+\((?:Ex|Su|Sp)\)$/i, "");
+    const nativeLevel = characterClass.spellListAdditions?.[baseSpellId] ?? spell.levelByClass[characterClass.spellListClassId ?? classId];
+    const reusesNativeSpell = Boolean(feature.schoolSpellChoice) && nativeLevel === level;
     chosen.set(baseSpellId, {
       ...spell,
-      id: `${baseSpellId}-${classId}-archetype-level-${level}`,
-      baseSpellId,
+      id: reusesNativeSpell ? baseSpellId : `${baseSpellId}-${classId}-archetype-level-${level}`,
+      ...(reusesNativeSpell ? {} : { baseSpellId }),
       bonusSpellSource: source,
-      name: `${spell.name} (${source})`,
+      name: reusesNativeSpell ? spell.name : `${spell.name} (${source})`,
       levelByClass: { ...spell.levelByClass, [classId]: level },
     });
   }

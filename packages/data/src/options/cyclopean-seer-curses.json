@@ -1,0 +1,32 @@
+{
+  "id": "cyclopean-seer-curses",
+  "name": "Cyclopean Seer Curses",
+  "classIds": [
+    "oracle"
+  ],
+  "optionDefaults": {
+    "groupId": "cyclopean-seer-curses",
+    "classIds": [
+      "oracle"
+    ],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Inner Sea Monster Codex",
+      "page": 17,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Cyclopean%20Seer"
+    }
+  },
+  "options": [
+    {
+      "id": "oracle-curse-hunger",
+      "name": "Hunger",
+      "benefit": "You cannot benefit from magical nourishment and gain a secondary bite attack. At later curse levels the bite can sicken, become primary, and inspire fear."
+    },
+    {
+      "id": "oracle-curse-powerless-prophecy",
+      "name": "Powerless Prophecy",
+      "benefit": "Uncanny dodge comes with limits on acting in surprise rounds. Later curse levels grant initiative, improved uncanny dodge, and surprise-related defensive bonuses."
+    }
+  ]
+}

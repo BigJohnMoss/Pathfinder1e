@@ -8,12 +8,9 @@
     {
       "featureIds": [
         "oracle-curse-1",
+        "oracle-mystery-spell-2",
         "oracle-revelation-1",
         "oracle-revelation-7",
-        "oracle-revelation-3",
-        "oracle-revelation-11",
-        "oracle-revelation-15",
-        "oracle-revelation-19",
         "oracle-final-revelation-20"
       ],
       "features": [
@@ -35,15 +32,149 @@
           "id": "oracle-cyclopean-seer-oracle-s-curse-1",
           "name": "Oracle’s Curse",
           "level": 1,
-          "type": "archetype",
-          "summary": "A cyclopean seer must choose the haunted, hunger (see above), powerless prophecy (see above), or tongues curse at 1st level."
+          "type": "selectable",
+          "summary": "Choose Haunted, Hunger, Powerless Prophecy, or Tongues at 1st level.",
+          "choiceRequired": true,
+          "optionGroupId": "oracle-curses",
+          "optionChoiceIds": [
+            "oracle-curse-haunted",
+            "oracle-curse-tongues"
+          ]
         },
         {
-          "id": "oracle-cyclopean-seer-bonus-spells-1",
-          "name": "Bonus Spells",
-          "level": 1,
-          "type": "archetype",
-          "summary": "Each time a cyclopean seer would gain a bonus spell from her mystery, she instead selects a divination spell from any class’s spell list. If the spell is not on the cleric spell list, it must be at least 1 level lower than the highest-level oracle spell the cyclopean seer can cast. This ability alters the bonus spells granted by the oracle’s mystery."
+          "id": "oracle-cyclopean-seer-divination-bonus-2",
+          "name": "Divination Bonus Spell",
+          "level": 2,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "schoolSpellChoice": {
+            "school": "divination",
+            "preferredClassId": "cleric",
+            "otherListsBelowMaximum": 1
+          },
+          "maximumSpellLevel": 1,
+          "summary": "Learn a divination spell as a bonus spell. Spells outside the cleric list must be at least one spell level below the highest level you could cast at this milestone."
+        },
+        {
+          "id": "oracle-cyclopean-seer-divination-bonus-4",
+          "name": "Divination Bonus Spell",
+          "level": 4,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "schoolSpellChoice": {
+            "school": "divination",
+            "preferredClassId": "cleric",
+            "otherListsBelowMaximum": 1
+          },
+          "maximumSpellLevel": 2,
+          "summary": "Learn a divination spell as a bonus spell. Spells outside the cleric list must be at least one spell level below the highest level you could cast at this milestone."
+        },
+        {
+          "id": "oracle-cyclopean-seer-divination-bonus-6",
+          "name": "Divination Bonus Spell",
+          "level": 6,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "schoolSpellChoice": {
+            "school": "divination",
+            "preferredClassId": "cleric",
+            "otherListsBelowMaximum": 1
+          },
+          "maximumSpellLevel": 3,
+          "summary": "Learn a divination spell as a bonus spell. Spells outside the cleric list must be at least one spell level below the highest level you could cast at this milestone."
+        },
+        {
+          "id": "oracle-cyclopean-seer-divination-bonus-8",
+          "name": "Divination Bonus Spell",
+          "level": 8,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "schoolSpellChoice": {
+            "school": "divination",
+            "preferredClassId": "cleric",
+            "otherListsBelowMaximum": 1
+          },
+          "maximumSpellLevel": 4,
+          "summary": "Learn a divination spell as a bonus spell. Spells outside the cleric list must be at least one spell level below the highest level you could cast at this milestone."
+        },
+        {
+          "id": "oracle-cyclopean-seer-divination-bonus-10",
+          "name": "Divination Bonus Spell",
+          "level": 10,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "schoolSpellChoice": {
+            "school": "divination",
+            "preferredClassId": "cleric",
+            "otherListsBelowMaximum": 1
+          },
+          "maximumSpellLevel": 5,
+          "summary": "Learn a divination spell as a bonus spell. Spells outside the cleric list must be at least one spell level below the highest level you could cast at this milestone."
+        },
+        {
+          "id": "oracle-cyclopean-seer-divination-bonus-12",
+          "name": "Divination Bonus Spell",
+          "level": 12,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "schoolSpellChoice": {
+            "school": "divination",
+            "preferredClassId": "cleric",
+            "otherListsBelowMaximum": 1
+          },
+          "maximumSpellLevel": 6,
+          "summary": "Learn a divination spell as a bonus spell. Spells outside the cleric list must be at least one spell level below the highest level you could cast at this milestone."
+        },
+        {
+          "id": "oracle-cyclopean-seer-divination-bonus-14",
+          "name": "Divination Bonus Spell",
+          "level": 14,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "schoolSpellChoice": {
+            "school": "divination",
+            "preferredClassId": "cleric",
+            "otherListsBelowMaximum": 1
+          },
+          "maximumSpellLevel": 7,
+          "summary": "Learn a divination spell as a bonus spell. Spells outside the cleric list must be at least one spell level below the highest level you could cast at this milestone."
+        },
+        {
+          "id": "oracle-cyclopean-seer-divination-bonus-16",
+          "name": "Divination Bonus Spell",
+          "level": 16,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "schoolSpellChoice": {
+            "school": "divination",
+            "preferredClassId": "cleric",
+            "otherListsBelowMaximum": 1
+          },
+          "maximumSpellLevel": 8,
+          "summary": "Learn a divination spell as a bonus spell. Spells outside the cleric list must be at least one spell level below the highest level you could cast at this milestone."
+        },
+        {
+          "id": "oracle-cyclopean-seer-divination-bonus-18",
+          "name": "Divination Bonus Spell",
+          "level": 18,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "schoolSpellChoice": {
+            "school": "divination",
+            "preferredClassId": "cleric",
+            "otherListsBelowMaximum": 1
+          },
+          "maximumSpellLevel": 9,
+          "summary": "Learn a divination spell as a bonus spell. Spells outside the cleric list must be at least one spell level below the highest level you could cast at this milestone."
         },
         {
           "id": "oracle-cyclopean-seer-assume-fate-su-1",
@@ -57,7 +188,114 @@
           "name": "Brutal Trance (Su)",
           "level": 7,
           "type": "archetype",
-          "summary": "Once per day as a standard action, you can enter a trance that lasts 1 round per oracle level you possess. While in this trance, you are confused, but each round that you can act normally, you can ask a single question as if using commune . This replaces the revelation gained at 7th level."
+          "summary": "Once per day as a standard action, you can enter a trance that lasts 1 round per oracle level you possess. While in this trance, you are confused, but each round that you can act normally, you can ask a single question as if using commune . This replaces the revelation gained at 7th level.",
+          "resourceActions": [
+            {
+              "id": "cyclopean-enter-trance",
+              "label": "Enter Brutal Trance",
+              "classId": "oracle",
+              "minimumLevel": 7,
+              "resourceId": "cyclopeanBrutalTrance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 7,
+                  "actionType": "standard"
+                }
+              ],
+              "activeEffect": {
+                "name": "Brutal Trance",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "defaultRounds": 7,
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 7,
+                    "rounds": 7
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 8
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 9
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 10
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 11
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 12
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 13
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 14
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 15
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 16
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 17
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 18
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 19
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 20
+                  }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "description": "You are confused for the duration. When you can act normally, ask one question that round as with commune."
+              },
+              "summary": "Track confusion and the one-round-per-oracle-level duration."
+            },
+            {
+              "id": "cyclopean-trance-question",
+              "label": "Ask a Brutal Trance question",
+              "classId": "oracle",
+              "minimumLevel": 7,
+              "requiredActiveEffectName": "Brutal Trance",
+              "confirmations": [
+                {
+                  "id": "trance-round",
+                  "label": "I can act normally and have asked no other question this round",
+                  "requiredForActivation": true
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "commune",
+                "spellName": "Commune question",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "summary": "Ask one question as commune while the trance is active."
+            }
+          ]
         },
         {
           "id": "oracle-cyclopean-seer-revelations-5",
@@ -71,7 +309,51 @@
           "name": "Final Revelation",
           "level": 20,
           "type": "archetype",
-          "summary": "Upon reaching 20th level, you embody ancient cyclopes’ insight. You can use each of the following once per day as a spell-like ability: discern location , prying eyes , and stone tell . In addition, using flash of insight to select a d20 roll result equal to or lower than your Charisma modifier doesn’t expend that ability. This replaces the final revelation of the oracle’s mystery."
+          "summary": "Upon reaching 20th level, you embody ancient cyclopes’ insight. You can use each of the following once per day as a spell-like ability: discern location , prying eyes , and stone tell . In addition, using flash of insight to select a d20 roll result equal to or lower than your Charisma modifier doesn’t expend that ability. This replaces the final revelation of the oracle’s mystery.",
+          "resourceActions": [
+            {
+              "id": "cyclopean-discern-location",
+              "label": "Use Discern Location",
+              "classId": "oracle",
+              "minimumLevel": 20,
+              "resourceId": "cyclopeanDiscernLocation",
+              "cost": 1,
+              "spellLikeAbility": {
+                "spellId": "discern-location",
+                "spellName": "Discern Location",
+                "cadence": "day"
+              },
+              "summary": "Use this capstone spell-like ability once per day."
+            },
+            {
+              "id": "cyclopean-prying-eyes",
+              "label": "Use Prying Eyes",
+              "classId": "oracle",
+              "minimumLevel": 20,
+              "resourceId": "cyclopeanPryingEyes",
+              "cost": 1,
+              "spellLikeAbility": {
+                "spellId": "prying-eyes",
+                "spellName": "Prying Eyes",
+                "cadence": "day"
+              },
+              "summary": "Use this capstone spell-like ability once per day."
+            },
+            {
+              "id": "cyclopean-stone-tell",
+              "label": "Use Stone Tell",
+              "classId": "oracle",
+              "minimumLevel": 20,
+              "resourceId": "cyclopeanStoneTell",
+              "cost": 1,
+              "spellLikeAbility": {
+                "spellId": "stone-tell",
+                "spellName": "Stone Tell",
+                "cadence": "day"
+              },
+              "summary": "Use this capstone spell-like ability once per day."
+            }
+          ]
         }
       ]
     }
@@ -83,6 +365,77 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The four curse choices, divination spell progression, retained revelation slots, trance tracker, and capstone spells are available. Individual curse effects, the extra revelation effects, and adjudicating trance answers remain table rules."
+  ],
+  "modifiedFeatureIds": [
+    "oracle-mystery-1",
+    "oracle-revelation-3",
+    "oracle-revelation-11",
+    "oracle-revelation-15",
+    "oracle-revelation-19"
+  ],
+  "featureOverrides": [
+    {
+      "featureId": "oracle-mystery-1",
+      "summary": "Choose a mystery for its revelations. Cyclopean Seer supplies its own bonus spells, extra revelation options, class skills, and final revelation."
+    }
+  ],
+  "optionClassSkillExclusions": [
+    "oracle-mysteries"
+  ],
+  "bonusSpellReplacementClassLevels": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18
+  ],
+  "optionGroupAugmentations": [
+    {
+      "targetGroupId": "oracle-curses",
+      "sourceGroupId": "cyclopean-seer-curses"
+    },
+    {
+      "targetGroupId": "oracle-revelations",
+      "sourceGroupId": "cyclopean-seer-revelations"
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "cyclopeanBrutalTrance",
+      "label": "Brutal Trance",
+      "unit": "use",
+      "minimumLevel": 7,
+      "base": 1,
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "cyclopeanDiscernLocation",
+      "label": "Discern Location",
+      "unit": "use",
+      "minimumLevel": 20,
+      "base": 1,
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "cyclopeanPryingEyes",
+      "label": "Prying Eyes",
+      "unit": "use",
+      "minimumLevel": 20,
+      "base": 1,
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "cyclopeanStoneTell",
+      "label": "Stone Tell",
+      "unit": "use",
+      "minimumLevel": 20,
+      "base": 1,
+      "dedicatedAction": true
+    }
   ]
 }

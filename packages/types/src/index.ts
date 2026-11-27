@@ -231,6 +231,7 @@ export interface ClassFeatureOccurrence {
   maximumSpellLevel?: number;
   spellChoiceClassId?: string;
   spellChoiceLevelIncrease?: number;
+  schoolSpellChoice?: { school: string; preferredClassId: string; otherListsBelowMaximum: number };
   resourceActions?: Array<{
     id: string;
     label: string;
