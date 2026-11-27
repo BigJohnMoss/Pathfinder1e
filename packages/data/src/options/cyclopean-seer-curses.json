@@ -21,12 +21,12 @@
     {
       "id": "oracle-curse-hunger",
       "name": "Hunger",
-      "benefit": "You cannot benefit from magical nourishment and gain a secondary bite attack. At later curse levels the bite can sicken, become primary, and inspire fear."
+      "benefit": "Magical nourishment provides no benefit. Gain a secondary bite and start combat sickened until your bite deals damage. At curse level 5 the bite gains grab against smaller foes, at 10 its damage increases by one size category, and at 15 it can drain 1d2 Constitution while grappling."
     },
     {
       "id": "oracle-curse-powerless-prophecy",
       "name": "Powerless Prophecy",
-      "benefit": "Uncanny dodge comes with limits on acting in surprise rounds. Later curse levels grant initiative, improved uncanny dodge, and surprise-related defensive bonuses."
+      "benefit": "Gain uncanny dodge. In a surprise round, you may only use Flash of Insight. Without a surprise round, you are staggered in round one. At curse levels 5 and 10, gain +4 insight to initiative and improved uncanny dodge respectively. At curse level 15, gain +4 insight to AC and saves during surprise rounds and against attacks you are unaware of."
     }
   ]
 }
