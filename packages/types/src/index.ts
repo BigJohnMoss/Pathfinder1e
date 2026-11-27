@@ -356,6 +356,9 @@ export interface ClassFeatureOccurrence {
       label: string;
       diceCountByLevel: Array<{ level: number; count: number }>;
       dieSidesByLevel: Array<{ level: number; sides: number }>;
+      trainedSkill?: string;
+      targetDcByMode?: Record<string, number>;
+      healsSelf?: boolean;
       takeHighest?: boolean;
       bonusDiceByMode?: Array<{ modeId: string; count: number; sides: number }>;
       appliedEffect?: {
