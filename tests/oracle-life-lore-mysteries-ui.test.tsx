@@ -128,6 +128,10 @@ test("Dual-Cursed Oracle tracks distinct curses and its optional revelations", a
   await user.selectOptions(curse, "oracle-curse-haunted");
   assert.ok(![...fixedCurse.options].some(({ value }) => value === "oracle-curse-haunted"));
   await user.selectOptions(fixedCurse, "oracle-curse-lame");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.match(screen.getByLabelText("Land speed calculation").textContent ?? "", /Lame/);
+  assert.equal(screen.queryByText("Immune to fatigue"), null);
+  await user.click(screen.getByRole("tab", { name: "Features" }));
 
   await user.selectOptions(screen.getByLabelText("Mystery level 1"), "oracle-mystery-lore");
   const firstRevelation = screen.getByLabelText<HTMLSelectElement>("Revelation level 1");
@@ -154,6 +158,33 @@ test("Dual-Cursed Oracle tracks distinct curses and its optional revelations", a
   await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.equal(screen.getByLabelText<HTMLSelectElement>("Non-progressing Curse level 1").value, "oracle-curse-lame");
   assert.equal(screen.getByLabelText<HTMLSelectElement>("Revelation level 5").value, "oracle-revelation-dual-cursed-fortune");
+});
+
+test("Wasting updates eligible skill checks and its defenses when the curse changes", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "oracle");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "15" } });
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
+  const skillTotal = (name: string) => Number(screen.getByLabelText(`${name} ranks`).closest("label")
+    ?.querySelector(".skill-total strong")?.childNodes[0]?.textContent);
+  const diplomacy = skillTotal("Diplomacy");
+  const intimidate = skillTotal("Intimidate");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  await user.selectOptions(screen.getByLabelText("Oracle's Curse level 1"), "oracle-curse-wasting");
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
+  assert.equal(skillTotal("Diplomacy"), diplomacy - 4);
+  assert.equal(skillTotal("Intimidate"), intimidate);
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  for (const condition of ["sickened", "disease", "nauseated"]) assert.ok(screen.getByText(`Immune to ${condition}`));
+  assert.ok(screen.getByText("+4 competence bonus on saves"));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  await user.selectOptions(screen.getByLabelText("Oracle's Curse level 1"), "oracle-curse-clouded-vision");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.equal(screen.queryByText("Immune to disease"), null);
+  assert.ok(screen.getByText("Darkvision 60 ft."));
+  assert.ok(screen.getByText("Blindsense 30 ft."));
+  assert.ok(screen.getByText("Blindsight 15 ft."));
 });
 
 test("Possessed Oracle casts its replacement spells and rerolls a failed Will save once", async () => {

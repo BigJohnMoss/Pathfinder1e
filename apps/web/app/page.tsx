@@ -142,6 +142,7 @@ import {
   bloodlineClassSkills,
 } from "../../../packages/engine/src/sorcerer-bloodlines.js";
 import { mysteryBonusSpells, restrictOracleMysterySelection } from "../../../packages/engine/src/oracle-mysteries.js";
+import { oracleCurseBenefits } from "../../../packages/engine/src/oracle-curses.js";
 import type {
   ActiveEffect,
   AbilityName,
@@ -684,6 +685,10 @@ export default function Home() {
     ])],
     [classLevelMap, progressionClasses, selectedOptions],
   );
+  const oracleCurse = useMemo(
+    () => oracleCurseBenefits(progressionClasses, classLevelMap, selectedOptions, optionGroups),
+    [progressionClasses, classLevelMap, selectedOptions],
+  );
   const hasSpellSpecialist = allSelectedArchetypes.some(
     (archetype) => archetype.id === "arcanist-spell-specialist",
   );
@@ -1154,6 +1159,7 @@ export default function Home() {
         selectedTraitBonuses.initiative +
         selectedFeatBonuses.initiative +
         selectedArchetypeInitiativeBonus +
+        oracleCurse.initiative +
         activeBonus("initiative"),
       saves: {
         fortitude:
@@ -1217,6 +1223,7 @@ export default function Home() {
     baseCombat,
     favoredClassHitPoints,
     inventory,
+    oracleCurse.initiative,
     selectedArchetypeInitiativeBonus,
     selectedArchetypeArmorBenefits.armorClass,
     selectedArchetypeCombatBonuses,
@@ -1232,12 +1239,13 @@ export default function Home() {
       load,
       allSelectedArchetypes,
       classLevelMap,
+      oracleCurse.lame,
     );
     const activeSpeedBonus = activeEffects.filter((effect) => effect.target === "landSpeed").reduce((total, effect) => total + effect.bonus, 0);
     return activeSpeedBonus
       ? { ...calculated, speed: calculated.speed + activeSpeedBonus, adjustments: [...calculated.adjustments, { label: `${activeSpeedBonus >= 0 ? "+" : ""}${activeSpeedBonus} ft.`, bonus: activeSpeedBonus, source: "Active effect" }] }
       : calculated;
-  }, [abilities.strength, activeEffects, allSelectedArchetypes, ancestry.speed, classLevelMap, inventory]);
+  }, [abilities.strength, activeEffects, allSelectedArchetypes, ancestry.speed, classLevelMap, inventory, oracleCurse.lame]);
   const selectedArchetypeConditionalModifiers = useMemo(
     () => archetypeConditionalModifiers(allSelectedArchetypes, classLevelMap, combat.abilityModifiers, effectiveSelectedOptionIds),
     [allSelectedArchetypes, classLevelMap, combat.abilityModifiers, effectiveSelectedOptionIds],
@@ -1609,6 +1617,7 @@ export default function Home() {
         (selectedTraitBonuses.skillBonuses[skill.name] ?? 0) +
         (selectedFeatBonuses.skillBonuses[skill.name] ?? 0) +
         (selectedArchetypeSkillBonuses.skillBonuses[skill.name] ?? 0) +
+        (ability === "charisma" && skill.name !== "Intimidate" ? oracleCurse.charismaSkillPenalty : 0) +
         (wieldingBlackBlade && ["Perception", "Sense Motive"].includes(skill.name) ? (ranks >= 10 ? 4 : 2) : 0),
     };
   });
@@ -4705,8 +4714,8 @@ export default function Home() {
               <CombatPanel
                 combat={combat}
                 landSpeed={landSpeed}
-                senses={selectedArchetypeSenses}
-                defenses={selectedArchetypeDefenses}
+                senses={[...selectedArchetypeSenses, ...oracleCurse.senses]}
+                defenses={[...selectedArchetypeDefenses, ...oracleCurse.defenses]}
                 modifierSources={selectedFeatBonuses.sources}
                 conditionalModifiers={[
                   ...(selectedTraitBonuses.conditionalModifiers ?? []),
@@ -4715,6 +4724,7 @@ export default function Home() {
                   ),
                   ...selectedArchetypeArmorBenefits.conditionalModifiers,
                   ...selectedArchetypeSkillBonuses.conditionalModifiers,
+                  ...oracleCurse.conditionalModifiers,
                 ]}
               />
               <ActivePlayPanel

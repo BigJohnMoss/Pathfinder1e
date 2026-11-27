@@ -593,7 +593,7 @@ const armorOrLoadReducesSpeed = (armorCategory, load) =>
 
 const reducedLandSpeed = (speed) => Math.ceil((speed * 2) / 3 / 5) * 5;
 
-export function characterLandSpeed(baseSpeed, armorCategory = "none", load = "light", archetypes = [], classLevels = {}) {
+export function characterLandSpeed(baseSpeed, armorCategory = "none", load = "light", archetypes = [], classLevels = {}, lameCurseLevel = 0) {
   if (!Number.isInteger(baseSpeed) || baseSpeed < 0)
     throw new RangeError("Base land speed must be a non-negative integer.");
   const adjustments = (archetypes ?? []).flatMap((archetype) => {
@@ -606,12 +606,16 @@ export function characterLandSpeed(baseSpeed, armorCategory = "none", load = "li
       .map((adjustment) => ({ ...adjustment, bonus: adjustment.bonusByLevel?.filter((step) => step.level <= level).sort((left, right) => left.level - right.level).at(-1)?.bonus ?? adjustment.bonus, source: archetype.name }));
   });
   if (load === "overloaded") return { speed: 0, baseSpeed, armorCategory, load, adjustments: [] };
+  if (lameCurseLevel > 0) {
+    const penalty = Math.min(baseSpeed, baseSpeed >= 30 ? 10 : 5);
+    adjustments.push({ timing: "beforeReduction", bonus: -penalty, label: `−${penalty} ft.`, source: "Lame" });
+  }
   const beforeRows = adjustments.filter((adjustment) => adjustment.timing === "beforeReduction");
   const beforeTyped = new Map();
   const beforeUntyped = beforeRows.filter((adjustment) => !adjustment.bonusType).reduce((total, adjustment) => total + adjustment.bonus, 0);
   for (const adjustment of beforeRows.filter((item) => item.bonusType)) beforeTyped.set(adjustment.bonusType, Math.max(beforeTyped.get(adjustment.bonusType) ?? 0, adjustment.bonus));
   const beforeReduction = baseSpeed + beforeUntyped + [...beforeTyped.values()].reduce((total, bonus) => total + bonus, 0);
-  let speed = armorOrLoadReducesSpeed(armorCategory, load)
+  let speed = armorOrLoadReducesSpeed(lameCurseLevel >= 10 ? "none" : armorCategory, lameCurseLevel > 0 ? "light" : load)
     ? reducedLandSpeed(beforeReduction)
     : beforeReduction;
   for (const adjustment of adjustments.filter((item) => item.timing === "afterReduction")) {
