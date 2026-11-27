@@ -1,0 +1,33 @@
+{
+  "id": "dual-cursed-oracle-revelations",
+  "name": "Dual-Cursed Revelations",
+  "classIds": [
+    "oracle"
+  ],
+  "optionDefaults": {
+    "groupId": "dual-cursed-oracle-revelations",
+    "classIds": [
+      "oracle"
+    ],
+    "prerequisites": [],
+    "source": {
+      "title": "Ultimate Magic",
+      "page": 58,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Dual-Cursed%20Oracle"
+    }
+  },
+  "options": [
+    {
+      "id": "oracle-revelation-dual-cursed-misfortune",
+      "name": "Misfortune",
+      "minimumLevel": 1,
+      "benefit": "Force a creature within 30 feet to reroll a d20 once per day for that creature."
+    },
+    {
+      "id": "oracle-revelation-dual-cursed-fortune",
+      "name": "Fortune",
+      "minimumLevel": 5,
+      "benefit": "Reroll your own d20 once per day at 5th level, twice at 11th, and three times at 17th."
+    }
+  ]
+}

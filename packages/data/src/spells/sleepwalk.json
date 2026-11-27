@@ -1,0 +1,22 @@
+{
+  "id": "sleepwalk",
+  "name": "Sleepwalk",
+  "school": "enchantment",
+  "subschool": "compulsion",
+  "descriptors": ["mind-affecting"],
+  "levelByClass": { "inquisitor": 4, "mesmerist": 4, "psychic": 4, "witch": 4 },
+  "components": ["V", "S", "M (belladonna worth 100 gp)"],
+  "castingTime": "1 round",
+  "range": "touch",
+  "target": "unconscious creature touched",
+  "duration": "1 hour/level (D)",
+  "savingThrow": "Will negates (see text)",
+  "spellResistance": "yes",
+  "summary": "Guide an unconscious creature to move at half speed while it remains helpless.",
+  "description": "The subject can move at half speed with one move action each round when led, but remains helpless and fails Strength- and Dexterity-based skill checks. Damage prompts a new save. Failure ends the spell and wakes a subject with positive hit points. Otherwise it remains unconscious when the spell ends. The spell does not heal or stabilize the target, and moving under its effect does not cause a disabled creature to resume dying.",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 244,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sleepwalk"
+  }
+}

@@ -7,8 +7,7 @@
   "replacements": [
     {
       "featureIds": [
-        "oracle-curse-1",
-        "oracle-mystery-1"
+        "oracle-curse-1"
       ],
       "features": [
         {
@@ -20,10 +19,21 @@
         },
         {
           "id": "oracle-dual-cursed-oracle-oracle-s-curse-1",
-          "name": "Oracle’s Curse",
+          "name": "Progressing Curse",
           "level": 1,
-          "type": "archetype",
-          "summary": "A dual-cursed oracle must choose two curses at 1st level. One of these curses (oracle’s choice) never changes its abilities as the oracle gains levels; for example, an oracle with clouded vision never gains darkvision 60 feet, blindsense, or blindsight. The other curse comes with its normal benefits."
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "oracle-curses",
+          "summary": "Choose the curse that advances normally with your oracle levels."
+        },
+        {
+          "id": "oracle-dual-cursed-oracle-fixed-curse-1",
+          "name": "Non-progressing Curse",
+          "level": 1,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "oracle-curses",
+          "summary": "Choose a different curse. It keeps only its 1st-level effects as you advance."
         },
         {
           "id": "oracle-dual-cursed-oracle-class-skills-1",
@@ -40,13 +50,133 @@
           "summary": "ill omen (2nd), oracle’s burden (4th), bestow curse (6th). These bonus spells replace the oracle’s mystery bonus spells at these levels."
         },
         {
-          "id": "oracle-dual-cursed-oracle-revelations-5",
-          "name": "Revelations",
+          "id": "oracle-revelation-dual-cursed-5",
+          "name": "Revelation",
+          "level": 5,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "oracle-revelations",
+          "summary": "Choose another revelation from your mystery or the dual-cursed revelations."
+        },
+        {
+          "id": "oracle-revelation-dual-cursed-13",
+          "name": "Revelation",
+          "level": 13,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "oracle-revelations",
+          "summary": "Choose another revelation from your mystery or the dual-cursed revelations."
+        },
+        {
+          "id": "oracle-dual-cursed-oracle-misfortune-1",
+          "name": "Misfortune (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "requiredOptionId": "oracle-revelation-dual-cursed-misfortune",
+          "summary": "As an immediate action, force a creature within 30 feet to reroll a d20 before its result is revealed. It uses the new roll even if it is worse and cannot be targeted again for one day.",
+          "resourceActions": [
+            {
+              "id": "dual-cursed-misfortune",
+              "label": "Force a d20 reroll with Misfortune",
+              "classId": "oracle",
+              "minimumLevel": 1,
+              "requiredOptionId": "oracle-revelation-dual-cursed-misfortune",
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "immediate"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "eligible-roll",
+                  "label": "The creature is within 30 feet, its result is unrevealed, and Misfortune has not affected it today",
+                  "requiredForActivation": true
+                }
+              ],
+              "rerollAction": {
+                "kind": "d20",
+                "label": "Creature’s new roll"
+              },
+              "summary": "Roll a new d20 for the creature and use that result."
+            }
+          ]
+        },
+        {
+          "id": "oracle-dual-cursed-oracle-fortune-5",
+          "name": "Fortune (Ex)",
           "level": 5,
           "type": "archetype",
-          "summary": "A dual-cursed oracle gains a new revelation at 5th level and 13th level. These are in addition to the normal revelations she receives at 3rd level, 7th level, and so on. In addition, the cursed oracle may select the following revelations in place of a mystery revelation. Misfortune (Ex) : At 1st level, as an immediate action, you can force a creature within 30 feet to reroll any one d20 roll that it has just made before the results of the roll are revealed. The creature must take the result of the reroll, even if it’s worse than the original roll. Once a creature has suffered from your misfortune, it cannot be the target of this revelation again for 1 day. Fortune (Ex) : At 5th level, as an immediate action, you can reroll any one d20 roll that you have just made before the results of the roll are revealed. You must take the result of the reroll, even if it’s worse than the original roll. You can use this ability once per day at 5th level, and one additional time per day for every six oracle levels beyond 5th."
+          "requiredOptionId": "oracle-revelation-dual-cursed-fortune",
+          "summary": "Reroll one of your d20 rolls as an immediate action before the result is revealed. Use the new roll even if it is worse. You can use Fortune once daily at 5th level and gain another use at 11th and 17th level.",
+          "resourceActions": [
+            {
+              "id": "dual-cursed-fortune",
+              "label": "Reroll a d20 with Fortune",
+              "classId": "oracle",
+              "minimumLevel": 5,
+              "requiredOptionId": "oracle-revelation-dual-cursed-fortune",
+              "resourceId": "dualCursedFortune",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "immediate"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "eligible-roll",
+                  "label": "The result of my roll has not been revealed",
+                  "requiredForActivation": true
+                }
+              ],
+              "rerollAction": {
+                "kind": "d20",
+                "label": "Your new roll"
+              },
+              "summary": "Use the new d20 result even if it is lower."
+            }
+          ]
         }
       ]
+    }
+  ],
+  "modifiedFeatureIds": [
+    "oracle-mystery-1",
+    "oracle-revelation-1",
+    "oracle-revelation-3",
+    "oracle-revelation-7",
+    "oracle-revelation-11",
+    "oracle-revelation-15",
+    "oracle-revelation-19"
+  ],
+  "optionClassSkillExclusions": [
+    "oracle-mysteries"
+  ],
+  "featureOverrides": [
+    {
+      "featureId": "oracle-mystery-1",
+      "summary": "Choose a mystery for its remaining bonus spells, revelations, and final revelation. Your mystery supplies no additional class skills."
+    }
+  ],
+  "optionGroupAugmentations": [
+    {
+      "targetGroupId": "oracle-revelations",
+      "sourceGroupId": "dual-cursed-oracle-revelations"
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "dualCursedFortune",
+      "label": "Fortune",
+      "unit": "use",
+      "minimumLevel": 5,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 6,
+      "requiredOptionId": "oracle-revelation-dual-cursed-fortune",
+      "dedicatedAction": true
     }
   ],
   "source": {
@@ -56,6 +186,6 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Curse choices, replacement spells, added revelations, Fortune uses, and both rerolls are available. Track the two curses’ individual effects and each creature’s daily Misfortune eligibility at the table."
   ]
 }

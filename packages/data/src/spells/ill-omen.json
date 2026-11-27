@@ -1,0 +1,22 @@
+{
+  "id": "ill-omen",
+  "name": "Ill Omen",
+  "school": "enchantment",
+  "subschool": "compulsion",
+  "descriptors": ["curse", "mind-affecting"],
+  "levelByClass": { "medium": 1, "mesmerist": 1, "psychic": 1, "witch": 1 },
+  "components": ["V", "S", "M (black cat hair)"],
+  "castingTime": "1 standard action",
+  "range": "close (25 ft. + 5 ft./2 levels)",
+  "target": "one creature",
+  "duration": "1 round/level or until discharged",
+  "savingThrow": "none",
+  "spellResistance": "yes",
+  "summary": "Force the target to roll twice and use the less favorable result on its next d20 roll.",
+  "description": "Bad luck affects one d20 roll plus one more per five caster levels, up to five rolls. For each affected roll, the target rolls twice and uses the less favorable result. A target that knows about the curse can spend a move action to negate one reroll by speaking a brief prayer or good luck charm while keeping a hand free.",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 229,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ill%20Omen"
+  }
+}
