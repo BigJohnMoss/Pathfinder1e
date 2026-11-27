@@ -40,7 +40,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Resources and limited uses | 121 |
 | Companions and effective levels | 41 |
 | Spell lists, slots, and casting | 60 |
-| Class skills and skill-rank progressions | 61 |
+| Class skills and skill-rank progressions | 62 |
 | Combat statistics and proficiencies | 67 |
 | Deterministic Take 10 and Take 20 skill checks | 17 |
 
