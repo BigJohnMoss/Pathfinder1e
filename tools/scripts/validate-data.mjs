@@ -673,6 +673,10 @@ for (const [index, url] of archetypeUrls.entries()) {
   for (const feature of (archetype.replacements ?? []).flatMap(replacement => replacement.features ?? [])) {
     if (feature.requiredOptionId && !optionIds.has(feature.requiredOptionId)) errors.push(`${file}: ${feature.id} references missing required option ${feature.requiredOptionId}`);
     if (feature.spellChoiceLevelIncrease !== undefined && (feature.optionGroupId !== "archetype-spell-choices" || !classIds.has(feature.spellChoiceClassId) || !Number.isInteger(feature.spellChoiceLevelIncrease) || feature.spellChoiceLevelIncrease < 1 || !Number.isInteger(feature.maximumSpellLevel) || feature.maximumSpellLevel < feature.spellChoiceLevelIncrease || feature.maximumSpellLevel > 9)) errors.push(`${file}: ${feature.id} has an invalid adjusted spell choice`);
+    if (feature.schoolSpellChoice !== undefined) {
+      const rule = feature.schoolSpellChoice;
+      if (!rule || feature.optionGroupId !== "archetype-spell-choices" || !classIds.has(rule.preferredClassId) || !["abjuration", "conjuration", "divination", "enchantment", "evocation", "illusion", "necromancy", "transmutation", "universal"].includes(rule.school) || !Number.isInteger(rule.otherListsBelowMaximum) || rule.otherListsBelowMaximum < 0 || rule.otherListsBelowMaximum > 9 || !Number.isInteger(feature.maximumSpellLevel) || feature.maximumSpellLevel < 0 || feature.maximumSpellLevel > 9) errors.push(`${file}: ${feature.id} has an invalid spell school choice`);
+    }
   }
 }
 for (const url of await jsonFiles("equipment/")) {

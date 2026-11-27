@@ -1486,7 +1486,9 @@ test("fixed Oracle bonus-spell replacements grant resolved spells at exact class
   }
   const cyclopeanSeer = catalogueArchetypes.find((archetype) => archetype.id === "oracle-cyclopean-seer");
   assert.ok(cyclopeanSeer);
-  assert.ok(archetypeAutomationSummary(cyclopeanSeer, [], catalogueSpells).manual.includes("Bonus Spells (level 1)"));
+  const divinationChoices = cyclopeanSeer.replacements.flatMap(({ features }) => features).filter(({ schoolSpellChoice }) => schoolSpellChoice);
+  assert.deepEqual(divinationChoices.map(({ level, maximumSpellLevel }) => [level, maximumSpellLevel]), [[2, 1], [4, 2], [6, 3], [8, 4], [10, 5], [12, 6], [14, 7], [16, 8], [18, 9]]);
+  assert.deepEqual(cyclopeanSeer.bonusSpellReplacementClassLevels, divinationChoices.map(({ level }) => level));
 });
 
 test("archetype spellcasting adjustments change slots, preparations, and spells known", () => {

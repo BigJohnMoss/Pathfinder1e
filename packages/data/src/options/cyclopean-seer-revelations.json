@@ -1,0 +1,37 @@
+{
+  "id": "cyclopean-seer-revelations",
+  "name": "Cyclopean Seer Revelations",
+  "classIds": [
+    "oracle"
+  ],
+  "optionDefaults": {
+    "groupId": "cyclopean-seer-revelations",
+    "classIds": [
+      "oracle"
+    ],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Inner Sea Monster Codex",
+      "page": 17,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Cyclopean%20Seer"
+    }
+  },
+  "options": [
+    {
+      "id": "oracle-revelation-cyclopean-doomsaying",
+      "name": "Doomsaying",
+      "benefit": "Curse a creature within 30 feet, penalizing attacks, saves, or skill checks until it fails one or a minute elapses."
+    },
+    {
+      "id": "oracle-revelation-cyclopean-flash-of-insight",
+      "name": "Flash of Insight",
+      "benefit": "Choose the exact result of one of your dice before rolling it. Gain a daily use or an extra daily use if you already have the cyclops ability."
+    },
+    {
+      "id": "oracle-revelation-cyclopean-prescience",
+      "name": "Prescience",
+      "benefit": "Gain +2 to concentration and Armor Class against attacks of opportunity, increasing by 1 at every fifth oracle level."
+    }
+  ]
+}

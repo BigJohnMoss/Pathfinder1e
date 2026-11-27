@@ -79,6 +79,80 @@ test("Ancient Lorekeeper retains revelations and casts Elven Arcana at the raise
   assert.equal(screen.getByLabelText<HTMLSelectElement>("Revelation level 1").value, "oracle-revelation-lore-keeper");
 });
 
+test("Cyclopean Seer restores revelations and keeps each divination choice within its own spell-level limit", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "oracle");
+  fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "18" } });
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "6" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "oracle-cyclopean-seer");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  await user.selectOptions(screen.getByLabelText("Mystery level 1"), "oracle-mystery-life");
+  const curse = screen.getByLabelText<HTMLSelectElement>("Oracle’s Curse level 1");
+  assert.deepEqual([...curse.options].map(({ value }) => value).filter(Boolean).sort(), [
+    "oracle-curse-haunted", "oracle-curse-hunger", "oracle-curse-powerless-prophecy", "oracle-curse-tongues",
+  ]);
+  await user.selectOptions(curse, "oracle-curse-hunger");
+  await user.selectOptions(screen.getByLabelText("Revelation level 3"), "oracle-revelation-cyclopean-prescience");
+  assert.equal(screen.queryByLabelText("Revelation level 1"), null);
+  assert.equal(screen.queryByText("Mystery spells"), null);
+
+  const spellId = (id: string) => `archetype-adjusted-spell-oracle-${id}`;
+  const choices = [2, 4, 6].map(level => screen.getByLabelText<HTMLSelectElement>(`Divination Bonus Spell level ${level}`));
+  const allows = (choice: HTMLSelectElement, id: string) => [...choice.options].some(({ value }) => value === spellId(id));
+  assert.ok(allows(choices[0], "detect-undead"), `Level-2 choices: ${[...choices[0].options].map(option => option.value).join(", ")}`);
+  assert.ok(!allows(choices[0], "true-strike"));
+  assert.ok(!allows(choices[1], "see-invisibility"));
+  assert.ok(!allows(choices[2], "magic-missile"));
+  await user.selectOptions(choices[0], spellId("detect-undead"));
+  assert.ok(!allows(choices[1], "detect-undead"));
+  await user.selectOptions(choices[1], spellId("true-strike"));
+  await user.selectOptions(choices[2], spellId("see-invisibility"));
+
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  const search = screen.getByPlaceholderText("Name or effect");
+  await user.type(search, "Detect Undead");
+  assert.equal(screen.getByLabelText("Detect Undead known").textContent, "Divination Bonus Spell");
+  assert.equal(screen.queryByText("Detect Undead (Divination Bonus Spell)"), null);
+  await user.clear(search);
+  await user.type(search, "True Strike");
+  await user.click(screen.getByRole("button", { name: "Cast True Strike (Divination Bonus Spell)" }));
+  assert.match(screen.getByText(/Oracle \(Cyclopean Seer\) slots:/).textContent ?? "", /6\/7 1st-level/);
+
+  await user.click(screen.getByRole("button", { name: "Save", exact: true }));
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  await user.click(screen.getByRole("button", { name: "Load", exact: true }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.equal(screen.getByLabelText<HTMLSelectElement>("Divination Bonus Spell level 4").value, spellId("true-strike"));
+  assert.equal(screen.getByLabelText<HTMLSelectElement>("Oracle’s Curse level 1").value, "oracle-curse-hunger");
+});
+
+test("Cyclopean Seer tracks Brutal Trance and level-20 spell-like abilities", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "oracle");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "7" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "oracle-cyclopean-seer");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const question = screen.getByRole<HTMLButtonElement>("button", { name: "Ask a Brutal Trance question" });
+  assert.ok(question.disabled);
+  const trance = screen.getByRole<HTMLButtonElement>("button", { name: "Enter Brutal Trance" });
+  await user.click(trance);
+  assert.ok(trance.disabled);
+  assert.match(screen.getByLabelText("Enter Brutal Trance result").textContent ?? "", /Active for 7 rounds/);
+  await user.click(screen.getByLabelText("I can act normally and have asked no other question this round"));
+  await user.click(question);
+  assert.match(screen.getByLabelText("Ask a Brutal Trance question result").textContent ?? "", /Commune question activated/);
+
+  assert.equal(screen.queryByRole("button", { name: "Use Stone Tell" }), null);
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  for (const name of ["Discern Location", "Prying Eyes", "Stone Tell"]) {
+    const cast = screen.getByRole<HTMLButtonElement>("button", { name: `Use ${name}` });
+    await user.click(cast);
+    assert.ok(cast.disabled);
+  }
+});
+
 test("an imported multiclass Lorekeeper only grants legally earned Oracle spells", async () => {
   const user = userEvent.setup();
   render(<Home />);

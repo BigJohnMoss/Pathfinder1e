@@ -15,7 +15,7 @@ import { CharacterDetails } from "./character-details";
 import { ClassFeatures } from "./class-features";
 import { Spellbook } from "./spellbook";
 import { classSpellAutomation } from "./archetype-spell-automation";
-import { adjustedSpellChoiceOptions, spellsFromAdjustedChoices } from "./archetype-spell-choices";
+import { adjustedSpellChoiceOptions, isAdjustedSpellChoice, spellsFromAdjustedChoices } from "./archetype-spell-choices";
 import { spellsFromArchetypeGrants } from "./archetype-spell-grants";
 import { SpontaneousSpellbook } from "./spontaneous-spellbook";
 import { ClassSpellbook } from "./class-spellbook";
@@ -1715,16 +1715,17 @@ export default function Home() {
       : undefined;
     const choiceCastingProgression = featureCharacterClass?.spellcasting?.castingType === "spontaneous"
       ? spontaneousSpellcastingProgression : spellcastingProgression;
-    const adjustedChoiceCasting = feature.spellChoiceLevelIncrease && featureCharacterClass?.spellcasting
+    const adjustedChoiceCasting = isAdjustedSpellChoice(feature) && featureCharacterClass?.spellcasting
       ? choiceCastingProgression(featureCharacterClass, effectiveSpellcastingLevelMap[featureClassId] ?? featureClassLevel, {
           abilityScore: abilities[featureCharacterClass.spellcasting.ability],
         })
       : null;
-    const archetypeSpellChoiceGroup = feature.optionGroupId === "archetype-spell-choices" && feature.spellChoiceClassId && (feature.requiredSpellLevel !== undefined || adjustedChoiceCasting)
+    const archetypeSpellChoiceGroup = feature.optionGroupId === "archetype-spell-choices" && (adjustedChoiceCasting || (feature.spellChoiceClassId && feature.requiredSpellLevel !== undefined))
       ? {
           id: "archetype-spell-choices",
-          name: `${feature.spellChoiceClassId} spell choices`,
+          name: `${feature.schoolSpellChoice?.school ?? feature.spellChoiceClassId} spell choices`,
           classIds: [featureClassId],
+          uniqueAcrossSelections: Boolean(feature.schoolSpellChoice),
           options: adjustedChoiceCasting && featureCharacterClass
             ? adjustedSpellChoiceOptions(spells, feature, featureCharacterClass, adjustedChoiceCasting.maximumSpellLevel)
             : spells
