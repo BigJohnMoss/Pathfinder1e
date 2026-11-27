@@ -1464,18 +1464,16 @@ test("fixed Oracle bonus-spell replacements grant resolved spells at exact class
   const automated = catalogueArchetypes
     .map((archetype) => ({ archetype, rules: inferArchetypeSpellAdditions(archetype, catalogueSpells) }))
     .filter(({ archetype, rules }) => archetype.classId === "oracle" && rules.bonusSpellReplacementClassLevels?.length);
-  assert.equal(automated.length, 15);
-  assert.equal(automated.reduce((total, { rules }) => total + rules.spellGrants.length, 0), 90);
+  assert.equal(automated.length, 16);
+  assert.equal(automated.reduce((total, { rules }) => total + rules.spellGrants.length, 0), 95);
   for (const { archetype, rules } of automated) {
     assert.equal(archetype.classId, "oracle");
     assert.ok(rules.spellGrants.every((grant) => grant.mode === "known" && grant.minimumClassLevel >= 1 && grant.minimumClassLevel <= 18));
     assert.equal(archetypeAutomationSummary(archetype, [], catalogueSpells).manual.includes("Bonus Spells (level 1)"), false, archetype.id);
   }
-  for (const id of ["oracle-cyclopean-seer", "oracle-community-guardian"]) {
-    const source = catalogueArchetypes.find((archetype) => archetype.id === id);
-    assert.ok(source);
-    assert.equal(archetypeAutomationSummary(source, [], catalogueSpells).manual.includes("Bonus Spells (level 1)"), true, `${id} remains manual`);
-  }
+  const cyclopeanSeer = catalogueArchetypes.find((archetype) => archetype.id === "oracle-cyclopean-seer");
+  assert.ok(cyclopeanSeer);
+  assert.ok(archetypeAutomationSummary(cyclopeanSeer, [], catalogueSpells).manual.includes("Bonus Spells (level 1)"));
 });
 
 test("archetype spellcasting adjustments change slots, preparations, and spells known", () => {
