@@ -11,6 +11,7 @@ import { normalizePreparedSpellsWithOpposition } from "../../../packages/engine/
 import { normalizeKnownSpells, spontaneousSpellcastingProgression } from "../../../packages/engine/src/spontaneous-spellcasting.js";
 import { bloodlineBonusSpells } from "../../../packages/engine/src/sorcerer-bloodlines.js";
 import { mysteryBonusSpells } from "../../../packages/engine/src/oracle-mysteries.js";
+import { hauntedCurseSpells } from "../../../packages/engine/src/oracle-curses.js";
 import type { AbilityScores, ActiveEffect, CharacterClass, CharacterOption, CharacterSpell } from "../../../packages/types/src/index.js";
 import { equippedArcaneSpellFailureChance, type InventoryEntry } from "./equipment-panel";
 
@@ -54,6 +55,7 @@ export function ClassSpellbook({
   spells,
   classLevel,
   earnedClassLevel = classLevel,
+  hauntedSpellAdditions,
   abilities,
   selectedOptions,
   spellTraitBonuses = {},
@@ -75,6 +77,7 @@ export function ClassSpellbook({
   spells: CharacterSpell[];
   classLevel: number;
   earnedClassLevel?: number;
+  hauntedSpellAdditions?: Record<string, number>;
   abilities: AbilityScores;
   selectedOptions: Record<string, string>;
   spellTraitBonuses?: SpellTraitBonuses;
@@ -135,8 +138,9 @@ export function ClassSpellbook({
     return [
       ...classGrants.filter((spell) => spell.levelByClass[characterClass.id] <= maximumSpellLevel),
       ...spellsFromAdjustedChoices(spells, characterClass, earnedClassLevel, maximumSpellLevel, selectedOptions),
+      ...hauntedCurseSpells(spells, hauntedSpellAdditions, characterClass.id, maximumSpellLevel),
     ];
-  }, [bloodline, casting, characterClass, classLevel, earnedClassLevel, maximumSpellLevel, mystery, selectedOptions, spells]);
+  }, [bloodline, casting, characterClass, classLevel, earnedClassLevel, hauntedSpellAdditions, maximumSpellLevel, mystery, selectedOptions, spells]);
   const allowedGrantedSpells = useMemo(() => grantedSpells.filter((spell) => !excludedSpellIds.has(spell.id)), [excludedSpellIds, grantedSpells]);
   const optionSpells = useMemo(() => spellOptions.flatMap((option) => {
     const spell = spells.find((candidate) => candidate.id === option.spellId);
