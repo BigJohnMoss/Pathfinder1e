@@ -3,11 +3,11 @@
   "name": "Ancient Lorekeeper",
   "classId": "oracle",
   "summary": "(Elf Only) The ancient lorekeeper is a repository for all the beliefs and vast knowledge of an elven people.",
-  "replacesText": "Mystery Bonus Skills; 4th, 6th, 8th, 10th, 12th, 14th, 16th, and 18th-level Bonus Spells",
+  "replacesText": "Mystery Bonus Skills; Mystery Bonus Spells",
   "replacements": [
     {
       "featureIds": [
-        "oracle-mystery-1"
+        "oracle-mystery-spell-2"
       ],
       "features": [
         {
@@ -21,8 +21,13 @@
           "id": "oracle-ancient-lorekeeper-elven-arcana-ex-2",
           "name": "Elven Arcana (Ex)",
           "level": 2,
-          "type": "archetype",
-          "summary": "At 2nd level, an ancient lorekeeper’s mastery of elven legends and philosophy has allowed her to master one spell used by elven wizards. She selects one spell from the sorcerer/wizard spell list that is at least one level lower than the highest-level oracle spell she can cast. The ancient lorekeeper gains this as a bonus spell known. The spell is treated as one level higher than its true level for all purposes. The ancient lorekeeper may choose an additional spell at 4th, 6th, 8th, 10th, 12th, 14th, 16th, and 18th levels. This ability replaces the bonus spells she would normally gain at these levels from her chosen mystery."
+          "type": "selectable",
+          "summary": "Choose a Sorcerer/Wizard spell at least one spell level below your Oracle casting cap at this milestone. You learn it as an Oracle bonus spell one level higher than its printed Sorcerer/Wizard level. This replaces mystery bonus spells.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "spellChoiceClassId": "wizard",
+          "maximumSpellLevel": 1,
+          "spellChoiceLevelIncrease": 1
         },
         {
           "id": "oracle-ancient-lorekeeper-mysteries-1",
@@ -30,18 +35,206 @@
           "level": 1,
           "type": "archetype",
           "summary": "The following oracle mysteries complement the ancient lorekeeper archetype: Lore, Nature, Waves, Wind; Ancestor, Time, Wood."
+        },
+        {
+          "id": "oracle-ancient-lorekeeper-elven-arcana-ex-4",
+          "name": "Elven Arcana (Ex)",
+          "level": 4,
+          "type": "selectable",
+          "summary": "Choose an additional Sorcerer/Wizard spell and learn the version one spell level higher as an Oracle bonus spell.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "spellChoiceClassId": "wizard",
+          "maximumSpellLevel": 2,
+          "spellChoiceLevelIncrease": 1
+        },
+        {
+          "id": "oracle-ancient-lorekeeper-elven-arcana-ex-6",
+          "name": "Elven Arcana (Ex)",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Choose an additional Sorcerer/Wizard spell and learn the version one spell level higher as an Oracle bonus spell.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "spellChoiceClassId": "wizard",
+          "maximumSpellLevel": 3,
+          "spellChoiceLevelIncrease": 1
+        },
+        {
+          "id": "oracle-ancient-lorekeeper-elven-arcana-ex-8",
+          "name": "Elven Arcana (Ex)",
+          "level": 8,
+          "type": "selectable",
+          "summary": "Choose an additional Sorcerer/Wizard spell and learn the version one spell level higher as an Oracle bonus spell.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "spellChoiceClassId": "wizard",
+          "maximumSpellLevel": 4,
+          "spellChoiceLevelIncrease": 1
+        },
+        {
+          "id": "oracle-ancient-lorekeeper-elven-arcana-ex-10",
+          "name": "Elven Arcana (Ex)",
+          "level": 10,
+          "type": "selectable",
+          "summary": "Choose an additional Sorcerer/Wizard spell and learn the version one spell level higher as an Oracle bonus spell.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "spellChoiceClassId": "wizard",
+          "maximumSpellLevel": 5,
+          "spellChoiceLevelIncrease": 1
+        },
+        {
+          "id": "oracle-ancient-lorekeeper-elven-arcana-ex-12",
+          "name": "Elven Arcana (Ex)",
+          "level": 12,
+          "type": "selectable",
+          "summary": "Choose an additional Sorcerer/Wizard spell and learn the version one spell level higher as an Oracle bonus spell.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "spellChoiceClassId": "wizard",
+          "maximumSpellLevel": 6,
+          "spellChoiceLevelIncrease": 1
+        },
+        {
+          "id": "oracle-ancient-lorekeeper-elven-arcana-ex-14",
+          "name": "Elven Arcana (Ex)",
+          "level": 14,
+          "type": "selectable",
+          "summary": "Choose an additional Sorcerer/Wizard spell and learn the version one spell level higher as an Oracle bonus spell.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "spellChoiceClassId": "wizard",
+          "maximumSpellLevel": 7,
+          "spellChoiceLevelIncrease": 1
+        },
+        {
+          "id": "oracle-ancient-lorekeeper-elven-arcana-ex-16",
+          "name": "Elven Arcana (Ex)",
+          "level": 16,
+          "type": "selectable",
+          "summary": "Choose an additional Sorcerer/Wizard spell and learn the version one spell level higher as an Oracle bonus spell.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "spellChoiceClassId": "wizard",
+          "maximumSpellLevel": 8,
+          "spellChoiceLevelIncrease": 1
+        },
+        {
+          "id": "oracle-ancient-lorekeeper-elven-arcana-ex-18",
+          "name": "Elven Arcana (Ex)",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Choose an additional Sorcerer/Wizard spell and learn the version one spell level higher as an Oracle bonus spell.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-spell-choices",
+          "spellChoiceClassId": "wizard",
+          "maximumSpellLevel": 9,
+          "spellChoiceLevelIncrease": 1
         }
       ]
     }
   ],
+  "featureOverrides": [
+    {
+      "featureId": "oracle-mystery-1",
+      "summary": "Choose a mystery for its revelations and final revelation. The Ancient Lorekeeper receives class skills and bonus spells from its archetype features."
+    }
+  ],
+  "modifiedFeatureIds": ["oracle-mystery-1"],
+  "optionClassSkillExclusions": ["oracle-mysteries"],
+  "classSkillAdditions": ["Knowledge (arcana)", "Knowledge (local)"],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "oracle-ancient-lorekeeper-class-skills-1",
+      "skill": "Knowledge (arcana)",
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "On questions about creatures with the elf subtype.",
+      "checkLabel": "Knowledge about elves"
+    },
+    {
+      "sourceFeatureId": "oracle-ancient-lorekeeper-class-skills-1",
+      "skill": "Knowledge (dungeoneering)",
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "On questions about creatures with the elf subtype.",
+      "checkLabel": "Knowledge about elves"
+    },
+    {
+      "sourceFeatureId": "oracle-ancient-lorekeeper-class-skills-1",
+      "skill": "Knowledge (engineering)",
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "On questions about creatures with the elf subtype.",
+      "checkLabel": "Knowledge about elves"
+    },
+    {
+      "sourceFeatureId": "oracle-ancient-lorekeeper-class-skills-1",
+      "skill": "Knowledge (geography)",
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "On questions about creatures with the elf subtype.",
+      "checkLabel": "Knowledge about elves"
+    },
+    {
+      "sourceFeatureId": "oracle-ancient-lorekeeper-class-skills-1",
+      "skill": "Knowledge (history)",
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "On questions about creatures with the elf subtype.",
+      "checkLabel": "Knowledge about elves"
+    },
+    {
+      "sourceFeatureId": "oracle-ancient-lorekeeper-class-skills-1",
+      "skill": "Knowledge (local)",
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "On questions about creatures with the elf subtype.",
+      "checkLabel": "Knowledge about elves"
+    },
+    {
+      "sourceFeatureId": "oracle-ancient-lorekeeper-class-skills-1",
+      "skill": "Knowledge (nature)",
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "On questions about creatures with the elf subtype.",
+      "checkLabel": "Knowledge about elves"
+    },
+    {
+      "sourceFeatureId": "oracle-ancient-lorekeeper-class-skills-1",
+      "skill": "Knowledge (nobility)",
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "On questions about creatures with the elf subtype.",
+      "checkLabel": "Knowledge about elves"
+    },
+    {
+      "sourceFeatureId": "oracle-ancient-lorekeeper-class-skills-1",
+      "skill": "Knowledge (planes)",
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "On questions about creatures with the elf subtype.",
+      "checkLabel": "Knowledge about elves"
+    },
+    {
+      "sourceFeatureId": "oracle-ancient-lorekeeper-class-skills-1",
+      "skill": "Knowledge (religion)",
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "On questions about creatures with the elf subtype.",
+      "checkLabel": "Knowledge about elves"
+    }
+  ],
+  "bonusSpellReplacementClassLevels": [2, 4, 6, 8, 10, 12, 14, 16, 18],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Ancient%20Lorekeeper"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Mystery and revelations remain selectable. Elven Arcana grants level-adjusted bonus spells, and checks about elves have their level-scaled Knowledge bonus listed under conditional modifiers."
   ],
   "requirements": [
     {

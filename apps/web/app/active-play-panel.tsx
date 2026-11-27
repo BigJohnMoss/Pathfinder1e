@@ -129,6 +129,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   const [combatRound, setCombatRound] = useState(1);
   const [rollHistory, setRollHistory] = useState<RollHistory[]>([]);
   const [selectedSkill, setSelectedSkill] = useState(skills[0]?.id ?? "");
+  const selfSkillChecks = conditionalSkillModifiers.filter(({ selfCheck }) => selfCheck?.skill === selectedSkill);
   const [craftingSkillId, setCraftingSkillId] = useState(skills.find((skill) => skill.id.toLowerCase() === "spellcraft")?.id ?? skills[0]?.id ?? "");
   const [craftingSpellSchool, setCraftingSpellSchool] = useState("");
   const [craftedItemCasterLevel, setCraftedItemCasterLevel] = useState(1);
@@ -412,6 +413,18 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
           onRollRecipient={(name, modifier) => rollCheck({ id: sharedCheck.skill, name: `${name} ${sharedCheck.skill} — ${sharedCheck.label}`, modifier: modifier + bonus })}
         />;
       })}
+      {selfSkillChecks.length > 0 && <div className="skill-check-rules">
+        {selfSkillChecks.map(({ selfCheck, bonus, condition }) => {
+          const skill = skills.find((check) => check.id === selectedSkill);
+          if (!selfCheck || !skill) return null;
+          return <article key={selfCheck.id}>
+            <div><strong>{selfCheck.label}</strong><span>{condition}</span></div>
+            <button type="button" onClick={() => rollCheck({ ...skill, name: `${skill.name} — ${selfCheck.label}`, modifier: skill.modifier + bonus }, "skill")}>
+              Roll with {bonus >= 0 ? "+" : "−"}{Math.abs(bonus)}
+            </button>
+          </article>;
+        })}
+      </div>}
       {selectedSkill && skillCheckRules.some((rule) => rule.skills.includes(selectedSkill)) && <div className="skill-check-rules" aria-label="Archetype skill check options">
         {skillCheckRules.filter((rule) => rule.skills.includes(selectedSkill)).map((rule) => {
           const skill = skills.find((item) => item.id === selectedSkill);

@@ -15,6 +15,7 @@ import { CharacterDetails } from "./character-details";
 import { ClassFeatures } from "./class-features";
 import { Spellbook } from "./spellbook";
 import { classSpellAutomation } from "./archetype-spell-automation";
+import { adjustedSpellChoiceOptions, spellsFromAdjustedChoices } from "./archetype-spell-choices";
 import { spellsFromArchetypeGrants } from "./archetype-spell-grants";
 import { SpontaneousSpellbook } from "./spontaneous-spellbook";
 import { ClassSpellbook } from "./class-spellbook";
@@ -752,11 +753,13 @@ export default function Home() {
     selectedOptions["sorcerer-bloodline-class-skill"];
   const selectedOptionClassSkills = useMemo(() => {
     const selectedIds = new Set(effectiveSelectedOptionIds);
+    const excludedGroups = new Set(progressionClasses.flatMap((entry) => entry.optionClassSkillExclusions ?? []));
     return optionGroups
+      .filter((group) => !excludedGroups.has(group.id))
       .flatMap((group) => group.options)
       .filter((option) => selectedIds.has(option.id))
       .flatMap((option) => option.classSkills ?? []);
-  }, [effectiveSelectedOptionIds]);
+  }, [effectiveSelectedOptionIds, progressionClasses]);
   const skillCharacterClass = useMemo(() => {
     const bloodlineSkills = selectedBloodline?.classSkill
       ? bloodlineClassSkills(
@@ -1700,14 +1703,23 @@ export default function Home() {
             })),
         }
       : undefined;
-    const archetypeSpellChoiceGroup = feature.optionGroupId === "archetype-spell-choices" && feature.spellChoiceClassId && feature.requiredSpellLevel !== undefined
+    const choiceCastingProgression = featureCharacterClass?.spellcasting?.castingType === "spontaneous"
+      ? spontaneousSpellcastingProgression : spellcastingProgression;
+    const adjustedChoiceCasting = feature.spellChoiceLevelIncrease && featureCharacterClass?.spellcasting
+      ? choiceCastingProgression(featureCharacterClass, effectiveSpellcastingLevelMap[featureClassId] ?? featureClassLevel, {
+          abilityScore: abilities[featureCharacterClass.spellcasting.ability],
+        })
+      : null;
+    const archetypeSpellChoiceGroup = feature.optionGroupId === "archetype-spell-choices" && feature.spellChoiceClassId && (feature.requiredSpellLevel !== undefined || adjustedChoiceCasting)
       ? {
           id: "archetype-spell-choices",
           name: `${feature.spellChoiceClassId} spell choices`,
           classIds: [featureClassId],
-          options: spells
-            .filter((spell) => spell.levelByClass[feature.spellChoiceClassId!] === feature.requiredSpellLevel)
-            .map((spell) => archetypeSpellChoiceOption(spell, featureClassId, feature.spellChoiceClassId!, feature.requiredSpellLevel!)),
+          options: adjustedChoiceCasting && featureCharacterClass
+            ? adjustedSpellChoiceOptions(spells, feature, featureCharacterClass, adjustedChoiceCasting.maximumSpellLevel)
+            : spells
+                .filter((spell) => spell.levelByClass[feature.spellChoiceClassId!] === feature.requiredSpellLevel)
+                .map((spell) => archetypeSpellChoiceOption(spell, featureClassId, feature.spellChoiceClassId!, feature.requiredSpellLevel!)),
         }
       : undefined;
     const signatureGroup = feature.optionGroupId === "spell-specialist-signature-spells"
@@ -1914,6 +1926,14 @@ export default function Home() {
               : baseOptions;
     const levelAwareOptions = options.map((option) => {
       const richOption = option as CharacterOption;
+      if (featureCharacterClass?.optionClassSkillExclusions?.includes(feature.optionGroupId!) || richOption.mysterySpells) {
+        const mysterySpells = richOption.mysterySpells?.filter((spell) => !featureCharacterClass?.bonusSpellReplacementClassLevels?.includes(spell.oracleLevel));
+        return {
+          ...option,
+          ...(featureCharacterClass?.optionClassSkillExclusions?.includes(feature.optionGroupId!) ? { classSkills: undefined } : {}),
+          ...(richOption.mysterySpells ? { mysterySpells: mysterySpells?.length ? mysterySpells : undefined } : {}),
+        };
+      }
       return richOption.powers && feature.optionGroupId === "blood-arcanist-bloodlines"
         ? { ...option, powers: richOption.powers.filter((power) => power.level <= featureClassLevel) }
         : option;
@@ -2218,9 +2238,12 @@ export default function Home() {
   const archetypeBonusSpells = useMemo(
     () => mergeSpellLists(
       spellsFromAdditions(spells, characterClass.bonusSpellAdditions, characterClass.id, maximumSpellLevel),
-      spellsFromArchetypeGrants(spells, characterClass.spellGrants, characterClass.id, primaryClassLevel, maximumSpellLevel, "known", activeEffects.map((effect) => effect.name), Object.values(selectedOptions)),
+      [
+        ...spellsFromArchetypeGrants(spells, characterClass.spellGrants, characterClass.id, primaryClassLevel, maximumSpellLevel, "known", activeEffects.map((effect) => effect.name), Object.values(selectedOptions)),
+        ...spellsFromAdjustedChoices(spells, characterClass, primaryClassLevel, maximumSpellLevel, selectedOptions),
+      ],
     ),
-    [activeEffects, characterClass.bonusSpellAdditions, characterClass.id, characterClass.spellGrants, maximumSpellLevel, primaryClassLevel, selectedOptions, spells],
+    [activeEffects, characterClass, maximumSpellLevel, primaryClassLevel, selectedOptions, spells],
   );
   const grantedSpells = useMemo(
     () => withoutExcludedSpells([
@@ -2499,6 +2522,7 @@ export default function Home() {
       ...secondarySelectedOptionSpells.filter((spell) => !spell.selectedAccessOnly),
       ...spellsFromAdditions(spells, secondaryCharacterClass?.bonusSpellAdditions, secondaryCharacterClass?.id ?? "", secondaryMaximumSpellLevel),
       ...spellsFromArchetypeGrants(spells, secondaryCharacterClass?.spellGrants, secondaryCharacterClass?.id ?? "", secondaryClassLevel, secondaryMaximumSpellLevel, "known", activeEffects.map((effect) => effect.name), Object.values(selectedOptions)),
+      ...spellsFromAdjustedChoices(spells, secondaryCharacterClass, secondaryClassLevel, secondaryMaximumSpellLevel, selectedOptions),
     ], secondaryCharacterClass?.spellListExclusions),
     [
       secondaryBloodlineSpells,
@@ -3300,6 +3324,7 @@ export default function Home() {
         key={extraActiveClass.id}
         characterClass={extraActiveClass}
         spells={spells}
+        earnedClassLevel={extraActiveClassLevel.level}
         classLevel={
           effectiveSpellcastingLevelMap[extraActiveClass.id] ??
           extraActiveClassLevel.level
@@ -3791,6 +3816,7 @@ export default function Home() {
       ...draftOptionSpells,
       ...spellsFromAdditions(spells, draftClass.bonusSpellAdditions, draftClass.id, draftCasting?.maximumSpellLevel ?? 0),
       ...spellsFromArchetypeGrants(spells, draftClass.spellGrants, draftClass.id, draftPrimaryLevel, draftCasting?.maximumSpellLevel ?? 0, "known"),
+      ...spellsFromAdjustedChoices(spells, draftClass, draftPrimaryLevel, draftCasting?.maximumSpellLevel ?? 0, draft.selectedOptions),
     ], draftClass.spellListExclusions);
     const draftSpells = mergeSpellLists(draftBaseSpells, draftGrantedSpells);
     const draftBloodlineSpellIds = draftGrantedSpells.map((spell) => spell.id);
@@ -3933,6 +3959,7 @@ export default function Home() {
       ...draftSecondaryOptionSpells,
       ...spellsFromAdditions(spells, draftSecondaryClass?.bonusSpellAdditions, draftSecondaryClass?.id ?? "", draftSecondaryCasting?.maximumSpellLevel ?? 0),
       ...spellsFromArchetypeGrants(spells, draftSecondaryClass?.spellGrants, draftSecondaryClass?.id ?? "", draftSecondaryLevel?.level ?? 0, draftSecondaryCasting?.maximumSpellLevel ?? 0, "known"),
+      ...spellsFromAdjustedChoices(spells, draftSecondaryClass, draftSecondaryLevel?.level ?? 0, draftSecondaryCasting?.maximumSpellLevel ?? 0, draft.selectedOptions),
     ], draftSecondaryClass?.spellListExclusions);
     const draftSecondarySpells = mergeSpellLists(
       draftSecondaryBaseSpells,

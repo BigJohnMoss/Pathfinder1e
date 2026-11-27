@@ -158,7 +158,7 @@ const spellDescriptors = (spell) => (spell?.descriptors ?? []).map((value) => St
 export function archetypeSpellModifiers(characterClass, classLevel, spell) {
   const matches = (characterClass?.spellModifierAdjustments ?? [])
     .filter((rule) => classLevel >= (rule.minimumLevel ?? 1) && classLevel <= (rule.maximumLevel ?? 20))
-    .filter((rule) => !rule.spellIds?.length || rule.spellIds.includes(spell?.id))
+    .filter((rule) => !rule.spellIds?.length || rule.spellIds.includes(spell?.baseSpellId ?? spell?.id))
     .filter((rule) => !rule.schools?.length || spellSchools(spell).some((school) => rule.schools.includes(school)))
     .filter((rule) => !rule.descriptors?.length || spellDescriptors(spell).some((descriptor) => rule.descriptors.includes(descriptor)));
   const result = { casterLevel: 0, saveDc: 0, concentration: 0, sources: [] };

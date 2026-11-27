@@ -533,6 +533,7 @@ for (const [index, url] of archetypeUrls.entries()) {
       const { label, recipient } = adjustment.sharedCheck ?? {};
       if (!adjustment.sourceFeatureId || !adjustment.condition || typeof label !== "string" || !label.trim() || typeof recipient !== "string" || !recipient.trim()) errors.push(`${prefix} sharedCheck requires a source feature, condition, label, and recipient`);
     }
+    if (adjustment?.checkLabel !== undefined && (adjustment.sharedCheck || !adjustment.sourceFeatureId || !adjustment.condition || typeof adjustment.checkLabel !== "string" || !adjustment.checkLabel.trim())) errors.push(`${prefix} checkLabel requires a source feature and condition for a self-only check`);
   }
   if (archetype.landSpeedAdjustments !== undefined && (!Array.isArray(archetype.landSpeedAdjustments) || archetype.landSpeedAdjustments.length === 0)) errors.push(`${file}: landSpeedAdjustments must be a non-empty array`);
   for (const adjustment of archetype.landSpeedAdjustments ?? []) {
@@ -630,12 +631,21 @@ for (const url of await jsonFiles("spell-class-levels/")) { const overlay=await 
 for (const url of await jsonFiles("classes/")) { const c=await load(url); for (const f of c.features??[]) if(f.optionGroupId && !groupIds.has(f.optionGroupId)) errors.push(`${c.id}:${f.id} references missing option group ${f.optionGroupId}`); }
 for (const [index, url] of archetypeUrls.entries()) {
   const archetype=mergedArchetypes[index]; const file=url.pathname.split('/').pop();
+  if (archetype.modifiedFeatureIds !== undefined) {
+    const modified = archetype.modifiedFeatureIds;
+    if (!Array.isArray(modified) || !modified.length || new Set(modified).size !== modified.length || modified.some((id) => typeof id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id))) errors.push(`${file}: modifiedFeatureIds must contain distinct feature IDs`);
+  }
+  if (archetype.optionClassSkillExclusions !== undefined) {
+    const groups = archetype.optionClassSkillExclusions;
+    if (!Array.isArray(groups) || !groups.length || new Set(groups).size !== groups.length || groups.some((group) => !groupIds.has(group))) errors.push(`${file}: optionClassSkillExclusions must contain distinct existing option groups`);
+  }
   for (const augmentation of archetype.optionGroupAugmentations ?? []) {
     if (!groupIds.has(augmentation.targetGroupId)) errors.push(`${file}: option group augmentation references missing target group ${augmentation.targetGroupId}`);
     if (!groupIds.has(augmentation.sourceGroupId)) errors.push(`${file}: option group augmentation references missing source group ${augmentation.sourceGroupId}`);
   }
   for (const feature of (archetype.replacements ?? []).flatMap(replacement => replacement.features ?? [])) {
     if (feature.requiredOptionId && !optionIds.has(feature.requiredOptionId)) errors.push(`${file}: ${feature.id} references missing required option ${feature.requiredOptionId}`);
+    if (feature.spellChoiceLevelIncrease !== undefined && (feature.optionGroupId !== "archetype-spell-choices" || !classIds.has(feature.spellChoiceClassId) || !Number.isInteger(feature.spellChoiceLevelIncrease) || feature.spellChoiceLevelIncrease < 1 || !Number.isInteger(feature.maximumSpellLevel) || feature.maximumSpellLevel < feature.spellChoiceLevelIncrease || feature.maximumSpellLevel > 9)) errors.push(`${file}: ${feature.id} has an invalid adjusted spell choice`);
   }
 }
 for (const url of await jsonFiles("equipment/")) {
