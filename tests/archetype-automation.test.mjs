@@ -727,8 +727,9 @@ test("archetype special defenses preserve level formulas, milestones, and condit
   assert.deepEqual(archetypeDefenses([plainsDruid], { druid: 4 }).filter((defense) => defense.kind === "concealment").map((defense) => [defense.value, defense.condition]), [[20, "while prone in natural terrain"]]);
   assert.deepEqual(archetypeDefenses([skirmisher], { fighter: 19 }).map((defense) => [defense.kind, defense.value, defense.condition]), [["missChance", 20, "while not immobilized or helpless, wearing light or no armor, and carrying a light load"]]);
   assert.deepEqual(archetypeDefenses([hellcat], { monk: 11 }).filter((defense) => defense.kind === "concealment").map((defense) => [defense.value, defense.condition]), [[20, "while Hellcat Ki is active in normal light"]]);
-  assert.deepEqual([7, 14].map((level) => archetypeDefenses([hermit], { oracle: level }).find((defense) => defense.kind === "concealment")?.value), [20, 50]);
-  assert.match(archetypeDefenses([hermit], { oracle: 14 }).find((defense) => defense.kind === "concealment")?.condition ?? "", /no creatures within 10 feet/i);
+  assert.deepEqual(archetypeDefenses([hermit], { oracle: 9 }), []);
+  assert.deepEqual(archetypeDefenses([hermit], { oracle: 14 }).map(({ kind, qualifier }) => [kind, qualifier]), [["immunity", "charm spells and spell-like abilities"]]);
+  assert.equal(archetypeDefenses([hermit], { oracle: 15, fighter: 3 }).find(({ kind }) => kind === "spellResistance")?.value, 25);
   assert.match(archetypeDefenses([duskKnight], { paladin: 1 }).find((defense) => defense.kind === "concealment")?.condition ?? "", /target of her smite evil/i);
   assert.deepEqual(archetypeDefenses([guerrilla], { rogue: 2 }).filter((defense) => defense.kind === "concealment").map((defense) => [defense.value, defense.condition]), [[50, "while in dim light or darkness and already benefiting from concealment"]]);
   assert.match(archetypeDefenses([shadowScion], { rogue: 8 }).find((defense) => defense.kind === "concealment")?.condition ?? "", /arrives on the Material Plane/i);

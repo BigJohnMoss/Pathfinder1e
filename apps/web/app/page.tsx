@@ -141,7 +141,7 @@ import {
   bloodlineBonusSpells,
   bloodlineClassSkills,
 } from "../../../packages/engine/src/sorcerer-bloodlines.js";
-import { mysteryBonusSpells } from "../../../packages/engine/src/oracle-mysteries.js";
+import { mysteryBonusSpells, restrictOracleMysterySelection } from "../../../packages/engine/src/oracle-mysteries.js";
 import type {
   ActiveEffect,
   AbilityName,
@@ -494,7 +494,7 @@ export default function Home() {
     Record<string, string>
   >({});
   const [skillRanks, setSkillRanks] = useState<Record<string, number>>({});
-  const [selectedOptions, setSelectedOptions] = useState<
+  const [storedSelectedOptions, setSelectedOptions] = useState<
     Record<string, string>
   >({});
   const [signatureSpellHighestClassLevel, setSignatureSpellHighestClassLevel] =
@@ -652,6 +652,10 @@ export default function Home() {
   const progressionClasses = useMemo(
     () => [characterClass, ...additionalCharacterClasses],
     [additionalCharacterClasses, characterClass],
+  );
+  const selectedOptions = useMemo(
+    () => restrictOracleMysterySelection(progressionClasses, storedSelectedOptions),
+    [progressionClasses, storedSelectedOptions],
   );
   const selectedLevelUpClassId = levelUpClassId || characterClass.id;
   const levelUpClassEntry = classLevels.find(
@@ -1124,8 +1128,14 @@ export default function Home() {
     () => [
       ...archetypeDefenses(allSelectedArchetypes, classLevelMap, Object.values(selectedOptions)).filter((defense) => !defense.sourceFeatureId || !selectedArchetypeArmorBenefits.handledFeatureIds.includes(defense.sourceFeatureId)),
       ...selectedArchetypeArmorBenefits.defenses,
+      ...activeEffects.filter((effect) => effect.target === "concealment").map(
+        (effect): ReturnType<typeof archetypeDefenses>[number] => ({
+          kind: "concealment", qualifier: "concealment", value: effect.bonus, base: effect.bonus,
+          label: effect.name, source: effect.name,
+        }),
+      ),
     ],
-    [allSelectedArchetypes, classLevelMap, selectedOptions, selectedArchetypeArmorBenefits.defenses, selectedArchetypeArmorBenefits.handledFeatureIds],
+    [activeEffects, allSelectedArchetypes, classLevelMap, selectedOptions, selectedArchetypeArmorBenefits.defenses, selectedArchetypeArmorBenefits.handledFeatureIds],
   );
   const selectedArchetypeSkillCheckRules = useMemo(
     () => archetypeSkillCheckRules(allSelectedArchetypes, classLevelMap),
@@ -3636,6 +3646,7 @@ export default function Home() {
         ? [applyArchetypes(baseClass, draftArchetypes(entry.classId), classes, spells)]
         : [];
     });
+    draft.selectedOptions = restrictOracleMysterySelection(draftProgressionClasses, draft.selectedOptions);
     const draftEffectiveSpellcastingLevels = effectiveSpellcastingLevels(
       draftProgressionClasses,
       draft.classLevels,
@@ -3812,6 +3823,8 @@ export default function Home() {
       });
     const draftGrantedSpells = withoutExcludedSpells([
       ...draftBloodlineSpells,
+      ...mysteryBonusSpells(spells, mysteryFromOptions(draftClass.id, draft.selectedOptions), draftPrimaryLevel, draftClass.id, draftClass.bonusSpellReplacementClassLevels)
+        .filter((spell) => spell.levelByClass[draftClass.id] <= (draftCasting?.maximumSpellLevel ?? 0)),
       ...draftPatronSpells,
       ...draftOptionSpells,
       ...spellsFromAdditions(spells, draftClass.bonusSpellAdditions, draftClass.id, draftCasting?.maximumSpellLevel ?? 0),

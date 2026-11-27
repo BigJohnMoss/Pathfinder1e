@@ -1126,6 +1126,7 @@ export function normalizeCharacterDraft(
                 "weaponDamageRolls",
                 "damageReduction",
                 "spellResistance",
+                "concealment",
                 "casterLevel",
                 "spellSaveDc",
                 "exploitEffectiveLevel",
@@ -1148,8 +1149,8 @@ export function normalizeCharacterDraft(
                 "enemy",
               ].includes(effect.target) &&
               Number.isInteger(effect.bonus) &&
-              effect.bonus >= -20 &&
-              effect.bonus <= (effect.target === "spellResistance" ? 99 : 20) &&
+              effect.bonus >= (effect.target === "concealment" ? 0 : -20) &&
+              effect.bonus <= (effect.target === "concealment" ? 100 : effect.target === "spellResistance" ? 99 : 20) &&
               (effect.target !== "allies" ||
                 ((Number.isInteger(effect.fastHealing) &&
                   effect.fastHealing > 0 &&
@@ -1279,9 +1280,12 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
         !progressionKeys.has(feature.progressionKey),
     )
     .map((feature) => {
-      const overridden = overrides.has(feature.id)
-        ? { ...feature, summary: overrides.get(feature.id).summary }
-        : feature;
+      const override = overrides.get(feature.id);
+      const overridden = override ? {
+        ...feature,
+        summary: override.summary,
+        ...(override.optionChoiceIds ? { optionChoiceIds: override.optionChoiceIds } : {}),
+      } : feature;
       return feature.progressionKey === "druid-wild-shape" &&
         archetype.wildShapeLevelAdjustment
         ? {
