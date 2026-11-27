@@ -102,6 +102,7 @@ export type ConditionalSkillModifier = {
   bonus: number;
   condition: string;
   source: string;
+  selfCheck?: { id: string; skill: string; label: string };
   sharedCheck?: { id: string; skill: string; label: string; recipient: string };
 };
 export function archetypeSkillBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>, abilityModifiers?: Partial<Record<AbilityName, number>>): { skillBonuses: Record<string, number>; conditionalModifiers: ConditionalSkillModifier[] };

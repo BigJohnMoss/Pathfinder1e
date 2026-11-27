@@ -230,6 +230,7 @@ export interface ClassFeatureOccurrence {
   requiredSpellLevel?: number;
   maximumSpellLevel?: number;
   spellChoiceClassId?: string;
+  spellChoiceLevelIncrease?: number;
   resourceActions?: Array<{
     id: string;
     label: string;
@@ -633,6 +634,7 @@ export interface CharacterClass {
   };
   skillRanksPerLevel: number;
   classSkills: string[];
+  optionClassSkillExclusions?: string[];
   source: SourceRef;
   features: ClassFeatureOccurrence[];
   spellListAdditions?: Record<string, number>;
@@ -710,6 +712,7 @@ export interface CharacterArchetype {
     features: ClassFeatureOccurrence[];
   }>;
   featureOverrides?: Array<{ featureId: string; summary: string }>;
+  optionClassSkillExclusions?: string[];
   spellListAdditions?: Record<string, number>;
   spellListExclusions?: string[];
   spellListClassId?: string;
@@ -842,6 +845,7 @@ export interface CharacterArchetype {
     abilityModifier?: AbilityName;
     bonusByLevel?: Array<{ level: number; bonus: number }>;
     condition?: string;
+    checkLabel?: string;
     sharedCheck?: { label: string; recipient: string };
   }>;
   skillAbilityOverrides?: Array<{
@@ -1310,6 +1314,8 @@ export interface CharacterOptionGroup {
 
 export interface CharacterSpell {
   id: string;
+  baseSpellId?: string;
+  bonusSpellSource?: string;
   name: string;
   school?: string;
   schools?: string[];

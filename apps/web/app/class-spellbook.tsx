@@ -4,6 +4,7 @@ import { useEffect, useMemo } from "react";
 import { optionGroups } from "./character-catalogue";
 import { Spellbook } from "./spellbook";
 import { classSpellAutomation } from "./archetype-spell-automation";
+import { spellsFromAdjustedChoices } from "./archetype-spell-choices";
 import { SpontaneousSpellbook } from "./spontaneous-spellbook";
 import { abilityModifiers as calculateAbilityModifiers, arcaneReservoir, archetypeSpellModifiers, normalizeSpellSlotUses, spellSaveDC, spellcastingProgression, spellcastingTradition, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
 import { normalizePreparedSpellsWithOpposition } from "../../../packages/engine/src/wizard-opposition-preparation.js";
@@ -52,6 +53,7 @@ export function ClassSpellbook({
   characterClass,
   spells,
   classLevel,
+  earnedClassLevel = classLevel,
   abilities,
   selectedOptions,
   spellTraitBonuses = {},
@@ -72,6 +74,7 @@ export function ClassSpellbook({
   characterClass: CharacterClass;
   spells: CharacterSpell[];
   classLevel: number;
+  earnedClassLevel?: number;
   abilities: AbilityScores;
   selectedOptions: Record<string, string>;
   spellTraitBonuses?: SpellTraitBonuses;
@@ -122,11 +125,18 @@ export function ClassSpellbook({
       .flatMap((feature) => optionGroups.find((group) => group.id === feature.optionGroupId)?.options ?? [])
       .filter((option) => option.minimumLevel <= classLevel),
   ].filter((option) => option.spellId && option.classIds.includes(characterClass.id)), [characterClass.features, characterClass.id, classLevel, selectedOptions, spells]);
-  const grantedSpells = useMemo(() => characterClass.id === "sorcerer" && casting
-    ? bloodlineBonusSpells(spells, bloodline, classLevel, characterClass.id).filter((spell) => spell.levelByClass[characterClass.id] <= maximumSpellLevel)
-    : characterClass.id === "oracle" && casting
-      ? mysteryBonusSpells(spells, mystery, classLevel, characterClass.id).filter((spell) => spell.levelByClass[characterClass.id] <= maximumSpellLevel)
-      : [], [bloodline, casting, characterClass.id, classLevel, maximumSpellLevel, mystery]);
+  const grantedSpells = useMemo(() => {
+    if (!casting) return [];
+    const classGrants = characterClass.id === "sorcerer"
+      ? bloodlineBonusSpells(spells, bloodline, classLevel, characterClass.id)
+      : characterClass.id === "oracle"
+        ? mysteryBonusSpells(spells, mystery, earnedClassLevel, characterClass.id, characterClass.bonusSpellReplacementClassLevels)
+        : [];
+    return [
+      ...classGrants.filter((spell) => spell.levelByClass[characterClass.id] <= maximumSpellLevel),
+      ...spellsFromAdjustedChoices(spells, characterClass, earnedClassLevel, maximumSpellLevel, selectedOptions),
+    ];
+  }, [bloodline, casting, characterClass, classLevel, earnedClassLevel, maximumSpellLevel, mystery, selectedOptions, spells]);
   const allowedGrantedSpells = useMemo(() => grantedSpells.filter((spell) => !excludedSpellIds.has(spell.id)), [excludedSpellIds, grantedSpells]);
   const optionSpells = useMemo(() => spellOptions.flatMap((option) => {
     const spell = spells.find((candidate) => candidate.id === option.spellId);

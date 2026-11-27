@@ -566,6 +566,13 @@ export function archetypeSkillBonuses(archetypes = [], classLevels = {}, ability
         condition: adjustment.condition,
         bonus,
         source: archetype.name,
+        ...(adjustment.checkLabel ? {
+          selfCheck: {
+            id: `${archetype.id}:${adjustment.sourceFeatureId}:${adjustment.skill}`,
+            skill: adjustment.skill,
+            label: adjustment.checkLabel,
+          },
+        } : {}),
         ...(adjustment.sharedCheck ? {
           sharedCheck: {
             id: `${archetype.id}:${adjustment.sourceFeatureId}:${adjustment.skill}`,
@@ -1417,6 +1424,9 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     optionGroupAugmentations: [
       ...(characterClass.optionGroupAugmentations ?? []),
       ...(archetype.optionGroupAugmentations ?? []),
+    ],
+    optionClassSkillExclusions: [
+      ...new Set([...(characterClass.optionClassSkillExclusions ?? []), ...(archetype.optionClassSkillExclusions ?? [])]),
     ],
     fixedOptionGrants: [
       ...(characterClass.fixedOptionGrants ?? []),

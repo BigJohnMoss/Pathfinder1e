@@ -36,6 +36,22 @@ test("full archetypes never report manual effects", () => {
   assert.deepEqual(archetypeAutomationSummary({ mechanicalCoverage: "full", replacements: [{ features: [{ name: "Feature", level: 1 }] }] }).manual, []);
 });
 
+test("Ancient Lorekeeper replaces mystery grants without removing its mystery or revelations", () => {
+  const source = catalogueArchetypes.find(({ id }) => id === "oracle-ancient-lorekeeper");
+  const base = JSON.parse(readFileSync(new URL("../packages/data/src/classes/oracle.json", import.meta.url), "utf8"));
+  const applied = applyArchetype(base, source, [], catalogueSpells);
+  assert.ok(applied.features.some((feature) => feature.id === "oracle-mystery-1"));
+  assert.ok(applied.features.some((feature) => feature.id === "oracle-revelation-1"));
+  assert.ok(!applied.features.some((feature) => feature.id === "oracle-mystery-spell-2"));
+  assert.deepEqual(applied.optionClassSkillExclusions, ["oracle-mysteries"]);
+  assert.deepEqual(applied.features.filter((feature) => feature.spellChoiceLevelIncrease).map((feature) => [feature.level, feature.maximumSpellLevel]),
+    [[2, 1], [4, 2], [6, 3], [8, 4], [10, 5], [12, 6], [14, 7], [16, 8], [18, 9]]);
+  assert.deepEqual(applied.bonusSpellReplacementClassLevels, [2, 4, 6, 8, 10, 12, 14, 16, 18]);
+  const bonuses = archetypeSkillBonuses([source], { oracle: 5, fighter: 3 });
+  assert.equal(bonuses.conditionalModifiers.filter(({ selfCheck, bonus }) => selfCheck && bonus === 2).length, 10);
+  assert.deepEqual(bonuses.skillBonuses, {});
+});
+
 test("Metamagic Rager spends scaled bloodrage rounds and exposes metamagic bloodline feats", () => {
   const source = catalogueArchetypes.find(({ id }) => id === "bloodrager-metamagic-rager");
   const action = source.replacements.flatMap(({ features }) => features)
