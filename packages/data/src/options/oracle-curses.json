@@ -2,6 +2,7 @@
   "id": "oracle-curses",
   "name": "Oracle Curses",
   "classIds": ["oracle"],
+  "uniqueAcrossSelections": true,
   "optionDefaults": {
     "groupId": "oracle-curses",
     "classIds": ["oracle"],

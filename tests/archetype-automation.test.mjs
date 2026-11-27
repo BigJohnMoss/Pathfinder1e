@@ -1476,8 +1476,8 @@ test("fixed Oracle bonus-spell replacements grant resolved spells at exact class
   const automated = catalogueArchetypes
     .map((archetype) => ({ archetype, rules: inferArchetypeSpellAdditions(archetype, catalogueSpells) }))
     .filter(({ archetype, rules }) => archetype.classId === "oracle" && rules.bonusSpellReplacementClassLevels?.length);
-  assert.equal(automated.length, 16);
-  assert.equal(automated.reduce((total, { rules }) => total + rules.spellGrants.length, 0), 95);
+  assert.equal(automated.length, 18);
+  assert.equal(automated.reduce((total, { rules }) => total + rules.spellGrants.length, 0), 105);
   for (const { archetype, rules } of automated) {
     assert.equal(archetype.classId, "oracle");
     assert.ok(rules.spellGrants.every((grant) => grant.mode === "known" && grant.minimumClassLevel >= 1 && grant.minimumClassLevel <= 18));
@@ -1747,7 +1747,7 @@ test("class-skill inference completes terse lists, split rules, and altered rank
   const elvenKnowledge = inferArchetypeSkillBonusAdjustments(generated("oracle-ancient-lorekeeper"));
   assert.equal(elvenKnowledge.length, 10);
   assert.ok(elvenKnowledge.every((adjustment) => adjustment.levelDivisor === 2 && /regarding elves/i.test(adjustment.condition)));
-  assert.ok(archetypeAutomationSummary(generated("oracle-dual-cursed-oracle")).manual.some((item) => item.startsWith("Class Skills (level")), "dynamic mystery skill suppression remains manual");
+  assert.ok(!archetypeAutomationSummary(generated("oracle-dual-cursed-oracle")).manual.some((item) => item.startsWith("Class Skills (level")), "the dual-cursed archetype suppresses its mystery’s class skills");
 });
 
 test("standard archetype rules text applies unannotated proficiency changes", () => {

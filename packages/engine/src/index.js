@@ -1599,6 +1599,10 @@ function inferArchetypeClassSkillDetails(archetype) {
     ? [...(archetype.classSkillAdditions ?? []), ...(archetype.classSkillRemovals ?? [])]
     : [...inferred.additions, ...inferred.removals, ...inferred.replacement]);
   const sentenceCoverage = sentenceRecords.flatMap(({ feature, sentence, sentenceIndex, classSkillFeature }) => {
+    if (classSkillFeature && archetype.optionClassSkillExclusions?.includes("oracle-mysteries") &&
+      /\bgains no additional class skills from (?:her|his|their) mystery\.?$/i.test(sentence)) {
+      return [{ sourceFeatureId: feature.id, sentenceIndex }];
+    }
     const mentionedSkills = [...new Set(namedArchetypeSkills(sentence, appliedSkills))];
     if (!mentionedSkills.length || !mentionedSkills.every(skill => appliedSkills.has(skill))) return [];
     if (!classSkillFeature && !/class skills?/i.test(sentence)) return [];

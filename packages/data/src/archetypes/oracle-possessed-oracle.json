@@ -8,7 +8,6 @@
     {
       "featureIds": [
         "oracle-curse-1",
-        "oracle-mystery-1",
         "oracle-revelation-1"
       ],
       "features": [
@@ -23,7 +22,10 @@
           "id": "oracle-possessed-oracle-oracle-s-curse-1",
           "name": "Oracle’s Curse",
           "level": 1,
-          "type": "archetype",
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "oracle-curses",
+          "optionChoiceIds": ["oracle-curse-haunted", "oracle-curse-tongues"],
           "summary": "A possessed oracle must choose the haunted or tongues curse at 1st level."
         },
         {
@@ -35,14 +37,36 @@
         },
         {
           "id": "oracle-possessed-oracle-revelations-1",
-          "name": "Revelations",
+          "name": "Two Minds (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "A possessed oracle must take the following revelation at 1st level. Two Minds (Su) : You gain a +2 bonus on Will saves against enchantment spells or effects. At 7th level, you may reroll a failed Will save once per day as an immediate action. You must take the second result, even if it is worse."
+          "summary": "You gain a +2 bonus on Will saves against enchantment spells or effects. At 7th level, you may reroll a failed Will save once per day as an immediate action. You must take the second result, even if it is worse.",
+          "resourceActions": [{
+            "id": "possessed-oracle-reroll",
+            "label": "Reroll a failed Will save",
+            "classId": "oracle",
+            "minimumLevel": 7,
+            "resourceId": "possessedOracleTwoMinds",
+            "cost": 1,
+            "actionTypeByLevel": [{ "level": 7, "actionType": "immediate" }],
+            "confirmations": [{ "id": "failed-save", "label": "I failed a Will save", "requiredForActivation": true }],
+            "rerollAction": { "kind": "d20", "label": "New Will save roll" },
+            "summary": "Reroll the d20 for a failed Will save and use the new roll even if it is lower."
+          }]
         }
       ]
     }
   ],
+  "modifiedFeatureIds": ["oracle-mystery-1"],
+  "featureOverrides": [{ "featureId": "oracle-mystery-1", "summary": "Choose a mystery for its class skills, remaining bonus spells, revelations, and final revelation." }],
+  "resourceAdjustments": [{
+    "resourceId": "possessedOracleTwoMinds",
+    "label": "Two Minds",
+    "unit": "use",
+    "minimumLevel": 7,
+    "base": 1,
+    "dedicatedAction": true
+  }],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
@@ -50,6 +74,6 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The standard archetype curse choices, bonus spells, and Two Minds reroll are available. Track the selected curse’s individual effects and later published curse substitutions at the table."
   ]
 }

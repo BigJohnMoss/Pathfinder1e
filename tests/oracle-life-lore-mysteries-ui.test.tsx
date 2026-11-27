@@ -115,6 +115,74 @@ test("Enlightened Philosopher applies Charisma to all three saves at level 20", 
   assert.deepEqual(saves.map(saveTotal).map((total, index) => capstoneSaves[index] - total), [4, 4, 4]);
 });
 
+test("Dual-Cursed Oracle tracks distinct curses and its optional revelations", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "oracle");
+  fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "18" } });
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "oracle-dual-cursed-oracle");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const curse = screen.getByLabelText<HTMLSelectElement>("Progressing Curse level 1");
+  const fixedCurse = screen.getByLabelText<HTMLSelectElement>("Non-progressing Curse level 1");
+  await user.selectOptions(curse, "oracle-curse-haunted");
+  assert.ok(![...fixedCurse.options].some(({ value }) => value === "oracle-curse-haunted"));
+  await user.selectOptions(fixedCurse, "oracle-curse-lame");
+
+  await user.selectOptions(screen.getByLabelText("Mystery level 1"), "oracle-mystery-lore");
+  const firstRevelation = screen.getByLabelText<HTMLSelectElement>("Revelation level 1");
+  const newRevelation = screen.getByLabelText<HTMLSelectElement>("Revelation level 5");
+  assert.ok(![...firstRevelation.options].some(({ value }) => value === "oracle-revelation-dual-cursed-fortune"));
+  await user.selectOptions(firstRevelation, "oracle-revelation-dual-cursed-misfortune");
+  await user.selectOptions(newRevelation, "oracle-revelation-dual-cursed-fortune");
+  assert.ok(screen.getByRole("button", { name: "Force a d20 reroll with Misfortune" }));
+  const fortune = screen.getByRole<HTMLButtonElement>("button", { name: "Reroll a d20 with Fortune" });
+  assert.ok(fortune.disabled);
+  await user.click(screen.getByLabelText("The result of my roll has not been revealed"));
+  await user.click(fortune);
+  assert.ok(screen.getByText(/You must keep this result/));
+  assert.ok(fortune.disabled);
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "13" } });
+  assert.ok(screen.getByLabelText("Revelation level 13"));
+
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  await user.type(screen.getByPlaceholderText("Name or effect"), "Ill Omen");
+  assert.ok(screen.getByRole("button", { name: "Cast Ill Omen" }));
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.equal(screen.getByLabelText<HTMLSelectElement>("Non-progressing Curse level 1").value, "oracle-curse-lame");
+  assert.equal(screen.getByLabelText<HTMLSelectElement>("Revelation level 5").value, "oracle-revelation-dual-cursed-fortune");
+});
+
+test("Possessed Oracle casts its replacement spells and rerolls a failed Will save once", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "oracle");
+  fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "18" } });
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "8" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "oracle-possessed-oracle");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const curse = screen.getByLabelText<HTMLSelectElement>("Oracle’s Curse level 1");
+  assert.deepEqual([...curse.options].map(({ value }) => value).filter(Boolean), ["oracle-curse-haunted", "oracle-curse-tongues"]);
+  await user.selectOptions(curse, "oracle-curse-tongues");
+  await user.selectOptions(screen.getByLabelText("Mystery level 1"), "oracle-mystery-life");
+  await user.selectOptions(screen.getByLabelText("Revelation level 3"), "oracle-revelation-healing-hands");
+  assert.equal(screen.queryByLabelText("Revelation level 1"), null);
+  const reroll = screen.getByRole<HTMLButtonElement>("button", { name: "Reroll a failed Will save" });
+  assert.ok(reroll.disabled);
+  await user.click(screen.getByLabelText("I failed a Will save"));
+  await user.click(reroll);
+  assert.ok(screen.getByText(/New Will save roll.*You must keep this result/));
+  assert.ok(reroll.disabled);
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.ok(screen.getByText("against enchantment spells or effects · Possessed Oracle"));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  await user.type(screen.getByPlaceholderText("Name or effect"), "Sleepwalk");
+  assert.ok(screen.getByRole("button", { name: "Cast Sleepwalk" }));
+});
+
 for (const scenario of [
   {
     archetype: "oracle-seer",

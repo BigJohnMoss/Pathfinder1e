@@ -217,7 +217,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
         .map((other) => selectedOptions[other.id])
         .filter((id): id is string => Boolean(id));
       return choice.options.filter((option) =>
-        option.mysteryId === selectedOracleMystery?.id
+        (option.mysteryId ? option.mysteryId === selectedOracleMystery?.id : (option.minimumLevel ?? 1) <= choice.level)
         && !selectedByOtherRevelation.includes(option.id)
         && !option.incompatibleOptionIds?.some((id) => selectedOptionIds.includes(id))
       );
