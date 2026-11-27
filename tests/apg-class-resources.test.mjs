@@ -22,6 +22,23 @@ test("character normalization keeps only resource counters for selected classes"
   assert.deepEqual(normalized.classResourceUsesByClass, { alchemist: { bombs: 2 } });
 });
 
+test("legacy Tactical Leader saves keep the Tactician uses already spent", () => {
+  const legacyId = "archetype-inquisitor-tactical-leader-tactician-ex-3";
+  const draft = {
+    classId: "inquisitor",
+    level: 9,
+    baseAbilities: { strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 12, charisma: 10 },
+    classResourceUsesByClass: { inquisitor: { judgments: 1, [legacyId]: 2 } },
+  };
+  const normalized = normalizeCharacterDraft(draft, { classIds: ["inquisitor"] });
+  assert.deepEqual(normalized.classResourceUsesByClass, { inquisitor: { judgments: 1, tacticalLeaderTactician: 2 } });
+  assert.equal(draft.classResourceUsesByClass.inquisitor[legacyId], 2);
+
+  draft.classResourceUsesByClass.inquisitor.tacticalLeaderTactician = 0;
+  const alreadyMigrated = normalizeCharacterDraft(draft, { classIds: ["inquisitor"] });
+  assert.deepEqual(alreadyMigrated.classResourceUsesByClass, { inquisitor: { judgments: 1, tacticalLeaderTactician: 0 } });
+});
+
 test("APG resource persistence drops unknown classes and clamps overspending", () => {
   assert.deepEqual(normalizeClassResourcesByClass({
     alchemist: { bombs: 69, unknown: 4 },
