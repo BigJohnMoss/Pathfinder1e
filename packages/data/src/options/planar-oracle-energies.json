@@ -1,0 +1,23 @@
+{
+  "id": "planar-oracle-energies",
+  "name": "Planar Affinity Energy",
+  "classIds": ["oracle"],
+  "optionDefaults": {
+    "groupId": "planar-oracle-energies",
+    "classIds": ["oracle"],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Ultimate Magic",
+      "page": 59,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Planar%20Oracle"
+    }
+  },
+  "options": [
+    { "id": "planar-oracle-energy-acid", "name": "Acid", "benefit": "Gain resistance and eventually immunity to acid through your planar affinity." },
+    { "id": "planar-oracle-energy-cold", "name": "Cold", "benefit": "Gain resistance and eventually immunity to cold through your planar affinity." },
+    { "id": "planar-oracle-energy-electricity", "name": "Electricity", "benefit": "Gain resistance and eventually immunity to electricity through your planar affinity." },
+    { "id": "planar-oracle-energy-fire", "name": "Fire", "benefit": "Gain resistance and eventually immunity to fire through your planar affinity." },
+    { "id": "planar-oracle-energy-sonic", "name": "Sonic", "benefit": "Gain resistance and eventually immunity to sonic through your planar affinity." }
+  ]
+}

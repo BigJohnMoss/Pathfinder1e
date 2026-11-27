@@ -563,6 +563,18 @@ for (const [index, url] of archetypeUrls.entries()) {
     if (rule?.condition !== undefined && (typeof rule.condition !== "string" || !rule.condition.trim() || rule.condition.length > 250)) errors.push(`${prefix} has an invalid condition`);
     for (const flag of ["allowsStress", "trainedOnly", "partialFeature"]) if (rule?.[flag] !== undefined && typeof rule[flag] !== "boolean") errors.push(`${prefix} ${flag} must be boolean`);
   }
+  if (archetype.saveBonusAdjustments !== undefined && (!Array.isArray(archetype.saveBonusAdjustments) || archetype.saveBonusAdjustments.length === 0)) errors.push(`${file}: saveBonusAdjustments must be a non-empty array`);
+  for (const adjustment of archetype.saveBonusAdjustments ?? []) {
+    const prefix = `${file}: save bonus adjustment`;
+    if (adjustment?.sourceFeatureId !== undefined && !archetype.replacements?.some(replacement => replacement.features?.some(feature => feature.id === adjustment.sourceFeatureId))) errors.push(`${prefix} references unknown sourceFeatureId ${adjustment.sourceFeatureId}`);
+    const saves = adjustment?.saveTargets;
+    if (!Array.isArray(saves) || !saves.length || new Set(saves).size !== saves.length || saves.some(save => !["fortitude", "reflex", "will"].includes(save))) errors.push(`${prefix} has invalid saveTargets`);
+    if (typeof adjustment?.label !== "string" || !adjustment.label.trim() || !Number.isInteger(adjustment?.base)) errors.push(`${prefix} requires a label and integer base`);
+    if (adjustment?.minimumLevel !== undefined && (!Number.isInteger(adjustment.minimumLevel) || adjustment.minimumLevel < 1 || adjustment.minimumLevel > 20)) errors.push(`${prefix} has an invalid minimumLevel`);
+    if (adjustment?.maximumLevel !== undefined && (!Number.isInteger(adjustment.maximumLevel) || adjustment.maximumLevel < (adjustment.minimumLevel ?? 1) || adjustment.maximumLevel > 20)) errors.push(`${prefix} has an invalid maximumLevel`);
+    if (adjustment?.abilityModifier !== undefined && !["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"].includes(adjustment.abilityModifier)) errors.push(`${prefix} has an invalid abilityModifier`);
+    if (adjustment?.condition !== undefined && (typeof adjustment.condition !== "string" || !adjustment.condition.trim())) errors.push(`${prefix} has an invalid condition`);
+  }
   if (archetype.defenseAdjustments !== undefined && (!Array.isArray(archetype.defenseAdjustments) || archetype.defenseAdjustments.length === 0)) errors.push(`${file}: defenseAdjustments must be a non-empty array`);
   for (const adjustment of archetype.defenseAdjustments ?? []) {
     const prefix = `${file}: defense adjustment`;
@@ -638,6 +650,9 @@ for (const [index, url] of archetypeUrls.entries()) {
   if (archetype.optionClassSkillExclusions !== undefined) {
     const groups = archetype.optionClassSkillExclusions;
     if (!Array.isArray(groups) || !groups.length || new Set(groups).size !== groups.length || groups.some((group) => !groupIds.has(group))) errors.push(`${file}: optionClassSkillExclusions must contain distinct existing option groups`);
+  }
+  for (const adjustment of archetype.defenseAdjustments ?? []) {
+    if (adjustment?.requiredOptionId !== undefined && !optionIds.has(adjustment.requiredOptionId)) errors.push(`${file}: defense adjustment references missing option ${adjustment.requiredOptionId}`);
   }
   for (const augmentation of archetype.optionGroupAugmentations ?? []) {
     if (!groupIds.has(augmentation.targetGroupId)) errors.push(`${file}: option group augmentation references missing target group ${augmentation.targetGroupId}`);

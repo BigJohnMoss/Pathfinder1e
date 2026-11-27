@@ -818,6 +818,16 @@ export interface CharacterArchetype {
     abilityModifier?: AbilityName;
     bonusByLevel?: Array<{ level: number; bonus: number }>;
   }>;
+  saveBonusAdjustments?: Array<{
+    sourceFeatureId?: string;
+    label: string;
+    saveTargets: Array<"fortitude" | "reflex" | "will">;
+    base: number;
+    minimumLevel?: number;
+    maximumLevel?: number;
+    abilityModifier?: AbilityName;
+    condition?: string;
+  }>;
   abilityScoreAdjustments?: Array<{
     sourceFeatureId?: string;
     label: string;
@@ -895,6 +905,7 @@ export interface CharacterArchetype {
     usesCharacterLevel?: boolean;
     bonusByLevel?: Array<{ level: number; bonus: number }>;
     qualifier: string;
+    requiredOptionId?: string;
     condition?: string;
     partialFeature?: boolean;
   }>;

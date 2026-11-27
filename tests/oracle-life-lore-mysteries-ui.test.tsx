@@ -6,6 +6,7 @@ import { JSDOM } from "jsdom";
 let render: typeof import("@testing-library/react").render;
 let screen: typeof import("@testing-library/react").screen;
 let cleanup: typeof import("@testing-library/react").cleanup;
+let fireEvent: typeof import("@testing-library/react").fireEvent;
 let waitFor: typeof import("@testing-library/react").waitFor;
 let userEvent: typeof import("@testing-library/user-event").default;
 let Home: typeof import("../apps/web/app/page").default;
@@ -15,7 +16,7 @@ test.before(async () => {
   Object.assign(globalThis, { window: dom.window, document: dom.window.document, HTMLElement: dom.window.HTMLElement, localStorage: dom.window.localStorage });
   Object.defineProperty(globalThis, "navigator", { configurable: true, value: dom.window.navigator });
   Object.assign(globalThis, { React });
-  ({ render, screen, cleanup, waitFor } = await import("@testing-library/react"));
+  ({ render, screen, cleanup, fireEvent, waitFor } = await import("@testing-library/react"));
   userEvent = (await import("@testing-library/user-event")).default;
   Home = (await import("../apps/web/app/page")).default;
 });
@@ -60,6 +61,58 @@ test("Life and Lore expose grants, level gates, switching, and persistence", asy
   await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.equal(selectFor("Mystery").value, "oracle-mystery-lore");
   assert.equal(selectFor("Revelation", 0).value, "oracle-revelation-arcane-archivist");
+});
+
+test("Planar Oracle keeps its mystery and persists the energy type through the final revelation", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "oracle");
+  const level = screen.getByLabelText("Level");
+  fireEvent.change(level, { target: { value: "11" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "oracle-planar-oracle");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  await user.selectOptions(screen.getByLabelText("Mystery level 1"), "oracle-mystery-lore");
+  await user.selectOptions(screen.getByLabelText("Revelation level 11"), "oracle-revelation-arcane-archivist");
+  assert.equal(screen.queryByLabelText("Revelation level 3"), null);
+  const affinity = screen.getByLabelText("Planar Affinity level 1");
+  await user.selectOptions(affinity, "planar-oracle-energy-fire");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.ok(screen.getByText("Fire resistance 20"));
+  fireEvent.change(level, { target: { value: "20" } });
+  assert.equal(screen.queryByText("Fire resistance 20"), null);
+  assert.ok(screen.getByText("Immune to fire"));
+  assert.ok(screen.getByText("DR 10/magic"));
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  await waitFor(() => assert.ok(screen.getByText("Immune to fire")));
+});
+
+test("Enlightened Philosopher applies Charisma to all three saves at level 20", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "oracle");
+  await user.selectOptions(screen.getByLabelText("Alignment"), "lawful-neutral");
+  fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "18" } });
+  const level = screen.getByLabelText("Level");
+  fireEvent.change(level, { target: { value: "19" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "oracle-enlightened-philosopher");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  await user.selectOptions(screen.getByLabelText("Mystery level 1"), "oracle-mystery-lore");
+  await user.selectOptions(screen.getByLabelText("Revelation level 1"), "oracle-revelation-lore-keeper");
+  assert.equal(screen.queryByLabelText("Revelation level 7"), null);
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.equal(screen.queryByText(/Immune to confusion/), null);
+  await user.click(screen.getByRole("tab", { name: "Basic info" }));
+  const saveTotal = (save: string) => Number(screen.getByText(save, { selector: ".summary span" }).closest("article")?.querySelector("strong")?.textContent);
+  const saves = ["Fortitude", "Reflex", "Will"];
+  fireEvent.change(level, { target: { value: "20" } });
+  const capstoneSaves = saves.map(saveTotal);
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.ok(screen.getByText(/Immune to confusion/));
+  await user.click(screen.getByRole("button", { name: "Remove Enlightened Philosopher" }));
+  await user.click(screen.getByRole("tab", { name: "Basic info" }));
+  assert.deepEqual(saves.map(saveTotal).map((total, index) => capstoneSaves[index] - total), [4, 4, 4]);
 });
 
 for (const scenario of [

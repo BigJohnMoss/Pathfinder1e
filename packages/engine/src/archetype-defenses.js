@@ -437,12 +437,14 @@ const valueAtLevel = (adjustment, classLevel, characterLevel) => adjustment.bonu
   ?.filter((step) => step.level <= classLevel)
   .at(-1)?.bonus ?? adjustment.base + (adjustment.levelMultiplier ?? 0) * (adjustment.usesCharacterLevel ? characterLevel : classLevel);
 
-export function archetypeDefenses(archetypes = [], classLevels = {}) {
+export function archetypeDefenses(archetypes = [], classLevels = {}, selectedOptionIds = []) {
   const characterLevel = Object.values(classLevels).reduce((total, level) => total + Math.max(0, Number(level) || 0), 0);
+  const selectedOptions = new Set(selectedOptionIds);
   const defenses = archetypes.flatMap((archetype) => {
     const classLevel = Math.max(0, Number(classLevels[archetype.classId]) || 0);
     return archetypeDefenseAdjustments(archetype)
-      .filter((adjustment) => classLevel >= (adjustment.minimumLevel ?? 1) && classLevel <= (adjustment.maximumLevel ?? 20))
+      .filter((adjustment) => classLevel >= (adjustment.minimumLevel ?? 1) && classLevel <= (adjustment.maximumLevel ?? 20) &&
+        (!adjustment.requiredOptionId || selectedOptions.has(adjustment.requiredOptionId)))
       .map((adjustment) => ({ ...adjustment, value: valueAtLevel(adjustment, classLevel, characterLevel), source: archetype.name }));
   });
   return defenses.filter((defense) =>

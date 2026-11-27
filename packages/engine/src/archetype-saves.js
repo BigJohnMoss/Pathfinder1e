@@ -178,16 +178,20 @@ export function inferArchetypeSaveBonusAdjustments(archetype) {
 }
 
 export function archetypeSaveBonusAdjustments(archetype) {
-  const explicitSaveRows = (archetype?.conditionalModifiers ?? [])
-    .filter((item) => /\bsav(?:e|es|ing throws?)\b/i.test(item.label));
+  const saves = archetype?.saveBonusAdjustments ?? [];
+  const explicitSaveRows = [
+    ...saves,
+    ...(archetype?.conditionalModifiers ?? []).filter((item) => /\bsav(?:e|es|ing throws?)\b/i.test(item.label)),
+  ];
   const explicitSaveFeatureIds = new Set(explicitSaveRows
     .filter((item) => item.sourceFeatureId)
     .map((item) => item.sourceFeatureId));
   const normalized = (value) => String(value ?? "").trim().toLowerCase().replace(/\s+/g, " ");
-  return inferArchetypeSaveBonusAdjustments(archetype).filter((item) =>
+  const inferred = inferArchetypeSaveBonusAdjustments(archetype).filter((item) =>
     !explicitSaveFeatureIds.has(item.sourceFeatureId) &&
     !explicitSaveRows.some((explicit) =>
       normalized(explicit.label) === normalized(item.label) &&
       normalized(explicit.condition) === normalized(item.condition)),
   );
+  return [...saves, ...inferred];
 }

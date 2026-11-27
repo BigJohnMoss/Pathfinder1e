@@ -1101,8 +1101,8 @@ export default function Home() {
     [allSelectedArchetypes, classLevelMap],
   );
   const selectedArchetypeSavingThrowBonuses = useMemo(
-    () => archetypeSavingThrowBonuses(allSelectedArchetypes, classLevelMap),
-    [allSelectedArchetypes, classLevelMap],
+    () => archetypeSavingThrowBonuses(allSelectedArchetypes, classLevelMap, baseCombat.abilityModifiers),
+    [allSelectedArchetypes, classLevelMap, baseCombat.abilityModifiers],
   );
   const selectedArchetypeCombatBonuses = useMemo(
     () => archetypeCombatBonuses(allSelectedArchetypes, classLevelMap),
@@ -1122,10 +1122,10 @@ export default function Home() {
   );
   const selectedArchetypeDefenses = useMemo(
     () => [
-      ...archetypeDefenses(allSelectedArchetypes, classLevelMap).filter((defense) => !defense.sourceFeatureId || !selectedArchetypeArmorBenefits.handledFeatureIds.includes(defense.sourceFeatureId)),
+      ...archetypeDefenses(allSelectedArchetypes, classLevelMap, Object.values(selectedOptions)).filter((defense) => !defense.sourceFeatureId || !selectedArchetypeArmorBenefits.handledFeatureIds.includes(defense.sourceFeatureId)),
       ...selectedArchetypeArmorBenefits.defenses,
     ],
-    [allSelectedArchetypes, classLevelMap, selectedArchetypeArmorBenefits.defenses, selectedArchetypeArmorBenefits.handledFeatureIds],
+    [allSelectedArchetypes, classLevelMap, selectedOptions, selectedArchetypeArmorBenefits.defenses, selectedArchetypeArmorBenefits.handledFeatureIds],
   );
   const selectedArchetypeSkillCheckRules = useMemo(
     () => archetypeSkillCheckRules(allSelectedArchetypes, classLevelMap),
