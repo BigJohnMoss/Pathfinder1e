@@ -477,13 +477,13 @@ export function archetypeInitiativeBonus(archetypes = [], classLevels = {}) {
   }, 0);
 }
 
-export function archetypeSavingThrowBonuses(archetypes = [], classLevels = {}) {
+export function archetypeSavingThrowBonuses(archetypes = [], classLevels = {}, abilityModifiers = {}) {
   const saves = { fortitude: 0, reflex: 0, will: 0 };
   for (const archetype of archetypes ?? []) {
     const level = archetypeLevel(archetype, classLevels);
     for (const adjustment of archetypeSaveBonusAdjustments(archetype)) {
       if (adjustment.condition || !adjustmentAppliesAtLevel(adjustment, level)) continue;
-      const bonus = adjustmentBonusAtLevel(adjustment, level);
+      const bonus = adjustmentBonusAtLevel(adjustment, level) + (abilityModifiers[adjustment.abilityModifier] ?? 0);
       for (const save of adjustment.saveTargets) saves[save] += bonus;
     }
   }

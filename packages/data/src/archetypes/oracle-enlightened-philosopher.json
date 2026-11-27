@@ -7,13 +7,7 @@
   "replacements": [
     {
       "featureIds": [
-        "oracle-mystery-1",
         "oracle-revelation-7",
-        "oracle-revelation-1",
-        "oracle-revelation-3",
-        "oracle-revelation-11",
-        "oracle-revelation-15",
-        "oracle-revelation-19",
         "oracle-final-revelation-20"
       ],
       "features": [
@@ -47,21 +41,43 @@
         },
         {
           "id": "oracle-enlightened-philosopher-revelations-7",
-          "name": "Revelations",
+          "name": "Mental Acuity (Ex)",
           "level": 7,
           "type": "archetype",
-          "summary": "An enlightened philosopher must take the following revelation at 7th level. Mental Acuity (Ex) : As the lore mystery revelation."
+          "summary": "Gain a +1 inherent bonus to Intelligence at 7th level. Increase it by 1 for every three additional oracle levels."
         },
         {
           "id": "oracle-enlightened-philosopher-final-revelation-1",
           "name": "Final Revelation",
-          "level": 1,
-          "type": "archetype",
+          "level": 20,
+          "type": "capstone",
           "summary": "Upon achieving 20th level, you achieve true enlightenment and become one with the universe. You receive a bonus on all saving throws equal to your Charisma modifier. You become immune to confusion, exhaustion, fatigue, nausea, and sickened effects. You can take 20 on all Knowledge skill checks. Should you die, you are reborn 3 days later as a living example of the summoning of your chosen philosophy (treat as the reincarnate spell). This replaces the final revelation of the oracle’s mystery."
         }
       ]
     }
   ],
+  "modifiedFeatureIds": ["oracle-mystery-1"],
+  "optionClassSkillExclusions": ["oracle-mysteries"],
+  "featureOverrides": [{ "featureId": "oracle-mystery-1", "summary": "Choose a mystery for its first bonus spell and remaining revelations. Enlightened Philosopher supplies its own additional class skills and final revelation." }],
+  "fixedOptionGrants": [{ "sourceFeatureId": "oracle-enlightened-philosopher-revelations-7", "optionGroupId": "oracle-revelations", "optionId": "oracle-revelation-mental-acuity", "minimumLevel": 7, "label": "Mental Acuity" }],
+  "prohibitedOptionIds": ["oracle-revelation-mental-acuity"],
+  "abilityScoreAdjustments": [{
+    "sourceFeatureId": "oracle-enlightened-philosopher-revelations-7",
+    "label": "Mental Acuity",
+    "ability": "intelligence",
+    "minimumLevel": 7,
+    "base": 1,
+    "bonusType": "inherent",
+    "bonusByLevel": [{ "level": 10, "bonus": 2 }, { "level": 13, "bonus": 3 }, { "level": 16, "bonus": 4 }, { "level": 19, "bonus": 5 }]
+  }],
+  "saveBonusAdjustments": [{
+    "sourceFeatureId": "oracle-enlightened-philosopher-final-revelation-1",
+    "label": "Final Revelation",
+    "saveTargets": ["fortitude", "reflex", "will"],
+    "minimumLevel": 20,
+    "base": 0,
+    "abilityModifier": "charisma"
+  }],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
@@ -69,6 +85,6 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The final revelation’s automatic reincarnation after three days is tracked as a descriptive rule."
   ]
 }

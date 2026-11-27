@@ -7,13 +7,7 @@
   "replacements": [
     {
       "featureIds": [
-        "oracle-mystery-1",
         "oracle-revelation-3",
-        "oracle-revelation-1",
-        "oracle-revelation-7",
-        "oracle-revelation-11",
-        "oracle-revelation-15",
-        "oracle-revelation-19",
         "oracle-final-revelation-20"
       ],
       "features": [
@@ -33,20 +27,43 @@
         },
         {
           "id": "oracle-planar-oracle-revelations-1",
-          "name": "Revelations",
+          "name": "Planar Affinity",
           "level": 1,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "planar-oracle-energies",
+          "summary": "Choose one Outer Plane at 1st level and keep that affinity. Select an energy type associated with your plane."
+        },
+        {
+          "id": "oracle-planar-oracle-planar-resistance-3",
+          "name": "Planar Resistance (Su)",
+          "level": 3,
           "type": "archetype",
-          "summary": "At 1st level, you must choose one Outer Plane with which you have an affinity. This choice cannot be changed. A planar oracle must take the following revelation at 3rd level. Planar Resistance (Su) : At 3rd level, you gain energy resistance 10 against one energy type associated with your chosen plane. At 11th level, your energy resistance increases to 20."
+          "summary": "Reduce damage from the energy type you associated with your plane by 10. At 11th oracle level the resistance increases to 20."
         },
         {
           "id": "oracle-planar-oracle-final-revelation-20",
           "name": "Final Revelation",
           "level": 20,
           "type": "archetype",
-          "summary": "At 20th level, you become an extraplanar creature. Choose one outer plane, such as Heaven or the Abyss. You gain superficial physical characteristics as appropriate to natives of your chosen outer plane. For example, if your chosen plane is Heaven, you gain angelic features such as a halo and metallic skin. This change does not alter your Hit Dice, hit points, saving throws, skill points, class skills, or proficiencies. Your type changes to “outsider (extraplanar),” except on your associated plane, where your type is “outsider (native).” In addition, you gain immunity to your associated energy type and gain damage reduction 10/magic. Unlike other outsiders, you can still be brought back from the dead as if you were a member of your previous creature type. This replaces the final revelation of the oracle’s mystery."
+          "summary": "At 20th level, take on the appearance of a native of an Outer Plane. You count as a native outsider on your associated plane and as an extraplanar outsider elsewhere, while keeping your existing class statistics and rules for returning from death. Your Planar Resistance becomes immunity and you gain damage reduction 10/magic. This replaces the final revelation of the oracle’s mystery."
         }
       ]
     }
+  ],
+  "modifiedFeatureIds": ["oracle-mystery-1"],
+  "featureOverrides": [{ "featureId": "oracle-mystery-1", "summary": "Choose a mystery for its class skills and remaining revelations. Planar Oracle supplies its own bonus spells and final revelation." }],
+  "defenseAdjustments": [
+    { "sourceFeatureId": "oracle-planar-oracle-planar-resistance-3", "kind": "energyResistance", "label": "Planar Resistance", "minimumLevel": 3, "maximumLevel": 19, "base": 10, "bonusByLevel": [{ "level": 11, "bonus": 20 }], "qualifier": "acid", "requiredOptionId": "planar-oracle-energy-acid" },
+    { "sourceFeatureId": "oracle-planar-oracle-final-revelation-20", "kind": "immunity", "label": "Final Revelation", "minimumLevel": 20, "base": 0, "qualifier": "acid", "requiredOptionId": "planar-oracle-energy-acid", "partialFeature": true },
+    { "sourceFeatureId": "oracle-planar-oracle-planar-resistance-3", "kind": "energyResistance", "label": "Planar Resistance", "minimumLevel": 3, "maximumLevel": 19, "base": 10, "bonusByLevel": [{ "level": 11, "bonus": 20 }], "qualifier": "cold", "requiredOptionId": "planar-oracle-energy-cold" },
+    { "sourceFeatureId": "oracle-planar-oracle-final-revelation-20", "kind": "immunity", "label": "Final Revelation", "minimumLevel": 20, "base": 0, "qualifier": "cold", "requiredOptionId": "planar-oracle-energy-cold", "partialFeature": true },
+    { "sourceFeatureId": "oracle-planar-oracle-planar-resistance-3", "kind": "energyResistance", "label": "Planar Resistance", "minimumLevel": 3, "maximumLevel": 19, "base": 10, "bonusByLevel": [{ "level": 11, "bonus": 20 }], "qualifier": "electricity", "requiredOptionId": "planar-oracle-energy-electricity" },
+    { "sourceFeatureId": "oracle-planar-oracle-final-revelation-20", "kind": "immunity", "label": "Final Revelation", "minimumLevel": 20, "base": 0, "qualifier": "electricity", "requiredOptionId": "planar-oracle-energy-electricity", "partialFeature": true },
+    { "sourceFeatureId": "oracle-planar-oracle-planar-resistance-3", "kind": "energyResistance", "label": "Planar Resistance", "minimumLevel": 3, "maximumLevel": 19, "base": 10, "bonusByLevel": [{ "level": 11, "bonus": 20 }], "qualifier": "fire", "requiredOptionId": "planar-oracle-energy-fire" },
+    { "sourceFeatureId": "oracle-planar-oracle-final-revelation-20", "kind": "immunity", "label": "Final Revelation", "minimumLevel": 20, "base": 0, "qualifier": "fire", "requiredOptionId": "planar-oracle-energy-fire", "partialFeature": true },
+    { "sourceFeatureId": "oracle-planar-oracle-planar-resistance-3", "kind": "energyResistance", "label": "Planar Resistance", "minimumLevel": 3, "maximumLevel": 19, "base": 10, "bonusByLevel": [{ "level": 11, "bonus": 20 }], "qualifier": "sonic", "requiredOptionId": "planar-oracle-energy-sonic" },
+    { "sourceFeatureId": "oracle-planar-oracle-final-revelation-20", "kind": "immunity", "label": "Final Revelation", "minimumLevel": 20, "base": 0, "qualifier": "sonic", "requiredOptionId": "planar-oracle-energy-sonic", "partialFeature": true }
   ],
   "source": {
     "title": "Archives of Nethys",
@@ -55,6 +72,6 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Planar Resistance and immunity follow the selected energy type. The named plane and the capstone’s creature type, appearance, and resurrection exception are tracked at the table."
   ]
 }

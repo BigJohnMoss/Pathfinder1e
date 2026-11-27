@@ -88,6 +88,18 @@ test("Oracle archetypes keep the mystery chooser when they trade its class skill
   }
 });
 
+test("Oracle resistance and Enlightened Philosopher bonuses advance with oracle levels", () => {
+  const planar = catalogueArchetypes.find(({ id }) => id === "oracle-planar-oracle");
+  const philosopher = catalogueArchetypes.find(({ id }) => id === "oracle-enlightened-philosopher");
+  const cold = "planar-oracle-energy-cold";
+  assert.deepEqual(archetypeDefenses([planar], { oracle: 3 }), []);
+  assert.deepEqual(archetypeDefenses([planar], { oracle: 2, fighter: 15 }, [cold]), []);
+  assert.deepEqual(archetypeDefenses([planar], { oracle: 3 }, [cold]).map(({ kind, qualifier, value }) => [kind, qualifier, value]), [["energyResistance", "cold", 10]]);
+  assert.deepEqual([6, 7, 9, 10, 13, 16, 19].map(oracle => archetypeAbilityScoreBonuses([philosopher], { oracle }).intelligence), [0, 1, 1, 2, 3, 4, 5]);
+  assert.deepEqual(archetypeSavingThrowBonuses([philosopher], { oracle: 19, fighter: 1 }, { charisma: 4 }), { fortitude: 0, reflex: 0, will: 0 });
+  assert.deepEqual(archetypeSavingThrowBonuses([philosopher], { oracle: 20 }, { charisma: 4 }), { fortitude: 4, reflex: 4, will: 4 });
+});
+
 test("Metamagic Rager spends scaled bloodrage rounds and exposes metamagic bloodline feats", () => {
   const source = catalogueArchetypes.find(({ id }) => id === "bloodrager-metamagic-rager");
   const action = source.replacements.flatMap(({ features }) => features)

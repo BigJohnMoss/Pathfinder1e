@@ -80,8 +80,8 @@ export function inferredArchetypeSpellcastingRemovalDetails(archetype?: Characte
 export function archetypeInitiativeBonus(archetypes: CharacterArchetype[], classLevels: Record<string, number>): number;
 export function archetypeInitiativeBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["conditionalModifiers"]>;
 export function inferArchetypeInitiativeBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["conditionalModifiers"]>;
-export function archetypeSavingThrowBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): Record<"fortitude" | "reflex" | "will", number>;
-export function archetypeSaveBonusAdjustments(archetype: CharacterArchetype): Array<NonNullable<CharacterArchetype["conditionalModifiers"]>[number] & { saveTargets: Array<"fortitude" | "reflex" | "will"> }>;
+export function archetypeSavingThrowBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>, abilityModifiers?: Partial<Record<AbilityName, number>>): Record<"fortitude" | "reflex" | "will", number>;
+export function archetypeSaveBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["saveBonusAdjustments"]>;
 export function inferArchetypeSaveBonusAdjustments(archetype: CharacterArchetype): Array<NonNullable<CharacterArchetype["conditionalModifiers"]>[number] & { saveTargets: Array<"fortitude" | "reflex" | "will"> }>;
 export function archetypeCombatBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): { attackRolls: number; damageRolls: number; armorClass: Record<"normal" | "touch" | "flatFooted", number>; combatManeuverBonus: number; combatManeuverDefense: number };
 export function archetypeCombatModifierAdjustments(archetype: CharacterArchetype): Array<NonNullable<CharacterArchetype["conditionalModifiers"]>[number] & { combatTargets: Array<"attackRolls" | "damageRolls" | "armorClass" | "cmb" | "cmd">; bonusType?: string; armorClassParts?: Array<"normal" | "touch" | "flatFooted"> }>;
@@ -94,7 +94,7 @@ export function inferArchetypeLandSpeedAdjustments(archetype: CharacterArchetype
 export function archetypeDefenseAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["defenseAdjustments"]>;
 export function archetypeArmorConditionedBenefits(archetypes: CharacterArchetype[], classLevels: Record<string, number>, context?: { armorCategory?: "none" | "light" | "medium" | "heavy"; shieldBonus?: number; selectedOptions?: Record<string, string> }): { armorClass: { normal: number; touch: number; flatFooted: number }; defenses: Array<{ sourceFeatureId: string; kind: "damageReduction" | "fortification" | "immunity"; label: string; value: number; qualifier: string; condition?: string; source: string }>; conditionalModifiers: Array<{ label: string; bonus?: number; condition: string; source: string }>; handledFeatureIds: string[]; suppressedConditionalModifierLabels: string[] };
 export function inferArchetypeDefenseAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["defenseAdjustments"]>;
-export function archetypeDefenses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): Array<NonNullable<CharacterArchetype["defenseAdjustments"]>[number] & { value: number; source: string }>;
+export function archetypeDefenses(archetypes: CharacterArchetype[], classLevels: Record<string, number>, selectedOptionIds?: string[]): Array<NonNullable<CharacterArchetype["defenseAdjustments"]>[number] & { value: number; source: string }>;
 export function inferArchetypeSkillCheckRules(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillCheckRules"]>;
 export function archetypeSkillCheckRules(archetypes: CharacterArchetype[], classLevels: Record<string, number>): Array<NonNullable<CharacterArchetype["skillCheckRules"]>[number] & { source: string }>;
 export type ConditionalSkillModifier = {
