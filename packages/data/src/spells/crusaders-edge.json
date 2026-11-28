@@ -1,0 +1,33 @@
+{
+  "id": "crusaders-edge",
+  "name": "Crusader's Edge",
+  "school": "transmutation",
+  "descriptors": [
+    "good"
+  ],
+  "levelByClass": {
+    "cleric": 4,
+    "inquisitor": 4,
+    "oracle": 4,
+    "paladin": 4,
+    "warpriest": 4
+  },
+  "summary": "Give a melee weapon bane against evil outsiders.",
+  "description": "The touched weapon gains bane against evil outsiders. A confirmed critical hit against a creature with the outsider type and evil subtype deals its normal critical damage and nauseates that creature for 1d3 rounds. A successful Fortitude save reduces the condition to sickened for one round.",
+  "components": [
+    "V",
+    "S",
+    "M (dried blood from an evil outsider, sprinkled on the weapon)"
+  ],
+  "castingTime": "1 standard action",
+  "range": "touch",
+  "target": "melee weapon touched",
+  "duration": "1 minute/level",
+  "savingThrow": "Fortitude negates",
+  "spellResistance": "no",
+  "source": {
+    "title": "Inner Sea Magic",
+    "page": 53,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Crusader's%20Edge"
+  }
+}

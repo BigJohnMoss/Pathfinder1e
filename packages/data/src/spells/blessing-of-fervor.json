@@ -1,0 +1,28 @@
+{
+  "id": "blessing-of-fervor",
+  "name": "Blessing of Fervor",
+  "school": "transmutation",
+  "levelByClass": {
+    "cleric": 4,
+    "oracle": 4,
+    "warpriest": 4
+  },
+  "summary": "Let each ally choose one movement, attack, defense, or casting benefit per round.",
+  "description": "At the start of each turn, each affected ally chooses one benefit for that round:\n\n• Gain 30 feet of speed.\n• Stand as a swift action without provoking.\n• Make one additional attack at highest base attack bonus as part of a full attack.\n• Gain +2 to attacks and a +2 dodge bonus to AC and Reflex saves.\n• Treat one spell of 2nd level or lower as enlarged, extended, silent, or still.\n\nThese benefits grant no extra actions and do not stack with similar effects, including Haste and speed weapons.",
+  "components": [
+    "V",
+    "S",
+    "DF"
+  ],
+  "castingTime": "1 standard action",
+  "range": "close (25 ft. + 5 ft./2 levels)",
+  "target": "one creature/level, no two of which can be more than 30 ft. apart",
+  "duration": "1 round/level",
+  "savingThrow": "Fortitude negates (harmless)",
+  "spellResistance": "yes (harmless)",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 205,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Blessing%20of%20Fervor"
+  }
+}

@@ -20752,6 +20752,56 @@
       "spiritualist": 6,
       "warpriest": 6,
       "witch": 6
+    },
+    "sun-metal": {
+      "cleric": 1,
+      "hunter": 1,
+      "oracle": 1,
+      "paladin": 1,
+      "ranger": 1,
+      "warpriest": 1
+    },
+    "crusaders-edge": {
+      "cleric": 4,
+      "inquisitor": 4,
+      "oracle": 4,
+      "paladin": 4,
+      "warpriest": 4
+    },
+    "holy-ice-weapon": {
+      "cleric": 2,
+      "inquisitor": 2,
+      "oracle": 2,
+      "warpriest": 2
+    },
+    "unholy-ice-weapon": {
+      "cleric": 2,
+      "inquisitor": 2,
+      "oracle": 2,
+      "warpriest": 2
+    },
+    "symbol-of-healing": {
+      "cleric": 3,
+      "occultist": 3,
+      "oracle": 3,
+      "paladin": 4,
+      "warpriest": 3,
+      "witch": 4
+    },
+    "blessing-of-fervor": {
+      "cleric": 4,
+      "oracle": 4,
+      "warpriest": 4
+    },
+    "holy-ice": {
+      "cleric": 5,
+      "oracle": 5,
+      "warpriest": 5
+    },
+    "unholy-ice": {
+      "cleric": 5,
+      "oracle": 5,
+      "warpriest": 5
     }
   }
 }

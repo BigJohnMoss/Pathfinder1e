@@ -1,0 +1,34 @@
+{
+  "id": "unholy-ice-weapon",
+  "name": "Unholy Ice Weapon",
+  "school": "transmutation",
+  "descriptors": [
+    "cold",
+    "evil",
+    "water"
+  ],
+  "levelByClass": {
+    "cleric": 2,
+    "inquisitor": 2,
+    "oracle": 2,
+    "warpriest": 2
+  },
+  "summary": "Create a temporary masterwork weapon that deals cold and unholy-water damage.",
+  "description": "Use the weapon creation and returning rules of Holy Ice Weapon. The weapon is made from unholy water and its extra 1d4 damage applies to creatures that take damage from unholy water.",
+  "components": [
+    "V",
+    "S",
+    "M (a flask of unholy water, or 5 pounds of powdered silver worth 25 gp)"
+  ],
+  "castingTime": "1 standard action",
+  "range": "0 ft.",
+  "effect": "one ice weapon",
+  "duration": "1 minute/level (D)",
+  "savingThrow": "none",
+  "spellResistance": "no",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 198,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Unholy%20Ice%20Weapon"
+  }
+}
