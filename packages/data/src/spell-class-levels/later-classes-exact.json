@@ -4,14 +4,119 @@
     "url": "https://www.aonprd.com/Spells.aspx?Class=All"
   },
   "levelsBySpellId": {
-    "cure-light-wounds": {"alchemist": 1, "bard": 1, "cleric": 1, "druid": 1, "hunter": 1, "inquisitor": 1, "investigator": 1, "occultist": 1, "oracle": 1, "paladin": 1, "ranger": 2, "shaman": 1, "skald": 1, "spiritualist": 1, "warpriest": 1, "witch": 1},
-    "cure-moderate-wounds": {"alchemist": 2, "bard": 2, "cleric": 2, "druid": 3, "hunter": 3, "inquisitor": 2, "investigator": 2, "occultist": 2, "oracle": 2, "paladin": 3, "ranger": 3, "shaman": 2, "skald": 2, "spiritualist": 2, "warpriest": 2, "witch": 2},
-    "cure-serious-wounds": {"alchemist": 3, "bard": 3, "cleric": 3, "druid": 4, "hunter": 4, "inquisitor": 3, "investigator": 3, "occultist": 3, "oracle": 3, "paladin": 4, "ranger": 4, "shaman": 3, "skald": 3, "spiritualist": 3, "warpriest": 3, "witch": 4},
-    "cure-critical-wounds": {"alchemist": 4, "bard": 4, "cleric": 4, "druid": 5, "hunter": 5, "inquisitor": 4, "investigator": 4, "occultist": 4, "oracle": 4, "shaman": 4, "skald": 4, "spiritualist": 4, "warpriest": 4, "witch": 5},
-    "inflict-light-wounds": {"antipaladin": 1, "cleric": 1, "inquisitor": 1, "occultist": 1, "oracle": 1, "shaman": 1, "spiritualist": 1, "warpriest": 1, "witch": 1},
-    "inflict-moderate-wounds": {"antipaladin": 3, "cleric": 2, "inquisitor": 2, "occultist": 2, "oracle": 2, "shaman": 2, "spiritualist": 2, "warpriest": 2, "witch": 2},
-    "inflict-serious-wounds": {"antipaladin": 4, "cleric": 3, "inquisitor": 3, "occultist": 3, "oracle": 3, "shaman": 3, "spiritualist": 3, "warpriest": 3, "witch": 4},
-    "inflict-critical-wounds": {"cleric": 4, "inquisitor": 4, "occultist": 4, "oracle": 4, "shaman": 4, "spiritualist": 4, "warpriest": 4, "witch": 5},
+    "cure-light-wounds": {
+      "alchemist": 1,
+      "bard": 1,
+      "cleric": 1,
+      "druid": 1,
+      "hunter": 1,
+      "inquisitor": 1,
+      "investigator": 1,
+      "occultist": 1,
+      "oracle": 1,
+      "paladin": 1,
+      "ranger": 2,
+      "shaman": 1,
+      "skald": 1,
+      "spiritualist": 1,
+      "warpriest": 1,
+      "witch": 1
+    },
+    "cure-moderate-wounds": {
+      "alchemist": 2,
+      "bard": 2,
+      "cleric": 2,
+      "druid": 3,
+      "hunter": 3,
+      "inquisitor": 2,
+      "investigator": 2,
+      "occultist": 2,
+      "oracle": 2,
+      "paladin": 3,
+      "ranger": 3,
+      "shaman": 2,
+      "skald": 2,
+      "spiritualist": 2,
+      "warpriest": 2,
+      "witch": 2
+    },
+    "cure-serious-wounds": {
+      "alchemist": 3,
+      "bard": 3,
+      "cleric": 3,
+      "druid": 4,
+      "hunter": 4,
+      "inquisitor": 3,
+      "investigator": 3,
+      "occultist": 3,
+      "oracle": 3,
+      "paladin": 4,
+      "ranger": 4,
+      "shaman": 3,
+      "skald": 3,
+      "spiritualist": 3,
+      "warpriest": 3,
+      "witch": 4
+    },
+    "cure-critical-wounds": {
+      "alchemist": 4,
+      "bard": 4,
+      "cleric": 4,
+      "druid": 5,
+      "hunter": 5,
+      "inquisitor": 4,
+      "investigator": 4,
+      "occultist": 4,
+      "oracle": 4,
+      "shaman": 4,
+      "skald": 4,
+      "spiritualist": 4,
+      "warpriest": 4,
+      "witch": 5
+    },
+    "inflict-light-wounds": {
+      "antipaladin": 1,
+      "cleric": 1,
+      "inquisitor": 1,
+      "occultist": 1,
+      "oracle": 1,
+      "shaman": 1,
+      "spiritualist": 1,
+      "warpriest": 1,
+      "witch": 1
+    },
+    "inflict-moderate-wounds": {
+      "antipaladin": 3,
+      "cleric": 2,
+      "inquisitor": 2,
+      "occultist": 2,
+      "oracle": 2,
+      "shaman": 2,
+      "spiritualist": 2,
+      "warpriest": 2,
+      "witch": 2
+    },
+    "inflict-serious-wounds": {
+      "antipaladin": 4,
+      "cleric": 3,
+      "inquisitor": 3,
+      "occultist": 3,
+      "oracle": 3,
+      "shaman": 3,
+      "spiritualist": 3,
+      "warpriest": 3,
+      "witch": 4
+    },
+    "inflict-critical-wounds": {
+      "cleric": 4,
+      "inquisitor": 4,
+      "occultist": 4,
+      "oracle": 4,
+      "shaman": 4,
+      "spiritualist": 4,
+      "warpriest": 4,
+      "witch": 5
+    },
     "abjuring-step": {
       "alchemist": 1,
       "arcanist": 1,
@@ -14774,6 +14879,891 @@
     },
     "later-spell-screech": {
       "witch": 3
+    },
+    "bless": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "bless-water": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "command": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "divine-favor": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "endure-elements": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "entropic-shield": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "face-of-the-devourer": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "grasping-corpse": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "know-the-enemy": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "lighten-object": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "marids-mastery": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "murderous-crow": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "obscure-poison": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "obscuring-mist": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "peasant-armaments": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "pesh-vigor": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "poisoned-egg": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "protection-from-chaos": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "protection-from-evil": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "protection-from-good": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "protection-from-law": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "recharge-innate-magic": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "rune-trace": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "shield-of-faith": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "stone-shield": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "theft-ward": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "touch-of-bloodletting": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "unwelcome-halo": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "winter-feathers": {
+      "oracle": 1,
+      "cleric": 1
+    },
+    "aboleths-lung": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "alchemical-tinkering": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "ancestral-regression": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "animate-dead-lesser": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "augury": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "blood-blaze": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "bloody-tears-and-jagged-smile": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "boiling-blood": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "brittle-portal": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "cloud-of-seasickness": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "consecrate": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "curse-terrain-lesser": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "darkness": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "defending-bone": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "disfiguring-touch": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "first-world-revisions": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "ghoul-hunger": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "light-prison": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "make-whole": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "resist-energy": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "reveal-true-shape": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "rovagugs-fury": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "secret-speech": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "semblance-of-flesh": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "sentry-skull": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "shatter": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "shield-other": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "silence": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "spell-gauge": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "spiritual-weapon": {
+      "oracle": 2,
+      "cleric": 2
+    },
+    "animate-dead": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "bestow-insight": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "black-sword-of-war": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "blindness-deafness": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "blood-scent": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "channel-the-gift": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "contagion": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "continual-flame": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "create-soul-gem": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "curse-of-befouled-fortune": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "daylight": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "dispel-magic": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "flesh-puppet": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "fortunes-path": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "fractions-of-heal-and-harm": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "lissalan-snake-sigil": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "lovers-vengeance": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "magic-vestment": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "monstrous-extremities": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "paragon-surge": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "planar-inquiry": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "prayer": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "project-weakness": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "raging-rubble": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "recharge": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "sadomasochism": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "sands-of-time": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "sebaceous-twin": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "stone-shape": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "symbol-of-exsanguination": {
+      "oracle": 3,
+      "cleric": 3
+    },
+    "absorb-rune-i": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "abyssal-vermin": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "bit-of-luck": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "curse-terrain": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "daemon-ward": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "deadmans-contingency": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "deathless": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "devil-snare": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "divination": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "false-future": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "flesh-puppet-horde": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "giant-vermin": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "gilded-whispers": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "glimpse-of-truth": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "holy-smite": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "magic-weapon-greater": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "probe-history": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "restoration": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "sending": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "summon-genie-lesser": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "symbol-of-revelation": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "symbol-of-slowing": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "torpid-reanimation": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "astral-projection-lesser": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "atonement": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "break-enchantment": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "breath-of-life": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "commune": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "constricting-coils": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "curse-of-magic-negation": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "dungeonsight": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "flame-strike": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "freedoms-toast": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "geniekind": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "half-blood-extraction": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "hallow": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "lighten-object-mass": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "plane-shift": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "reboot": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "scrying": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "soulswitch": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "summon-genie": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "symbol-of-pain": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "symbol-of-scrying": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "symbol-of-sleep": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "symbol-of-striking": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "treasure-stitching": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "true-seeing": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "unhallow": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "village-veil": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "waft": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "wall-of-stone": {
+      "oracle": 5,
+      "cleric": 5
+    },
+    "absorb-rune-ii": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "animate-objects": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "blade-barrier": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "commune-with-texts": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "create-undead": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "curse-terrain-greater": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "hammer-of-mending": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "heal": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "impart-mind": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "perceive-betrayal": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "plague-bearer": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "planar-ally": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "sarzari-shadow-memory": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "sign-of-wrath": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "summon-genie-greater": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "symbol-of-distraction": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "symbol-of-fear": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "symbol-of-persuasion": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "symbol-of-sealing": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "symbol-of-storms": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "truespeak": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "undeath-to-death": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "vengeful-stinger": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "what-grows-within": {
+      "oracle": 6,
+      "cleric": 6
+    },
+    "awaken-construct": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "circle-of-clarity": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "control-weather": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "create-demiplane-lesser": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "create-variant-mummy": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "destruction": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "holy-word": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "maddening-oubliette": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "planar-refuge": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "plundered-power": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "refuge": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "regenerate": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "repulsion": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "resurrection": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "signifers-rally": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "soul-transfer": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "spell-scourge": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "symbol-of-stunning": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "symbol-of-weakness": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "terraform": {
+      "oracle": 7,
+      "cleric": 7
+    },
+    "antimagic-field": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "call-construct": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "create-demiplane": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "create-greater-undead": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "curse-of-night": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "curse-terrain-supreme": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "dimensional-lock": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "earthquake": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "fire-storm": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "holy-aura": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "orb-of-the-void": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "quintessence-mastery": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "soulreaver": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "symbol-of-death": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "symbol-of-debauchery": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "symbol-of-dispelling": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "symbol-of-insanity": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "unholy-aura": {
+      "oracle": 8,
+      "cleric": 8
+    },
+    "absorb-rune-iii": {
+      "oracle": 9,
+      "cleric": 9
+    },
+    "ascension": {
+      "oracle": 9,
+      "cleric": 9
+    },
+    "astral-projection": {
+      "oracle": 9,
+      "cleric": 9
+    },
+    "canopic-conversion": {
+      "oracle": 9,
+      "cleric": 9
+    },
+    "create-demiplane-greater": {
+      "oracle": 9,
+      "cleric": 9
+    },
+    "cursed-earth": {
+      "oracle": 9,
+      "cleric": 9
+    },
+    "parasitic-soul": {
+      "oracle": 9,
+      "cleric": 9
+    },
+    "spawn-calling": {
+      "oracle": 9,
+      "cleric": 9
+    },
+    "storm-of-vengeance": {
+      "oracle": 9,
+      "cleric": 9
+    },
+    "symbol-of-strife": {
+      "oracle": 9,
+      "cleric": 9
+    },
+    "symbol-of-vulnerability": {
+      "oracle": 9,
+      "cleric": 9
+    },
+    "true-resurrection": {
+      "oracle": 9,
+      "cleric": 9
+    },
+    "yellow-sign": {
+      "oracle": 9,
+      "cleric": 9
+    },
+    "rite-of-centered-mind": {
+      "cleric": 1
+    },
+    "visualization-of-the-body": {
+      "cleric": 2
+    },
+    "visualization-of-the-mind": {
+      "cleric": 2
+    },
+    "see-beyond": {
+      "cleric": 3
+    },
+    "spirit-bonds": {
+      "cleric": 3
+    },
+    "firewalkers-meditation": {
+      "cleric": 4
+    },
+    "roaming-pit": {
+      "cleric": 6
     }
   }
 }
