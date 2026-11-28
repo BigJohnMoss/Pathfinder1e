@@ -1,0 +1,33 @@
+{
+  "id": "holy-ice",
+  "name": "Holy Ice",
+  "school": "transmutation",
+  "descriptors": [
+    "cold",
+    "good",
+    "water"
+  ],
+  "levelByClass": {
+    "cleric": 5,
+    "oracle": 5,
+    "warpriest": 5
+  },
+  "summary": "Shape frozen holy water into a wall or a volley of javelins.",
+  "description": "Choose a wall or javelins. The wall works as Wall of Ice in a plane or hemisphere. A creature vulnerable to holy water takes 1 damage per touch or melee attack against the wall, or 1d6 for sustained contact. Passing through a breach deals 1d6 plus caster level, split equally between cold and holy-water damage without a save. Creatures unharmed by holy water are unaffected by this lingering hazard.\n\nThe javelin version launches one javelin per caster level (maximum 15). Chosen targets must be within 10 feet of one another. Roll an attack for each javelin using base attack bonus plus Wisdom modifier. Each hit deals 1d6 damage plus 1 cold and 1 holy-water damage. The javelins are destroyed on use.",
+  "components": [
+    "V",
+    "S",
+    "M (a flask of holy water or 5 pounds of powdered silver worth 25 gp)"
+  ],
+  "castingTime": "1 standard action",
+  "range": "medium (100 ft. + 10 ft./level)",
+  "effect": "wall of ice or flying ice javelins (see text)",
+  "duration": "1 minute/level, instantaneous, or until expended (see text)",
+  "savingThrow": "Reflex negates or none (see text)",
+  "spellResistance": "yes",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": 223,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Holy%20Ice"
+  }
+}

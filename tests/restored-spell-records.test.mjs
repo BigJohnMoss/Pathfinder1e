@@ -43,3 +43,24 @@ test("high-rank divine and occult spells retain the printed ranks and spell vari
   assert.ok(byId.get("glyph-of-warding-greater").components.some((entry) => entry.includes("400 gp")));
   assert.notEqual(byId.get("prognostication").levelByClass.oracle, byId.get("divination").levelByClass.oracle);
 });
+
+test("divine support spells have sourced casting details and separate holy and unholy variants", () => {
+  for (const [id, ranks] of [
+    ["sun-metal", { cleric: 1, paladin: 1, ranger: 1 }],
+    ["crusaders-edge", { cleric: 4, inquisitor: 4, paladin: 4 }],
+    ["symbol-of-healing", { cleric: 3, occultist: 3, paladin: 4, witch: 4 }],
+    ["blessing-of-fervor", { cleric: 4, oracle: 4, warpriest: 4 }],
+    ["holy-ice-weapon", { cleric: 2, oracle: 2 }],
+    ["unholy-ice-weapon", { cleric: 2, oracle: 2 }],
+    ["holy-ice", { cleric: 5, warpriest: 5 }],
+    ["unholy-ice", { cleric: 5, warpriest: 5 }],
+  ]) {
+    const spell = byId.get(id);
+    assert.ok(spell?.description && spell.source?.url, id);
+    for (const [classId, rank] of Object.entries(ranks)) {
+      assert.equal(spell.levelByClass[classId], rank, `${id} ${classId}`);
+    }
+  }
+  assert.deepEqual(byId.get("holy-ice-weapon").descriptors, ["cold", "good", "water"]);
+  assert.deepEqual(byId.get("unholy-ice-weapon").descriptors, ["cold", "evil", "water"]);
+});

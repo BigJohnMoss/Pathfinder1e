@@ -1,0 +1,31 @@
+{
+  "id": "symbol-of-healing",
+  "name": "Symbol of Healing",
+  "school": "conjuration",
+  "levelByClass": {
+    "cleric": 3,
+    "occultist": 3,
+    "oracle": 3,
+    "paladin": 4,
+    "warpriest": 3,
+    "witch": 4
+  },
+  "summary": "Create a symbol that heals nearby creatures or harms those vulnerable to positive energy.",
+  "description": "Use the trigger rules of Symbol of Death. When triggered, the symbol affects creatures within 60 feet. It heals 2d8 plus one hit point per caster level (maximum +15). Creatures harmed by positive energy instead take that amount of damage, halved on a successful Will save. A creature can be affected once per 24 hours. The triggered symbol stays active for 10 minutes per caster level. A caster of at least 10th level can make it permanent with Permanency for 10,000 gp.",
+  "components": [
+    "V",
+    "S",
+    "M (mercury, phosphorus, powdered diamond and opal worth 500 gp)"
+  ],
+  "castingTime": "10 minutes",
+  "range": "0 ft.; see text",
+  "effect": "one symbol",
+  "duration": "see text",
+  "savingThrow": "Will half (harmless) (see text)",
+  "spellResistance": "yes (harmless) (see text)",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": 241,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Symbol%20of%20Healing"
+  }
+}

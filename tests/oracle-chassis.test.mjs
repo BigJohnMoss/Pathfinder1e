@@ -29,7 +29,7 @@ test("Oracle casts its exact sourced spell list spontaneously", () => {
   assert.equal(first.maximumSpellLevel, 1);
   assert.deepEqual(first.known, [{ level: 0, count: 4 }, { level: 1, count: 2 }]);
   const oracleSpells = bundle.spells.filter((spell) => spell.levelByClass.oracle !== undefined);
-  assert.equal(oracleSpells.length, 999);
+  assert.equal(oracleSpells.length, 1007);
   assert.equal(oracleSpells.find((spell) => spell.id === "detect-magic").levelByClass.oracle, 0);
 });
 
