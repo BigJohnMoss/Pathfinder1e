@@ -1,0 +1,31 @@
+{
+  "id": "forbiddance",
+  "name": "Forbiddance",
+  "school": "abjuration",
+  "levelByClass": {
+    "cleric": 6,
+    "inquisitor": 6,
+    "occultist": 6,
+    "oracle": 6,
+    "warpriest": 6
+  },
+  "summary": "Seal an area against planar travel and damage creatures of differing alignments.",
+  "description": "Teleportation, plane shifting, astral or ethereal travel, and summoning fail into or within the area. An entering creature takes 6d6 damage if its alignment differs from yours on one axis, or 12d6 if it differs on both. A Will save halves this damage and spell resistance applies. Creatures inside when you cast are affected only if they leave and return. At casting, you may set a password that bypasses the damage. This requires additional incense costing 1,000 gp plus 1,000 gp per cube. A dispeller must match or exceed your caster level. An older forbiddance takes precedence where wards would overlap.",
+  "components": [
+    "V",
+    "S",
+    "M (holy water and incense worth 1,500 gp plus 1,500 gp per cube)",
+    "DF"
+  ],
+  "castingTime": "6 rounds",
+  "range": "medium (100 ft. + 10 ft./level)",
+  "area": "60-ft. cube/level (S)",
+  "duration": "permanent",
+  "savingThrow": "see text",
+  "spellResistance": "yes",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 285,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Forbiddance"
+  }
+}

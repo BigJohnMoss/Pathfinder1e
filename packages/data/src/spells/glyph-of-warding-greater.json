@@ -1,0 +1,29 @@
+{
+  "id": "glyph-of-warding-greater",
+  "name": "Glyph of Warding, Greater",
+  "school": "abjuration",
+  "levelByClass": {
+    "cleric": 6,
+    "inquisitor": 6,
+    "oracle": 6,
+    "warpriest": 6
+  },
+  "summary": "Inscribe a stronger ward with a larger blast or a spell of up to 6th rank.",
+  "description": "Use the rules for Glyph of Warding. The blast version can deal up to 10d8 damage. The spell version can hold a harmful spell of 6th level or lower. Identifying the greater glyph with Read Magic requires a DC 16 Spellcraft check.",
+  "components": [
+    "V",
+    "S",
+    "M (incense and at least 400 gp of powdered diamond)"
+  ],
+  "castingTime": "10 minutes",
+  "range": "touch",
+  "target": "a touched object or up to 5 square feet per caster level",
+  "duration": "permanent until discharged (D)",
+  "savingThrow": "see text",
+  "spellResistance": "no (object) and yes; see text",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 291,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Glyph%20of%20Warding%2C%20Greater"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "dictum",
+  "name": "Dictum",
+  "school": "evocation",
+  "descriptors": [
+    "lawful",
+    "sonic"
+  ],
+  "levelByClass": {
+    "cleric": 7,
+    "inquisitor": 6,
+    "oracle": 7
+  },
+  "summary": "Deafen, stagger, paralyze, or kill nonlawful creatures according to their Hit Dice.",
+  "description": "A nonlawful creature in the spread is affected only if its Hit Dice do not exceed your caster level. Apply each threshold it qualifies for cumulatively. Make one Will save and apply the result to each effect.\n\nAt your caster level or lower, the target is deafened for 1d4 rounds unless it saves. At one Hit Die below or lower, it is staggered for 2d4 rounds, shortened to 1d4 on a save. At five Hit Dice below or lower, it is paralyzed for 1d10 minutes, shortened to one round on a save.\n\nAt 10 or more Hit Dice below your caster level, a living target dies and an undead target is destroyed. On a successful save it instead takes 3d6 damage plus 1 per caster level (maximum +25). If cast on your home plane, Dictum also banishes nonlawful extraplanar creatures on a failed Will save made at −4. They cannot return for 24 hours. This banishment applies even to creatures that cannot hear the spell.",
+  "components": [
+    "V"
+  ],
+  "castingTime": "1 standard action",
+  "range": "40 ft.",
+  "area": "nonlawful creatures in a 40-ft.-radius spread centered on you",
+  "duration": "instantaneous",
+  "savingThrow": "Will partial; see text",
+  "spellResistance": "yes",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 269,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Dictum"
+  }
+}
