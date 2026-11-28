@@ -1,0 +1,34 @@
+{
+  "id": "murderous-command",
+  "name": "Murderous Command",
+  "school": "enchantment",
+  "descriptors": [
+    "mind-affecting"
+  ],
+  "levelByClass": {
+    "antipaladin": 1,
+    "cleric": 1,
+    "medium": 1,
+    "mesmerist": 1,
+    "occultist": 1,
+    "oracle": 1,
+    "psychic": 1,
+    "warpriest": 1
+  },
+  "summary": "Compel a creature to attack its nearest ally on its next turn.",
+  "description": "On a failed Will save, the creature uses its next turn to attack its closest ally with a melee or natural weapon. It moves or charges if necessary. If it cannot reach that ally this turn, it instead moves as close as it can.",
+  "components": [
+    "V"
+  ],
+  "castingTime": "1 standard action",
+  "range": "close (25 ft. + 5 ft./2 levels)",
+  "target": "one living creature",
+  "duration": "1 round",
+  "savingThrow": "Will negates",
+  "spellResistance": "yes",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": 230,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Murderous%20Command"
+  }
+}

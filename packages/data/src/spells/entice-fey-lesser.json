@@ -1,0 +1,33 @@
+{
+  "id": "entice-fey-lesser",
+  "name": "Entice Fey, Lesser",
+  "school": "conjuration",
+  "levelByClass": {
+    "bard": 4,
+    "druid": 5,
+    "hunter": 4,
+    "medium": 3,
+    "ranger": 4,
+    "shaman": 5,
+    "skald": 4
+  },
+  "summary": "Call a fey of up to 6 Hit Dice and offer payment for its aid.",
+  "description": "Use the negotiation rules for Lesser Planar Ally, replacing the called creature with a fey of up to 6 Hit Dice. Make a Knowledge (nature) or Perform check against DC 20 plus the fey’s Hit Dice. A result of 20 or less calls nothing, and the check cannot raise the spell’s 6 Hit Die limit. The fey that answers can reject your offer. A refusal leaves the offerings and payment unspent.",
+  "components": [
+    "V",
+    "S",
+    "M (500 gp in offerings plus negotiated payment)",
+    "DF"
+  ],
+  "castingTime": "10 minutes",
+  "range": "close (25 ft. + 5 ft./2 levels)",
+  "effect": "one called fey, with 6 Hit Dice or fewer",
+  "duration": "instantaneous",
+  "savingThrow": "none",
+  "spellResistance": "no",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 213,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Entice%20Fey%2C%20Lesser"
+  }
+}

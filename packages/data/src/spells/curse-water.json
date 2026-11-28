@@ -1,0 +1,33 @@
+{
+  "id": "curse-water",
+  "name": "Curse Water",
+  "school": "necromancy",
+  "descriptors": [
+    "evil"
+  ],
+  "levelByClass": {
+    "antipaladin": 1,
+    "cleric": 1,
+    "inquisitor": 1,
+    "oracle": 1,
+    "warpriest": 1
+  },
+  "summary": "Convert one pint of water into unholy water.",
+  "description": "Invest the touched flask of water with negative energy. The resulting unholy water harms good outsiders in the same way holy water harms evil outsiders and undead.",
+  "components": [
+    "V",
+    "S",
+    "M (5 lbs. of powdered silver worth 25 gp)"
+  ],
+  "castingTime": "1 minute",
+  "range": "touch",
+  "target": "flask of water touched",
+  "duration": "instantaneous",
+  "savingThrow": "Will negates (object)",
+  "spellResistance": "yes (object)",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 263,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20Water"
+  }
+}

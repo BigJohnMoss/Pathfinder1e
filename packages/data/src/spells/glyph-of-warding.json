@@ -1,0 +1,30 @@
+{
+  "id": "glyph-of-warding",
+  "name": "Glyph of Warding",
+  "school": "abjuration",
+  "levelByClass": {
+    "cleric": 3,
+    "inquisitor": 3,
+    "oracle": 3,
+    "warpriest": 3,
+    "witch": 3
+  },
+  "summary": "Inscribe a lasting ward that blasts an intruder or releases a stored spell.",
+  "description": "An almost invisible glyph guards an object or area. Set a password or conditions based on physical qualities, creature type, alignment, or religion. The trigger cannot check class, level, or Hit Dice. Invisible creatures can trigger it, while ethereal creatures pass without triggering it. Magical disguises may fool it. Multiple glyphs cannot overlap, but separate compartments can have separate wards.\n\nA blast glyph deals 1d8 damage per two caster levels, up to 5d8, to the intruder and creatures within 5 feet. Choose acid, cold, electricity, fire, or sonic when casting. A Reflex save halves the damage and spell resistance applies. A spell glyph stores a harmful spell you know of 3rd level or lower. It targets the intruder or centers on that creature, using your caster level when inscribed and the stored spell’s own save DC.\n\nRead Magic and a DC 13 Knowledge (arcana) check identify the glyph. Finding it with Perception or disabling it with Disable Device each requires DC 28, and disabling it requires trapfinding. It can be dispelled.",
+  "components": [
+    "V",
+    "S",
+    "M (powdered diamond worth 200 gp)"
+  ],
+  "castingTime": "10 minutes",
+  "range": "touch",
+  "target": "a touched object or up to 5 square feet per caster level",
+  "duration": "permanent until discharged (D)",
+  "savingThrow": "see text",
+  "spellResistance": "no (object) and yes; see text",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 290,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Glyph%20of%20Warding"
+  }
+}

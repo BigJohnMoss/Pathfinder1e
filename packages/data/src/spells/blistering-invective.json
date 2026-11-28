@@ -1,0 +1,34 @@
+{
+  "id": "blistering-invective",
+  "name": "Blistering Invective",
+  "school": "evocation",
+  "descriptors": [
+    "fire",
+    "language-dependent"
+  ],
+  "levelByClass": {
+    "alchemist": 2,
+    "bard": 2,
+    "inquisitor": 2,
+    "investigator": 2,
+    "mesmerist": 2,
+    "skald": 2
+  },
+  "summary": "Demoralize nearby enemies with a tirade that burns those it affects.",
+  "description": "Make an Intimidate check to demoralize the enemies within 30 feet that hear the tirade. Each enemy demoralized by the spell takes 1d10 fire damage and attempts a Reflex save to avoid catching fire. Spell resistance can stop the spell’s fire damage while still allowing the demoralizing effect.",
+  "components": [
+    "V",
+    "S"
+  ],
+  "castingTime": "1 standard action",
+  "range": "personal",
+  "area": "30-ft. radius",
+  "duration": "instantaneous",
+  "savingThrow": "Reflex partial, see text",
+  "spellResistance": "special, see below",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": 224,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Blistering%20Invective"
+  }
+}

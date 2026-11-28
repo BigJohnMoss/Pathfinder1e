@@ -1,0 +1,34 @@
+{
+  "id": "desecrate",
+  "name": "Desecrate",
+  "school": "evocation",
+  "descriptors": [
+    "evil"
+  ],
+  "levelByClass": {
+    "antipaladin": 2,
+    "cleric": 2,
+    "inquisitor": 2,
+    "oracle": 2,
+    "warpriest": 2
+  },
+  "summary": "Steep an area in negative energy that empowers undead.",
+  "description": "Within the area, negative energy channeling has a +3 profane bonus to its save DC. Undead gain +1 profane on attacks, damage rolls, and saves. Undead created or summoned there gain one additional hit point per Hit Die. An altar or comparable permanent fixture dedicated to your patron doubles these bonuses. Animate Dead cast at such a site can create up to 4 Hit Dice of undead per caster level instead of 2. If the fixture is dedicated to another power, this spell instead cuts off its connection to that power and grants none of the undead or channeling bonuses. Desecrate counters and dispels Consecrate.",
+  "components": [
+    "V",
+    "S",
+    "M (unholy water and 25 gp of silver dust)",
+    "DF"
+  ],
+  "castingTime": "1 standard action",
+  "range": "close (25 ft. + 5 ft./2 levels)",
+  "area": "20-ft.-radius emanation",
+  "duration": "2 hours/level",
+  "savingThrow": "none",
+  "spellResistance": "yes",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 265,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Desecrate"
+  }
+}
