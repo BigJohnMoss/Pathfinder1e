@@ -41,6 +41,16 @@ test("occult and other class lists retain sourced spell ranks", async () => {
   }
 });
 
+test("refreshed Core classes use the published ranks for expanded spell access", async () => {
+  const { spells } = JSON.parse(await readFile(new URL("../generated/pf1e-data.json", import.meta.url), "utf8"));
+  const spellById = new Map(spells.map((spell) => [spell.id, spell]));
+  for (const [id, classId, rank] of [
+    ["spark", "bard", 0], ["air-bubble", "druid", 1], ["keep-watch", "paladin", 1], ["anticipate-peril", "ranger", 1],
+  ]) {
+    assert.equal(spellById.get(id)?.levelByClass[classId], rank, `${id} ${classId} rank`);
+  }
+});
+
 test("Cleric and Oracle both have their published ranks for source-marked divine staples", async () => {
   const data = JSON.parse(await readFile(new URL("../generated/pf1e-data.json", import.meta.url), "utf8"));
   const spellById = new Map(data.spells.map((spell) => [spell.id, spell]));

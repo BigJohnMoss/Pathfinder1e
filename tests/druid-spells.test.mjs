@@ -4,12 +4,12 @@ import bundle from "../generated/pf1e-data.mjs";
 
 const druidSpells = bundle.spells.filter((spell) => spell.levelByClass.druid !== undefined);
 
-test("Druid receives the complete Core spell list", () => {
+test("Druid has the sourced spell catalogue across its castable ranks", () => {
   assert.deepEqual(Object.fromEntries(Array.from({ length: 10 }, (_, level) => [
     level,
     druidSpells.filter((spell) => spell.levelByClass.druid === level).length
-  ])), { 0: 13, 1: 20, 2: 26, 3: 22, 4: 18, 5: 19, 6: 19, 7: 13, 8: 11, 9: 10 });
-  assert.equal(druidSpells.length, 171);
+  ])), { 0: 16, 1: 107, 2: 155, 3: 138, 4: 104, 5: 67, 6: 58, 7: 29, 8: 28, 9: 22 });
+  assert.equal(druidSpells.length, 724);
 });
 
 test("Druid class-level overlays reuse shared spell records", () => {

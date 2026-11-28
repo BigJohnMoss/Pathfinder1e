@@ -4,12 +4,12 @@ import bundle from "../generated/pf1e-data.mjs";
 
 const paladinSpells = bundle.spells.filter((spell) => spell.levelByClass.paladin !== undefined);
 
-test("Paladin receives the complete Core spell list", () => {
+test("Paladin has the sourced spell catalogue across its castable ranks", () => {
   assert.deepEqual(Object.fromEntries([1, 2, 3, 4].map((level) => [
     level,
     paladinSpells.filter((spell) => spell.levelByClass.paladin === level).length
-  ])), { 1: 21, 2: 9, 3: 11, 4: 9 });
-  assert.equal(paladinSpells.length, 50);
+  ])), { 1: 72, 2: 56, 3: 49, 4: 46 });
+  assert.equal(paladinSpells.length, 223);
   for (const id of ["detect-chaos", "detect-evil", "detect-good", "detect-law"]) {
     assert.equal(paladinSpells.find((spell) => spell.id === id)?.levelByClass.paladin, 1, id);
   }
