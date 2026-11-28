@@ -8,8 +8,8 @@ test("Druid has the sourced spell catalogue across its castable ranks", () => {
   assert.deepEqual(Object.fromEntries(Array.from({ length: 10 }, (_, level) => [
     level,
     druidSpells.filter((spell) => spell.levelByClass.druid === level).length
-  ])), { 0: 16, 1: 107, 2: 155, 3: 138, 4: 104, 5: 67, 6: 58, 7: 29, 8: 28, 9: 22 });
-  assert.equal(druidSpells.length, 724);
+  ])), { 0: 16, 1: 107, 2: 156, 3: 138, 4: 104, 5: 68, 6: 58, 7: 29, 8: 28, 9: 22 });
+  assert.equal(druidSpells.length, 726);
 });
 
 test("Druid class-level overlays reuse shared spell records", () => {

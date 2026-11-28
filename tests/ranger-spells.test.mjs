@@ -8,8 +8,8 @@ test("Ranger has the sourced spell catalogue across its castable ranks", () => {
   assert.deepEqual(Object.fromEntries([1, 2, 3, 4].map((level) => [
     level,
     rangerSpells.filter((spell) => spell.levelByClass.ranger === level).length
-  ])), { 1: 107, 2: 113, 3: 97, 4: 40 });
-  assert.equal(rangerSpells.length, 357);
+  ])), { 1: 107, 2: 114, 3: 97, 4: 41 });
+  assert.equal(rangerSpells.length, 359);
 });
 
 test("Ranger class-level overlays reuse shared spell records", () => {

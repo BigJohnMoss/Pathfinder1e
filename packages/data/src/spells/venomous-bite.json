@@ -1,0 +1,37 @@
+{
+  "id": "venomous-bite",
+  "name": "Venomous Bite",
+  "school": "transmutation",
+  "descriptors": [
+    "poison"
+  ],
+  "levelByClass": {
+    "alchemist": 2,
+    "druid": 2,
+    "hunter": 2,
+    "investigator": 2,
+    "ranger": 2,
+    "shaman": 2,
+    "summoner": 2,
+    "witch": 2
+  },
+  "summary": "Temporarily deliver a dose of injury poison through a creature’s bite.",
+  "description": "Transfer the injury poison from the vial into one of the target’s bites. The target can deliver one dose per five caster levels, up to four, and is immune to that poison during the spell. A successful bite uses one dose, with the poison’s normal effects and save DC. The spell ends when the doses are used. It has no effect if the target has no bite or already has a poisonous bite. Remaining doses are lost when the spell ends.",
+  "components": [
+    "V",
+    "S",
+    "M (a vial of injury poison worth at least 75 gp)",
+    "DF"
+  ],
+  "castingTime": "1 standard action",
+  "range": "touch",
+  "target": "creature touched",
+  "duration": "1 round/level (D)",
+  "savingThrow": "Fortitude negates (harmless)",
+  "spellResistance": "yes (harmless)",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 29,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Venomous%20Bite"
+  }
+}

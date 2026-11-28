@@ -20637,6 +20637,74 @@
     },
     "holy-sword": {
       "paladin": 4
+    },
+    "venomous-bite": {
+      "alchemist": 2,
+      "druid": 2,
+      "hunter": 2,
+      "investigator": 2,
+      "ranger": 2,
+      "shaman": 2,
+      "summoner": 2,
+      "witch": 2
+    },
+    "entice-fey-lesser": {
+      "bard": 4,
+      "druid": 5,
+      "hunter": 4,
+      "medium": 3,
+      "ranger": 4,
+      "shaman": 5,
+      "skald": 4
+    },
+    "blistering-invective": {
+      "alchemist": 2,
+      "bard": 2,
+      "inquisitor": 2,
+      "investigator": 2,
+      "mesmerist": 2,
+      "skald": 2
+    },
+    "heroic-fortune": {
+      "alchemist": 2,
+      "bard": 2,
+      "cleric": 2,
+      "investigator": 2,
+      "oracle": 2,
+      "paladin": 3,
+      "skald": 2,
+      "warpriest": 2
+    },
+    "murderous-command": {
+      "antipaladin": 1,
+      "cleric": 1,
+      "medium": 1,
+      "mesmerist": 1,
+      "occultist": 1,
+      "oracle": 1,
+      "psychic": 1,
+      "warpriest": 1
+    },
+    "curse-water": {
+      "antipaladin": 1,
+      "cleric": 1,
+      "inquisitor": 1,
+      "oracle": 1,
+      "warpriest": 1
+    },
+    "desecrate": {
+      "antipaladin": 2,
+      "cleric": 2,
+      "inquisitor": 2,
+      "oracle": 2,
+      "warpriest": 2
+    },
+    "glyph-of-warding": {
+      "cleric": 3,
+      "inquisitor": 3,
+      "oracle": 3,
+      "warpriest": 3,
+      "witch": 3
     }
   }
 }

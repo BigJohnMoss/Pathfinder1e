@@ -3,11 +3,11 @@ import test from "node:test";
 import { readFile } from "node:fs/promises";
 
 const expectedCounts = {
-  alchemist: 383, arcanist: 1896, bloodrager: 320, hunter: 736,
-  inquisitor: 586, investigator: 379, magus: 462, medium: 370,
-  mesmerist: 543, occultist: 652, oracle: 986, psychic: 1081,
-  shaman: 626, skald: 813, spiritualist: 398, summoner: 406,
-  warpriest: 854, witch: 1131
+  alchemist: 386, arcanist: 1896, bloodrager: 320, hunter: 738,
+  inquisitor: 590, investigator: 382, magus: 462, medium: 372,
+  mesmerist: 545, occultist: 653, oracle: 991, psychic: 1082,
+  shaman: 628, skald: 816, spiritualist: 398, summoner: 407,
+  warpriest: 859, witch: 1133
 };
 
 test("later spellcasting classes use exact sourced list membership", async () => {
@@ -58,7 +58,7 @@ test("Cleric and Oracle both have their published ranks for source-marked divine
     assert.equal(spellById.get(id)?.levelByClass.cleric, rank, `${id} cleric rank`);
     assert.equal(spellById.get(id)?.levelByClass.oracle, rank, `${id} oracle rank`);
   }
-  assert.equal(data.spells.filter((spell) => spell.levelByClass.cleric !== undefined).length, 994);
+  assert.equal(data.spells.filter((spell) => spell.levelByClass.cleric !== undefined).length, 999);
 });
 
 test("both divine lists include the restored Core spells and the existing qualified names", async () => {

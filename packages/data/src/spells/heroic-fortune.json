@@ -1,0 +1,34 @@
+{
+  "id": "heroic-fortune",
+  "name": "Heroic Fortune",
+  "school": "evocation",
+  "levelByClass": {
+    "alchemist": 2,
+    "bard": 2,
+    "cleric": 2,
+    "investigator": 2,
+    "oracle": 2,
+    "paladin": 3,
+    "skald": 2,
+    "warpriest": 2
+  },
+  "summary": "Grant one temporary hero point.",
+  "description": "The touched creature receives one hero point and spends it before its other hero points. It loses this point if the spell expires before it spends the point.",
+  "components": [
+    "V",
+    "S",
+    "DF",
+    "M (diamond dust worth 100 gp)"
+  ],
+  "castingTime": "1 standard action",
+  "range": "touch",
+  "target": "creature touched",
+  "duration": "1 round/level",
+  "savingThrow": "Will negates (harmless)",
+  "spellResistance": "no",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 324,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Heroic%20Fortune"
+  }
+}
