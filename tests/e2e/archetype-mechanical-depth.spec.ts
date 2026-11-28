@@ -765,7 +765,9 @@ for (const journey of journeys) {
     await expect(page.getByRole("button", { name: "Add Alleviate Addiction", exact: true })).toBeEnabled();
     await page.getByRole("button", { name: "Add Alleviate Addiction", exact: true }).click();
     await search.fill("Mage Armor");
-    await expect(page.getByRole("button", { name: "Add Mage Armor", exact: true })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "Add Mage Armor", exact: true })).toHaveCount(1);
+    await search.fill("Magic Missile");
+    await expect(page.getByRole("button", { name: "Add Magic Missile", exact: true })).toHaveCount(0);
 
     if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
     await page.getByRole("button", { name: "Save" }).click();
