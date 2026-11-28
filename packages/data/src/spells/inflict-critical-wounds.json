@@ -1,0 +1,25 @@
+{
+  "id": "inflict-critical-wounds",
+  "name": "Inflict Critical Wounds",
+  "school": "necromancy",
+  "levelByClass": {
+    "cleric": 4
+  },
+  "summary": "Deal 4d8 damage plus 1 per caster level (maximum +20) to a touched creature, or heal an undead target for that amount.",
+  "description": "Channel negative energy into the touched creature. Roll 4d8 and add 1 point per caster level, up to +20. A living target takes that much damage, halved on a successful Will save. An undead target instead regains that many hit points.",
+  "components": [
+    "V",
+    "S"
+  ],
+  "castingTime": "1 standard action",
+  "range": "touch",
+  "target": "creature touched",
+  "duration": "instantaneous",
+  "savingThrow": "Will half",
+  "spellResistance": "yes",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Inflict%20Critical%20Wounds"
+  }
+}

@@ -12,6 +12,7 @@ import { normalizeKnownSpells, spontaneousSpellcastingProgression } from "../../
 import { bloodlineBonusSpells } from "../../../packages/engine/src/sorcerer-bloodlines.js";
 import { mysteryBonusSpells } from "../../../packages/engine/src/oracle-mysteries.js";
 import { hauntedCurseSpells } from "../../../packages/engine/src/oracle-curses.js";
+import { oracleCureInflictSpells } from "../../../packages/engine/src/oracle-spellcasting.js";
 import type { AbilityScores, ActiveEffect, CharacterClass, CharacterOption, CharacterSpell } from "../../../packages/types/src/index.js";
 import { equippedArcaneSpellFailureChance, type InventoryEntry } from "./equipment-panel";
 
@@ -141,8 +142,9 @@ export function ClassSpellbook({
       ...classGrants.filter((spell) => spell.levelByClass[characterClass.id] <= maximumSpellLevel),
       ...spellsFromAdjustedChoices(spells, characterClass, earnedClassLevel, maximumSpellLevel, selectedOptions),
       ...hauntedCurseSpells(spells, hauntedSpellAdditions, characterClass.id, maximumSpellLevel),
+      ...oracleCureInflictSpells(baseSpells, characterClass, selectedOptions),
     ];
-  }, [bloodline, casting, characterClass, classLevel, earnedClassLevel, hauntedSpellAdditions, maximumSpellLevel, mystery, selectedOptions, spells]);
+  }, [baseSpells, bloodline, casting, characterClass, classLevel, earnedClassLevel, hauntedSpellAdditions, maximumSpellLevel, mystery, selectedOptions, spells]);
   const allowedGrantedSpells = useMemo(() => grantedSpells.filter((spell) => !excludedSpellIds.has(spell.id)), [excludedSpellIds, grantedSpells]);
   const optionSpells = useMemo(() => spellOptions.flatMap((option) => {
     const spell = spells.find((candidate) => candidate.id === option.spellId);
