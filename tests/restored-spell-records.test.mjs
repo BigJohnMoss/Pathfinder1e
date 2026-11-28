@@ -22,3 +22,24 @@ test("shared missing spells have rules details and retain their published class 
     }
   }
 });
+
+test("high-rank divine and occult spells retain the printed ranks and spell variants", () => {
+  for (const [id, ranks] of [
+    ["glyph-of-warding-greater", { cleric: 6, inquisitor: 6, oracle: 6, warpriest: 6 }],
+    ["forbiddance", { cleric: 6, occultist: 6 }],
+    ["blasphemy", { cleric: 7, inquisitor: 6 }],
+    ["dictum", { inquisitor: 6, oracle: 7 }],
+    ["word-of-chaos", { cleric: 7, oracle: 7 }],
+    ["cloak-of-chaos", { cleric: 8, oracle: 8 }],
+    ["shield-of-law", { cleric: 8, oracle: 8 }],
+    ["prognostication", { medium: 4, oracle: 6, spiritualist: 6 }],
+  ]) {
+    const spell = byId.get(id);
+    assert.ok(spell?.description && spell.source?.url, id);
+    for (const [classId, rank] of Object.entries(ranks)) {
+      assert.equal(spell.levelByClass[classId], rank, `${id} ${classId}`);
+    }
+  }
+  assert.ok(byId.get("glyph-of-warding-greater").components.some((entry) => entry.includes("400 gp")));
+  assert.notEqual(byId.get("prognostication").levelByClass.oracle, byId.get("divination").levelByClass.oracle);
+});

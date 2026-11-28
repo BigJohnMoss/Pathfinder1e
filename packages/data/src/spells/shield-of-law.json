@@ -1,0 +1,30 @@
+{
+  "id": "shield-of-law",
+  "name": "Shield of Law",
+  "school": "abjuration",
+  "descriptors": [
+    "lawful"
+  ],
+  "levelByClass": {
+    "cleric": 8,
+    "oracle": 8
+  },
+  "summary": "Ward allies against attacks, possession, and chaotic magic.",
+  "description": "Each warded creature gains +4 deflection AC, +4 resistance on saves, and spell resistance 25 against chaotic spells and spells from chaotic creatures. The ward blocks possession and mental influence as Protection from Chaos does. A chaotic creature that lands a melee hit on a warded target must make a Will save against this spell or be affected as by Slow.",
+  "components": [
+    "V",
+    "S",
+    "F (a reliquary worth 500 gp)"
+  ],
+  "castingTime": "1 standard action",
+  "range": "20 ft.",
+  "target": "one creature/level in a 20-ft.-radius burst centered on you",
+  "duration": "1 round/level (D)",
+  "savingThrow": "see text",
+  "spellResistance": "yes (harmless)",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 342,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shield%20of%20Law"
+  }
+}
