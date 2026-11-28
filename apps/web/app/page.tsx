@@ -143,6 +143,7 @@ import {
 } from "../../../packages/engine/src/sorcerer-bloodlines.js";
 import { mysteryBonusSpells, restrictOracleMysterySelection } from "../../../packages/engine/src/oracle-mysteries.js";
 import { hauntedCurseSpells, oracleCurseBenefits } from "../../../packages/engine/src/oracle-curses.js";
+import { oracleCureInflictSpells } from "../../../packages/engine/src/oracle-spellcasting.js";
 import type {
   ActiveEffect,
   AbilityName,
@@ -2273,8 +2274,9 @@ export default function Home() {
       ...selectedOptionSpells.filter((spell) => !spell.selectedAccessOnly),
       ...archetypeBonusSpells,
       ...hauntedCurseSpells(spells, oracleCurse.hauntedSpellAdditions, characterClass.id, maximumSpellLevel),
+      ...oracleCureInflictSpells(baseAvailableSpells, characterClass, selectedOptions),
     ], characterClass.spellListExclusions),
-    [archetypeBonusSpells, bloodlineSpells, characterClass.id, characterClass.spellListExclusions, maximumSpellLevel, mysterySpells, oracleCurse, patronSpells, selectedOptionSpells, spells],
+    [archetypeBonusSpells, baseAvailableSpells, bloodlineSpells, characterClass, maximumSpellLevel, mysterySpells, oracleCurse, patronSpells, selectedOptions, selectedOptionSpells, spells],
   );
   const availableSpells = useMemo(
     () => mergeSpellLists(baseAvailableSpells, [...grantedSpells, ...selectedOptionSpells]),
@@ -2545,9 +2547,11 @@ export default function Home() {
       ...spellsFromArchetypeGrants(spells, secondaryCharacterClass?.spellGrants, secondaryCharacterClass?.id ?? "", secondaryClassLevel, secondaryMaximumSpellLevel, "known", activeEffects.map((effect) => effect.name), Object.values(selectedOptions)),
       ...spellsFromAdjustedChoices(spells, secondaryCharacterClass, secondaryClassLevel, secondaryMaximumSpellLevel, selectedOptions),
       ...hauntedCurseSpells(spells, oracleCurse.hauntedSpellAdditions, secondaryCharacterClass?.id ?? "", secondaryMaximumSpellLevel),
+      ...oracleCureInflictSpells(secondaryBaseSpells, secondaryCharacterClass, selectedOptions),
     ], secondaryCharacterClass?.spellListExclusions),
     [
       secondaryBloodlineSpells,
+      secondaryBaseSpells,
       secondaryMysterySpells,
       secondaryPatronSpells,
       secondarySelectedOptionSpells,
@@ -3856,6 +3860,7 @@ export default function Home() {
       ...spellsFromArchetypeGrants(spells, draftClass.spellGrants, draftClass.id, draftPrimaryLevel, draftCasting?.maximumSpellLevel ?? 0, "known"),
       ...spellsFromAdjustedChoices(spells, draftClass, draftPrimaryLevel, draftCasting?.maximumSpellLevel ?? 0, draft.selectedOptions),
       ...hauntedCurseSpells(spells, draftOracleCurse.hauntedSpellAdditions, draftClass.id, draftCasting?.maximumSpellLevel ?? 0),
+      ...oracleCureInflictSpells(draftBaseSpells, draftClass, draft.selectedOptions),
     ], draftClass.spellListExclusions);
     const draftSpells = mergeSpellLists(draftBaseSpells, draftGrantedSpells);
     const draftBloodlineSpellIds = draftGrantedSpells.map((spell) => spell.id);
@@ -4000,6 +4005,7 @@ export default function Home() {
       ...spellsFromArchetypeGrants(spells, draftSecondaryClass?.spellGrants, draftSecondaryClass?.id ?? "", draftSecondaryLevel?.level ?? 0, draftSecondaryCasting?.maximumSpellLevel ?? 0, "known"),
       ...spellsFromAdjustedChoices(spells, draftSecondaryClass, draftSecondaryLevel?.level ?? 0, draftSecondaryCasting?.maximumSpellLevel ?? 0, draft.selectedOptions),
       ...hauntedCurseSpells(spells, draftOracleCurse.hauntedSpellAdditions, draftSecondaryClass?.id ?? "", draftSecondaryCasting?.maximumSpellLevel ?? 0),
+      ...oracleCureInflictSpells(draftSecondaryBaseSpells, draftSecondaryClass, draft.selectedOptions),
     ], draftSecondaryClass?.spellListExclusions);
     const draftSecondarySpells = mergeSpellLists(
       draftSecondaryBaseSpells,

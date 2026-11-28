@@ -1,0 +1,25 @@
+{
+  "id": "inflict-light-wounds",
+  "name": "Inflict Light Wounds",
+  "school": "necromancy",
+  "levelByClass": {
+    "cleric": 1
+  },
+  "summary": "Deal 1d8 damage plus 1 per caster level (maximum +5) to a touched creature, or heal an undead target for that amount.",
+  "description": "Channel negative energy into the touched creature. Roll 1d8 and add 1 point per caster level, up to +5. A living target takes that much damage, halved on a successful Will save. An undead target instead regains that many hit points.",
+  "components": [
+    "V",
+    "S"
+  ],
+  "castingTime": "1 standard action",
+  "range": "touch",
+  "target": "creature touched",
+  "duration": "instantaneous",
+  "savingThrow": "Will half",
+  "spellResistance": "yes",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Inflict%20Light%20Wounds"
+  }
+}

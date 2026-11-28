@@ -12,7 +12,7 @@ This report is generated from the application's source data by `npm run coverage
 | Option groups | 184 |
 | Feats | 3447 |
 | Traits | 40 |
-| Spells | 2775 |
+| Spells | 2779 |
 | Equipment | 80 |
 
 ## Feat prerequisites
@@ -65,9 +65,9 @@ These rule-text signals are multi-label: one archetype can contribute to several
 
 | Coverage | Count |
 |---|---:|
-| Full rules descriptions | 2775 |
-| Rules source links | 2775 |
-| Core casting statistics | 2775 |
+| Full rules descriptions | 2779 |
+| Rules source links | 2779 |
+| Core casting statistics | 2779 |
 
 ## Class progression
 

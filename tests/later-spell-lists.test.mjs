@@ -3,11 +3,11 @@ import test from "node:test";
 import { readFile } from "node:fs/promises";
 
 const expectedCounts = {
-  alchemist: 283, arcanist: 1896, bloodrager: 213, hunter: 604,
-  inquisitor: 484, investigator: 280, magus: 327, medium: 308,
-  mesmerist: 446, occultist: 479, oracle: 754, psychic: 868,
-  shaman: 474, skald: 684, spiritualist: 302, summoner: 319,
-  warpriest: 667, witch: 864
+  alchemist: 287, arcanist: 1896, bloodrager: 213, hunter: 608,
+  inquisitor: 492, investigator: 284, magus: 327, medium: 308,
+  mesmerist: 446, occultist: 487, oracle: 762, psychic: 868,
+  shaman: 482, skald: 688, spiritualist: 310, summoner: 319,
+  warpriest: 675, witch: 872
 };
 
 test("later spellcasting classes use exact sourced list membership", async () => {

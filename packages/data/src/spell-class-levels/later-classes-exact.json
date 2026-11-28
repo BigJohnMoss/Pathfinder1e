@@ -4,6 +4,14 @@
     "url": "https://www.aonprd.com/Spells.aspx?Class=All"
   },
   "levelsBySpellId": {
+    "cure-light-wounds": {"alchemist": 1, "bard": 1, "cleric": 1, "druid": 1, "hunter": 1, "inquisitor": 1, "investigator": 1, "occultist": 1, "oracle": 1, "paladin": 1, "ranger": 2, "shaman": 1, "skald": 1, "spiritualist": 1, "warpriest": 1, "witch": 1},
+    "cure-moderate-wounds": {"alchemist": 2, "bard": 2, "cleric": 2, "druid": 3, "hunter": 3, "inquisitor": 2, "investigator": 2, "occultist": 2, "oracle": 2, "paladin": 3, "ranger": 3, "shaman": 2, "skald": 2, "spiritualist": 2, "warpriest": 2, "witch": 2},
+    "cure-serious-wounds": {"alchemist": 3, "bard": 3, "cleric": 3, "druid": 4, "hunter": 4, "inquisitor": 3, "investigator": 3, "occultist": 3, "oracle": 3, "paladin": 4, "ranger": 4, "shaman": 3, "skald": 3, "spiritualist": 3, "warpriest": 3, "witch": 4},
+    "cure-critical-wounds": {"alchemist": 4, "bard": 4, "cleric": 4, "druid": 5, "hunter": 5, "inquisitor": 4, "investigator": 4, "occultist": 4, "oracle": 4, "shaman": 4, "skald": 4, "spiritualist": 4, "warpriest": 4, "witch": 5},
+    "inflict-light-wounds": {"antipaladin": 1, "cleric": 1, "inquisitor": 1, "occultist": 1, "oracle": 1, "shaman": 1, "spiritualist": 1, "warpriest": 1, "witch": 1},
+    "inflict-moderate-wounds": {"antipaladin": 3, "cleric": 2, "inquisitor": 2, "occultist": 2, "oracle": 2, "shaman": 2, "spiritualist": 2, "warpriest": 2, "witch": 2},
+    "inflict-serious-wounds": {"antipaladin": 4, "cleric": 3, "inquisitor": 3, "occultist": 3, "oracle": 3, "shaman": 3, "spiritualist": 3, "warpriest": 3, "witch": 4},
+    "inflict-critical-wounds": {"cleric": 4, "inquisitor": 4, "occultist": 4, "oracle": 4, "shaman": 4, "spiritualist": 4, "warpriest": 4, "witch": 5},
     "abjuring-step": {
       "alchemist": 1,
       "arcanist": 1,
