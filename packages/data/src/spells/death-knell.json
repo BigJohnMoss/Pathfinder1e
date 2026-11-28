@@ -1,0 +1,29 @@
+{
+  "id": "death-knell",
+  "name": "Death Knell",
+  "school": "necromancy",
+  "descriptors": [
+    "death",
+    "evil"
+  ],
+  "levelByClass": {
+    "cleric": 2
+  },
+  "summary": "Finish a dying creature to gain temporary hit points, Strength, and caster level.",
+  "description": "Touch a living creature at −1 hit points or lower. If it fails a Will save, it dies. You gain 1d8 temporary hit points, a +2 enhancement bonus to Strength, and a +1 increase in effective caster level for level-dependent spell effects. The caster-level increase grants no new spells or slots. These benefits last 10 minutes per Hit Die of the creature.",
+  "components": [
+    "V",
+    "S"
+  ],
+  "castingTime": "1 standard action",
+  "range": "touch",
+  "target": "living creature touched",
+  "duration": "Instantaneous, then 10 minutes per Hit Die of the target",
+  "savingThrow": "Will negates",
+  "spellResistance": "yes",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Death%20Knell"
+  }
+}

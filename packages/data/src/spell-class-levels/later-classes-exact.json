@@ -4,6 +4,55 @@
     "url": "https://www.aonprd.com/Spells.aspx?Class=All"
   },
   "levelsBySpellId": {
+    "bane": {
+      "antipaladin": 1,
+      "inquisitor": 1,
+      "mesmerist": 1,
+      "shaman": 1,
+      "warpriest": 1,
+      "oracle": 1,
+      "cleric": 1
+    },
+    "sanctuary": {
+      "inquisitor": 1,
+      "spiritualist": 1,
+      "warpriest": 1,
+      "oracle": 1,
+      "cleric": 1
+    },
+    "death-knell": {
+      "antipaladin": 1,
+      "inquisitor": 2,
+      "spiritualist": 2,
+      "warpriest": 2,
+      "witch": 2,
+      "oracle": 2,
+      "cleric": 2
+    },
+    "searing-light": {
+      "inquisitor": 3,
+      "warpriest": 3,
+      "oracle": 3,
+      "cleric": 3
+    },
+    "raise-dead": {
+      "shaman": 6,
+      "spiritualist": 5,
+      "warpriest": 5,
+      "witch": 6,
+      "oracle": 5,
+      "cleric": 5
+    },
+    "harm": {
+      "inquisitor": 6,
+      "occultist": 6,
+      "shaman": 7,
+      "spiritualist": 6,
+      "warpriest": 6,
+      "witch": 7,
+      "oracle": 6,
+      "cleric": 6
+    },
     "cure-light-wounds": {
       "alchemist": 1,
       "bard": 1,
@@ -15764,6 +15813,14 @@
     },
     "roaming-pit": {
       "cleric": 6
+    },
+    "planar-ally-lesser": {
+      "oracle": 4,
+      "cleric": 4
+    },
+    "greater-restoration": {
+      "oracle": 7,
+      "cleric": 7
     }
   }
 }

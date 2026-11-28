@@ -4,10 +4,10 @@ import { readFile } from "node:fs/promises";
 
 const expectedCounts = {
   alchemist: 287, arcanist: 1896, bloodrager: 213, hunter: 608,
-  inquisitor: 492, investigator: 284, magus: 327, medium: 308,
-  mesmerist: 446, occultist: 487, oracle: 978, psychic: 868,
-  shaman: 482, skald: 688, spiritualist: 310, summoner: 319,
-  warpriest: 675, witch: 872
+  inquisitor: 497, investigator: 284, magus: 327, medium: 308,
+  mesmerist: 447, occultist: 488, oracle: 986, psychic: 868,
+  shaman: 485, skald: 688, spiritualist: 314, summoner: 319,
+  warpriest: 681, witch: 875
 };
 
 test("later spellcasting classes use exact sourced list membership", async () => {
@@ -24,7 +24,22 @@ test("Cleric and Oracle both have their published ranks for source-marked divine
     assert.equal(spellById.get(id)?.levelByClass.cleric, rank, `${id} cleric rank`);
     assert.equal(spellById.get(id)?.levelByClass.oracle, rank, `${id} oracle rank`);
   }
-  assert.equal(data.spells.filter((spell) => spell.levelByClass.cleric !== undefined).length, 988);
+  assert.equal(data.spells.filter((spell) => spell.levelByClass.cleric !== undefined).length, 994);
+});
+
+test("both divine lists include the restored Core spells and the existing qualified names", async () => {
+  const { spells } = JSON.parse(await readFile(new URL("../generated/pf1e-data.json", import.meta.url), "utf8"));
+  const spellById = new Map(spells.map((spell) => [spell.id, spell]));
+  for (const [id, rank] of [
+    ["bane", 1], ["sanctuary", 1], ["death-knell", 2], ["searing-light", 3], ["raise-dead", 5], ["harm", 6],
+    ["planar-ally-lesser", 4], ["greater-restoration", 7],
+  ]) {
+    const spell = spellById.get(id);
+    assert.equal(spell?.levelByClass.cleric, rank, `${id} Cleric rank`);
+    assert.equal(spell?.levelByClass.oracle, rank, `${id} Oracle rank`);
+    assert.ok(spell.source?.url, `${id} rules source`);
+  }
+  assert.ok(spellById.get("raise-dead").components.includes("M (diamond worth 5,000 gp)"));
 });
 
 test("later-class-exclusive spells retain direct rules sources", async () => {

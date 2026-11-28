@@ -1,0 +1,25 @@
+{
+  "id": "harm",
+  "name": "Harm",
+  "school": "necromancy",
+  "levelByClass": {
+    "cleric": 6
+  },
+  "summary": "Deal up to 150 points of negative-energy damage, or heal an undead target.",
+  "description": "The touched target takes 10 points of negative-energy damage per caster level, up to 150. A successful Will save halves the damage. Harm leaves the target with at least 1 hit point. When used on undead, resolve it as Heal instead.",
+  "components": [
+    "V",
+    "S"
+  ],
+  "castingTime": "1 standard action",
+  "range": "touch",
+  "target": "creature touched",
+  "duration": "instantaneous",
+  "savingThrow": "Will half, see text",
+  "spellResistance": "yes",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Harm"
+  }
+}
