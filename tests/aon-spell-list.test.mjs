@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { parseClassSpellList } from "../tools/scripts/aon-spell-list.mjs";
+import { parseClassSpellList, spellNameKeys } from "../tools/scripts/aon-spell-list.mjs";
 
 test("spell list import reads ordinary and source-marked spell links at their listed ranks", () => {
   const html = `<span><h2>1st-Level</h2>
@@ -14,4 +14,11 @@ test("spell list import reads ordinary and source-marked spell links at their li
     { itemName: "Test%20Ward", name: "Test Ward", level: 1, summary: "A brief ward." },
     { itemName: "Test%20Echo", name: "Test Echo", level: 2, summary: "Repeat a sound ." },
   ]);
+});
+
+test("spell name matching prefers the published spelling and recognizes rank qualifiers on either end", () => {
+  assert.deepEqual(spellNameKeys("Restoration, Greater"), ["restoration greater", "greater restoration"]);
+  assert.deepEqual(spellNameKeys("Lesser Planar Ally"), ["lesser planar ally", "planar ally lesser"]);
+  assert.deepEqual(spellNameKeys("Command, Mass"), ["command mass", "mass command"]);
+  assert.deepEqual(spellNameKeys("Sanctuary"), ["sanctuary"]);
 });

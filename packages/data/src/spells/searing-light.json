@@ -1,0 +1,25 @@
+{
+  "id": "searing-light",
+  "name": "Searing Light",
+  "school": "evocation",
+  "levelByClass": {
+    "cleric": 3
+  },
+  "summary": "Fire a ray that deals extra damage against undead.",
+  "description": "Make a ranged touch attack. On a hit against most creatures, deal 1d8 damage per two caster levels, up to 5d8. Against an undead target deal 1d6 per caster level, up to 10d6, or 1d8 per level, up to 10d8, if it is especially vulnerable to bright light. Against a construct or an object deal 1d6 per two caster levels, up to 5d6.",
+  "components": [
+    "V",
+    "S"
+  ],
+  "castingTime": "1 standard action",
+  "range": "medium (100 ft. + 10 ft. per caster level)",
+  "effect": "ray",
+  "duration": "instantaneous",
+  "savingThrow": "none",
+  "spellResistance": "yes",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Searing%20Light"
+  }
+}

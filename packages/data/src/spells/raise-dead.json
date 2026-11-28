@@ -1,0 +1,27 @@
+{
+  "id": "raise-dead",
+  "name": "Raise Dead",
+  "school": "conjuration",
+  "levelByClass": {
+    "cleric": 5
+  },
+  "summary": "Restore a willing, recently deceased creature to life for a 5,000 gp diamond.",
+  "description": "The soul must be willing and able to return, and the target must have died no more than one day per caster level ago. The revived creature returns with 1 hit point per Hit Die and takes two permanent negative levels. A 1st-level subject takes 2 Constitution drain instead and cannot return if that leaves it at Constitution 0 or lower.\n\nAbility scores reduced to 0 rise to 1. Mundane poisons and diseases are removed, while curses and magical diseases remain. Missing body parts are not restored. Each prepared spell or unused spontaneous slot has a 50% chance of being lost. This spell cannot bring back a creature that died of old age or from a death effect, a creature that was turned undead, or a construct, elemental, outsider, or undead creature.",
+  "components": [
+    "V",
+    "S",
+    "M (diamond worth 5,000 gp)",
+    "DF"
+  ],
+  "castingTime": "1 minute",
+  "range": "touch",
+  "target": "dead creature touched",
+  "duration": "instantaneous",
+  "savingThrow": "none, see text",
+  "spellResistance": "yes (harmless)",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Raise%20Dead"
+  }
+}

@@ -1,8 +1,7 @@
 import { readdir, readFile, writeFile } from "node:fs/promises";
-import { parseClassSpellList } from "./aon-spell-list.mjs";
+import { parseClassSpellList, spellNameKeys } from "./aon-spell-list.mjs";
 
 const dataRoot = new URL("../../packages/data/src/", import.meta.url);
-const normalize = value => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 async function loadDirectory(name) {
   const directory = new URL(`${name}/`, dataRoot);
   return Promise.all((await readdir(directory)).filter(file => file.endsWith(".json")).map(async file => JSON.parse(await readFile(new URL(file, directory), "utf8"))));
@@ -26,7 +25,7 @@ const records = [
 const idsByName = new Map();
 const existingIds = new Set(records.map(spell => spell.id));
 for (const spell of records) {
-  const key = normalize(spell.name);
+  const [key] = spellNameKeys(spell.name);
   if (!idsByName.has(key)) idsByName.set(key, []);
   if (!idsByName.get(key).includes(spell.id)) idsByName.get(key).push(spell.id);
 }
@@ -34,7 +33,7 @@ for (const spell of records) {
 const levelsBySpellId = existingClasses ? JSON.parse(await readFile(levelFile, "utf8")).levelsBySpellId : {};
 const missing = [];
 const importedSpellsByName = new Map();
-const preferredAmbiguousIds = new Map([[normalize("Owl's Wisdom, Mass"), "owls-wisdom-mass"]]);
+const preferredAmbiguousIds = new Map([[spellNameKeys("Owl's Wisdom, Mass")[0], "owls-wisdom-mass"]]);
 for (const className of importClasses) {
   const classId = className.toLowerCase();
   const url = `https://www.aonprd.com/Spells.aspx?Class=${encodeURIComponent(className)}`;
@@ -44,7 +43,8 @@ for (const className of importClasses) {
   if (!entries.length) throw new Error(`Found no spell rows for ${className} at ${url}.`);
   let imported = 0;
   for (const { itemName, name, level, summary } of entries) {
-    const key = normalize(name);
+    const names = spellNameKeys(name);
+    const key = names.find(candidate => idsByName.has(candidate) || importedSpellsByName.has(candidate)) ?? names[0];
     const candidates = idsByName.get(key) ?? [];
     let spellId = candidates.length === 1 ? candidates[0] : preferredAmbiguousIds.get(key);
     if (!spellId && existingClasses) {

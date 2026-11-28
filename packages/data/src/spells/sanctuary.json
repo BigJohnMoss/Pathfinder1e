@@ -1,0 +1,26 @@
+{
+  "id": "sanctuary",
+  "name": "Sanctuary",
+  "school": "abjuration",
+  "levelByClass": {
+    "cleric": 1
+  },
+  "summary": "Force enemies to pass a Will save before attacking the protected creature directly.",
+  "description": "An opponent must make a Will save the first time it tries to attack the protected creature directly, including with a targeted spell. A failed save wastes the attempted attack and bars further direct attacks on the creature for the spell’s duration. An opponent that succeeds can attack normally. Area effects still reach the subject. The protection ends if the subject attacks.",
+  "components": [
+    "V",
+    "S",
+    "DF"
+  ],
+  "castingTime": "1 standard action",
+  "range": "touch",
+  "target": "creature touched",
+  "duration": "1 round per caster level",
+  "savingThrow": "Will negates",
+  "spellResistance": "no",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sanctuary"
+  }
+}

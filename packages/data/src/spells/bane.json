@@ -1,0 +1,31 @@
+{
+  "id": "bane",
+  "name": "Bane",
+  "school": "enchantment",
+  "descriptors": [
+    "emotion",
+    "fear",
+    "mind-affecting"
+  ],
+  "levelByClass": {
+    "cleric": 1
+  },
+  "summary": "Give nearby enemies penalties to attacks and saves against fear.",
+  "description": "Enemies in the burst that fail a Will save take a −1 penalty on attack rolls and saves against fear. Bane can counter or dispel Bless.",
+  "components": [
+    "V",
+    "S",
+    "DF"
+  ],
+  "castingTime": "1 standard action",
+  "range": "50 ft.",
+  "area": "50-foot burst centered on the caster",
+  "duration": "1 minute per caster level",
+  "savingThrow": "Will negates",
+  "spellResistance": "yes",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bane"
+  }
+}
