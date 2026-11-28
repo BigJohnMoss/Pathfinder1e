@@ -11,7 +11,8 @@ test("whole-school spell expansions are materialized from the spell catalogue", 
   const access = inferArchetypeSpellAccess(archetype("alchemist-ectoplasm-master"), data.spells);
   assert.equal(access.spellListAdditions["animate-dead"], 4);
   assert.equal(access.spellListAdditions.fireball, undefined);
-  assert.equal(Object.keys(access.spellListAdditions).length, 173);
+  assert.equal(access.spellListAdditions["false-life"], undefined);
+  assert.equal(data.spells.find((spell) => spell.id === "false-life")?.levelByClass.alchemist, 2);
 });
 
 test("descriptor expansions and prohibitions combine in the applied spell list", () => {

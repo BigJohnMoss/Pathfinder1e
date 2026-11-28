@@ -21,7 +21,7 @@ test("Alchemist prepares six levels of extracts from the imported formula catalo
   const casting = spellcastingProgression(alchemist, 20, { abilityScore: 20 });
   assert.equal(casting.maximumSpellLevel, 6);
   assert.deepEqual(casting.slots.map(({ level, base }) => [level, base]), [[1,5],[2,5],[3,5],[4,5],[5,5],[6,5]]);
-  assert.equal(spellsAvailableToClass(spells, "alchemist", 6).length, 287);
+  assert.equal(spellsAvailableToClass(spells, "alchemist", 6).length, 383);
 });
 
 test("Alchemist discoveries include prerequisites and daily bomb limits", () => {

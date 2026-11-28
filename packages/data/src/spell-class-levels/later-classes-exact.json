@@ -14931,663 +14931,1029 @@
     },
     "bless": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "inquisitor": 1,
+      "warpriest": 1
     },
     "bless-water": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "inquisitor": 1,
+      "warpriest": 1
     },
     "command": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "inquisitor": 1,
+      "warpriest": 1
     },
     "divine-favor": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "inquisitor": 1,
+      "warpriest": 1
     },
     "endure-elements": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "alchemist": 1,
+      "bloodrager": 1,
+      "hunter": 1,
+      "investigator": 1,
+      "warpriest": 1
     },
     "entropic-shield": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "warpriest": 1
     },
     "face-of-the-devourer": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "bloodrager": 1,
+      "hunter": 1,
+      "warpriest": 1
     },
     "grasping-corpse": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "warpriest": 1
     },
     "know-the-enemy": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "hunter": 1,
+      "inquisitor": 1,
+      "warpriest": 1
     },
     "lighten-object": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "magus": 1,
+      "warpriest": 1
     },
     "marids-mastery": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "bloodrager": 1,
+      "hunter": 1,
+      "warpriest": 1
     },
     "murderous-crow": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "warpriest": 1
     },
     "obscure-poison": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "alchemist": 1,
+      "hunter": 1,
+      "investigator": 1,
+      "warpriest": 1
     },
     "obscuring-mist": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "hunter": 1,
+      "magus": 1,
+      "warpriest": 1
     },
     "peasant-armaments": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "hunter": 1,
+      "inquisitor": 1,
+      "warpriest": 1
     },
     "pesh-vigor": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "alchemist": 1,
+      "bloodrager": 1,
+      "hunter": 1,
+      "investigator": 1,
+      "magus": 1,
+      "warpriest": 1
     },
     "poisoned-egg": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "inquisitor": 1,
+      "magus": 1,
+      "warpriest": 1
     },
     "protection-from-chaos": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "bloodrager": 1,
+      "inquisitor": 1,
+      "warpriest": 1
     },
     "protection-from-evil": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "bloodrager": 1,
+      "inquisitor": 1,
+      "warpriest": 1
     },
     "protection-from-good": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "bloodrager": 1,
+      "inquisitor": 1,
+      "warpriest": 1
     },
     "protection-from-law": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "bloodrager": 1,
+      "inquisitor": 1,
+      "warpriest": 1
     },
     "recharge-innate-magic": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "alchemist": 1,
+      "hunter": 1,
+      "inquisitor": 1,
+      "investigator": 1,
+      "magus": 1,
+      "warpriest": 1
     },
     "rune-trace": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "warpriest": 1
     },
     "shield-of-faith": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "inquisitor": 1,
+      "warpriest": 1
     },
     "stone-shield": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "bloodrager": 1,
+      "hunter": 1,
+      "magus": 2,
+      "warpriest": 1
     },
     "theft-ward": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "inquisitor": 1,
+      "warpriest": 1
     },
     "touch-of-bloodletting": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "bloodrager": 1,
+      "hunter": 1,
+      "warpriest": 1
     },
     "unwelcome-halo": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "warpriest": 1
     },
     "winter-feathers": {
       "oracle": 1,
-      "cleric": 1
+      "cleric": 1,
+      "bloodrager": 1,
+      "hunter": 1,
+      "inquisitor": 1,
+      "warpriest": 1
     },
     "aboleths-lung": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "hunter": 2,
+      "warpriest": 2
     },
     "alchemical-tinkering": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "warpriest": 2
     },
     "ancestral-regression": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "alchemist": 2,
+      "investigator": 2,
+      "warpriest": 2
     },
     "animate-dead-lesser": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "warpriest": 2
     },
     "augury": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "warpriest": 2
     },
     "blood-blaze": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "alchemist": 2,
+      "bloodrager": 2,
+      "investigator": 2,
+      "magus": 2,
+      "warpriest": 2
     },
     "bloody-tears-and-jagged-smile": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "warpriest": 2
     },
     "boiling-blood": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "bloodrager": 2,
+      "warpriest": 2
     },
     "brittle-portal": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "hunter": 2,
+      "inquisitor": 2,
+      "warpriest": 2
     },
     "cloud-of-seasickness": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "hunter": 2,
+      "warpriest": 2
     },
     "consecrate": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "inquisitor": 2,
+      "warpriest": 2
     },
     "curse-terrain-lesser": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "hunter": 2,
+      "warpriest": 2
     },
     "darkness": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "inquisitor": 2,
+      "magus": 2,
+      "warpriest": 2
     },
     "defending-bone": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "inquisitor": 2,
+      "magus": 2,
+      "warpriest": 2
     },
     "disfiguring-touch": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "bloodrager": 2,
+      "warpriest": 2
     },
     "first-world-revisions": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "alchemist": 2,
+      "investigator": 2,
+      "warpriest": 2
     },
     "ghoul-hunger": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "warpriest": 2
     },
     "light-prison": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "inquisitor": 2,
+      "magus": 2,
+      "warpriest": 2
     },
     "make-whole": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "warpriest": 2
     },
     "resist-energy": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "alchemist": 2,
+      "bloodrager": 2,
+      "hunter": 1,
+      "inquisitor": 2,
+      "investigator": 2,
+      "warpriest": 2
     },
     "reveal-true-shape": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "hunter": 2,
+      "warpriest": 2
     },
     "rovagugs-fury": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "bloodrager": 2,
+      "inquisitor": 2,
+      "warpriest": 2
     },
     "secret-speech": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "inquisitor": 1,
+      "warpriest": 2
     },
     "semblance-of-flesh": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "warpriest": 2
     },
     "sentry-skull": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "warpriest": 2
     },
     "shatter": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "bloodrager": 2,
+      "magus": 2,
+      "warpriest": 2
     },
     "shield-other": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "inquisitor": 2,
+      "warpriest": 2
     },
     "silence": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "inquisitor": 2,
+      "warpriest": 2
     },
     "spell-gauge": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "inquisitor": 2,
+      "warpriest": 2
     },
     "spiritual-weapon": {
       "oracle": 2,
-      "cleric": 2
+      "cleric": 2,
+      "inquisitor": 2,
+      "warpriest": 2
     },
     "animate-dead": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "warpriest": 3
     },
     "bestow-insight": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "inquisitor": 2,
+      "warpriest": 3
     },
     "black-sword-of-war": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "hunter": 3,
+      "warpriest": 3
     },
     "blindness-deafness": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "bloodrager": 2,
+      "warpriest": 3
     },
     "blood-scent": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "alchemist": 3,
+      "bloodrager": 3,
+      "hunter": 2,
+      "inquisitor": 3,
+      "investigator": 3,
+      "warpriest": 3
     },
     "channel-the-gift": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "hunter": 3,
+      "warpriest": 3
     },
     "contagion": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "bloodrager": 4,
+      "hunter": 3,
+      "warpriest": 3
     },
     "continual-flame": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "inquisitor": 3,
+      "warpriest": 3
     },
     "create-soul-gem": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "warpriest": 3
     },
     "curse-of-befouled-fortune": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "bloodrager": 4,
+      "warpriest": 3
     },
     "daylight": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "hunter": 3,
+      "inquisitor": 3,
+      "magus": 3,
+      "warpriest": 3
     },
     "dispel-magic": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "hunter": 4,
+      "inquisitor": 3,
+      "magus": 3,
+      "warpriest": 3
     },
     "flesh-puppet": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "warpriest": 3
     },
     "fortunes-path": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "warpriest": 3
     },
     "fractions-of-heal-and-harm": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "bloodrager": 3,
+      "warpriest": 3
     },
     "lissalan-snake-sigil": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "warpriest": 3
     },
     "lovers-vengeance": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "warpriest": 3
     },
     "magic-vestment": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "inquisitor": 3,
+      "warpriest": 3
     },
     "monstrous-extremities": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "bloodrager": 3,
+      "warpriest": 3
     },
     "paragon-surge": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "alchemist": 3,
+      "bloodrager": 3,
+      "investigator": 3,
+      "magus": 4,
+      "warpriest": 3
     },
     "planar-inquiry": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "hunter": 3,
+      "inquisitor": 3,
+      "warpriest": 3
     },
     "prayer": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "inquisitor": 3,
+      "warpriest": 3
     },
     "project-weakness": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "warpriest": 3
     },
     "raging-rubble": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "bloodrager": 3,
+      "hunter": 3,
+      "warpriest": 3
     },
     "recharge": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "magus": 3,
+      "warpriest": 3
     },
     "sadomasochism": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "bloodrager": 4,
+      "inquisitor": 3,
+      "magus": 4,
+      "warpriest": 3
     },
     "sands-of-time": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "warpriest": 3
     },
     "sebaceous-twin": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "hunter": 3,
+      "warpriest": 3
     },
     "stone-shape": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "hunter": 3,
+      "warpriest": 3
     },
     "symbol-of-exsanguination": {
       "oracle": 3,
-      "cleric": 3
+      "cleric": 3,
+      "bloodrager": 2,
+      "warpriest": 3
     },
     "absorb-rune-i": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "magus": 4,
+      "warpriest": 4
     },
     "abyssal-vermin": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "warpriest": 4
     },
     "bit-of-luck": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "alchemist": 4,
+      "investigator": 4,
+      "warpriest": 4
     },
     "curse-terrain": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "hunter": 4,
+      "warpriest": 4
     },
     "daemon-ward": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "hunter": 5,
+      "warpriest": 4
     },
     "deadmans-contingency": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "warpriest": 4
     },
     "deathless": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "alchemist": 4,
+      "inquisitor": 4,
+      "investigator": 4,
+      "warpriest": 4
     },
     "devil-snare": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "warpriest": 4
     },
     "divination": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "inquisitor": 4,
+      "warpriest": 4
     },
     "false-future": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "warpriest": 4
     },
     "flesh-puppet-horde": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "warpriest": 4
     },
     "giant-vermin": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "hunter": 4,
+      "warpriest": 4
     },
     "gilded-whispers": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "warpriest": 4
     },
     "glimpse-of-truth": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "alchemist": 5,
+      "hunter": 5,
+      "inquisitor": 4,
+      "investigator": 5,
+      "magus": 5,
+      "warpriest": 4
     },
     "holy-smite": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "inquisitor": 4,
+      "warpriest": 4
     },
     "magic-weapon-greater": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "bloodrager": 3,
+      "inquisitor": 3,
+      "magus": 3,
+      "warpriest": 4
     },
     "probe-history": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "inquisitor": 4,
+      "warpriest": 4
     },
     "restoration": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "alchemist": 4,
+      "inquisitor": 4,
+      "investigator": 4,
+      "warpriest": 4
     },
     "sending": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "alchemist": 5,
+      "inquisitor": 4,
+      "investigator": 5,
+      "warpriest": 4
     },
     "summon-genie-lesser": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "warpriest": 4
     },
     "symbol-of-revelation": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "warpriest": 4
     },
     "symbol-of-slowing": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "warpriest": 4
     },
     "torpid-reanimation": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "warpriest": 4
     },
     "astral-projection-lesser": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "warpriest": 5
     },
     "atonement": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "hunter": 5,
+      "inquisitor": 5,
+      "warpriest": 5
     },
     "break-enchantment": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "inquisitor": 5,
+      "warpriest": 5
     },
     "breath-of-life": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "warpriest": 5
     },
     "commune": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "inquisitor": 5,
+      "warpriest": 5
     },
     "constricting-coils": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "warpriest": 5
     },
     "curse-of-magic-negation": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "inquisitor": 4,
+      "warpriest": 5
     },
     "dungeonsight": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "inquisitor": 4,
+      "warpriest": 5
     },
     "flame-strike": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "hunter": 4,
+      "inquisitor": 5,
+      "warpriest": 5
     },
     "freedoms-toast": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "inquisitor": 5,
+      "warpriest": 5
     },
     "geniekind": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "hunter": 5,
+      "warpriest": 5
     },
     "half-blood-extraction": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "alchemist": 5,
+      "hunter": 5,
+      "investigator": 5,
+      "warpriest": 5
     },
     "hallow": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "hunter": 5,
+      "inquisitor": 5,
+      "warpriest": 5
     },
     "lighten-object-mass": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "magus": 5,
+      "warpriest": 5
     },
     "plane-shift": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "warpriest": 5
     },
     "reboot": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "warpriest": 5
     },
     "scrying": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "hunter": 4,
+      "warpriest": 5
     },
     "soulswitch": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "hunter": 5,
+      "inquisitor": 5,
+      "magus": 5,
+      "warpriest": 5
     },
     "summon-genie": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "warpriest": 5
     },
     "symbol-of-pain": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "warpriest": 5
     },
     "symbol-of-scrying": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "warpriest": 5
     },
     "symbol-of-sleep": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "warpriest": 5
     },
     "symbol-of-striking": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "magus": 5,
+      "warpriest": 5
     },
     "treasure-stitching": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "warpriest": 5
     },
     "true-seeing": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "alchemist": 6,
+      "inquisitor": 5,
+      "investigator": 6,
+      "magus": 6,
+      "warpriest": 5
     },
     "unhallow": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "hunter": 5,
+      "inquisitor": 5,
+      "warpriest": 5
     },
     "village-veil": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "warpriest": 5
     },
     "waft": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "hunter": 5,
+      "magus": 5,
+      "warpriest": 5
     },
     "wall-of-stone": {
       "oracle": 5,
-      "cleric": 5
+      "cleric": 5,
+      "hunter": 6,
+      "magus": 5,
+      "warpriest": 5
     },
     "absorb-rune-ii": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "magus": 6,
+      "warpriest": 6
     },
     "animate-objects": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "warpriest": 6
     },
     "blade-barrier": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "inquisitor": 6,
+      "warpriest": 6
     },
     "commune-with-texts": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "inquisitor": 6,
+      "warpriest": 6
     },
     "create-undead": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "warpriest": 6
     },
     "curse-terrain-greater": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "hunter": 6,
+      "warpriest": 6
     },
     "hammer-of-mending": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "warpriest": 6
     },
     "heal": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "alchemist": 6,
+      "inquisitor": 6,
+      "investigator": 6,
+      "warpriest": 6
     },
     "impart-mind": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "magus": 5,
+      "warpriest": 6
     },
     "perceive-betrayal": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "inquisitor": 4,
+      "warpriest": 6
     },
     "plague-bearer": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "alchemist": 6,
+      "hunter": 6,
+      "inquisitor": 6,
+      "investigator": 6,
+      "warpriest": 6
     },
     "planar-ally": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "warpriest": 6
     },
     "sarzari-shadow-memory": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "inquisitor": 6,
+      "warpriest": 6
     },
     "sign-of-wrath": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "warpriest": 6
     },
     "summon-genie-greater": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "warpriest": 6
     },
     "symbol-of-distraction": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "warpriest": 6
     },
     "symbol-of-fear": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "warpriest": 6
     },
     "symbol-of-persuasion": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "warpriest": 6
     },
     "symbol-of-sealing": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "warpriest": 6
     },
     "symbol-of-storms": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "hunter": 3,
+      "warpriest": 6
     },
     "truespeak": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "warpriest": 6
     },
     "undeath-to-death": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "inquisitor": 6,
+      "warpriest": 6
     },
     "vengeful-stinger": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "warpriest": 6
     },
     "what-grows-within": {
       "oracle": 6,
-      "cleric": 6
+      "cleric": 6,
+      "hunter": 6,
+      "warpriest": 6
     },
     "awaken-construct": {
       "oracle": 7,
@@ -15615,7 +15981,8 @@
     },
     "holy-word": {
       "oracle": 7,
-      "cleric": 7
+      "cleric": 7,
+      "inquisitor": 6
     },
     "maddening-oubliette": {
       "oracle": 7,
@@ -15639,7 +16006,8 @@
     },
     "repulsion": {
       "oracle": 7,
-      "cleric": 7
+      "cleric": 7,
+      "inquisitor": 6
     },
     "resurrection": {
       "oracle": 7,
@@ -15667,7 +16035,8 @@
     },
     "terraform": {
       "oracle": 7,
-      "cleric": 7
+      "cleric": 7,
+      "hunter": 6
     },
     "antimagic-field": {
       "oracle": 8,
@@ -15794,33 +16163,897 @@
       "cleric": 9
     },
     "rite-of-centered-mind": {
-      "cleric": 1
+      "cleric": 1,
+      "warpriest": 1
     },
     "visualization-of-the-body": {
-      "cleric": 2
+      "cleric": 2,
+      "magus": 2,
+      "warpriest": 2
     },
     "visualization-of-the-mind": {
-      "cleric": 2
+      "cleric": 2,
+      "warpriest": 2
     },
     "see-beyond": {
-      "cleric": 3
+      "cleric": 3,
+      "warpriest": 3
     },
     "spirit-bonds": {
-      "cleric": 3
+      "cleric": 3,
+      "warpriest": 3
     },
     "firewalkers-meditation": {
-      "cleric": 4
+      "cleric": 4,
+      "warpriest": 4
     },
     "roaming-pit": {
-      "cleric": 6
+      "cleric": 6,
+      "hunter": 6,
+      "warpriest": 6
     },
     "planar-ally-lesser": {
       "oracle": 4,
-      "cleric": 4
+      "cleric": 4,
+      "warpriest": 4
     },
     "greater-restoration": {
       "oracle": 7,
       "cleric": 7
+    },
+    "anticipate-peril": {
+      "alchemist": 1,
+      "hunter": 1,
+      "investigator": 1
+    },
+    "blend": {
+      "alchemist": 1,
+      "hunter": 1,
+      "investigator": 1,
+      "magus": 1
+    },
+    "enlarge-person": {
+      "alchemist": 1,
+      "bloodrager": 1,
+      "investigator": 1,
+      "magus": 1
+    },
+    "expeditious-retreat": {
+      "alchemist": 1,
+      "bloodrager": 1,
+      "inquisitor": 1,
+      "investigator": 1,
+      "magus": 1
+    },
+    "fools-gold-aa": {
+      "alchemist": 1,
+      "investigator": 1
+    },
+    "reduce-person": {
+      "alchemist": 1,
+      "bloodrager": 1,
+      "investigator": 1,
+      "magus": 1
+    },
+    "skin-tag": {
+      "alchemist": 1
+    },
+    "true-strike": {
+      "alchemist": 1,
+      "bloodrager": 1,
+      "inquisitor": 1,
+      "investigator": 1,
+      "magus": 1
+    },
+    "urban-grace": {
+      "alchemist": 1,
+      "hunter": 1,
+      "investigator": 1
+    },
+    "ablative-barrier": {
+      "alchemist": 2,
+      "bloodrager": 2,
+      "investigator": 2,
+      "magus": 2
+    },
+    "animal-aspect": {
+      "alchemist": 2,
+      "bloodrager": 2,
+      "hunter": 2,
+      "investigator": 2,
+      "magus": 2
+    },
+    "aram-zeys-focus": {
+      "alchemist": 2,
+      "investigator": 2
+    },
+    "barkskin": {
+      "alchemist": 2,
+      "hunter": 2,
+      "investigator": 2
+    },
+    "false-life": {
+      "alchemist": 2,
+      "bloodrager": 2,
+      "investigator": 2
+    },
+    "full-pouch": {
+      "alchemist": 2,
+      "hunter": 2,
+      "inquisitor": 3,
+      "investigator": 2
+    },
+    "fungal-blisters": {
+      "alchemist": 2,
+      "hunter": 2,
+      "investigator": 2
+    },
+    "grasping-vine": {
+      "alchemist": 2,
+      "hunter": 2,
+      "investigator": 2
+    },
+    "invisibility": {
+      "alchemist": 2,
+      "inquisitor": 2,
+      "investigator": 2,
+      "magus": 2
+    },
+    "languid-venom": {
+      "alchemist": 2,
+      "investigator": 2
+    },
+    "levitate": {
+      "alchemist": 2,
+      "investigator": 2,
+      "magus": 2
+    },
+    "minor-dream": {
+      "alchemist": 2,
+      "investigator": 2
+    },
+    "protection-from-arrows": {
+      "alchemist": 2,
+      "bloodrager": 2,
+      "investigator": 2
+    },
+    "spider-climb": {
+      "alchemist": 2,
+      "bloodrager": 2,
+      "hunter": 2,
+      "investigator": 2,
+      "magus": 2
+    },
+    "squeeze": {
+      "alchemist": 2,
+      "investigator": 2
+    },
+    "tattoo-potion": {
+      "alchemist": 2,
+      "investigator": 2
+    },
+    "touch-injection": {
+      "alchemist": 2,
+      "investigator": 2
+    },
+    "beast-shape-i": {
+      "alchemist": 3,
+      "bloodrager": 3,
+      "investigator": 3,
+      "magus": 3
+    },
+    "blood-sentinel": {
+      "alchemist": 3,
+      "investigator": 3
+    },
+    "burrow": {
+      "alchemist": 3,
+      "bloodrager": 3,
+      "hunter": 3,
+      "investigator": 3
+    },
+    "draconic-reservoir": {
+      "alchemist": 3,
+      "bloodrager": 3,
+      "investigator": 3
+    },
+    "fire-trail": {
+      "alchemist": 3,
+      "bloodrager": 3,
+      "investigator": 3,
+      "magus": 3
+    },
+    "fly": {
+      "alchemist": 3,
+      "bloodrager": 3,
+      "investigator": 3,
+      "magus": 3
+    },
+    "gaseous-form": {
+      "alchemist": 3,
+      "investigator": 3,
+      "magus": 3
+    },
+    "haste": {
+      "alchemist": 3,
+      "bloodrager": 3,
+      "investigator": 3,
+      "magus": 3
+    },
+    "heroism": {
+      "alchemist": 3,
+      "bloodrager": 3,
+      "inquisitor": 3,
+      "investigator": 3
+    },
+    "monstrous-physique-i": {
+      "alchemist": 3,
+      "bloodrager": 3,
+      "investigator": 3,
+      "magus": 3
+    },
+    "nondetection": {
+      "alchemist": 3,
+      "hunter": 4,
+      "inquisitor": 3,
+      "investigator": 3
+    },
+    "prehensile-pilfer": {
+      "alchemist": 3,
+      "investigator": 3,
+      "magus": 3
+    },
+    "vomit-twin": {
+      "alchemist": 3,
+      "investigator": 3,
+      "magus": 3
+    },
+    "absorbing-inhalation": {
+      "alchemist": 4,
+      "bloodrager": 4,
+      "hunter": 4,
+      "investigator": 4
+    },
+    "beast-shape-ii": {
+      "alchemist": 4,
+      "bloodrager": 4,
+      "investigator": 4,
+      "magus": 4
+    },
+    "bleaching-resistance": {
+      "alchemist": 4,
+      "hunter": 6,
+      "investigator": 4
+    },
+    "detonate": {
+      "alchemist": 4,
+      "bloodrager": 4,
+      "investigator": 4,
+      "magus": 4
+    },
+    "dissolution": {
+      "alchemist": 4,
+      "investigator": 4
+    },
+    "dragons-breath": {
+      "alchemist": 4,
+      "bloodrager": 4,
+      "investigator": 4,
+      "magus": 4
+    },
+    "earth-glide": {
+      "alchemist": 4,
+      "bloodrager": 4,
+      "hunter": 4,
+      "investigator": 4
+    },
+    "elemental-body-i": {
+      "alchemist": 4,
+      "bloodrager": 4,
+      "investigator": 4,
+      "magus": 4
+    },
+    "fire-shield": {
+      "alchemist": 4,
+      "bloodrager": 4,
+      "investigator": 4,
+      "magus": 4
+    },
+    "miasmatic-form": {
+      "alchemist": 4,
+      "investigator": 4
+    },
+    "monstrous-physique-ii": {
+      "alchemist": 4,
+      "bloodrager": 4,
+      "investigator": 4,
+      "magus": 4
+    },
+    "naga-shape-i": {
+      "alchemist": 4,
+      "bloodrager": 4,
+      "investigator": 4,
+      "magus": 4
+    },
+    "scorching-ash-form": {
+      "alchemist": 4,
+      "investigator": 4
+    },
+    "stoneskin": {
+      "alchemist": 4,
+      "bloodrager": 4,
+      "hunter": 5,
+      "inquisitor": 4,
+      "investigator": 4,
+      "magus": 4
+    },
+    "vermin-shape-i": {
+      "alchemist": 4,
+      "bloodrager": 4,
+      "hunter": 3,
+      "investigator": 4,
+      "magus": 4
+    },
+    "beast-shape-iii": {
+      "alchemist": 5,
+      "investigator": 5,
+      "magus": 5
+    },
+    "claim-identity-greater": {
+      "alchemist": 5,
+      "hunter": 6,
+      "inquisitor": 5,
+      "investigator": 5
+    },
+    "dream": {
+      "alchemist": 5,
+      "investigator": 5
+    },
+    "elemental-body-ii": {
+      "alchemist": 5,
+      "investigator": 5,
+      "magus": 5
+    },
+    "magic-jar": {
+      "alchemist": 5,
+      "investigator": 5
+    },
+    "mask-from-divination": {
+      "alchemist": 5,
+      "bloodrager": 4,
+      "investigator": 5,
+      "magus": 5
+    },
+    "monstrous-physique-iii": {
+      "alchemist": 5,
+      "investigator": 5,
+      "magus": 5
+    },
+    "naga-shape-ii": {
+      "alchemist": 5,
+      "investigator": 5,
+      "magus": 5
+    },
+    "nightmare": {
+      "alchemist": 5,
+      "investigator": 5
+    },
+    "stoneskin-communal": {
+      "alchemist": 5,
+      "hunter": 6,
+      "inquisitor": 5,
+      "investigator": 5
+    },
+    "transfiguring-touch": {
+      "alchemist": 5,
+      "investigator": 5
+    },
+    "vermin-shape-ii": {
+      "alchemist": 5,
+      "hunter": 4,
+      "investigator": 5,
+      "magus": 5
+    },
+    "analyze-dweomer": {
+      "alchemist": 6,
+      "investigator": 6
+    },
+    "beast-shape-iv": {
+      "alchemist": 6,
+      "investigator": 6,
+      "magus": 6
+    },
+    "borrowed-time": {
+      "alchemist": 6,
+      "investigator": 6,
+      "magus": 6
+    },
+    "elemental-body-iii": {
+      "alchemist": 6,
+      "investigator": 6,
+      "magus": 6
+    },
+    "form-of-the-dragon-i": {
+      "alchemist": 6,
+      "investigator": 6,
+      "magus": 6
+    },
+    "legendary-proportions": {
+      "alchemist": 6,
+      "investigator": 6
+    },
+    "mislead": {
+      "alchemist": 6,
+      "investigator": 6,
+      "magus": 6
+    },
+    "monstrous-physique-iv": {
+      "alchemist": 6,
+      "investigator": 6,
+      "magus": 6
+    },
+    "naga-shape-iii": {
+      "alchemist": 6,
+      "investigator": 6,
+      "magus": 6
+    },
+    "transformation": {
+      "alchemist": 6,
+      "investigator": 6,
+      "magus": 6
+    },
+    "walk-through-space": {
+      "alchemist": 6,
+      "investigator": 6,
+      "magus": 6
+    },
+    "break": {
+      "bloodrager": 1
+    },
+    "burning-hands": {
+      "bloodrager": 1,
+      "magus": 1
+    },
+    "color-spray": {
+      "bloodrager": 1,
+      "magus": 1
+    },
+    "ear-piercing-scream": {
+      "bloodrager": 1,
+      "inquisitor": 1
+    },
+    "feather-fall": {
+      "bloodrager": 1,
+      "magus": 1
+    },
+    "hydraulic-push": {
+      "bloodrager": 1,
+      "hunter": 1,
+      "magus": 1
+    },
+    "mage-armor": {
+      "bloodrager": 1
+    },
+    "magic-missile": {
+      "bloodrager": 1,
+      "magus": 1
+    },
+    "mudball": {
+      "bloodrager": 1,
+      "hunter": 1,
+      "magus": 1
+    },
+    "ray-of-enfeeblement": {
+      "bloodrager": 1,
+      "magus": 1
+    },
+    "shadow-weapon": {
+      "bloodrager": 1
+    },
+    "shocking-grasp": {
+      "bloodrager": 1,
+      "magus": 1
+    },
+    "strong-wings": {
+      "bloodrager": 1,
+      "hunter": 1
+    },
+    "touch-of-combustion": {
+      "bloodrager": 1,
+      "hunter": 1,
+      "inquisitor": 1,
+      "magus": 1
+    },
+    "web-bolt": {
+      "bloodrager": 1,
+      "magus": 1
+    },
+    "windy-escape": {
+      "bloodrager": 1,
+      "hunter": 1,
+      "magus": 1
+    },
+    "burning-gaze": {
+      "bloodrager": 2,
+      "hunter": 2,
+      "magus": 2
+    },
+    "death-from-below": {
+      "bloodrager": 2
+    },
+    "dust-of-twilight": {
+      "bloodrager": 2
+    },
+    "gust-of-wind": {
+      "bloodrager": 2,
+      "hunter": 2,
+      "magus": 2
+    },
+    "gusting-sphere": {
+      "bloodrager": 2,
+      "hunter": 2,
+      "magus": 2
+    },
+    "mirror-image": {
+      "bloodrager": 2,
+      "magus": 2
+    },
+    "scorching-ray": {
+      "bloodrager": 2,
+      "magus": 2
+    },
+    "steal-breath": {
+      "bloodrager": 2,
+      "hunter": 2
+    },
+    "unshakable-chill": {
+      "bloodrager": 2,
+      "hunter": 2
+    },
+    "fireball": {
+      "bloodrager": 3,
+      "magus": 3
+    },
+    "firestream": {
+      "bloodrager": 3,
+      "magus": 3
+    },
+    "force-punch": {
+      "bloodrager": 3,
+      "magus": 3
+    },
+    "gloomblind-bolts": {
+      "bloodrager": 3,
+      "magus": 3
+    },
+    "hydraulic-torrent": {
+      "bloodrager": 3,
+      "hunter": 3,
+      "magus": 3
+    },
+    "lightning-bolt": {
+      "bloodrager": 3,
+      "magus": 3
+    },
+    "phantom-steed": {
+      "bloodrager": 3,
+      "magus": 3
+    },
+    "slow": {
+      "bloodrager": 3,
+      "magus": 3
+    },
+    "stinking-cloud": {
+      "bloodrager": 3,
+      "magus": 3
+    },
+    "vampiric-touch": {
+      "bloodrager": 3,
+      "magus": 3
+    },
+    "black-tentacles": {
+      "bloodrager": 4,
+      "magus": 4
+    },
+    "break-greater": {
+      "bloodrager": 4
+    },
+    "burn-corruption": {
+      "bloodrager": 4,
+      "magus": 5
+    },
+    "confusion": {
+      "bloodrager": 4
+    },
+    "elemental-mastery": {
+      "bloodrager": 4,
+      "hunter": 4,
+      "magus": 4
+    },
+    "enervation": {
+      "bloodrager": 4
+    },
+    "ghost-wolf": {
+      "bloodrager": 4
+    },
+    "hellmouth-lash": {
+      "bloodrager": 4
+    },
+    "ice-storm": {
+      "bloodrager": 4,
+      "hunter": 4,
+      "magus": 4
+    },
+    "phantasmal-killer": {
+      "bloodrager": 4,
+      "magus": 4
+    },
+    "shout": {
+      "bloodrager": 4,
+      "magus": 4
+    },
+    "summon-flight-of-eagles": {
+      "bloodrager": 4,
+      "hunter": 4
+    },
+    "wall-of-fire": {
+      "bloodrager": 4,
+      "hunter": 5,
+      "magus": 4
+    },
+    "wall-of-ice": {
+      "bloodrager": 4,
+      "magus": 4
+    },
+    "wreath-of-blades": {
+      "bloodrager": 4,
+      "magus": 4
+    },
+    "commune-with-birds": {
+      "hunter": 1
+    },
+    "depilate": {
+      "hunter": 1
+    },
+    "entangle": {
+      "hunter": 1
+    },
+    "faerie-fire": {
+      "hunter": 1
+    },
+    "goodberry": {
+      "hunter": 1
+    },
+    "lose-the-trail": {
+      "hunter": 1
+    },
+    "magic-fang": {
+      "hunter": 1
+    },
+    "shield-companion-aa": {
+      "hunter": 1
+    },
+    "bullet-ward": {
+      "hunter": 2,
+      "inquisitor": 2
+    },
+    "chill-metal": {
+      "hunter": 2
+    },
+    "create-treasure-map": {
+      "hunter": 2
+    },
+    "escaping-ward": {
+      "hunter": 2,
+      "inquisitor": 2,
+      "magus": 2
+    },
+    "euphoric-cloud": {
+      "hunter": 2,
+      "magus": 2
+    },
+    "fire-trap": {
+      "hunter": 2
+    },
+    "flame-blade": {
+      "hunter": 2
+    },
+    "fog-cloud": {
+      "hunter": 2,
+      "magus": 2
+    },
+    "heat-metal": {
+      "hunter": 2
+    },
+    "improve-trap": {
+      "hunter": 2,
+      "inquisitor": 3
+    },
+    "pernicious-poison": {
+      "hunter": 2
+    },
+    "ricochet-shot": {
+      "hunter": 2
+    },
+    "seed-spies": {
+      "hunter": 2
+    },
+    "summon-swarm": {
+      "hunter": 2
+    },
+    "call-lightning": {
+      "hunter": 3
+    },
+    "fins-to-feet": {
+      "hunter": 3
+    },
+    "leshy-swarm": {
+      "hunter": 3
+    },
+    "magic-fang-greater": {
+      "hunter": 3
+    },
+    "named-bullet": {
+      "hunter": 3,
+      "inquisitor": 4
+    },
+    "wall-of-brine": {
+      "hunter": 3,
+      "magus": 4
+    },
+    "cape-of-wasps": {
+      "hunter": 4
+    },
+    "cloud-shape": {
+      "hunter": 4
+    },
+    "night-of-blades": {
+      "hunter": 4,
+      "inquisitor": 3
+    },
+    "nixies-lure": {
+      "hunter": 4
+    },
+    "reincarnate": {
+      "hunter": 4
+    },
+    "spike-stones": {
+      "hunter": 4
+    },
+    "true-form": {
+      "hunter": 4
+    },
+    "awaken": {
+      "hunter": 5
+    },
+    "baleful-polymorph": {
+      "hunter": 5,
+      "magus": 5
+    },
+    "carve-passage": {
+      "hunter": 5
+    },
+    "fire-snake": {
+      "hunter": 5,
+      "magus": 5
+    },
+    "mantle-of-the-magic-warriors": {
+      "hunter": 5
+    },
+    "wall-of-thorns": {
+      "hunter": 5
+    },
+    "wind-blades": {
+      "hunter": 5,
+      "magus": 5
+    },
+    "fire-seeds": {
+      "hunter": 6
+    },
+    "move-earth": {
+      "hunter": 6
+    },
+    "path-of-the-winds": {
+      "hunter": 6
+    },
+    "repel-wood": {
+      "hunter": 6
+    },
+    "knock": {
+      "inquisitor": 2
+    },
+    "shared-suffering": {
+      "inquisitor": 2
+    },
+    "fearsome-duplicate": {
+      "inquisitor": 3
+    },
+    "battlemind-link": {
+      "inquisitor": 4
+    },
+    "detect-scrying": {
+      "inquisitor": 4
+    },
+    "sleepwalk": {
+      "inquisitor": 4
+    },
+    "unwilling-shield": {
+      "inquisitor": 5
+    },
+    "circle-of-death": {
+      "inquisitor": 6
+    },
+    "legend-lore": {
+      "inquisitor": 6
+    },
+    "floating-disk": {
+      "magus": 1
+    },
+    "grease": {
+      "magus": 1
+    },
+    "silent-image": {
+      "magus": 1
+    },
+    "telekinetic-assembly": {
+      "magus": 2
+    },
+    "web": {
+      "magus": 2
+    },
+    "blink": {
+      "magus": 3
+    },
+    "heart-of-the-metal": {
+      "magus": 3
+    },
+    "resilient-reservoir": {
+      "magus": 3
+    },
+    "dimension-door": {
+      "magus": 4
+    },
+    "martial-telekinesis": {
+      "magus": 4
+    },
+    "solid-fog": {
+      "magus": 4
+    },
+    "acidic-spray": {
+      "magus": 5
+    },
+    "cloudkill": {
+      "magus": 5
+    },
+    "cone-of-cold": {
+      "magus": 5
+    },
+    "telekinesis": {
+      "magus": 5
+    },
+    "wall-of-force": {
+      "magus": 5
+    },
+    "chain-lightning": {
+      "magus": 6
+    },
+    "chains-of-fire": {
+      "magus": 6
+    },
+    "disintegrate": {
+      "magus": 6
+    },
+    "flesh-to-stone": {
+      "magus": 6
+    },
+    "last-azlantis-defending-sword": {
+      "magus": 6
+    },
+    "triggered-hallucination": {
+      "magus": 6
+    },
+    "wall-of-iron": {
+      "magus": 6
     }
   }
 }
