@@ -8,7 +8,11 @@ async function loadDirectory(name) {
 }
 
 const sourceTitle = "Archives of Nethys class spell lists";
-const classes = ["Alchemist", "Arcanist", "Bloodrager", "Hunter", "Inquisitor", "Investigator", "Magus", "Medium", "Mesmerist", "Occultist", "Oracle", "Psychic", "Shaman", "Skald", "Spiritualist", "Summoner", "Warpriest", "Witch", "Cleric"];
+const classes = [
+  "Alchemist", "Arcanist", "Bloodrager", "Hunter", "Inquisitor", "Investigator", "Magus", "Medium", "Mesmerist",
+  "Occultist", "Oracle", "Psychic", "Shaman", "Skald", "Spiritualist", "Summoner", "Warpriest", "Witch",
+  "Bard", "Cleric", "Druid", "Paladin", "Ranger",
+];
 const existingClassesArg = process.argv.slice(2).find(argument => argument.startsWith("--existing-classes="));
 const existingClasses = existingClassesArg?.slice("--existing-classes=".length).split(",").map(name => name.trim().toLowerCase());
 if (existingClasses?.some(name => !classes.some(className => className.toLowerCase() === name))) {

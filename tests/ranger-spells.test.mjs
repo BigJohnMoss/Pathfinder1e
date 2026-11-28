@@ -4,12 +4,12 @@ import bundle from "../generated/pf1e-data.mjs";
 
 const rangerSpells = bundle.spells.filter((spell) => spell.levelByClass.ranger !== undefined);
 
-test("Ranger receives the complete Core spell list", () => {
+test("Ranger has the sourced spell catalogue across its castable ranks", () => {
   assert.deepEqual(Object.fromEntries([1, 2, 3, 4].map((level) => [
     level,
     rangerSpells.filter((spell) => spell.levelByClass.ranger === level).length
-  ])), { 1: 20, 2: 12, 3: 13, 4: 7 });
-  assert.equal(rangerSpells.length, 52);
+  ])), { 1: 107, 2: 113, 3: 97, 4: 40 });
+  assert.equal(rangerSpells.length, 357);
 });
 
 test("Ranger class-level overlays reuse shared spell records", () => {
