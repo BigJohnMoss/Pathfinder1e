@@ -4,10 +4,10 @@ import { readFile } from "node:fs/promises";
 
 const expectedCounts = {
   alchemist: 383, arcanist: 1896, bloodrager: 320, hunter: 736,
-  inquisitor: 586, investigator: 379, magus: 462, medium: 308,
-  mesmerist: 447, occultist: 488, oracle: 986, psychic: 868,
-  shaman: 485, skald: 688, spiritualist: 314, summoner: 319,
-  warpriest: 854, witch: 875
+  inquisitor: 586, investigator: 379, magus: 462, medium: 370,
+  mesmerist: 543, occultist: 652, oracle: 986, psychic: 1081,
+  shaman: 626, skald: 813, spiritualist: 398, summoner: 406,
+  warpriest: 854, witch: 1131
 };
 
 test("later spellcasting classes use exact sourced list membership", async () => {
@@ -24,6 +24,18 @@ test("source-marked spells keep each class's published rank", async () => {
     ["endure-elements", "alchemist", 1], ["endure-elements", "investigator", 1],
     ["stone-shield", "bloodrager", 1], ["stone-shield", "hunter", 1], ["stone-shield", "magus", 2],
     ["command", "inquisitor", 1], ["bless", "warpriest", 1],
+  ]) {
+    assert.equal(spellById.get(id)?.levelByClass[classId], rank, `${id} ${classId} rank`);
+  }
+});
+
+test("occult and other class lists retain sourced spell ranks", async () => {
+  const { spells } = JSON.parse(await readFile(new URL("../generated/pf1e-data.json", import.meta.url), "utf8"));
+  const spellById = new Map(spells.map((spell) => [spell.id, spell]));
+  for (const [id, classId, rank] of [
+    ["command", "medium", 1], ["silence", "mesmerist", 2], ["make-whole", "occultist", 2],
+    ["entropic-shield", "psychic", 1], ["bless", "shaman", 1], ["darkness", "skald", 2],
+    ["animate-dead-lesser", "spiritualist", 2], ["stone-shield", "summoner", 1], ["command", "witch", 1],
   ]) {
     assert.equal(spellById.get(id)?.levelByClass[classId], rank, `${id} ${classId} rank`);
   }
